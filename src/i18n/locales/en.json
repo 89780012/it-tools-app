@@ -1,0 +1,33 @@
+{
+  "common": {
+    "tools": "Tools",
+    "language": "Language", 
+    "theme": "Theme",
+    "search": "Search",
+    "clear": "Clear",
+    "copy": "Copy",
+    "format": "Format",
+    "minify": "Minify",
+    "coming_soon": "More tools coming soon..."
+  },
+  "header": {
+    "title": "IT Tools Collection",
+    "subtitle": "Essential Toolbox for Developers"
+  },
+  "categories": {
+    "json": "JSON Tools",
+    "text": "Text Tools",
+    "crypto": "Crypto Tools", 
+    "network": "Network Tools",
+    "image": "Image Tools"
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "JSON Formatter",
+      "description": "Format, validate and minify JSON data",
+      "placeholder": "Please enter JSON data...",
+      "invalid": "Invalid JSON format",
+      "formatted": "Formatting completed"
+    }
+  }
+}

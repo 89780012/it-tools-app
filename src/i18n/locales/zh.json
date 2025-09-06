@@ -1,0 +1,33 @@
+{
+  "common": {
+    "tools": "工具",
+    "language": "语言",
+    "theme": "主题",
+    "search": "搜索",
+    "clear": "清除",
+    "copy": "复制",
+    "format": "格式化",
+    "minify": "压缩",
+    "coming_soon": "即将推出更多工具..."
+  },
+  "header": {
+    "title": "IT工具集合",
+    "subtitle": "开发者必备工具箱"
+  },
+  "categories": {
+    "json": "JSON工具",
+    "text": "文本工具", 
+    "crypto": "加密工具",
+    "network": "网络工具",
+    "image": "图片工具"
+  },
+  "tools": {
+    "json-formatter": {
+      "name": "JSON格式化器",
+      "description": "格式化、验证和压缩JSON数据",
+      "placeholder": "请输入JSON数据...",
+      "invalid": "无效的JSON格式",
+      "formatted": "格式化完成"
+    }
+  }
+}
