@@ -8,6 +8,7 @@
     "copy": "复制",
     "format": "格式化",
     "minify": "压缩",
+    "convert": "转换",
     "coming_soon": "即将推出更多工具..."
   },
   "header": {
@@ -28,6 +29,13 @@
       "placeholder": "请输入JSON数据...",
       "invalid": "无效的JSON格式",
       "formatted": "格式化完成"
+    },
+    "json-to-csv": {
+      "name": "JSON转CSV",
+      "description": "将JSON数据转换为CSV格式",
+      "placeholder": "请输入JSON数据（对象数组或单个对象）...",
+      "invalid": "无效的JSON格式",
+      "invalid_format": "请输入有效的JSON对象或对象数组"
     }
   }
 }

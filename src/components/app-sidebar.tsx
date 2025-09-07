@@ -78,7 +78,7 @@ export function AppSidebar() {
                 {isExpanded && category.tools.length > 0 && (
                   <div className="ml-4 space-y-1">
                     {category.tools.map((tool) => {
-                      const ToolIcon = iconMap[tool.icon as keyof typeof iconMap]
+                      // const ToolIcon = iconMap[tool.icon as keyof typeof iconMap]
                       
                       return (
                         <button
@@ -90,12 +90,12 @@ export function AppSidebar() {
                             "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                           )}
                         >
-                          {ToolIcon && <ToolIcon className="h-4 w-4" />}
+                          {/* {ToolIcon && <ToolIcon className="h-4 w-4" />} */}
                           <div>
                             <div className="font-medium">{t(`tools.${tool.id}.name`)}</div>
-                            {/* <div className="text-xs text-muted-foreground">
+                            <div className="text-xs text-muted-foreground">
                               {t(`tools.${tool.id}.description`)}
-                            </div> */}
+                            </div>
                           </div>
                         </button>
                       )

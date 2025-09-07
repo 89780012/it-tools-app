@@ -29,6 +29,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "json",
         path: "/tools/json-formatter",
         icon: "code"
+      },
+      {
+        id: "json-to-csv",
+        name: "JSON转CSV",
+        description: "将JSON数据转换为CSV格式",
+        category: "json",
+        path: "/tools/json-to-csv",
+        icon: "table"
       }
     ]
   },

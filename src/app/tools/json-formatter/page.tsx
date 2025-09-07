@@ -29,7 +29,7 @@ export default function JsonFormatterPage() {
       setOutput(formatted)
       setError("")
       setIsValid(true)
-    } catch (err) {
+    } catch {
       setError(t("tools.json-formatter.invalid"))
       setOutput("")
       setIsValid(false)
@@ -50,7 +50,7 @@ export default function JsonFormatterPage() {
       setOutput(minified)
       setError("")
       setIsValid(true)
-    } catch (err) {
+    } catch {
       setError(t("tools.json-formatter.invalid"))
       setOutput("")
       setIsValid(false)

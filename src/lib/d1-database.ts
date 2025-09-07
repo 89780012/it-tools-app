@@ -1,3 +1,6 @@
+// 定义数据库参数类型
+type DatabaseValue = string | number | boolean | null | undefined | ArrayBuffer
+
 export interface D1Database {
   prepare(query: string): D1PreparedStatement
   dump(): Promise<ArrayBuffer>
@@ -6,7 +9,7 @@ export interface D1Database {
 }
 
 export interface D1PreparedStatement {
-  bind(...values: any[]): D1PreparedStatement
+  bind(...values: DatabaseValue[]): D1PreparedStatement
   first<T = unknown>(colName?: string): Promise<T | null>
   run(): Promise<D1Result>
   all<T = unknown>(): Promise<D1Result<T>>
@@ -43,7 +46,7 @@ export class D1DatabaseService {
     this.db = database
   }
 
-  async query<T = any>(sql: string, params?: any[]): Promise<T[]> {
+  async query<T = unknown>(sql: string, params?: DatabaseValue[]): Promise<T[]> {
     const stmt = this.db.prepare(sql)
     if (params) {
       stmt.bind(...params)
@@ -52,7 +55,7 @@ export class D1DatabaseService {
     return result.results
   }
 
-  async queryFirst<T = any>(sql: string, params?: any[]): Promise<T | null> {
+  async queryFirst<T = unknown>(sql: string, params?: DatabaseValue[]): Promise<T | null> {
     const stmt = this.db.prepare(sql)
     if (params) {
       stmt.bind(...params)
@@ -60,7 +63,7 @@ export class D1DatabaseService {
     return await stmt.first<T>()
   }
 
-  async execute(sql: string, params?: any[]): Promise<D1Result> {
+  async execute(sql: string, params?: DatabaseValue[]): Promise<D1Result> {
     const stmt = this.db.prepare(sql)
     if (params) {
       stmt.bind(...params)
@@ -68,7 +71,7 @@ export class D1DatabaseService {
     return await stmt.run()
   }
 
-  async batchExecute(queries: Array<{ sql: string; params?: any[] }>): Promise<D1Result[]> {
+  async batchExecute(queries: Array<{ sql: string; params?: DatabaseValue[] }>): Promise<D1Result[]> {
     const statements = queries.map(({ sql, params }) => {
       const stmt = this.db.prepare(sql)
       if (params) {
@@ -84,7 +87,7 @@ export class D1DatabaseService {
     return await this.execute(sql)
   }
 
-  async insert(tableName: string, data: Record<string, any>): Promise<D1Result> {
+  async insert(tableName: string, data: Record<string, DatabaseValue>): Promise<D1Result> {
     const columns = Object.keys(data).join(', ')
     const placeholders = Object.keys(data).map(() => '?').join(', ')
     const values = Object.values(data)
@@ -93,7 +96,7 @@ export class D1DatabaseService {
     return await this.execute(sql, values)
   }
 
-  async update(tableName: string, data: Record<string, any>, where: string, whereParams?: any[]): Promise<D1Result> {
+  async update(tableName: string, data: Record<string, DatabaseValue>, where: string, whereParams?: DatabaseValue[]): Promise<D1Result> {
     const setClause = Object.keys(data).map(key => `${key} = ?`).join(', ')
     const values = [...Object.values(data), ...(whereParams || [])]
     
@@ -101,7 +104,7 @@ export class D1DatabaseService {
     return await this.execute(sql, values)
   }
 
-  async delete(tableName: string, where: string, whereParams?: any[]): Promise<D1Result> {
+  async delete(tableName: string, where: string, whereParams?: DatabaseValue[]): Promise<D1Result> {
     const sql = `DELETE FROM ${tableName} WHERE ${where}`
     return await this.execute(sql, whereParams)
   }

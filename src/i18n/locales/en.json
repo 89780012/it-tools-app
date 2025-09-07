@@ -8,6 +8,7 @@
     "copy": "Copy",
     "format": "Format",
     "minify": "Minify",
+    "convert": "Convert",
     "coming_soon": "More tools coming soon..."
   },
   "header": {
@@ -28,6 +29,13 @@
       "placeholder": "Please enter JSON data...",
       "invalid": "Invalid JSON format",
       "formatted": "Formatting completed"
+    },
+    "json-to-csv": {
+      "name": "JSON to CSV",
+      "description": "Convert JSON data to CSV format",
+      "placeholder": "Please enter JSON data (object array or single object)...",
+      "invalid": "Invalid JSON format",
+      "invalid_format": "Please enter valid JSON object or object array"
     }
   }
 }

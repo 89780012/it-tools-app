@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useCallback } from 'react'
-import { Locale, LocaleMessages, locales, defaultLocale } from './index'
+import { Locale, locales, defaultLocale } from './index'
 
 interface I18nContextType {
   locale: Locale
@@ -16,11 +16,11 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const t = useCallback((key: string): string => {
     const keys = key.split('.')
-    let value: any = locales[locale]
+    let value: Record<string, unknown> | unknown = locales[locale]
     
     for (const k of keys) {
-      if (value && typeof value === 'object') {
-        value = value[k]
+      if (value && typeof value === 'object' && !Array.isArray(value)) {
+        value = (value as Record<string, unknown>)[k]
       } else {
         return key
       }
