@@ -175,7 +175,7 @@ export default function JsonToCsvPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>输入 JSON</CardTitle>
+            <CardTitle>{t("tools.json-to-csv.input_title")}</CardTitle>
             <CardDescription>
               {t("tools.json-to-csv.placeholder")}
             </CardDescription>
@@ -215,21 +215,21 @@ export default function JsonToCsvPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>输出 CSV</CardTitle>
+            <CardTitle>{t("tools.json-to-csv.output_title")}</CardTitle>
             <CardDescription>
               {output && (
                 <span className="text-sm text-muted-foreground">
-                  {getRowCount()} 行 × {getColumnCount()} 列
+                  {t("tools.json-to-csv.rows_columns").replace("{rows}", String(getRowCount())).replace("{columns}", String(getColumnCount()))}
                 </span>
               )}
-              {!output && "转换后的 CSV 数据"}
+              {!output && t("tools.json-to-csv.output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder="转换后的 CSV 将显示在这里..."
+              placeholder={t("tools.json-to-csv.output_placeholder")}
               className="min-h-[300px] font-mono text-sm bg-muted/50"
             />
             
@@ -258,15 +258,15 @@ export default function JsonToCsvPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>使用说明</CardTitle>
+          <CardTitle>{t("tools.json-to-csv.usage_title")}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
           <div className="text-sm text-muted-foreground space-y-1">
-            <p>• 支持 JSON 对象数组格式：<code>[{"{\"name\":\"张三\",\"age\":25}"}, ...]</code></p>
-            <p>• 支持单个 JSON 对象格式：<code>{"{\"name\":\"张三\",\"age\":25}"}</code></p>
-            <p>• 嵌套对象会被扁平化：<code>user.name</code>、<code>user.address.city</code></p>
-            <p>• 数组值会被转换为 JSON 字符串</p>
-            <p>• 自动处理 CSV 特殊字符的转义</p>
+            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_array_format") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_object_format") }} />
+            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_nested_flatten") }} />
+            <p>{t("tools.json-to-csv.usage_array_stringify")}</p>
+            <p>{t("tools.json-to-csv.usage_csv_escape")}</p>
           </div>
         </CardContent>
       </Card>

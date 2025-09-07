@@ -9,15 +9,42 @@
     "format": "格式化",
     "minify": "压缩",
     "convert": "转换",
-    "coming_soon": "即将推出更多工具..."
+    "coming_soon": "即将推出更多工具...",
+    "click_sidebar": "点击左侧菜单使用"
   },
   "header": {
     "title": "IT工具集合",
     "subtitle": "开发者必备工具箱"
   },
+  "meta": {
+    "title": "IT工具集合 - 开发者必备工具箱",
+    "description": "专为开发者打造的在线工具集合，包含JSON格式化、文本处理、加密解密等实用工具"
+  },
+  "home": {
+    "tools_total": "工具总数",
+    "tools_categories": "工具分类",
+    "update_frequency": "更新频率",
+    "continuously_adding": "持续添加中",
+    "cover_main_scenarios": "覆盖主要场景",
+    "weekly": "每周",
+    "new_tools_features": "新工具和功能",
+    "categories_title": "工具分类",
+    "popular_tools_title": "热门工具",
+    "features_title": "功能特点",
+    "tools_count": "{count} 个工具",
+    "coming_soon": "即将推出",
+    "modern_design": "🎨 现代化设计",
+    "modern_design_desc": "基于 shadcn/ui 构建，支持亮色/暗色主题切换，提供优雅的用户体验",
+    "multilingual": "🌐 多语言支持", 
+    "multilingual_desc": "支持中文和英文界面，满足不同用户的语言偏好",
+    "high_performance": "⚡ 高性能",
+    "high_performance_desc": "基于 Next.js 和 TypeScript，提供快速响应的用户体验",
+    "privacy_protection": "🔒 隐私保护",
+    "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全"
+  },
   "categories": {
     "json": "JSON工具",
-    "text": "文本工具", 
+    "text": "文本工具",
     "crypto": "加密工具",
     "network": "网络工具",
     "image": "图片工具"
@@ -28,14 +55,29 @@
       "description": "格式化、验证和压缩JSON数据",
       "placeholder": "请输入JSON数据...",
       "invalid": "无效的JSON格式",
-      "formatted": "格式化完成"
+      "formatted": "格式化完成",
+      "input_title": "输入 JSON",
+      "output_title": "输出结果",
+      "output_desc": "格式化后的 JSON 数据",
+      "output_placeholder": "格式化后的 JSON 将显示在这里..."
     },
     "json-to-csv": {
       "name": "JSON转CSV",
       "description": "将JSON数据转换为CSV格式",
       "placeholder": "请输入JSON数据（对象数组或单个对象）...",
       "invalid": "无效的JSON格式",
-      "invalid_format": "请输入有效的JSON对象或对象数组"
+      "invalid_format": "请输入有效的JSON对象或对象数组",
+      "input_title": "输入 JSON",
+      "output_title": "输出 CSV",
+      "output_desc": "转换后的 CSV 数据",
+      "output_placeholder": "转换后的 CSV 将显示在这里...",
+      "usage_title": "使用说明",
+      "rows_columns": "{rows} 行 × {columns} 列",
+      "usage_array_format": "• 支持 JSON 对象数组格式：<code>[{\"name\":\"张三\",\"age\":25}, ...]</code>",
+      "usage_object_format": "• 支持单个 JSON 对象格式：<code>{\"name\":\"张三\",\"age\":25}</code>",
+      "usage_nested_flatten": "• 嵌套对象会被扁平化：<code>user.name</code>、<code>user.address.city</code>",
+      "usage_array_stringify": "• 数组值会被转换为 JSON 字符串",
+      "usage_csv_escape": "• 自动处理 CSV 特殊字符的转义"
     }
   }
 }

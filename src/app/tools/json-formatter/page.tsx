@@ -96,7 +96,7 @@ export default function JsonFormatterPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>输入 JSON</CardTitle>
+            <CardTitle>{t("tools.json-formatter.input_title")}</CardTitle>
             <CardDescription>
               {t("tools.json-formatter.placeholder")}
             </CardDescription>
@@ -138,16 +138,16 @@ export default function JsonFormatterPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>输出结果</CardTitle>
+            <CardTitle>{t("tools.json-formatter.output_title")}</CardTitle>
             <CardDescription>
-              格式化后的 JSON 数据
+              {t("tools.json-formatter.output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder="格式化后的 JSON 将显示在这里..."
+              placeholder={t("tools.json-formatter.output_placeholder")}
               className="min-h-[300px] font-mono text-sm bg-muted/50"
             />
             

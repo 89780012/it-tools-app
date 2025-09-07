@@ -9,11 +9,38 @@
     "format": "Format",
     "minify": "Minify",
     "convert": "Convert",
-    "coming_soon": "More tools coming soon..."
+    "coming_soon": "More tools coming soon...",
+    "click_sidebar": "Use via left sidebar menu"
   },
   "header": {
     "title": "IT Tools Collection",
     "subtitle": "Essential Toolbox for Developers"
+  },
+  "meta": {
+    "title": "IT Tools Collection - Essential Toolbox for Developers",
+    "description": "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools"
+  },
+  "home": {
+    "tools_total": "Total Tools",
+    "tools_categories": "Tool Categories",
+    "update_frequency": "Update Frequency",
+    "continuously_adding": "Continuously adding",
+    "cover_main_scenarios": "Cover main scenarios",
+    "weekly": "Weekly",
+    "new_tools_features": "New tools and features",
+    "categories_title": "Tool Categories",
+    "popular_tools_title": "Popular Tools",
+    "features_title": "Features",
+    "tools_count": "{count} tools",
+    "coming_soon": "Coming soon",
+    "modern_design": "🎨 Modern Design",
+    "modern_design_desc": "Built with shadcn/ui, supports light/dark theme switching, providing elegant user experience",
+    "multilingual": "🌐 Multilingual Support", 
+    "multilingual_desc": "Supports Chinese and English interfaces to meet different language preferences",
+    "high_performance": "⚡ High Performance",
+    "high_performance_desc": "Based on Next.js and TypeScript, providing fast and responsive user experience",
+    "privacy_protection": "🔒 Privacy Protection",
+    "privacy_protection_desc": "All tools run on client-side, ensuring your data privacy and security"
   },
   "categories": {
     "json": "JSON Tools",
@@ -28,14 +55,29 @@
       "description": "Format, validate and minify JSON data",
       "placeholder": "Please enter JSON data...",
       "invalid": "Invalid JSON format",
-      "formatted": "Formatting completed"
+      "formatted": "Formatting completed",
+      "input_title": "Input JSON",
+      "output_title": "Output Result",
+      "output_desc": "Formatted JSON data",
+      "output_placeholder": "Formatted JSON will be displayed here..."
     },
     "json-to-csv": {
       "name": "JSON to CSV",
       "description": "Convert JSON data to CSV format",
       "placeholder": "Please enter JSON data (object array or single object)...",
       "invalid": "Invalid JSON format",
-      "invalid_format": "Please enter valid JSON object or object array"
+      "invalid_format": "Please enter valid JSON object or object array",
+      "input_title": "Input JSON",
+      "output_title": "Output CSV",
+      "output_desc": "Converted CSV data",
+      "output_placeholder": "Converted CSV will be displayed here...",
+      "usage_title": "Usage Instructions",
+      "rows_columns": "{rows} rows × {columns} columns",
+      "usage_array_format": "• Supports JSON object array format: <code>[{\"name\":\"John\",\"age\":25}, ...]</code>",
+      "usage_object_format": "• Supports single JSON object format: <code>{\"name\":\"John\",\"age\":25}</code>",
+      "usage_nested_flatten": "• Nested objects will be flattened: <code>user.name</code>, <code>user.address.city</code>",
+      "usage_array_stringify": "• Array values will be converted to JSON strings",
+      "usage_csv_escape": "• Automatically handles CSV special character escaping"
     }
   }
 }

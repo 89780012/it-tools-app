@@ -33,34 +33,34 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">工具总数</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t("home.tools_total")}</CardTitle>
                     <Zap className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">50+</div>
-                    <p className="text-xs text-muted-foreground">持续添加中</p>
+                    <p className="text-xs text-muted-foreground">{t("home.continuously_adding")}</p>
                   </CardContent>
                 </Card>
                 
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">工具分类</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t("home.tools_categories")}</CardTitle>
                     <Star className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">{toolsConfig.length}</div>
-                    <p className="text-xs text-muted-foreground">覆盖主要场景</p>
+                    <p className="text-xs text-muted-foreground">{t("home.cover_main_scenarios")}</p>
                   </CardContent>
                 </Card>
                 
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">更新频率</CardTitle>
+                    <CardTitle className="text-sm font-medium">{t("home.update_frequency")}</CardTitle>
                     <TrendingUp className="h-4 w-4 text-muted-foreground" />
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">每周</div>
-                    <p className="text-xs text-muted-foreground">新工具和功能</p>
+                    <div className="text-2xl font-bold">{t("home.weekly")}</div>
+                    <p className="text-xs text-muted-foreground">{t("home.new_tools_features")}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -68,7 +68,7 @@ export default function Home() {
 
             <div className="space-y-8">
               <section>
-                <h2 className="text-2xl font-bold mb-4">工具分类</h2>
+                <h2 className="text-2xl font-bold mb-4">{t("home.categories_title")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {toolsConfig.map((category) => (
                     <Card key={category.id} className="hover:shadow-md transition-shadow">
@@ -81,8 +81,8 @@ export default function Home() {
                       <CardContent>
                         <p className="text-sm text-muted-foreground">
                           {category.tools.length > 0 
-                            ? `${category.tools.length} 个工具` 
-                            : "即将推出"}
+                            ? t("home.tools_count").replace("{count}", category.tools.length.toString())
+                            : t("home.coming_soon")}
                         </p>
                       </CardContent>
                     </Card>
@@ -92,7 +92,7 @@ export default function Home() {
 
               {popularTools.length > 0 && (
                 <section>
-                  <h2 className="text-2xl font-bold mb-4">热门工具</h2>
+                  <h2 className="text-2xl font-bold mb-4">{t("home.popular_tools_title")}</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {popularTools.map((tool) => (
                       <Card key={tool.id} className="hover:shadow-md transition-shadow cursor-pointer">
@@ -101,7 +101,7 @@ export default function Home() {
                           <CardDescription>{tool.description}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-sm text-primary">点击左侧菜单使用</p>
+                          <p className="text-sm text-primary">{t("common.click_sidebar")}</p>
                         </CardContent>
                       </Card>
                     ))}
@@ -110,48 +110,48 @@ export default function Home() {
               )}
 
               <section>
-                <h2 className="text-2xl font-bold mb-4">功能特点</h2>
+                <h2 className="text-2xl font-bold mb-4">{t("home.features_title")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle>🎨 现代化设计</CardTitle>
+                      <CardTitle>{t("home.modern_design")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        基于 shadcn/ui 构建，支持亮色/暗色主题切换，提供优雅的用户体验
+                        {t("home.modern_design_desc")}
                       </p>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardHeader>
-                      <CardTitle>🌐 多语言支持</CardTitle>
+                      <CardTitle>{t("home.multilingual")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        支持中文和英文界面，满足不同用户的语言偏好
+                        {t("home.multilingual_desc")}
                       </p>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardHeader>
-                      <CardTitle>⚡ 高性能</CardTitle>
+                      <CardTitle>{t("home.high_performance")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        基于 Next.js 和 TypeScript，提供快速响应的用户体验
+                        {t("home.high_performance_desc")}
                       </p>
                     </CardContent>
                   </Card>
                   
                   <Card>
                     <CardHeader>
-                      <CardTitle>🔒 隐私保护</CardTitle>
+                      <CardTitle>{t("home.privacy_protection")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        所有工具都在客户端运行，确保您的数据隐私和安全
+                        {t("home.privacy_protection_desc")}
                       </p>
                     </CardContent>
                   </Card>
