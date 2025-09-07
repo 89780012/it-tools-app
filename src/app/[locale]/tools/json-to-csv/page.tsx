@@ -5,15 +5,15 @@ import { Copy, RotateCcw, Download, Table } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
-import { useI18n } from "@/i18n/context"
 import { cn } from "@/lib/utils"
+import { useTranslations } from 'next-intl';
 
 interface JsonRow {
   [key: string]: unknown
 }
 
 export default function JsonToCsvPage() {
-  const { t } = useI18n()
+  const t = useTranslations();
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
@@ -219,7 +219,7 @@ export default function JsonToCsvPage() {
             <CardDescription>
               {output && (
                 <span className="text-sm text-muted-foreground">
-                  {t("tools.json-to-csv.rows_columns").replace("{rows}", String(getRowCount())).replace("{columns}", String(getColumnCount()))}
+                  {t("tools.json-to-csv.rows_columns", { rows: getRowCount(), columns: getColumnCount() })}
                 </span>
               )}
               {!output && t("tools.json-to-csv.output_desc")}
@@ -262,9 +262,15 @@ export default function JsonToCsvPage() {
         </CardHeader>
         <CardContent className="space-y-2">
           <div className="text-sm text-muted-foreground space-y-1">
-            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_array_format") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_object_format") }} />
-            <p dangerouslySetInnerHTML={{ __html: t("tools.json-to-csv.usage_nested_flatten") }} />
+            <p>
+              {t("tools.json-to-csv.usage_array_format")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_array_example")}</code>
+            </p>
+            <p>
+              {t("tools.json-to-csv.usage_object_format")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_object_example")}</code>
+            </p>
+            <p>
+              {t("tools.json-to-csv.usage_nested_flatten")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_nested_examples")}</code>
+            </p>
             <p>{t("tools.json-to-csv.usage_array_stringify")}</p>
             <p>{t("tools.json-to-csv.usage_csv_escape")}</p>
           </div>

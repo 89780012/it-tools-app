@@ -1,12 +1,12 @@
 "use client"
 
-import { useI18n } from "@/i18n/context"
+import { useTranslations } from 'next-intl'
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageToggle } from "./language-toggle"
 import { Wrench } from "lucide-react"
 
 export function Header() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

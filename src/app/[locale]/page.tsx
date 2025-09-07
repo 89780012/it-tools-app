@@ -4,13 +4,13 @@ import { useState } from "react"
 import { Header } from "@/components/header"
 import { AppSidebar } from "@/components/app-sidebar"
 import { ToolContainer } from "@/components/tool-container"
+import { useTranslations } from 'next-intl'
 import { toolsConfig } from "@/lib/tools-config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Wrench, Star, TrendingUp, Zap } from "lucide-react"
-import { useTranslations } from 'next-intl';
 
 export default function Home() {
-  const t = useTranslations();
+  const t = useTranslations()
   const [selectedTool, setSelectedTool] = useState<string | null>(null)
 
   const popularTools = toolsConfig.flatMap(category => category.tools).slice(0, 6)
@@ -128,7 +128,7 @@ export default function Home() {
                       </p>
                     </CardContent>
                   </Card>
-                  
+
                   <Card>
                     <CardHeader>
                       <CardTitle>{t("home.multilingual")}</CardTitle>
@@ -139,7 +139,7 @@ export default function Home() {
                       </p>
                     </CardContent>
                   </Card>
-                  
+
                   <Card>
                     <CardHeader>
                       <CardTitle>{t("home.high_performance")}</CardTitle>
@@ -150,7 +150,7 @@ export default function Home() {
                       </p>
                     </CardContent>
                   </Card>
-                  
+
                   <Card>
                     <CardHeader>
                       <CardTitle>{t("home.privacy_protection")}</CardTitle>

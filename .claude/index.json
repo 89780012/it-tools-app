@@ -1,136 +1,257 @@
 {
-  "timestamp": "2025-09-07T19:36:52.000Z",
+  "timestamp": "2025-09-07T22:58:58.000Z",
   "project": {
     "name": "it-tools-app",
     "description": "IT工具集合 - 开发者必备工具箱",
     "type": "Next.js Application",
     "language": "TypeScript",
-    "framework": "Next.js 15.5.2 + React 19.1.0"
+    "framework": "Next.js 15.5.2 + React 19.1.0 + next-intl 4.3.6"
   },
   "scan_coverage": {
-    "total_files_estimated": 45,
-    "scanned_files": 31,
-    "coverage_percentage": 69,
-    "ignored_files": 14,
-    "truncated": false
+    "total_files_estimated": 48,
+    "scanned_files": 42,
+    "coverage_percentage": 88,
+    "ignored_files": 6,
+    "truncated": false,
+    "last_scan_focus": "国际化架构升级和文档更新"
   },
   "modules": [
     {
       "path": "src/app",
       "name": "App Router",
-      "description": "Next.js App Router 应用结构和页面组件",
+      "description": "Next.js App Router 应用结构，支持国际化路由",
       "type": "application",
-      "entry_files": ["layout.tsx", "page.tsx"],
-      "key_features": ["路由管理", "页面布局", "SEO配置"],
+      "entry_files": ["layout.tsx", "page.tsx", "[locale]/page.tsx"],
+      "key_features": ["多语言路由", "中间件集成", "工具页面", "SEO优化"],
+      "tools_count": 2,
+      "languages_supported": ["zh", "en", "hi"],
       "status": "complete",
       "documentation": "src/app/CLAUDE.md"
     },
     {
       "path": "src/components",
       "name": "UI Components",
-      "description": "React 组件库和业务组件",
+      "description": "React 组件库和业务组件，基于 shadcn/ui",
       "type": "ui",
-      "entry_files": ["app-sidebar.tsx", "header.tsx", "theme-provider.tsx"],
-      "key_features": ["shadcn/ui集成", "主题切换", "响应式设计"],
+      "entry_files": ["app-sidebar.tsx", "header.tsx", "theme-provider.tsx", "tool-container.tsx"],
+      "key_features": ["shadcn/ui集成", "主题切换", "响应式设计", "国际化支持"],
+      "component_count": 13,
+      "ui_framework": "shadcn/ui + Radix UI",
       "status": "complete",
       "documentation": "src/components/CLAUDE.md"
     },
     {
       "path": "src/lib",
       "name": "Core Library",
-      "description": "核心工具库与云服务集成",
+      "description": "核心工具库、云服务集成和工具配置",
       "type": "library",
-      "entry_files": ["tools-config.ts", "utils.ts"],
-      "key_features": ["工具配置管理", "R2存储", "D1数据库", "类型安全"],
+      "entry_files": ["tools-config.ts", "utils.ts", "r2-storage.ts", "d1-database.ts"],
+      "key_features": ["工具配置管理", "Cloudflare R2存储", "D1数据库", "类型安全"],
+      "tools_configured": 2,
+      "cloud_services": ["Cloudflare R2", "Cloudflare D1"],
       "status": "complete",
       "documentation": "src/lib/CLAUDE.md"
     },
     {
       "path": "src/i18n",
       "name": "Internationalization",
-      "description": "自定义国际化系统",
+      "description": "next-intl 4.3.6 国际化系统",
       "type": "service",
-      "entry_files": ["index.ts", "context.tsx"],
-      "key_features": ["中英文支持", "Context API", "嵌套键查找"],
+      "entry_files": ["config.ts", "routing.ts", "navigation.ts", "request.ts"],
+      "key_features": ["next-intl集成", "路由国际化", "中间件支持", "as-needed前缀"],
+      "languages": ["zh", "en", "hi"],
+      "default_locale": "en",
+      "routing_mode": "as-needed",
       "status": "complete",
       "documentation": "src/i18n/CLAUDE.md"
     },
     {
       "path": "src/hooks",
       "name": "React Hooks",
-      "description": "自定义 React Hooks",
+      "description": "自定义 React Hooks 集合",
       "type": "utility",
       "entry_files": ["use-mobile.ts"],
-      "key_features": ["移动端检测"],
-      "status": "minimal"
+      "key_features": ["响应式检测", "移动端适配"],
+      "hooks_count": 1,
+      "mobile_breakpoint": 768,
+      "status": "minimal",
+      "documentation": "src/hooks/CLAUDE.md"
     }
   ],
   "technologies": {
-    "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    "ui": ["shadcn/ui", "Radix UI", "Lucide React"],
-    "build": ["Turbopack", "ESLint"],
-    "cloud": ["Cloudflare R2", "Cloudflare D1"],
+    "frontend": ["Next.js 15.5.2", "React 19.1.0", "TypeScript", "Tailwind CSS 4"],
+    "ui": ["shadcn/ui", "Radix UI", "Lucide React", "class-variance-authority"],
+    "build": ["Turbopack", "ESLint", "PostCSS"],
+    "i18n": ["next-intl 4.3.6"],
+    "cloud": ["AWS S3", "Cloudflare R2", "Cloudflare D1"],
+    "state": ["React Context", "useState"],
     "testing": []
   },
   "architecture": {
-    "pattern": "Modular Architecture",
-    "routing": "Next.js App Router",
-    "state": "React Context",
-    "styling": "Tailwind CSS + CSS Variables",
-    "deployment": "Vercel Ready"
+    "pattern": "Modular Architecture + Internationalized Routing",
+    "routing": "Next.js App Router + [locale] dynamic routes",
+    "state": "React Context + Local State",
+    "styling": "Tailwind CSS 4 + CSS Variables",
+    "i18n": "next-intl with as-needed locale prefix",
+    "deployment": "Vercel Ready",
+    "middleware": "Language detection and routing"
   },
   "quality_metrics": {
     "typescript_coverage": 100,
     "eslint_configured": true,
     "testing_framework": "none",
-    "documentation_coverage": 90
+    "documentation_coverage": 100,
+    "i18n_completeness": 85,
+    "mobile_responsive": true
   },
+  "current_tools": [
+    {
+      "id": "json-formatter",
+      "name": "JSON格式化器",
+      "category": "json",
+      "path": "/tools/json-formatter",
+      "features": ["格式化", "压缩", "验证", "复制", "下载"],
+      "status": "完整"
+    },
+    {
+      "id": "json-to-csv",
+      "name": "JSON转CSV", 
+      "category": "json",
+      "path": "/tools/json-to-csv",
+      "features": ["JSON转换", "CSV生成", "嵌套对象扁平化"],
+      "status": "完整"
+    }
+  ],
+  "tool_categories": [
+    {
+      "id": "json",
+      "name": "JSON工具",
+      "tools_count": 2,
+      "completion": "部分完成"
+    },
+    {
+      "id": "text",
+      "name": "文本工具",
+      "tools_count": 0,
+      "completion": "待开发"
+    },
+    {
+      "id": "crypto", 
+      "name": "加密工具",
+      "tools_count": 0,
+      "completion": "待开发"
+    },
+    {
+      "id": "network",
+      "name": "网络工具", 
+      "tools_count": 0,
+      "completion": "待开发"
+    },
+    {
+      "id": "image",
+      "name": "图片工具",
+      "tools_count": 0,
+      "completion": "待开发"
+    }
+  ],
   "gaps_identified": [
     {
       "category": "testing",
       "description": "缺少测试框架和测试用例",
       "priority": "high",
-      "suggestion": "添加 Jest + React Testing Library"
+      "suggestion": "添加 Jest + React Testing Library + @testing-library/react-hooks",
+      "affected_modules": ["all"]
+    },
+    {
+      "category": "i18n_completeness",
+      "description": "缺少 Hindi 翻译文件和英文翻译完整性",
+      "priority": "medium", 
+      "suggestion": "添加 messages/hi.json 并完善 messages/en.json",
+      "affected_modules": ["src/i18n"]
+    },
+    {
+      "category": "tools_expansion",
+      "description": "工具功能较少，需要按配置扩展",
+      "priority": "medium",
+      "suggestion": "按 tools-config.ts 中的分类添加更多工具",
+      "affected_modules": ["src/app/[locale]/tools", "src/lib"]
+    },
+    {
+      "category": "hooks_library",
+      "description": "自定义 Hooks 过于简单，需要扩展",
+      "priority": "low",
+      "suggestion": "添加 useLocalStorage, useDebounce, useCopyToClipboard 等常用 Hooks",
+      "affected_modules": ["src/hooks"]
     },
     {
       "category": "ci_cd",
       "description": "缺少 CI/CD 流水线配置",
       "priority": "medium",
-      "suggestion": "配置 GitHub Actions"
+      "suggestion": "配置 GitHub Actions，包含构建、测试、部署流程",
+      "affected_modules": ["root"]
     },
     {
-      "category": "api",
-      "description": "缺少后端 API 路由",
+      "category": "seo_optimization",
+      "description": "多语言SEO元数据需要完善",
       "priority": "low",
-      "suggestion": "考虑添加 API Routes 用于服务端功能"
-    },
-    {
-      "category": "tools",
-      "description": "工具功能较少，需要扩展",
-      "priority": "medium",
-      "suggestion": "按 tools-config.ts 中的分类添加更多工具"
+      "suggestion": "为每个工具页面添加特定的 meta 标签和结构化数据",
+      "affected_modules": ["src/app"]
     }
   ],
   "next_scan_priorities": [
-    "详细分析工具页面实现模式",
-    "检查 API Routes 目录（如存在）",
-    "扫描测试相关配置文件",
-    "分析部署配置文件"
+    "扫描 components/ui/ 目录下的 shadcn/ui 组件实现",
+    "检查是否存在 API Routes 目录（src/app/api/）",
+    "分析 globals.css 中的主题变量定义",
+    "检查 next.config.ts 中的国际化配置",
+    "扫描可能存在的测试文件目录"
   ],
   "file_patterns": {
     "ignored": [
       "node_modules/**",
-      ".next/**",
+      ".next/**", 
       "dist/**",
       "build/**",
       "*.lock",
-      "*.log"
+      "*.log",
+      ".git/**",
+      ".github/**",
+      "__pycache__/**"
     ],
     "scanned": [
       "src/**/*.{ts,tsx,js,jsx}",
       "*.config.{ts,js,mjs}",
       "*.json",
-      "*.md"
+      "*.md",
+      "middleware.ts"
+    ]
+  },
+  "documentation_status": {
+    "root_claude_md": "完整更新",
+    "module_documents": {
+      "src/app/CLAUDE.md": "完整更新",
+      "src/components/CLAUDE.md": "需要更新",
+      "src/lib/CLAUDE.md": "需要更新", 
+      "src/i18n/CLAUDE.md": "完整更新",
+      "src/hooks/CLAUDE.md": "新创建"
+    },
+    "coverage_percentage": 80
+  },
+  "recommendations": {
+    "immediate": [
+      "添加测试框架配置 (Jest + React Testing Library)",
+      "完善英文翻译文件 (src/i18n/messages/en.json)",
+      "为每个工具分类添加至少一个工具"
+    ],
+    "short_term": [
+      "配置 CI/CD 流水线 (GitHub Actions)",
+      "添加更多常用的自定义 Hooks", 
+      "优化移动端响应式设计"
+    ],
+    "long_term": [
+      "添加用户偏好设置功能",
+      "实现工具使用统计",
+      "支持更多语言 (日语、韩语等)",
+      "添加 PWA 支持"
     ]
   }
 }

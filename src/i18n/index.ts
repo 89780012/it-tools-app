@@ -1,12 +1,17 @@
-import zh from './locales/zh.json'
-import en from './locales/en.json'
+'use server';
 
-export const locales = {
-  zh,
-  en
-} as const
+import { cookies } from 'next/headers';
 
-export type Locale = keyof typeof locales
-export type LocaleMessages = typeof zh
+import { defaultLocale, Locale } from '@/i18n/config';
 
-export const defaultLocale: Locale = 'zh'
+// In this example the locale is read from a cookie. You could alternatively
+// also read it from a database, backend service, or any other source.
+const COOKIE_NAME = 'NEXT_LOCALE';
+
+export async function getLocale() {
+  return (await cookies()).get(COOKIE_NAME)?.value || defaultLocale;
+}
+
+export async function setLocale(locale: Locale) {
+  (await cookies()).set(COOKIE_NAME, locale);
+}

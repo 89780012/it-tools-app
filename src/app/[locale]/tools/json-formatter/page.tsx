@@ -5,11 +5,12 @@ import { Copy, RotateCcw, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
-import { useI18n } from "@/i18n/context"
 import { cn } from "@/lib/utils"
+import { useTranslations } from 'next-intl';
 
 export default function JsonFormatterPage() {
-  const { t } = useI18n()
+  const t = useTranslations();
+
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")

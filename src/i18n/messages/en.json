@@ -1,7 +1,7 @@
 {
   "common": {
     "tools": "Tools",
-    "language": "Language", 
+    "language": "Language",
     "theme": "Theme",
     "search": "Search",
     "clear": "Clear",
@@ -9,8 +9,15 @@
     "format": "Format",
     "minify": "Minify",
     "convert": "Convert",
+    "download": "Download",
+    "home": "Home",
     "coming_soon": "More tools coming soon...",
     "click_sidebar": "Use via left sidebar menu"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   },
   "header": {
     "title": "IT Tools Collection",
@@ -73,9 +80,12 @@
       "output_placeholder": "Converted CSV will be displayed here...",
       "usage_title": "Usage Instructions",
       "rows_columns": "{rows} rows × {columns} columns",
-      "usage_array_format": "• Supports JSON object array format: <code>[{\"name\":\"John\",\"age\":25}, ...]</code>",
-      "usage_object_format": "• Supports single JSON object format: <code>{\"name\":\"John\",\"age\":25}</code>",
-      "usage_nested_flatten": "• Nested objects will be flattened: <code>user.name</code>, <code>user.address.city</code>",
+      "usage_array_format": "• Supports JSON object array format:",
+      "usage_array_example": "['{\"name\":\"John\",\"age\":25}', ...]",
+      "usage_object_format": "• Supports single JSON object format:",
+      "usage_object_example": "'{\"name\":\"John\",\"age\":25}'",
+      "usage_nested_flatten": "• Nested objects will be flattened:",
+      "usage_nested_examples": "user.name, user.address.city",
       "usage_array_stringify": "• Array values will be converted to JSON strings",
       "usage_csv_escape": "• Automatically handles CSV special character escaping"
     }

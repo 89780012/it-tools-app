@@ -1,20 +1,24 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { 
-  Braces, 
-  Type, 
-  Shield, 
-  Globe, 
-  Image, 
+import {
+  Braces,
+  Type,
+  Shield,
+  Globe,
+  Image,
   Code,
   ChevronRight,
-  ChevronDown
+  ChevronDown,
+  Wrench
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useI18n } from "@/i18n/context"
+import { useTranslations } from 'next-intl'
 import { toolsConfig } from "@/lib/tools-config"
+
+interface AppSidebarProps {
+  onToolSelect: (toolId: string) => void
+}
 
 const iconMap = {
   braces: Braces,
@@ -25,9 +29,8 @@ const iconMap = {
   code: Code,
 }
 
-export function AppSidebar() {
-  const { t } = useI18n()
-  const router = useRouter()
+export function AppSidebar({ onToolSelect }: AppSidebarProps) {
+  const t = useTranslations()
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(["json"])
   )
@@ -42,14 +45,27 @@ export function AppSidebar() {
     setExpandedCategories(newExpanded)
   }
 
-  const handleToolClick = (toolPath: string) => {
-    router.push(toolPath)
+  const handleToolClick = (toolId: string) => {
+    // 通知父组件选择了工具
+    onToolSelect(toolId)
   }
 
   return (
     <div className="flex h-full w-64 flex-col border-r bg-background">
       <div className="flex-1 overflow-auto p-4">
         <div className="space-y-2">
+          {/* 首页按钮 */}
+          <button
+            onClick={() => onToolSelect('')}
+            className={cn(
+              "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
+              "hover:bg-accent hover:text-accent-foreground",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            )}
+          >
+            <Wrench className="h-4 w-4" />
+            <span>{t("common.home")}</span>
+          </button>
           {toolsConfig.map((category) => {
             const CategoryIcon = iconMap[category.icon as keyof typeof iconMap]
             const isExpanded = expandedCategories.has(category.id)
@@ -83,7 +99,7 @@ export function AppSidebar() {
                       return (
                         <button
                           key={tool.id}
-                          onClick={() => handleToolClick(tool.path)}
+                          onClick={() => handleToolClick(tool.id)}
                           className={cn(
                             "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                             "hover:bg-accent hover:text-accent-foreground",

@@ -9,8 +9,15 @@
     "format": "格式化",
     "minify": "压缩",
     "convert": "转换",
+    "download": "下载",
+    "home": "首页",
     "coming_soon": "即将推出更多工具...",
     "click_sidebar": "点击左侧菜单使用"
+  },
+  "theme": {
+    "light": "亮色模式",
+    "dark": "暗黑模式",
+    "system": "跟随系统"
   },
   "header": {
     "title": "IT工具集合",
@@ -73,9 +80,12 @@
       "output_placeholder": "转换后的 CSV 将显示在这里...",
       "usage_title": "使用说明",
       "rows_columns": "{rows} 行 × {columns} 列",
-      "usage_array_format": "• 支持 JSON 对象数组格式：<code>[{\"name\":\"张三\",\"age\":25}, ...]</code>",
-      "usage_object_format": "• 支持单个 JSON 对象格式：<code>{\"name\":\"张三\",\"age\":25}</code>",
-      "usage_nested_flatten": "• 嵌套对象会被扁平化：<code>user.name</code>、<code>user.address.city</code>",
+      "usage_array_format": "• 支持 JSON 对象数组格式：",
+      "usage_array_example": "[{'\"name\":\"张三\",\"age\":25'}, ...]",
+      "usage_object_format": "• 支持单个 JSON 对象格式：",
+      "usage_object_example": "{'\"name\":\"张三\",\"age\":25'}",
+      "usage_nested_flatten": "• 嵌套对象会被扁平化：",
+      "usage_nested_examples": "user.name、user.address.city",
       "usage_array_stringify": "• 数组值会被转换为 JSON 字符串",
       "usage_csv_escape": "• 自动处理 CSV 特殊字符的转义"
     }
