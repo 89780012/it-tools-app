@@ -6,7 +6,8 @@
       "Bash(npm install:*)",
       "WebFetch(domain:localhost)",
       "Bash(npm run lint)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(npm cache clean:*)"
     ],
     "deny": [],
     "ask": []
