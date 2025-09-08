@@ -1,9 +1,7 @@
 "use client"
 
-import { useState } from "react"
 import { Header } from "@/components/header"
 import { AppSidebar } from "@/components/app-sidebar"
-import { ToolContainer } from "@/components/tool-container"
 import { useTranslations } from 'next-intl'
 import { toolsConfig } from "@/lib/tools-config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,21 +9,17 @@ import { Wrench, Star, TrendingUp, Zap } from "lucide-react"
 
 export default function Home() {
   const t = useTranslations()
-  const [selectedTool, setSelectedTool] = useState<string | null>(null)
 
   const popularTools = toolsConfig.flatMap(category => category.tools).slice(0, 6)
 
   return (
     <div className="flex h-screen bg-background">
-      <AppSidebar onToolSelect={setSelectedTool} />
+      <AppSidebar />
 
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header />
 
         <main className="flex-1 overflow-auto">
-          {selectedTool && selectedTool !== '' ? (
-            <ToolContainer toolId={selectedTool} />
-          ) : (
           <div className="container mx-auto p-6">
             <div className="mb-8">
               <div className="flex items-center space-x-3 mb-4">
@@ -165,7 +159,6 @@ export default function Home() {
               </section>
             </div>
           </div>
-          )}
         </main>
       </div>
     </div>

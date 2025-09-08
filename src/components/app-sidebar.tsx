@@ -14,11 +14,8 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
+import { Link, usePathname } from '@/i18n/navigation'
 import { toolsConfig } from "@/lib/tools-config"
-
-interface AppSidebarProps {
-  onToolSelect: (toolId: string) => void
-}
 
 const iconMap = {
   braces: Braces,
@@ -29,8 +26,9 @@ const iconMap = {
   code: Code,
 }
 
-export function AppSidebar({ onToolSelect }: AppSidebarProps) {
+export function AppSidebar() {
   const t = useTranslations()
+  const pathname = usePathname()
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(["json"])
   )
@@ -45,27 +43,23 @@ export function AppSidebar({ onToolSelect }: AppSidebarProps) {
     setExpandedCategories(newExpanded)
   }
 
-  const handleToolClick = (toolId: string) => {
-    // 通知父组件选择了工具
-    onToolSelect(toolId)
-  }
-
   return (
     <div className="flex h-full w-64 flex-col border-r bg-background">
       <div className="flex-1 overflow-auto p-4">
         <div className="space-y-2">
-          {/* 首页按钮 */}
-          <button
-            onClick={() => onToolSelect('')}
+          <Link
+            href="/"
             className={cn(
               "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
               "hover:bg-accent hover:text-accent-foreground",
-              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+              pathname === "/" && "bg-accent text-accent-foreground"
             )}
           >
             <Wrench className="h-4 w-4" />
             <span>{t("common.home")}</span>
-          </button>
+          </Link>
+          
           {toolsConfig.map((category) => {
             const CategoryIcon = iconMap[category.icon as keyof typeof iconMap]
             const isExpanded = expandedCategories.has(category.id)
@@ -94,26 +88,27 @@ export function AppSidebar({ onToolSelect }: AppSidebarProps) {
                 {isExpanded && category.tools.length > 0 && (
                   <div className="ml-4 space-y-1">
                     {category.tools.map((tool) => {
-                      // const ToolIcon = iconMap[tool.icon as keyof typeof iconMap]
+                      const toolPath = `/tools/${tool.id}`
+                      const isActive = pathname === toolPath
                       
                       return (
-                        <button
+                        <Link
                           key={tool.id}
-                          onClick={() => handleToolClick(tool.id)}
+                          href={toolPath}
                           className={cn(
                             "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                             "hover:bg-accent hover:text-accent-foreground",
-                            "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                            "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                            isActive && "bg-accent text-accent-foreground"
                           )}
                         >
-                          {/* {ToolIcon && <ToolIcon className="h-4 w-4" />} */}
                           <div>
                             <div className="font-medium">{t(`tools.${tool.id}.name`)}</div>
                             <div className="text-xs text-muted-foreground">
                               {t(`tools.${tool.id}.description`)}
                             </div>
                           </div>
-                        </button>
+                        </Link>
                       )
                     })}
                   </div>

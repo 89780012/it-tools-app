@@ -93,6 +93,18 @@
       "usage_nested_examples": "user.name、user.address.city",
       "usage_array_stringify": "• 数组值会被转换为 JSON 字符串",
       "usage_csv_escape": "• 自动处理 CSV 特殊字符的转义"
+    },
+    "json-to-yaml": {
+      "name": "JSON转YAML",
+      "description": "将JSON数据转换为YAML格式",
+      "placeholder": "请输入JSON数据...",
+      "invalid": "无效的JSON格式",
+      "convert": "转换为YAML",
+      "input_title": "输入 JSON",
+      "input_desc": "输入要转换的 JSON 数据",
+      "output_title": "输出 YAML",
+      "output_desc": "转换后的 YAML 数据",
+      "output_placeholder": "转换后的 YAML 将显示在这里..."
     }
   }
 }

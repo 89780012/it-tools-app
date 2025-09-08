@@ -93,6 +93,18 @@
       "usage_nested_examples": "user.name, user.address.city",
       "usage_array_stringify": "• Array values will be converted to JSON strings",
       "usage_csv_escape": "• Automatically handles CSV special character escaping"
+    },
+    "json-to-yaml": {
+      "name": "JSON to YAML",
+      "description": "Convert JSON data to YAML format",
+      "placeholder": "Please enter JSON data...",
+      "invalid": "Invalid JSON format",
+      "convert": "Convert to YAML",
+      "input_title": "Input JSON",
+      "input_desc": "Enter JSON data to convert",
+      "output_title": "Output YAML",
+      "output_desc": "Converted YAML data",
+      "output_placeholder": "Converted YAML will be displayed here..."
     }
   }
 }

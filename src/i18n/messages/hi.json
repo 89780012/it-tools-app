@@ -93,6 +93,18 @@
       "usage_nested_examples": "user.name, user.address.city",
       "usage_array_stringify": "• एरे वैल्यूज को JSON स्ट्रिंग्स में परिवर्तित किया जाएगा",
       "usage_csv_escape": "• CSV विशेष वर्णों की एस्केपिंग को स्वचालित रूप से संभालता है"
+    },
+    "json-to-yaml": {
+      "name": "JSON से YAML",
+      "description": "JSON डेटा को YAML प्रारूप में परिवर्तित करें",
+      "placeholder": "कृपया JSON डेटा दर्ज करें...",
+      "invalid": "अमान्य JSON प्रारूप",
+      "convert": "YAML में परिवर्तित करें",
+      "input_title": "JSON इनपुट",
+      "input_desc": "परिवर्तित करने के लिए JSON डेटा दर्ज करें",
+      "output_title": "YAML आउटपुट",
+      "output_desc": "परिवर्तित YAML डेटा",
+      "output_placeholder": "परिवर्तित YAML यहां प्रदर्शित होगा..."
     }
   }
 }

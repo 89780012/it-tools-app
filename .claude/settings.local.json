@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm run dev:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:localhost)",
+      "Bash(npm run lint)",
+      "Bash(pnpm add:*)"
     ],
     "deny": [],
     "ask": []
