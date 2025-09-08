@@ -50,6 +50,12 @@ export function LanguageToggle() {
         >
           English
         </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("hi")}
+          className={locale === "hi" ? "bg-accent" : ""}
+        >
+          हिंदी
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
