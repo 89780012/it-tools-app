@@ -80,9 +80,9 @@ export default function Home() {
                     <Card key={category.id} className="hover:shadow-md transition-shadow">
                       <CardHeader>
                         <CardTitle className="flex items-center space-x-2">
-                          <span>{category.name}</span>
+                          <span>{t(category.nameKey)}</span>
                         </CardTitle>
-                        <CardDescription>{category.description}</CardDescription>
+                        <CardDescription>{t(category.descriptionKey)}</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <p className="text-sm text-muted-foreground">
@@ -103,8 +103,8 @@ export default function Home() {
                     {popularTools.map((tool) => (
                       <Card key={tool.id} className="hover:shadow-md transition-shadow cursor-pointer">
                         <CardHeader>
-                          <CardTitle className="text-lg">{tool.name}</CardTitle>
-                          <CardDescription>{tool.description}</CardDescription>
+                          <CardTitle className="text-lg">{t(tool.nameKey)}</CardTitle>
+                          <CardDescription>{t(tool.descriptionKey)}</CardDescription>
                         </CardHeader>
                         <CardContent>
                           <p className="text-sm text-primary">{t("common.click_sidebar")}</p>

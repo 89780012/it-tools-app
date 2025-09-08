@@ -51,10 +51,15 @@
   },
   "categories": {
     "json": "JSON工具",
+    "json_desc": "JSON数据处理和验证工具",
     "text": "文本工具",
+    "text_desc": "文本处理和转换工具",
     "crypto": "加密工具",
+    "crypto_desc": "加密解密和哈希工具",
     "network": "网络工具",
-    "image": "图片工具"
+    "network_desc": "网络调试和测试工具",
+    "image": "图片工具",
+    "image_desc": "图片处理和转换工具"
   },
   "tools": {
     "json-formatter": {
@@ -81,9 +86,9 @@
       "usage_title": "使用说明",
       "rows_columns": "{rows} 行 × {columns} 列",
       "usage_array_format": "• 支持 JSON 对象数组格式：",
-      "usage_array_example": "[{'\"name\":\"张三\",\"age\":25'}, ...]",
+      "usage_array_example": "['{\"name\":\"John\",\"age\":25}', ...]",
       "usage_object_format": "• 支持单个 JSON 对象格式：",
-      "usage_object_example": "{'\"name\":\"张三\",\"age\":25'}",
+      "usage_object_example": "'{\"name\":\"John\",\"age\":25}'",
       "usage_nested_flatten": "• 嵌套对象会被扁平化：",
       "usage_nested_examples": "user.name、user.address.city",
       "usage_array_stringify": "• 数组值会被转换为 JSON 字符串",

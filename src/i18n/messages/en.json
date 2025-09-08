@@ -51,10 +51,15 @@
   },
   "categories": {
     "json": "JSON Tools",
+    "json_desc": "JSON data processing and validation tools",
     "text": "Text Tools",
-    "crypto": "Crypto Tools", 
+    "text_desc": "Text processing and conversion tools",
+    "crypto": "Crypto Tools",
+    "crypto_desc": "Encryption, decryption and hash tools",
     "network": "Network Tools",
-    "image": "Image Tools"
+    "network_desc": "Network debugging and testing tools",
+    "image": "Image Tools",
+    "image_desc": "Image processing and conversion tools"
   },
   "tools": {
     "json-formatter": {

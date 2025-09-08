@@ -1,7 +1,7 @@
 export interface Tool {
   id: string
-  name: string
-  description: string
+  nameKey: string
+  descriptionKey: string
   category: string
   path: string
   icon?: string
@@ -9,8 +9,8 @@ export interface Tool {
 
 export interface ToolCategory {
   id: string
-  name: string
-  description: string
+  nameKey: string
+  descriptionKey: string
   icon?: string
   tools: Tool[]
 }
@@ -18,22 +18,22 @@ export interface ToolCategory {
 export const toolsConfig: ToolCategory[] = [
   {
     id: "json",
-    name: "JSON工具",
-    description: "JSON数据处理和验证工具",
+    nameKey: "categories.json",
+    descriptionKey: "categories.json_desc",
     icon: "braces",
     tools: [
       {
         id: "json-formatter",
-        name: "JSON格式化器",
-        description: "格式化、验证和压缩JSON数据",
+        nameKey: "tools.json-formatter.name",
+        descriptionKey: "tools.json-formatter.description",
         category: "json",
         path: "/tools/json-formatter",
         icon: "code"
       },
       {
         id: "json-to-csv",
-        name: "JSON转CSV",
-        description: "将JSON数据转换为CSV格式",
+        nameKey: "tools.json-to-csv.name",
+        descriptionKey: "tools.json-to-csv.description",
         category: "json",
         path: "/tools/json-to-csv",
         icon: "table"
@@ -42,29 +42,29 @@ export const toolsConfig: ToolCategory[] = [
   },
   {
     id: "text",
-    name: "文本工具", 
-    description: "文本处理和转换工具",
+    nameKey: "categories.text",
+    descriptionKey: "categories.text_desc",
     icon: "type",
     tools: []
   },
   {
     id: "crypto",
-    name: "加密工具",
-    description: "加密解密和哈希工具", 
+    nameKey: "categories.crypto",
+    descriptionKey: "categories.crypto_desc",
     icon: "shield",
     tools: []
   },
   {
     id: "network",
-    name: "网络工具",
-    description: "网络调试和测试工具",
+    nameKey: "categories.network",
+    descriptionKey: "categories.network_desc",
     icon: "globe",
     tools: []
   },
   {
     id: "image", 
-    name: "图片工具",
-    description: "图片处理和转换工具",
+    nameKey: "categories.image",
+    descriptionKey: "categories.image_desc",
     icon: "image",
     tools: []
   }
