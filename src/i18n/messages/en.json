@@ -24,8 +24,12 @@
     "subtitle": "Essential Toolbox for Developers"
   },
   "meta": {
-    "title": "IT Tools Collection - Essential Toolbox for Developers",
-    "description": "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools"
+    "site": {
+      "title": "IT Tools Collection - Essential Toolbox for Developers",
+      "name": "IT Tools Collection",
+      "description": "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools",
+      "keywords": "developer tools,online tools,JSON tools,data conversion,text processing,frontend tools,toolbox"
+    }
   },
   "home": {
     "tools_total": "Total Tools",
@@ -71,7 +75,12 @@
       "input_title": "Input JSON",
       "output_title": "Output Result",
       "output_desc": "Formatted JSON data",
-      "output_placeholder": "Formatted JSON will be displayed here..."
+      "output_placeholder": "Formatted JSON will be displayed here...",
+      "meta": {
+        "title": "JSON Formatter Tool",
+        "description": "Online JSON formatting, compression and validation tool. Supports JSON beautification, compression and syntax validation to improve development efficiency.",
+        "keywords": "JSON formatter,JSON beautifier,JSON minify,JSON validator,online tool"
+      }
     },
     "json-to-csv": {
       "name": "JSON to CSV",
@@ -92,7 +101,12 @@
       "usage_nested_flatten": "• Nested objects will be flattened:",
       "usage_nested_examples": "user.name, user.address.city",
       "usage_array_stringify": "• Array values will be converted to JSON strings",
-      "usage_csv_escape": "• Automatically handles CSV special character escaping"
+      "usage_csv_escape": "• Automatically handles CSV special character escaping",
+      "meta": {
+        "title": "JSON to CSV Converter Tool",
+        "description": "Quickly convert JSON data to CSV format. Supports complex nested object processing and provides convenient data format conversion functionality.",
+        "keywords": "JSON to CSV,data conversion,JSON processing,CSV export,online tool"
+      }
     },
     "json-to-yaml": {
       "name": "JSON to YAML",
@@ -104,7 +118,12 @@
       "input_desc": "Enter JSON data to convert",
       "output_title": "Output YAML",
       "output_desc": "Converted YAML data",
-      "output_placeholder": "Converted YAML will be displayed here..."
+      "output_placeholder": "Converted YAML will be displayed here...",
+      "meta": {
+        "title": "JSON to YAML Converter Tool",
+        "description": "Quickly convert JSON data to YAML format. Supports formatted output and provides convenient configuration file conversion functionality.",
+        "keywords": "JSON to YAML,data conversion,JSON processing,YAML format,config conversion,online tool"
+      }
     }
   }
 }
