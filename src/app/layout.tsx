@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: {
     template: '%s - IT Tools Collection',
-    default: 'IT Tools Collection - Essential Toolbox for Developers'
+    default: 'IT Tools Collection - Developer Toolbox'
   },
-  description: "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.",
+  description: "Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.",
   keywords: [
     "developer tools", "JSON formatter", "online tools", "text processing", "frontend tools",
     "JSON validator", "JSON to CSV converter", "JSON to YAML", "free developer utilities",
@@ -48,14 +48,14 @@ export const metadata: Metadata = {
     alternateLocale: ['zh_CN', 'hi_IN'],
     url: process.env.SITE_URL || 'https://www.toolkitpub.com',
     siteName: 'IT Tools Collection',
-    title: 'IT Tools Collection - Essential Toolbox for Developers',
-    description: 'Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
+    title: 'IT Tools Collection - Developer Toolbox',
+    description: 'Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'IT Tools Collection - Essential Toolbox for Developers',
+        alt: 'IT Tools Collection - Developer Toolbox',
       },
       {
         url: '/og-image-small.png',
@@ -67,8 +67,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IT Tools Collection - Essential Toolbox for Developers',
-    description: 'Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
+    title: 'IT Tools Collection - Developer Toolbox',
+    description: 'Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
     images: ['/og-image.png'],
     creator: '@ToolkitPub',
     site: '@ToolkitPub'
