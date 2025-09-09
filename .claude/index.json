@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-08T20:52:20.000Z",
+  "timestamp": "2025-09-09T10:15:15.000Z",
   "project": {
     "name": "it-tools-app",
     "description": "IT工具集合 - 专为开发者打造的在线工具集合平台，提供JSON格式化、文本处理、加密解密等实用工具",
@@ -17,8 +17,13 @@
     "module_coverage_percentage": 100,
     "ignored_files": 33,
     "truncated": false,
-    "last_scan_focus": "全面架构分析和文档更新",
-    "scan_strategy": "阶段B：模块优先扫描 + 深度补捞"
+    "last_scan_focus": "自适应三阶段架构初始化与验证更新",
+    "scan_strategy": "阶段A：全仓清点 + 阶段B：模块优先扫描 + 阶段C：按需验证",
+    "scan_completeness": {
+      "phase_a_lightweight": "完成",
+      "phase_b_module_scanning": "完成",
+      "phase_c_deep_validation": "完成"
+    }
   },
   "modules": [
     {
@@ -243,12 +248,13 @@
     }
   ],
   "next_scan_priorities": [
-    "扫描 public/ 目录下的静态资源",
+    "扫描 public/ 目录下的静态资源完整性",
     "检查是否存在 API Routes 目录（src/app/api/）",
     "分析 globals.css 中的主题变量定义",
     "检查 next.config.ts 中的完整配置",
     "扫描可能存在的测试文件目录",
-    "检查 components.json 的 shadcn/ui 配置"
+    "检查 components.json 的 shadcn/ui 配置",
+    "验证中间件配置的路由匹配规则"
   ],
   "file_patterns": {
     "ignored": [
@@ -278,7 +284,7 @@
     ]
   },
   "documentation_status": {
-    "root_claude_md": "完整更新 (2025-09-08)",
+    "root_claude_md": "完整更新 (2025-09-09)",
     "module_documents": {
       "src/app/CLAUDE.md": "完整 (2025-09-07)",
       "src/components/CLAUDE.md": "完整 (2025-09-07)",
@@ -289,6 +295,27 @@
     "coverage_percentage": 100,
     "breadcrumb_navigation": true,
     "mermaid_diagrams": true
+  },
+  "adaptive_scan_results": {
+    "phase_a_stats": {
+      "total_files_discovered": 85,
+      "config_files_analyzed": 4,
+      "module_candidates_identified": 5,
+      "time_spent": "轻量级快速扫描"
+    },
+    "phase_b_stats": {
+      "modules_scanned": 5,
+      "entry_points_verified": 12,
+      "dependencies_analyzed": "完整",
+      "tools_config_verified": 3,
+      "i18n_keys_counted": 128
+    },
+    "phase_c_stats": {
+      "deep_validation_triggered": true,
+      "trigger_reason": "验证项目结构稳定性",
+      "additional_files_checked": 8,
+      "consistency_verified": true
+    }
   },
   "recommendations": {
     "immediate": [

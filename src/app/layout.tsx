@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import {NextIntlClientProvider} from 'next-intl';
 import type { Metadata } from 'next';
 
@@ -127,7 +128,9 @@ export default function RootLayout({
         >
           <NextIntlClientProvider>
             {children}
+            <Toaster />
           </NextIntlClientProvider>
+      
         </ThemeProvider>
       </body>
     </html>

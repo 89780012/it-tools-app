@@ -45,6 +45,38 @@ export const toolsConfig: ToolCategory[] = [
         category: "json",
         path: "/tools/json-to-yaml",
         icon: "file-text"
+      },
+      {
+        id: "json-to-xml",
+        nameKey: "tools.json-to-xml.name",
+        descriptionKey: "tools.json-to-xml.description",
+        category: "json",
+        path: "/tools/json-to-xml",
+        icon: "file-code"
+      },
+      {
+        id: "json-visualizer",
+        nameKey: "tools.json-visualizer.name",
+        descriptionKey: "tools.json-visualizer.description",
+        category: "json",
+        path: "/tools/json-visualizer",
+        icon: "eye"
+      },
+      {
+        id: "json-generator",
+        nameKey: "tools.json-generator.name",
+        descriptionKey: "tools.json-generator.description",
+        category: "json",
+        path: "/tools/json-generator",
+        icon: "database"
+      },
+      {
+        id: "json-diff",
+        nameKey: "tools.json-diff.name",
+        descriptionKey: "tools.json-diff.description",
+        category: "json",
+        path: "/tools/json-diff",
+        icon: "git-compare"
       }
     ]
   },

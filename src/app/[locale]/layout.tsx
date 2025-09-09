@@ -1,13 +1,9 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
-
-type Props = {
-  params: { locale: string }
-}
+import { getTranslations,getLocale } from 'next-intl/server'
 
 export async function generateMetadata(
-  { params: { locale } }: Props
 ): Promise<Metadata> {
+  const locale = await getLocale()
   const t = await getTranslations({ locale, namespace: 'meta' })
   
   return {

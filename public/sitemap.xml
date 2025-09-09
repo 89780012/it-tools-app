@@ -39,6 +39,42 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-yaml"/>
   </url>
 
+  <url>
+    <loc>https://www.toolkitpub.com/tools/json-to-xml</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-xml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/json-visualizer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-visualizer"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/json-generator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-generator"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/json-diff</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-diff"/>
+  </url>
+
   <!-- 中文主页（有前缀） -->
   <url>
     <loc>https://www.toolkitpub.com/zh</loc>
@@ -77,6 +113,42 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-yaml"/>
   </url>
 
+  <url>
+    <loc>https://www.toolkitpub.com/zh/tools/json-to-xml</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-xml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/zh/tools/json-visualizer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-visualizer"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/zh/tools/json-generator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-generator"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/zh/tools/json-diff</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-diff"/>
+  </url>
+
   <!-- Hindi主页（有前缀） -->
   <url>
     <loc>https://www.toolkitpub.com/hi</loc>
@@ -113,6 +185,42 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-to-yaml"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-to-yaml"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-yaml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/json-to-xml</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-to-xml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-xml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/json-visualizer</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-visualizer"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-visualizer"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/json-generator</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-generator"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-generator"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/json-diff</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-diff"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-diff"/>
   </url>
 
 </urlset>

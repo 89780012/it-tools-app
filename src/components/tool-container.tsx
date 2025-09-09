@@ -1,16 +1,21 @@
 "use client"
 
-import { useTranslations } from 'next-intl'
+import { ReactNode } from 'react'
 
-export function ToolContainer() {
-  const t = useTranslations()
+interface ToolContainerProps {
+  title: string
+  description: string
+  children: ReactNode
+}
 
+export function ToolContainer({ title, description, children }: ToolContainerProps) {
   return (
-    <div className="container mx-auto p-6">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold mb-4">{t("common.coming_soon")}</h2>
-        <p className="text-muted-foreground">{t("common.coming_soon")}</p>
+    <div className="container mx-auto p-6 space-y-6">
+      <div className="text-center space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{description}</p>
       </div>
+      {children}
     </div>
   )
 }
