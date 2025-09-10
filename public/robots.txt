@@ -1,13 +1,16 @@
-# *
+# IT工具集合 - SEO 优化的 robots.txt
 User-agent: *
 Allow: /
 
-# *
-User-agent: *
+# 禁止访问的路径
 Disallow: /api/
+Disallow: /_next/
 
-# Host
+# 主站点URL
 Host: https://www.toolkitpub.com
 
-# Sitemaps
+# 多语言站点地图
 Sitemap: https://www.toolkitpub.com/sitemap.xml
+Sitemap: https://www.toolkitpub.com/sitemap-en.xml
+Sitemap: https://www.toolkitpub.com/sitemap-zh.xml
+Sitemap: https://www.toolkitpub.com/sitemap-hi.xml
