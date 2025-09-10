@@ -7,7 +7,7 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: 'en',
   localePrefix: "as-needed", // 默认语言不显示前缀，其他语言显示前缀
-  // 禁用浏览器语言检测，强制使用默认语言
-  localeDetection: false
+  // 开启自动检测客户端环境
+  localeDetection: true
 });
 
