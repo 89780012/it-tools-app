@@ -2,10 +2,6 @@
 User-agent: *
 Allow: /
 
-# 禁止访问的路径
-Disallow: /api/
-Disallow: /_next/
-
 # 主站点URL
 Host: https://www.toolkitpub.com
 
