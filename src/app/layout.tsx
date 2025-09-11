@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import {NextIntlClientProvider} from 'next-intl';
 import type { Metadata } from 'next';
-import {getLocale,getMessages} from 'next-intl/server';
+import {getLocale} from 'next-intl/server';
 
 
 const geistSans = Geist({

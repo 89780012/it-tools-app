@@ -22,7 +22,8 @@
     "home": "首页",
     "coming_soon": "即将推出更多工具...",
     "click_sidebar": "点击左侧菜单使用",
-    "actions": "操作"
+    "actions": "操作",
+    "back_to_home": "返回首页"
   },
   "theme": {
     "light": "亮色模式",

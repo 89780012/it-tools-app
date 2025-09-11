@@ -22,7 +22,8 @@
     "home": "Home",
     "coming_soon": "More tools coming soon...",
     "click_sidebar": "Use via left sidebar menu",
-    "actions": "Actions"
+    "actions": "Actions",
+    "back_to_home": "Back to Home"
   },
   "theme": {
     "light": "Light",
