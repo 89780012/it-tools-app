@@ -211,4 +211,15 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/hmac-generator"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/hmac-generator"/>
   </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/zh/tools/ip-lookup</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/ip-lookup"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/ip-lookup"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/ip-lookup"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/ip-lookup"/>
+  </url>
 </urlset>
