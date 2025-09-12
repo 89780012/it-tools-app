@@ -30,7 +30,7 @@ export function AppSidebar() {
   const t = useTranslations()
   const pathname = usePathname()
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-    new Set(["json"])
+    new Set(toolsConfig.map(category => category.id))
   )
 
   const toggleCategory = (categoryId: string) => {
@@ -69,7 +69,7 @@ export function AppSidebar() {
                 <button
                   onClick={() => toggleCategory(category.id)}
                   className={cn(
-                    "flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
+                    "flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-all duration-200 ease-in-out",
                     "hover:bg-accent hover:text-accent-foreground",
                     "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                   )}
@@ -79,46 +79,48 @@ export function AppSidebar() {
                     <span>{t(`categories.${category.id}`)}</span>
                   </div>
                   {isExpanded ? (
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-4 w-4 transition-transform duration-200" />
                   ) : (
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-4 w-4 transition-transform duration-200" />
                   )}
                 </button>
                 
-                {isExpanded && category.tools.length > 0 && (
-                  <div className="ml-4 space-y-1">
-                    {category.tools.map((tool) => {
-                      const toolPath = `/tools/${tool.id}`
-                      const isActive = pathname === toolPath
-                      
-                      return (
-                        <Link
-                          key={tool.id}
-                          href={toolPath}
-                          className={cn(
-                            "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
-                            "hover:bg-accent hover:text-accent-foreground",
-                            "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                            isActive && "bg-accent text-accent-foreground"
-                          )}
-                        >
-                          <div>
+                <div 
+                  className={cn(
+                    "ml-4 overflow-hidden transition-all duration-300 ease-in-out",
+                    isExpanded
+                      ? "max-h-96 opacity-100" 
+                      : "max-h-0 opacity-0"
+                  )}
+                >
+                  {category.tools.length > 0 ? (
+                    <div className="space-y-1 py-1">
+                      {category.tools.map((tool) => {
+                        const toolPath = `/tools/${tool.id}`
+                        const isActive = pathname === toolPath
+                        
+                        return (
+                          <Link
+                            key={tool.id}
+                            href={toolPath}
+                            className={cn(
+                              "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200 ease-in-out",
+                              "hover:bg-accent hover:text-accent-foreground",
+                              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                              isActive && "bg-accent text-accent-foreground"
+                            )}
+                          >
                             <div className="font-medium">{t(`tools.${tool.id}.name`)}</div>
-                            <div className="text-xs text-muted-foreground">
-                              {t(`tools.${tool.id}.description`)}
-                            </div>
-                          </div>
-                        </Link>
-                      )
-                    })}
-                  </div>
-                )}
-                
-                {isExpanded && category.tools.length === 0 && (
-                  <div className="ml-4 px-3 py-2 text-sm text-muted-foreground">
-                    {t('common.coming_soon')}
-                  </div>
-                )}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  ) : (
+                    <div className="px-3 py-2 text-sm text-muted-foreground">
+                      {t('common.coming_soon')}
+                    </div>
+                  )}
+                </div>
               </div>
             )
           })}

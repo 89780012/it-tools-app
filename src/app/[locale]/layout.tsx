@@ -1,12 +1,11 @@
 import type { Metadata } from 'next'
-import { getTranslations,getLocale } from 'next-intl/server'
+import { getLocale } from 'next-intl/server'
+import LocaleLayoutClient from './layout-client'
 
-export async function generateMetadata(
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
-  const t = await getTranslations({ locale, namespace: 'meta' })
   
-   return  {
+  return {
     metadataBase: new URL(process.env.SITE_URL || 'https://www.toolkitpub.com'),
     title: {
       template: '%s - IT Tools Collection',
@@ -102,5 +101,5 @@ export default function LocaleLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return <LocaleLayoutClient>{children}</LocaleLayoutClient>
 }
