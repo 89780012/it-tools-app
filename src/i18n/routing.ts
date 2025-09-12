@@ -8,6 +8,6 @@ export const routing = defineRouting({
   defaultLocale: 'en',
   localePrefix: "as-needed", // 默认语言不显示前缀，其他语言显示前缀
   // 开启自动检测客户端环境
-  localeDetection: true
+  localeDetection: false
 });
 
