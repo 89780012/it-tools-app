@@ -84,10 +84,32 @@
     <loc>https://www.toolkitpub.com/hi/tools/json-diff</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <lastmod>2025-09-10</lastmod>
+    <lastmod>2025-09-12</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-diff"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-diff"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-diff"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/json-diff"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/base64-encoder-decoder</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/base64-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/base64-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/base64-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/base64-encoder-decoder"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/url-encoder-decoder</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/url-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/url-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/url-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/url-encoder-decoder"/>
   </url>
 </urlset>

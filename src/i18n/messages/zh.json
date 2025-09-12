@@ -289,6 +289,44 @@
         "description": "深度对比两个JSON数据的差异。提供详细的差异分析报告，支持可视化展示，帮助快速定位数据变更。",
         "keywords": "JSON对比,JSON差异,数据对比,版本对比,差异分析,代码对比,在线工具"
       }
+    },
+    "base64-encoder-decoder": {
+      "name": "Base64 编码解码",
+      "description": "Base64 字符串编码和解码工具",
+      "placeholder": "请输入要编码/解码的文本...",
+      "encode": "编码",
+      "decode": "解码",
+      "input_title": "输入文本",
+      "output_title": "输出结果",
+      "output_desc": "编码/解码后的文本",
+      "output_placeholder": "编码/解码结果将显示在这里...",
+      "invalid_base64": "无效的 Base64 格式",
+      "encoded": "编码完成",
+      "decoded": "解码完成",
+      "meta": {
+        "title": "Base64编码解码工具",
+        "description": "在线Base64编码解码工具。支持文本与Base64字符串互转，适用于数据传输、API调用等开发场景。",
+        "keywords": "Base64编码,Base64解码,编码工具,解码工具,文本转换,在线工具"
+      }
+    },
+    "url-encoder-decoder": {
+      "name": "URL 编码解码",
+      "description": "URL 字符串编码和解码工具",
+      "placeholder": "请输入要编码/解码的URL或文本...",
+      "encode": "编码",
+      "decode": "解码",
+      "input_title": "输入文本/URL",
+      "output_title": "输出结果", 
+      "output_desc": "编码/解码后的URL",
+      "output_placeholder": "编码/解码结果将显示在这里...",
+      "invalid_url": "无效的URL编码格式",
+      "encoded": "编码完成",
+      "decoded": "解码完成",
+      "meta": {
+        "title": "URL编码解码工具",
+        "description": "在线URL编码解码工具。处理URL参数、特殊字符转义，支持encodeURIComponent格式，适用于前端开发。",
+        "keywords": "URL编码,URL解码,encodeURIComponent,decodeURIComponent,URL转义,在线工具"
+      }
     }
   }
 }

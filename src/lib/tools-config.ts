@@ -85,7 +85,24 @@ export const toolsConfig: ToolCategory[] = [
     nameKey: "categories.text",
     descriptionKey: "categories.text_desc",
     icon: "type",
-    tools: []
+    tools: [
+      {
+        id: "base64-encoder-decoder",
+        nameKey: "tools.base64-encoder-decoder.name",
+        descriptionKey: "tools.base64-encoder-decoder.description",
+        category: "text",
+        path: "/tools/base64-encoder-decoder",
+        icon: "binary"
+      },
+      {
+        id: "url-encoder-decoder",
+        nameKey: "tools.url-encoder-decoder.name",
+        descriptionKey: "tools.url-encoder-decoder.description",
+        category: "text",
+        path: "/tools/url-encoder-decoder",
+        icon: "link"
+      }
+    ]
   },
   {
     id: "crypto",

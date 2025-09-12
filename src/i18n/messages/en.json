@@ -289,6 +289,44 @@
         "description": "Deep comparison of differences between two JSON data. Provides detailed difference analysis reports with visual display to help quickly locate data changes.",
         "keywords": "JSON diff,JSON comparison,data comparison,version comparison,difference analysis,code comparison,online tool"
       }
+    },
+    "base64-encoder-decoder": {
+      "name": "Base64 Encoder/Decoder",
+      "description": "Base64 string encoding and decoding tool",
+      "placeholder": "Enter text to encode/decode...",
+      "encode": "Encode",
+      "decode": "Decode",
+      "input_title": "Input Text",
+      "output_title": "Output Result",
+      "output_desc": "Encoded/decoded text",
+      "output_placeholder": "Encoding/decoding result will appear here...",
+      "invalid_base64": "Invalid Base64 format",
+      "encoded": "Encoded successfully",
+      "decoded": "Decoded successfully",
+      "meta": {
+        "title": "Base64 Encoder/Decoder Tool",
+        "description": "Online Base64 encoding and decoding tool. Convert text to/from Base64 strings for data transmission, API calls, and development scenarios.",
+        "keywords": "Base64 encoding,Base64 decoding,encoder,decoder,text conversion,online tool"
+      }
+    },
+    "url-encoder-decoder": {
+      "name": "URL Encoder/Decoder",
+      "description": "URL string encoding and decoding tool",
+      "placeholder": "Enter URL or text to encode/decode...",
+      "encode": "Encode",
+      "decode": "Decode",
+      "input_title": "Input Text/URL",
+      "output_title": "Output Result",
+      "output_desc": "Encoded/decoded URL",
+      "output_placeholder": "Encoding/decoding result will appear here...",
+      "invalid_url": "Invalid URL encoding format",
+      "encoded": "Encoded successfully",
+      "decoded": "Decoded successfully",
+      "meta": {
+        "title": "URL Encoder/Decoder Tool",
+        "description": "Online URL encoding and decoding tool. Handle URL parameters and special character escaping with encodeURIComponent format support for frontend development.",
+        "keywords": "URL encoding,URL decoding,encodeURIComponent,decodeURIComponent,URL escaping,online tool"
+      }
     }
   }
 }
