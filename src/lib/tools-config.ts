@@ -167,14 +167,6 @@ export const toolsConfig: ToolCategory[] = [
         icon: "shield-check"
       },
       {
-        id: "jwt-decoder",
-        nameKey: "tools.jwt-decoder.name",
-        descriptionKey: "tools.jwt-decoder.description",
-        category: "crypto",
-        path: "/tools/jwt-decoder",
-        icon: "badge-check"
-      },
-      {
         id: "rsa-encrypt-decrypt",
         nameKey: "tools.rsa-encrypt-decrypt.name",
         descriptionKey: "tools.rsa-encrypt-decrypt.description",
