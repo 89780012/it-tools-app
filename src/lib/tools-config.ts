@@ -109,7 +109,88 @@ export const toolsConfig: ToolCategory[] = [
     nameKey: "categories.crypto",
     descriptionKey: "categories.crypto_desc",
     icon: "shield",
-    tools: []
+    tools: [
+      {
+        id: "md5-hash",
+        nameKey: "tools.md5-hash.name",
+        descriptionKey: "tools.md5-hash.description",
+        category: "crypto",
+        path: "/tools/md5-hash",
+        icon: "hash"
+      },
+      {
+        id: "sha256-hash",
+        nameKey: "tools.sha256-hash.name",
+        descriptionKey: "tools.sha256-hash.description",
+        category: "crypto",
+        path: "/tools/sha256-hash",
+        icon: "hash"
+      },
+      {
+        id: "sha1-hash",
+        nameKey: "tools.sha1-hash.name",
+        descriptionKey: "tools.sha1-hash.description",
+        category: "crypto",
+        path: "/tools/sha1-hash",
+        icon: "hash"
+      },
+      {
+        id: "hex-encoder-decoder",
+        nameKey: "tools.hex-encoder-decoder.name",
+        descriptionKey: "tools.hex-encoder-decoder.description",
+        category: "crypto",
+        path: "/tools/hex-encoder-decoder",
+        icon: "binary"
+      },
+      {
+        id: "binary-encoder-decoder",
+        nameKey: "tools.binary-encoder-decoder.name",
+        descriptionKey: "tools.binary-encoder-decoder.description",
+        category: "crypto",
+        path: "/tools/binary-encoder-decoder",
+        icon: "binary"
+      },
+      {
+        id: "password-generator",
+        nameKey: "tools.password-generator.name",
+        descriptionKey: "tools.password-generator.description",
+        category: "crypto",
+        path: "/tools/password-generator",
+        icon: "key"
+      },
+      {
+        id: "aes-encrypt-decrypt",
+        nameKey: "tools.aes-encrypt-decrypt.name",
+        descriptionKey: "tools.aes-encrypt-decrypt.description",
+        category: "crypto",
+        path: "/tools/aes-encrypt-decrypt",
+        icon: "shield-check"
+      },
+      {
+        id: "jwt-decoder",
+        nameKey: "tools.jwt-decoder.name",
+        descriptionKey: "tools.jwt-decoder.description",
+        category: "crypto",
+        path: "/tools/jwt-decoder",
+        icon: "badge-check"
+      },
+      {
+        id: "rsa-encrypt-decrypt",
+        nameKey: "tools.rsa-encrypt-decrypt.name",
+        descriptionKey: "tools.rsa-encrypt-decrypt.description",
+        category: "crypto",
+        path: "/tools/rsa-encrypt-decrypt",
+        icon: "key-round"
+      },
+      {
+        id: "hmac-generator",
+        nameKey: "tools.hmac-generator.name",
+        descriptionKey: "tools.hmac-generator.description",
+        category: "crypto",
+        path: "/tools/hmac-generator",
+        icon: "hash"
+      }
+    ]
   },
   {
     id: "network",

@@ -112,4 +112,114 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/url-encoder-decoder"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/url-encoder-decoder"/>
   </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/md5-hash</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/md5-hash"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/md5-hash"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/md5-hash"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/md5-hash"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/sha256-hash</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/sha256-hash"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/sha256-hash"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/sha256-hash"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/sha256-hash"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/sha1-hash</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/sha1-hash"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/sha1-hash"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/sha1-hash"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/sha1-hash"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/hex-encoder-decoder</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/hex-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/hex-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/hex-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/hex-encoder-decoder"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/binary-encoder-decoder</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/binary-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/binary-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/binary-encoder-decoder"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/binary-encoder-decoder"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/password-generator</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/password-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/password-generator"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/aes-encrypt-decrypt</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/aes-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/aes-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/aes-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/aes-encrypt-decrypt"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/jwt-decoder</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/jwt-decoder"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/jwt-decoder"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/jwt-decoder"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/jwt-decoder"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/rsa-encrypt-decrypt</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/rsa-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/rsa-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/rsa-encrypt-decrypt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/rsa-encrypt-decrypt"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/tools/hmac-generator</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-09-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/hmac-generator"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/hmac-generator"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/hmac-generator"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/hmac-generator"/>
+  </url>
 </urlset>
