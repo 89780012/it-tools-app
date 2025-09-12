@@ -2,28 +2,45 @@
 
 import { useState } from "react"
 import {
-  Braces,
-  Type,
-  Shield,
-  Globe,
-  Image,
   Code,
   ChevronRight,
   ChevronDown,
-  Wrench
+  Wrench,
+  Table,
+  FileText,
+  FileCode,
+  Eye,
+  Database,
+  GitCompare,
+  Binary,
+  Link as LinkIcon,
+  Hash,
+  ShieldCheck,
+  KeyRound,
+  MapPin,
+  QrCode
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import { toolsConfig } from "@/lib/tools-config"
 
-const iconMap = {
-  braces: Braces,
-  type: Type,
-  shield: Shield,
-  globe: Globe,
-  image: Image,
+const toolIconMap = {
   code: Code,
+  table: Table,
+  "file-text": FileText,
+  "file-code": FileCode,
+  eye: Eye,
+  database: Database,
+  "git-compare": GitCompare,
+  binary: Binary,
+  link: LinkIcon,
+  hash: Hash,
+  "shield-check": ShieldCheck,
+  "key-round": KeyRound,
+  "map-pin": MapPin,
+  "qr-code": QrCode,
+  key: Hash, // 为密码生成器使用 hash 图标
 }
 
 export function AppSidebar() {
@@ -61,7 +78,6 @@ export function AppSidebar() {
           </Link>
           
           {toolsConfig.map((category) => {
-            const CategoryIcon = iconMap[category.icon as keyof typeof iconMap]
             const isExpanded = expandedCategories.has(category.id)
             
             return (
@@ -75,7 +91,6 @@ export function AppSidebar() {
                   )}
                 >
                   <div className="flex items-center space-x-2">
-                    {CategoryIcon && <CategoryIcon className="h-4 w-4" />}
                     <span>{t(`categories.${category.id}`)}</span>
                   </div>
                   {isExpanded ? (
@@ -98,6 +113,7 @@ export function AppSidebar() {
                       {category.tools.map((tool) => {
                         const toolPath = `/tools/${tool.id}`
                         const isActive = pathname === toolPath
+                        const ToolIcon = toolIconMap[tool.icon as keyof typeof toolIconMap]
                         
                         return (
                           <Link
@@ -110,6 +126,7 @@ export function AppSidebar() {
                               isActive && "bg-accent text-accent-foreground"
                             )}
                           >
+                            {ToolIcon && <ToolIcon className="h-4 w-4" />}
                             <div className="font-medium">{t(`tools.${tool.id}.name`)}</div>
                           </Link>
                         )
