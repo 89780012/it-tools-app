@@ -196,6 +196,23 @@ export const toolsConfig: ToolCategory[] = [
     nameKey: "categories.image",
     descriptionKey: "categories.image_desc",
     icon: "image",
-    tools: []
+    tools: [
+      {
+        id: "qr-code-generator",
+        nameKey: "tools.qr-code-generator.name",
+        descriptionKey: "tools.qr-code-generator.description",
+        category: "image",
+        path: "/tools/qr-code-generator",
+        icon: "qr-code"
+      },
+      {
+        id: "svg-placeholder-generator",
+        nameKey: "tools.svg-placeholder-generator.name",
+        descriptionKey: "tools.svg-placeholder-generator.description",
+        category: "image",
+        path: "/tools/svg-placeholder-generator",
+        icon: "image"
+      }
+    ]
   }
 ]
