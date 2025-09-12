@@ -667,6 +667,54 @@
         "description": "Online HMAC generation tool. Support multiple hash algorithms to generate message authentication codes for data integrity and identity verification.",
         "keywords": "HMAC generator,message authentication code,hash algorithm,data integrity,identity verification,API signature,online tool"
       }
+    },
+    "ip-lookup": {
+      "name": "IP Address Lookup",
+      "description": "Query geographical location and network information of IP addresses",
+      "input_title": "IP Address Input",
+      "output_title": "Query Results",
+      "placeholder": "Enter IP address (e.g. 8.8.8.8)",
+      "output_placeholder": "Query results will appear here...",
+      "current_ip": "Your IP Address",
+      "query_button": "Query",
+      "auto_detect": "Auto Detect",
+      "invalid_ip": "Invalid IP address format",
+      "query_failed": "Query failed, please try again later",
+      "querying": "Querying...",
+      "rate_limited": "Too many queries, please try again later",
+      "network_error": "Network connection error",
+      "info": {
+        "basic": "Basic Information",
+        "location": "Geographical Location", 
+        "network": "Network Information",
+        "security": "Security Information",
+        "ip_address": "IP Address",
+        "country": "Country",
+        "region": "Region",
+        "city": "City", 
+        "postal_code": "Postal Code",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "timezone": "Timezone",
+        "isp": "Internet Service Provider",
+        "organization": "Organization",
+        "as_number": "AS Number",
+        "proxy": "Proxy Server",
+        "mobile": "Mobile Network",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "actions": {
+        "copy_ip": "Copy IP Address",
+        "copy_all": "Copy All Information",
+        "export_json": "Export JSON",
+        "clear_results": "Clear Results"
+      },
+      "meta": {
+        "title": "IP Address Lookup Tool",
+        "description": "Online IP address lookup tool. Get geographical location, ISP information, timezone and other detailed information of IP addresses.",
+        "keywords": "IP lookup,IP address,geolocation,network information,ISP query,online tool"
+      }
     }
   }
 }

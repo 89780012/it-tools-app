@@ -189,7 +189,16 @@ export const toolsConfig: ToolCategory[] = [
     nameKey: "categories.network",
     descriptionKey: "categories.network_desc",
     icon: "globe",
-    tools: []
+    tools: [
+      {
+        id: "ip-lookup",
+        nameKey: "tools.ip-lookup.name",
+        descriptionKey: "tools.ip-lookup.description",
+        category: "network",
+        path: "/tools/ip-lookup",
+        icon: "map-pin"
+      }
+    ]
   },
   {
     id: "image", 

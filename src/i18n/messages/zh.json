@@ -667,6 +667,54 @@
         "description": "在线HMAC生成工具。支持多种哈希算法，生成消息认证码，确保数据完整性和身份验证。",
         "keywords": "HMAC生成器,消息认证码,哈希算法,数据完整性,身份验证,API签名,在线工具"
       }
+    },
+    "ip-lookup": {
+      "name": "IP地址查询",
+      "description": "查询IP地址的地理位置和网络信息",
+      "input_title": "IP地址输入",
+      "output_title": "查询结果",
+      "placeholder": "请输入IP地址 (例: 8.8.8.8)",
+      "output_placeholder": "查询结果将显示在这里...",
+      "current_ip": "您的IP地址",
+      "query_button": "查询",
+      "auto_detect": "自动检测",
+      "invalid_ip": "无效的IP地址格式",
+      "query_failed": "查询失败，请稍后重试",
+      "querying": "查询中...",
+      "rate_limited": "查询过于频繁，请稍后重试",
+      "network_error": "网络连接错误",
+      "info": {
+        "basic": "基本信息",
+        "location": "地理位置", 
+        "network": "网络信息",
+        "security": "安全信息",
+        "ip_address": "IP地址",
+        "country": "国家",
+        "region": "地区",
+        "city": "城市", 
+        "postal_code": "邮政编码",
+        "latitude": "纬度",
+        "longitude": "经度",
+        "timezone": "时区",
+        "isp": "网络提供商",
+        "organization": "组织",
+        "as_number": "AS号",
+        "proxy": "代理服务器",
+        "mobile": "移动网络",
+        "yes": "是",
+        "no": "否"
+      },
+      "actions": {
+        "copy_ip": "复制IP地址",
+        "copy_all": "复制所有信息",
+        "export_json": "导出JSON",
+        "clear_results": "清除结果"
+      },
+      "meta": {
+        "title": "IP地址查询工具",
+        "description": "在线IP地址查询工具。获取IP地址的地理位置、ISP信息、时区等详细信息。",
+        "keywords": "IP查询,IP地址,地理位置,网络信息,ISP查询,在线工具"
+      }
     }
   }
 }
