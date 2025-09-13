@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function RsaEncryptDecryptPage() {
   const t = useTranslations();
@@ -111,7 +112,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
   return (
     <div className="container mx-auto p-6 space-y-6">
       <BackToHome />
-      
+
       <div>
         <h1 className="text-3xl font-bold">{t("tools.rsa-encrypt-decrypt.name")}</h1>
         <p className="text-muted-foreground mt-2">
@@ -136,7 +137,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
               <KeyRound className="h-4 w-4 mr-2" />
               {t("tools.rsa-encrypt-decrypt.generate_keys")}
             </Button>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>{t("tools.rsa-encrypt-decrypt.public_key")}</Label>
@@ -151,7 +152,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                   {t("common.copy")}
                 </Button>
               </div>
-              
+
               <div className="space-y-2">
                 <Label>{t("tools.rsa-encrypt-decrypt.private_key")}</Label>
                 <Textarea
@@ -194,11 +195,11 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                   !isValid && "border-destructive"
                 )}
               />
-              
+
               {error && (
                 <div className="text-destructive text-sm">{error}</div>
               )}
-              
+
               <div className="flex gap-2">
                 <Button onClick={encryptData} className="flex-1">
                   <Lock className="h-4 w-4 mr-2" />
@@ -229,20 +230,20 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                 placeholder={t("tools.rsa-encrypt-decrypt.output_placeholder")}
                 className="min-h-[300px] font-mono text-sm bg-muted/50"
               />
-              
+
               <div className="flex gap-2">
-                <Button 
-                  onClick={() => copyToClipboard(output)} 
-                  variant="outline" 
+                <Button
+                  onClick={() => copyToClipboard(output)}
+                  variant="outline"
                   disabled={!output}
                   className="flex-1"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   {t("common.copy")}
                 </Button>
-                <Button 
-                  onClick={downloadResult} 
-                  variant="outline" 
+                <Button
+                  onClick={downloadResult}
+                  variant="outline"
                   disabled={!output}
                   size="icon"
                 >
@@ -253,6 +254,9 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
           </Card>
         </div>
       </div>
+
+      {/* SEO Section */}
+      <ToolSEOSection toolId="rsa-encrypt-decrypt" />
     </div>
   )
 }

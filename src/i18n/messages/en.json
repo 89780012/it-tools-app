@@ -58,7 +58,7 @@
     "coming_soon": "Coming soon",
     "modern_design": "🎨 Modern Design",
     "modern_design_desc": "Built with shadcn/ui, supports light/dark theme switching, providing elegant user experience",
-    "multilingual": "🌐 Multilingual Support", 
+    "multilingual": "🌐 Multilingual Support",
     "multilingual_desc": "Supports Chinese and English interfaces to meet different language preferences",
     "high_performance": "⚡ High Performance",
     "high_performance_desc": "Based on Next.js and TypeScript, providing fast and responsive user experience",
@@ -88,6 +88,39 @@
       "output_title": "Output Result",
       "output_desc": "Formatted JSON data",
       "output_placeholder": "Formatted JSON will be displayed here...",
+      "introduction": "JSON Formatter is a powerful data processing tool designed specifically for developers. It can quickly parse, validate, and beautify JSON data, supporting real-time syntax checking, one-click formatting, and intelligent compression features. Whether it's API debugging, configuration file editing, data analysis, or code optimization, it provides convenient and efficient solutions. The tool runs completely on the client side, ensuring your sensitive data remains secure and reliable at all times.",
+      "features": [
+        "🎯 Real-time JSON syntax validation with intelligent error prompts",
+        "✨ One-click beautification formatting to greatly improve code readability",
+        "📦 Smart compression feature to effectively reduce data transmission size",
+        "📋 Quick copy to clipboard and convenient file download",
+        "🔒 Complete client-side processing to protect data privacy and security",
+        "⚡ Support for large file processing with extremely fast response speed",
+        "🎨 Support for light/dark themes, eye-friendly and comfortable",
+        "📱 Perfect mobile adaptation for use anytime, anywhere"
+      ],
+      "faq": [
+        {
+          "question": "What core features does the JSON formatter tool support?",
+          "answer": "Our JSON formatter tool provides comprehensive JSON processing capabilities: real-time syntax validation, one-click beautification formatting, intelligent compression, quick copy, file download, etc. All operations are completed locally in your browser, so you don't need to worry about data leakage risks."
+        },
+        {
+          "question": "How to quickly identify and fix JSON format errors?",
+          "answer": "The tool has a built-in intelligent error detection system that analyzes your input JSON data in real time. When syntax errors are detected, detailed error information and error location will be displayed below the input box to help you quickly locate problems and make fixes."
+        },
+        {
+          "question": "Does the tool support processing large JSON files?",
+          "answer": "Yes, our tool has been performance optimized and can smoothly process large JSON files. We recommend that single file size does not exceed 10MB to ensure the best user experience. For extremely large files, we recommend appropriate segmentation processing first."
+        },
+        {
+          "question": "How is data security guaranteed?",
+          "answer": "We take data security very seriously. All JSON processing operations are completed in your local browser, and data will not be uploaded to any server. Your sensitive information is always under your control, fully protecting privacy and security."
+        },
+        {
+          "question": "Is the tool compatible with mobile devices?",
+          "answer": "Completely compatible! Our JSON formatter tool uses responsive design and can provide excellent user experience on mobile phones, tablets, and desktop devices. It supports touch screen operations and the interface adapts to different screen sizes automatically."
+        }
+      ],
       "meta": {
         "title": "JSON Formatter Tool",
         "description": "Online JSON formatting, compression and validation tool. Supports JSON beautification, compression and syntax validation to improve development efficiency.",
@@ -114,6 +147,35 @@
       "usage_nested_examples": "user.name, user.address.city",
       "usage_array_stringify": "• Array values will be converted to JSON strings",
       "usage_csv_escape": "• Automatically handles CSV special character escaping",
+      "introduction": "JSON to CSV Converter is a professional data format conversion tool that can quickly convert complex JSON data structures to standard CSV format. It supports object arrays, nested object flattening processing, intelligently identifies data types and performs formatted output. Whether it's data analysis, report generation, or data migration, it provides efficient and accurate solutions.",
+      "features": [
+        "📊 Supports JSON object array and single object conversion",
+        "🔄 Smart nested object flattening processing",
+        "📋 Automatic CSV special character escaping and formatting",
+        "📈 Real-time display of row and column statistics",
+        "💾 One-click CSV file download",
+        "🎯 Supports complex data structure parsing",
+        "⚡ High-performance processing of large datasets",
+        "🔒 Client-side processing, secure and reliable data"
+      ],
+      "faq": [
+        {
+          "question": "What JSON data formats are supported for conversion?",
+          "answer": "The tool supports two main JSON formats: object array format (such as user lists, product data) and single object format. For complex nested structures, automatic flattening processing is performed to ensure CSV format compatibility."
+        },
+        {
+          "question": "How are nested objects and arrays handled?",
+          "answer": "Nested objects are automatically flattened into multiple columns (such as user.name, user.address.city), and array values are converted to JSON string format for storage. This maintains data integrity while ensuring CSV format standards."
+        },
+        {
+          "question": "Can the converted CSV file be opened directly in Excel?",
+          "answer": "Yes, the generated CSV file fully complies with standard formats and can be directly opened and edited in spreadsheet software such as Excel, Numbers, Google Sheets, etc."
+        },
+        {
+          "question": "How is performance when processing large JSON files?",
+          "answer": "The tool has been performance optimized and can efficiently process large JSON files containing thousands of records. We recommend that the data volume processed at one time does not exceed 50MB to ensure the best user experience."
+        }
+      ],
       "meta": {
         "title": "JSON to CSV Converter Tool",
         "description": "Quickly convert JSON data to CSV format. Supports complex nested object processing and provides convenient data format conversion functionality.",
@@ -131,6 +193,35 @@
       "output_title": "Output YAML",
       "output_desc": "Converted YAML data",
       "output_placeholder": "Converted YAML will be displayed here...",
+      "introduction": "JSON to YAML Converter is a format conversion tool designed specifically for configuration file management and data exchange. It can losslessly convert JSON data structures to YAML format, supporting complex nested objects and array structures, and automatically generates readable YAML output with proper indentation. Suitable for various scenarios such as DevOps, configuration management, API documentation, etc.",
+      "features": [
+        "🔄 Lossless JSON to YAML format conversion",
+        "📝 Automatically generates standard YAML indentation format",
+        "🎯 Supports complex nested objects and arrays",
+        "📋 Maintains data type and structure integrity",
+        "💾 Quick download of YAML configuration files",
+        "⚡ Real-time conversion with instant preview effects",
+        "🎨 Syntax highlighting for improved readability",
+        "🔒 Local processing ensures data security"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios is JSON to YAML conversion suitable for?",
+          "answer": "Mainly suitable for configuration file conversion (such as Docker Compose, Kubernetes configuration), API documentation format conversion, data exchange format changes, etc. YAML format is more readable and especially suitable for manual editing and maintenance."
+        },
+        {
+          "question": "Will data types be lost during conversion?",
+          "answer": "No. Our converter strictly maintains data type integrity, including all JSON-supported data types such as strings, numbers, booleans, arrays, objects, which are all accurately mapped to YAML format."
+        },
+        {
+          "question": "Do the generated YAML files conform to standard format?",
+          "answer": "Yes, the generated YAML files fully comply with YAML 1.2 standard specifications and can be correctly read by any standard YAML parser, including Python PyYAML, Ruby YAML, Go yaml, etc."
+        },
+        {
+          "question": "How are special characters and line breaks handled?",
+          "answer": "The tool automatically handles special character escaping in YAML. For strings containing line breaks, quotes, and other special content, appropriate YAML syntax (such as multi-line strings, quote wrapping, etc.) is used to ensure correct formatting."
+        }
+      ],
       "meta": {
         "title": "JSON to YAML Converter Tool",
         "description": "Quickly convert JSON data to YAML format. Supports formatted output and provides convenient configuration file conversion functionality.",
@@ -154,6 +245,39 @@
       "conversion_complete": "JSON to XML conversion completed",
       "xml_copied": "XML data copied to clipboard",
       "xml_downloaded": "XML file downloaded",
+      "introduction": "JSON to XML Converter is a professional data format conversion tool that enables precise conversion between JSON and XML formats. XML (eXtensible Markup Language) is widely used in Web services, configuration files, and data exchange scenarios, offering excellent readability and structured characteristics. This tool supports custom root element names, intelligently handles nested objects and arrays, ensures standardized and readable XML format after conversion, meeting various data integration and inter-system communication requirements.",
+      "features": [
+        "🔄 Intelligent JSON to XML conversion maintaining data structure integrity",
+        "🏷️ Custom XML root element names to meet different system requirements",
+        "🎯 Smart handling of nested objects and arrays into proper XML hierarchy",
+        "⚡ Real-time conversion processing with instant XML result generation",
+        "📋 One-click copy XML code for easy integration development",
+        "💾 Support XML file download for convenient data saving and transmission",
+        "🔒 Local processing protects privacy, data never uploaded to servers",
+        "📱 Responsive design supporting both mobile and desktop operations"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios is JSON to XML conversion suitable for? Why is this conversion needed?",
+          "answer": "JSON to XML conversion is mainly suitable for system integration, data exchange, and configuration file conversion scenarios. Many legacy systems and enterprise applications still use XML format for data exchange, while modern Web APIs predominantly use JSON. This tool helps developers convert data formats between different systems, ensuring data compatibility."
+        },
+        {
+          "question": "How to handle complex nested structures during JSON to XML conversion?",
+          "answer": "Our tool intelligently processes nested objects and arrays by converting objects to XML elements with child nodes, and arrays to multiple elements with the same tag name. For objects with special characters in keys, automatic escaping ensures valid XML format. The converted structure maintains logical clarity and readability."
+        },
+        {
+          "question": "Can I customize the XML root element name? What are the naming requirements?",
+          "answer": "Yes, you can fully customize the XML root element name. We recommend using camelCase or underscore naming conventions, avoiding spaces and special characters. If no custom name is provided, the default 'root' will be used as the root element name."
+        },
+        {
+          "question": "What should I note when converting large JSON data to XML?",
+          "answer": "For large data conversion: 1) Ensure JSON format is valid to avoid conversion errors; 2) Consider XML file size limitations; 3) Complex nested structures may result in verbose XML; 4) For extremely large datasets, consider breaking them into smaller chunks for processing to ensure browser performance."
+        },
+        {
+          "question": "How to handle special characters and null values in JSON?",
+          "answer": "The tool automatically handles special character escaping in XML. For example, `<` becomes `&lt;`, `&` becomes `&amp;`, etc. For `null` values in JSON, they are converted to empty XML elements or special attribute markers, ensuring data integrity and XML validity."
+        }
+      ],
       "meta": {
         "title": "JSON to XML Converter Tool",
         "description": "Quickly convert JSON data to XML format. Supports custom root elements, intelligent handling of nested objects and arrays, providing convenient data format conversion functionality.",
@@ -180,6 +304,39 @@
       "success": "Parse successful",
       "parse_complete": "JSON parsing completed",
       "json_copied": "JSON data copied to clipboard",
+      "introduction": "JSON Visualizer is a professional data structure display and analysis tool that converts complex JSON data into intuitive tree structure diagrams. Through an interactive visualization interface, users can clearly understand the hierarchical relationships, type structures, and content organization of JSON data. The tool supports expand/collapse operations on data nodes, type identification, statistical information display, and other features, making it an invaluable assistant for developers debugging API responses, analyzing configuration files, and understanding data structures.",
+      "features": [
+        "🌳 Interactive tree structure display, clearly showing JSON hierarchical relationships",
+        "🔍 Smart type recognition and icon annotation for clear data type identification",
+        "📊 Real-time statistical information display, including data size, depth and other key metrics",
+        "⚡ Large data support with smooth handling of complex nested JSON structures",
+        "🎯 Node expand/collapse functionality to view data details on demand",
+        "📋 Quick copy JSON paths and node values to improve development efficiency",
+        "🎨 Elegant UI design supporting light/dark theme switching",
+        "📱 Responsive adaptation with perfect mobile and desktop experience"
+      ],
+      "faq": [
+        {
+          "question": "What advantages does the JSON visualizer tool have? What scenarios is it suitable for?",
+          "answer": "The JSON visualizer tool converts abstract JSON data into intuitive tree diagrams, helping to quickly understand complex data structures. It's especially suitable for API debugging, configuration file analysis, data structure learning, backend response viewing, and other scenarios. Compared to plain text viewing, visualization can greatly improve data understanding efficiency."
+        },
+        {
+          "question": "Can the tool handle large JSON files? Are there performance limitations?",
+          "answer": "Yes, our tool has been performance optimized to smoothly handle JSON files containing thousands of nodes. For extremely large files (>10MB), we recommend appropriate segmentation processing to ensure optimal browser performance. The tool uses virtual scrolling and lazy loading techniques to maintain smooth interaction."
+        },
+        {
+          "question": "How to quickly locate specific data in complex JSON?",
+          "answer": "The tool provides multiple location methods: 1) Use node search functionality to quickly locate specific keys or values; 2) Use expand/collapse to focus on interested parts; 3) Click on data paths to quickly navigate to target nodes; 4) Use keyboard shortcuts for efficient navigation."
+        },
+        {
+          "question": "What JSON data types are supported for visualization?",
+          "answer": "Supports all standard JSON data types: strings, numbers (integers and floats), booleans, null, objects, and arrays. Each data type is displayed with specific colors and icons for easy recognition. The tool intelligently handles nested structures and can clearly show complex data organization."
+        },
+        {
+          "question": "Does the visualization tool modify the original JSON data?",
+          "answer": "No, the visualization tool is read-only and never modifies the original JSON data. All display, expand/collapse, and interaction operations only affect the visualization interface without changing the actual data content. Your original data remains completely safe and intact."
+        }
+      ],
       "meta": {
         "title": "JSON Visualizer Tool",
         "description": "Display JSON data in interactive tree structure. Supports expand/collapse nodes, type identification and statistics, providing intuitive JSON data viewing experience.",
@@ -211,6 +368,39 @@
       "json_downloaded": "JSON file downloaded",
       "output_info": "Output size: {size} KB",
       "success": "Generation successful",
+      "introduction": "JSON Data Generator is a professional mock data creation tool that can quickly generate JSON test data conforming to specified formats. It supports multiple data type configurations, including strings, numbers, booleans, dates, arrays, etc., with customizable field structures and data ranges. Widely used in frontend development testing, API interface debugging, database population, performance testing, and other scenarios, it helps developers efficiently generate large amounts of structured mock data, improving development and testing efficiency.",
+      "features": [
+        "🎯 Multiple data type support: strings, numbers, booleans, dates with comprehensive coverage",
+        "⚙️ Flexible field configuration system with custom field names and data rules",
+        "📊 Batch data generation supporting 1-10000 records with rapid generation",
+        "🔧 Smart data range control with min/max values and length limit settings",
+        "📋 Multiple output formats supporting both array and single object output",
+        "🎲 Advanced random algorithms ensuring realistic and diverse generated data",
+        "💾 One-click download of generated JSON files for convenient saving and use",
+        "🔒 Local generation protecting privacy with no data upload to servers"
+      ],
+      "faq": [
+        {
+          "question": "What data types does the JSON data generator support? How to configure them?",
+          "answer": "The tool supports strings, integers, floats, booleans, dates, arrays, and other data types. Each type has specialized configuration options, such as setting length ranges for strings, min/max values for numbers, time ranges for dates, etc. Through the field configuration panel, you can easily add and customize various fields."
+        },
+        {
+          "question": "How to generate realistic test data? What are the best practices?",
+          "answer": "For realistic test data: 1) Use appropriate data ranges (e.g., age 18-80); 2) Choose meaningful field names; 3) Set reasonable string lengths; 4) Consider business logic relationships between fields; 5) Use date ranges that match actual scenarios; 6) Generate sufficient data volume for testing edge cases."
+        },
+        {
+          "question": "What's the maximum amount of data that can be generated at once? Are there performance considerations?",
+          "answer": "The tool supports generating 1-10000 records at once. For large datasets (>5000 records), generation may take a few seconds. We recommend starting with smaller amounts to verify data format correctness, then generating larger batches. Browser memory limitations should be considered for extremely large datasets."
+        },
+        {
+          "question": "Can generated data be used directly for database import?",
+          "answer": "Yes, the generated JSON data can be directly used for database import, API testing, or application initialization. The data follows standard JSON format and is compatible with most databases and applications. You can also convert it to CSV or SQL format using other tools."
+        },
+        {
+          "question": "How to ensure uniqueness of generated data? Can duplicate data be avoided?",
+          "answer": "The tool uses high-quality random algorithms to minimize duplicate data probability. For scenarios requiring strict uniqueness (like IDs), you can: 1) Use incremental number fields; 2) Combine multiple random fields; 3) Generate in smaller batches and manually verify; 4) Use UUID-type strings for unique identifiers."
+        }
+      ],
       "meta": {
         "title": "JSON Data Generator Tool",
         "description": "Generate mock JSON data for testing and development. Supports multiple data types, flexible field configuration, batch generation functionality to meet various testing scenario requirements.",
@@ -221,7 +411,7 @@
       "name": "JSON Diff Comparison",
       "description": "Compare differences between two JSON data",
       "original": "Original Data",
-      "modified": "Modified Data",
+      "modified": "Modified",
       "left_placeholder": "Please enter original JSON data...",
       "right_placeholder": "Please enter modified JSON data...",
       "compare_button": "Compare Differences",
@@ -232,7 +422,6 @@
       "total": "Total",
       "added": "Added",
       "removed": "Removed",
-      "modified": "Modified",
       "unchanged": "Unchanged",
       "errors": {
         "empty_input": "Please enter both JSON data",
@@ -266,7 +455,6 @@
       "inline_diff_view": "Inline Diff View",
       "show_only_differences": "Show Only Differences",
       "deleted": "Deleted",
-      "added": "Added",
       "moved": "Moved",
       "deleted_marked_red": "deleted content marked red",
       "added_marked_green": "added content marked green",
@@ -285,6 +473,39 @@
       "recalculated": "Recalculated",
       "differences_only": "Differences only",
       "showing_differences_only": "Showing differences only",
+      "introduction": "JSON Diff Comparison Tool is a professional data change analysis tool that performs deep comparison between two JSON data sets, providing precise change detection and visual display. Based on the advanced jsondiffpatch algorithm, it supports intelligent recognition of data add, delete, modify, and move operations, providing powerful analysis capabilities for version control, data auditing, API testing, configuration comparison, and other scenarios. The tool offers multiple comparison modes and output formats to help developers quickly locate and understand data changes.",
+      "features": [
+        "🔍 Deep difference detection with precise identification of add, delete, modify, and move operations",
+        "🎯 Smart move detection distinguishing array element position changes from add/delete operations",
+        "📊 Multiple visualization modes including side-by-side, inline, and unified views",
+        "⚡ High-performance algorithm engine for rapid comparison of large JSON data",
+        "📋 Rich output formats supporting JSON format and readable reports",
+        "🎨 Color-coded change display with intuitive visual difference presentation",
+        "🔧 Advanced options including move detection toggle and display mode selection",
+        "📱 Responsive design ensuring perfect experience on mobile and desktop"
+      ],
+      "faq": [
+        {
+          "question": "How does the JSON diff tool identify different types of changes?",
+          "answer": "The tool uses the jsondiffpatch algorithm to intelligently identify four change types: additions (green highlight), deletions (red highlight), modifications (yellow highlight), and moves (blue highlight). Through deep traversal of JSON structures, it precisely locates change positions and content, providing complete difference analysis reports."
+        },
+        {
+          "question": "What is move detection? When should it be enabled or disabled?",
+          "answer": "Move detection identifies when array elements change positions rather than being deleted and re-added. Enable it when you want to track element repositioning (useful for sorted lists, drag-and-drop operations). Disable it when you want to treat position changes as separate delete+add operations (useful for independent data changes)."
+        },
+        {
+          "question": "How to handle comparison of very large JSON files?",
+          "answer": "For large files: 1) Use the unified view mode to save memory; 2) Enable 'differences only' mode to focus on changes; 3) Consider splitting large files into smaller sections; 4) Use progressive comparison for extremely large datasets; 5) Close other browser tabs to free up memory if needed."
+        },
+        {
+          "question": "Can the diff results be exported for use in other tools?",
+          "answer": "Yes, the tool provides multiple export options: 1) Copy difference reports to clipboard; 2) Download JSON format diff files; 3) Export visual HTML reports; 4) Generate text-based diff summaries. These formats can be integrated into version control systems, documentation, or automated testing workflows."
+        },
+        {
+          "question": "What are the different visualization modes for and when to use each?",
+          "answer": "Side-by-side mode: Best for comparing two complete datasets with clear before/after view. Inline mode: Efficient for focusing on changes within a single context. Unified mode: Optimal for large files with minimal changes. Visual mode: Great for presentations and reports. JSON mode: Ideal for programmatic processing of differences."
+        }
+      ],
       "meta": {
         "title": "JSON Diff Comparison Tool",
         "description": "Deep comparison of differences between two JSON data. Provides detailed difference analysis reports with visual display to help quickly locate data changes.",
@@ -297,6 +518,39 @@
       "placeholder": "Enter text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
+      "introduction": "Base64 Encoder/Decoder is a professional string encoding conversion tool that supports bidirectional conversion between text, binary data, and Base64 format. Widely used in web development, data transmission, email attachments, and image encoding scenarios. Uses standard Base64 character set to ensure encoding and decoding accuracy and compatibility, making it an essential tool for developers and technical personnel.",
+      "features": [
+        "🔄 Bidirectional encoding and decoding between text and Base64",
+        "📝 Real-time conversion with instant results on input",
+        "🎯 Standard Base64 character set with strong compatibility",
+        "📋 One-click copy results to clipboard",
+        "🔍 Automatic recognition and validation of Base64 format",
+        "⚡ High-performance processing supporting large text conversion",
+        "🔒 Local processing ensuring data privacy and security",
+        "📱 Responsive design with perfect mobile adaptation"
+      ],
+      "faq": [
+        {
+          "question": "What are the uses of Base64 encoding?",
+          "answer": "Base64 is mainly used for: 1) Transmitting binary data in HTTP protocol; 2) Email system attachment encoding; 3) URL-safe data transmission; 4) Converting images to text format; 5) API authentication token encoding. It converts binary data into printable ASCII characters."
+        },
+        {
+          "question": "Does Base64 encoding increase data size?",
+          "answer": "Yes, Base64 encoding increases data size by approximately 33%. This is because Base64 uses 64 characters to represent 256 possibilities, with every 3 bytes being encoded as 4 characters. While data becomes larger, it gains the ability to transmit binary data in text protocols."
+        },
+        {
+          "question": "What character encodings does the tool support?",
+          "answer": "Our tool supports UTF-8 character encoding and can correctly handle Chinese, English, special symbols, and various other characters. Input text is first converted to UTF-8 byte sequences, then Base64 encoded, ensuring proper handling of internationalized text."
+        },
+        {
+          "question": "How to verify if Base64 format is correct?",
+          "answer": "Valid Base64 strings only contain A-Z, a-z, 0-9, +, / characters, must have a length that's a multiple of 4, and may have 1-2 '=' characters as padding at the end. Our tool automatically validates the format and provides error messages when decoding fails."
+        },
+        {
+          "question": "Is Base64 encoding encryption?",
+          "answer": "No, Base64 is encoding, not encryption. It's just a data representation conversion that anyone can easily decode. If data security is needed, you should first encrypt the data then Base64 encode it, or use dedicated encryption tools."
+        }
+      ],
       "input_title": "Input Text",
       "output_title": "Output Result",
       "output_desc": "Encoded/decoded text",
@@ -316,6 +570,39 @@
       "placeholder": "Enter URL or text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
+      "introduction": "URL Encoder/Decoder is a professional web address processing tool that supports URL string encoding and decoding operations. Follows RFC 3986 standards and can correctly handle Chinese, special characters, and spaces in URL conversion. Widely used in web development, API calls, and search engine optimization scenarios to ensure correct URL transmission and parsing.",
+      "features": [
+        "🌐 Standard URL encoding/decoding following RFC 3986 specifications",
+        "🇨🇳 Perfect support for Chinese and special character processing",
+        "⚡ Real-time conversion with instant encoding results display",
+        "📋 One-click copy of processed URLs",
+        "🔍 Automatic recognition and validation of URL format",
+        "🎯 Support for complete URL and URL parameter encoding",
+        "🔒 Local processing ensuring URL privacy and security",
+        "📱 Mobile-optimized for use anytime, anywhere"
+      ],
+      "faq": [
+        {
+          "question": "What is URL encoding? Why is it needed?",
+          "answer": "URL encoding (percent encoding) converts special characters to % plus hexadecimal format. Since URLs can only contain ASCII characters, Chinese, spaces, & and other special characters need encoding for correct transmission in URLs. For example, space encodes to %20, Chinese '你好' encodes to %E4%BD%A0%E5%A5%BD."
+        },
+        {
+          "question": "Which characters need URL encoding?",
+          "answer": "Characters requiring encoding include: 1) Non-ASCII characters (like Chinese); 2) URL reserved characters (like &, =, ?, #); 3) Unsafe characters (like spaces, quotes); 4) Control characters. Safe characters like letters, numbers, -, _, ., ~ don't need encoding."
+        },
+        {
+          "question": "What's the difference between URL encoding and HTML encoding?",
+          "answer": "URL encoding uses percent (%) plus hexadecimal representation, mainly for URL parameters; HTML encoding uses &entity; format for HTML documents. For example, space is %20 in URLs but &nbsp; in HTML. They have completely different purposes and encoding rules."
+        },
+        {
+          "question": "How to handle Chinese parameters in URLs?",
+          "answer": "Chinese parameters must be URL encoded for correct transmission. Our tool uses UTF-8 encoding, converting Chinese to byte sequences then percent encoding. This ensures Chinese parameter compatibility across various browsers and server environments."
+        },
+        {
+          "question": "What to do when URL decoding fails?",
+          "answer": "Decoding failure usually occurs because: 1) Incorrect URL encoding format; 2) Invalid hexadecimal characters; 3) Incomplete encoding. Check if the URL is valid, ensure % is followed by two valid hexadecimal digits, and try partial decoding if necessary."
+        }
+      ],
       "input_title": "Input Text/URL",
       "output_title": "Output Result",
       "output_desc": "Encoded/decoded URL",
@@ -359,6 +646,39 @@
       "tip3_desc": "Change passwords regularly, avoid using the same password for multiple accounts",
       "tip4_title": "Secure Storage",
       "tip4_desc": "Use password managers to store passwords securely, avoid plain text recording",
+      "introduction": "Password Generator is a professional secure password creation tool that uses cryptographically secure random number generation algorithms. All password generation is processed locally in your browser, ensuring data security without sending any information to the server. Supports flexible configuration options including customizable length, character sets, and exclusion rules to help you create high-strength passwords that meet various security requirements.",
+      "features": [
+        "🔐 Cryptographically secure random number generation algorithm",
+        "⚙️ Flexible password configuration options, supports 4-128 characters length",
+        "🔤 Complete character set options: uppercase, lowercase, numbers, symbols",
+        "🚫 Smart exclusion rules to avoid similar and ambiguous characters",
+        "📊 Real-time password strength assessment and security scoring",
+        "💾 One-click copy to clipboard and file download functionality",
+        "🔒 Local processing ensures privacy security, no server communication",
+        "📱 Responsive design supports mobile and desktop devices"
+      ],
+      "faq": [
+        {
+          "question": "How secure are the generated passwords? Why use random passwords?",
+          "answer": "This tool uses the browser's built-in cryptographically secure random number generator (Crypto.getRandomValues) to ensure true randomness. Random passwords are much more secure than manually created passwords because they avoid common patterns, dictionary words, and personal information that can be easily guessed or cracked through brute force attacks."
+        },
+        {
+          "question": "What password length is recommended for different scenarios?",
+          "answer": "For general accounts, we recommend at least 12 characters; for important accounts (banking, email), at least 16 characters; for enterprise systems and high-security scenarios, 20+ characters. Longer passwords provide exponentially better security, and our tool supports up to 128 characters."
+        },
+        {
+          "question": "What's the difference between excluding similar characters and ambiguous characters?",
+          "answer": "Excluding similar characters removes visually similar characters like 'i', 'l', '1', 'o', 'O', '0' to avoid confusion when manually typing. Excluding ambiguous characters removes symbols that might be interpreted differently in various systems, such as brackets, quotes, slashes, etc., suitable for scenarios requiring cross-platform compatibility."
+        },
+        {
+          "question": "How should I manage and store the generated passwords?",
+          "answer": "We strongly recommend using professional password managers (such as 1Password, Bitwarden, LastPass, etc.) to securely store passwords. Never store passwords in plain text files, emails, or notes. Password managers can also help you identify duplicate passwords and remind you to update weak passwords regularly."
+        },
+        {
+          "question": "How is password strength calculated and evaluated?",
+          "answer": "Our strength assessment considers multiple factors: password length (8+ characters get basic score), character diversity (uppercase, lowercase, numbers, symbols each add points), and overall complexity. The scoring system ranges from 0-100, with <40 being weak, 40-70 being medium, and 70+ being strong. We recommend aiming for strong-level passwords."
+        }
+      ],
       "meta": {
         "title": "Password Generator",
         "description": "Online secure password generator. Support custom length and character sets to generate high-strength random passwords for account security.",
@@ -396,6 +716,39 @@
       "tip3_desc": "IV increases encryption randomness, use different IV for each encryption",
       "tip4_title": "Data Security",
       "tip4_desc": "All encryption/decryption is performed locally, data is not uploaded to servers",
+      "introduction": "AES Encrypt/Decrypt Tool is a professional data security processing tool based on the Advanced Encryption Standard (AES). AES is a symmetric encryption algorithm standard published by the National Institute of Standards and Technology (NIST), widely used in government, financial, and enterprise critical information systems for data protection. This tool supports AES-256-CBC mode with 256-bit key length, providing industrial-grade data security assurance. All encryption and decryption operations are completed locally in the browser, ensuring data privacy security.",
+      "features": [
+        "🔐 AES-256-CBC industrial-grade symmetric encryption algorithm with 256-bit key length",
+        "🛡️ NIST standard compliant, providing government and enterprise-level security assurance",
+        "🔑 Automatic generation of keys and initialization vectors (IV) to ensure encryption security",
+        "⚡ Real-time encryption/decryption processing, supporting large text data encryption",
+        "📋 One-click copy encryption results, convenient management of ciphertext and keys",
+        "🎯 Intelligent error detection, automatic validation of key format and data integrity",
+        "🔒 Local processing protects privacy, encryption process involves no network transmission",
+        "📱 Responsive design supporting mobile and desktop operations"
+      ],
+      "faq": [
+        {
+          "question": "How secure is the AES encryption algorithm? What scenarios is it suitable for?",
+          "answer": "AES is one of the most secure symmetric encryption algorithms currently available, adopted by the US government as the encryption standard for classified information. AES-256 uses a 256-bit key, theoretically requiring 2^256 attempts to break, which would take billions of years even with supercomputers. It's suitable for sensitive document protection, database encryption, communication encryption, and secure file storage scenarios."
+        },
+        {
+          "question": "Why is an Initialization Vector (IV) needed? What is its purpose?",
+          "answer": "The Initialization Vector (IV) is an important security mechanism for AES-CBC mode, ensuring that even when encrypting the same plaintext with the same key, the encryption result is different each time, preventing cryptanalytic attacks. The IV doesn't need to be secret, but each encryption should use a randomly generated IV. Our tool automatically generates secure random IVs."
+        },
+        {
+          "question": "How should AES keys be generated and managed?",
+          "answer": "AES-256 keys should be 32 bytes (256 bits) of random data. Our tool provides secure random key generation using the browser's cryptographically secure random number generator. In practical applications, keys should be securely stored, regularly rotated, managed using professional key management systems, and never stored in plaintext or transmitted through insecure channels."
+        },
+        {
+          "question": "What's the difference between AES symmetric encryption and RSA asymmetric encryption?",
+          "answer": "AES is symmetric encryption using the same key for encryption and decryption, offering fast encryption suitable for large amounts of data, but key distribution is challenging. RSA is asymmetric encryption using public-private key pairs where public key encrypts and private key decrypts, providing secure key distribution but slower encryption. In practice, they're often combined: RSA transmits AES keys, AES encrypts actual data."
+        },
+        {
+          "question": "Can data be decrypted if the AES key is forgotten?",
+          "answer": "No. AES encryption security is based on key secrecy, and data cannot be decrypted without the correct key. This is a security feature of AES design - even the algorithm designers cannot decrypt data without knowing the key. Therefore, secure key storage and backup are crucial, and professional key management solutions are recommended."
+        }
+      ],
       "meta": {
         "title": "AES Encrypt/Decrypt Tool",
         "description": "Online AES encryption/decryption tool. Support AES-256-CBC mode for secure data encryption and decryption.",
@@ -445,6 +798,41 @@
       "tip3_desc": "RSA encryption has data size limitations, for large data consider AES+RSA combination",
       "tip4_title": "Key Management",
       "tip4_desc": "Private key must be kept strictly confidential, public key can be shared openly",
+      "introduction": "RSA Encrypt/Decrypt Tool is a professional asymmetric encryption tool based on the RSA algorithm providing secure data encryption and decryption services. It supports key pair generation, public key encryption, and private key decryption, widely used in data transmission security, digital signatures, and identity authentication scenarios. As a classic public key cryptosystem, RSA uses mathematical problems to ensure security and is an important foundation of modern information security. This tool provides complete RSA encryption and decryption functionality to help users achieve secure data protection.",
+      "features": [
+        "🔐 Standard RSA algorithm implementation supporting multiple key lengths",
+        "🔑 One-click RSA key pair generation with automatic public/private key configuration",
+        "🔒 Public key encryption functionality protecting sensitive data transmission",
+        "🔓 Private key decryption functionality securely recovering original data",
+        "⚡ Real-time encryption/decryption with no processing delays",
+        "📋 Convenient copy and download functionality",
+        "🔧 Support for custom key import and management",
+        "🛡️ Client-side processing ensuring data privacy and security",
+        "📱 Responsive design with perfect mobile adaptation",
+        "🎯 Professional-grade encryption strength meeting security requirements"
+      ],
+      "faq": [
+        {
+          "question": "What is the RSA encryption algorithm? What are its advantages?",
+          "answer": "RSA is an asymmetric encryption algorithm using public key encryption and private key decryption. Advantages include: 1) No need to pre-share keys; 2) Support for digital signature identity verification; 3) Relatively simple key management; 4) Widely used in HTTPS, SSH protocols; 5) Solid mathematical foundation with long-verified security."
+        },
+        {
+          "question": "What key length should I choose? What are the security differences?",
+          "answer": "1024-bit: Basic security, suitable for low-security scenarios; 2048-bit: Current mainstream standard, recommended for general applications; 4096-bit: High security, suitable for sensitive data and long-term storage. Higher bit counts provide better security but slower processing speed."
+        },
+        {
+          "question": "What are RSA encryption data size limitations? How to handle large files?",
+          "answer": "RSA can only encrypt data smaller than the key size (e.g., 2048-bit key can encrypt ~245 bytes). For large files: 1) Use AES+RSA hybrid encryption; 2) Split large data into small chunks; 3) Use RSA to encrypt AES keys, AES to encrypt actual data; 4) Consider dedicated file encryption tools."
+        },
+        {
+          "question": "How to securely manage RSA key pairs?",
+          "answer": "Private key security: 1) Store in secure locations, never share; 2) Use strong passwords for protection; 3) Regular backup and secure storage; 4) Consider hardware security modules (HSM). Public key: Can be freely shared and distributed, used for encrypting data sent to you."
+        },
+        {
+          "question": "What's the difference between RSA encryption and digital signatures?",
+          "answer": "Encryption: Uses recipient's public key to encrypt, recipient uses private key to decrypt, ensuring only the recipient can read. Digital signature: Uses sender's private key to sign, others use sender's public key to verify, ensuring message authenticity and non-repudiation. They're reverse processes with different security goals."
+        }
+      ],
       "meta": {
         "title": "RSA Encrypt/Decrypt Tool",
         "description": "Online RSA encryption/decryption tool. Support key pair generation, public key encryption and private key decryption for secure data transmission.",
@@ -457,6 +845,39 @@
       "placeholder": "Enter text to calculate MD5 hash...",
       "generate": "Generate MD5",
       "input_title": "Input Text",
+      "introduction": "MD5 Hash Generator is a professional data digest tool that converts text of any length into a fixed-length 32-character hexadecimal string. Widely used for data integrity verification, password storage, and file checksums. While MD5 is not suitable for high-security applications, it remains valuable for data identification and cache key generation.",
+      "features": [
+        "🔐 Standard MD5 algorithm implementation with accurate and reliable results",
+        "⚡ Real-time calculation, instant hash generation on input",
+        "📝 Support for any length text and special characters",
+        "📋 One-click copy of 32-character hexadecimal result",
+        "🎯 Fixed-length output, convenient for data identification",
+        "🔍 Support for quick data integrity verification",
+        "🔒 Local calculation, protecting data privacy",
+        "📱 Cross-platform compatibility, mobile-friendly"
+      ],
+      "faq": [
+        {
+          "question": "What are the uses of MD5 hash?",
+          "answer": "MD5 is mainly used for: 1) Data integrity verification (checking if files have been modified); 2) Data deduplication (same content produces same hash); 3) Cache key generation; 4) Data identifier creation; 5) Simple data verification. Note that MD5 should not be used for password encryption and other security scenarios."
+        },
+        {
+          "question": "Is MD5 secure? Can it be used for password encryption?",
+          "answer": "MD5 is no longer considered a secure hash algorithm and has collision attack risks. It's not recommended for password storage, digital signatures, and other security scenarios. For password encryption, it's recommended to use specialized password hashing algorithms like bcrypt, scrypt, or Argon2."
+        },
+        {
+          "question": "Why does the same input always produce the same MD5 value?",
+          "answer": "This is the deterministic characteristic of the MD5 algorithm. The same input data will inevitably produce the same hash value through MD5 computation. This characteristic makes MD5 suitable for data integrity verification and deduplication scenarios. Any tiny change in input will result in a completely different hash value."
+        },
+        {
+          "question": "What is the length of MD5 hash value?",
+          "answer": "MD5 always produces a 128-bit (16-byte) hash value, usually represented as 32 hexadecimal characters. Regardless of the input data length, the MD5 output length is always fixed, which is one of the important characteristics of hash functions."
+        },
+        {
+          "question": "How to verify file MD5 value?",
+          "answer": "Copy the file content into the tool to generate MD5 value, then compare it with the official MD5 value provided. If they match exactly, it means the file is intact and unmodified; if different, the file may be corrupted or tampered with. This is a common method for verifying downloaded file integrity."
+        }
+      ],
       "output_title": "MD5 Hash",
       "output_desc": "Generated MD5 hash value",
       "output_placeholder": "MD5 hash will appear here...",
@@ -475,6 +896,39 @@
       "output_title": "SHA256 Hash",
       "output_desc": "Generated SHA256 hash value",
       "output_placeholder": "SHA256 hash will appear here...",
+      "introduction": "SHA256 Hash Generator is the most important secure hash algorithm in the SHA-2 family, producing a fixed-length 256-bit (64 hexadecimal characters) digest. SHA256 is widely considered one of the most secure hash algorithms currently available, playing a core role in blockchain, digital certificates, password storage, and data integrity verification applications. Compared to SHA1 and MD5, SHA256 provides stronger security guarantees.",
+      "features": [
+        "🔐 Top-tier SHA-2 family security algorithm with 256-bit strength",
+        "⚡ Efficient computation, fast generation of 64-character hex digest",
+        "📝 Supports arbitrary length data, from text to large files",
+        "📋 One-click copy complete 256-bit hash value",
+        "🛡️ Extremely strong collision resistance, far more secure than SHA1/MD5",
+        "🎯 Fixed 64-character output, convenient for storage and comparison",
+        "🔒 Local processing protects privacy, no data upload required",
+        "📱 Full platform compatibility, smooth mobile experience"
+      ],
+      "faq": [
+        {
+          "question": "What advantages does SHA256 have over SHA1 and MD5?",
+          "answer": "SHA256 outputs 256 bits (64 hexadecimal characters), with security strength far exceeding SHA1 (160 bits) and MD5 (128 bits). SHA256 has stronger collision resistance, with no known practical attack methods, and is considered a secure hash algorithm widely used in Bitcoin and other blockchain systems."
+        },
+        {
+          "question": "What role does SHA256 play in blockchain?",
+          "answer": "SHA256 is the core algorithm of Bitcoin and other mainstream blockchains, used for Proof of Work (PoW) mining, block hash calculation, and transaction ID generation. Its strong security ensures the immutability of blockchain data, serving as the security foundation for the entire cryptocurrency ecosystem."
+        },
+        {
+          "question": "Is SHA256 suitable for password storage?",
+          "answer": "SHA256 itself is not suitable for direct password storage because its fast computation makes it vulnerable to brute force attacks. Password storage should use specialized slow hash algorithms like bcrypt, scrypt, or Argon2. However, SHA256 is commonly used for salt generation and API key verification scenarios."
+        },
+        {
+          "question": "How to verify file SHA256 integrity?",
+          "answer": "Input the file content into the tool to generate SHA256 value, then compare with the official checksum. Complete match indicates the file is intact and unmodified, any character difference suggests the file may be corrupted or tampered with. This is the most reliable file integrity verification method."
+        },
+        {
+          "question": "What are the characteristics of SHA256 hash values?",
+          "answer": "SHA256 outputs fixed 64 hexadecimal characters (0-9 and a-f), like: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. Any minor change in input results in completely different output, and original data cannot be reverse-engineered from the hash value."
+        }
+      ],
       "meta": {
         "title": "SHA256 Hash Generator",
         "description": "Online SHA256 hash generation tool. Generate secure SHA256 hash values, widely used for password storage and data integrity verification.",
@@ -490,6 +944,39 @@
       "output_title": "SHA1 Hash",
       "output_desc": "Generated SHA1 hash value",
       "output_placeholder": "SHA1 hash will appear here...",
+      "introduction": "SHA1 Hash Generator is a secure hash algorithm tool that converts data of any length into a fixed-length 160-bit (40 hexadecimal characters) digest. SHA1 is more secure than MD5 and widely used in digital signatures, version control systems, and data integrity verification. While SHA1 is no longer recommended for high-security applications, it still plays an important role in many legacy systems.",
+      "features": [
+        "🔐 Standard SHA1 algorithm implementation, 160-bit secure hash",
+        "⚡ Real-time calculation, fast generation of 40-character hex digest",
+        "📝 Supports arbitrary length text and binary data",
+        "📋 One-click copy complete SHA1 hash value",
+        "🔍 Stronger collision resistance than MD5",
+        "🎯 Fixed 40-character output, easy comparison and verification",
+        "🔒 Local processing, ensures data privacy and security",
+        "📱 Cross-device compatibility, perfect mobile support"
+      ],
+      "faq": [
+        {
+          "question": "What's the difference between SHA1 and MD5?",
+          "answer": "SHA1 outputs 160 bits (40 hexadecimal characters) while MD5 outputs 128 bits (32 characters). SHA1 has stronger security and collision resistance, widely used in Git version control, digital certificates and other applications. SHA1's computational complexity is also slightly higher than MD5."
+        },
+        {
+          "question": "Is SHA1 still secure? Can it still be used?",
+          "answer": "SHA1 has been proven to have theoretical collision attack possibilities and is not recommended for new security-critical applications. However, it can still be used for file integrity checking, non-critical data identification, etc. New projects should use SHA-256 or stronger algorithms."
+        },
+        {
+          "question": "Why does Git use SHA1?",
+          "answer": "Git uses SHA1 as object identifiers because SHA1 provided good distribution and low collision probability when designed. Although there are more secure algorithms now, Git's design makes accidental collisions almost impossible to affect actual usage, and changing algorithms would require huge compatibility costs."
+        },
+        {
+          "question": "How to use SHA1 for file integrity verification?",
+          "answer": "Input the file content into the tool to generate SHA1 value, then compare with the official SHA1 digest. Complete match indicates file integrity, any difference suggests the file may have been modified or corrupted. This provides more reliable integrity assurance than MD5."
+        },
+        {
+          "question": "What is the format of SHA1 hash values?",
+          "answer": "SHA1 outputs 160-bit binary data, usually represented as 40 hexadecimal characters (0-9 and a-f). For example: da39a3ee5e6b4b0d3255bfef95601890afd80709. Regardless of input length, SHA1 output is always 40 characters."
+        }
+      ],
       "meta": {
         "title": "SHA1 Hash Generator",
         "description": "Online SHA1 hash generation tool. Calculate SHA1 hash values from text, used for data verification and version control systems.",
@@ -509,6 +996,39 @@
       "invalid_hex": "Invalid hexadecimal format",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
+      "introduction": "Hex Encoder/Decoder is a professional hexadecimal data conversion tool that provides bidirectional conversion between text and hexadecimal strings. Hexadecimal encoding is widely used in programming, data transmission, debugging, cryptography, and other computer science fields, serving as one of the most fundamental and important data representation methods. This tool supports standard UTF-8 encoding, ensuring proper handling of multi-byte characters including Chinese.",
+      "features": [
+        "🔄 Bidirectional conversion support, text to hex and hex to text",
+        "⚡ Real-time encoding/decoding with instant results",
+        "📝 Complete UTF-8 character set support including multi-byte characters",
+        "📋 One-click copy encoding/decoding results",
+        "🎯 Smart format validation, automatic invalid hex detection",
+        "🔍 Automatic space handling, ignoring format separators",
+        "🔒 Local processing protects privacy, no data upload required",
+        "📱 Responsive design, perfect mobile adaptation"
+      ],
+      "faq": [
+        {
+          "question": "What is hexadecimal encoding and why use it?",
+          "answer": "Hexadecimal encoding represents byte data using 0-9 and A-F characters, with each byte represented by two hex characters. It's more compact than binary and more intuitive for representing internal computer data, widely used in memory addresses, color codes, encryption keys, and other scenarios."
+        },
+        {
+          "question": "Why are my Chinese characters so long after encoding?",
+          "answer": "Chinese and other multi-byte characters typically occupy 3 bytes in UTF-8 encoding, with each byte converted to 2 hex characters, so one Chinese character produces 6 hex characters. This is normal encoding behavior that ensures character integrity and internationalization support."
+        },
+        {
+          "question": "What's the difference between hex encoding and Base64 encoding?",
+          "answer": "Hexadecimal uses 16 characters (0-9, A-F), with each character representing 4 bits of data, resulting in encoded length twice the original data. Base64 uses 64 characters, each representing 6 bits, resulting in about 1.33 times the original data length - more compact but slightly less readable."
+        },
+        {
+          "question": "How to handle hexadecimal data in programming?",
+          "answer": "Most programming languages have built-in hex support. JavaScript uses parseInt(hex, 16) for parsing and toString(16) for conversion. Python uses hex() and int(hex_str, 16). Hexadecimal is commonly used in bit operations, memory debugging, protocol parsing, and other low-level programming scenarios."
+        },
+        {
+          "question": "Why must hex strings have even length?",
+          "answer": "Because each byte is fixed to be represented by two hex characters, odd-length strings cannot correctly correspond to complete byte boundaries. When encountering odd length, you usually need to pad with 0 at the front or check if the data is complete."
+        }
+      ],
       "meta": {
         "title": "Hex Encoder/Decoder",
         "description": "Online hexadecimal encoding and decoding tool. Convert text to/from hexadecimal strings for data processing and debugging.",
@@ -528,6 +1048,39 @@
       "invalid_binary": "Invalid binary format",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
+      "introduction": "Binary Encoder/Decoder is a professional binary data processing tool that provides precise conversion between text and binary strings. Binary, as the fundamental language of computers, is essential for understanding how computers work and data storage mechanisms. This tool uses standard UTF-8 encoding to ensure accurate handling of multi-byte characters including Chinese, and is widely used in computer science education, low-level programming debugging, and data analysis.",
+      "features": [
+        "🔢 Standard binary encoding conversion, each character converted to 8-bit binary",
+        "⚡ Real-time conversion processing with instant results",
+        "📝 Complete UTF-8 character set support including multi-byte characters",
+        "📋 One-click copy encoding/decoding results to clipboard",
+        "🎯 Smart format validation, automatic detection of invalid binary sequences",
+        "🔍 Automatic space handling, support for formatted binary display",
+        "🔒 Local processing ensures privacy protection, all conversions completed locally in browser",
+        "📱 Responsive design supporting mobile and desktop devices"
+      ],
+      "faq": [
+        {
+          "question": "What is binary encoding and what is it used for?",
+          "answer": "Binary encoding converts characters into sequences of binary digits composed of 0s and 1s. Each character is converted to 8-bit binary numbers according to its UTF-8 encoded byte values. Binary encoding is mainly used in computer science education, understanding data storage principles, low-level programming debugging, and digital circuit design."
+        },
+        {
+          "question": "Why do Chinese characters produce so many binary digits?",
+          "answer": "Chinese characters typically occupy 3 bytes in UTF-8 encoding, with each byte containing 8 binary digits, so one Chinese character produces 24 binary digits (3×8=24). This ensures complete representation of Chinese characters and international compatibility, which is the normal encoding method of the Unicode standard."
+        },
+        {
+          "question": "What's the difference between binary encoding and ASCII encoding?",
+          "answer": "ASCII encoding can only represent 128 basic English characters, with each character represented by 7 bits. Our binary encoding is based on UTF-8, which can represent all characters worldwide, including Chinese, emojis, etc. UTF-8 is backward compatible with ASCII but provides much broader character support."
+        },
+        {
+          "question": "How to understand binary data storage in computers?",
+          "answer": "All data inside computers is stored in binary form. Every 8 binary bits (0s or 1s) form one byte, which is the basic unit of computer storage. Understanding binary encoding helps understand how computers store text, images, programs, and various other data types."
+        },
+        {
+          "question": "Must binary strings be multiples of 8?",
+          "answer": "Yes, because UTF-8 encoding is byte-based, with each byte fixed at 8 bits. If the length of a binary string is not a multiple of 8, it usually indicates incomplete data or errors. We check this condition during decoding to ensure data integrity."
+        }
+      ],
       "meta": {
         "title": "Binary Encoder/Decoder",
         "description": "Online binary encoding and decoding tool. Convert text to/from binary strings for low-level data analysis and learning.",
@@ -579,6 +1132,39 @@
       "tip3_desc": "Higher error correction level makes QR code more complex but more fault-tolerant",
       "tip4_title": "Color Settings",
       "tip4_desc": "Maintain sufficient contrast between foreground and background colors for scanning",
+      "introduction": "QR Code Generator is a professional QR code creation tool that supports converting text, URLs, contact information, WiFi configuration, and other types of data into high-quality QR code images. As an important carrier of modern digital life, QR codes are widely used in payments, marketing, information sharing, product traceability, and other scenarios. This tool provides rich customization options including size adjustment, color configuration, and error correction level settings, supporting both PNG and SVG dual-format export to ensure generated QR codes have optimal scanning recognition rates and visual effects.",
+      "features": [
+        "🎯 Multiple content type support: text, URL, phone, email, WiFi configuration",
+        "📏 Flexible size options: 128x128 to 1024x1024 pixels meeting different application needs",
+        "🎨 Custom color configuration: foreground and background color free adjustment for enhanced visual effects",
+        "🛡️ Smart error correction levels: 4-tier correction settings balancing complexity and fault tolerance",
+        "📁 Dual format export: PNG bitmap and SVG vector format download support",
+        "⚡ Real-time generation with instant preview and download capabilities",
+        "🔍 Automatic format validation ensuring generated QR codes are scannable",
+        "📱 Mobile-optimized responsive design for use anytime, anywhere"
+      ],
+      "faq": [
+        {
+          "question": "What content types does the QR code support? How to optimize for different types?",
+          "answer": "Our QR code generator supports plain text, website URLs, phone numbers, email addresses, WiFi configuration information, contact information (vCard), and other content types. For URLs, we recommend using short links to reduce complexity; WiFi configuration can directly input network name and password; contact information supports standard vCard format ensuring recognition across various devices."
+        },
+        {
+          "question": "How to choose the appropriate QR code size? What are the usage scenarios for different sizes?",
+          "answer": "128x128: Suitable for small displays and mobile screens; 256x256: Standard size for general digital use; 512x512: Suitable for printing on business cards and flyers; 1024x1024: High-resolution for large print materials and banners. Choose size based on actual usage scenario to ensure optimal scanning experience."
+        },
+        {
+          "question": "What is error correction level and how to choose it?",
+          "answer": "Error correction allows QR codes to remain scannable even when partially damaged: L (7%): Fastest generation, suitable for clean environments; M (15%): Balanced choice for general use; Q (25%): Good fault tolerance for outdoor use; H (30%): Maximum tolerance for harsh environments. Higher levels create more complex patterns."
+        },
+        {
+          "question": "What should I consider when setting custom colors?",
+          "answer": "Color selection principles: 1) Maintain sufficient contrast between foreground and background; 2) Dark foreground, light background works best; 3) Avoid low-contrast color combinations like yellow on white; 4) Test scan before use; 5) Consider printing effects and color accuracy; 6) Some scanners may have color recognition limitations."
+        },
+        {
+          "question": "What's the difference between PNG and SVG formats? How to choose?",
+          "answer": "PNG format: Bitmap format suitable for direct use in documents, websites, and applications; fixed resolution may blur when enlarged. SVG format: Vector format that scales infinitely without quality loss; suitable for print materials and responsive design; smaller file size, editable with design software; recommended for professional design needs."
+        }
+      ],
       "meta": {
         "title": "QR Code Generator",
         "description": "Online QR code generation tool. Support custom size, color and error correction level to generate high-quality PNG/SVG format QR codes.",
@@ -621,6 +1207,39 @@
       "tip3_desc": "Multiple template styles available for different design needs",
       "tip4_title": "Export Usage",
       "tip4_desc": "Generated SVG can be used directly in web development or design files",
+      "introduction": "SVG Placeholder Generator is a professional vector placeholder image creation tool that supports rapid generation of SVG placeholder images in various sizes and styles. As a vector format, SVG (Scalable Vector Graphics) offers infinite scaling without quality loss, small file sizes, and CSS style adjustability, making it an ideal choice for modern web development. This tool provides multiple preset templates, supports custom dimensions, text, colors, and background styles, and the generated SVG code can be directly embedded in HTML or used as design placeholder images, greatly improving development and design efficiency.",
+      "features": [
+        "📏 Flexible size control: supports arbitrary dimensions from 50-2000 pixels",
+        "🎨 Rich template styles: simple, gradient, grid, dots, lines and other background templates",
+        "✏️ Custom text content: supports placeholder text and dynamic size variable display",
+        "🎯 Precise color control: foreground and background HSL color space fine adjustment",
+        "📝 Font size adjustment: 12-72 pixel font size slider control",
+        "⚡ Real-time preview with instant generation and preview effects",
+        "📋 One-click copy SVG code for direct use in projects",
+        "💾 SVG file download for convenient saving and sharing"
+      ],
+      "faq": [
+        {
+          "question": "What advantages do SVG placeholders have over traditional bitmaps? What scenarios are they suitable for?",
+          "answer": "SVG placeholders have vector characteristics, can scale infinitely without quality loss, smaller file sizes, and support CSS style control. They're especially suitable for responsive web design, high-resolution screen display, print materials, icon design, and other scenarios. Compared to PNG/JPG bitmaps, SVG maintains clear display effects across different devices and resolutions."
+        },
+        {
+          "question": "How to use dynamic variables in placeholder text? What variables are available?",
+          "answer": "The tool supports dynamic size variables: {width} displays current width value, {height} displays current height value. For example, setting text to \"{width} × {height}\" will automatically display \"400 × 300\" for a 400×300 image. This feature helps create meaningful and informative placeholder images."
+        },
+        {
+          "question": "What's the difference between different template styles? How to choose the right template?",
+          "answer": "Simple style: Pure color background, suitable for general placeholders; Gradient style: Adds visual appeal, suitable for design previews; Grid style: Helps align and measure, suitable for layout design; Dots style: Subtle pattern effect, suitable for texture backgrounds; Lines style: Modern minimalist feel, suitable for contemporary designs. Choose based on design requirements and usage scenarios."
+        },
+        {
+          "question": "How to use generated SVG in projects? What are the integration methods?",
+          "answer": "Multiple usage methods: 1) Copy SVG code directly into HTML; 2) Save as .svg file and reference via <img> tag; 3) Use as CSS background-image; 4) Import into design software for editing; 5) Embed in React/Vue components. SVG format has excellent compatibility across modern browsers."
+        },
+        {
+          "question": "Can I modify colors and styles after generating SVG?",
+          "answer": "Yes, SVG is XML-based text format that's easily editable. You can: 1) Modify colors by changing fill and stroke attributes in the code; 2) Adjust sizes by modifying width and height; 3) Change text content by editing <text> elements; 4) Use design software like Illustrator for visual editing; 5) Apply CSS styles for dynamic effects."
+        }
+      ],
       "meta": {
         "title": "SVG Placeholder Generator",
         "description": "Online SVG placeholder image generation tool. Support custom dimensions, text, colors and template styles for quick placeholder creation.",
@@ -662,6 +1281,39 @@
       "tip3_desc": "HMAC security depends on the confidentiality of the secret key",
       "tip4_title": "Application Scenarios",
       "tip4_desc": "Commonly used for API signatures, JWT verification, data integrity verification",
+      "introduction": "HMAC Generator is a professional Hash-based Message Authentication Code generation tool. HMAC combines cryptographic hash functions with secret keys to provide message integrity verification and authentication assurance. As a security algorithm defined by RFC 2104 standards, HMAC is widely used in API security authentication, JWT token verification, digital signatures, and other critical security scenarios. This tool supports multiple secure hash algorithms, provides flexible output formats, and all computation processes are completed locally to ensure key and data security.",
+      "features": [
+        "🔐 Multiple secure hash algorithm support: SHA-1, SHA-256, SHA-384, SHA-512",
+        "🔑 Random key generation functionality providing high-strength encryption keys",
+        "📝 Multiple output format support: hexadecimal, Base64, binary display",
+        "⚡ Real-time HMAC calculation with instant authentication code generation",
+        "🔍 HMAC verification functionality supporting message integrity checking",
+        "📋 One-click copy of HMAC values and keys for easy management",
+        "🛡️ Local computation ensuring complete privacy protection",
+        "📱 Responsive design with perfect cross-platform compatibility"
+      ],
+      "faq": [
+        {
+          "question": "What is HMAC? How is it different from regular hash functions?",
+          "answer": "HMAC (Hash-based Message Authentication Code) is a message authentication code based on hash functions combined with secret keys. Unlike regular hash functions, HMAC requires a key to participate in computation, providing message integrity verification and sender identity authentication. Even if attackers know the original message and HMAC value, they cannot forge valid HMAC without the key."
+        },
+        {
+          "question": "Which HMAC algorithm should I choose? What are the security differences?",
+          "answer": "SHA-1: Basic security, suitable for low-security scenarios; SHA-256: Current mainstream standard, recommended for general applications; SHA-384/SHA-512: High security, suitable for sensitive data and long-term protection. Higher bit algorithms provide better security but slightly slower computation. We recommend SHA-256 or above for new projects."
+        },
+        {
+          "question": "How to securely generate and manage HMAC keys?",
+          "answer": "Key generation: Use cryptographically secure random number generators, recommended length ≥32 bytes; Key management: 1) Store in secure locations, never hardcode in source code; 2) Use environment variables or dedicated key management systems; 3) Regular key rotation; 4) Separate keys for different purposes; 5) Secure transmission channels for key distribution."
+        },
+        {
+          "question": "What are common HMAC application scenarios?",
+          "answer": "API authentication: Generate request signatures to prevent tampering; JWT tokens: Verify token authenticity and integrity; Webhook verification: Ensure webhook requests come from legitimate sources; Data integrity: Verify data hasn't been modified during transmission; Password storage: Enhance password security (combined with salt)."
+        },
+        {
+          "question": "How to verify HMAC correctness? What are the verification steps?",
+          "answer": "Verification steps: 1) Use the same key and algorithm to recalculate HMAC for the original message; 2) Compare the calculated value with the received HMAC; 3) If identical, verification passes; if different, message may be tampered with or key incorrect. Time-constant comparison should be used to prevent timing attacks."
+        }
+      ],
       "meta": {
         "title": "HMAC Generator",
         "description": "Online HMAC generation tool. Support multiple hash algorithms to generate message authentication codes for data integrity and identity verification.",
@@ -685,13 +1337,13 @@
       "network_error": "Network connection error",
       "info": {
         "basic": "Basic Information",
-        "location": "Geographical Location", 
+        "location": "Geographical Location",
         "network": "Network Information",
         "security": "Security Information",
         "ip_address": "IP Address",
         "country": "Country",
         "region": "Region",
-        "city": "City", 
+        "city": "City",
         "postal_code": "Postal Code",
         "latitude": "Latitude",
         "longitude": "Longitude",
@@ -710,11 +1362,61 @@
         "export_json": "Export JSON",
         "clear_results": "Clear Results"
       },
+      "introduction": "IP Address Lookup Tool is a professional network geolocation analysis tool that can quickly obtain detailed information about any IP address. Including geographic location, network service providers, timezone information, proxy detection, and other multi-dimensional data. Widely used in network security analysis, visitor statistics, geographical restrictions, fraud detection, and other scenarios. Supports both IPv4 and IPv6 address queries, providing accurate geolocation and network topology information, making it an essential tool for network administrators and developers.",
+      "features": [
+        "🌍 Global IP address database covering IPv4 and IPv6",
+        "📍 Precise geolocation including country, region, and city information",
+        "🏢 Detailed ISP information showing network providers and organizations",
+        "🕒 Timezone information query supporting global timezone display",
+        "🛡️ Proxy and VPN detection identifying anonymous networks",
+        "📱 Mobile network identification, distinguishing carriers and network types",
+        "⚡ Real-time query response with millisecond-level data return",
+        "📋 One-click copy results with multi-format export support",
+        "🔍 Batch query support for improved work efficiency",
+        "🔒 Privacy protection, no query history recorded"
+      ],
+      "faq": [
+        {
+          "question": "How accurate is IP address geolocation?",
+          "answer": "IP geolocation accuracy depends on database quality and IP allocation methods: 1) Country-level accuracy is typically above 95%; 2) City-level accuracy is approximately 70-80%; 3) Corporate dedicated IP locations are more accurate; 4) Mobile network IPs may have deviations; 5) VPN and proxy IPs show server locations rather than real locations. We use multiple authoritative data sources to ensure data accuracy."
+        },
+        {
+          "question": "Why do different IP lookup tools show different results?",
+          "answer": "Result differences occur because: 1) Different data providers and update frequencies; 2) Different data collection methods and accuracy; 3) IP address reassignment and changes; 4) Regional database differences; 5) Corporate network proxy effects. We recommend cross-referencing multiple sources for important decisions."
+        },
+        {
+          "question": "Can I detect if an IP is using VPN or proxy?",
+          "answer": "Yes, our tool can detect most VPN and proxy services by: 1) Comparing with known VPN/proxy IP databases; 2) Analyzing network characteristics and response patterns; 3) Detecting anonymous network signatures; 4) Identifying datacenter vs residential IP ranges. However, advanced VPN services may still evade detection."
+        },
+        {
+          "question": "Is it legal to look up IP addresses? What are the privacy considerations?",
+          "answer": "IP address lookup using public databases is generally legal as IP addresses are considered public information. However, usage should comply with: 1) Local privacy laws and regulations; 2) Service provider terms of use; 3) Ethical usage principles; 4) Not for illegal tracking or harassment; 5) Respect user privacy rights. Use this information responsibly."
+        },
+        {
+          "question": "How to use IP lookup for website security and fraud prevention?",
+          "answer": "Security applications include: 1) Detecting suspicious login locations; 2) Identifying high-risk countries or regions; 3) Blocking known malicious IP ranges; 4) Analyzing traffic patterns and anomalies; 5) Implementing geographical access controls; 6) Fraud detection in e-commerce; 7) Network intrusion investigation. Combine with other security measures for comprehensive protection."
+        }
+      ],
       "meta": {
         "title": "IP Address Lookup Tool",
         "description": "Online IP address lookup tool. Get geographical location, ISP information, timezone and other detailed information of IP addresses.",
         "keywords": "IP lookup,IP address,geolocation,network information,ISP query,online tool"
       }
     }
+  },
+  "seo": {
+    "tool_introduction": "Tool Introduction",
+    "tool_features": "Key Features",
+    "frequently_asked_questions": "Frequently Asked Questions",
+    "related_tools": "Related Tools",
+    "all_tools": "All Tools",
+    "more_tools": "More Tools",
+    "tools_in_category": "Tools in Category",
+    "popular_tools": "Popular Tools",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "view_tool": "View Tool",
+    "try_now": "Try Now",
+    "showing_tools": "Showing {current} of {total} tools"
   }
 }

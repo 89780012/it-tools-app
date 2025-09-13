@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Input } from "@/components/ui/input"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react'
 
 type QRSize = 128 | 256 | 512 | 1024
@@ -320,6 +321,9 @@ export default function QRCodeGeneratorPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* SEO优化内容 */}
+      <ToolSEOSection toolId="qr-code-generator" />
     </div>
   )
 }

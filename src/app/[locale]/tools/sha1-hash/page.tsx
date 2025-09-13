@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function SHA1HashPage() {
   const t = useTranslations();
@@ -61,7 +62,7 @@ export default function SHA1HashPage() {
   return (
     <div className="container mx-auto p-6 space-y-6">
       <BackToHome />
-      
+
       <div>
         <h1 className="text-3xl font-bold">{t("tools.sha1-hash.name")}</h1>
         <p className="text-muted-foreground mt-2">
@@ -87,7 +88,7 @@ export default function SHA1HashPage() {
               placeholder={t("tools.sha1-hash.placeholder")}
               className="min-h-[300px] font-mono text-sm"
             />
-            
+
             <div className="flex gap-2">
               <Button onClick={generateSHA1} className="flex-1">
                 <Hash className="h-4 w-4 mr-2" />
@@ -114,20 +115,20 @@ export default function SHA1HashPage() {
               placeholder={t("tools.sha1-hash.output_placeholder")}
               className="min-h-[300px] font-mono text-sm bg-muted/50"
             />
-            
+
             <div className="flex gap-2">
-              <Button 
-                onClick={copyToClipboard} 
-                variant="outline" 
+              <Button
+                onClick={copyToClipboard}
+                variant="outline"
                 disabled={!output}
                 className="flex-1"
               >
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button 
-                onClick={downloadHash} 
-                variant="outline" 
+              <Button
+                onClick={downloadHash}
+                variant="outline"
                 disabled={!output}
                 size="icon"
               >
@@ -137,6 +138,9 @@ export default function SHA1HashPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="sha1-hash" />
     </div>
   )
 }

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useTranslations } from "next-intl"
 import { ToolContainer } from "@/components/tool-container"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -357,6 +358,7 @@ export default function JsonVisualizerPage() {
           </CardContent>
         </Card>
       </div>
+      <ToolSEOSection toolId="json-visualizer" />
     </ToolContainer>
   )
 }

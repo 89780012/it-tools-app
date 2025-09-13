@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function UrlEncoderDecoderPage() {
   const t = useTranslations();
@@ -172,35 +173,9 @@ export default function UrlEncoderDecoderPage() {
           </CardContent>
         </Card>
       </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>使用说明</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground space-y-2">
-            <p>• <strong>编码</strong>：将特殊字符转换为 URL 安全格式（%编码）</p>
-            <p>• <strong>解码</strong>：将 URL 编码字符串还原为原始文本</p>
-            <p>• 使用 encodeURIComponent / decodeURIComponent 标准</p>
-            <p>• 适用于 URL 参数、表单数据、AJAX 请求等场景</p>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle>常见编码示例</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-muted-foreground space-y-2">
-            <div className="font-mono space-y-1">
-              <p><span className="text-primary">空格</span> → %20</p>
-              <p><span className="text-primary">中文</span> → %E4%B8%AD%E6%96%87</p>
-              <p><span className="text-primary">&</span> → %26</p>
-              <p><span className="text-primary">=</span> → %3D</p>
-              <p><span className="text-primary">?</span> → %3F</p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="url-encoder-decoder" />
     </div>
   )
 }

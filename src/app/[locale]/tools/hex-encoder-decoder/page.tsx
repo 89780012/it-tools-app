@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function HexEncoderDecoderPage() {
   const t = useTranslations();
@@ -28,7 +29,7 @@ export default function HexEncoderDecoderPage() {
     try {
       const encoder = new TextEncoder()
       const bytes = encoder.encode(input)
-      const hexString = Array.from(bytes, byte => 
+      const hexString = Array.from(bytes, byte =>
         byte.toString(16).padStart(2, '0')
       ).join('')
       setOutput(hexString)
@@ -52,11 +53,11 @@ export default function HexEncoderDecoderPage() {
     try {
       // Remove spaces and validate hex format
       const hexString = input.replace(/\s+/g, '')
-      
+
       if (!/^[0-9a-fA-F]*$/.test(hexString)) {
         throw new Error("Invalid hex format")
       }
-      
+
       if (hexString.length % 2 !== 0) {
         throw new Error("Hex string must have even length")
       }
@@ -65,7 +66,7 @@ export default function HexEncoderDecoderPage() {
       for (let i = 0; i < hexString.length; i += 2) {
         bytes[i / 2] = parseInt(hexString.substr(i, 2), 16)
       }
-      
+
       const decoder = new TextDecoder('utf-8')
       const decodedString = decoder.decode(bytes)
       setOutput(decodedString)
@@ -108,7 +109,7 @@ export default function HexEncoderDecoderPage() {
   return (
     <div className="container mx-auto p-6 space-y-6">
       <BackToHome />
-      
+
       <div>
         <h1 className="text-3xl font-bold">{t("tools.hex-encoder-decoder.name")}</h1>
         <p className="text-muted-foreground mt-2">
@@ -140,11 +141,11 @@ export default function HexEncoderDecoderPage() {
                 !isValid && "border-destructive"
               )}
             />
-            
+
             {error && (
               <div className="text-destructive text-sm">{error}</div>
             )}
-            
+
             <div className="flex gap-2">
               <Button onClick={encodeToHex} className="flex-1">
                 {t("tools.hex-encoder-decoder.encode")}
@@ -173,20 +174,20 @@ export default function HexEncoderDecoderPage() {
               placeholder={t("tools.hex-encoder-decoder.output_placeholder")}
               className="min-h-[300px] font-mono text-sm bg-muted/50"
             />
-            
+
             <div className="flex gap-2">
-              <Button 
-                onClick={copyToClipboard} 
-                variant="outline" 
+              <Button
+                onClick={copyToClipboard}
+                variant="outline"
                 disabled={!output}
                 className="flex-1"
               >
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button 
-                onClick={downloadResult} 
-                variant="outline" 
+              <Button
+                onClick={downloadResult}
+                variant="outline"
                 disabled={!output}
                 size="icon"
               >
@@ -196,6 +197,9 @@ export default function HexEncoderDecoderPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="hex-encoder-decoder" />
     </div>
   )
 }

@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function HmacGeneratorPage() {
   const t = useTranslations();
@@ -293,6 +294,8 @@ export default function HmacGeneratorPage() {
           <p>• <strong>{t("tools.hmac-generator.tip4_title")}</strong>：{t("tools.hmac-generator.tip4_desc")}</p>
         </CardContent>
       </Card>
+
+      <ToolSEOSection toolId="hmac-generator" />
     </div>
   )
 }

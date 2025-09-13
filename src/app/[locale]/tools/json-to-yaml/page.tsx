@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import * as yaml from 'js-yaml'
 import {BackToHome} from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function JsonToYamlPage() {
   const t = useTranslations();
@@ -159,6 +160,9 @@ export default function JsonToYamlPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO内容区域 */}
+      <ToolSEOSection toolId="json-to-yaml" />
     </div>
   )
 }

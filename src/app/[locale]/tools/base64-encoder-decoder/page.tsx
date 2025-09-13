@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function Base64EncoderDecoderPage() {
   const t = useTranslations();
@@ -170,18 +171,9 @@ export default function Base64EncoderDecoderPage() {
           </CardContent>
         </Card>
       </div>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle>使用说明</CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p>• <strong>编码</strong>：将文本转换为 Base64 格式，用于数据传输或存储</p>
-          <p>• <strong>解码</strong>：将 Base64 字符串还原为原始文本</p>
-          <p>• Base64 常用于 Web API、邮件传输、数据 URL 等场景</p>
-          <p>• 支持 UTF-8 字符编码，确保中文等多字节字符正确处理</p>
-        </CardContent>
-      </Card>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="base64-encoder-decoder" />
     </div>
   )
 }

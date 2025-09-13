@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function BinaryEncoderDecoderPage() {
   const t = useTranslations();
@@ -192,6 +193,9 @@ export default function BinaryEncoderDecoderPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="binary-encoder-decoder" />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { IPInfo, IPAPIError, getIPInfo } from '@/lib/ip-api';
 import IPInputSection from './ip-input-section';
 import IPResultSection from './ip-result-section';
+import { ToolSEOSection } from '@/components/seo/tool-seo-section';
 
 export default function IPLookupTool() {
   const t = useTranslations('tools.ip-lookup');
@@ -108,7 +109,7 @@ export default function IPLookupTool() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto space-y-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* 左侧：输入区域 */}
         <div className="space-y-6">
@@ -130,6 +131,9 @@ export default function IPLookupTool() {
           />
         </div>
       </div>
+
+      {/* SEO Section */}
+      <ToolSEOSection toolId="ip-lookup" />
 
       {/* 移动端单列布局优化 */}
       <style jsx>{`

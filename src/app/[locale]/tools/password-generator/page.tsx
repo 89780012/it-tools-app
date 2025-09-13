@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { useTranslations } from 'next-intl';
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function PasswordGeneratorPage() {
   const t = useTranslations();
@@ -252,6 +253,9 @@ export default function PasswordGeneratorPage() {
           <p>• <strong>{t("tools.password-generator.tip4_title")}</strong>：{t("tools.password-generator.tip4_desc")}</p>
         </CardContent>
       </Card>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="password-generator" />
     </div>
   )
 }

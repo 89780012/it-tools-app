@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function MD5HashPage() {
   const t = useTranslations();
@@ -151,6 +152,9 @@ export default function MD5HashPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="md5-hash" />
     </div>
   )
 }

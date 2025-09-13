@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import {BackToHome} from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 interface JsonRow {
   [key: string]: unknown
@@ -278,6 +279,9 @@ export default function JsonToCsvPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* SEO内容区域 */}
+      <ToolSEOSection toolId="json-to-csv" />
     </div>
   )
 }

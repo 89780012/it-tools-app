@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { useTranslations } from 'next-intl'
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 type TemplateType = 'simple' | 'gradient' | 'grid' | 'dots' | 'lines'
 
@@ -359,6 +360,9 @@ export default function SVGPlaceholderGeneratorPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* SEO优化内容 */}
+      <ToolSEOSection toolId="svg-placeholder-generator" />
     </div>
   )
 }

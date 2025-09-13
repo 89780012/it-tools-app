@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Copy, Download, Upload, RotateCcw, FileText } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 function jsonToXml(json: unknown, rootElement = "root", indent = 0): string {
   const spaces = "  ".repeat(indent)
@@ -267,6 +268,9 @@ export default function JsonToXmlPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="json-to-xml" />
     </ToolContainer>
   )
 }

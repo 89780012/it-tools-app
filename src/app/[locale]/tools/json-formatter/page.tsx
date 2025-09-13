@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import {BackToHome} from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function JsonFormatterPage() {
   const t = useTranslations();
@@ -121,11 +122,11 @@ export default function JsonFormatterPage() {
                 !isValid && "border-destructive"
               )}
             />
-            
+
             {error && (
               <div className="text-destructive text-sm">{error}</div>
             )}
-            
+
             <div className="flex gap-2">
               <Button onClick={formatJson} className="flex-1">
                 {t("common.format")}
@@ -154,20 +155,20 @@ export default function JsonFormatterPage() {
               placeholder={t("tools.json-formatter.output_placeholder")}
               className="min-h-[300px] font-mono text-sm bg-muted/50"
             />
-            
+
             <div className="flex gap-2">
-              <Button 
-                onClick={copyToClipboard} 
-                variant="outline" 
+              <Button
+                onClick={copyToClipboard}
+                variant="outline"
                 disabled={!output}
                 className="flex-1"
               >
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button 
-                onClick={downloadJson} 
-                variant="outline" 
+              <Button
+                onClick={downloadJson}
+                variant="outline"
                 disabled={!output}
                 size="icon"
               >
@@ -177,6 +178,9 @@ export default function JsonFormatterPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* SEO内容区域 */}
+      <ToolSEOSection toolId="json-formatter" />
     </div>
   )
 }

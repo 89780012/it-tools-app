@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { BackToHome } from "@/components/back-to-home"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function AesEncryptDecryptPage() {
   const t = useTranslations();
@@ -316,6 +317,9 @@ export default function AesEncryptDecryptPage() {
           <p>• <strong>{t("tools.aes-encrypt-decrypt.tip4_title")}</strong>：{t("tools.aes-encrypt-decrypt.tip4_desc")}</p>
         </CardContent>
       </Card>
+
+      {/* SEO 优化内容 */}
+      <ToolSEOSection toolId="aes-encrypt-decrypt" />
     </div>
   )
 }

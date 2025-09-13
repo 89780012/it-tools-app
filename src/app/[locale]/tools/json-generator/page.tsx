@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useTranslations } from "next-intl"
 import { ToolContainer } from "@/components/tool-container"
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -87,7 +88,7 @@ class SimpleDataGenerator {
   }
 
   private getRandomUuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       const r = Math.random() * 16 | 0
       const v = c === 'x' ? r : (r & 0x3 | 0x8)
       return v.toString(16)
@@ -166,7 +167,7 @@ export default function JsonGeneratorPage() {
   }
 
   const updateField = (index: number, updates: Partial<FieldConfig>) => {
-    setFields(fields.map((field, i) => 
+    setFields(fields.map((field, i) =>
       i === index ? { ...field, ...updates } : field
     ))
   }
@@ -183,7 +184,7 @@ export default function JsonGeneratorPage() {
 
       const result = outputFormat === "array" ? data : { data, count: data.length }
       setOutput(JSON.stringify(result, null, 2))
-      
+
       toast({
         title: t("tools.json-generator.success"),
         description: t("tools.json-generator.generation_complete", { count: recordCount })
@@ -245,216 +246,222 @@ export default function JsonGeneratorPage() {
   }
 
   return (
-    <ToolContainer
-      title={t("tools.json-generator.name")}
-      description={t("tools.json-generator.description")}
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* 配置区域 */}
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Database className="h-5 w-5" />
-              {t("tools.json-generator.configuration")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {/* 基本设置 */}
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="recordCount">{t("tools.json-generator.record_count")}</Label>
-                <Input
-                  id="recordCount"
-                  type="number"
-                  min="1"
-                  max="1000"
-                  value={recordCount}
-                  onChange={(e) => setRecordCount(parseInt(e.target.value) || 1)}
-                />
+    <div>
+      <ToolContainer
+        title={t("tools.json-generator.name")}
+        description={t("tools.json-generator.description")}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* 配置区域 */}
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Database className="h-5 w-5" />
+                {t("tools.json-generator.configuration")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {/* 基本设置 */}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="recordCount">{t("tools.json-generator.record_count")}</Label>
+                  <Input
+                    id="recordCount"
+                    type="number"
+                    min="1"
+                    max="1000"
+                    value={recordCount}
+                    onChange={(e) => setRecordCount(parseInt(e.target.value) || 1)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="outputFormat">{t("tools.json-generator.output_format")}</Label>
+                  <Select value={outputFormat} onValueChange={(value: "object" | "array") => setOutputFormat(value)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="array">{t("tools.json-generator.array_format")}</SelectItem>
+                      <SelectItem value="object">{t("tools.json-generator.object_format")}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
-              <div>
-                <Label htmlFor="outputFormat">{t("tools.json-generator.output_format")}</Label>
-                <Select value={outputFormat} onValueChange={(value: "object" | "array") => setOutputFormat(value)}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="array">{t("tools.json-generator.array_format")}</SelectItem>
-                    <SelectItem value="object">{t("tools.json-generator.object_format")}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
 
-            {/* 字段配置表格 */}
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <Label>{t("tools.json-generator.fields")}</Label>
-                <Button variant="outline" size="sm" onClick={addField}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  {t("tools.json-generator.add_field")}
+              {/* 字段配置表格 */}
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <Label>{t("tools.json-generator.fields")}</Label>
+                  <Button variant="outline" size="sm" onClick={addField}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    {t("tools.json-generator.add_field")}
+                  </Button>
+                </div>
+
+                <div className="border rounded-lg">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead className="w-[200px]">{t("tools.json-generator.field_name")}</TableHead>
+                        <TableHead className="w-[150px]">{t("tools.json-generator.field_type")}</TableHead>
+                        <TableHead className="w-[100px]">{t("tools.json-generator.min_value")}</TableHead>
+                        <TableHead className="w-[100px]">{t("tools.json-generator.max_value")}</TableHead>
+                        <TableHead className="w-[100px]">{t("tools.json-generator.length")}</TableHead>
+                        <TableHead className="w-[80px]">{t("common.actions")}</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {fields.map((field, index) => (
+                        <TableRow key={index}>
+                          <TableCell>
+                            <Input
+                              placeholder={t("tools.json-generator.field_name")}
+                              value={field.name}
+                              onChange={(e) => updateField(index, { name: e.target.value })}
+                              className="h-8"
+                            />
+                          </TableCell>
+                          <TableCell>
+                            <Select
+                              value={field.type}
+                              onValueChange={(value) => updateField(index, { type: value })}
+                            >
+                              <SelectTrigger className="h-8">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {fieldTypes.map(type => (
+                                  <SelectItem key={type.value} value={type.value}>
+                                    {type.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </TableCell>
+                          <TableCell>
+                            {field.type === 'number' ? (
+                              <Input
+                                type="number"
+                                placeholder="0"
+                                value={field.min || ''}
+                                onChange={(e) => updateField(index, { min: parseInt(e.target.value) || 0 })}
+                                className="h-8"
+                              />
+                            ) : (
+                              <div className="text-center text-muted-foreground">-</div>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {field.type === 'number' ? (
+                              <Input
+                                type="number"
+                                placeholder="100"
+                                value={field.max || ''}
+                                onChange={(e) => updateField(index, { max: parseInt(e.target.value) || 100 })}
+                                className="h-8"
+                              />
+                            ) : (
+                              <div className="text-center text-muted-foreground">-</div>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {(field.type === 'string' || field.type === 'array') ? (
+                              <Input
+                                type="number"
+                                placeholder={field.type === 'string' ? '10' : '5'}
+                                value={field.count || ''}
+                                onChange={(e) => updateField(index, { count: parseInt(e.target.value) || 10 })}
+                                className="h-8"
+                              />
+                            ) : (
+                              <div className="text-center text-muted-foreground">-</div>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => removeField(index)}
+                              disabled={fields.length === 1}
+                              className="h-8 w-8 p-0"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+
+              <div className="flex gap-2">
+                <Button onClick={generateData} className="flex-1">
+                  <Shuffle className="h-4 w-4 mr-2" />
+                  {t("tools.json-generator.generate_button")}
+                </Button>
+                <Button variant="outline" onClick={handleClear}>
+                  <RotateCcw className="h-4 w-4 mr-2" />
+                  {t("common.clear")}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 输出区域 */}
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Database className="h-5 w-5" />
+                {t("common.output")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleCopy}
+                  disabled={!output}
+                  className="w-full sm:w-auto"
+                >
+                  <Copy className="h-4 w-4 mr-2" />
+                  {t("common.copy")}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleDownload}
+                  disabled={!output}
+                  className="w-full sm:w-auto"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  {t("common.download")}
                 </Button>
               </div>
 
-              <div className="border rounded-lg">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead className="w-[200px]">{t("tools.json-generator.field_name")}</TableHead>
-                      <TableHead className="w-[150px]">{t("tools.json-generator.field_type")}</TableHead>
-                      <TableHead className="w-[100px]">{t("tools.json-generator.min_value")}</TableHead>
-                      <TableHead className="w-[100px]">{t("tools.json-generator.max_value")}</TableHead>
-                      <TableHead className="w-[100px]">{t("tools.json-generator.length")}</TableHead>
-                      <TableHead className="w-[80px]">{t("common.actions")}</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {fields.map((field, index) => (
-                      <TableRow key={index}>
-                        <TableCell>
-                          <Input
-                            placeholder={t("tools.json-generator.field_name")}
-                            value={field.name}
-                            onChange={(e) => updateField(index, { name: e.target.value })}
-                            className="h-8"
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <Select
-                            value={field.type}
-                            onValueChange={(value) => updateField(index, { type: value })}
-                          >
-                            <SelectTrigger className="h-8">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {fieldTypes.map(type => (
-                                <SelectItem key={type.value} value={type.value}>
-                                  {type.label}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </TableCell>
-                        <TableCell>
-                          {field.type === 'number' ? (
-                            <Input
-                              type="number"
-                              placeholder="0"
-                              value={field.min || ''}
-                              onChange={(e) => updateField(index, { min: parseInt(e.target.value) || 0 })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div className="text-center text-muted-foreground">-</div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {field.type === 'number' ? (
-                            <Input
-                              type="number"
-                              placeholder="100"
-                              value={field.max || ''}
-                              onChange={(e) => updateField(index, { max: parseInt(e.target.value) || 100 })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div className="text-center text-muted-foreground">-</div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {(field.type === 'string' || field.type === 'array') ? (
-                            <Input
-                              type="number"
-                              placeholder={field.type === 'string' ? '10' : '5'}
-                              value={field.count || ''}
-                              onChange={(e) => updateField(index, { count: parseInt(e.target.value) || 10 })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div className="text-center text-muted-foreground">-</div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => removeField(index)}
-                            disabled={fields.length === 1}
-                            className="h-8 w-8 p-0"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </div>
+              <Textarea
+                placeholder={t("tools.json-generator.output_placeholder")}
+                value={output}
+                readOnly
+                className="min-h-[400px] font-mono text-sm bg-gray-50 dark:bg-gray-900"
+              />
 
-            <div className="flex gap-2">
-              <Button onClick={generateData} className="flex-1">
-                <Shuffle className="h-4 w-4 mr-2" />
-                {t("tools.json-generator.generate_button")}
-              </Button>
-              <Button variant="outline" onClick={handleClear}>
-                <RotateCcw className="h-4 w-4 mr-2" />
-                {t("common.clear")}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* 输出区域 */}
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Database className="h-5 w-5" />
-              {t("common.output")}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCopy}
-                disabled={!output}
-                className="w-full sm:w-auto"
-              >
-                <Copy className="h-4 w-4 mr-2" />
-                {t("common.copy")}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleDownload}
-                disabled={!output}
-                className="w-full sm:w-auto"
-              >
-                <Download className="h-4 w-4 mr-2" />
-                {t("common.download")}
-              </Button>
-            </div>
-
-            <Textarea
-              placeholder={t("tools.json-generator.output_placeholder")}
-              value={output}
-              readOnly
-              className="min-h-[400px] font-mono text-sm bg-gray-50 dark:bg-gray-900"
-            />
-
-            {output && (
-              <div className="text-sm text-gray-600 dark:text-gray-400">
-                {t("tools.json-generator.output_info", { 
-                  size: Math.round(new Blob([output]).size / 1024 * 100) / 100 
-                })}
-              </div>
-            )}
-          </CardContent>
-        </Card>
+              {output && (
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  {t("tools.json-generator.output_info", {
+                    size: Math.round(new Blob([output]).size / 1024 * 100) / 100
+                  })}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+      </ToolContainer>
+      <div className="container mx-auto p-6 space-y-6">
+        <ToolSEOSection toolId="json-generator" />
       </div>
-    </ToolContainer>
+    </div>
+
   )
 }
