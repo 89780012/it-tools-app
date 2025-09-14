@@ -4,7 +4,6 @@ import { useState } from "react"
 import {
   Code,
   ChevronRight,
-  ChevronDown,
   Wrench,
   Table,
   FileText,
@@ -18,12 +17,35 @@ import {
   ShieldCheck,
   KeyRound,
   MapPin,
-  QrCode
+  QrCode,
+  Fingerprint,
+  ScanLine,
+  Hexagon,
+  Key,
+  Lock,
+  ShieldEllipsis,
+  CodeXml,
+  SquareDashed
 } from "lucide-react"
-import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import { toolsConfig } from "@/lib/tools-config"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarHeader,
+} from "@/components/ui/sidebar"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 
 const toolIconMap = {
   code: Code,
@@ -40,7 +62,15 @@ const toolIconMap = {
   "key-round": KeyRound,
   "map-pin": MapPin,
   "qr-code": QrCode,
-  key: Hash, // 为密码生成器使用 hash 图标
+  // 新添加的唯一图标
+  fingerprint: Fingerprint,      // MD5 hash
+  "scan-line": ScanLine,         // SHA1 hash
+  hexagon: Hexagon,              // Hex encoder
+  key: Key,                      // Password generator
+  lock: Lock,                    // AES encrypt
+  "shield-ellipsis": ShieldEllipsis,  // HMAC generator
+  "code-xml": CodeXml,           // Base64 encoder
+  "square-dashed": SquareDashed, // SVG placeholder
 }
 
 export function AppSidebar() {
@@ -61,88 +91,87 @@ export function AppSidebar() {
   }
 
   return (
-    <div className="flex h-full w-64 flex-col border-r bg-background">
-      <div className="flex-1 overflow-auto p-4">
-        <div className="space-y-2">
-          <Link
-            href="/"
-            className={cn(
-              "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors",
-              "hover:bg-accent hover:text-accent-foreground",
-              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-              pathname === "/" && "bg-accent text-accent-foreground"
-            )}
-          >
-            <Wrench className="h-4 w-4" />
-            <span>{t("common.home")}</span>
-          </Link>
-          
-          {toolsConfig.map((category) => {
-            const isExpanded = expandedCategories.has(category.id)
-            
-            return (
-              <div key={category.id} className="space-y-1">
-                <button
-                  onClick={() => toggleCategory(category.id)}
-                  className={cn(
-                    "flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-all duration-200 ease-in-out",
-                    "hover:bg-accent hover:text-accent-foreground",
-                    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                  )}
-                >
-                  <div className="flex items-center space-x-2">
-                    <span>{t(`categories.${category.id}`)}</span>
-                  </div>
-                  {isExpanded ? (
-                    <ChevronDown className="h-4 w-4 transition-transform duration-200" />
-                  ) : (
-                    <ChevronRight className="h-4 w-4 transition-transform duration-200" />
-                  )}
-                </button>
-                
-                <div 
-                  className={cn(
-                    "ml-4 overflow-hidden transition-all duration-300 ease-in-out",
-                    isExpanded
-                      ? "max-h-96 opacity-100" 
-                      : "max-h-0 opacity-0"
-                  )}
-                >
-                  {category.tools.length > 0 ? (
-                    <div className="space-y-1 py-1">
-                      {category.tools.map((tool) => {
-                        const toolPath = `/tools/${tool.id}`
-                        const isActive = pathname === toolPath
-                        const ToolIcon = toolIconMap[tool.icon as keyof typeof toolIconMap]
-                        
-                        return (
-                          <Link
-                            key={tool.id}
-                            href={toolPath}
-                            className={cn(
-                              "flex w-full items-center space-x-2 rounded-lg px-3 py-2 text-left text-sm transition-all duration-200 ease-in-out",
-                              "hover:bg-accent hover:text-accent-foreground",
-                              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-                              isActive && "bg-accent text-accent-foreground"
-                            )}
-                          >
-                            {ToolIcon && <ToolIcon className="h-4 w-4" />}
-                            <div className="font-medium">{t(`tools.${tool.id}.name`)}</div>
-                          </Link>
-                        )
-                      })}
-                    </div>
-                  ) : (
-                    <div className="px-3 py-2 text-sm text-muted-foreground">
-                      {t('common.coming_soon')}
-                    </div>
-                  )}
+    <Sidebar variant="inset">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              size="lg"
+              asChild
+              isActive={pathname === "/"}
+            >
+              <Link href="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                  <Wrench className="size-4" />
                 </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">{t("common.home")}</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {t("header.subtitle")}
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+
+      <SidebarContent>
+        {toolsConfig.map((category) => {
+          const isExpanded = expandedCategories.has(category.id)
+
+          return (
+            <SidebarGroup key={category.id}>
+              <Collapsible
+                open={isExpanded}
+                onOpenChange={() => toggleCategory(category.id)}
+                className="group/collapsible"
+              >
+                <SidebarGroupLabel asChild>
+                  <CollapsibleTrigger className="flex w-full items-center justify-between">
+                    <span className="text-sidebar-foreground font-medium">
+                      {t(`categories.${category.id}`)}
+                    </span>
+                    <ChevronRight className="ml-auto size-4 shrink-0 transition-transform duration-300 ease-in-out group-data-[state=open]/collapsible:rotate-90" />
+                  </CollapsibleTrigger>
+                </SidebarGroupLabel>
+                <CollapsibleContent>
+                  <SidebarGroupContent>
+                    {category.tools.length > 0 ? (
+                      <SidebarMenu>
+                        {category.tools.map((tool) => {
+                          const toolPath = `/tools/${tool.id}`
+                          const isActive = pathname === toolPath
+                          const ToolIcon = toolIconMap[tool.icon as keyof typeof toolIconMap]
+
+                          return (
+                            <SidebarMenuItem key={tool.id}>
+                              <SidebarMenuButton
+                                asChild
+                                isActive={isActive}
+                                tooltip={t(`tools.${tool.id}.name`)}
+                              >
+                                <Link href={toolPath}>
+                                  {ToolIcon && <ToolIcon className="size-4" />}
+                                  <span className="font-medium">{t(`tools.${tool.id}.name`)}</span>
+                                </Link>
+                              </SidebarMenuButton>
+                            </SidebarMenuItem>
+                          )
+                        })}
+                      </SidebarMenu>
+                    ) : (
+                      <div className="px-2 py-1 text-sm text-muted-foreground">
+                        {t('common.coming_soon')}
+                      </div>
+                    )}
+                  </SidebarGroupContent>
+                </CollapsibleContent>
+              </Collapsible>
+            </SidebarGroup>
+          )
+        })}
+      </SidebarContent>
+    </Sidebar>
   )
 }

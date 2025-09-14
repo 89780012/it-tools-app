@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
-import {BackToHome} from "@/components/back-to-home"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function JsonFormatterPage() {
@@ -89,8 +88,6 @@ export default function JsonFormatterPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-
-      <BackToHome />
       <div>
         <h1 className="text-3xl font-bold">{t("tools.json-formatter.name")}</h1>
         <p className="text-muted-foreground mt-2">

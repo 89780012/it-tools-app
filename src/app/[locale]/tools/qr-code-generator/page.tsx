@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { useTranslations } from 'next-intl'
-import { BackToHome } from "@/components/back-to-home"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react'
 
@@ -136,8 +135,6 @@ export default function QRCodeGeneratorPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <BackToHome />
-      
       <div>
         <h1 className="text-3xl font-bold">{t("tools.qr-code-generator.name")}</h1>
         <p className="text-muted-foreground mt-2">

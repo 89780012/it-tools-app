@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from 'next-intl'
-import { BackToHome } from "@/components/back-to-home"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function MD5HashPage() {
@@ -75,8 +74,6 @@ export default function MD5HashPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <BackToHome />
-      
       <div>
         <h1 className="text-3xl font-bold">{t("tools.md5-hash.name")}</h1>
         <p className="text-muted-foreground mt-2">

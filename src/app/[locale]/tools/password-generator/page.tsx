@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { useTranslations } from 'next-intl';
-import { BackToHome } from "@/components/back-to-home"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function PasswordGeneratorPage() {
@@ -103,8 +102,6 @@ export default function PasswordGeneratorPage() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      <BackToHome />
-      
       <div>
         <h1 className="text-3xl font-bold">{t("tools.password-generator.name")}</h1>
         <p className="text-muted-foreground mt-2">

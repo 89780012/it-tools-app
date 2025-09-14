@@ -1,28 +1,16 @@
 "use client"
 
-import { useTranslations } from 'next-intl'
 import { ThemeToggle } from "./theme-toggle"
 import { LanguageToggle } from "./language-toggle"
-import { Wrench } from "lucide-react"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 
 export function Header() {
-  const t = useTranslations()
-
   return (
-    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center px-4">
-        <div className="mr-4 flex items-center space-x-2">
-          <Wrench className="h-6 w-6 text-primary" />
-          <div className="flex flex-col">
-            <h1 className="text-lg font-bold leading-tight">{t("header.title")}</h1>
-            <p className="text-xs text-muted-foreground">{t("header.subtitle")}</p>
-          </div>
-        </div>
-        
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <LanguageToggle />
-          <ThemeToggle />
-        </div>
+    <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <SidebarTrigger className="-ml-1" />
+      <div className="ml-auto flex items-center space-x-2">
+        <LanguageToggle />
+        <ThemeToggle />
       </div>
     </header>
   )

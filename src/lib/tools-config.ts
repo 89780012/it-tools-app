@@ -92,7 +92,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.base64-encoder-decoder.description",
         category: "text",
         path: "/tools/base64-encoder-decoder",
-        icon: "binary"
+        icon: "code-xml"
       },
       {
         id: "url-encoder-decoder",
@@ -116,7 +116,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.md5-hash.description",
         category: "crypto",
         path: "/tools/md5-hash",
-        icon: "hash"
+        icon: "fingerprint"
       },
       {
         id: "sha256-hash",
@@ -124,7 +124,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.sha256-hash.description",
         category: "crypto",
         path: "/tools/sha256-hash",
-        icon: "hash"
+        icon: "shield-check"
       },
       {
         id: "sha1-hash",
@@ -132,7 +132,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.sha1-hash.description",
         category: "crypto",
         path: "/tools/sha1-hash",
-        icon: "hash"
+        icon: "scan-line"
       },
       {
         id: "hex-encoder-decoder",
@@ -140,7 +140,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.hex-encoder-decoder.description",
         category: "crypto",
         path: "/tools/hex-encoder-decoder",
-        icon: "binary"
+        icon: "hexagon"
       },
       {
         id: "binary-encoder-decoder",
@@ -164,7 +164,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.aes-encrypt-decrypt.description",
         category: "crypto",
         path: "/tools/aes-encrypt-decrypt",
-        icon: "shield-check"
+        icon: "lock"
       },
       {
         id: "rsa-encrypt-decrypt",
@@ -180,7 +180,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.hmac-generator.description",
         category: "crypto",
         path: "/tools/hmac-generator",
-        icon: "hash"
+        icon: "shield-ellipsis"
       }
     ]
   },
@@ -220,7 +220,7 @@ export const toolsConfig: ToolCategory[] = [
         descriptionKey: "tools.svg-placeholder-generator.description",
         category: "image",
         path: "/tools/svg-placeholder-generator",
-        icon: "image"
+        icon: "square-dashed"
       }
     ]
   }

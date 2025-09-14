@@ -2,6 +2,7 @@
 
 import { Header } from "@/components/header"
 import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
 
 export default function LocaleLayoutClient({
   children,
@@ -9,16 +10,14 @@ export default function LocaleLayoutClient({
   children: React.ReactNode
 }) {
   return (
-    <div className="flex h-screen bg-background">
+    <SidebarProvider>
       <AppSidebar />
-      
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <SidebarInset>
         <Header />
-        
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto p-4">
           {children}
         </main>
-      </div>
-    </div>
+      </SidebarInset>
+    </SidebarProvider>
   )
 }
