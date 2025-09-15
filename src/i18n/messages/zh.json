@@ -77,6 +77,17 @@
     "image": "图片工具",
     "image_desc": "图片处理和转换工具"
   },
+  "changelog": {
+    "title": "更新日志",
+    "description": "查看项目的开发历程和功能更新记录",
+    "lastUpdated": "最后更新",
+    "footer": "持续更新中，敬请期待更多功能...",
+    "meta": {
+      "title": "更新日志 - IT工具集合",
+      "description": "IT工具集合项目的完整开发历程和功能更新记录",
+      "keywords": "更新日志,版本历史,开发历程,功能更新,项目变更"
+    }
+  },
   "tools": {
     "json-formatter": {
       "name": "JSON格式化器",

@@ -77,6 +77,17 @@
     "image": "Image Tools",
     "image_desc": "Image processing and conversion tools"
   },
+  "changelog": {
+    "title": "Changelog",
+    "description": "View the development history and feature updates of the project",
+    "lastUpdated": "Last Updated",
+    "footer": "Continuously updating, stay tuned for more features...",
+    "meta": {
+      "title": "Changelog - IT Tools Collection",
+      "description": "Complete development history and feature update records of IT Tools Collection project",
+      "keywords": "changelog,version history,development history,feature updates,project changes"
+    }
+  },
   "tools": {
     "json-formatter": {
       "name": "JSON Formatter",

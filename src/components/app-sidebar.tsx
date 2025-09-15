@@ -25,7 +25,7 @@ import {
   Lock,
   ShieldEllipsis,
   CodeXml,
-  SquareDashed
+  SquareDashed,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -171,6 +171,7 @@ export function AppSidebar() {
             </SidebarGroup>
           )
         })}
+
       </SidebarContent>
     </Sidebar>
   )
