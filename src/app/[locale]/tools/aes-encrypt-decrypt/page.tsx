@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+import { cn, getTextareaClasses } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
@@ -200,10 +200,7 @@ export default function AesEncryptDecryptPage() {
                 }
               }}
               placeholder={t("tools.aes-encrypt-decrypt.input_placeholder")}
-              className={cn(
-                "min-h-[200px] font-mono text-sm",
-                !isValid && "border-destructive"
-              )}
+              className={getTextareaClasses('input', isValid)}
             />
 
             <div className="space-y-2">
@@ -286,7 +283,7 @@ export default function AesEncryptDecryptPage() {
               value={output}
               readOnly
               placeholder={t("tools.aes-encrypt-decrypt.output_placeholder")}
-              className="min-h-[300px] font-mono text-sm bg-muted/50"
+              className={getTextareaClasses('output')}
             />
             
             <div className="flex gap-2">

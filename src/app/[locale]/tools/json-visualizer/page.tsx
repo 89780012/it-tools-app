@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Copy, Upload, RotateCcw, FileText, ChevronDown, ChevronRight, Eye } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { cn } from "@/lib/utils"
+import { cn, getTextareaClasses } from "@/lib/utils"
 
 interface JsonViewerProps {
   data: unknown
@@ -260,7 +260,7 @@ export default function JsonVisualizerPage() {
               placeholder={t("tools.json-visualizer.input_placeholder")}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="min-h-[300px] font-mono text-sm"
+              className={getTextareaClasses('input')}
             />
 
             <Button onClick={handleParse} className="w-full">

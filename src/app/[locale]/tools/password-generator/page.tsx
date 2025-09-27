@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Copy, RotateCcw, Download, RefreshCw } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -206,7 +207,7 @@ export default function PasswordGeneratorPage() {
               value={password}
               readOnly
               placeholder={t("tools.password-generator.result_placeholder")}
-              className="min-h-[120px] font-mono text-sm bg-muted/50"
+              className={getTextareaClasses('output').replace('min-h-[300px]', 'min-h-[120px]')}
             />
 
             {strength && (

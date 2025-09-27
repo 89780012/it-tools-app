@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
+import { cn, getTextareaClasses } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
@@ -142,7 +142,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                   value={publicKey}
                   onChange={(e) => setPublicKey(e.target.value)}
                   placeholder={t("tools.rsa-encrypt-decrypt.public_key_placeholder")}
-                  className="min-h-[120px] font-mono text-xs"
+                  className={getTextareaClasses('output').replace('min-h-[300px]', 'min-h-[120px]').replace('text-sm', 'text-xs')}
                 />
                 <Button onClick={() => copyToClipboard(publicKey)} variant="outline" size="sm" disabled={!publicKey}>
                   <Copy className="h-3 w-3 mr-1" />
@@ -156,7 +156,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                   value={privateKey}
                   onChange={(e) => setPrivateKey(e.target.value)}
                   placeholder={t("tools.rsa-encrypt-decrypt.private_key_placeholder")}
-                  className="min-h-[120px] font-mono text-xs"
+                  className={getTextareaClasses('output').replace('min-h-[300px]', 'min-h-[120px]').replace('text-sm', 'text-xs')}
                 />
                 <Button onClick={() => copyToClipboard(privateKey)} variant="outline" size="sm" disabled={!privateKey}>
                   <Copy className="h-3 w-3 mr-1" />
@@ -188,7 +188,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                 }}
                 placeholder={t("tools.rsa-encrypt-decrypt.placeholder")}
                 className={cn(
-                  "min-h-[300px] font-mono text-sm",
+                  getTextareaClasses('input', isValid),
                   !isValid && "border-destructive"
                 )}
               />
@@ -225,7 +225,7 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
                 value={output}
                 readOnly
                 placeholder={t("tools.rsa-encrypt-decrypt.output_placeholder")}
-                className="min-h-[300px] font-mono text-sm bg-muted/50"
+                className={getTextareaClasses('output')}
               />
 
               <div className="flex gap-2">

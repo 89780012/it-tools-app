@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Copy, Download, Upload, RotateCcw, FileText } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
@@ -212,7 +213,7 @@ export default function JsonToXmlPage() {
               placeholder={t("tools.json-to-xml.input_placeholder")}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="min-h-[300px] font-mono text-sm"
+              className={getTextareaClasses('input')}
             />
 
             <Button onClick={handleConvert} className="w-full">
@@ -263,7 +264,7 @@ export default function JsonToXmlPage() {
               placeholder={t("tools.json-to-xml.output_placeholder")}
               value={output}
               readOnly
-              className="min-h-[300px] font-mono text-sm bg-gray-50 dark:bg-gray-900"
+              className={getTextareaClasses('output')}
             />
           </CardContent>
         </Card>

@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Copy, Download, RotateCcw, Shuffle, Database, Plus, Trash2 } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import { useToast } from "@/hooks/use-toast"
 
 interface FieldConfig {
@@ -444,7 +445,7 @@ export default function JsonGeneratorPage() {
                 placeholder={t("tools.json-generator.output_placeholder")}
                 value={output}
                 readOnly
-                className="min-h-[400px] font-mono text-sm bg-gray-50 dark:bg-gray-900"
+                className={getTextareaClasses('output')}
               />
 
               {output && (

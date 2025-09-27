@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Switch } from "@/components/ui/switch"
 import { Upload, RotateCcw, GitCompare } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import ReactDiffViewer, { DiffMethod } from 'react-diff-viewer-continued'
 
 export default function JsonDiffPage() {
@@ -121,7 +122,7 @@ export default function JsonDiffPage() {
                 value={leftInput}
                 onChange={(e) => setLeftInput(e.target.value)}
                 placeholder={t("tools.json-diff.left_placeholder")}
-                className="min-h-[200px] font-mono text-sm"
+                className={getTextareaClasses('input')}
               />
             </CardContent>
           </Card>
@@ -154,7 +155,7 @@ export default function JsonDiffPage() {
                 value={rightInput}
                 onChange={(e) => setRightInput(e.target.value)}
                 placeholder={t("tools.json-diff.right_placeholder")}
-                className="min-h-[200px] font-mono text-sm"
+                className={getTextareaClasses('input')}
               />
             </CardContent>
           </Card>

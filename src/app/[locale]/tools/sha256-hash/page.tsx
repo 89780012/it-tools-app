@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Copy, RotateCcw, Download, Hash } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -83,7 +84,7 @@ export default function SHA256HashPage() {
                 generateSHA256()
               }}
               placeholder={t("tools.sha256-hash.placeholder")}
-              className="min-h-[300px] font-mono text-sm"
+              className={getTextareaClasses('input')}
             />
 
             <div className="flex gap-2">
@@ -110,7 +111,7 @@ export default function SHA256HashPage() {
               value={output}
               readOnly
               placeholder={t("tools.sha256-hash.output_placeholder")}
-              className="min-h-[300px] font-mono text-sm bg-muted/50"
+              className={getTextareaClasses('output')}
             />
 
             <div className="flex gap-2">

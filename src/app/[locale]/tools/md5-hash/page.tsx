@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Copy, RotateCcw, Download, Hash } from "lucide-react"
+import { getTextareaClasses } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -97,7 +98,7 @@ export default function MD5HashPage() {
                 generateMD5()
               }}
               placeholder={t("tools.md5-hash.placeholder")}
-              className="min-h-[300px] font-mono text-sm"
+              className={getTextareaClasses('input')}
             />
             
             <div className="flex gap-2">
@@ -124,7 +125,7 @@ export default function MD5HashPage() {
               value={output}
               readOnly
               placeholder={t("tools.md5-hash.output_placeholder")}
-              className="min-h-[300px] font-mono text-sm bg-muted/50"
+              className={getTextareaClasses('output')}
             />
             
             <div className="flex gap-2">
