@@ -1413,6 +1413,85 @@
         "description": "Online IP address lookup tool. Get geographical location, ISP information, timezone and other detailed information of IP addresses.",
         "keywords": "IP lookup,IP address,geolocation,network information,ISP query,online tool"
       }
+    },
+    "base64-file-converter": {
+      "name": "Base64 Image Converter",
+      "description": "Convert images to Base64 encoding and vice versa",
+      "image_description": "Professional image Base64 encoding conversion tool, supporting JPG, PNG, GIF, WebP and other common image formats",
+      "image_to_base64": "Image to Base64",
+      "base64_to_image": "Base64 to Image",
+      "upload_image": "Upload Image",
+      "drag_image": "Drag and drop images here or click to select",
+      "supported_formats": "Supports JPG, PNG, GIF, WebP, SVG, BMP formats, max 5MB",
+      "image_info": "Image Information",
+      "image_name": "Image Name",
+      "image_size": "Image Size",
+      "image_type": "Image Type",
+      "download_image": "Download Image",
+      "convert_to_image": "Convert to Image",
+      "convert_to_see_image": "Click convert button to view image",
+      "copy_base64": "Copy Base64",
+      "base64_input": "Base64 Input",
+      "base64_output": "Base64 Output",
+      "base64_input_placeholder": "Paste Base64 encoded content here...",
+      "base64_output_placeholder": "Base64 encoded result will appear here...",
+      "input_title": "Input Area",
+      "output_title": "Output Result",
+      "output_desc": "Converted result",
+      "image_preview": "Image Preview",
+      "no_image_selected": "No image selected",
+      "invalid_base64": "Invalid Base64 format",
+      "image_too_large": "Image too large, recommended under 10MB",
+      "invalid_image_format": "Unsupported image format, please select JPG, PNG, GIF, WebP, SVG or BMP format",
+      "convert_success": "Conversion successful",
+      "mode_switch": "Conversion Mode",
+      "tips_title": "Usage Instructions",
+      "tip1_title": "Image to Base64",
+      "tip1_desc": "Select any image to automatically convert it to Base64 encoding, suitable for web embedding and data transmission.",
+      "tip2_title": "Base64 to Image",
+      "tip2_desc": "Paste Base64 encoded content to restore the original image and view or download it.",
+      "tip3_title": "Image Size Limit",
+      "tip3_desc": "To ensure conversion performance, it is recommended that uploaded images be under 10MB.",
+      "tip4_title": "Security & Privacy",
+      "tip4_desc": "All conversion operations are completed locally in the browser. Images are not uploaded to servers, ensuring data security.",
+      "introduction": "Base64 Image Converter is a professional image encoding conversion tool that supports bidirectional conversion between images and Base64 encoding. Widely used in web development, CSS data URLs, API interfaces and image embedding scenarios. Using browser-based local processing to ensure image security and privacy protection, it is an essential tool for developers and designers.",
+      "features": [
+        "🔄 Supports bidirectional conversion between images and Base64",
+        "🖼️ Supports all image formats (JPG, PNG, GIF, WebP, SVG, etc.)",
+        "🎯 Real-time conversion with instant results",
+        "🔒 Local processing ensures file privacy and security",
+        "📱 Responsive design with mobile support",
+        "💾 One-click download of converted images",
+        "📋 Convenient Base64 code copying functionality",
+        "🚀 High-performance processing with large image support"
+      ],
+      "faq": [
+        {
+          "question": "What image formats does the Base64 Image Converter support?",
+          "answer": "The tool supports conversion of all common image formats, including JPEG, JPG, PNG, GIF, WebP, SVG, BMP and more. Regardless of format, images can be accurately converted to Base64 encoding and perfectly restored to their original form. The tool automatically detects image types and optimizes the conversion process."
+        },
+        {
+          "question": "What are the image size limitations? Why are there restrictions?",
+          "answer": "For optimal conversion performance and user experience, we recommend images under 10MB. This limitation considers: 1) Browser memory usage efficiency; 2) Conversion speed and responsiveness; 3) Avoiding page freezing. For larger images, consider resizing or compressing them first."
+        },
+        {
+          "question": "How much larger do images become after Base64 encoding?",
+          "answer": "Base64 encoding increases image size by approximately 33%. This is because Base64 uses 64 printable characters to represent 256 possible byte values, with every 3 original bytes encoded as 4 Base64 characters. While the size increases, this enables transmission of binary image data in text protocols, making it ideal for CSS data URLs and web development."
+        },
+        {
+          "question": "Is the conversion process secure? Are images uploaded to servers?",
+          "answer": "Completely secure! All conversion operations are performed locally in your browser, and image content never leaves your device. We do not upload, store, or record any image data. This local processing approach ensures the highest level of privacy protection, suitable for handling sensitive images and personal photos."
+        },
+        {
+          "question": "How can I verify that the Base64 encoding after conversion is correct?",
+          "answer": "You can verify through the following methods: 1) Use our Base64 to Image function for reverse verification; 2) Check if the Base64 string contains only A-Z, a-z, 0-9, +, /, = characters; 3) Verify that the string length is a multiple of 4; 4) For images, you can preview the Base64 as a Data URL in the browser to see the actual image."
+        }
+      ],
+      "meta": {
+        "title": "Base64 Image Converter",
+        "description": "Online Base64 image conversion tool. Supports bidirectional conversion between images and Base64 encoding for web development and data embedding.",
+        "keywords": "Base64 conversion,image encoding,encoding tool,decoding tool,image converter,online tool"
+      }
     }
   },
   "seo": {

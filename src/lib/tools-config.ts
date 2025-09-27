@@ -221,6 +221,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "image",
         path: "/tools/svg-placeholder-generator",
         icon: "square-dashed"
+      },
+      {
+        id: "base64-file-converter",
+        nameKey: "tools.base64-file-converter.name",
+        descriptionKey: "tools.base64-file-converter.description",
+        category: "image",
+        path: "/tools/base64-file-converter",
+        icon: "file-code"
       }
     ]
   }

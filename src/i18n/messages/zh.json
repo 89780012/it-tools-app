@@ -1413,6 +1413,85 @@
         "description": "在线IP地址查询工具。获取IP地址的地理位置、ISP信息、时区等详细信息。",
         "keywords": "IP查询,IP地址,地理位置,网络信息,ISP查询,在线工具"
       }
+    },
+    "base64-file-converter": {
+      "name": "Base64图片转换器",
+      "description": "图片与Base64编码相互转换工具",
+      "image_description": "专业的图片Base64编码转换工具，支持JPG、PNG、GIF、WebP等常见图片格式",
+      "image_to_base64": "图片转Base64",
+      "base64_to_image": "Base64转图片",
+      "upload_image": "上传图片",
+      "drag_image": "拖拽图片到此处或点击选择图片",
+      "supported_formats": "支持 JPG、PNG、GIF、WebP、SVG、BMP 格式，最大5MB",
+      "image_info": "图片信息",
+      "image_name": "图片名称",
+      "image_size": "图片大小",
+      "image_type": "图片类型",
+      "download_image": "下载图片",
+      "convert_to_image": "转换为图片",
+      "convert_to_see_image": "点击转换按钮查看图片",
+      "copy_base64": "复制Base64",
+      "base64_input": "Base64输入",
+      "base64_output": "Base64输出",
+      "base64_input_placeholder": "请粘贴Base64编码内容...",
+      "base64_output_placeholder": "Base64编码结果将显示在这里...",
+      "input_title": "输入区域",
+      "output_title": "输出结果",
+      "output_desc": "转换后的结果",
+      "image_preview": "图片预览",
+      "no_image_selected": "未选择图片",
+      "invalid_base64": "无效的Base64格式",
+      "image_too_large": "图片过大，建议小于5MB",
+      "invalid_image_format": "不支持的图片格式，请选择 JPG、PNG、GIF、WebP、SVG 或 BMP 格式",
+      "convert_success": "转换成功",
+      "mode_switch": "转换模式",
+      "tips_title": "使用说明",
+      "tip1_title": "图片转Base64",
+      "tip1_desc": "选择图片文件，系统会自动转换为Base64编码，适用于CSS Data URLs、网页开发、数据传输等场景。",
+      "tip2_title": "Base64转图片",
+      "tip2_desc": "粘贴Base64编码内容，可以还原为原始图片并查看预览或下载。",
+      "tip3_title": "图片大小限制",
+      "tip3_desc": "为保证转换性能，建议上传的图片大小不超过5MB。",
+      "tip4_title": "安全隐私",
+      "tip4_desc": "所有转换操作都在浏览器本地完成，图片不会上传到服务器，确保数据安全。",
+      "introduction": "Base64图片转换器是专业的图片编码转换工具，支持JPG、PNG、GIF、WebP等图片格式与Base64编码之间的双向转换。广泛应用于Web开发、网页设计、邮件嵌入图片、API接口等场景。采用浏览器本地处理，确保图片安全性和隐私保护，是开发者和设计师的必备工具。",
+      "features": [
+        "🔄 支持图片与Base64的双向转换",
+        "🖼️ 支持多种图片格式（JPG、PNG、GIF、WebP、SVG、BMP）",
+        "🎯 实时转换，即时显示结果",
+        "🔒 本地处理，确保文件隐私安全",
+        "📱 响应式设计，支持移动端操作",
+        "💾 实时预览和一键下载转换后的图片",
+        "📋 便捷的Base64代码复制功能",
+        "🚀 高性能处理，支持大图片转换"
+      ],
+      "faq": [
+        {
+          "question": "Base64图片转换器支持哪些图片格式？",
+          "answer": "工具支持所有主流图片格式的转换，包括JPEG、JPG、PNG、GIF、WebP、SVG、BMP等格式。无论什么格式，都能准确转换为Base64编码，并且可以完美还原为原始图片。工具会自动检测图片类型并优化转换过程。"
+        },
+        {
+          "question": "图片大小有什么限制？为什么要限制？",
+          "answer": "为了确保最佳的转换性能和用户体验，建议单个图片不超过10MB。这个限制主要考虑：1）浏览器内存使用效率；2）转换速度和响应性；3）避免页面卡顿。对于更大的图片，建议先进行压缩或缩放处理。"
+        },
+        {
+          "question": "Base64编码后图片会变大多少？",
+          "answer": "Base64编码会使图片大小增加约33%。这是因为Base64使用64个可打印字符表示256种字节值，每3个原始字节被编码为4个Base64字符。虽然体积增大，但获得了在文本协议中传输二进制图片数据的能力，这在CSS Data URLs和Web开发中非常有用。"
+        },
+        {
+          "question": "转换过程安全吗？图片会被上传到服务器吗？",
+          "answer": "完全安全！所有转换操作都在您的浏览器本地完成，图片内容从未离开您的设备。我们不会上传、存储或记录任何图片数据。这种本地处理方式确保了最高级别的隐私保护，适合处理敏感图片和个人照片。"
+        },
+        {
+          "question": "如何验证转换后的Base64编码是否正确？",
+          "answer": "可以通过以下方式验证：1）使用我们的Base64转图片功能进行反向验证；2）检查Base64字符串是否只包含A-Z、a-z、0-9、+、/、=字符；3）验证字符串长度是否为4的倍数；4）对于图片，可以将Base64作为Data URL在浏览器中预览图片效果。"
+        }
+      ],
+      "meta": {
+        "title": "Base64图片转换器",
+        "description": "在线Base64图片转换工具。支持图片与Base64编码的双向转换，适用于Web开发和数据嵌入。",
+        "keywords": "Base64转换,图片编码,编码工具,解码工具,图片转换,在线工具"
+      }
     }
   },
   "seo": {
