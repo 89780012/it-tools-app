@@ -18,6 +18,55 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    version: "v0.6.0",
+    date: "2025-09-27",
+    type: "minor",
+    title: {
+      zh: "用户体验优化升级",
+      en: "User Experience Optimization Upgrade",
+      hi: "उपयोगकर्ता अनुभव अनुकूलन अपग्रेड"
+    },
+    description: {
+      zh: "全面优化工具页面 textarea 组件，提升响应式体验和交互一致性",
+      en: "Comprehensive optimization of tool page textarea components, improving responsive experience and interaction consistency",
+      hi: "टूल पेज टेक्स्टएरिया कॉम्पोनेंट्स का व्यापक अनुकूलन, रिस्पॉन्सिव अनुभव और इंटरैक्शन स्थिरता में सुधार"
+    },
+    changes: [
+      {
+        type: "optimize",
+        description: {
+          zh: "统一 textarea 组件高度限制：移动端和桌面端均为 300px 最大高度",
+          en: "Unified textarea component height limits: 300px maximum height for both mobile and desktop",
+          hi: "एकीकृत टेक्स्टएरिया घटक ऊंचाई सीमा: मोबाइल और डेस्कटॉप दोनों के लिए 300px अधिकतम ऊंचाई"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "添加响应式滚动条和禁用手动拖拽调整，改善用户交互体验",
+          en: "Added responsive scrollbars and disabled manual drag resize to improve user interaction experience",
+          hi: "उपयोगकर्ता इंटरैक्शन अनुभव में सुधार के लिए रिस्पॉन्सिव स्क्रॉलबार जोड़े गए और मैन्युअल ड्रैग रीसाइज़ को अक्षम किया गया"
+        }
+      },
+      {
+        type: "refactor",
+        description: {
+          zh: "创建 getTextareaClasses 工具函数，实现样式统一管理和维护",
+          en: "Created getTextareaClasses utility function for unified style management and maintenance",
+          hi: "एकीकृत शैली प्रबंधन और रखरखाव के लिए getTextareaClasses उपयोगिता फ़ंक्शन बनाया गया"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "更新全部 21 个工具页面，确保 textarea 交互体验一致性",
+          en: "Updated all 21 tool pages to ensure consistent textarea interaction experience",
+          hi: "स्थिर टेक्स्टएरिया इंटरैक्शन अनुभव सुनिश्चित करने के लिए सभी 21 टूल पेज अपडेट किए गए"
+        }
+      }
+    ]
+  },
+  {
     version: "v0.5.0",
     date: "2025-09-14",
     type: "minor",
