@@ -74,6 +74,8 @@
     "crypto_desc": "Encryption, decryption and hash tools",
     "network": "Network Tools",
     "network_desc": "Network debugging and testing tools",
+    "time": "Time Tools",
+    "time_desc": "Time conversion, planning and age helpers",
     "image": "Image Tools",
     "image_desc": "Image processing and conversion tools"
   },
@@ -1412,6 +1414,56 @@
         "title": "IP Address Lookup Tool",
         "description": "Online IP address lookup tool. Get geographical location, ISP information, timezone and other detailed information of IP addresses.",
         "keywords": "IP lookup,IP address,geolocation,network information,ISP query,online tool"
+      }
+    },
+    "time-converter": {
+      "name": "Milliseconds Time Converter",
+      "description": "Convert between millisecond timestamps and formatted date strings.",
+      "from_milliseconds_title": "Milliseconds → Date string",
+      "from_milliseconds_description": "Paste or type a millisecond value to view the formatted time.",
+      "milliseconds_input_label": "Milliseconds",
+      "milliseconds_placeholder": "Example: 1735689600000",
+      "milliseconds_hint": "Supports positive and negative integers. Value is interpreted as local time.",
+      "use_current_milliseconds": "Use current milliseconds",
+      "invalid_milliseconds": "Please enter a valid millisecond value.",
+      "formatted_time_label": "Formatted time (yyyy-MM-dd HH:mm:ss)",
+      "from_string_title": "Date string → Milliseconds",
+      "from_string_description": "Provide a string in yyyy-MM-dd HH:mm:ss format to convert back to milliseconds.",
+      "string_input_label": "Date string",
+      "string_hint": "Use 24-hour format, e.g. 2025-01-01 08:30:45.",
+      "use_current_string": "Use current time string",
+      "invalid_string": "Date string must match yyyy-MM-dd HH:mm:ss and be a real calendar time.",
+      "milliseconds_output_label": "Milliseconds value",
+      "normalized_label": "Normalized",
+      "quick_reference_title": "Quick reference",
+      "quick_reference_description": "Grab the current time in both formats for logging or scripting.",
+      "current_time_label": "Current time string",
+      "current_milliseconds_label": "Current milliseconds",
+      "copy_current_string": "Copy time string",
+      "copy_current_milliseconds": "Copy milliseconds",
+      "fill_with_latest": "Fill with latest",
+      "introduction": "Milliseconds Time Converter is a handy utility for developers who often jump between raw timestamps and readable date strings. It handles bidirectional conversion instantly and keeps the formatting consistent for logs, scripts, and API payloads.",
+      "features": [
+        "🔁 Instantly convert milliseconds to a consistent yyyy-MM-dd HH:mm:ss string.",
+        "🕒 Reverse conversion validates the exact same format back into milliseconds.",
+        "⚡ Quick actions to insert or copy the current moment in both representations.",
+        "🧭 Input validation with clear feedback helps avoid malformed timestamps.",
+        "🌍 Works with negative timestamps to inspect historical dates before 1970."
+      ],
+      "faq": [
+        {
+          "question": "Which timezone does the converter use?",
+          "answer": "Conversions are performed in your browser's local timezone. The formatted string reflects local time, and the millisecond value is the exact timestamp used with JavaScript Date objects."
+        },
+        {
+          "question": "Can I include milliseconds in the date string?",
+          "answer": "The current version focuses on second precision. You can still handle millisecond values by entering them directly in the milliseconds field—the tool will output seconds in the formatted string."
+        }
+      ],
+      "meta": {
+        "title": "Milliseconds Time Converter - Timestamp to yyyy-MM-dd HH:mm:ss",
+        "description": "Free online tool to convert millisecond timestamps into yyyy-MM-dd HH:mm:ss strings and back again with instant validation.",
+        "keywords": "milliseconds to date,timestamp converter,date string to milliseconds,yyyy-MM-dd HH:mm:ss,time tools,online converter"
       }
     },
     "base64-file-converter": {

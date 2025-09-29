@@ -26,6 +26,7 @@ import {
   ShieldEllipsis,
   CodeXml,
   SquareDashed,
+  History,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -71,6 +72,7 @@ const toolIconMap = {
   "shield-ellipsis": ShieldEllipsis,  // HMAC generator
   "code-xml": CodeXml,           // Base64 encoder
   "square-dashed": SquareDashed, // SVG placeholder
+  history: History,
 }
 
 export function AppSidebar() {

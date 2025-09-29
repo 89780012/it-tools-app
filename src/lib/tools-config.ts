@@ -201,6 +201,22 @@ export const toolsConfig: ToolCategory[] = [
     ]
   },
   {
+    id: "time",
+    nameKey: "categories.time",
+    descriptionKey: "categories.time_desc",
+    icon: "clock",
+    tools: [
+      {
+        id: "time-converter",
+        nameKey: "tools.time-converter.name",
+        descriptionKey: "tools.time-converter.description",
+        category: "time",
+        path: "/tools/time-converter",
+        icon: "history"
+      }
+    ]
+  },
+  {
     id: "image", 
     nameKey: "categories.image",
     descriptionKey: "categories.image_desc",

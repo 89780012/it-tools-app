@@ -23,6 +23,7 @@ const availableTools = [
   'binary-encoder-decoder', 'password-generator', 'aes-encrypt-decrypt',
   'rsa-encrypt-decrypt', 'hmac-generator',
   'ip-lookup',
+  'time-converter',
   'qr-code-generator', 'svg-placeholder-generator'
 ]
 
