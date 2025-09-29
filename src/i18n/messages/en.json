@@ -77,7 +77,9 @@
     "time": "Time Tools",
     "time_desc": "Time conversion, planning and age helpers",
     "image": "Image Tools",
-    "image_desc": "Image processing and conversion tools"
+    "image_desc": "Image processing and conversion tools",
+    "developer": "Developer Tools",
+    "developer_desc": "Utilities for cron, automation and power users"
   },
   "changelog": {
     "title": "Changelog",
@@ -1464,6 +1466,68 @@
         "title": "Milliseconds Time Converter - Timestamp to yyyy-MM-dd HH:mm:ss",
         "description": "Free online tool to convert millisecond timestamps into yyyy-MM-dd HH:mm:ss strings and back again with instant validation.",
         "keywords": "milliseconds to date,timestamp converter,date string to milliseconds,yyyy-MM-dd HH:mm:ss,time tools,online converter"
+      }
+    },
+    "cron-expression-parser": {
+      "name": "Cron Expression Parser",
+      "description": "Validate cron syntax and preview upcoming schedules.",
+      "input_title": "Cron Expression",
+      "input_description": "Enter a standard 5-field cron expression to inspect its structure and future run times.",
+      "expression_label": "Expression",
+      "expression_hint": "Supports minute hour day-of-month month day-of-week. Named months (JAN) and weekdays (MON) are allowed.",
+      "presets": {
+        "workday_morning": "Weekday 9:00 AM",
+        "every_fifteen_minutes": "Every 15 minutes"
+      },
+      "preview_count_label": "Preview count (1-20)",
+      "current_time_label": "Reference time",
+      "structure_title": "Field Breakdown",
+      "structure_description": "Review the literal values captured for each cron field.",
+      "table": {
+        "field": "Field",
+        "raw": "Raw",
+        "values": "Values"
+      },
+      "fields": {
+        "minute": "Minute",
+        "hour": "Hour",
+        "day_of_month": "Day of month",
+        "month": "Month",
+        "day_of_week": "Day of week",
+        "any": "Any"
+      },
+      "errors": {
+        "empty": "Please enter a cron expression to begin.",
+        "invalid_field_count": "Cron expressions must contain exactly five parts (minute hour day-of-month month day-of-week).",
+        "invalid_field": "Field {field} contains unsupported syntax or out-of-range values."
+      },
+      "upcoming_title": "Upcoming Runs",
+      "upcoming_description": "Preview the next few execution times relative to your current timezone.",
+      "upcoming_placeholder": "Provide a valid expression to see upcoming runs.",
+      "upcoming_empty": "No matching execution times found within the next year. Try adjusting the expression.",
+      "occurrence_index": "#{index}",
+      "introduction": "Cron Expression Parser helps developers quickly verify cron schedules, understand how each field expands, and preview upcoming execution times. It supports common UNIX-style cron syntax with named months and weekdays, making debugging automation jobs faster and safer.",
+      "features": [
+        "🧭 Real-time validation with clear error messaging for each field.",
+        "📅 Expand minute, hour, day, month, and weekday values with readable previews.",
+        "⏱ Generate up to 20 upcoming run times using your current timezone.",
+        "🔁 Handy presets for popular schedules like workday alarms or frequent jobs.",
+        "🌐 Supports named months (JAN-DEC) and weekdays (MON-SUN) alongside numeric values."
+      ],
+      "faq": [
+        {
+          "question": "Which cron format does this tool support?",
+          "answer": "The parser follows the traditional five-field UNIX cron format: minute, hour, day-of-month, month, and day-of-week. Seconds and additional Quartz-specific fields are not supported in this version."
+        },
+        {
+          "question": "How are day-of-month and day-of-week used together?",
+          "answer": "When both fields are specific (not * or ?), the schedule triggers when either field matches—mirroring the behavior of most Linux cron implementations. Use ? to ignore a field when needed."
+        }
+      ],
+      "meta": {
+        "title": "Cron Expression Parser - Validate cron schedules online",
+        "description": "Free online cron expression parser that validates syntax and previews upcoming run times with human-readable breakdowns.",
+        "keywords": "cron expression parser,cron validator,cron schedule preview,cron tester,automation tools"
       }
     },
     "base64-file-converter": {

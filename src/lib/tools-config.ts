@@ -17,6 +17,22 @@ export interface ToolCategory {
 
 export const toolsConfig: ToolCategory[] = [
   {
+    id: "developer",
+    nameKey: "categories.developer",
+    descriptionKey: "categories.developer_desc",
+    icon: "code",
+    tools: [
+      {
+        id: "cron-expression-parser",
+        nameKey: "tools.cron-expression-parser.name",
+        descriptionKey: "tools.cron-expression-parser.description",
+        category: "developer",
+        path: "/tools/cron-expression-parser",
+        icon: "clock-8"
+      }
+    ]
+  },
+  {
     id: "json",
     nameKey: "categories.json",
     descriptionKey: "categories.json_desc",

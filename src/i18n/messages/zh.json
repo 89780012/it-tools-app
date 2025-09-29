@@ -77,7 +77,9 @@
     "time": "时间工具",
     "time_desc": "时间转换、时间差计算与年龄助手",
     "image": "图片工具",
-    "image_desc": "图片处理和转换工具"
+    "image_desc": "图片处理和转换工具",
+    "developer": "开发者工具",
+    "developer_desc": "Cron、自动化等高级实用工具"
   },
   "changelog": {
     "title": "更新日志",
@@ -1464,6 +1466,68 @@
         "title": "毫秒时间转换器 - 时间戳与 yyyy-MM-dd HH:mm:ss 互转",
         "description": "免费的在线工具，快速将毫秒时间戳转换为 yyyy-MM-dd HH:mm:ss 字符串，并支持反向转换与验证。",
         "keywords": "毫秒时间戳,时间转换,yyyy-MM-dd HH:mm:ss,时间工具,在线转换"
+      }
+    },
+    "cron-expression-parser": {
+      "name": "Cron 表达式解析器",
+      "description": "校验 Cron 语法并预览即将执行的时间。",
+      "input_title": "Cron 表达式",
+      "input_description": "输入标准的 5 段 Cron 表达式，解析各字段并查看未来的执行时间。",
+      "expression_label": "表达式",
+      "expression_hint": "支持 “分 时 日 月 周” 五段格式，可使用 JAN、MON 等英文名称。",
+      "presets": {
+        "workday_morning": "工作日早上 9 点",
+        "every_fifteen_minutes": "每 15 分钟一次"
+      },
+      "preview_count_label": "预览数量 (1-20)",
+      "current_time_label": "参考时间",
+      "structure_title": "字段解析",
+      "structure_description": "查看每个字段展开后的具体数值。",
+      "table": {
+        "field": "字段",
+        "raw": "原始值",
+        "values": "取值"
+      },
+      "fields": {
+        "minute": "分钟",
+        "hour": "小时",
+        "day_of_month": "日期",
+        "month": "月份",
+        "day_of_week": "星期",
+        "any": "任意"
+      },
+      "errors": {
+        "empty": "请输入 Cron 表达式后再解析。",
+        "invalid_field_count": "Cron 表达式必须包含 5 段（分钟 小时 日期 月份 星期）。",
+        "invalid_field": "字段 {field} 包含不支持的语法或超出范围的数值。"
+      },
+      "upcoming_title": "未来执行时间",
+      "upcoming_description": "结合当前时区预览接下来几次的执行时间。",
+      "upcoming_placeholder": "请输入有效表达式以查看执行时间。",
+      "upcoming_empty": "在未来一年内未找到匹配的执行时间，请尝试调整表达式。",
+      "occurrence_index": "第 {index} 次",
+      "introduction": "Cron 表达式解析器帮助开发者快速验证计划任务，了解每个字段的展开结果，并预览即将执行的时间。工具支持常见的 UNIX 风格语法以及英文月份、星期名称，让自动化调试更加高效可靠。",
+      "features": [
+        "🧭 实时校验并明确提示出错字段。",
+        "📅 直观展示分钟、小时、日期、月份和星期的实际取值。",
+        "⏱ 支持生成最多 20 条未来执行时间，自动使用本地时区。",
+        "🔁 内置常用计划任务预设，快速切换参考示例。",
+        "🌐 同时支持数字与 JAN-DEC、MON-SUN 等英文名称。"
+      ],
+      "faq": [
+        {
+          "question": "工具支持哪种 Cron 格式？",
+          "answer": "解析器遵循传统的五段 UNIX Cron 格式：分钟、小时、日期、月份、星期。目前不支持包含秒或 Quartz 扩展字段的表达式。"
+        },
+        {
+          "question": "日期和星期字段如何共同作用？",
+          "answer": "当两个字段都为具体取值（非 * 或 ?）时，只要日期或星期任意一个匹配即可执行。这与大多数 Linux Cron 的行为一致。如需忽略某个字段，可使用 ?。"
+        }
+      ],
+      "meta": {
+        "title": "Cron 表达式解析器 - 在线验证与预览",
+        "description": "免费的 Cron 表达式在线解析工具，支持语法校验、字段展开以及未来执行时间预览。",
+        "keywords": "Cron 表达式,任务调度,计划任务,表达式解析,Cron 校验"
       }
     },
     "base64-file-converter": {

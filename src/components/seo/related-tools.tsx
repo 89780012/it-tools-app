@@ -24,7 +24,8 @@ const availableTools = [
   'rsa-encrypt-decrypt', 'hmac-generator',
   'ip-lookup',
   'time-converter',
-  'qr-code-generator', 'svg-placeholder-generator'
+  'qr-code-generator', 'svg-placeholder-generator',
+  'cron-expression-parser'
 ]
 
 export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsProps) {

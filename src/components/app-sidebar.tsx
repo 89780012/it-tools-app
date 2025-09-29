@@ -27,6 +27,7 @@ import {
   CodeXml,
   SquareDashed,
   History,
+  Clock8,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -73,6 +74,7 @@ const toolIconMap = {
   "code-xml": CodeXml,           // Base64 encoder
   "square-dashed": SquareDashed, // SVG placeholder
   history: History,
+  "clock-8": Clock8,
 }
 
 export function AppSidebar() {
