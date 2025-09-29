@@ -66,8 +66,12 @@
     "privacy_protection_desc": "सभी उपकरण क्लाइंट-साइड पर चलते हैं, आपकी डेटा गोपनीयता और सुरक्षा सुनिश्चित करते हैं"
   },
   "categories": {
-    "json": "JSON उपकरण",
-    "json_desc": "JSON डेटा प्रोसेसिंग और सत्यापन उपकरण",
+    "json_tools": "JSON उपयोगिता",
+    "json_tools_desc": "JSON डेटा के स्वरूपण, निरीक्षण और जनरेशन के उपकरण",
+    "json_converters": "कन्वर्टर",
+    "json_converters_desc": "JSON को अन्य फ़ॉर्मैट में बदलें और वापस पाएँ",
+    "json-tools": "JSON उपयोगिता",
+    "json-converters": "कन्वर्टर",
     "text": "टेक्स्ट उपकरण",
     "text_desc": "टेक्स्ट प्रोसेसिंग और रूपांतरण उपकरण",
     "crypto": "क्रिप्टो उपकरण",

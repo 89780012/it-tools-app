@@ -66,8 +66,12 @@
     "privacy_protection_desc": "All tools run on client-side, ensuring your data privacy and security"
   },
   "categories": {
-    "json": "JSON Tools",
-    "json_desc": "JSON data processing and validation tools",
+    "json_tools": "JSON Utilities",
+    "json_tools_desc": "Formatting, inspection, and generation helpers for JSON",
+    "json_converters": "Converters",
+    "json_converters_desc": "Convert JSON to other formats and back",
+    "json-tools": "JSON Utilities",
+    "json-converters": "Converters",
     "text": "Text Tools",
     "text_desc": "Text processing and conversion tools",
     "crypto": "Crypto Tools",

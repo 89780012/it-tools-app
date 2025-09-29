@@ -66,8 +66,12 @@
     "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全"
   },
   "categories": {
-    "json": "JSON工具",
-    "json_desc": "JSON数据处理和验证工具",
+    "json_tools": "JSON 实用工具",
+    "json_tools_desc": "面向 JSON 的格式化、对比与生成助手",
+    "json_converters": "转换器",
+    "json_converters_desc": "在 JSON 与其它格式之间快速转换",
+    "json-tools": "JSON 实用工具",
+    "json-converters": "转换器",
     "text": "文本工具",
     "text_desc": "文本处理和转换工具",
     "crypto": "加密工具",
