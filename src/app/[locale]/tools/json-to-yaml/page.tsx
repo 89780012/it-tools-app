@@ -5,7 +5,7 @@ import { Copy, RotateCcw, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
-import { cn, getTextareaClasses } from "@/lib/utils"
+import { getTextareaClasses } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import * as yaml from 'js-yaml'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"

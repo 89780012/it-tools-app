@@ -3,6 +3,8 @@
 import { Header } from "@/components/header"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import { LoadingBar } from "@/components/loading-bar"
+import { NavigationEvents } from "@/components/navigation-events"
 
 export default function LocaleLayoutClient({
   children,
@@ -11,6 +13,8 @@ export default function LocaleLayoutClient({
 }) {
   return (
     <SidebarProvider>
+      <LoadingBar />
+      <NavigationEvents />
       <AppSidebar />
       <SidebarInset>
         <Header />
