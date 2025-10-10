@@ -1630,6 +1630,68 @@
         "keywords": "cron expression parser,cron validator,cron schedule preview,cron tester,automation tools"
       }
     },
+    "color-converter": {
+      "name": "Color Converter",
+      "description": "Convert colors between HEX, RGB, HSL and CSS color names",
+      "input_title": "Input Color",
+      "input_desc": "Enter color value in any format",
+      "input_placeholder": "Enter color value, e.g.: #FF5733, rgb(255, 87, 51), hsl(9, 100%, 60%) or red",
+      "output_title": "Conversion Results",
+      "color_preview": "Color Preview",
+      "hex_format": "HEX Format",
+      "rgb_format": "RGB Format",
+      "hsl_format": "HSL Format",
+      "css_name": "CSS Color Name",
+      "invalid_color": "Invalid color value",
+      "no_css_name": "No corresponding CSS color name",
+      "tips_title": "Usage Guide",
+      "tip1_title": "Supported Formats",
+      "tip1_desc": "Supports HEX (#RGB, #RRGGBB), RGB, HSL and CSS color names",
+      "tip2_title": "Auto Detection",
+      "tip2_desc": "Automatically detects input format and converts to other formats",
+      "tip3_title": "Live Preview",
+      "tip3_desc": "Real-time color preview and conversion results for all formats",
+      "tip4_title": "Quick Copy",
+      "tip4_desc": "Click copy button to quickly copy color values in various formats",
+      "introduction": "Color Converter is a professional color format conversion tool that supports free conversion between HEX, RGB, HSL and CSS color names. Whether you are a web designer, frontend developer or UI/UX designer, you can quickly get color values in the required format. The tool provides real-time color preview and supports one-click copying of various formats, significantly improving design and development efficiency.",
+      "features": [
+        "🎨 Supports multiple formats: HEX, RGB, HSL, CSS color names",
+        "🔄 Smart format detection and automatic conversion",
+        "👁️ Real-time color preview for visual feedback",
+        "📋 One-click copy for all color formats",
+        "⚡ Instant conversion as you type",
+        "🎯 Accurate color value calculation and conversion",
+        "🌈 Supports 140+ standard CSS color names",
+        "📱 Responsive design for mobile and desktop"
+      ],
+      "faq": [
+        {
+          "question": "Which color formats are supported?",
+          "answer": "The tool supports four main formats: 1) HEX format (e.g. #FF5733 or #F53); 2) RGB format (e.g. rgb(255, 87, 51)); 3) HSL format (e.g. hsl(9, 100%, 60%)); 4) CSS color names (e.g. red, blue, cornflowerblue and 140+ standard color names)."
+        },
+        {
+          "question": "What's the difference between HEX, RGB and HSL?",
+          "answer": "HEX is hexadecimal color representation, commonly used in CSS and design tools. RGB is based on red, green, blue primary colors, each channel 0-255. HSL is based on hue, saturation, lightness, more intuitive for human perception of color, making it easier to adjust brightness and vibrancy."
+        },
+        {
+          "question": "How to use CSS color names?",
+          "answer": "Simply enter standard CSS color names like red, blue, green, coral, etc. The tool will automatically recognize and convert to other formats. Note that only 140+ standard CSS colors have corresponding names; other colors will show 'No corresponding CSS color name'."
+        },
+        {
+          "question": "How accurate are the conversion results?",
+          "answer": "The tool uses standard color conversion algorithms to ensure result accuracy. RGB and HEX conversion is lossless. HSL to RGB conversion may have minor precision differences (typically less than 1), which can be ignored in practical use."
+        },
+        {
+          "question": "Why don't some colors have corresponding CSS names?",
+          "answer": "CSS only defines 147 standard color names (including transparent), while millions of other colors have no corresponding names. If your input color is not in the standard color list, the tool will show 'No corresponding CSS color name', but will still display HEX, RGB and HSL formats normally."
+        }
+      ],
+      "meta": {
+        "title": "Color Converter - HEX RGB HSL CSS Color Format Conversion",
+        "description": "Online color format conversion tool. Convert between HEX, RGB, HSL and CSS color names with real-time preview and one-click copy.",
+        "keywords": "color converter,HEX to RGB,RGB to HSL,CSS colors,color format conversion,online tool"
+      }
+    },
     "docker-run-to-compose": {
       "name": "Docker Run to Compose",
       "description": "Convert docker run commands to docker-compose.yml format",

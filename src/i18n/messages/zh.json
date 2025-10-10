@@ -1630,6 +1630,68 @@
         "keywords": "Cron 表达式,任务调度,计划任务,表达式解析,Cron 校验"
       }
     },
+    "color-converter": {
+      "name": "颜色转换器",
+      "description": "在 HEX、RGB、HSL 和 CSS 颜色名称之间转换",
+      "input_title": "输入颜色",
+      "input_desc": "输入任意格式的颜色值",
+      "input_placeholder": "输入颜色值，例如：#FF5733、rgb(255, 87, 51)、hsl(9, 100%, 60%) 或 red",
+      "output_title": "转换结果",
+      "color_preview": "颜色预览",
+      "hex_format": "HEX 格式",
+      "rgb_format": "RGB 格式",
+      "hsl_format": "HSL 格式",
+      "css_name": "CSS 颜色名称",
+      "invalid_color": "无效的颜色值",
+      "no_css_name": "无对应的 CSS 颜色名称",
+      "tips_title": "使用说明",
+      "tip1_title": "支持的格式",
+      "tip1_desc": "支持 HEX (#RGB, #RRGGBB)、RGB、HSL 和 CSS 颜色名称",
+      "tip2_title": "自动识别",
+      "tip2_desc": "自动识别输入的颜色格式并转换为其他格式",
+      "tip3_title": "实时预览",
+      "tip3_desc": "实时显示颜色预览和所有格式的转换结果",
+      "tip4_title": "快速复制",
+      "tip4_desc": "点击复制按钮快速复制各种格式的颜色值",
+      "introduction": "颜色转换器是专业的颜色格式转换工具，支持在 HEX、RGB、HSL 和 CSS 颜色名称之间自由转换。无论您是网页设计师、前端开发者还是 UI/UX 设计师，都能快速获取所需格式的颜色值。工具提供实时颜色预览，支持一键复制各种格式，大幅提升设计和开发效率。",
+      "features": [
+        "🎨 支持 HEX、RGB、HSL、CSS 颜色名称多种格式",
+        "🔄 智能识别输入格式，自动转换为其他格式",
+        "👁️ 实时颜色预览，直观查看颜色效果",
+        "📋 一键复制各种格式的颜色值",
+        "⚡ 实时转换，输入即时显示结果",
+        "🎯 精确的颜色值计算和转换",
+        "🌈 支持 140+ 标准 CSS 颜色名称",
+        "📱 响应式设计，移动端完美适配"
+      ],
+      "faq": [
+        {
+          "question": "支持哪些颜色格式？",
+          "answer": "工具支持四种主要格式：1) HEX 格式（如 #FF5733 或 #F53）；2) RGB 格式（如 rgb(255, 87, 51)）；3) HSL 格式（如 hsl(9, 100%, 60%)）；4) CSS 颜色名称（如 red、blue、cornflowerblue 等 140+ 标准颜色名称）。"
+        },
+        {
+          "question": "HEX、RGB 和 HSL 有什么区别？",
+          "answer": "HEX 是十六进制颜色表示，常用于 CSS 和设计工具。RGB 基于红绿蓝三原色，每个通道 0-255。HSL 基于色相、饱和度、亮度，更符合人类对颜色的直观理解，便于调整颜色的明暗和鲜艳程度。"
+        },
+        {
+          "question": "如何使用 CSS 颜色名称？",
+          "answer": "直接输入标准 CSS 颜色名称即可，如 red、blue、green、coral 等。工具会自动识别并转换为其他格式。需要注意的是，只有 140+ 个标准 CSS 颜色有对应的名称，其他颜色会显示'无对应的 CSS 颜色名称'。"
+        },
+        {
+          "question": "转换结果的精确度如何？",
+          "answer": "工具使用标准的颜色转换算法，确保转换结果的精确性。RGB 和 HEX 之间是无损转换，HSL 与 RGB 之间可能会有微小的精度差异（通常小于 1），但在实际使用中可以忽略不计。"
+        },
+        {
+          "question": "为什么有些颜色没有对应的 CSS 名称？",
+          "answer": "CSS 只定义了 147 个标准颜色名称（包括 transparent），其他数百万种颜色都没有对应的名称。如果您输入的颜色不在标准颜色列表中，工具会显示'无对应的 CSS 颜色名称'，但仍会正常显示 HEX、RGB 和 HSL 格式。"
+        }
+      ],
+      "meta": {
+        "title": "颜色转换器 - HEX RGB HSL CSS 颜色格式转换",
+        "description": "在线颜色格式转换工具。支持 HEX、RGB、HSL 和 CSS 颜色名称之间的互相转换，实时预览，一键复制。",
+        "keywords": "颜色转换器,HEX转RGB,RGB转HSL,CSS颜色,颜色格式转换,在线工具"
+      }
+    },
     "docker-run-to-compose": {
       "name": "Docker Run 转 Compose",
       "description": "将 docker run 命令转换为 docker-compose.yml 格式",

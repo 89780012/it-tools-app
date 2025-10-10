@@ -61,6 +61,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "json-converters",
         path: "/tools/json-to-xml",
         icon: "file-code"
+      },
+      {
+        id: "color-converter",
+        nameKey: "tools.color-converter.name",
+        descriptionKey: "tools.color-converter.description",
+        category: "json-converters",
+        path: "/tools/color-converter",
+        icon: "palette"
       }
     ]
   },
