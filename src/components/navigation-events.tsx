@@ -16,15 +16,16 @@ export function NavigationEvents() {
         // 检查是否是站内链接
         const currentDomain = window.location.origin
         const isInternalLink = link.href.startsWith(currentDomain) || link.href.startsWith("/")
-        
+
         if (isInternalLink) {
           // 获取链接的路径部分
           const targetPath = link.href.replace(currentDomain, "")
           // 移除可能的 locale 前缀，进行更准确的比较
-          const localePattern = /^\/(zh|en|hi)(\/|$)/
-          const currentPathWithoutLocale = pathname.replace(localePattern, "/$2")
-          const targetPathWithoutLocale = targetPath.replace(localePattern, "/$2")
+          const localePattern = /^\/(zh|en|hi)\//
+          const currentPathWithoutLocale = pathname.replace(localePattern, "/")
+          const targetPathWithoutLocale = targetPath.replace(localePattern, "/")
           
+
           // 检查是否点击的是当前页面
           const isSamePage = currentPathWithoutLocale === targetPathWithoutLocale || 
                              pathname === targetPath ||

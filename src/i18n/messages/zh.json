@@ -85,7 +85,9 @@
     "developer": "开发者工具",
     "developer_desc": "Cron、自动化等高级实用工具",
     "generators": "生成器工具",
-    "generators_desc": "UUID、密码等随机数据生成工具"
+    "generators_desc": "UUID、密码等随机数据生成工具",
+    "docker": "Docker 工具",
+    "docker_desc": "Docker 命令转换和配置生成工具"
   },
   "changelog": {
     "title": "更新日志",
@@ -1626,6 +1628,66 @@
         "title": "Cron 表达式解析器 - 在线验证与预览",
         "description": "免费的 Cron 表达式在线解析工具，支持语法校验、字段展开以及未来执行时间预览。",
         "keywords": "Cron 表达式,任务调度,计划任务,表达式解析,Cron 校验"
+      }
+    },
+    "docker-run-to-compose": {
+      "name": "Docker Run 转 Compose",
+      "description": "将 docker run 命令转换为 docker-compose.yml 格式",
+      "input_title": "输入 Docker Run 命令",
+      "input_desc": "粘贴或输入 docker run 命令",
+      "input_placeholder": "请输入 docker run 命令...\n例如: docker run -d -p 8080:80 --name my-nginx -v /data:/usr/share/nginx/html nginx:latest",
+      "output_title": "Docker Compose 配置",
+      "output_desc": "生成的 docker-compose.yml 内容",
+      "output_placeholder": "转换后的 docker-compose.yml 将显示在这里...",
+      "convert_button": "转换为 Compose",
+      "invalid_command": "无效的 docker run 命令",
+      "conversion_failed": "转换失败，请检查命令格式",
+      "tips_title": "使用说明",
+      "tip1_title": "命令格式",
+      "tip1_desc": "支持标准的 docker run 命令，包括各种参数和选项",
+      "tip2_title": "支持的参数",
+      "tip2_desc": "支持 -p/-d/-v/-e/--name/--network/--restart 等常用参数",
+      "tip3_title": "镜像名称",
+      "tip3_desc": "确保命令中包含有效的镜像名称和标签",
+      "tip4_title": "数据安全",
+      "tip4_desc": "所有转换在本地完成，命令和配置不会上传到服务器",
+      "introduction": "Docker Run 转 Compose 工具是专为 Docker 用户设计的命令转换工具，能够快速将 docker run 命令转换为标准的 docker-compose.yml 配置文件格式。docker-compose 相比直接使用 docker run 命令，具有配置清晰、易于管理、支持多容器编排等优势。本工具智能解析 docker run 命令中的各种参数，自动生成规范的 YAML 配置，大幅提升 Docker 容器管理效率，是 DevOps 和开发者的得力助手。",
+      "features": [
+        "🔄 智能解析 docker run 命令，支持多种参数格式",
+        "📝 自动生成标准 docker-compose.yml 配置文件",
+        "🎯 支持端口映射、卷挂载、环境变量等常用配置",
+        "⚡ 实时转换，即时生成可用的 compose 配置",
+        "📋 一键复制生成的配置到剪贴板",
+        "💾 支持直接下载为 docker-compose.yml 文件",
+        "🔒 本地处理，确保命令和配置安全",
+        "📱 响应式设计，支持移动端和桌面端"
+      ],
+      "faq": [
+        {
+          "question": "为什么要将 docker run 转换为 docker-compose？",
+          "answer": "docker-compose 提供了更好的配置管理方式：1）配置文件化，便于版本控制和团队协作；2）支持多容器编排，可以定义服务依赖关系；3）一键启动和停止所有服务；4）配置更清晰易读，便于维护和修改；5）支持环境变量和配置复用。对于需要长期维护的项目，使用 docker-compose 是最佳实践。"
+        },
+        {
+          "question": "工具支持哪些 docker run 参数？",
+          "answer": "工具支持大部分常用参数，包括：-p/--publish（端口映射）、-v/--volume（卷挂载）、-e/--env（环境变量）、--name（容器名称）、-d/--detach（后台运行）、--restart（重启策略）、--network（网络配置）、--link（容器链接）、--workdir（工作目录）、--user（用户）等。对于不支持的参数，工具会保留原始命令供手动调整。"
+        },
+        {
+          "question": "生成的 docker-compose.yml 可以直接使用吗？",
+          "answer": "生成的配置文件遵循 docker-compose 规范，大多数情况下可以直接使用。但建议检查并根据实际需求调整：1）验证端口映射是否正确；2）检查卷挂载路径；3）确认环境变量设置；4）根据需要添加网络配置、资源限制等高级选项；5）对于复杂场景可能需要手动优化配置结构。"
+        },
+        {
+          "question": "如何处理包含敏感信息的命令？",
+          "answer": "所有转换操作都在您的浏览器本地完成，命令内容不会上传到任何服务器。但仍建议：1）转换前移除敏感的密码和密钥；2）使用环境变量文件(.env)管理敏感配置；3）生成的配置文件不要包含明文密码；4）将 docker-compose.yml 添加到 .gitignore 如果包含敏感信息；5）使用 Docker secrets 管理生产环境的敏感数据。"
+        },
+        {
+          "question": "转换失败怎么办？如何解决？",
+          "answer": "转换失败的常见原因和解决方法：1）检查命令是否以 'docker run' 开头；2）确保包含镜像名称；3）检查参数格式是否正确（如 -p 8080:80）；4）移除命令中的特殊字符和转义符；5）尝试简化命令，逐步添加参数；6）参考工具提供的示例命令格式。如果问题持续，可以手动创建基础配置后再调整。"
+        }
+      ],
+      "meta": {
+        "title": "Docker Run 转 Compose 工具",
+        "description": "在线 Docker Run 命令转换工具。快速将 docker run 命令转换为 docker-compose.yml 配置文件，提升容器管理效率。",
+        "keywords": "Docker,docker-compose,容器编排,命令转换,YAML配置,DevOps工具,在线工具"
       }
     },
     "base64-file-converter": {

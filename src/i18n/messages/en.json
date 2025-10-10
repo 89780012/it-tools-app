@@ -85,7 +85,9 @@
     "developer": "Developer Tools",
     "developer_desc": "Utilities for cron, automation and power users",
     "generators": "Generator Tools",
-    "generators_desc": "Random data generation tools for UUID, passwords, and more"
+    "generators_desc": "Random data generation tools for UUID, passwords, and more",
+    "docker": "Docker Tools",
+    "docker_desc": "Docker command conversion and configuration generation tools"
   },
   "changelog": {
     "title": "Changelog",
@@ -152,12 +154,20 @@
       "name": "JSON to CSV",
       "description": "Convert JSON data to CSV format",
       "placeholder": "Please enter JSON data (object array or single object)...",
+      "csv_placeholder": "Please enter CSV data (first row as headers)...",
       "invalid": "Invalid JSON format",
+      "invalid_csv": "Invalid CSV format",
       "invalid_format": "Please enter valid JSON object or object array",
       "input_title": "Input JSON",
+      "input_desc": "Enter JSON data to convert",
+      "csv_input_title": "Input CSV",
+      "csv_input_desc": "Enter CSV data to convert",
       "output_title": "Output CSV",
       "output_desc": "Converted CSV data",
+      "json_output_title": "Output JSON",
+      "json_output_desc": "Converted JSON data",
       "output_placeholder": "Converted CSV will be displayed here...",
+      "json_output_placeholder": "Converted JSON will be displayed here...",
       "usage_title": "Usage Instructions",
       "rows_columns": "{rows} rows × {columns} columns",
       "usage_array_format": "• Supports JSON object array format:",
@@ -207,13 +217,21 @@
       "name": "JSON to YAML",
       "description": "Convert JSON data to YAML format",
       "placeholder": "Please enter JSON data...",
+      "yaml_placeholder": "Please enter YAML data...",
       "invalid": "Invalid JSON format",
+      "invalid_json": "Invalid JSON format",
+      "invalid_yaml": "Invalid YAML format",
       "convert": "Convert to YAML",
       "input_title": "Input JSON",
       "input_desc": "Enter JSON data to convert",
+      "yaml_input_title": "Input YAML",
+      "yaml_input_desc": "Enter YAML data to convert",
       "output_title": "Output YAML",
       "output_desc": "Converted YAML data",
+      "json_output_title": "Output JSON",
+      "json_output_desc": "Converted JSON data",
       "output_placeholder": "Converted YAML will be displayed here...",
+      "json_output_placeholder": "Converted JSON will be displayed here...",
       "introduction": "JSON to YAML Converter is a format conversion tool designed specifically for configuration file management and data exchange. It can losslessly convert JSON data structures to YAML format, supporting complex nested objects and array structures, and automatically generates readable YAML output with proper indentation. Suitable for various scenarios such as DevOps, configuration management, API documentation, etc.",
       "features": [
         "🔄 Lossless JSON to YAML format conversion",
@@ -255,12 +273,23 @@
       "placeholder": "Please enter JSON data...",
       "invalid": "Invalid JSON format",
       "convert_button": "Convert to XML",
+      "input_title": "Input JSON",
+      "input_desc": "Enter JSON data to convert",
+      "xml_input_title": "Input XML",
+      "xml_input_desc": "Enter XML data to convert",
+      "output_title": "Output XML",
+      "output_desc": "Converted XML data",
+      "json_output_title": "Output JSON",
+      "json_output_desc": "Converted JSON data",
       "input_placeholder": "Please enter JSON data to convert...",
+      "xml_input_placeholder": "Please enter XML data to convert...",
       "output_placeholder": "Converted XML will be displayed here...",
+      "json_output_placeholder": "Converted JSON will be displayed here...",
       "root_element": "Root Element Name",
       "errors": {
         "empty_input": "Please enter JSON data",
-        "invalid_json": "Invalid JSON format"
+        "invalid_json": "Invalid JSON format",
+        "invalid_xml": "Invalid XML format"
       },
       "success": "Conversion successful",
       "conversion_complete": "JSON to XML conversion completed",
@@ -1599,6 +1628,66 @@
         "title": "Cron Expression Parser - Validate cron schedules online",
         "description": "Free online cron expression parser that validates syntax and previews upcoming run times with human-readable breakdowns.",
         "keywords": "cron expression parser,cron validator,cron schedule preview,cron tester,automation tools"
+      }
+    },
+    "docker-run-to-compose": {
+      "name": "Docker Run to Compose",
+      "description": "Convert docker run commands to docker-compose.yml format",
+      "input_title": "Docker Run Command",
+      "input_desc": "Paste or enter your docker run command",
+      "input_placeholder": "Enter docker run command...\nExample: docker run -d -p 8080:80 --name my-nginx -v /data:/usr/share/nginx/html nginx:latest",
+      "output_title": "Docker Compose Configuration",
+      "output_desc": "Generated docker-compose.yml content",
+      "output_placeholder": "Converted docker-compose.yml will appear here...",
+      "convert_button": "Convert to Compose",
+      "invalid_command": "Invalid docker run command",
+      "conversion_failed": "Conversion failed, please check command format",
+      "tips_title": "Usage Guide",
+      "tip1_title": "Command Format",
+      "tip1_desc": "Supports standard docker run commands with various parameters and options",
+      "tip2_title": "Supported Parameters",
+      "tip2_desc": "Supports -p/-d/-v/-e/--name/--network/--restart and other common parameters",
+      "tip3_title": "Image Name",
+      "tip3_desc": "Ensure the command contains a valid image name and tag",
+      "tip4_title": "Data Security",
+      "tip4_desc": "All conversions are done locally, commands and configurations are not uploaded to servers",
+      "introduction": "Docker Run to Compose is a command conversion tool designed for Docker users, capable of quickly converting docker run commands into standard docker-compose.yml configuration file format. Compared to directly using docker run commands, docker-compose offers advantages such as clear configuration, easy management, and support for multi-container orchestration. This tool intelligently parses various parameters in docker run commands and automatically generates standardized YAML configurations, significantly improving Docker container management efficiency, making it an essential helper for DevOps and developers.",
+      "features": [
+        "🔄 Intelligent parsing of docker run commands, supporting multiple parameter formats",
+        "📝 Automatic generation of standard docker-compose.yml configuration files",
+        "🎯 Support for port mapping, volume mounting, environment variables and other common configurations",
+        "⚡ Real-time conversion with instant usable compose configurations",
+        "📋 One-click copy of generated configuration to clipboard",
+        "💾 Direct download as docker-compose.yml file",
+        "🔒 Local processing ensures command and configuration security",
+        "📱 Responsive design supporting mobile and desktop devices"
+      ],
+      "faq": [
+        {
+          "question": "Why convert docker run to docker-compose?",
+          "answer": "docker-compose provides better configuration management: 1) File-based configuration for version control and team collaboration; 2) Support for multi-container orchestration with service dependency definitions; 3) One-command start and stop of all services; 4) Clearer and more readable configuration, easier to maintain and modify; 5) Support for environment variables and configuration reuse. For projects requiring long-term maintenance, using docker-compose is best practice."
+        },
+        {
+          "question": "Which docker run parameters does the tool support?",
+          "answer": "The tool supports most common parameters including: -p/--publish (port mapping), -v/--volume (volume mounting), -e/--env (environment variables), --name (container name), -d/--detach (background mode), --restart (restart policy), --network (network configuration), --link (container linking), --workdir (working directory), --user (user), etc. For unsupported parameters, the tool preserves the original command for manual adjustment."
+        },
+        {
+          "question": "Can the generated docker-compose.yml be used directly?",
+          "answer": "The generated configuration file follows docker-compose specifications and can be used directly in most cases. However, it's recommended to check and adjust according to actual needs: 1) Verify port mappings are correct; 2) Check volume mount paths; 3) Confirm environment variable settings; 4) Add network configuration, resource limits, and other advanced options as needed; 5) Complex scenarios may require manual optimization of configuration structure."
+        },
+        {
+          "question": "How to handle commands containing sensitive information?",
+          "answer": "All conversion operations are completed locally in your browser, and command content is never uploaded to any server. However, it's still recommended to: 1) Remove sensitive passwords and keys before conversion; 2) Use environment variable files (.env) to manage sensitive configurations; 3) Don't include plaintext passwords in generated configuration files; 4) Add docker-compose.yml to .gitignore if it contains sensitive information; 5) Use Docker secrets to manage sensitive data in production environments."
+        },
+        {
+          "question": "What if conversion fails? How to resolve?",
+          "answer": "Common causes of conversion failure and solutions: 1) Check if the command starts with 'docker run'; 2) Ensure it contains an image name; 3) Verify parameter format is correct (e.g., -p 8080:80); 4) Remove special characters and escape sequences from the command; 5) Try simplifying the command and gradually add parameters; 6) Refer to the tool's example command format. If the problem persists, you can manually create a basic configuration and then adjust."
+        }
+      ],
+      "meta": {
+        "title": "Docker Run to Compose Tool",
+        "description": "Online Docker Run command conversion tool. Quickly convert docker run commands to docker-compose.yml configuration files, improving container management efficiency.",
+        "keywords": "Docker,docker-compose,container orchestration,command conversion,YAML configuration,DevOps tools,online tools"
       }
     },
     "base64-file-converter": {

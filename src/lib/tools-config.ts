@@ -104,7 +104,78 @@ export const toolsConfig: ToolCategory[] = [
       }
     ]
   },
-
+  {
+    id: "image", 
+    nameKey: "categories.image",
+    descriptionKey: "categories.image_desc",
+    icon: "image",
+    tools: [
+      {
+        id: "qr-code-generator",
+        nameKey: "tools.qr-code-generator.name",
+        descriptionKey: "tools.qr-code-generator.description",
+        category: "image",
+        path: "/tools/qr-code-generator",
+        icon: "qr-code"
+      },
+      {
+        id: "svg-placeholder-generator",
+        nameKey: "tools.svg-placeholder-generator.name",
+        descriptionKey: "tools.svg-placeholder-generator.description",
+        category: "image",
+        path: "/tools/svg-placeholder-generator",
+        icon: "square-dashed"
+      },
+      {
+        id: "base64-file-converter",
+        nameKey: "tools.base64-file-converter.name",
+        descriptionKey: "tools.base64-file-converter.description",
+        category: "image",
+        path: "/tools/base64-file-converter",
+        icon: "file-code"
+      }
+    ]
+  },
+  {
+    id: "generators",
+    nameKey: "categories.generators",
+    descriptionKey: "categories.generators_desc",
+    icon: "sparkles",
+    tools: [
+      {
+        id: "uuid-generator",
+        nameKey: "tools.uuid-generator.name",
+        descriptionKey: "tools.uuid-generator.description",
+        category: "generators",
+        path: "/tools/uuid-generator",
+        icon: "fingerprint"
+      },
+      {
+        id: "password-generator",
+        nameKey: "tools.password-generator.name",
+        descriptionKey: "tools.password-generator.description",
+        category: "generators",
+        path: "/tools/password-generator",
+        icon: "key"
+      }
+    ]
+  },
+  {
+    id: "docker",
+    nameKey: "categories.docker",
+    descriptionKey: "categories.docker_desc",
+    icon: "container",
+    tools: [
+      {
+        id: "docker-run-to-compose",
+        nameKey: "tools.docker-run-to-compose.name",
+        descriptionKey: "tools.docker-run-to-compose.description",
+        category: "docker",
+        path: "/tools/docker-run-to-compose",
+        icon: "box"
+      }
+    ]
+  },
   {
     id: "text",
     nameKey: "categories.text",
@@ -232,61 +303,6 @@ export const toolsConfig: ToolCategory[] = [
         icon: "history"
       }
     ]
-  },
-  {
-    id: "image", 
-    nameKey: "categories.image",
-    descriptionKey: "categories.image_desc",
-    icon: "image",
-    tools: [
-      {
-        id: "qr-code-generator",
-        nameKey: "tools.qr-code-generator.name",
-        descriptionKey: "tools.qr-code-generator.description",
-        category: "image",
-        path: "/tools/qr-code-generator",
-        icon: "qr-code"
-      },
-      {
-        id: "svg-placeholder-generator",
-        nameKey: "tools.svg-placeholder-generator.name",
-        descriptionKey: "tools.svg-placeholder-generator.description",
-        category: "image",
-        path: "/tools/svg-placeholder-generator",
-        icon: "square-dashed"
-      },
-      {
-        id: "base64-file-converter",
-        nameKey: "tools.base64-file-converter.name",
-        descriptionKey: "tools.base64-file-converter.description",
-        category: "image",
-        path: "/tools/base64-file-converter",
-        icon: "file-code"
-      }
-    ]
-  },
-  {
-    id: "generators",
-    nameKey: "categories.generators",
-    descriptionKey: "categories.generators_desc",
-    icon: "sparkles",
-    tools: [
-      {
-        id: "uuid-generator",
-        nameKey: "tools.uuid-generator.name",
-        descriptionKey: "tools.uuid-generator.description",
-        category: "generators",
-        path: "/tools/uuid-generator",
-        icon: "fingerprint"
-      },
-      {
-        id: "password-generator",
-        nameKey: "tools.password-generator.name",
-        descriptionKey: "tools.password-generator.description",
-        category: "generators",
-        path: "/tools/password-generator",
-        icon: "key"
-      }
-    ]
   }
+ 
 ]
