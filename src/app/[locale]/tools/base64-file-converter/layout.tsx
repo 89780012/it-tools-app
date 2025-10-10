@@ -3,7 +3,7 @@ import { getTranslations, getLocale } from 'next-intl/server'
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
-  const t = await getTranslations({ locale, namespace: 'tools.color-converter.meta' })
+  const t = await getTranslations({ locale, namespace: 'tools.base64-file-converter.meta' })
   const tSite = await getTranslations({ locale, namespace: 'meta' })
   
   return {
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t('title')} - ${tSite('site.name')}`,
       description: t('description'),
-      url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/color-converter`,
+      url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/base64-file-converter`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -21,17 +21,17 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t('description'),
     },
     alternates: {
-      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/color-converter`,
+      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/base64-file-converter`,
       languages: {
-        'en': 'https://www.toolkitpub.com/tools/color-converter',
-        'zh': 'https://www.toolkitpub.com/zh/tools/color-converter',
-        'hi': 'https://www.toolkitpub.com/hi/tools/color-converter',
+        'en': 'https://www.toolkitpub.com/tools/base64-file-converter',
+        'zh': 'https://www.toolkitpub.com/zh/tools/base64-file-converter',
+        'hi': 'https://www.toolkitpub.com/hi/tools/base64-file-converter',
       },
     },
   }
 }
 
-export default function ColorConverterLayout({
+export default function Base64FileConverterLayout({
   children,
 }: {
   children: React.ReactNode

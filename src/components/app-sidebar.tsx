@@ -30,6 +30,7 @@ import {
   Clock8,
   ChevronsDownUp,
   ChevronsUpDown,
+  Palette,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -69,6 +70,7 @@ const toolIconMap = {
   "square-dashed": SquareDashed, // SVG placeholder
   history: History,
   "clock-8": Clock8,
+  palette: Palette,              // Color converter
 }
 
 export function AppSidebar() {

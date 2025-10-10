@@ -15,6 +15,19 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t('description'),
       url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/docker-run-to-compose`,
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${t('title')} - ${tSite('site.name')}`,
+      description: t('description'),
+    },
+    alternates: {
+      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/docker-run-to-compose`,
+      languages: {
+        'en': 'https://www.toolkitpub.com/tools/docker-run-to-compose',
+        'zh': 'https://www.toolkitpub.com/zh/tools/docker-run-to-compose',
+        'hi': 'https://www.toolkitpub.com/hi/tools/docker-run-to-compose',
+      },
+    },
   }
 }
 
