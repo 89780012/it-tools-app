@@ -83,7 +83,9 @@
     "image": "图片工具",
     "image_desc": "图片处理和转换工具",
     "developer": "开发者工具",
-    "developer_desc": "Cron、自动化等高级实用工具"
+    "developer_desc": "Cron、自动化等高级实用工具",
+    "generators": "生成器工具",
+    "generators_desc": "UUID、密码等随机数据生成工具"
   },
   "changelog": {
     "title": "更新日志",
@@ -635,6 +637,71 @@
         "title": "URL编码解码工具",
         "description": "在线URL编码解码工具。处理URL参数、特殊字符转义，支持encodeURIComponent格式，适用于前端开发。",
         "keywords": "URL编码,URL解码,encodeURIComponent,decodeURIComponent,URL转义,在线工具"
+      }
+    },
+    "uuid-generator": {
+      "name": "UUID生成器",
+      "description": "批量生成UUID唯一标识符",
+      "settings_title": "生成设置",
+      "settings_desc": "配置UUID生成参数",
+      "count_label": "生成数量",
+      "count_hint": "可生成1-1000个UUID",
+      "format_label": "输出格式",
+      "format_default": "标准格式 (小写带横杠)",
+      "format_uppercase": "大写格式",
+      "format_no_dash": "无横杠格式",
+      "format_no_dash_uppercase": "大写无横杠格式",
+      "generate": "生成UUID",
+      "result_title": "生成结果",
+      "result_desc": "批量生成的UUID列表",
+      "result_placeholder": "生成的UUID将显示在这里...",
+      "generated_count": "已生成 {count} 个UUID",
+      "about_title": "关于UUID",
+      "about_uuid_title": "什么是UUID",
+      "about_uuid_desc": "UUID（通用唯一识别码）是一种128位的唯一标识符，可以保证在时间和空间上的唯一性",
+      "about_v4_title": "UUID v4版本",
+      "about_v4_desc": "本工具使用UUID v4版本，完全基于随机数生成，碰撞概率极低",
+      "about_format_title": "格式说明",
+      "about_format_desc": "标准格式为8-4-4-4-12的十六进制字符，也可选择大写或无横杠格式",
+      "about_use_title": "使用场景",
+      "about_use_desc": "适用于数据库主键、分布式系统ID、文件命名、API令牌等场景",
+      "introduction": "UUID生成器是专业的唯一标识符批量生成工具，基于UUID v4标准，采用加密安全的随机数生成算法。UUID（Universally Unique Identifier）在分布式系统中广泛应用，无需中心化协调即可保证全球范围内的唯一性。支持多种输出格式，包括标准格式、大写格式、无横杠格式等，满足不同场景需求。本工具可一次生成多达1000个UUID，大幅提升开发效率。",
+      "features": [
+        "🎲 基于UUID v4标准，完全随机生成",
+        "🔐 使用加密安全的随机数生成器",
+        "📊 批量生成1-1000个UUID",
+        "🎨 支持多种输出格式：标准、大写、无横杠",
+        "📋 一键复制所有UUID到剪贴板",
+        "💾 支持导出为文本文件",
+        "⚡ 高性能生成，毫秒级完成",
+        "🔒 本地生成，确保安全性"
+      ],
+      "faq": [
+        {
+          "question": "什么是UUID？为什么要使用它？",
+          "answer": "UUID（通用唯一识别码）是一种128位的标识符，在时间和空间上具有唯一性。使用UUID的主要优势：1）无需中央协调就能保证唯一性；2）适合分布式系统；3）碰撞概率极低（约1/2^122）；4）可以离线生成；5）不泄露创建时间和位置信息。"
+        },
+        {
+          "question": "UUID v4是什么？与其他版本有什么区别？",
+          "answer": "UUID有多个版本，v4是完全基于随机数生成的版本。区别在于：v1基于时间戳和MAC地址（可能泄露隐私），v3/v5基于命名空间和名称的哈希，v4纯随机生成（最常用）。v4的优势是简单、安全、不依赖硬件信息，适合大多数应用场景。"
+        },
+        {
+          "question": "UUID的碰撞概率有多低？",
+          "answer": "UUID v4有2^122个可能的值（约5.3×10^36）。理论上，生成10亿个UUID，碰撞概率约为1/2^92，远低于宇宙射线导致计算机错误的概率。实际应用中，UUID碰撞被认为是不可能事件，可以安全使用。"
+        },
+        {
+          "question": "UUID适用于哪些场景？",
+          "answer": "UUID广泛应用于：1）数据库主键，特别是分布式数据库；2）分布式系统的唯一标识；3）文件和资源命名；4）API令牌和会话ID；5）消息队列的消息ID；6）微服务架构中的请求追踪；7）缓存键生成。任何需要全局唯一标识的场景都适合使用UUID。"
+        },
+        {
+          "question": "不同格式的UUID有什么区别？应该如何选择？",
+          "answer": "标准格式（8-4-4-4-12带横杠）是最常见的，适合数据库存储和API传输；大写格式在某些系统中作为常量使用；无横杠格式更紧凑，适合URL和文件名；大写无横杠适合生成短码。选择取决于具体需求：存储优先选无横杠（节省空间），可读性优先选标准格式。"
+        }
+      ],
+      "meta": {
+        "title": "UUID生成器",
+        "description": "在线UUID批量生成工具。支持UUID v4标准，多种输出格式，快速生成全球唯一标识符。",
+        "keywords": "UUID生成器,唯一标识符,UUID v4,批量生成,GUID,在线工具"
       }
     },
     "password-generator": {

@@ -83,7 +83,9 @@
     "image": "Image Tools",
     "image_desc": "Image processing and conversion tools",
     "developer": "Developer Tools",
-    "developer_desc": "Utilities for cron, automation and power users"
+    "developer_desc": "Utilities for cron, automation and power users",
+    "generators": "Generator Tools",
+    "generators_desc": "Random data generation tools for UUID, passwords, and more"
   },
   "changelog": {
     "title": "Changelog",
@@ -633,6 +635,71 @@
         "title": "URL Encoder/Decoder Tool",
         "description": "Online URL encoding and decoding tool. Handle URL parameters and special character escaping with encodeURIComponent format support for frontend development.",
         "keywords": "URL encoding,URL decoding,encodeURIComponent,decodeURIComponent,URL escaping,online tool"
+      }
+    },
+    "uuid-generator": {
+      "name": "UUID Generator",
+      "description": "Generate UUID unique identifiers in batch",
+      "settings_title": "Generation Settings",
+      "settings_desc": "Configure UUID generation parameters",
+      "count_label": "Generation Count",
+      "count_hint": "Can generate 1-1000 UUIDs",
+      "format_label": "Output Format",
+      "format_default": "Standard Format (lowercase with dashes)",
+      "format_uppercase": "Uppercase Format",
+      "format_no_dash": "No Dash Format",
+      "format_no_dash_uppercase": "Uppercase No Dash Format",
+      "generate": "Generate UUIDs",
+      "result_title": "Generation Result",
+      "result_desc": "Batch generated UUID list",
+      "result_placeholder": "Generated UUIDs will appear here...",
+      "generated_count": "Generated {count} UUIDs",
+      "about_title": "About UUID",
+      "about_uuid_title": "What is UUID",
+      "about_uuid_desc": "UUID (Universally Unique Identifier) is a 128-bit unique identifier that guarantees uniqueness in time and space",
+      "about_v4_title": "UUID v4 Version",
+      "about_v4_desc": "This tool uses UUID v4 version, completely based on random number generation with extremely low collision probability",
+      "about_format_title": "Format Description",
+      "about_format_desc": "Standard format is 8-4-4-4-12 hexadecimal characters, with options for uppercase or no-dash formats",
+      "about_use_title": "Use Cases",
+      "about_use_desc": "Suitable for database primary keys, distributed system IDs, file naming, API tokens and other scenarios",
+      "introduction": "UUID Generator is a professional batch unique identifier generation tool based on UUID v4 standard using cryptographically secure random number generation algorithms. UUID (Universally Unique Identifier) is widely used in distributed systems, guaranteeing global uniqueness without centralized coordination. Supports multiple output formats including standard, uppercase, and no-dash formats to meet different scenario requirements. This tool can generate up to 1000 UUIDs at once, significantly improving development efficiency.",
+      "features": [
+        "🎲 Based on UUID v4 standard with complete random generation",
+        "🔐 Uses cryptographically secure random number generator",
+        "📊 Batch generation of 1-1000 UUIDs",
+        "🎨 Supports multiple output formats: standard, uppercase, no-dash",
+        "📋 One-click copy all UUIDs to clipboard",
+        "💾 Support exporting as text file",
+        "⚡ High-performance generation completed in milliseconds",
+        "🔒 Local generation ensuring security"
+      ],
+      "faq": [
+        {
+          "question": "What is UUID? Why use it?",
+          "answer": "UUID (Universally Unique Identifier) is a 128-bit identifier with uniqueness in time and space. Main advantages of using UUID: 1) Guarantees uniqueness without central coordination; 2) Suitable for distributed systems; 3) Extremely low collision probability (~1/2^122); 4) Can be generated offline; 5) Does not reveal creation time and location information."
+        },
+        {
+          "question": "What is UUID v4? How is it different from other versions?",
+          "answer": "UUID has multiple versions, v4 is completely random number based. Differences: v1 is based on timestamp and MAC address (may leak privacy), v3/v5 are based on namespace and name hash, v4 is purely random (most commonly used). v4's advantage is simplicity, security, no hardware dependency, suitable for most application scenarios."
+        },
+        {
+          "question": "How low is the UUID collision probability?",
+          "answer": "UUID v4 has 2^122 possible values (~5.3×10^36). Theoretically, generating 1 billion UUIDs has a collision probability of about 1/2^92, far lower than the probability of cosmic rays causing computer errors. In practical applications, UUID collision is considered an impossible event and can be used safely."
+        },
+        {
+          "question": "What scenarios are UUID suitable for?",
+          "answer": "UUID is widely used in: 1) Database primary keys, especially distributed databases; 2) Unique identifiers in distributed systems; 3) File and resource naming; 4) API tokens and session IDs; 5) Message IDs in message queues; 6) Request tracing in microservices architecture; 7) Cache key generation. Any scenario requiring globally unique identifiers is suitable for UUID."
+        },
+        {
+          "question": "What are the differences between UUID formats? How to choose?",
+          "answer": "Standard format (8-4-4-4-12 with dashes) is most common, suitable for database storage and API transmission; uppercase format is used as constants in some systems; no-dash format is more compact, suitable for URLs and filenames; uppercase no-dash is suitable for short code generation. Choice depends on specific needs: prioritize no-dash for storage (saves space), prioritize standard format for readability."
+        }
+      ],
+      "meta": {
+        "title": "UUID Generator",
+        "description": "Online UUID batch generation tool. Supports UUID v4 standard with multiple output formats for quickly generating globally unique identifiers.",
+        "keywords": "UUID generator,unique identifier,UUID v4,batch generation,GUID,online tool"
       }
     },
     "password-generator": {

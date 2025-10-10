@@ -176,14 +176,6 @@ export const toolsConfig: ToolCategory[] = [
         icon: "binary"
       },
       {
-        id: "password-generator",
-        nameKey: "tools.password-generator.name",
-        descriptionKey: "tools.password-generator.description",
-        category: "crypto",
-        path: "/tools/password-generator",
-        icon: "key"
-      },
-      {
         id: "aes-encrypt-decrypt",
         nameKey: "tools.aes-encrypt-decrypt.name",
         descriptionKey: "tools.aes-encrypt-decrypt.description",
@@ -270,6 +262,30 @@ export const toolsConfig: ToolCategory[] = [
         category: "image",
         path: "/tools/base64-file-converter",
         icon: "file-code"
+      }
+    ]
+  },
+  {
+    id: "generators",
+    nameKey: "categories.generators",
+    descriptionKey: "categories.generators_desc",
+    icon: "sparkles",
+    tools: [
+      {
+        id: "uuid-generator",
+        nameKey: "tools.uuid-generator.name",
+        descriptionKey: "tools.uuid-generator.description",
+        category: "generators",
+        path: "/tools/uuid-generator",
+        icon: "fingerprint"
+      },
+      {
+        id: "password-generator",
+        nameKey: "tools.password-generator.name",
+        descriptionKey: "tools.password-generator.description",
+        category: "generators",
+        path: "/tools/password-generator",
+        icon: "key"
       }
     ]
   }
