@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Copy, RotateCcw, Download } from "lucide-react"
+import { Copy, RotateCcw, Download, ArrowLeftRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -10,19 +10,18 @@ import { useTranslations } from 'next-intl'
 import * as yaml from 'js-yaml'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
-export default function JsonToYamlPage() {
+export default function JsonYamlConverterPage() {
   const t = useTranslations();
 
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
-  const [isValid, setIsValid] = useState(true)
+  const [mode, setMode] = useState<'json-to-yaml' | 'yaml-to-json'>('json-to-yaml')
 
-  const convertToYaml = () => {
+  const convertJsonToYaml = () => {
     if (!input.trim()) {
       setOutput("")
       setError("")
-      setIsValid(true)
       return
     }
 
@@ -37,12 +36,44 @@ export default function JsonToYamlPage() {
       })
       setOutput(yamlOutput)
       setError("")
-      setIsValid(true)
     } catch {
-      setError(t("tools.json-to-yaml.invalid"))
+      setError(t("tools.json-to-yaml.invalid_json"))
       setOutput("")
-      setIsValid(false)
     }
+  }
+
+  const convertYamlToJson = () => {
+    if (!input.trim()) {
+      setOutput("")
+      setError("")
+      return
+    }
+
+    try {
+      const parsed = yaml.load(input)
+      const jsonOutput = JSON.stringify(parsed, null, 2)
+      setOutput(jsonOutput)
+      setError("")
+    } catch {
+      setError(t("tools.json-to-yaml.invalid_yaml"))
+      setOutput("")
+    }
+  }
+
+  const handleConvert = () => {
+    if (mode === 'json-to-yaml') {
+      convertJsonToYaml()
+    } else {
+      convertYamlToJson()
+    }
+  }
+
+  const switchMode = () => {
+    setMode(mode === 'json-to-yaml' ? 'yaml-to-json' : 'json-to-yaml')
+    // 清空输入输出
+    setInput(output)
+    setOutput("")
+    setError("")
   }
 
   const copyToClipboard = async () => {
@@ -51,25 +82,25 @@ export default function JsonToYamlPage() {
     }
   }
 
-  const clearAll = () => {
-    setInput("")
-    setOutput("")
-    setError("")
-    setIsValid(true)
-  }
-
-  const downloadYaml = () => {
+  const downloadFile = () => {
     if (output) {
-      const blob = new Blob([output], { type: "text/yaml" })
+      const extension = mode === 'json-to-yaml' ? 'yaml' : 'json'
+      const blob = new Blob([output], { type: "text/plain" })
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = "converted.yaml"
+      a.download = `converted.${extension}`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
       URL.revokeObjectURL(url)
     }
+  }
+
+  const clearAll = () => {
+    setInput("")
+    setOutput("")
+    setError("")
   }
 
   return (
@@ -81,12 +112,25 @@ export default function JsonToYamlPage() {
         </p>
       </div>
 
+      <div className="flex gap-2 items-center justify-center">
+        <Button
+          onClick={switchMode}
+          variant="outline"
+          className="gap-2"
+        >
+          <ArrowLeftRight className="h-4 w-4" />
+          {mode === 'json-to-yaml' ? 'JSON → YAML' : 'YAML → JSON'}
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>{t("tools.json-to-yaml.input_title")}</CardTitle>
+            <CardTitle>
+              {mode === 'json-to-yaml' ? t("tools.json-to-yaml.input_title") : t("tools.json-to-yaml.yaml_input_title")}
+            </CardTitle>
             <CardDescription>
-              {t("tools.json-to-yaml.input_desc")}
+              {mode === 'json-to-yaml' ? t("tools.json-to-yaml.input_desc") : t("tools.json-to-yaml.yaml_input_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -94,22 +138,17 @@ export default function JsonToYamlPage() {
               value={input}
               onChange={(e) => {
                 setInput(e.target.value)
-                if (error) {
-                  setError("")
-                  setIsValid(true)
-                }
+                setError("")
               }}
-              placeholder={t("tools.json-to-yaml.placeholder")}
-              className={getTextareaClasses('input', isValid)}
+              placeholder={mode === 'json-to-yaml' ? t("tools.json-to-yaml.placeholder") : t("tools.json-to-yaml.yaml_placeholder")}
+              className={getTextareaClasses('input')}
             />
-            
             {error && (
-              <div className="text-destructive text-sm">{error}</div>
+              <p className="text-sm text-red-500">{error}</p>
             )}
-            
             <div className="flex gap-2">
-              <Button onClick={convertToYaml} className="flex-1">
-                {t("tools.json-to-yaml.convert")}
+              <Button onClick={handleConvert} className="flex-1">
+                {t("common.convert")}
               </Button>
               <Button onClick={clearAll} variant="outline" size="icon">
                 <RotateCcw className="h-4 w-4" />
@@ -120,43 +159,35 @@ export default function JsonToYamlPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>{t("tools.json-to-yaml.output_title")}</CardTitle>
+            <CardTitle>
+              {mode === 'json-to-yaml' ? t("tools.json-to-yaml.output_title") : t("tools.json-to-yaml.json_output_title")}
+            </CardTitle>
             <CardDescription>
-              {t("tools.json-to-yaml.output_desc")}
+              {mode === 'json-to-yaml' ? t("tools.json-to-yaml.output_desc") : t("tools.json-to-yaml.json_output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder={t("tools.json-to-yaml.output_placeholder")}
+              placeholder={mode === 'json-to-yaml' ? t("tools.json-to-yaml.output_placeholder") : t("tools.json-to-yaml.json_output_placeholder")}
               className={getTextareaClasses('output')}
             />
-            
             <div className="flex gap-2">
-              <Button 
-                onClick={copyToClipboard} 
-                variant="outline" 
-                disabled={!output}
-                className="flex-1"
-              >
+              <Button onClick={copyToClipboard} variant="outline" className="flex-1" disabled={!output}>
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button 
-                onClick={downloadYaml} 
-                variant="outline" 
-                disabled={!output}
-                size="icon"
-              >
-                <Download className="h-4 w-4" />
+              <Button onClick={downloadFile} variant="outline" className="flex-1" disabled={!output}>
+                <Download className="h-4 w-4 mr-2" />
+                {t("common.download")}
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* SEO内容区域 */}
+      {/* SEO 优化内容 */}
       <ToolSEOSection toolId="json-to-yaml" />
     </div>
   )

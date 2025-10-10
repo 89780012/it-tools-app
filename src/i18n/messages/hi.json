@@ -68,8 +68,8 @@
   "categories": {
     "json_tools": "JSON उपयोगिता",
     "json_tools_desc": "JSON डेटा के स्वरूपण, निरीक्षण और जनरेशन के उपकरण",
-    "json_converters": "कन्वर्टर",
-    "json_converters_desc": "JSON को अन्य फ़ॉर्मैट में बदलें और वापस पाएँ",
+    "json_converters": "फॉर्मेट कन्वर्टर",
+    "json_converters_desc": "JSON और CSV/YAML/XML के बीच द्विदिश रूपांतरण",
     "json-tools": "JSON उपयोगिता",
     "json-converters": "कन्वर्टर",
     "text": "टेक्स्ट उपकरण",

@@ -68,8 +68,8 @@
   "categories": {
     "json_tools": "JSON Utilities",
     "json_tools_desc": "Formatting, inspection, and generation helpers for JSON",
-    "json_converters": "Converters",
-    "json_converters_desc": "Convert JSON to other formats and back",
+    "json_converters": "Format Converters",
+    "json_converters_desc": "Bidirectional conversion between JSON and CSV/YAML/XML",
     "json-tools": "JSON Utilities",
     "json-converters": "Converters",
     "text": "Text Tools",

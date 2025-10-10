@@ -2,13 +2,13 @@
 
 import { useState } from "react"
 import { useTranslations } from "next-intl"
-import { ToolContainer } from "@/components/tool-container"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Copy, Download, Upload, RotateCcw, FileText } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Copy, Download, RotateCcw, ArrowLeftRight } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { getTextareaClasses } from "@/lib/utils"
-import { useToast } from "@/hooks/use-toast"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 function jsonToXml(json: unknown, rootElement = "root", indent = 0): string {
@@ -54,7 +54,7 @@ function jsonToXml(json: unknown, rootElement = "root", indent = 0): string {
     return `${spaces}<${rootElement}>\n${elements}\n${spaces}</${rootElement}>`
   }
   
-  return `${spaces}<${rootElement}>${escapeXml(String(json))}</${rootElement}>`
+  return `${spaces}<${rootElement}>${json}</${rootElement}>`
 }
 
 function escapeXml(str: string): string {
@@ -63,215 +63,242 @@ function escapeXml(str: string): string {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;")
+    .replace(/'/g, "&apos;")
 }
 
-export default function JsonToXmlPage() {
+function xmlToJson(xml: string): unknown {
+  const parser = new DOMParser()
+  const xmlDoc = parser.parseFromString(xml, "text/xml")
+  
+  // 检查解析错误
+  const parserError = xmlDoc.querySelector("parsererror")
+  if (parserError) {
+    throw new Error("Invalid XML")
+  }
+  
+  return parseXmlNode(xmlDoc.documentElement)
+}
+
+function parseXmlNode(node: Element): unknown {
+  // 如果节点没有子节点，返回文本内容
+  if (node.childNodes.length === 0) {
+    return null
+  }
+  
+  // 如果只有一个文本节点，返回其值
+  if (node.childNodes.length === 1 && node.childNodes[0].nodeType === 3) {
+    const text = node.childNodes[0].nodeValue?.trim() || ""
+    // 尝试转换为数字或布尔值
+    if (text === "true") return true
+    if (text === "false") return false
+    if (!isNaN(Number(text)) && text !== "") return Number(text)
+    return text
+  }
+  
+  // 收集所有元素子节点
+  const children: Element[] = []
+  for (let i = 0; i < node.childNodes.length; i++) {
+    const child = node.childNodes[i]
+    if (child.nodeType === 1) { // 元素节点
+      children.push(child as Element)
+    }
+  }
+  
+  if (children.length === 0) {
+    return node.textContent?.trim() || ""
+  }
+  
+  // 检查是否是数组（多个同名元素）
+  const tagNames = children.map(c => c.tagName)
+  const hasDuplicates = tagNames.some((tag, index) => tagNames.indexOf(tag) !== index)
+  
+  if (hasDuplicates || (children.length > 0 && children.every(c => c.tagName.endsWith("Item")))) {
+    // 数组格式
+    return children.map(child => parseXmlNode(child))
+  }
+  
+  // 对象格式
+  const result: Record<string, unknown> = {}
+  children.forEach(child => {
+    result[child.tagName] = parseXmlNode(child)
+  })
+  return result
+}
+
+export default function JsonXmlConverterPage() {
   const t = useTranslations()
-  const { toast } = useToast()
+  
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
+  const [rootElement, setRootElement] = useState("root")
+  const [mode, setMode] = useState<'json-to-xml' | 'xml-to-json'>('json-to-xml')
   const [error, setError] = useState("")
-  const [rootElementName, setRootElementName] = useState("root")
 
   const handleConvert = () => {
     if (!input.trim()) {
-      setError(t("tools.json-to-xml.errors.empty_input"))
       setOutput("")
+      setError("")
       return
     }
 
     try {
-      const jsonData = JSON.parse(input)
-      const xmlResult = `<?xml version="1.0" encoding="UTF-8"?>\n${jsonToXml(jsonData, rootElementName)}`
-      setOutput(xmlResult)
-      setError("")
-      
-      toast({
-        title: t("tools.json-to-xml.success"),
-        description: t("tools.json-to-xml.conversion_complete")
-      })
+      if (mode === 'json-to-xml') {
+        const parsed = JSON.parse(input)
+        const xml = jsonToXml(parsed, rootElement, 0)
+        setOutput(`<?xml version="1.0" encoding="UTF-8"?>\n${xml}`)
+        setError("")
+      } else {
+        const json = xmlToJson(input)
+        setOutput(JSON.stringify(json, null, 2))
+        setError("")
+      }
     } catch {
-      setError(t("tools.json-to-xml.errors.invalid_json"))
+      setError(mode === 'json-to-xml' 
+        ? t("tools.json-to-xml.errors.invalid_json")
+        : t("tools.json-to-xml.errors.invalid_xml"))
       setOutput("")
     }
   }
 
-  const handleCopy = async () => {
-    if (!output) return
+  const switchMode = () => {
+    setMode(mode === 'json-to-xml' ? 'xml-to-json' : 'json-to-xml')
+    setInput(output)
+    setOutput("")
+    setError("")
+  }
 
-    try {
+  const copyToClipboard = async () => {
+    if (output) {
       await navigator.clipboard.writeText(output)
-      toast({
-        title: t("common.copied"),
-        description: t("tools.json-to-xml.xml_copied")
-      })
-    } catch {
-      toast({
-        title: t("common.error"),
-        description: t("common.copy_failed"),
-        variant: "destructive"
-      })
     }
   }
 
-  const handleDownload = () => {
-    if (!output) return
-
-    const blob = new Blob([output], { type: "application/xml" })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement("a")
-    a.href = url
-    a.download = "converted.xml"
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
-
-    toast({
-      title: t("common.downloaded"),
-      description: t("tools.json-to-xml.xml_downloaded")
-    })
-  }
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (!file) return
-
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      const content = e.target?.result as string
-      setInput(content)
+  const downloadFile = () => {
+    if (output) {
+      const extension = mode === 'json-to-xml' ? 'xml' : 'json'
+      const blob = new Blob([output], { type: "text/plain" })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = `converted.${extension}`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
     }
-    reader.readAsText(file)
   }
 
-  const handleClear = () => {
+  const clearAll = () => {
     setInput("")
     setOutput("")
     setError("")
-    setRootElementName("root")
   }
 
   return (
-    <ToolContainer
-      title={t("tools.json-to-xml.name")}
-      description={t("tools.json-to-xml.description")}
-    >
+    <div className="container mx-auto p-6 space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold">{t("tools.json-to-xml.name")}</h1>
+        <p className="text-muted-foreground mt-2">
+          {t("tools.json-to-xml.description")}
+        </p>
+      </div>
+
+      <div className="flex gap-2 items-center justify-center">
+        <Button
+          onClick={switchMode}
+          variant="outline"
+          className="gap-2"
+        >
+          <ArrowLeftRight className="h-4 w-4" />
+          {mode === 'json-to-xml' ? 'JSON → XML' : 'XML → JSON'}
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* 输入区域 */}
         <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              {t("common.input")}
+          <CardHeader>
+            <CardTitle>
+              {mode === 'json-to-xml' ? t("tools.json-to-xml.input_title") : t("tools.json-to-xml.xml_input_title")}
             </CardTitle>
+            <CardDescription>
+              {mode === 'json-to-xml' ? t("tools.json-to-xml.input_desc") : t("tools.json-to-xml.xml_input_desc")}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="file"
-                accept=".json"
-                onChange={handleFileUpload}
-                className="hidden"
-                id="file-upload"
-              />
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => document.getElementById("file-upload")?.click()}
-                className="w-full sm:w-auto"
-              >
-                <Upload className="h-4 w-4 mr-2" />
-                {t("common.upload_file")}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleClear}
-                className="w-full sm:w-auto"
-              >
-                <RotateCcw className="h-4 w-4 mr-2" />
-                {t("common.clear")}
-              </Button>
-            </div>
-
-            <div>
-              <label className="text-sm font-medium mb-2 block">
-                {t("tools.json-to-xml.root_element")}
-              </label>
-              <input
-                type="text"
-                value={rootElementName}
-                onChange={(e) => setRootElementName(e.target.value || "root")}
-                className="w-full px-3 py-2 border rounded-md text-sm"
-                placeholder="root"
-              />
-            </div>
-
-            <Textarea
-              placeholder={t("tools.json-to-xml.input_placeholder")}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className={getTextareaClasses('input')}
-            />
-
-            <Button onClick={handleConvert} className="w-full">
-              {t("tools.json-to-xml.convert_button")}
-            </Button>
-
-            {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-md">
-                <p className="text-red-600 text-sm">{error}</p>
+            {mode === 'json-to-xml' && (
+              <div className="space-y-2">
+                <Label htmlFor="root-element">{t("tools.json-to-xml.root_element")}</Label>
+                <Input
+                  id="root-element"
+                  value={rootElement}
+                  onChange={(e) => setRootElement(e.target.value || "root")}
+                  placeholder="root"
+                />
               </div>
             )}
+            
+            <Textarea
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value)
+                setError("")
+              }}
+              placeholder={mode === 'json-to-xml' 
+                ? t("tools.json-to-xml.input_placeholder")
+                : t("tools.json-to-xml.xml_input_placeholder")}
+              className={getTextareaClasses('input')}
+            />
+            
+            {error && (
+              <p className="text-sm text-red-500">{error}</p>
+            )}
+            
+            <div className="flex gap-2">
+              <Button onClick={handleConvert} className="flex-1">
+                {t("common.convert")}
+              </Button>
+              <Button onClick={clearAll} variant="outline" size="icon">
+                <RotateCcw className="h-4 w-4" />
+              </Button>
+            </div>
           </CardContent>
         </Card>
 
-        {/* 输出区域 */}
         <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              {t("common.output")}
+          <CardHeader>
+            <CardTitle>
+              {mode === 'json-to-xml' ? t("tools.json-to-xml.output_title") : t("tools.json-to-xml.json_output_title")}
             </CardTitle>
+            <CardDescription>
+              {mode === 'json-to-xml' ? t("tools.json-to-xml.output_desc") : t("tools.json-to-xml.json_output_desc")}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex flex-col sm:flex-row gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCopy}
-                disabled={!output}
-                className="w-full sm:w-auto"
-              >
+            <Textarea
+              value={output}
+              readOnly
+              placeholder={mode === 'json-to-xml' 
+                ? t("tools.json-to-xml.output_placeholder")
+                : t("tools.json-to-xml.json_output_placeholder")}
+              className={getTextareaClasses('output')}
+            />
+            
+            <div className="flex gap-2">
+              <Button onClick={copyToClipboard} variant="outline" className="flex-1" disabled={!output}>
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleDownload}
-                disabled={!output}
-                className="w-full sm:w-auto"
-              >
+              <Button onClick={downloadFile} variant="outline" className="flex-1" disabled={!output}>
                 <Download className="h-4 w-4 mr-2" />
                 {t("common.download")}
               </Button>
             </div>
-
-            <Textarea
-              placeholder={t("tools.json-to-xml.output_placeholder")}
-              value={output}
-              readOnly
-              className={getTextareaClasses('output')}
-            />
           </CardContent>
         </Card>
       </div>
 
       {/* SEO 优化内容 */}
       <ToolSEOSection toolId="json-to-xml" />
-    </ToolContainer>
+    </div>
   )
 }

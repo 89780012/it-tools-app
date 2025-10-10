@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Copy, RotateCcw, Download, Table } from "lucide-react"
+import { Copy, RotateCcw, Download, ArrowLeftRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -13,12 +13,12 @@ interface JsonRow {
   [key: string]: unknown
 }
 
-export default function JsonToCsvPage() {
+export default function JsonCsvConverterPage() {
   const t = useTranslations();
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
-  const [isValid, setIsValid] = useState(true)
+  const [mode, setMode] = useState<'json-to-csv' | 'csv-to-json'>('json-to-csv')
 
   const flattenObject = (obj: Record<string, unknown>, prefix = ''): Record<string, unknown> => {
     const flattened: Record<string, unknown> = {}
@@ -42,23 +42,104 @@ export default function JsonToCsvPage() {
     return flattened
   }
 
+  const unflattenObject = (flat: Record<string, unknown>): Record<string, unknown> => {
+    const result: Record<string, unknown> = {}
+    
+    for (const key in flat) {
+      const parts = key.split('.')
+      let current: Record<string, unknown> = result
+      
+      for (let i = 0; i < parts.length - 1; i++) {
+        const part = parts[i]
+        if (!(part in current)) {
+          current[part] = {}
+        }
+        current = current[part] as Record<string, unknown>
+      }
+      
+      const lastPart = parts[parts.length - 1]
+      let value = flat[key]
+      
+      // 尝试解析JSON数组
+      if (typeof value === 'string' && value.startsWith('[') && value.endsWith(']')) {
+        try {
+          value = JSON.parse(value)
+        } catch {
+          // 保持原样
+        }
+      }
+      
+      current[lastPart] = value
+    }
+    
+    return result
+  }
+
   const escapeCSV = (value: unknown): string => {
     if (value === null || value === undefined) return ''
     
     const str = String(value)
-    // 如果包含逗号、引号、换行符，需要用引号包围
     if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
-      // 引号需要转义为双引号
       return `"${str.replace(/"/g, '""')}"`
     }
     return str
+  }
+
+  const parseCSV = (csv: string): string[][] => {
+    const rows: string[][] = []
+    let currentRow: string[] = []
+    let currentCell = ''
+    let inQuotes = false
+    
+    for (let i = 0; i < csv.length; i++) {
+      const char = csv[i]
+      const nextChar = csv[i + 1]
+      
+      if (char === '"') {
+        if (inQuotes && nextChar === '"') {
+          // 转义的引号
+          currentCell += '"'
+          i++ // 跳过下一个引号
+        } else {
+          // 切换引号状态
+          inQuotes = !inQuotes
+        }
+      } else if (char === ',' && !inQuotes) {
+        currentRow.push(currentCell)
+        currentCell = ''
+      } else if ((char === '\n' || char === '\r') && !inQuotes) {
+        if (currentCell || currentRow.length > 0) {
+          currentRow.push(currentCell)
+          if (currentRow.some(cell => cell !== '')) {
+            rows.push(currentRow)
+          }
+          currentRow = []
+          currentCell = ''
+        }
+        // 跳过 \r\n 中的 \n
+        if (char === '\r' && nextChar === '\n') {
+          i++
+        }
+      } else {
+        currentCell += char
+      }
+    }
+    
+    // 添加最后一行
+    if (currentCell || currentRow.length > 0) {
+      currentRow.push(currentCell)
+      if (currentRow.some(cell => cell !== '')) {
+        rows.push(currentRow)
+      }
+    }
+    
+    return rows
   }
 
   const convertJsonToCsv = () => {
     if (!input.trim()) {
       setOutput("")
       setError("")
-      setIsValid(true)
       return
     }
 
@@ -66,26 +147,21 @@ export default function JsonToCsvPage() {
       const parsed = JSON.parse(input)
       let jsonArray: JsonRow[]
 
-      // 处理不同的输入格式
       if (Array.isArray(parsed)) {
         if (parsed.length === 0) {
           setOutput("")
           setError("")
-          setIsValid(true)
           return
         }
         jsonArray = parsed
       } else if (typeof parsed === 'object' && parsed !== null) {
-        // 如果是单个对象，转为数组
         jsonArray = [parsed]
       } else {
         setError(t("tools.json-to-csv.invalid_format"))
         setOutput("")
-        setIsValid(false)
         return
       }
 
-      // 扁平化所有对象并收集所有键
       const flattenedRows = jsonArray.map(item => flattenObject(item))
       const allKeys = new Set<string>()
       flattenedRows.forEach(row => {
@@ -97,17 +173,12 @@ export default function JsonToCsvPage() {
       if (headers.length === 0) {
         setOutput("")
         setError("")
-        setIsValid(true)
         return
       }
 
-      // 生成CSV内容
       const csvLines: string[] = []
-      
-      // 添加标题行
       csvLines.push(headers.map(header => escapeCSV(header)).join(','))
       
-      // 添加数据行
       flattenedRows.forEach(row => {
         const values = headers.map(header => escapeCSV(row[header] || ''))
         csvLines.push(values.join(','))
@@ -116,12 +187,76 @@ export default function JsonToCsvPage() {
       const csvContent = csvLines.join('\n')
       setOutput(csvContent)
       setError("")
-      setIsValid(true)
     } catch {
       setError(t("tools.json-to-csv.invalid"))
       setOutput("")
-      setIsValid(false)
     }
+  }
+
+  const convertCsvToJson = () => {
+    if (!input.trim()) {
+      setOutput("")
+      setError("")
+      return
+    }
+
+    try {
+      const rows = parseCSV(input)
+      
+      if (rows.length === 0) {
+        setOutput("")
+        setError("")
+        return
+      }
+
+      const headers = rows[0]
+      const dataRows = rows.slice(1)
+
+      if (dataRows.length === 0) {
+        setOutput(JSON.stringify([], null, 2))
+        setError("")
+        return
+      }
+
+      const jsonArray = dataRows.map(row => {
+        const flatObj: Record<string, unknown> = {}
+        headers.forEach((header, index) => {
+          const value = row[index] || ''
+          // 尝试转换数字
+          if (value !== '' && !isNaN(Number(value))) {
+            flatObj[header] = Number(value)
+          } else if (value === 'true') {
+            flatObj[header] = true
+          } else if (value === 'false') {
+            flatObj[header] = false
+          } else {
+            flatObj[header] = value
+          }
+        })
+        return unflattenObject(flatObj)
+      })
+
+      setOutput(JSON.stringify(jsonArray, null, 2))
+      setError("")
+    } catch {
+      setError(t("tools.json-to-csv.invalid_csv"))
+      setOutput("")
+    }
+  }
+
+  const handleConvert = () => {
+    if (mode === 'json-to-csv') {
+      convertJsonToCsv()
+    } else {
+      convertCsvToJson()
+    }
+  }
+
+  const switchMode = () => {
+    setMode(mode === 'json-to-csv' ? 'csv-to-json' : 'json-to-csv')
+    setInput(output)
+    setOutput("")
+    setError("")
   }
 
   const copyToClipboard = async () => {
@@ -130,20 +265,14 @@ export default function JsonToCsvPage() {
     }
   }
 
-  const clearAll = () => {
-    setInput("")
-    setOutput("")
-    setError("")
-    setIsValid(true)
-  }
-
-  const downloadCsv = () => {
+  const downloadFile = () => {
     if (output) {
-      const blob = new Blob([output], { type: "text/csv;charset=utf-8;" })
+      const extension = mode === 'json-to-csv' ? 'csv' : 'json'
+      const blob = new Blob([output], { type: "text/plain" })
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = "data.csv"
+      a.download = `converted.${extension}`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -151,17 +280,10 @@ export default function JsonToCsvPage() {
     }
   }
 
-  const getRowCount = () => {
-    if (!output) return 0
-    return output.split('\n').length - 1 // 减去标题行
-  }
-
-  const getColumnCount = () => {
-    if (!output) return 0
-    const firstLine = output.split('\n')[0]
-    if (!firstLine) return 0
-    // 简单计算逗号数量，不考虑引号内的逗号
-    return firstLine.split(',').length
+  const clearAll = () => {
+    setInput("")
+    setOutput("")
+    setError("")
   }
 
   return (
@@ -173,12 +295,25 @@ export default function JsonToCsvPage() {
         </p>
       </div>
 
+      <div className="flex gap-2 items-center justify-center">
+        <Button
+          onClick={switchMode}
+          variant="outline"
+          className="gap-2"
+        >
+          <ArrowLeftRight className="h-4 w-4" />
+          {mode === 'json-to-csv' ? 'JSON → CSV' : 'CSV → JSON'}
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>{t("tools.json-to-csv.input_title")}</CardTitle>
+            <CardTitle>
+              {mode === 'json-to-csv' ? t("tools.json-to-csv.input_title") : t("tools.json-to-csv.csv_input_title")}
+            </CardTitle>
             <CardDescription>
-              {t("tools.json-to-csv.placeholder")}
+              {mode === 'json-to-csv' ? t("tools.json-to-csv.input_desc") : t("tools.json-to-csv.csv_input_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -186,22 +321,16 @@ export default function JsonToCsvPage() {
               value={input}
               onChange={(e) => {
                 setInput(e.target.value)
-                if (error) {
-                  setError("")
-                  setIsValid(true)
-                }
+                setError("")
               }}
-              placeholder={t("tools.json-to-csv.placeholder")}
-              className={getTextareaClasses('input', isValid)}
+              placeholder={mode === 'json-to-csv' ? t("tools.json-to-csv.placeholder") : t("tools.json-to-csv.csv_placeholder")}
+              className={getTextareaClasses('input')}
             />
-            
             {error && (
-              <div className="text-destructive text-sm">{error}</div>
+              <p className="text-sm text-red-500">{error}</p>
             )}
-            
             <div className="flex gap-2">
-              <Button onClick={convertJsonToCsv} className="flex-1">
-                <Table className="h-4 w-4 mr-2" />
+              <Button onClick={handleConvert} className="flex-1">
                 {t("common.convert")}
               </Button>
               <Button onClick={clearAll} variant="outline" size="icon">
@@ -213,69 +342,35 @@ export default function JsonToCsvPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>{t("tools.json-to-csv.output_title")}</CardTitle>
+            <CardTitle>
+              {mode === 'json-to-csv' ? t("tools.json-to-csv.output_title") : t("tools.json-to-csv.json_output_title")}
+            </CardTitle>
             <CardDescription>
-              {output && (
-                <span className="text-sm text-muted-foreground">
-                  {t("tools.json-to-csv.rows_columns", { rows: getRowCount(), columns: getColumnCount() })}
-                </span>
-              )}
-              {!output && t("tools.json-to-csv.output_desc")}
+              {mode === 'json-to-csv' ? t("tools.json-to-csv.output_desc") : t("tools.json-to-csv.json_output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder={t("tools.json-to-csv.output_placeholder")}
+              placeholder={mode === 'json-to-csv' ? t("tools.json-to-csv.output_placeholder") : t("tools.json-to-csv.json_output_placeholder")}
               className={getTextareaClasses('output')}
             />
-            
             <div className="flex gap-2">
-              <Button 
-                onClick={copyToClipboard} 
-                variant="outline" 
-                disabled={!output}
-                className="flex-1"
-              >
+              <Button onClick={copyToClipboard} variant="outline" className="flex-1" disabled={!output}>
                 <Copy className="h-4 w-4 mr-2" />
                 {t("common.copy")}
               </Button>
-              <Button 
-                onClick={downloadCsv} 
-                variant="outline" 
-                disabled={!output}
-                size="icon"
-              >
-                <Download className="h-4 w-4" />
+              <Button onClick={downloadFile} variant="outline" className="flex-1" disabled={!output}>
+                <Download className="h-4 w-4 mr-2" />
+                {t("common.download")}
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{t("tools.json-to-csv.usage_title")}</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-2">
-          <div className="text-sm text-muted-foreground space-y-1">
-            <p>
-              {t("tools.json-to-csv.usage_array_format")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_array_example")}</code>
-            </p>
-            <p>
-              {t("tools.json-to-csv.usage_object_format")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_object_example")}</code>
-            </p>
-            <p>
-              {t("tools.json-to-csv.usage_nested_flatten")} <code className="bg-muted px-1 py-0.5 rounded text-xs">{t("tools.json-to-csv.usage_nested_examples")}</code>
-            </p>
-            <p>{t("tools.json-to-csv.usage_array_stringify")}</p>
-            <p>{t("tools.json-to-csv.usage_csv_escape")}</p>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* SEO内容区域 */}
+      {/* SEO 优化内容 */}
       <ToolSEOSection toolId="json-to-csv" />
     </div>
   )

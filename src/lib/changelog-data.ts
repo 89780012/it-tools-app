@@ -18,6 +18,87 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    version: "v0.7.0",
+    date: "2025-10-10",
+    type: "minor",
+    title: {
+      zh: "工具扩展与分类优化",
+      en: "Tool Expansion and Category Optimization",
+      hi: "टूल विस्तार और श्रेणी अनुकूलन"
+    },
+    description: {
+      zh: "新增UUID生成器，重构格式转换工具为双向转换，优化工具分类结构",
+      en: "Added UUID generator, refactored format conversion tools to bidirectional conversion, optimized tool category structure",
+      hi: "UUID जेनरेटर जोड़ा गया, द्विदिश रूपांतरण के लिए फॉर्मेट कनवर्शन टूल को रिफैक्टर किया गया, टूल श्रेणी संरचना का अनुकूलन"
+    },
+    changes: [
+      {
+        type: "feat",
+        description: {
+          zh: "新增UUID生成器：支持批量生成1-1000个UUID，提供多种输出格式（标准、大写、无横杠等）",
+          en: "Added UUID generator: supports batch generation of 1-1000 UUIDs with multiple output formats (standard, uppercase, no-dash, etc.)",
+          hi: "UUID जेनरेटर जोड़ा गया: कई आउटपुट फॉर्मेट (स्टैंडर्ड, अपरकेस, नो-डैश आदि) के साथ 1-1000 UUID की बैच जेनरेशन का समर्थन"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "创建生成器工具分类：将UUID生成器和密码生成器归类到独立分类，优化工具组织结构",
+          en: "Created 'Generator Tools' category: organized UUID generator and password generator into independent category, optimized tool structure",
+          hi: "'जेनरेटर टूल्स' श्रेणी बनाई गई: UUID जेनरेटर और पासवर्ड जेनरेटर को स्वतंत्र श्रेणी में व्यवस्थित किया गया, टूल संरचना का अनुकूलन"
+        }
+      },
+      {
+        type: "refactor",
+        description: {
+          zh: "格式转换工具双向转换升级：JSON⇄CSV、JSON⇄YAML、JSON⇄XML，支持一键切换转换方向",
+          en: "Format conversion tools upgraded to bidirectional conversion: JSON⇄CSV, JSON⇄YAML, JSON⇄XML with one-click direction switching",
+          hi: "फॉर्मेट कनवर्शन टूल को द्विदिश रूपांतरण में अपग्रेड किया गया: JSON⇄CSV, JSON⇄YAML, JSON⇄XML वन-क्लिक दिशा स्विचिंग के साथ"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "CSV转JSON功能：智能解析CSV数据，支持嵌套对象反扁平化和数据类型识别",
+          en: "CSV to JSON conversion: intelligent CSV parsing with nested object unflatten and data type recognition",
+          hi: "CSV से JSON रूपांतरण: नेस्टेड ऑब्जेक्ट अनफ्लैटन और डेटा प्रकार पहचान के साथ बुद्धिमान CSV पार्सिंग"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "YAML转JSON和XML转JSON功能：完整实现双向数据格式转换能力",
+          en: "YAML to JSON and XML to JSON conversion: fully implemented bidirectional data format conversion",
+          hi: "YAML से JSON और XML से JSON रूपांतरण: पूरी तरह से द्विदिश डेटा फॉर्मेट रूपांतरण लागू किया गया"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "更新工具分类描述：将转换器重命名为格式转换器，突出双向转换特性",
+          en: "Updated tool category description: renamed 'Converters' to 'Format Converters', highlighting bidirectional conversion features",
+          hi: "टूल श्रेणी विवरण अपडेट किया गया: 'कन्वर्टर्स' का नाम बदलकर 'फॉर्मेट कन्वर्टर्स' किया गया, द्विदिश रूपांतरण सुविधाओं को उजागर किया गया"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "完善相关工具推荐系统：在related-tools组件中添加新工具支持",
+          en: "Improved related tools recommendation system: added new tool support in related-tools component",
+          hi: "संबंधित टूल्स अनुशंसा प्रणाली में सुधार: related-tools कॉम्पोनेंट में नए टूल समर्थन जोड़ा गया"
+        }
+      },
+      {
+        type: "fix",
+        description: {
+          zh: "代码质量优化：修复所有ESLint警告和错误，移除未使用变量，改进类型定义",
+          en: "Code quality optimization: fixed all ESLint warnings and errors, removed unused variables, improved type definitions",
+          hi: "कोड गुणवत्ता अनुकूलन: सभी ESLint चेतावनियाँ और त्रुटियाँ ठीक की गईं, अप्रयुक्त वैरिएबल हटाए गए, प्रकार परिभाषाओं में सुधार"
+        }
+      }
+    ]
+  },
+  {
     version: "v0.6.0",
     date: "2025-09-27",
     type: "minor",

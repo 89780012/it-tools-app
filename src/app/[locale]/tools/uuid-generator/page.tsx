@@ -30,7 +30,7 @@ export default function UUIDGeneratorPage() {
 
   const generateUUIDs = () => {
     const generated = Array.from({ length: count }, () => {
-      let uuid = generateUUIDv4()
+      const uuid = generateUUIDv4()
       
       switch (format) {
         case 'uppercase':
@@ -109,7 +109,7 @@ export default function UUIDGeneratorPage() {
 
             <div className="space-y-2">
               <Label htmlFor="format">{t("tools.uuid-generator.format_label")}</Label>
-              <Select value={format} onValueChange={(value: any) => setFormat(value)}>
+              <Select value={format} onValueChange={(value: 'default' | 'uppercase' | 'no-dash' | 'no-dash-uppercase') => setFormat(value)}>
                 <SelectTrigger id="format">
                   <SelectValue />
                 </SelectTrigger>
