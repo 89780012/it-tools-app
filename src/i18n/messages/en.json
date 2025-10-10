@@ -1571,6 +1571,21 @@
     "cron-expression-parser": {
       "name": "Cron Expression Parser",
       "description": "Validate cron syntax and preview upcoming schedules.",
+      "format_title": "Cron Expression Format Guide",
+      "format_description": "Understand the structure of cron expressions and special characters.",
+      "format": {
+        "minute_desc": "Minute (0 - 59)",
+        "hour_desc": "Hour (0 - 23)",
+        "day_desc": "Day of month (1 - 31)",
+        "month_desc": "Month (1 - 12) or JAN, FEB ...",
+        "weekday_desc": "Day of week (0 - 6, Sunday=0) or SUN, MON ...",
+        "symbols": {
+          "wildcard": "Any value",
+          "range": "Range of values (e.g., 1-10)",
+          "list": "List of values (e.g., 1,10)",
+          "step": "Step values (e.g., */10)"
+        }
+      },
       "input_title": "Cron Expression",
       "input_description": "Enter a standard 5-field cron expression to inspect its structure and future run times.",
       "expression_label": "Expression",

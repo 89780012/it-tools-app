@@ -1571,6 +1571,21 @@
     "cron-expression-parser": {
       "name": "Cron 表达式解析器",
       "description": "校验 Cron 语法并预览即将执行的时间。",
+      "format_title": "Cron 表达式格式说明",
+      "format_description": "了解 Cron 表达式的基本结构和特殊字符含义。",
+      "format": {
+        "minute_desc": "分钟 (0 - 59)",
+        "hour_desc": "小时 (0 - 23)",
+        "day_desc": "日 (1 - 31)",
+        "month_desc": "月 (1 - 12) 或者 JAN, FEB ...",
+        "weekday_desc": "周 (0 - 6, 周日=0) 或者 SUN, MON ...",
+        "symbols": {
+          "wildcard": "任意值",
+          "range": "数值范围 (例如: 1-10)",
+          "list": "数值列表 (例如: 1,10)",
+          "step": "步进值 (例如: */10)"
+        }
+      },
       "input_title": "Cron 表达式",
       "input_description": "输入标准的 5 段 Cron 表达式，解析各字段并查看未来的执行时间。",
       "expression_label": "表达式",

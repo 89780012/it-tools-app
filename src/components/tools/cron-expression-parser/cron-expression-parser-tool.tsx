@@ -307,6 +307,85 @@ export default function CronExpressionParserTool() {
 
   return (
     <div className="space-y-8">
+      {/* Cron 表达式格式说明 */}
+      <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900 dark:bg-blue-950/20">
+        <CardHeader>
+          <CardTitle className="text-lg">{t('format_title')}</CardTitle>
+          <CardDescription>{t('format_description')}</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="rounded-lg bg-background p-4 font-mono text-sm">
+            <div className="space-y-1 text-muted-foreground">
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">┌─</span>
+                <span>{t('format.minute_desc')}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">│</span>
+                <span className="inline-block w-4 text-left">┌─</span>
+                <span>{t('format.hour_desc')}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-left">┌─</span>
+                <span>{t('format.day_desc')}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-left">┌─</span>
+                <span>{t('format.month_desc')}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-left">┌─</span>
+                <span>{t('format.weekday_desc')}</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="inline-block w-4 text-right">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+                <span className="inline-block w-4 text-center">│</span>
+              </div>
+              <div className="flex items-start gap-2 text-lg font-semibold text-foreground">
+                <span className="inline-block w-4 text-center">*</span>
+                <span className="inline-block w-4 text-center">*</span>
+                <span className="inline-block w-4 text-center">*</span>
+                <span className="inline-block w-4 text-center">*</span>
+                <span className="inline-block w-4 text-center">*</span>
+              </div>
+            </div>
+            
+            <div className="mt-4 space-y-2 border-t pt-4 text-xs">
+              <div className="grid gap-2 sm:grid-cols-2">
+                <div>
+                  <span className="font-semibold text-foreground">*</span>
+                  <span className="ml-2">{t('format.symbols.wildcard')}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground">-</span>
+                  <span className="ml-2">{t('format.symbols.range')}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground">,</span>
+                  <span className="ml-2">{t('format.symbols.list')}</span>
+                </div>
+                <div>
+                  <span className="font-semibold text-foreground">/</span>
+                  <span className="ml-2">{t('format.symbols.step')}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
