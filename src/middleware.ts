@@ -9,6 +9,6 @@ export const config = {
     // 匹配根路径
     '/',
     // 匹配除了API和静态资源外的所有路径  
-    '/((?!api|_next|_vercel|.*\\..*).*)'
+    '/((?!api|_next|_vercel|sitemap.xml|sitemap-*.xml|.*\\..*).*)'
   ]
 };

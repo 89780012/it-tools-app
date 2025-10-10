@@ -7,102 +7,142 @@
 
 <url>
   <loc>https://www.toolkitpub.com/</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-formatter</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-to-csv</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-to-yaml</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-to-xml</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-visualizer</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-generator</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/json-diff</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/base64-encoder-decoder</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/url-encoder-decoder</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/md5-hash</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/sha256-hash</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/sha1-hash</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/hex-encoder-decoder</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/binary-encoder-decoder</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/password-generator</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/aes-encrypt-decrypt</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/rsa-encrypt-decrypt</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/hmac-generator</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.toolkitpub.com/tools/ip-lookup</loc>
-  <lastmod>2025-09-12T15:10:02+00:00</lastmod>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/time-converter</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/cron-expression-parser</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/color-converter</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/qr-code-generator</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/svg-placeholder-generator</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/base64-file-converter</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/uuid-generator</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.toolkitpub.com/tools/docker-run-to-compose</loc>
+  <lastmod>2025-10-10T15:10:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
