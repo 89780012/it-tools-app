@@ -44,7 +44,7 @@ function parseDockerRunCommand(command: string): DockerCompose | null {
   }
 
   // 移除 'docker run' 部分
-  let args = cleanCommand.substring(10).trim()
+  const args = cleanCommand.substring(10).trim()
   
   const service: DockerComposeService = {
     image: ''

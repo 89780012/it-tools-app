@@ -20,6 +20,7 @@ export default function JsonDiffPage() {
   const [leftFormatted, setLeftFormatted] = useState("")
   const [rightFormatted, setRightFormatted] = useState("")
   const [splitView, setSplitView] = useState(true)
+  const [showDiffOnly, setShowDiffOnly] = useState(true)
 
   // 执行对比
   const handleCompare = () => {
@@ -82,13 +83,21 @@ export default function JsonDiffPage() {
     >
       <div className="space-y-6">
         {/* 显示模式切换 */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-6">
           <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
             <Switch
               checked={splitView}
               onCheckedChange={setSplitView}
             />
             {splitView ? "并排显示" : "统一显示"}
+          </label>
+          
+          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+            <Switch
+              checked={showDiffOnly}
+              onCheckedChange={setShowDiffOnly}
+            />
+            {showDiffOnly ? t("tools.json-diff.hide_unchanged") : t("tools.json-diff.show_unchanged")}
           </label>
         </div>
 
@@ -197,7 +206,7 @@ export default function JsonDiffPage() {
                   splitView={splitView}
                   compareMethod={DiffMethod.WORDS}
                   hideLineNumbers={false}
-                  showDiffOnly={false}
+                  showDiffOnly={showDiffOnly}
                   leftTitle={t("tools.json-diff.original")}
                   rightTitle={t("tools.json-diff.modified")}
                   styles={{
