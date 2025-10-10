@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t('title')} - ${tSite('site.name')}`,
       description: t('description'),
-      url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/json-to-xml`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/json-to-xml`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t('description'),
     },
     alternates: {
-      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/json-to-xml`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/json-to-xml`,
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-to-xml',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-xml',

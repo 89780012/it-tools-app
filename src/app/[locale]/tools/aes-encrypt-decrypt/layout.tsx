@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t('title')} - ${tSite('site.name')}`,
       description: t('description'),
-      url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/aes-encrypt-decrypt`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/aes-encrypt-decrypt`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t('description'),
     },
     alternates: {
-      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/aes-encrypt-decrypt`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/aes-encrypt-decrypt`,
       languages: {
         'en': 'https://www.toolkitpub.com/tools/aes-encrypt-decrypt',
         'zh': 'https://www.toolkitpub.com/zh/tools/aes-encrypt-decrypt',

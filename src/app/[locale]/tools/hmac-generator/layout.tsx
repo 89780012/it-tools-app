@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: `${t('title')} - ${tSite('site.name')}`,
       description: t('description'),
-      url: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/hmac-generator`,
+      url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/hmac-generator`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -21,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t('description'),
     },
     alternates: {
-      canonical: `${process.env.SITE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/hmac-generator`,
+      canonical: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/hmac-generator`,
       languages: {
         'en': 'https://www.toolkitpub.com/tools/hmac-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/hmac-generator',

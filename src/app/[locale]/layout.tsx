@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   
   return {
-    metadataBase: new URL(process.env.SITE_URL || 'https://www.toolkitpub.com'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'),
     title: {
       template: '%s - IT Tools Collection',
       default: 'IT Tools Collection - Developer Toolbox'
