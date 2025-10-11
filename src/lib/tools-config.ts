@@ -143,6 +143,14 @@ export const toolsConfig: ToolCategory[] = [
         icon: "square-dashed"
       },
       {
+        id: "icon-designer",
+        nameKey: "tools.icon-designer.name",
+        descriptionKey: "tools.icon-designer.description",
+        category: "image",
+        path: "/tools/icon-designer",
+        icon: "palette"
+      },
+      {
         id: "base64-file-converter",
         nameKey: "tools.base64-file-converter.name",
         descriptionKey: "tools.base64-file-converter.description",

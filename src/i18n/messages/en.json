@@ -24,7 +24,8 @@
     "coming_soon": "More tools coming soon...",
     "click_sidebar": "Use via left sidebar menu",
     "actions": "Actions",
-    "back_to_home": "Back to Home"
+    "back_to_home": "Back to Home",
+    "close": "Close"
   },
   "theme": {
     "light": "Light",
@@ -1359,6 +1360,121 @@
         "title": "SVG Placeholder Generator",
         "description": "Online SVG placeholder image generation tool. Support custom dimensions, text, colors and template styles for quick placeholder creation.",
         "keywords": "SVG placeholder,placeholder generator,placeholder image,image placeholder,online tool"
+      }
+    },
+    "icon-designer": {
+      "name": "Letter Icon Designer",
+      "description": "Design simple letter icons with custom colors and export in multiple sizes",
+      "settings_title": "Icon Settings",
+      "settings_desc": "Customize your letter icon design",
+      "text_label": "Icon Text",
+      "text_hint": "Enter 1-3 characters for the icon",
+      "shape_label": "Icon Shape",
+      "shapes": {
+        "square": "Square",
+        "circle": "Circle",
+        "rounded": "Rounded Square",
+        "squircle": "Squircle"
+      },
+      "font_size_label": "Font Size",
+      "font_weight_label": "Font Weight",
+      "font_weights": {
+        "normal": "Normal",
+        "medium": "Medium",
+        "bold": "Bold"
+      },
+      "background_color": "Background Color",
+      "text_color": "Text Color",
+      "preset_colors": "Preset Colors",
+      "random": "Random",
+      "preview_title": "Live Preview",
+      "preview_desc": "Preview your icon design in real-time",
+      "preview_size_label": "Preview Size",
+      "preview_mode_label": "Preview Mode",
+      "preview_mode_fit": "Fit to View",
+      "preview_mode_actual": "Actual Size",
+      "actual_size": "Actual Size",
+      "scaled_to_fit": "Scaled to fit",
+      "scroll_to_view": "Scroll to view full size",
+      "size_preview": "Multi-Size Preview",
+      "copy_svg": "Copy SVG",
+      "download_ico": "Download ICO (Multi-size)",
+      "export_title": "Export Options",
+      "export_desc": "Download your icon in various sizes and formats",
+      "ico_download_title": "ICO Files Download (ZIP)",
+      "ico_download_desc": "Each selected size as a separate ICO file, packed in ZIP",
+      "download_selected_ico": "Download Selected Sizes (ICO)",
+      "download_standard_ico": "Download Standard Sizes (ICO)",
+      "standard_ico_desc": "Standard 6 sizes, 6 ICO files",
+      "ico_includes": "Will generate",
+      "ico_files": "ICO files",
+      "ico_size_too_large": "Please select at least one size ≤256px for ICO",
+      "individual_sizes": "Individual Size Export",
+      "batch_download_all": "Batch Download All Sizes",
+      "batch_download_all_desc": "Download all sizes in one ZIP file",
+      "download_all_formats": "Download All (SVG + PNG)",
+      "only": "Only",
+      "zip_includes": "ZIP includes",
+      "sizes": "sizes",
+      "formats": "formats",
+      "preview_and_download": "Preview & Download",
+      "batch_download_selected": "Batch Download Selected Sizes",
+      "batch_download_selected_desc": "Download only the selected sizes in one ZIP file",
+      "selected_count": "Selected",
+      "select_all": "Select All",
+      "deselect_all": "Deselect All",
+      "click_to_select": "Click to select/deselect",
+      "click_to_preview": "Click to preview actual size",
+      "click_preview": "Click to Preview",
+      "no_size_selected": "Please select at least one size",
+      "svg_code_title": "SVG Code",
+      "svg_code_desc": "Copy and use the generated SVG code",
+      "tips_title": "Design Tips",
+      "tip1_title": "Letter Selection",
+      "tip1_desc": "Use 1-3 letters for best results. Single letters work great for user avatars or app icons",
+      "tip2_title": "Color Contrast",
+      "tip2_desc": "Ensure good contrast between text and background colors for better visibility and accessibility",
+      "tip3_title": "Shape Selection",
+      "tip3_desc": "Circle and squircle shapes are popular for user avatars, while rounded squares work well for app icons",
+      "tip4_title": "Batch Download",
+      "tip4_desc": "Use the batch download feature to get all sizes at once in a ZIP file. Includes both SVG and PNG formats organized in folders",
+      "introduction": "Letter Icon Designer is a professional tool for creating simple yet elegant letter-based icons. Perfect for user avatars, app icons, brand logos, and placeholder images. The tool supports SVG format with infinite scalability, custom colors, multiple shapes, and export in various sizes. Generate professional-looking icons in seconds without any design software.",
+      "features": [
+        "✏️ Custom text content: Support 1-3 characters for personalized icons",
+        "🎨 Multiple shape options: Square, circle, rounded square, and squircle shapes",
+        "🌈 Full color customization: Free choice of background and text colors with preset palettes",
+        "📏 Flexible font control: Adjustable font size and weight for perfect appearance",
+        "👁️ Real-time preview: Instant preview of multi-size icons from 16px to 128px",
+        "📦 Batch export: One-click export in 7 common sizes (16px to 1024px)",
+        "💾 Dual format support: Export as SVG or PNG format as needed",
+        "🎲 Random color generator: Quick inspiration with random color combinations"
+      ],
+      "faq": [
+        {
+          "question": "What are the advantages of SVG format icons? When should I use PNG?",
+          "answer": "SVG icons are vector-based, scale infinitely without quality loss, have smaller file sizes, and support CSS styling. They're ideal for responsive web design and modern applications. Use PNG when you need fixed-size icons with specific dimensions or when SVG support is limited in your target environment."
+        },
+        {
+          "question": "How do I choose the right shape for my icon?",
+          "answer": "Circle and squircle shapes are most popular for user avatars and profile pictures. Rounded squares work well for app icons and logos. Square shapes provide a more formal, professional look. Consider your use case and brand style when choosing."
+        },
+        {
+          "question": "What sizes should I export for different use cases?",
+          "answer": "For web avatars: 64px, 128px, 256px. For app icons: 128px, 256px, 512px, 1024px. For favicons: 16px, 32px. For social media: 256px, 512px. The tool allows you to export all common sizes in one go."
+        },
+        {
+          "question": "How can I ensure good color contrast for accessibility?",
+          "answer": "Use the preset color combinations which are designed with good contrast in mind. For custom colors, ensure sufficient contrast between text and background. Light text on dark backgrounds or dark text on light backgrounds generally work best."
+        },
+        {
+          "question": "Can I use the generated icons commercially?",
+          "answer": "Yes! All icons you create with this tool are yours to use freely, including for commercial purposes. There are no watermarks, attribution requirements, or usage restrictions."
+        }
+      ],
+      "meta": {
+        "title": "Letter Icon Designer",
+        "description": "Online letter icon design tool. Create custom SVG icons with letters, colors, and shapes. Export in multiple sizes for avatars, app icons, and more.",
+        "keywords": "icon designer,letter icon,avatar generator,icon maker,SVG icon,app icon,logo maker,online tool"
       }
     },
     "hmac-generator": {

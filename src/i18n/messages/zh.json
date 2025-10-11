@@ -24,7 +24,8 @@
     "coming_soon": "即将推出更多工具...",
     "click_sidebar": "点击左侧菜单使用",
     "actions": "操作",
-    "back_to_home": "返回首页"
+    "back_to_home": "返回首页",
+    "close": "关闭"
   },
   "theme": {
     "light": "亮色模式",
@@ -1361,6 +1362,121 @@
         "title": "SVG占位图生成器",
         "description": "在线SVG占位图片生成工具。支持自定义尺寸、文字、颜色和模板样式，快速生成占位图片。",
         "keywords": "SVG占位图,占位图片生成器,placeholder,图片占位符,在线工具"
+      }
+    },
+    "icon-designer": {
+      "name": "字母图标设计器",
+      "description": "设计简单的字母图标，自定义颜色并导出多种尺寸",
+      "settings_title": "图标设置",
+      "settings_desc": "自定义您的字母图标设计",
+      "text_label": "图标文字",
+      "text_hint": "输入1-3个字符作为图标",
+      "shape_label": "图标形状",
+      "shapes": {
+        "square": "正方形",
+        "circle": "圆形",
+        "rounded": "圆角方形",
+        "squircle": "超椭圆"
+      },
+      "font_size_label": "字体大小",
+      "font_weight_label": "字体粗细",
+      "font_weights": {
+        "normal": "正常",
+        "medium": "中等",
+        "bold": "加粗"
+      },
+      "background_color": "背景颜色",
+      "text_color": "文字颜色",
+      "preset_colors": "预设颜色",
+      "random": "随机",
+      "preview_title": "实时预览",
+      "preview_desc": "实时预览您的图标设计效果",
+      "preview_size_label": "预览尺寸",
+      "preview_mode_label": "预览模式",
+      "preview_mode_fit": "适配显示",
+      "preview_mode_actual": "实际尺寸",
+      "actual_size": "实际尺寸",
+      "scaled_to_fit": "已缩放适配",
+      "scroll_to_view": "滚动查看完整尺寸",
+      "size_preview": "多尺寸预览",
+      "copy_svg": "复制SVG",
+      "download_ico": "下载 ICO（多尺寸）",
+      "export_title": "导出选项",
+      "export_desc": "以多种尺寸和格式下载您的图标",
+      "ico_download_title": "ICO 文件下载（ZIP压缩包）",
+      "ico_download_desc": "每个选中尺寸单独一个ICO文件，打包下载",
+      "download_selected_ico": "下载选中尺寸（ICO）",
+      "download_standard_ico": "下载标准尺寸（ICO）",
+      "standard_ico_desc": "标准6个尺寸，6个ICO文件",
+      "ico_includes": "将生成",
+      "ico_files": "个ICO文件",
+      "ico_size_too_large": "请选择至少一个≤256px的尺寸用于ICO",
+      "individual_sizes": "单独尺寸导出",
+      "batch_download_all": "批量下载所有尺寸",
+      "batch_download_all_desc": "一次性下载所有尺寸，打包成ZIP文件",
+      "download_all_formats": "下载全部（SVG + PNG）",
+      "only": "仅",
+      "zip_includes": "ZIP包含",
+      "sizes": "种尺寸",
+      "formats": "种格式",
+      "preview_and_download": "预览和下载",
+      "batch_download_selected": "批量下载选中尺寸",
+      "batch_download_selected_desc": "只下载选中的尺寸，打包成ZIP文件",
+      "selected_count": "已选",
+      "select_all": "全选",
+      "deselect_all": "取消全选",
+      "click_to_select": "点击选择/取消",
+      "click_to_preview": "点击预览实际尺寸",
+      "click_preview": "点击预览",
+      "no_size_selected": "请至少选择一个尺寸",
+      "svg_code_title": "SVG代码",
+      "svg_code_desc": "复制并使用生成的SVG代码",
+      "tips_title": "设计技巧",
+      "tip1_title": "字母选择",
+      "tip1_desc": "使用1-3个字母效果最佳。单个字母非常适合用户头像或应用图标",
+      "tip2_title": "颜色对比",
+      "tip2_desc": "确保文字和背景颜色之间有良好的对比度，以获得更好的可见性和可访问性",
+      "tip3_title": "形状选择",
+      "tip3_desc": "圆形和超椭圆形状适合用户头像，圆角方形适合应用图标",
+      "tip4_title": "批量下载",
+      "tip4_desc": "使用批量下载功能可一次性获取所有尺寸，打包成ZIP文件。包含SVG和PNG两种格式，分文件夹整理",
+      "introduction": "字母图标设计器是一个专业的工具，用于创建简单而优雅的字母图标。非常适合用户头像、应用图标、品牌标识和占位符图片。该工具支持SVG格式，具有无限可缩放性、自定义颜色、多种形状，并可导出多种尺寸。无需任何设计软件，即可在几秒钟内生成专业的图标。",
+      "features": [
+        "✏️ 自定义文字内容：支持1-3个字符的个性化图标",
+        "🎨 多种形状选项：正方形、圆形、圆角方形和超椭圆形状",
+        "🌈 完全自定义颜色：自由选择背景和文字颜色，预设调色板",
+        "📏 灵活的字体控制：可调整字体大小和粗细，实现完美外观",
+        "👁️ 实时预览：从16px到128px的多尺寸图标即时预览",
+        "📦 批量导出：一键导出7种常用尺寸（16px到1024px）",
+        "💾 双格式支持：根据需要导出为SVG或PNG格式",
+        "🎲 随机颜色生成器：通过随机颜色组合快速获得灵感"
+      ],
+      "faq": [
+        {
+          "question": "SVG格式图标有什么优势？什么时候应该使用PNG？",
+          "answer": "SVG图标是矢量的，可以无限缩放而不失真，文件体积更小，支持CSS样式。它们非常适合响应式网页设计和现代应用程序。当您需要特定尺寸的固定大小图标或目标环境中SVG支持有限时，请使用PNG格式。"
+        },
+        {
+          "question": "如何为我的图标选择合适的形状？",
+          "answer": "圆形和超椭圆形状最适合用户头像和个人资料图片。圆角方形适合应用图标和标识。正方形提供更正式、专业的外观。选择时请考虑您的使用场景和品牌风格。"
+        },
+        {
+          "question": "不同用途应该导出哪些尺寸？",
+          "answer": "网页头像：64px、128px、256px。应用图标：128px、256px、512px、1024px。网站图标：16px、32px。社交媒体：256px、512px。该工具允许您一次导出所有常用尺寸。"
+        },
+        {
+          "question": "如何确保良好的颜色对比度以提高可访问性？",
+          "answer": "使用预设的颜色组合，这些组合设计时已考虑了良好的对比度。对于自定义颜色，请确保文字和背景之间有足够的对比度。浅色背景上的深色文字或深色背景上的浅色文字通常效果最佳。"
+        },
+        {
+          "question": "我可以商业使用生成的图标吗？",
+          "answer": "可以！使用此工具创建的所有图标都属于您，可以自由使用，包括商业用途。没有水印、署名要求或使用限制。"
+        }
+      ],
+      "meta": {
+        "title": "字母图标设计器",
+        "description": "在线字母图标设计工具。使用字母、颜色和形状创建自定义SVG图标。导出多种尺寸用于头像、应用图标等。",
+        "keywords": "图标设计器,字母图标,头像生成器,图标制作,SVG图标,应用图标,标识制作,在线工具"
       }
     },
     "hmac-generator": {

@@ -1,0 +1,1020 @@
+"use client"
+
+import { useState, useRef } from "react"
+import { Copy, Download, Palette, RefreshCw, PackageIcon, CheckSquare, Maximize2, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
+import { useTranslations } from 'next-intl'
+import { ToolSEOSection } from "@/components/seo/tool-seo-section"
+import JSZip from 'jszip'
+
+type IconShape = 'square' | 'circle' | 'rounded' | 'squircle'
+type FontWeight = 'normal' | 'medium' | 'bold'
+
+const PRESET_COLORS = [
+  { name: 'Blue', bg: '#3B82F6', text: '#FFFFFF' },
+  { name: 'Green', bg: '#10B981', text: '#FFFFFF' },
+  { name: 'Purple', bg: '#8B5CF6', text: '#FFFFFF' },
+  { name: 'Red', bg: '#EF4444', text: '#FFFFFF' },
+  { name: 'Yellow', bg: '#F59E0B', text: '#FFFFFF' },
+  { name: 'Pink', bg: '#EC4899', text: '#FFFFFF' },
+  { name: 'Indigo', bg: '#6366F1', text: '#FFFFFF' },
+  { name: 'Teal', bg: '#14B8A6', text: '#FFFFFF' },
+]
+
+const ICON_SIZES = [16, 32, 64, 128, 256, 512, 1024]
+
+export default function IconDesignerPage() {
+  const t = useTranslations()
+
+  // 基础设置
+  const [text, setText] = useState("A")
+  const [bgColor, setBgColor] = useState("#3B82F6")
+  const [textColor, setTextColor] = useState("#FFFFFF")
+  const [shape, setShape] = useState<IconShape>('rounded')
+  const [fontSize, setFontSize] = useState([60])
+  const [fontWeight, setFontWeight] = useState<FontWeight>('bold')
+  
+  // 尺寸选择
+  const [selectedSizes, setSelectedSizes] = useState<number[]>(ICON_SIZES)
+  // 预览尺寸
+  const [previewSize, setPreviewSize] = useState<number>(256)
+  // 弹窗预览
+  const [modalPreviewSize, setModalPreviewSize] = useState<number | null>(null)
+  
+  const svgRef = useRef<HTMLDivElement>(null)
+
+  // 切换尺寸选择
+  const toggleSize = (size: number) => {
+    setSelectedSizes(prev => 
+      prev.includes(size) 
+        ? prev.filter(s => s !== size)
+        : [...prev, size].sort((a, b) => a - b)
+    )
+  }
+
+  // 全选/取消全选
+  const toggleAllSizes = () => {
+    setSelectedSizes(prev => 
+      prev.length === ICON_SIZES.length ? [] : [...ICON_SIZES]
+    )
+  }
+
+  // 生成SVG内容
+  const generateSVG = (size: number = 256) => {
+    const centerX = size / 2
+    const centerY = size / 2
+    const scaleFactor = size / 256
+    const currentFontSize = Math.round(fontSize[0] * scaleFactor)
+    
+    let shapeElement = ""
+    
+    switch (shape) {
+      case 'circle':
+        shapeElement = `<circle cx="${centerX}" cy="${centerY}" r="${centerX}" fill="${bgColor}"/>`
+        break
+      case 'rounded':
+        const roundedRadius = Math.round(size * 0.15)
+        shapeElement = `<rect width="${size}" height="${size}" rx="${roundedRadius}" ry="${roundedRadius}" fill="${bgColor}"/>`
+        break
+      case 'squircle':
+        // Squircle path (super ellipse)
+        const squircleRadius = size * 0.6
+        shapeElement = `
+          <path d="M ${centerX},0 
+                   C ${centerX + squircleRadius * 0.552},0 ${size},${centerY - squircleRadius * 0.552} ${size},${centerY}
+                   C ${size},${centerY + squircleRadius * 0.552} ${centerX + squircleRadius * 0.552},${size} ${centerX},${size}
+                   C ${centerX - squircleRadius * 0.552},${size} 0,${centerY + squircleRadius * 0.552} 0,${centerY}
+                   C 0,${centerY - squircleRadius * 0.552} ${centerX - squircleRadius * 0.552},0 ${centerX},0 Z"
+                fill="${bgColor}"/>`
+        break
+      case 'square':
+      default:
+        shapeElement = `<rect width="${size}" height="${size}" fill="${bgColor}"/>`
+        break
+    }
+
+    const fontWeightValue = fontWeight === 'normal' ? '400' : fontWeight === 'medium' ? '500' : '700'
+    const displayText = text.trim().slice(0, 3) || 'A'
+
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+  ${shapeElement}
+  <text x="${centerX}" y="${centerY}" 
+        font-family="Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+        font-size="${currentFontSize}" 
+        font-weight="${fontWeightValue}"
+        fill="${textColor}" 
+        text-anchor="middle" 
+        dominant-baseline="central">${displayText}</text>
+</svg>`
+  }
+
+  // 下载SVG文件
+  const downloadSVG = (size: number) => {
+    const svgContent = generateSVG(size)
+    const blob = new Blob([svgContent], { type: 'image/svg+xml' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `icon-${text.trim() || 'A'}-${size}x${size}.svg`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  // 下载PNG文件（通过Canvas转换）
+  const downloadPNG = (size: number) => {
+    const svgContent = generateSVG(size)
+    const canvas = document.createElement('canvas')
+    canvas.width = size
+    canvas.height = size
+    const ctx = canvas.getContext('2d')
+    
+    if (!ctx) return
+
+    const img = new Image()
+    const svgBlob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' })
+    const url = URL.createObjectURL(svgBlob)
+
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0)
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const pngUrl = URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = pngUrl
+          a.download = `icon-${text.trim() || 'A'}-${size}x${size}.png`
+          document.body.appendChild(a)
+          a.click()
+          document.body.removeChild(a)
+          URL.revokeObjectURL(pngUrl)
+        }
+      })
+      URL.revokeObjectURL(url)
+    }
+
+    img.src = url
+  }
+
+  // 批量下载ICO文件（每个尺寸单独一个ICO，打包成ZIP）
+  const downloadICO = async (useSelectedSizes: boolean = false) => {
+    // 确定使用的尺寸
+    let sizes: number[]
+    if (useSelectedSizes) {
+      if (selectedSizes.length === 0) {
+        alert(t("tools.icon-designer.no_size_selected"))
+        return
+      }
+      // 使用所有选中的尺寸
+      sizes = [...selectedSizes].sort((a, b) => a - b)
+    } else {
+      // 标准ICO尺寸
+      sizes = [16, 32, 48, 64, 128, 256]
+    }
+
+    const zip = new JSZip()
+    const iconName = text.trim() || 'A'
+    const icoFolder = zip.folder('ico')
+    
+    // 为每个尺寸生成单独的ICO文件
+    for (const size of sizes) {
+      const svgContent = generateSVG(size)
+      const canvas = document.createElement('canvas')
+      canvas.width = size
+      canvas.height = size
+      const ctx = canvas.getContext('2d')
+      
+      if (!ctx) continue
+
+      await new Promise<void>((resolve) => {
+        const img = new Image()
+        const svgBlob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' })
+        const url = URL.createObjectURL(svgBlob)
+
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0)
+          const imageData = ctx.getImageData(0, 0, size, size)
+          
+          // 为单个尺寸创建ICO文件
+          const icoData = createICO([imageData])
+          const icoBlob = new Blob([icoData], { type: 'image/x-icon' })
+          
+          if (icoFolder) {
+            icoFolder.file(`icon-${iconName}-${size}x${size}.ico`, icoBlob)
+          }
+          
+          URL.revokeObjectURL(url)
+          resolve()
+        }
+
+        img.src = url
+      })
+    }
+
+    // 生成ZIP文件并下载
+    const zipBlob = await zip.generateAsync({ type: 'blob' })
+    const url = URL.createObjectURL(zipBlob)
+    const a = document.createElement('a')
+    a.href = url
+    const sizeText = useSelectedSizes ? `${sizes.length}-sizes` : 'standard'
+    a.download = `icon-${iconName}-ico-${sizeText}.zip`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  // 创建ICO文件格式
+  const createICO = (images: ImageData[]): ArrayBuffer => {
+    // ICO文件头（6字节）
+    const headerSize = 6
+    const dirEntrySize = 16
+    const icoHeader = new Uint8Array(headerSize + dirEntrySize * images.length)
+    
+    // ICONDIR结构
+    icoHeader[0] = 0 // 保留字段
+    icoHeader[1] = 0
+    icoHeader[2] = 1 // 类型：1=ICO
+    icoHeader[3] = 0
+    icoHeader[4] = images.length // 图像数量
+    icoHeader[5] = 0
+
+    let offset = headerSize + dirEntrySize * images.length
+    const bitmapDataList: Uint8Array[] = []
+
+    // 为每个图像创建ICONDIRENTRY
+    images.forEach((imageData, index) => {
+      const size = imageData.width
+      const bitmapData = createBitmap(imageData)
+      bitmapDataList.push(bitmapData)
+
+      const entryOffset = headerSize + index * dirEntrySize
+      // 宽度和高度（0表示256）
+      icoHeader[entryOffset + 0] = size === 256 ? 0 : size
+      icoHeader[entryOffset + 1] = size === 256 ? 0 : size
+      icoHeader[entryOffset + 2] = 0 // 颜色数（0=真彩色）
+      icoHeader[entryOffset + 3] = 0 // 保留
+      icoHeader[entryOffset + 4] = 1 // 颜色平面数
+      icoHeader[entryOffset + 5] = 0
+      icoHeader[entryOffset + 6] = 32 // 位深度
+      icoHeader[entryOffset + 7] = 0
+      
+      // 图像数据大小
+      const dataSize = bitmapData.length
+      icoHeader[entryOffset + 8] = dataSize & 0xFF
+      icoHeader[entryOffset + 9] = (dataSize >> 8) & 0xFF
+      icoHeader[entryOffset + 10] = (dataSize >> 16) & 0xFF
+      icoHeader[entryOffset + 11] = (dataSize >> 24) & 0xFF
+      
+      // 图像数据偏移
+      icoHeader[entryOffset + 12] = offset & 0xFF
+      icoHeader[entryOffset + 13] = (offset >> 8) & 0xFF
+      icoHeader[entryOffset + 14] = (offset >> 16) & 0xFF
+      icoHeader[entryOffset + 15] = (offset >> 24) & 0xFF
+      
+      offset += dataSize
+    })
+
+    // 合并所有数据
+    const totalSize = icoHeader.length + bitmapDataList.reduce((sum, data) => sum + data.length, 0)
+    const result = new Uint8Array(totalSize)
+    result.set(icoHeader, 0)
+    
+    let currentOffset = icoHeader.length
+    bitmapDataList.forEach(data => {
+      result.set(data, currentOffset)
+      currentOffset += data.length
+    })
+
+    return result.buffer
+  }
+
+  // 创建BMP格式的图像数据
+  const createBitmap = (imageData: ImageData): Uint8Array => {
+    const size = imageData.width
+    const headerSize = 40
+    const imageSize = size * size * 4
+    const bitmapData = new Uint8Array(headerSize + imageSize)
+    
+    // BITMAPINFOHEADER
+    bitmapData[0] = headerSize // 头部大小
+    bitmapData[1] = 0
+    bitmapData[2] = 0
+    bitmapData[3] = 0
+    
+    // 宽度
+    bitmapData[4] = size & 0xFF
+    bitmapData[5] = (size >> 8) & 0xFF
+    bitmapData[6] = (size >> 16) & 0xFF
+    bitmapData[7] = (size >> 24) & 0xFF
+    
+    // 高度（双倍，因为包含AND掩码）
+    const height = size * 2
+    bitmapData[8] = height & 0xFF
+    bitmapData[9] = (height >> 8) & 0xFF
+    bitmapData[10] = (height >> 16) & 0xFF
+    bitmapData[11] = (height >> 24) & 0xFF
+    
+    bitmapData[12] = 1 // 颜色平面数
+    bitmapData[13] = 0
+    bitmapData[14] = 32 // 位深度
+    bitmapData[15] = 0
+    bitmapData[16] = 0 // 压缩方式（0=不压缩）
+    
+    // 转换像素数据（BMP是从下到上存储的）
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const srcIndex = ((size - 1 - y) * size + x) * 4
+        const dstIndex = headerSize + (y * size + x) * 4
+        
+        // BGRA格式
+        bitmapData[dstIndex + 0] = imageData.data[srcIndex + 2] // B
+        bitmapData[dstIndex + 1] = imageData.data[srcIndex + 1] // G
+        bitmapData[dstIndex + 2] = imageData.data[srcIndex + 0] // R
+        bitmapData[dstIndex + 3] = imageData.data[srcIndex + 3] // A
+      }
+    }
+    
+    return bitmapData
+  }
+
+  // 批量下载选中尺寸（ZIP打包）
+  const downloadAllSizes = async (format: 'svg' | 'png' | 'both' = 'both') => {
+    if (selectedSizes.length === 0) {
+      alert(t("tools.icon-designer.no_size_selected"))
+      return
+    }
+
+    const zip = new JSZip()
+    const iconName = text.trim() || 'A'
+    
+    // 添加SVG文件
+    if (format === 'svg' || format === 'both') {
+      const svgFolder = zip.folder('svg')
+      if (svgFolder) {
+        selectedSizes.forEach(size => {
+          const svgContent = generateSVG(size)
+          svgFolder.file(`icon-${iconName}-${size}x${size}.svg`, svgContent)
+        })
+      }
+    }
+
+    // 添加PNG文件
+    if (format === 'png' || format === 'both') {
+      const pngFolder = zip.folder('png')
+      if (pngFolder) {
+        for (const size of selectedSizes) {
+          const svgContent = generateSVG(size)
+          const canvas = document.createElement('canvas')
+          canvas.width = size
+          canvas.height = size
+          const ctx = canvas.getContext('2d')
+          
+          if (!ctx) continue
+
+          await new Promise<void>((resolve) => {
+            const img = new Image()
+            const svgBlob = new Blob([svgContent], { type: 'image/svg+xml;charset=utf-8' })
+            const url = URL.createObjectURL(svgBlob)
+
+            img.onload = () => {
+              ctx.drawImage(img, 0, 0)
+              canvas.toBlob((blob) => {
+                if (blob) {
+                  pngFolder.file(`icon-${iconName}-${size}x${size}.png`, blob)
+                }
+                URL.revokeObjectURL(url)
+                resolve()
+              })
+            }
+
+            img.src = url
+          })
+        }
+      }
+    }
+
+    // 生成ZIP文件并下载
+    const zipBlob = await zip.generateAsync({ type: 'blob' })
+    const url = URL.createObjectURL(zipBlob)
+    const a = document.createElement('a')
+    a.href = url
+    const sizeText = selectedSizes.length === ICON_SIZES.length ? 'all-sizes' : `${selectedSizes.length}-sizes`
+    a.download = `icon-${iconName}-${sizeText}.zip`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  // 应用预设颜色
+  const applyPresetColor = (preset: typeof PRESET_COLORS[0]) => {
+    setBgColor(preset.bg)
+    setTextColor(preset.text)
+  }
+
+  // 随机生成颜色
+  const randomizeColors = () => {
+    const randomColor = () => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')
+    setBgColor(randomColor())
+    setTextColor(randomColor())
+  }
+
+  return (
+    <div className="container mx-auto p-6 space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold">{t("tools.icon-designer.name")}</h1>
+        <p className="text-muted-foreground mt-2">
+          {t("tools.icon-designer.description")}
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* 配置面板 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("tools.icon-designer.settings_title")}</CardTitle>
+            <CardDescription>
+              {t("tools.icon-designer.settings_desc")}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* 文字设置 */}
+            <div>
+              <Label htmlFor="text">{t("tools.icon-designer.text_label")}</Label>
+              <Input
+                id="text"
+                value={text}
+                onChange={(e) => setText(e.target.value.slice(0, 3))}
+                placeholder="A"
+                maxLength={3}
+                className="text-2xl text-center font-bold"
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                {t("tools.icon-designer.text_hint")}
+              </p>
+            </div>
+
+            {/* 形状选择 */}
+            <div>
+              <Label htmlFor="shape">{t("tools.icon-designer.shape_label")}</Label>
+              <Select value={shape} onValueChange={(value) => setShape(value as IconShape)}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="square">{t("tools.icon-designer.shapes.square")}</SelectItem>
+                  <SelectItem value="circle">{t("tools.icon-designer.shapes.circle")}</SelectItem>
+                  <SelectItem value="rounded">{t("tools.icon-designer.shapes.rounded")}</SelectItem>
+                  <SelectItem value="squircle">{t("tools.icon-designer.shapes.squircle")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 字体大小 */}
+            <div>
+              <Label htmlFor="fontSize">
+                {t("tools.icon-designer.font_size_label")}: {fontSize[0]}px
+              </Label>
+              <Slider
+                id="fontSize"
+                min={20}
+                max={180}
+                step={5}
+                value={fontSize}
+                onValueChange={setFontSize}
+                className="mt-2"
+              />
+            </div>
+
+            {/* 字体粗细 */}
+            <div>
+              <Label htmlFor="fontWeight">{t("tools.icon-designer.font_weight_label")}</Label>
+              <Select value={fontWeight} onValueChange={(value) => setFontWeight(value as FontWeight)}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="normal">{t("tools.icon-designer.font_weights.normal")}</SelectItem>
+                  <SelectItem value="medium">{t("tools.icon-designer.font_weights.medium")}</SelectItem>
+                  <SelectItem value="bold">{t("tools.icon-designer.font_weights.bold")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 颜色设置 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="bgColor">{t("tools.icon-designer.background_color")}</Label>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    type="color"
+                    value={bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                    className="w-12 h-10 p-1 cursor-pointer"
+                  />
+                  <Input
+                    type="text"
+                    value={bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                    className="flex-1 uppercase"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    type="color"
+                    value={textColor}
+                    onChange={(e) => setTextColor(e.target.value)}
+                    className="w-12 h-10 p-1 cursor-pointer"
+                  />
+                  <Input
+                    type="text"
+                    value={textColor}
+                    onChange={(e) => setTextColor(e.target.value)}
+                    className="flex-1 uppercase"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* 预设颜色 */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <Label>{t("tools.icon-designer.preset_colors")}</Label>
+                <Button
+                  onClick={randomizeColors}
+                  variant="ghost"
+                  size="sm"
+                  className="h-8"
+                >
+                  <RefreshCw className="h-4 w-4 mr-1" />
+                  {t("tools.icon-designer.random")}
+                </Button>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {PRESET_COLORS.map((preset) => (
+                  <button
+                    key={preset.name}
+                    onClick={() => applyPresetColor(preset)}
+                    className="w-10 h-10 rounded-md border-2 border-muted hover:border-primary transition-colors"
+                    style={{ backgroundColor: preset.bg }}
+                    title={preset.name}
+                  />
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 预览面板 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("tools.icon-designer.preview_title")}</CardTitle>
+            <CardDescription>
+              {t("tools.icon-designer.preview_desc")}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {/* 预览尺寸选择器 */}
+            <div className="space-y-2">
+              <Label>{t("tools.icon-designer.preview_size_label")}</Label>
+              <Select value={previewSize.toString()} onValueChange={(value) => setPreviewSize(parseInt(value))}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {ICON_SIZES.map((size) => (
+                    <SelectItem key={size} value={size.toString()}>
+                      {size}×{size} px
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* 主预览 */}
+            <div className="border rounded-lg bg-muted/20 overflow-auto" style={{ maxHeight: '400px' }}>
+              <div className="p-8 flex flex-col items-center justify-center gap-4 min-h-[300px]">
+                <div 
+                  ref={svgRef}
+                  className="drop-shadow-lg"
+                  style={{ 
+                    width: `${previewSize}px`, 
+                    height: `${previewSize}px`
+                  }}
+                  dangerouslySetInnerHTML={{ __html: generateSVG(previewSize) }}
+                />
+                <div className="text-sm text-muted-foreground font-medium flex flex-col items-center gap-1">
+                  <div>{t("tools.icon-designer.actual_size")}: {previewSize}×{previewSize} px</div>
+                  {previewSize > 256 && (
+                    <div className="text-xs text-primary">
+                      {t("tools.icon-designer.scroll_to_view")}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* 多尺寸预览 */}
+            <div>
+              <Label className="mb-2 block">{t("tools.icon-designer.size_preview")}</Label>
+              <div className="flex items-end gap-4 p-4 bg-muted/20 rounded-lg border">
+                {[16, 32, 64, 128].map((size) => (
+                  <div key={size} className="flex flex-col items-center gap-1">
+                    <div
+                      style={{ width: `${size}px`, height: `${size}px` }}
+                      dangerouslySetInnerHTML={{ __html: generateSVG(size) }}
+                    />
+                    <span className="text-xs text-muted-foreground">{size}px</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 操作按钮 */}
+            <div className="space-y-2">
+              <div className="flex gap-2">
+                <Button 
+                  onClick={() => {
+                    navigator.clipboard.writeText(generateSVG(previewSize))
+                  }}
+                  variant="outline" 
+                  className="flex-1"
+                  title={`${t("tools.icon-designer.copy_svg")} (${previewSize}×${previewSize})`}
+                >
+                  <Copy className="h-4 w-4 mr-2" />
+                  {t("tools.icon-designer.copy_svg")}
+                </Button>
+                <Button 
+                  onClick={() => downloadSVG(previewSize)}
+                  variant="default" 
+                  className="flex-1"
+                  title={`SVG (${previewSize}×${previewSize})`}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  SVG ({previewSize}px)
+                </Button>
+              </div>
+              <Button 
+                onClick={() => downloadPNG(previewSize)}
+                variant="outline"
+                className="w-full"
+                title={`PNG (${previewSize}×${previewSize})`}
+              >
+                <Download className="h-4 w-4 mr-2" />
+                PNG ({previewSize}px)
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 导出选项 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("tools.icon-designer.export_title")}</CardTitle>
+          <CardDescription>
+            {t("tools.icon-designer.export_desc")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* 批量下载区域 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* 批量下载所有格式 */}
+            <div className="p-4 border-2 border-primary rounded-lg bg-primary/5">
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <PackageIcon className="h-5 w-5 text-primary mt-0.5" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold">{t("tools.icon-designer.batch_download_selected")}</h4>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {t("tools.icon-designer.batch_download_selected_desc")}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 选中数量显示 */}
+                <div className="flex items-center justify-between p-2 bg-background/50 rounded border">
+                  <span className="text-sm font-medium">
+                    {t("tools.icon-designer.selected_count")}: <span className="text-primary">{selectedSizes.length}</span> / {ICON_SIZES.length}
+                  </span>
+                  <Button
+                    onClick={toggleAllSizes}
+                    variant="ghost"
+                    size="sm"
+                    className="h-7 text-xs"
+                  >
+                    {selectedSizes.length === ICON_SIZES.length 
+                      ? t("tools.icon-designer.deselect_all")
+                      : t("tools.icon-designer.select_all")}
+                  </Button>
+                </div>
+
+                <Button
+                  onClick={() => downloadAllSizes('both')}
+                  variant="default"
+                  size="lg"
+                  className="w-full"
+                  disabled={selectedSizes.length === 0}
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  {t("tools.icon-designer.download_all_formats")}
+                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={() => downloadAllSizes('svg')}
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    disabled={selectedSizes.length === 0}
+                  >
+                    SVG {t("tools.icon-designer.only")}
+                  </Button>
+                  <Button
+                    onClick={() => downloadAllSizes('png')}
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    disabled={selectedSizes.length === 0}
+                  >
+                    PNG {t("tools.icon-designer.only")}
+                  </Button>
+                </div>
+                {selectedSizes.length > 0 && (
+                  <div className="text-xs text-muted-foreground">
+                    {t("tools.icon-designer.zip_includes")}: {selectedSizes.length} {t("tools.icon-designer.sizes")} × 2 {t("tools.icon-designer.formats")}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* 多尺寸ICO文件 */}
+            <div className="p-4 border rounded-lg bg-muted/30">
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Download className="h-5 w-5 text-primary mt-0.5" />
+                  <div className="flex-1">
+                    <h4 className="font-semibold">{t("tools.icon-designer.ico_download_title")}</h4>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {t("tools.icon-designer.ico_download_desc")}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 选中尺寸ICO */}
+                <div className="space-y-2">
+                  <Button
+                    onClick={() => downloadICO(true)}
+                    variant="default"
+                    size="lg"
+                    className="w-full"
+                    disabled={selectedSizes.length === 0}
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    {t("tools.icon-designer.download_selected_ico")}
+                  </Button>
+                  {selectedSizes.length > 0 && (
+                    <div className="text-xs text-muted-foreground">
+                      {t("tools.icon-designer.ico_includes")} {selectedSizes.length} {t("tools.icon-designer.ico_files")}: {selectedSizes.map(s => `${s}×${s}.ico`).join(', ')}
+                    </div>
+                  )}
+                </div>
+
+                {/* 标准ICO */}
+                <div className="space-y-2">
+                  <Button
+                    onClick={() => downloadICO(false)}
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    {t("tools.icon-designer.download_standard_ico")}
+                  </Button>
+                  <div className="text-xs text-muted-foreground">
+                    {t("tools.icon-designer.standard_ico_desc")}: 16×16.ico, 32×32.ico, 48×48.ico, 64×64.ico, 128×128.ico, 256×256.ico
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 单独尺寸导出 */}
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              {t("tools.icon-designer.individual_sizes")}
+              <span className="text-xs font-normal text-muted-foreground">
+                ({t("tools.icon-designer.click_to_select")})
+              </span>
+            </h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+              {ICON_SIZES.map((size) => {
+                // 计算预览尺寸：最大64px，最小16px
+                const previewDisplaySize = Math.min(Math.max(size, 16), 64)
+                const isSelected = selectedSizes.includes(size)
+                
+                return (
+                  <div 
+                    key={size} 
+                    className={`
+                      relative space-y-2 p-2.5 rounded-lg cursor-pointer transition-all overflow-hidden
+                      ${isSelected 
+                        ? 'border-2 border-primary bg-primary/10 shadow-md' 
+                        : 'border border-muted hover:border-primary/50 hover:shadow-sm bg-card'
+                      }
+                    `}
+                    onClick={() => toggleSize(size)}
+                  >
+                    {/* 选择复选框 */}
+                    <div className="absolute top-1.5 right-1.5 z-10">
+                      <div 
+                        className={`
+                          w-5 h-5 rounded flex items-center justify-center transition-colors
+                          ${isSelected 
+                            ? 'bg-primary text-primary-foreground' 
+                            : 'bg-background border-2 border-muted-foreground/30'
+                          }
+                        `}
+                      >
+                        {isSelected && <CheckSquare className="h-3 w-3" />}
+                      </div>
+                    </div>
+
+                    {/* 预览图标或预览提示 */}
+                    {size <= 64 ? (
+                      // 小尺寸：直接预览
+                      <div className="flex items-center justify-center p-2 bg-muted/20 rounded min-h-[64px]">
+                        <div
+                          style={{ 
+                            width: `${previewDisplaySize}px`, 
+                            height: `${previewDisplaySize}px`
+                          }}
+                          dangerouslySetInnerHTML={{ __html: generateSVG(size) }}
+                        />
+                      </div>
+                    ) : (
+                      // 大尺寸：显示预览按钮
+                      <div 
+                        className="flex flex-col items-center justify-center p-2 bg-gradient-to-br from-muted/30 to-muted/10 rounded min-h-[64px] cursor-pointer hover:from-muted/40 hover:to-muted/20 transition-all border border-dashed border-muted-foreground/20"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setModalPreviewSize(size)
+                        }}
+                      >
+                        <Maximize2 className="h-6 w-6 text-muted-foreground/60 mb-1" />
+                        <span className="text-xs text-muted-foreground/80">
+                          {t("tools.icon-designer.click_preview")}
+                        </span>
+                      </div>
+                    )}
+                    <div className={`text-xs font-medium text-center ${isSelected ? 'text-primary' : 'text-muted-foreground'}`}>
+                      {size}×{size}
+                    </div>
+                    <div className="flex flex-col gap-1.5" onClick={(e) => e.stopPropagation()}>
+                      <Button
+                        onClick={() => downloadSVG(size)}
+                        variant="outline"
+                        size="sm"
+                        className="w-full h-7 text-xs px-2"
+                      >
+                        <Download className="h-3 w-3 mr-1" />
+                        SVG
+                      </Button>
+                      <Button
+                        onClick={() => downloadPNG(size)}
+                        variant="outline"
+                        size="sm"
+                        className="w-full h-7 text-xs px-2"
+                      >
+                        <Download className="h-3 w-3 mr-1" />
+                        PNG
+                      </Button>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* SVG代码显示 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("tools.icon-designer.svg_code_title")}</CardTitle>
+          <CardDescription>
+            {t("tools.icon-designer.svg_code_desc")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="bg-muted/50 p-4 rounded-lg">
+            <pre className="text-sm whitespace-pre-wrap break-all">
+              {generateSVG(256)}
+            </pre>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* 使用说明 */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Palette className="h-5 w-5" />
+            {t("tools.icon-designer.tips_title")}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h4 className="font-semibold mb-2">{t("tools.icon-designer.tip1_title")}</h4>
+              <p className="text-sm text-muted-foreground">{t("tools.icon-designer.tip1_desc")}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2">{t("tools.icon-designer.tip2_title")}</h4>
+              <p className="text-sm text-muted-foreground">{t("tools.icon-designer.tip2_desc")}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2">{t("tools.icon-designer.tip3_title")}</h4>
+              <p className="text-sm text-muted-foreground">{t("tools.icon-designer.tip3_desc")}</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-2">{t("tools.icon-designer.tip4_title")}</h4>
+              <p className="text-sm text-muted-foreground">{t("tools.icon-designer.tip4_desc")}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* SEO优化内容 */}
+      <ToolSEOSection toolId="icon-designer" />
+
+      {/* 全屏预览弹窗 */}
+      {modalPreviewSize && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm"
+          onClick={() => setModalPreviewSize(null)}
+        >
+          <div className="relative max-w-[90vw] max-h-[90vh] overflow-auto">
+            {/* 关闭按钮 */}
+            <button
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-muted-foreground/30 flex items-center justify-center transition-colors shadow-lg"
+              onClick={() => setModalPreviewSize(null)}
+              title={t("common.close") || "Close"}
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {/* 预览内容 */}
+            <div className="p-12 flex flex-col items-center justify-center gap-6">
+              <div
+                className="drop-shadow-2xl"
+                style={{ 
+                  width: `${modalPreviewSize}px`, 
+                  height: `${modalPreviewSize}px`
+                }}
+                dangerouslySetInnerHTML={{ __html: generateSVG(modalPreviewSize) }}
+              />
+              <div className="text-center space-y-2">
+                <div className="text-lg font-semibold">
+                  {t("tools.icon-designer.actual_size")}: {modalPreviewSize}×{modalPreviewSize} px
+                </div>
+                <div className="flex gap-3">
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      downloadSVG(modalPreviewSize)
+                    }}
+                    variant="default"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    SVG ({modalPreviewSize}px)
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      downloadPNG(modalPreviewSize)
+                    }}
+                    variant="outline"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    PNG ({modalPreviewSize}px)
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
