@@ -2026,6 +2026,100 @@
         "description": "Online Base64 image conversion tool. Supports bidirectional conversion between images and Base64 encoding for web development and data embedding.",
         "keywords": "Base64 conversion,image encoding,encoding tool,decoding tool,image converter,online tool"
       }
+    },
+    "image-to-dot-matrix": {
+      "name": "Image to Dot Matrix",
+      "description": "Convert images to dot matrix effect with multiple styles",
+      "upload_title": "Upload Image",
+      "upload_desc": "Select or drag and drop image file",
+      "settings_title": "Dot Matrix Settings",
+      "settings_desc": "Customize dot matrix effect parameters",
+      "preview_title": "Dot Matrix Preview",
+      "preview_desc": "Real-time preview of dot matrix effect",
+      "original_preview": "Original Image",
+      "drag_image": "Drag and drop image here or click to select",
+      "supported_formats": "Supports JPG, PNG, GIF, WebP formats, max 10MB",
+      "no_image": "No image selected",
+      "image_info": "Image Information",
+      "original_size": "Original Size",
+      "file_size": "File Size",
+      "dot_size_label": "Dot Size",
+      "dot_size_hint": "Diameter of each dot (pixels)",
+      "dot_spacing_label": "Dot Spacing",
+      "dot_spacing_hint": "Space between dots",
+      "dot_shape_label": "Dot Shape",
+      "shape_circle": "Circle",
+      "shape_square": "Square",
+      "shape_diamond": "Diamond",
+      "shape_hexagon": "Hexagon",
+      "color_mode_label": "Color Mode",
+      "mode_grayscale": "Grayscale",
+      "mode_blackwhite": "Black & White",
+      "mode_color": "Color",
+      "threshold_label": "B&W Threshold",
+      "threshold_hint": "Grayscale threshold for black and white mode (0-255)",
+      "invert_label": "Invert Colors",
+      "background_label": "Background Color",
+      "background_transparent": "Transparent",
+      "background_white": "White",
+      "background_black": "Black",
+      "background_custom": "Custom",
+      "processing": "Processing...",
+      "generate_button": "Generate Dot Matrix",
+      "download_png": "Download PNG",
+      "download_svg": "Download SVG",
+      "copy_image": "Copy Image",
+      "reset": "Reset Settings",
+      "image_too_large": "Image too large, please select a file smaller than 10MB",
+      "invalid_format": "Unsupported image format",
+      "generation_failed": "Generation failed, please try again",
+      "tips_title": "Usage Instructions",
+      "tip1_title": "Dot Size",
+      "tip1_desc": "Smaller dot values produce finer effects but larger files. Start with 3-5 pixels",
+      "tip2_title": "Color Mode",
+      "tip2_desc": "Grayscale preserves light and dark layers, black & white creates high contrast, color retains original colors",
+      "tip3_title": "Dot Shape",
+      "tip3_desc": "Different shapes create different artistic effects. Circles are common, squares suit pixel art, diamonds and hexagons are creative",
+      "tip4_title": "Export Format",
+      "tip4_desc": "PNG is ready to use, SVG is vector format that scales infinitely without loss",
+      "introduction": "Image to Dot Matrix is a professional image artistic effect generator that converts ordinary images into unique dot matrix style images. Supports multiple dot shapes, color modes and parameter adjustments to create retro, modern, artistic visual effects. Widely used in graphic design, poster creation, web design, print materials and other fields, it is a powerful assistant for designers and creative workers.",
+      "features": [
+        "🖼️ Supports JPG, PNG, GIF, WebP multiple image formats",
+        "⚙️ Flexible dot matrix parameters: adjustable size, spacing, shape",
+        "🎨 Multiple color modes: grayscale, black & white, color",
+        "🔷 Four dot shapes: circle, square, diamond, hexagon",
+        "👁️ Real-time preview with instant effect viewing",
+        "💾 Dual format export: PNG bitmap and SVG vector",
+        "🔒 Local processing ensures image privacy and security",
+        "⚡ High-performance processing supports large images"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios are dot matrix images suitable for?",
+          "answer": "Dot matrix images are widely used in: 1) Retro style design, simulating early printing effects; 2) Modern art creation, producing unique visual effects; 3) Web design backgrounds and decorative elements; 4) Poster and print design; 5) Brand visual identity systems; 6) Digital art and NFT creation. Dot matrix effects can give ordinary images a unique artistic and technological feel."
+        },
+        {
+          "question": "How to choose appropriate dot size and spacing?",
+          "answer": "Dot size and spacing selection depends on the usage scenario: small images should use smaller dots (2-4 pixels), large images can use larger dots (5-10 pixels). Larger spacing makes images more abstract; smaller spacing preserves more detail. It's recommended to start with default values and fine-tune based on results. For print output, use smaller dots to retain more detail."
+        },
+        {
+          "question": "What are the differences between color modes?",
+          "answer": "Three color modes each have characteristics: 1) Grayscale mode preserves image light and dark levels, suitable for scenes requiring rich detail; 2) Black and white mode has only pure black and pure white, producing high contrast effects, suitable for simple styles and logo design; 3) Color mode preserves original image colors, suitable for artistic creation and color printing. Consider final use and visual needs when choosing."
+        },
+        {
+          "question": "How to choose between PNG and SVG formats?",
+          "answer": "PNG is a bitmap format, suitable for direct use and sharing, larger files but good compatibility, suitable for web display, social media, etc. SVG is a vector format that can scale infinitely without loss, usually smaller files, suitable for scenarios requiring scaling like printing, logos, icon design. If you need post-editing or significant scaling, choose SVG; if you need quick use and sharing, choose PNG."
+        },
+        {
+          "question": "How is performance when processing large images?",
+          "answer": "The tool is performance-optimized and can smoothly process large images. Images under 10MB are recommended for best experience. For oversized images, dot size is automatically adjusted to ensure processing speed. All processing is done locally in the browser without uploading to servers, ensuring image security. If you encounter performance issues, consider resizing the image first or increasing dot size."
+        }
+      ],
+      "meta": {
+        "title": "Image to Dot Matrix Tool",
+        "description": "Online image to dot matrix conversion tool. Supports multiple dot shapes and color modes, generates unique dot matrix artistic effects for design and creative projects.",
+        "keywords": "dot matrix,image conversion,artistic effect,pixel art,image processing,online tool"
+      }
     }
   },
   "seo": {

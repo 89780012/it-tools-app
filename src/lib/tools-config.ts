@@ -157,6 +157,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "image",
         path: "/tools/base64-file-converter",
         icon: "file-code"
+      },
+      {
+        id: "image-to-dot-matrix",
+        nameKey: "tools.image-to-dot-matrix.name",
+        descriptionKey: "tools.image-to-dot-matrix.description",
+        category: "image",
+        path: "/tools/image-to-dot-matrix",
+        icon: "grid-3x3"
       }
     ]
   },

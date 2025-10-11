@@ -32,6 +32,7 @@ import {
   ChevronsUpDown,
   Palette,
   Terminal,
+  Grid3x3,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -73,6 +74,7 @@ const toolIconMap = {
   "clock-8": Clock8,
   palette: Palette,              // Color converter
   terminal: Terminal,            // cURL converter
+  "grid-3x3": Grid3x3,           // Image to dot matrix
 }
 
 export function AppSidebar() {
