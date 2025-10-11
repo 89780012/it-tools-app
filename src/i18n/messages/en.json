@@ -1645,6 +1645,71 @@
         "keywords": "cron expression parser,cron validator,cron schedule preview,cron tester,automation tools"
       }
     },
+    "curl-converter": {
+      "name": "cURL Command Converter",
+      "description": "Convert cURL commands to code in various programming languages with testing capability",
+      "input_title": "Enter cURL Command",
+      "input_desc": "Paste or type your cURL command",
+      "input_placeholder": "Enter cURL command...\nExample: curl -X POST https://api.example.com/users \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'",
+      "output_title": "Generated Code",
+      "output_desc": "Converted code will be displayed here",
+      "output_placeholder": "Converted code will appear here...",
+      "convert_button": "Convert Code",
+      "test_button": "Test Request",
+      "test_result_title": "Request Result",
+      "test_result_desc": "API request response",
+      "language_label": "Target Language",
+      "invalid_command": "Invalid cURL command",
+      "conversion_failed": "Conversion failed, please check command format",
+      "test_failed": "Request failed",
+      "tips_title": "Usage Guide",
+      "tip1_title": "Command Format",
+      "tip1_desc": "Supports standard cURL commands with various parameters and options",
+      "tip2_title": "Supported Parameters",
+      "tip2_desc": "Supports -X/-H/-d/--data/--header and other common parameters",
+      "tip3_title": "Multi-language Support",
+      "tip3_desc": "Convert to JavaScript, Python, Node.js, PHP, Go and more",
+      "tip4_title": "Online Testing",
+      "tip4_desc": "Test API requests via server proxy, no CORS restrictions, view full response",
+      "introduction": "cURL Command Converter is a practical tool designed for developers to quickly convert cURL commands into HTTP request code in multiple programming languages. It supports mainstream languages and frameworks including JavaScript Fetch, Python Requests, Node.js Axios, PHP cURL, and Go net/http. Not only can it generate code, but it can also test API requests directly in the browser and view response results. Whether it's API debugging, documentation writing, or code migration, it can greatly improve development efficiency.",
+      "features": [
+        "🔄 Intelligently parse cURL commands with support for various parameter formats",
+        "💻 Support multiple programming languages: JavaScript, Python, Node.js, PHP, Go",
+        "🎯 Automatically identify HTTP methods, headers, request body and other parameters",
+        "⚡ Real-time conversion, instantly generate usable code",
+        "🧪 Built-in request testing via server proxy, no CORS restrictions",
+        "📋 One-click copy generated code to clipboard",
+        "💾 Support downloading as source files in corresponding languages",
+        "🔒 Local processing ensures API keys and data security"
+      ],
+      "faq": [
+        {
+          "question": "Why do I need a cURL conversion tool?",
+          "answer": "In API development and testing, many documentation and tools (such as Postman) provide cURL command examples. This tool can quickly convert these cURL commands into programming language code used in actual projects, avoiding manual writing, reducing errors, and improving efficiency. It is especially suitable for scenarios requiring quick integration of third-party APIs."
+        },
+        {
+          "question": "What cURL parameters does the tool support?",
+          "answer": "The tool supports commonly used cURL parameters, including: -X/--request (HTTP method), -H/--header (request headers), -d/--data/--data-raw (request body), URL, etc. For less common parameters, you can manually adjust the converted code."
+        },
+        {
+          "question": "Can the generated code be used directly?",
+          "answer": "The generated code follows standard practices for each language and can be used directly in most cases. However, it is recommended to make appropriate adjustments based on actual project requirements: 1) Verify API endpoints and parameters; 2) Add error handling logic; 3) Adjust timeout settings as needed; 4) Handle response data formats; 5) Add necessary environment variables and configurations."
+        },
+        {
+          "question": "How to handle cURL commands containing sensitive information?",
+          "answer": "All conversion operations are completed locally in your browser, and command content is not uploaded to any server. However, it is still recommended: 1) Remove or replace sensitive API keys and tokens before conversion; 2) Use environment variables to manage sensitive configurations; 3) Do not hardcode passwords and keys in code; 4) Do not directly commit generated code to public repositories; 5) Use project configuration files to manage API credentials."
+        },
+        {
+          "question": "What are the limitations of the testing feature?",
+          "answer": "The testing feature sends requests through a server-side proxy, eliminating CORS issues. However, there are still some considerations: 1) APIs requiring special authentication may need correct credentials configured; 2) Request timeout is set to default, very large responses may take longer; 3) The testing feature is suitable for quickly verifying API accessibility and response format; 4) For production environment detailed testing, professional tools like Postman or Insomnia are recommended."
+        }
+      ],
+      "meta": {
+        "title": "cURL Command Converter - Convert to Multiple Programming Languages",
+        "description": "Online cURL command conversion tool. Quickly convert cURL commands to JavaScript, Python, Node.js, PHP, Go and other language code with online testing support.",
+        "keywords": "cURL converter,API testing,HTTP request,code generation,developer tools,online tools"
+      }
+    },
     "color-converter": {
       "name": "Color Converter",
       "description": "Convert colors between HEX, RGB, HSL and CSS color names",

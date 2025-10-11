@@ -238,11 +238,22 @@
     <loc>https://www.toolkitpub.com/hi/tools/cron-expression-parser</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <lastmod>2025-10-10</lastmod>
+    <lastmod>2025-10-11</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/cron-expression-parser"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/cron-expression-parser"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/cron-expression-parser"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/cron-expression-parser"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/curl-converter</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-10-11</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/curl-converter"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/curl-converter"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/curl-converter"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/curl-converter"/>
   </url>
 
   <url>

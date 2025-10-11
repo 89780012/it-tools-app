@@ -31,6 +31,7 @@ import {
   ChevronsDownUp,
   ChevronsUpDown,
   Palette,
+  Terminal,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -71,6 +72,7 @@ const toolIconMap = {
   history: History,
   "clock-8": Clock8,
   palette: Palette,              // Color converter
+  terminal: Terminal,            // cURL converter
 }
 
 export function AppSidebar() {

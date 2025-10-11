@@ -29,6 +29,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "developer",
         path: "/tools/cron-expression-parser",
         icon: "clock-8"
+      },
+      {
+        id: "curl-converter",
+        nameKey: "tools.curl-converter.name",
+        descriptionKey: "tools.curl-converter.description",
+        category: "developer",
+        path: "/tools/curl-converter",
+        icon: "terminal"
       }
     ]
   },

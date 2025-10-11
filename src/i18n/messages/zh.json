@@ -461,7 +461,7 @@
       "name": "JSON差异对比",
       "description": "比较两个JSON数据的差异",
       "original": "原始数据",
-      "modified": "修改后数据",
+      "modified_data": "修改后数据",
       "left_placeholder": "请输入原始JSON数据...",
       "right_placeholder": "请输入修改后的JSON数据...",
       "compare_button": "对比差异",
@@ -470,9 +470,9 @@
       "hide_unchanged": "隐藏未更改",
       "no_differences": "没有发现差异",
       "total": "总计",
-      "added": "新增",
+      "added_count": "新增",
       "removed": "删除",
-      "modified": "修改",
+      "modified_count": "修改",
       "unchanged": "未更改",
       "errors": {
         "empty_input": "请输入两个JSON数据",
@@ -506,7 +506,7 @@
       "inline_diff_view": "内联差异视图",
       "show_only_differences": "仅显示差异",
       "deleted": "删除",
-      "added": "新增",
+      "added_item": "新增",
       "moved": "移动",
       "deleted_marked_red": "删除内容标红",
       "added_marked_green": "新增内容标绿",
@@ -1643,6 +1643,71 @@
         "title": "Cron 表达式解析器 - 在线验证与预览",
         "description": "免费的 Cron 表达式在线解析工具，支持语法校验、字段展开以及未来执行时间预览。",
         "keywords": "Cron 表达式,任务调度,计划任务,表达式解析,Cron 校验"
+      }
+    },
+    "curl-converter": {
+      "name": "cURL 命令转换器",
+      "description": "将 cURL 命令转换为各种编程语言的代码，并可直接测试请求",
+      "input_title": "输入 cURL 命令",
+      "input_desc": "粘贴或输入 cURL 命令",
+      "input_placeholder": "请输入 cURL 命令...\n例如: curl -X POST https://api.example.com/users \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'",
+      "output_title": "生成的代码",
+      "output_desc": "转换后的代码将显示在这里",
+      "output_placeholder": "转换后的代码将显示在这里...",
+      "convert_button": "转换代码",
+      "test_button": "测试请求",
+      "test_result_title": "请求结果",
+      "test_result_desc": "API 请求的响应结果",
+      "language_label": "目标语言",
+      "invalid_command": "无效的 cURL 命令",
+      "conversion_failed": "转换失败，请检查命令格式",
+      "test_failed": "请求失败",
+      "tips_title": "使用说明",
+      "tip1_title": "命令格式",
+      "tip1_desc": "支持标准的 cURL 命令，包括各种参数和选项",
+      "tip2_title": "支持的参数",
+      "tip2_desc": "支持 -X/-H/-d/--data/--header 等常用参数",
+      "tip3_title": "多语言支持",
+      "tip3_desc": "支持转换为 JavaScript、Python、Node.js、PHP、Go 等语言",
+      "tip4_title": "在线测试",
+      "tip4_desc": "通过服务器代理测试 API 请求，无 CORS 限制，查看完整响应",
+      "introduction": "cURL 命令转换器是专为开发者设计的实用工具，能够快速将 cURL 命令转换为多种编程语言的 HTTP 请求代码。支持 JavaScript Fetch、Python Requests、Node.js Axios、PHP cURL、Go net/http 等主流语言和框架。不仅可以生成代码，还能直接在浏览器中测试 API 请求，查看响应结果。无论是 API 调试、文档编写还是代码迁移，都能大幅提升开发效率。",
+      "features": [
+        "🔄 智能解析 cURL 命令，支持多种参数格式",
+        "💻 支持多种编程语言：JavaScript、Python、Node.js、PHP、Go",
+        "🎯 自动识别 HTTP 方法、请求头、请求体等参数",
+        "⚡ 实时转换，即时生成可用的代码",
+        "🧪 内置请求测试功能，通过服务器代理无 CORS 限制",
+        "📋 一键复制生成的代码到剪贴板",
+        "💾 支持下载为对应语言的源文件",
+        "🔒 本地处理，确保 API 密钥和数据安全"
+      ],
+      "faq": [
+        {
+          "question": "为什么需要 cURL 转换工具？",
+          "answer": "在 API 开发和测试中，很多文档和工具（如 Postman）都会提供 cURL 命令示例。本工具可以快速将这些 cURL 命令转换为实际项目中使用的编程语言代码，避免手动编写，减少错误，提高效率。特别适合需要快速集成第三方 API 的场景。"
+        },
+        {
+          "question": "工具支持哪些 cURL 参数？",
+          "answer": "工具支持常用的 cURL 参数，包括：-X/--request（HTTP 方法）、-H/--header（请求头）、-d/--data/--data-raw（请求体）、URL 等。对于不常用的参数，可以在转换后的代码基础上手动调整。"
+        },
+        {
+          "question": "生成的代码可以直接使用吗？",
+          "answer": "生成的代码遵循各语言的标准实践，大多数情况下可以直接使用。但建议根据实际项目需求进行适当调整：1）验证 API 端点和参数；2）添加错误处理逻辑；3）根据需要调整超时设置；4）处理响应数据格式；5）添加必要的环境变量和配置。"
+        },
+        {
+          "question": "如何处理包含敏感信息的 cURL 命令？",
+          "answer": "所有转换操作都在您的浏览器本地完成，命令内容不会上传到任何服务器。但仍建议：1）转换前移除或替换敏感的 API 密钥和 token；2）使用环境变量管理敏感配置；3）不要在代码中硬编码密码和密钥；4）生成的代码不要直接提交到公共代码仓库；5）使用项目配置文件管理 API 凭证。"
+        },
+        {
+          "question": "测试功能有什么限制？",
+          "answer": "测试功能通过服务器端代理发送请求，已解决 CORS 跨域问题。但仍有以下注意事项：1）某些需要特殊认证的 API 可能需要配置正确的认证信息；2）请求超时时间为默认值，超大响应可能需要较长时间；3）测试功能适合快速验证 API 是否可访问和响应格式；4）对于生产环境的详细测试，建议使用专业工具如 Postman 或 Insomnia。"
+        }
+      ],
+      "meta": {
+        "title": "cURL 命令转换器 - 转换为多种编程语言",
+        "description": "在线 cURL 命令转换工具。快速将 cURL 命令转换为 JavaScript、Python、Node.js、PHP、Go 等语言代码，支持在线测试。",
+        "keywords": "cURL转换,API测试,HTTP请求,代码生成,开发工具,在线工具"
       }
     },
     "color-converter": {
