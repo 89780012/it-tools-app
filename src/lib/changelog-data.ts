@@ -18,6 +18,71 @@ export interface ChangelogEntry {
 
 export const changelogData: ChangelogEntry[] = [
   {
+    version: "v0.8.0",
+    date: "2025-10-12",
+    type: "minor",
+    title: {
+      zh: "开发工具与图像处理扩展",
+      en: "Developer Tools and Image Processing Expansion",
+      hi: "डेवलपर टूल्स और इमेज प्रोसेसिंग विस्तार"
+    },
+    description: {
+      zh: "新增cURL转换器、图标设计器和图片转点阵图工具，丰富开发者工具和图像处理功能",
+      en: "Added cURL converter, icon designer and image-to-dot-matrix tools, enriching developer tools and image processing capabilities",
+      hi: "cURL कनवर्टर, आइकन डिज़ाइनर और इमेज-टू-डॉट-मैट्रिक्स टूल जोड़े गए, डेवलपर टूल्स और इमेज प्रोसेसिंग क्षमताओं में वृद्धि"
+    },
+    changes: [
+      {
+        type: "feat",
+        description: {
+          zh: "新增cURL转换器：支持将cURL命令转换为JavaScript(Fetch)、Node.js(Axios)、Python(Requests)、PHP和Go等多种语言代码，并提供在线测试功能",
+          en: "Added cURL converter: converts cURL commands to multiple languages including JavaScript(Fetch), Node.js(Axios), Python(Requests), PHP, and Go, with online testing feature",
+          hi: "cURL कनवर्टर जोड़ा गया: cURL कमांड को JavaScript(Fetch), Node.js(Axios), Python(Requests), PHP, और Go सहित कई भाषाओं में परिवर्तित करता है, ऑनलाइन टेस्टिंग सुविधा के साथ"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "新增图标设计器：支持创建1-3个字符的文字图标，提供方形、圆形、圆角和超椭圆等形状，可导出SVG、PNG和ICO多种格式，支持7种标准尺寸(16px-1024px)批量导出",
+          en: "Added icon designer: create text-based icons with 1-3 characters, supports square, circle, rounded and squircle shapes, exports to SVG, PNG and ICO formats, batch export in 7 standard sizes (16px-1024px)",
+          hi: "आइकन डिज़ाइनर जोड़ा गया: 1-3 अक्षरों के साथ टेक्स्ट-आधारित आइकन बनाएं, स्क्वायर, सर्कल, राउंडेड और स्क्विर्कल आकृतियों का समर्थन करता है, SVG, PNG और ICO फॉर्मेट में निर्यात, 7 मानक आकारों (16px-1024px) में बैच निर्यात"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "新增图片转点阵图工具：将图片或文字转换为艺术点阵图，支持圆形、方形、菱形和六边形点，提供灰度、黑白和彩色三种模式，可自定义点大小、间距和背景，导出PNG和SVG格式",
+          en: "Added image-to-dot-matrix tool: converts images or text to artistic dot matrix, supports circle, square, diamond and hexagon dots, offers grayscale, black&white and color modes, customizable dot size, spacing and background, exports to PNG and SVG",
+          hi: "इमेज-टू-डॉट-मैट्रिक्स टूल जोड़ा गया: छवियों या टेक्स्ट को कलात्मक डॉट मैट्रिक्स में परिवर्तित करता है, सर्कल, स्क्वायर, डायमंड और हेक्सागन डॉट्स का समर्थन करता है, ग्रेस्केल, ब्लैक एंड व्हाइट और कलर मोड प्रदान करता है, अनुकूलन योग्य डॉट आकार, स्पेसिंग और पृष्ठभूमि, PNG और SVG में निर्यात"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "cURL转换器集成代理API功能，解决跨域问题，支持在线测试API请求并实时查看响应结果",
+          en: "cURL converter integrates proxy API to solve CORS issues, supports online API request testing with real-time response viewing",
+          hi: "cURL कनवर्टर CORS समस्याओं को हल करने के लिए प्रॉक्सी API को एकीकृत करता है, वास्तविक समय प्रतिक्रिया देखने के साथ ऑनलाइन API अनुरोध परीक्षण का समर्थन करता है"
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "图标设计器支持预设颜色方案和随机配色，提供8种预设颜色组合和全屏预览功能，优化大尺寸图标的预览体验",
+          en: "Icon designer supports preset color schemes and random colors, provides 8 preset color combinations and fullscreen preview, optimized preview experience for large icons",
+          hi: "आइकन डिज़ाइनर प्रीसेट कलर स्कीम और रैंडम रंगों का समर्थन करता है, 8 प्रीसेट कलर कॉम्बिनेशन और फुलस्क्रीन प्रीव्यू प्रदान करता है, बड़े आइकनों के लिए अनुकूलित प्रीव्यू अनुभव"
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "图片转点阵图工具支持图片和文字两种输入模式，文字模式可自定义字体大小、粗细和字体类型",
+          en: "Image-to-dot-matrix tool supports both image and text input modes, text mode allows customization of font size, weight and font family",
+          hi: "इमेज-टू-डॉट-मैट्रिक्स टूल छवि और टेक्स्ट दोनों इनपुट मोड का समर्थन करता है, टेक्स्ट मोड फ़ॉन्ट आकार, वजन और फ़ॉन्ट परिवार के अनुकूलन की अनुमति देता है"
+        }
+      }
+    ]
+  },
+  {
     version: "v0.7.0",
     date: "2025-10-10",
     type: "minor",
