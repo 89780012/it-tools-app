@@ -2,12 +2,14 @@
 
 import { useState, useRef, useCallback } from "react"
 import { Upload, Download, Image as ImageIcon, Settings, Eye, RotateCcw } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
+import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from 'next-intl'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { useToast } from "@/hooks/use-toast"
@@ -15,13 +17,19 @@ import { useToast } from "@/hooks/use-toast"
 type ColorMode = 'grayscale' | 'blackwhite' | 'color'
 type DotShape = 'circle' | 'square' | 'diamond' | 'hexagon'
 type BackgroundType = 'transparent' | 'white' | 'black' | 'custom'
+type InputMode = 'image' | 'text'
 
 export default function ImageToDotMatrixPage() {
   const t = useTranslations()
   const { toast } = useToast()
   
+  const [inputMode, setInputMode] = useState<InputMode>('image')
   const [image, setImage] = useState<HTMLImageElement | null>(null)
   const [imageFile, setImageFile] = useState<File | null>(null)
+  const [textInput, setTextInput] = useState('')
+  const [fontSize, setFontSize] = useState(120)
+  const [fontWeight, setFontWeight] = useState<'normal' | 'bold'>('bold')
+  const [fontFamily, setFontFamily] = useState('Arial')
   const [dotSize, setDotSize] = useState(5)
   const [dotSpacing, setDotSpacing] = useState(1.2)
   const [dotShape, setDotShape] = useState<DotShape>('circle')
@@ -64,7 +72,7 @@ export default function ImageToDotMatrixPage() {
     
     const reader = new FileReader()
     reader.onload = (event) => {
-      const img = new Image()
+      const img = new window.Image()
       img.onload = () => {
         setImage(img)
       }
@@ -88,8 +96,66 @@ export default function ImageToDotMatrixPage() {
     }
   }
   
-  const generateDotMatrix = useCallback(() => {
-    if (!image || !canvasRef.current) return
+  // 从文字生成图片
+  const textToImage = useCallback(() => {
+    if (!textInput.trim()) return null
+    
+    const canvas = document.createElement('canvas')
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return null
+    
+    // 设置字体
+    ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`
+    
+    // 测量文字尺寸
+    const metrics = ctx.measureText(textInput)
+    const textWidth = metrics.width
+    const textHeight = fontSize * 1.5 // 留一些上下边距
+    
+    // 设置画布大小
+    canvas.width = textWidth + 40 // 左右各留20px边距
+    canvas.height = textHeight + 40
+    
+    // 设置背景
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    
+    // 绘制文字
+    ctx.fillStyle = '#000000'
+    ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`
+    ctx.textBaseline = 'middle'
+    ctx.textAlign = 'center'
+    ctx.fillText(textInput, canvas.width / 2, canvas.height / 2)
+    
+    // 转换为图片
+    const img = new window.Image()
+    img.src = canvas.toDataURL()
+    
+    return new Promise<HTMLImageElement>((resolve) => {
+      img.onload = () => resolve(img)
+    })
+  }, [textInput, fontSize, fontWeight, fontFamily])
+  
+  const generateDotMatrix = useCallback(async () => {
+    if (!canvasRef.current) return
+    
+    // 根据模式获取图片
+    let sourceImage: HTMLImageElement | null = null
+    if (inputMode === 'image') {
+      if (!image) return
+      sourceImage = image
+    } else {
+      if (!textInput.trim()) {
+        toast({
+          title: t("common.error"),
+          description: t("tools.image-to-dot-matrix.no_text_input"),
+          variant: "destructive"
+        })
+        return
+      }
+      sourceImage = await textToImage()
+      if (!sourceImage) return
+    }
     
     setIsProcessing(true)
     
@@ -100,8 +166,8 @@ export default function ImageToDotMatrixPage() {
       
       // 计算画布尺寸
       const spacing = dotSize * dotSpacing
-      const cols = Math.floor(image.width / spacing)
-      const rows = Math.floor(image.height / spacing)
+      const cols = Math.floor(sourceImage.width / spacing)
+      const rows = Math.floor(sourceImage.height / spacing)
       
       canvas.width = cols * spacing
       canvas.height = rows * spacing
@@ -118,24 +184,21 @@ export default function ImageToDotMatrixPage() {
       
       // 创建临时画布获取像素数据
       const tempCanvas = document.createElement('canvas')
-      tempCanvas.width = image.width
-      tempCanvas.height = image.height
+      tempCanvas.width = sourceImage.width
+      tempCanvas.height = sourceImage.height
       const tempCtx = tempCanvas.getContext('2d')
       if (!tempCtx) return
       
-      tempCtx.drawImage(image, 0, 0)
-      const imageData = tempCtx.getImageData(0, 0, image.width, image.height)
+      tempCtx.drawImage(sourceImage, 0, 0)
+      const imageData = tempCtx.getImageData(0, 0, sourceImage.width, sourceImage.height)
       
       // 绘制点阵
       for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-          const x = Math.floor(col * spacing + spacing / 2)
-          const y = Math.floor(row * spacing + spacing / 2)
-          
           // 获取对应像素的颜色
-          const pixelX = Math.min(Math.floor(col * spacing / (cols * spacing) * image.width), image.width - 1)
-          const pixelY = Math.min(Math.floor(row * spacing / (rows * spacing) * image.height), image.height - 1)
-          const index = (pixelY * image.width + pixelX) * 4
+          const pixelX = Math.min(Math.floor(col * spacing / (cols * spacing) * sourceImage.width), sourceImage.width - 1)
+          const pixelY = Math.min(Math.floor(row * spacing / (rows * spacing) * sourceImage.height), sourceImage.height - 1)
+          const index = (pixelY * sourceImage.width + pixelX) * 4
           
           let r = imageData.data[index]
           let g = imageData.data[index + 1]
@@ -217,7 +280,7 @@ export default function ImageToDotMatrixPage() {
       setIsProcessing(false)
       setHasGenerated(false)
     }
-  }, [image, dotSize, dotSpacing, dotShape, colorMode, threshold, invert, backgroundType, customBgColor, toast, t])
+  }, [inputMode, image, textInput, textToImage, dotSize, dotSpacing, dotShape, colorMode, threshold, invert, backgroundType, customBgColor, toast, t])
   
   const downloadPNG = () => {
     if (!canvasRef.current || !hasGenerated) {
@@ -360,18 +423,47 @@ export default function ImageToDotMatrixPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* 左侧：上传和配置 */}
         <div className="space-y-6">
-          {/* 上传图片 */}
+          {/* 输入源切换 */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Upload className="h-5 w-5" />
-                {t("tools.image-to-dot-matrix.upload_title")}
-              </CardTitle>
-              <CardDescription>
-                {t("tools.image-to-dot-matrix.upload_desc")}
-              </CardDescription>
+              <CardTitle>{t("tools.image-to-dot-matrix.mode_title")}</CardTitle>
+              <CardDescription>{t("tools.image-to-dot-matrix.mode_desc")}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent>
+              <div className="grid grid-cols-2 gap-2">
+                <Button
+                  variant={inputMode === 'image' ? 'default' : 'outline'}
+                  onClick={() => setInputMode('image')}
+                  className="w-full"
+                >
+                  <Upload className="h-4 w-4 mr-2" />
+                  {t("tools.image-to-dot-matrix.mode_image")}
+                </Button>
+                <Button
+                  variant={inputMode === 'text' ? 'default' : 'outline'}
+                  onClick={() => setInputMode('text')}
+                  className="w-full"
+                >
+                  <Settings className="h-4 w-4 mr-2" />
+                  {t("tools.image-to-dot-matrix.mode_text")}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* 上传图片 */}
+          {inputMode === 'image' && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Upload className="h-5 w-5" />
+                  {t("tools.image-to-dot-matrix.upload_title")}
+                </CardTitle>
+                <CardDescription>
+                  {t("tools.image-to-dot-matrix.upload_desc")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
               <div
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
@@ -404,7 +496,73 @@ export default function ImageToDotMatrixPage() {
                 </div>
               )}
             </CardContent>
-          </Card>
+            </Card>
+          )}
+          
+          {/* 文字输入 */}
+          {inputMode === 'text' && (
+            <Card>
+              <CardHeader>
+                <CardTitle>{t("tools.image-to-dot-matrix.text_input_title")}</CardTitle>
+                <CardDescription>{t("tools.image-to-dot-matrix.text_input_desc")}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div>
+                  <Label>{t("tools.image-to-dot-matrix.text_content_label")}</Label>
+                  <Textarea
+                    value={textInput}
+                    onChange={(e) => setTextInput(e.target.value)}
+                    placeholder={t("tools.image-to-dot-matrix.text_placeholder")}
+                    className="min-h-[100px] text-2xl font-bold text-center"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <Label>{t("tools.image-to-dot-matrix.font_size_label")}</Label>
+                    <span className="text-sm text-muted-foreground">{fontSize}px</span>
+                  </div>
+                  <Slider
+                    value={[fontSize]}
+                    onValueChange={([value]) => setFontSize(value)}
+                    min={40}
+                    max={300}
+                    step={10}
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>{t("tools.image-to-dot-matrix.font_weight_label")}</Label>
+                  <Select value={fontWeight} onValueChange={(value) => setFontWeight(value as 'normal' | 'bold')}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="normal">{t("tools.image-to-dot-matrix.font_normal")}</SelectItem>
+                      <SelectItem value="bold">{t("tools.image-to-dot-matrix.font_bold")}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div className="space-y-2">
+                  <Label>{t("tools.image-to-dot-matrix.font_family_label")}</Label>
+                  <Select value={fontFamily} onValueChange={setFontFamily}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Arial">Arial</SelectItem>
+                      <SelectItem value="Helvetica">Helvetica</SelectItem>
+                      <SelectItem value="Times New Roman">Times New Roman</SelectItem>
+                      <SelectItem value="Courier New">Courier New</SelectItem>
+                      <SelectItem value="Georgia">Georgia</SelectItem>
+                      <SelectItem value="monospace">Monospace</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </CardContent>
+            </Card>
+          )}
           
           {/* 点阵设置 */}
           <Card>
@@ -539,7 +697,7 @@ export default function ImageToDotMatrixPage() {
             <div className="flex gap-2 pt-4">
               <Button 
                 onClick={generateDotMatrix} 
-                disabled={!image || isProcessing}
+                disabled={(inputMode === 'image' && !image) || (inputMode === 'text' && !textInput.trim()) || isProcessing}
                 className="flex-1"
               >
                 {isProcessing ? t("tools.image-to-dot-matrix.processing") : t("tools.image-to-dot-matrix.generate_button")}
@@ -558,7 +716,7 @@ export default function ImageToDotMatrixPage() {
         {/* 右侧：预览区域 */}
         <div className="space-y-6">
           {/* 原始图片预览 */}
-          {imageFile && image && (
+          {imageFile && image && inputMode === 'image' && (
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
@@ -567,11 +725,14 @@ export default function ImageToDotMatrixPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="border rounded-lg overflow-hidden bg-muted/20">
-                  <img 
+                <div className="border rounded-lg overflow-hidden bg-muted/20 relative">
+                  <Image 
                     src={URL.createObjectURL(imageFile)} 
                     alt="Original Preview" 
+                    width={image?.width || 500}
+                    height={image?.height || 500}
                     className="w-full h-auto object-contain"
+                    unoptimized
                   />
                 </div>
               </CardContent>
@@ -591,10 +752,10 @@ export default function ImageToDotMatrixPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="min-h-[300px] border rounded-lg p-4 bg-muted/20 flex items-center justify-center overflow-auto">
-                {!image ? (
+                {(inputMode === 'image' && !image) || (inputMode === 'text' && !textInput.trim()) ? (
                   <div className="text-center text-muted-foreground">
                     <ImageIcon className="h-12 w-12 mx-auto mb-2" />
-                    <p>{t("tools.image-to-dot-matrix.no_image")}</p>
+                    <p>{inputMode === 'image' ? t("tools.image-to-dot-matrix.no_image") : t("tools.image-to-dot-matrix.no_text_input")}</p>
                   </div>
                 ) : (
                   <canvas ref={canvasRef} className="max-w-full h-auto" />
@@ -602,7 +763,7 @@ export default function ImageToDotMatrixPage() {
               </div>
               
               {/* 导出按钮 */}
-              {image && (
+              {((inputMode === 'image' && image) || (inputMode === 'text' && textInput.trim())) && (
                 <div className="grid grid-cols-2 gap-2">
                   <Button 
                     onClick={downloadPNG}
