@@ -1,19 +1,22 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { Copy, Download, Palette, RefreshCw, PackageIcon, CheckSquare, Maximize2, X } from "lucide-react"
+import { Copy, Download, Palette, RefreshCw, PackageIcon, CheckSquare, Maximize2, X, Grid3x3 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
 import { useTranslations } from 'next-intl'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
+import { MULTICOLOR_TEMPLATES, TEMPLATE_CATEGORIES } from "@/lib/icon-templates"
 import JSZip from 'jszip'
 
 type IconShape = 'square' | 'circle' | 'rounded' | 'squircle'
 type FontWeight = 'normal' | 'medium' | 'bold'
+type BackgroundMode = 'solid' | 'multicolor'
 
 const PRESET_COLORS = [
   { name: 'Blue', bg: '#3B82F6', text: '#FFFFFF' },
@@ -33,11 +36,25 @@ export default function IconDesignerPage() {
 
   // 基础设置
   const [text, setText] = useState("A")
+  const [showText, setShowText] = useState(true)
   const [bgColor, setBgColor] = useState("#3B82F6")
   const [textColor, setTextColor] = useState("#FFFFFF")
   const [shape, setShape] = useState<IconShape>('rounded')
   const [fontSize, setFontSize] = useState([60])
   const [fontWeight, setFontWeight] = useState<FontWeight>('bold')
+  
+  // 背景模式
+  const [bgMode, setBgMode] = useState<BackgroundMode>('solid')
+  const [selectedTemplate, setSelectedTemplate] = useState(MULTICOLOR_TEMPLATES[0].id)
+  const [regionColors, setRegionColors] = useState<Record<string, string>>(
+    Object.fromEntries(
+      MULTICOLOR_TEMPLATES[0].regions.map(r => [r.id, r.defaultColor])
+    )
+  )
+  
+  // 模板选择弹框
+  const [showTemplateModal, setShowTemplateModal] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('all')
   
   // 尺寸选择
   const [selectedSizes, setSelectedSizes] = useState<number[]>(ICON_SIZES)
@@ -63,6 +80,30 @@ export default function IconDesignerPage() {
       prev.length === ICON_SIZES.length ? [] : [...ICON_SIZES]
     )
   }
+  
+  // 生成形状裁剪路径
+  const getShapeClipPath = (size: number, id: string) => {
+    const centerX = size / 2
+    const centerY = size / 2
+    
+    switch (shape) {
+      case 'circle':
+        return `<clipPath id="shape-clip-${id}"><circle cx="${centerX}" cy="${centerY}" r="${centerX}"/></clipPath>`
+      case 'rounded':
+        const roundedRadius = Math.round(size * 0.15)
+        return `<clipPath id="shape-clip-${id}"><rect width="${size}" height="${size}" rx="${roundedRadius}" ry="${roundedRadius}"/></clipPath>`
+      case 'squircle':
+        const squircleRadius = size * 0.6
+        return `<clipPath id="shape-clip-${id}"><path d="M ${centerX},0 
+                 C ${centerX + squircleRadius * 0.552},0 ${size},${centerY - squircleRadius * 0.552} ${size},${centerY}
+                 C ${size},${centerY + squircleRadius * 0.552} ${centerX + squircleRadius * 0.552},${size} ${centerX},${size}
+                 C ${centerX - squircleRadius * 0.552},${size} 0,${centerY + squircleRadius * 0.552} 0,${centerY}
+                 C 0,${centerY - squircleRadius * 0.552} ${centerX - squircleRadius * 0.552},0 ${centerX},0 Z"/></clipPath>`
+      case 'square':
+      default:
+        return ''
+    }
+  }
 
   // 生成SVG内容
   const generateSVG = (size: number = 256) => {
@@ -71,21 +112,39 @@ export default function IconDesignerPage() {
     const scaleFactor = size / 256
     const currentFontSize = Math.round(fontSize[0] * scaleFactor)
     
-    let shapeElement = ""
+    let backgroundElements = ""
+    let defsElement = ""
     
+    if (bgMode === 'multicolor') {
+      // 多色模式：绘制多个几何区域，并应用形状裁剪
+      const template = MULTICOLOR_TEMPLATES.find(t => t.id === selectedTemplate)
+      if (template) {
+        // 添加形状裁剪路径定义
+        const clipPath = getShapeClipPath(size, size.toString())
+        if (clipPath) {
+          defsElement = `<defs>${clipPath}</defs>`
+        }
+        
+        backgroundElements = template.regions.map(region => {
+          const color = regionColors[region.id] || region.defaultColor
+          const pathData = region.path(size)
+          const clipAttr = clipPath ? ` clip-path="url(#shape-clip-${size})"` : ''
+          return `<path d="${pathData}" fill="${color}"${clipAttr}/>`
+        }).join('\n  ')
+      }
+    } else {
+      // 纯色模式：根据形状绘制单色背景
     switch (shape) {
       case 'circle':
-        shapeElement = `<circle cx="${centerX}" cy="${centerY}" r="${centerX}" fill="${bgColor}"/>`
+          backgroundElements = `<circle cx="${centerX}" cy="${centerY}" r="${centerX}" fill="${bgColor}"/>`
         break
       case 'rounded':
         const roundedRadius = Math.round(size * 0.15)
-        shapeElement = `<rect width="${size}" height="${size}" rx="${roundedRadius}" ry="${roundedRadius}" fill="${bgColor}"/>`
+          backgroundElements = `<rect width="${size}" height="${size}" rx="${roundedRadius}" ry="${roundedRadius}" fill="${bgColor}"/>`
         break
       case 'squircle':
-        // Squircle path (super ellipse)
         const squircleRadius = size * 0.6
-        shapeElement = `
-          <path d="M ${centerX},0 
+          backgroundElements = `<path d="M ${centerX},0 
                    C ${centerX + squircleRadius * 0.552},0 ${size},${centerY - squircleRadius * 0.552} ${size},${centerY}
                    C ${size},${centerY + squircleRadius * 0.552} ${centerX + squircleRadius * 0.552},${size} ${centerX},${size}
                    C ${centerX - squircleRadius * 0.552},${size} 0,${centerY + squircleRadius * 0.552} 0,${centerY}
@@ -94,25 +153,31 @@ export default function IconDesignerPage() {
         break
       case 'square':
       default:
-        shapeElement = `<rect width="${size}" height="${size}" fill="${bgColor}"/>`
+          backgroundElements = `<rect width="${size}" height="${size}" fill="${bgColor}"/>`
         break
+      }
     }
 
     const fontWeightValue = fontWeight === 'normal' ? '400' : fontWeight === 'medium' ? '500' : '700'
-    const displayText = text.trim().slice(0, 3) || 'A'
-
-    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
-  ${shapeElement}
+    const displayText = text.trim() || 'A'
+    
+    // 文字元素（可选）
+    const textElement = showText ? `
   <text x="${centerX}" y="${centerY}" 
         font-family="Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
         font-size="${currentFontSize}" 
         font-weight="${fontWeightValue}"
         fill="${textColor}" 
         text-anchor="middle" 
-        dominant-baseline="central">${displayText}</text>
+        dominant-baseline="central">${displayText}</text>` : ''
+
+    return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+  ${defsElement}
+  ${backgroundElements}${textElement}
 </svg>`
   }
 
+  // 现在需要从这里开始删除旧代码
   // 下载SVG文件
   const downloadSVG = (size: number) => {
     const svgContent = generateSVG(size)
@@ -127,7 +192,7 @@ export default function IconDesignerPage() {
     URL.revokeObjectURL(url)
   }
 
-  // 下载PNG文件（通过Canvas转换）
+  // 继续保留其他函数...
   const downloadPNG = (size: number) => {
     const svgContent = generateSVG(size)
     const canvas = document.createElement('canvas')
@@ -161,6 +226,8 @@ export default function IconDesignerPage() {
     img.src = url
   }
 
+  // 此处继续其他已有的函数... (downloadICO, createICO, createBitmap, downloadAllSizes, applyPresetColor, randomizeColors)
+  
   // 批量下载ICO文件（每个尺寸单独一个ICO，打包成ZIP）
   const downloadICO = async (useSelectedSizes: boolean = false) => {
     // 确定使用的尺寸
@@ -424,7 +491,7 @@ export default function IconDesignerPage() {
     setBgColor(randomColor())
     setTextColor(randomColor())
   }
-
+  
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div>
@@ -450,13 +517,13 @@ export default function IconDesignerPage() {
               <Input
                 id="text"
                 value={text}
-                onChange={(e) => setText(e.target.value.slice(0, 3))}
+                onChange={(e) => setText(e.target.value)}
                 placeholder="A"
-                maxLength={3}
+                maxLength={20}
                 className="text-2xl text-center font-bold"
               />
               <p className="text-xs text-muted-foreground mt-1">
-                {t("tools.icon-designer.text_hint")}
+                {t("tools.icon-designer.text_hint_new")}
               </p>
             </div>
 
@@ -507,71 +574,193 @@ export default function IconDesignerPage() {
               </Select>
             </div>
 
-            {/* 颜色设置 */}
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <Label htmlFor="bgColor">{t("tools.icon-designer.background_color")}</Label>
-                <div className="flex gap-2 mt-2">
-                  <Input
-                    type="color"
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                    className="w-12 h-10 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                    className="flex-1 uppercase"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
-                <div className="flex gap-2 mt-2">
-                  <Input
-                    type="color"
-                    value={textColor}
-                    onChange={(e) => setTextColor(e.target.value)}
-                    className="w-12 h-10 p-1 cursor-pointer"
-                  />
-                  <Input
-                    type="text"
-                    value={textColor}
-                    onChange={(e) => setTextColor(e.target.value)}
-                    className="flex-1 uppercase"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* 预设颜色 */}
+            {/* 背景模式选择 */}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <Label>{t("tools.icon-designer.preset_colors")}</Label>
-                <Button
-                  onClick={randomizeColors}
-                  variant="ghost"
-                  size="sm"
-                  className="h-8"
-                >
-                  <RefreshCw className="h-4 w-4 mr-1" />
-                  {t("tools.icon-designer.random")}
-                </Button>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {PRESET_COLORS.map((preset) => (
-                  <button
-                    key={preset.name}
-                    onClick={() => applyPresetColor(preset)}
-                    className="w-10 h-10 rounded-md border-2 border-muted hover:border-primary transition-colors"
-                    style={{ backgroundColor: preset.bg }}
-                    title={preset.name}
-                  />
-                ))}
-              </div>
+              <Label htmlFor="bgMode">{t("tools.icon-designer.background_mode")}</Label>
+              <Select value={bgMode} onValueChange={(value) => {
+                setBgMode(value as BackgroundMode)
+                // 切换模式时重置区域颜色
+                if (value === 'multicolor') {
+                  const template = MULTICOLOR_TEMPLATES.find(t => t.id === selectedTemplate)
+                  if (template) {
+                    setRegionColors(Object.fromEntries(
+                      template.regions.map(r => [r.id, r.defaultColor])
+                    ))
+                  }
+                }
+              }}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="solid">{t("tools.icon-designer.mode_solid")}</SelectItem>
+                  <SelectItem value="multicolor">{t("tools.icon-designer.mode_multicolor")}</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
+            
+            {/* 文字显示开关 */}
+            <div className="flex items-center justify-between p-3 border rounded-lg">
+              <Label htmlFor="showText" className="cursor-pointer">
+                {t("tools.icon-designer.show_text")}
+              </Label>
+              <Switch
+                id="showText"
+                checked={showText}
+                onCheckedChange={setShowText}
+              />
+            </div>
+
+            {/* 纯色模式：颜色设置 */}
+            {bgMode === 'solid' && (
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="bgColor">{t("tools.icon-designer.background_color")}</Label>
+                  <div className="flex gap-2 mt-2">
+                    <Input
+                      type="color"
+                      value={bgColor}
+                      onChange={(e) => setBgColor(e.target.value)}
+                      className="w-12 h-10 p-1 cursor-pointer"
+                    />
+                    <Input
+                      type="text"
+                      value={bgColor}
+                      onChange={(e) => setBgColor(e.target.value)}
+                      className="flex-1 uppercase"
+                    />
+                  </div>
+                </div>
+
+                {showText && (
+                  <div>
+                    <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
+                    <div className="flex gap-2 mt-2">
+                      <Input
+                        type="color"
+                        value={textColor}
+                        onChange={(e) => setTextColor(e.target.value)}
+                        className="w-12 h-10 p-1 cursor-pointer"
+                      />
+                      <Input
+                        type="text"
+                        value={textColor}
+                        onChange={(e) => setTextColor(e.target.value)}
+                        className="flex-1 uppercase"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 多色模式：几何模板选择 */}
+            {bgMode === 'multicolor' && (
+              <div className="space-y-4">
+                {/* 选择模板按钮 */}
+                <div>
+                  <Label>{t("tools.icon-designer.multicolor_template")}</Label>
+                  <Button
+                    variant="outline"
+                    className="w-full mt-2 justify-start"
+                    onClick={() => setShowTemplateModal(true)}
+                  >
+                    <Grid3x3 className="h-4 w-4 mr-2" />
+                    {MULTICOLOR_TEMPLATES.find(t => t.id === selectedTemplate)?.name || 'Select Template'}
+                  </Button>
+                </div>
+
+                {/* 当前模板预览 */}
+                <div className="border rounded-lg p-4 bg-muted/20">
+                  <div className="flex items-center justify-center">
+                    <div 
+                      style={{ width: '128px', height: '128px' }}
+                      dangerouslySetInnerHTML={{ __html: generateSVG(128) }}
+                    />
+                  </div>
+                </div>
+
+                {/* 区域颜色自定义 */}
+                <div>
+                  <Label>{t("tools.icon-designer.region_colors")}</Label>
+                  <div className="grid grid-cols-1 gap-2 mt-2">
+                    {MULTICOLOR_TEMPLATES.find(t => t.id === selectedTemplate)?.regions.map((region) => (
+                      <div key={region.id} className="flex items-center gap-2 p-2 border rounded-md">
+                        <Label className="flex-1 text-sm">{region.label}</Label>
+                        <Input
+                          type="color"
+                          value={regionColors[region.id] || region.defaultColor}
+                          onChange={(e) => setRegionColors(prev => ({
+                            ...prev,
+                            [region.id]: e.target.value
+                          }))}
+                          className="w-12 h-8 p-1 cursor-pointer"
+                        />
+                        <Input
+                          type="text"
+                          value={regionColors[region.id] || region.defaultColor}
+                          onChange={(e) => setRegionColors(prev => ({
+                            ...prev,
+                            [region.id]: e.target.value
+                          }))}
+                          className="w-24 h-8 text-xs uppercase"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 文字颜色 */}
+                {showText && (
+                  <div>
+                    <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
+                    <div className="flex gap-2 mt-2">
+                      <Input
+                        type="color"
+                        value={textColor}
+                        onChange={(e) => setTextColor(e.target.value)}
+                        className="w-12 h-10 p-1 cursor-pointer"
+                      />
+                      <Input
+                        type="text"
+                        value={textColor}
+                        onChange={(e) => setTextColor(e.target.value)}
+                        className="flex-1 uppercase"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 预设颜色（仅纯色模式） */}
+            {bgMode === 'solid' && (
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <Label>{t("tools.icon-designer.preset_colors")}</Label>
+                  <Button
+                    onClick={randomizeColors}
+                    variant="ghost"
+                    size="sm"
+                    className="h-8"
+                  >
+                    <RefreshCw className="h-4 w-4 mr-1" />
+                    {t("tools.icon-designer.random")}
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {PRESET_COLORS.map((preset) => (
+                    <button
+                      key={preset.name}
+                      onClick={() => applyPresetColor(preset)}
+                      className="w-10 h-10 rounded-md border-2 border-muted hover:border-primary transition-colors"
+                      style={{ backgroundColor: preset.bg }}
+                      title={preset.name}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -784,7 +973,7 @@ export default function IconDesignerPage() {
                   </Button>
                   {selectedSizes.length > 0 && (
                     <div className="text-xs text-muted-foreground">
-                      {t("tools.icon-designer.ico_includes")} {selectedSizes.length} {t("tools.icon-designer.ico_files")}: {selectedSizes.map(s => `${s}×${s}.ico`).join(', ')}
+                      {t("tools.icon-designer.ico_includes")} {selectedSizes.length} {t("tools.icon-designer.ico_files")}
                     </div>
                   )}
                 </div>
@@ -801,7 +990,7 @@ export default function IconDesignerPage() {
                     {t("tools.icon-designer.download_standard_ico")}
                   </Button>
                   <div className="text-xs text-muted-foreground">
-                    {t("tools.icon-designer.standard_ico_desc")}: 16×16.ico, 32×32.ico, 48×48.ico, 64×64.ico, 128×128.ico, 256×256.ico
+                    {t("tools.icon-designer.standard_ico_desc")}
                   </div>
                 </div>
               </div>
@@ -818,7 +1007,6 @@ export default function IconDesignerPage() {
             </h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-3">
               {ICON_SIZES.map((size) => {
-                // 计算预览尺寸：最大64px，最小16px
                 const previewDisplaySize = Math.min(Math.max(size, 16), 64)
                 const isSelected = selectedSizes.includes(size)
                 
@@ -834,7 +1022,6 @@ export default function IconDesignerPage() {
                     `}
                     onClick={() => toggleSize(size)}
                   >
-                    {/* 选择复选框 */}
                     <div className="absolute top-1.5 right-1.5 z-10">
                       <div 
                         className={`
@@ -849,9 +1036,7 @@ export default function IconDesignerPage() {
                       </div>
                     </div>
 
-                    {/* 预览图标或预览提示 */}
                     {size <= 64 ? (
-                      // 小尺寸：直接预览
                       <div className="flex items-center justify-center p-2 bg-muted/20 rounded min-h-[64px]">
                         <div
                           style={{ 
@@ -862,7 +1047,6 @@ export default function IconDesignerPage() {
                         />
                       </div>
                     ) : (
-                      // 大尺寸：显示预览按钮
                       <div 
                         className="flex flex-col items-center justify-center p-2 bg-gradient-to-br from-muted/30 to-muted/10 rounded min-h-[64px] cursor-pointer hover:from-muted/40 hover:to-muted/20 transition-all border border-dashed border-muted-foreground/20"
                         onClick={(e) => {
@@ -957,6 +1141,114 @@ export default function IconDesignerPage() {
       {/* SEO优化内容 */}
       <ToolSEOSection toolId="icon-designer" />
 
+      {/* 模板选择弹框 */}
+      {showTemplateModal && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm p-4"
+          onClick={() => setShowTemplateModal(false)}
+        >
+          <div 
+            className="relative bg-background border rounded-lg shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 弹框标题栏 */}
+            <div className="flex items-center justify-between p-6 border-b">
+              <div>
+                <h2 className="text-2xl font-bold">{t("tools.icon-designer.select_template")}</h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {t("tools.icon-designer.template_categories")} · {MULTICOLOR_TEMPLATES.length} {t("tools.icon-designer.all_templates")}
+                </p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowTemplateModal(false)}
+                className="h-10 w-10"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* 分类标签 */}
+            <div className="flex items-center gap-2 px-6 py-4 border-b overflow-x-auto">
+              <Button
+                variant={selectedCategory === 'all' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setSelectedCategory('all')}
+              >
+                {t("tools.icon-designer.all_templates")} ({MULTICOLOR_TEMPLATES.length})
+              </Button>
+              {TEMPLATE_CATEGORIES.map((cat) => {
+                const count = MULTICOLOR_TEMPLATES.filter(t => t.category === cat.id).length
+                return (
+                  <Button
+                    key={cat.id}
+                    variant={selectedCategory === cat.id ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedCategory(cat.id)}
+                  >
+                    {cat.nameZh} ({count})
+                  </Button>
+                )
+              })}
+            </div>
+
+            {/* 模板网格 */}
+            <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 180px)' }}>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                {MULTICOLOR_TEMPLATES
+                  .filter(template => selectedCategory === 'all' || template.category === selectedCategory)
+                  .map((template) => {
+                    const previewSize = 80
+                    // 应用当前形状生成预览
+                    let clipPathDef = ''
+                    let clipAttr = ''
+                    if (shape !== 'square') {
+                      const clipPath = getShapeClipPath(previewSize, template.id)
+                      if (clipPath) {
+                        clipPathDef = `<defs>${clipPath}</defs>`
+                        clipAttr = ` clip-path="url(#shape-clip-${template.id})"`
+                      }
+                    }
+                    
+                    const previewSVG = `<svg width="${previewSize}" height="${previewSize}" viewBox="0 0 ${previewSize} ${previewSize}" xmlns="http://www.w3.org/2000/svg">
+                      ${clipPathDef}
+                      ${template.regions.map(region => {
+                        const color = selectedTemplate === template.id ? (regionColors[region.id] || region.defaultColor) : region.defaultColor
+                        return `<path d="${region.path(previewSize)}" fill="${color}"${clipAttr}/>`
+                      }).join('')}
+                    </svg>`
+                    
+                    return (
+                      <button
+                        key={template.id}
+                        onClick={() => {
+                          setSelectedTemplate(template.id)
+                          setRegionColors(Object.fromEntries(
+                            template.regions.map(r => [r.id, r.defaultColor])
+                          ))
+                          setShowTemplateModal(false)
+                        }}
+                        className={`flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all hover:shadow-lg ${
+                          selectedTemplate === template.id 
+                            ? 'border-primary bg-primary/10 ring-2 ring-primary/20' 
+                            : 'border-muted hover:border-primary/50'
+                        }`}
+                      >
+                        <div 
+                          className="w-full aspect-square flex items-center justify-center bg-muted/20 rounded"
+                          dangerouslySetInnerHTML={{ __html: previewSVG }} 
+                        />
+                        <span className="text-xs font-medium text-center leading-tight">{template.name}</span>
+                      </button>
+                    )
+                  })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 全屏预览弹窗 */}
       {modalPreviewSize && (
         <div 
@@ -964,7 +1256,6 @@ export default function IconDesignerPage() {
           onClick={() => setModalPreviewSize(null)}
         >
           <div className="relative max-w-[90vw] max-h-[90vh] overflow-auto">
-            {/* 关闭按钮 */}
             <button
               className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 hover:bg-background border border-muted-foreground/30 flex items-center justify-center transition-colors shadow-lg"
               onClick={() => setModalPreviewSize(null)}
@@ -973,7 +1264,6 @@ export default function IconDesignerPage() {
               <X className="h-5 w-5" />
             </button>
 
-            {/* 预览内容 */}
             <div className="p-12 flex flex-col items-center justify-center gap-6">
               <div
                 className="drop-shadow-2xl"
@@ -1017,4 +1307,3 @@ export default function IconDesignerPage() {
     </div>
   )
 }
-

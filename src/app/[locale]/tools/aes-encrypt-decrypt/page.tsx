@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { getTextareaClasses } from "@/lib/utils"
 import { useTranslations } from 'next-intl';
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
+import CryptoJS from 'crypto-js'
 
 export default function AesEncryptDecryptPage() {
   const t = useTranslations();
@@ -19,12 +20,33 @@ export default function AesEncryptDecryptPage() {
   const [key, setKey] = useState("")
   const [iv, setIv] = useState("")
   const [mode, setMode] = useState("CBC")
+  const [padding, setPadding] = useState("PKCS7")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)
 
-  // 简化的AES加密实现（实际生产环境建议使用专业加密库）
-  const encryptText = async () => {
+  // 获取填充模式
+  const getPaddingMode = () => {
+    switch (padding) {
+      case "PKCS7":
+        return CryptoJS.pad.Pkcs7
+      case "ISO10126":
+        return CryptoJS.pad.Iso10126
+      case "ISO97971":
+        return CryptoJS.pad.Iso97971
+      case "ZeroPadding":
+        return CryptoJS.pad.ZeroPadding
+      case "NoPadding":
+        return CryptoJS.pad.NoPadding
+      case "AnsiX923":
+        return CryptoJS.pad.AnsiX923
+      default:
+        return CryptoJS.pad.Pkcs7
+    }
+  }
+
+  // AES加密实现（支持多种填充模式）
+  const encryptText = () => {
     if (!input.trim() || !key.trim()) {
       setError(t("tools.aes-encrypt-decrypt.missing_input_key"))
       setOutput("")
@@ -33,50 +55,34 @@ export default function AesEncryptDecryptPage() {
     }
 
     try {
-      // 这里使用Web Crypto API进行AES加密
-      const encoder = new TextEncoder()
-      const decoder = new TextDecoder()
-      
-      // 生成密钥
-      const keyMaterial = await window.crypto.subtle.importKey(
-        'raw',
-        encoder.encode(key.padEnd(32, '0').slice(0, 32)),
-        { name: 'AES-CBC' },
-        false,
-        ['encrypt']
-      )
-
       // 生成或使用提供的IV
-      let ivBytes
-      if (iv.trim()) {
-        ivBytes = encoder.encode(iv.padEnd(16, '0').slice(0, 16))
-      } else {
-        ivBytes = window.crypto.getRandomValues(new Uint8Array(16))
-        setIv(decoder.decode(ivBytes))
+      let ivValue = iv.trim()
+      if (!ivValue) {
+        // 生成随机 IV
+        const randomIv = CryptoJS.lib.WordArray.random(16)
+        ivValue = randomIv.toString(CryptoJS.enc.Utf8)
+        setIv(ivValue)
       }
 
-      // 加密
-      const encrypted = await window.crypto.subtle.encrypt(
-        { name: 'AES-CBC', iv: ivBytes },
-        keyMaterial,
-        encoder.encode(input)
-      )
+      // 使用 crypto-js 进行加密
+      const encrypted = CryptoJS.AES.encrypt(input, CryptoJS.enc.Utf8.parse(key), {
+        iv: CryptoJS.enc.Utf8.parse(ivValue),
+        mode: CryptoJS.mode.CBC,
+        padding: getPaddingMode()
+      })
 
-      // 转换为Base64
-      const encryptedArray = new Uint8Array(encrypted)
-      const encryptedBase64 = btoa(String.fromCharCode(...encryptedArray))
-      
-      setOutput(encryptedBase64)
+      setOutput(encrypted.toString())
       setError("")
       setIsValid(true)
-    } catch {
+    } catch (err) {
+      console.error(err)
       setError(t("common.error"))
       setOutput("")
       setIsValid(false)
     }
   }
 
-  const decryptText = async () => {
+  const decryptText = () => {
     if (!input.trim() || !key.trim() || !iv.trim()) {
       setError(t("tools.aes-encrypt-decrypt.missing_input_key_iv"))
       setOutput("")
@@ -85,36 +91,24 @@ export default function AesEncryptDecryptPage() {
     }
 
     try {
-      const encoder = new TextEncoder()
-      const decoder = new TextDecoder()
+      // 使用 crypto-js 进行解密
+      const decrypted = CryptoJS.AES.decrypt(input, CryptoJS.enc.Utf8.parse(key), {
+        iv: CryptoJS.enc.Utf8.parse(iv),
+        mode: CryptoJS.mode.CBC,
+        padding: getPaddingMode()
+      })
+
+      const decryptedText = decrypted.toString(CryptoJS.enc.Utf8)
       
-      // 生成密钥
-      const keyMaterial = await window.crypto.subtle.importKey(
-        'raw',
-        encoder.encode(key.padEnd(32, '0').slice(0, 32)),
-        { name: 'AES-CBC' },
-        false,
-        ['decrypt']
-      )
-
-      // 获取IV
-      const ivBytes = encoder.encode(iv.padEnd(16, '0').slice(0, 16))
-
-      // 将Base64转换为ArrayBuffer
-      const encryptedBytes = Uint8Array.from(atob(input), c => c.charCodeAt(0))
-
-      // 解密
-      const decrypted = await window.crypto.subtle.decrypt(
-        { name: 'AES-CBC', iv: ivBytes },
-        keyMaterial,
-        encryptedBytes
-      )
-
-      const decryptedText = decoder.decode(decrypted)
+      if (!decryptedText) {
+        throw new Error("Decryption failed")
+      }
+      
       setOutput(decryptedText)
       setError("")
       setIsValid(true)
-    } catch {
+    } catch (err) {
+      console.error(err)
       setError(t("tools.aes-encrypt-decrypt.decrypt_failed"))
       setOutput("")
       setIsValid(false)
@@ -247,6 +241,23 @@ export default function AesEncryptDecryptPage() {
                   <SelectItem value="CBC">AES-CBC</SelectItem>
                   <SelectItem value="GCM">AES-GCM</SelectItem>
                   <SelectItem value="ECB">AES-ECB</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="padding">{t("tools.aes-encrypt-decrypt.padding_label")}</Label>
+              <Select value={padding} onValueChange={setPadding}>
+                <SelectTrigger>
+                  <SelectValue placeholder={t("tools.aes-encrypt-decrypt.select_padding")} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="PKCS7">PKCS#7</SelectItem>
+                  <SelectItem value="ISO10126">ISO 10126</SelectItem>
+                  <SelectItem value="AnsiX923">ANSI X.923</SelectItem>
+                  <SelectItem value="ISO97971">ISO/IEC 9797-1</SelectItem>
+                  <SelectItem value="ZeroPadding">Zero Padding</SelectItem>
+                  <SelectItem value="NoPadding">No Padding</SelectItem>
                 </SelectContent>
               </Select>
             </div>
