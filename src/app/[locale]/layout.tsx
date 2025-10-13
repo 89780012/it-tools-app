@@ -11,11 +11,14 @@ export async function generateMetadata(): Promise<Metadata> {
       template: '%s - IT Tools Collection',
       default: 'IT Tools Collection - Developer Toolbox'
     },
-    description: "Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.",
+    description: "All-in-one online developer tools collection with 30+ utilities: JSON formatter/converter/visualizer, Base64/URL encoder-decoder, MD5/SHA256/AES/RSA encryption, QR code generator, UUID generator, Cron parser, Docker run to compose converter, IP lookup, timestamp converter. Completely free, no installation required, multi-language support.",
     keywords: [
-      "developer tools", "JSON formatter", "online tools", "text processing", "frontend tools",
-      "JSON validator", "JSON to CSV converter", "JSON to YAML", "free developer utilities",
-      "web development tools", "API testing tools", "code formatting tools", "developer productivity"
+      "online developer tools", "JSON formatter", "JSON to CSV", "JSON to YAML", "JSON to XML", "JSON visualizer",
+      "Base64 encoder decoder", "URL encoder decoder", "encryption tools", "MD5 hash generator", "SHA256 hash", "AES encryption", "RSA encryption", "HMAC generator",
+      "QR code generator", "UUID generator", "password generator", "Cron expression parser", "Docker tools", "Docker run to compose",
+      "IP address lookup", "timestamp converter", "color converter", "icon designer", "SVG placeholder generator", "Curl converter",
+      "developer toolbox", "programmer tools", "frontend tools", "free online tools", "web development tools", "API testing tools",
+      "hex encoder decoder", "binary encoder decoder", "time converter", "image tools", "crypto tools"
     ],
     authors: [{ name: "ToolkitPub" }],
     creator: "ToolkitPub",
@@ -35,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: locale === 'en' ? 'https://www.toolkitpub.com' : `https://www.toolkitpub.com/${locale}`,
       siteName: 'IT Tools Collection',
       title: 'IT Tools Collection - Developer Toolbox',
-      description: 'Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
+      description: 'All-in-one online developer tools collection with 30+ utilities: JSON formatter/converter/visualizer, Base64/URL encoder-decoder, MD5/SHA256/AES/RSA encryption, QR code generator, UUID generator, Cron parser, Docker run to compose converter, IP lookup, timestamp converter. Completely free, no installation required, multi-language support.',
       images: [
         {
           url: '/og-image.png',
@@ -54,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: 'IT Tools Collection - Developer Toolbox',
-      description: 'Online tools designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.',
+      description: 'All-in-one online developer tools collection with 30+ utilities: JSON formatter/converter/visualizer, Base64/URL encoder-decoder, MD5/SHA256/AES/RSA encryption, QR code generator, UUID generator, Cron parser, Docker run to compose converter, IP lookup, timestamp converter. Completely free, no installation required.',
       images: ['/og-image.png'],
       creator: '@ToolkitPub',
       site: '@ToolkitPub'
@@ -78,7 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "IT Tools Collection",
-        "description": "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools.",
+        "description": "All-in-one online developer tools collection with 30+ utilities including JSON formatter/converter/visualizer, Base64/URL encoder-decoder, MD5/SHA256/AES/RSA encryption, QR code generator, UUID generator, Cron parser, Docker run to compose converter, IP lookup, and timestamp converter. Completely free with multi-language support.",
         "url": locale === 'en' ? 'https://www.toolkitpub.com' : `https://www.toolkitpub.com/${locale}`,
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "All",
