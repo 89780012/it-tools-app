@@ -506,43 +506,7 @@ export const MULTICOLOR_TEMPLATES: MultiColorTemplate[] = [
       }
     ]
   },
-  {
-    id: 'quarter-circles',
-    name: 'Quarter Circles',
-    category: 'modern',
-    regions: [
-      {
-        id: 'background',
-        label: 'Background',
-        path: (size) => `M 0,0 L ${size},0 L ${size},${size} L 0,${size} Z`,
-        defaultColor: '#FFFFFF'
-      },
-      {
-        id: 'top-left',
-        label: 'Top Left',
-        path: (size) => `M 0,0 L ${size*0.5},0 Q 0,0 0,${size*0.5} Z`,
-        defaultColor: '#EF4444'
-      },
-      {
-        id: 'top-right',
-        label: 'Top Right',
-        path: (size) => `M ${size*0.5},0 L ${size},0 L ${size},${size*0.5} Q ${size},0 ${size*0.5},0 Z`,
-        defaultColor: '#F59E0B'
-      },
-      {
-        id: 'bottom-left',
-        label: 'Bottom Left',
-        path: (size) => `M 0,${size*0.5} Q 0,${size} ${size*0.5},${size} L 0,${size} Z`,
-        defaultColor: '#3B82F6'
-      },
-      {
-        id: 'bottom-right',
-        label: 'Bottom Right',
-        path: (size) => `M ${size},${size*0.5} L ${size},${size} L ${size*0.5},${size} Q ${size},${size} ${size},${size*0.5} Z`,
-        defaultColor: '#10B981'
-      }
-    ]
-  },
+
 
   // ===抽象===
   {
@@ -1057,43 +1021,6 @@ export const MULTICOLOR_TEMPLATES: MultiColorTemplate[] = [
         label: 'Right',
         path: (size) => `M ${size/2},${size*0.2} L ${size/2},${size*0.8} L ${size*0.7},${size*0.8} A ${size*0.3},${size*0.3} 0 0,0 ${size*0.7},${size*0.2} Z`,
         defaultColor: '#FBBF24'
-      }
-    ]
-  },
-  {
-    id: 'rounded-corners',
-    name: 'Rounded Corners',
-    category: 'modern',
-    regions: [
-      {
-        id: 'center',
-        label: 'Center',
-        path: (size) => `M ${size*0.3},${size*0.3} L ${size*0.7},${size*0.3} L ${size*0.7},${size*0.7} L ${size*0.3},${size*0.7} Z`,
-        defaultColor: '#FFFFFF'
-      },
-      {
-        id: 'corner-tl',
-        label: 'Corner TL',
-        path: (size) => `M 0,0 L ${size*0.3},0 Q 0,0 0,${size*0.3} Z`,
-        defaultColor: '#EF4444'
-      },
-      {
-        id: 'corner-tr',
-        label: 'Corner TR',
-        path: (size) => `M ${size*0.7},0 L ${size},0 L ${size},${size*0.3} Q ${size},0 ${size*0.7},0 Z`,
-        defaultColor: '#F59E0B'
-      },
-      {
-        id: 'corner-bl',
-        label: 'Corner BL',
-        path: (size) => `M 0,${size*0.7} Q 0,${size} ${size*0.3},${size} L 0,${size} Z`,
-        defaultColor: '#3B82F6'
-      },
-      {
-        id: 'corner-br',
-        label: 'Corner BR',
-        path: (size) => `M ${size},${size*0.7} L ${size},${size} L ${size*0.7},${size} Q ${size},${size} ${size},${size*0.7} Z`,
-        defaultColor: '#10B981'
       }
     ]
   },

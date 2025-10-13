@@ -12,11 +12,13 @@ import { Switch } from "@/components/ui/switch"
 import { useTranslations } from 'next-intl'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { MULTICOLOR_TEMPLATES, TEMPLATE_CATEGORIES } from "@/lib/icon-templates"
+import { ICON_LIBRARY, ICON_CATEGORIES, type IconItem } from "@/lib/icon-library"
 import JSZip from 'jszip'
 
 type IconShape = 'square' | 'circle' | 'rounded' | 'squircle'
 type FontWeight = 'normal' | 'medium' | 'bold'
 type BackgroundMode = 'solid' | 'multicolor'
+type ContentMode = 'text' | 'icon' | 'custom-svg'
 
 const PRESET_COLORS = [
   { name: 'Blue', bg: '#3B82F6', text: '#FFFFFF' },
@@ -40,8 +42,19 @@ export default function IconDesignerPage() {
   const [bgColor, setBgColor] = useState("#3B82F6")
   const [textColor, setTextColor] = useState("#FFFFFF")
   const [shape, setShape] = useState<IconShape>('rounded')
-  const [fontSize, setFontSize] = useState([60])
+  const [fontSize, setFontSize] = useState([90])
   const [fontWeight, setFontWeight] = useState<FontWeight>('bold')
+  
+  // 内容模式
+  const [contentMode, setContentMode] = useState<ContentMode>('text')
+  const [selectedIcon, setSelectedIcon] = useState<IconItem | null>(null)
+  const [customSvg, setCustomSvg] = useState("")
+  const [iconColor, setIconColor] = useState("#FFFFFF")
+  const [iconSize, setIconSize] = useState([60]) // 图标大小百分比
+  
+  // 图标库选择弹窗
+  const [showIconLibrary, setShowIconLibrary] = useState(false)
+  const [selectedIconCategory, setSelectedIconCategory] = useState('all')
   
   // 背景模式
   const [bgMode, setBgMode] = useState<BackgroundMode>('solid')
@@ -109,7 +122,8 @@ export default function IconDesignerPage() {
   const generateSVG = (size: number = 256) => {
     const centerX = size / 2
     const centerY = size / 2
-    const scaleFactor = size / 256
+    const scaleFactor = size / 128 // 文字模式的缩放因子，以256为基础
+    const iconScaleFactor = size / 32 // 图标模式的缩放因子，以32为基础
     const currentFontSize = Math.round(fontSize[0] * scaleFactor)
     
     let backgroundElements = ""
@@ -158,22 +172,96 @@ export default function IconDesignerPage() {
       }
     }
 
-    const fontWeightValue = fontWeight === 'normal' ? '400' : fontWeight === 'medium' ? '500' : '700'
-    const displayText = text.trim() || 'A'
+    // 内容元素（文字、图标或自定义SVG）
+    let contentElement = ''
     
-    // 文字元素（可选）
-    const textElement = showText ? `
+    if (contentMode === 'text' && showText) {
+      // 文字模式
+      const fontWeightValue = fontWeight === 'normal' ? '400' : fontWeight === 'medium' ? '500' : '700'
+      const displayText = text.trim() || 'A'
+      contentElement = `
   <text x="${centerX}" y="${centerY}" 
         font-family="Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
         font-size="${currentFontSize}" 
         font-weight="${fontWeightValue}"
         fill="${textColor}" 
         text-anchor="middle" 
-        dominant-baseline="central">${displayText}</text>` : ''
+        dominant-baseline="central">${displayText}</text>`
+    } else if (contentMode === 'icon' && selectedIcon) {
+      // 图标库模式 - 居中显示，等比例缩放（以32px为基础）
+      const iconScale = (iconSize[0] / 100) * iconScaleFactor
+      
+      contentElement = `
+  <g transform="translate(${centerX}, ${centerY})">
+    <g transform="scale(${iconScale})">
+      <g transform="translate(-12, -12)" style="color: ${iconColor}">
+        ${selectedIcon.svg}
+      </g>
+    </g>
+  </g>`
+    } else if (contentMode === 'custom-svg' && customSvg.trim()) {
+      // 自定义SVG模式 - 智能检测viewBox并自动缩放居中
+      try {
+        // 提取SVG内容和viewBox信息
+        let svgContent = customSvg.trim()
+        let viewBoxWidth = 24
+        let viewBoxHeight = 24
+        let viewBoxX = 0
+        let viewBoxY = 0
+        
+        // 如果是完整的SVG标签，提取viewBox和内容
+        if (svgContent.toLowerCase().startsWith('<svg')) {
+          // 提取viewBox
+          const viewBoxMatch = svgContent.match(/viewBox=["']([^"']*)["']/i)
+          if (viewBoxMatch) {
+            const viewBoxValues = viewBoxMatch[1].split(/[\s,]+/).filter(v => v)
+            if (viewBoxValues.length === 4) {
+              viewBoxX = parseFloat(viewBoxValues[0]) || 0
+              viewBoxY = parseFloat(viewBoxValues[1]) || 0
+              viewBoxWidth = parseFloat(viewBoxValues[2]) || 24
+              viewBoxHeight = parseFloat(viewBoxValues[3]) || 24
+            }
+          }
+          
+          // 提取SVG内容（去除svg标签）
+          const match = svgContent.match(/<svg[^>]*>([\s\S]*)<\/svg>/i)
+          if (match) {
+            svgContent = match[1]
+          }
+        }
+        
+        // 计算居中偏移
+        const centerOffsetX = viewBoxX + viewBoxWidth / 2
+        const centerOffsetY = viewBoxY + viewBoxHeight / 2
+        
+        // 自动调整缩放：根据viewBox的最大边来归一化到24x24的基准
+        const maxViewBoxSize = Math.max(viewBoxWidth, viewBoxHeight)
+        const normalizedScale = 24 / maxViewBoxSize // 将任意大小的viewBox归一化到24的基准
+        const iconScale = (iconSize[0] / 100) * iconScaleFactor * normalizedScale
+        
+        contentElement = `
+  <g transform="translate(${centerX}, ${centerY})">
+    <g transform="scale(${iconScale})">
+      <g transform="translate(-${centerOffsetX}, -${centerOffsetY})">
+        ${svgContent}
+      </g>
+    </g>
+  </g>`
+      } catch {
+        // 如果自定义SVG解析失败，显示错误提示
+        contentElement = `
+  <text x="${centerX}" y="${centerY}" 
+        font-family="Arial" 
+        font-size="12" 
+        fill="currentColor" 
+        text-anchor="middle" 
+        dominant-baseline="central">Invalid SVG</text>`
+      }
+    }
 
     return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
   ${defsElement}
-  ${backgroundElements}${textElement}
+  ${backgroundElements}${contentElement}
 </svg>`
   }
 
@@ -511,21 +599,86 @@ export default function IconDesignerPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* 文字设置 */}
+            {/* 内容模式选择 */}
             <div>
-              <Label htmlFor="text">{t("tools.icon-designer.text_label")}</Label>
-              <Input
-                id="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="A"
-                maxLength={20}
-                className="text-2xl text-center font-bold"
-              />
-              <p className="text-xs text-muted-foreground mt-1">
-                {t("tools.icon-designer.text_hint_new")}
-              </p>
+              <Label htmlFor="contentMode">{t("tools.icon-designer.content_mode")}</Label>
+              <Select value={contentMode} onValueChange={(value) => setContentMode(value as ContentMode)}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="text">{t("tools.icon-designer.mode_text")}</SelectItem>
+                  <SelectItem value="icon">{t("tools.icon-designer.mode_icon_library")}</SelectItem>
+                  <SelectItem value="custom-svg">{t("tools.icon-designer.mode_custom_svg")}</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
+
+            {/* 文字模式：文字设置 */}
+            {contentMode === 'text' && (
+              <div>
+                <Label htmlFor="text">{t("tools.icon-designer.text_label")}</Label>
+                <Input
+                  id="text"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  placeholder="A"
+                  maxLength={20}
+                  className="text-2xl text-center font-bold"
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  {t("tools.icon-designer.text_hint_new")}
+                </p>
+              </div>
+            )}
+
+            {/* 图标库模式：选择图标 */}
+            {contentMode === 'icon' && (
+              <div>
+                <Label>{t("tools.icon-designer.select_icon")}</Label>
+                <Button
+                  variant="outline"
+                  className="w-full mt-2 justify-start"
+                  onClick={() => setShowIconLibrary(true)}
+                >
+                  <PackageIcon className="h-4 w-4 mr-2" />
+                  {selectedIcon ? selectedIcon.nameZh : t("tools.icon-designer.browse_icons")}
+                </Button>
+                {selectedIcon && (
+                  <div className="mt-2 p-3 border rounded-lg bg-muted/20 flex items-center gap-3">
+                    <div 
+                      className="w-12 h-12 flex items-center justify-center border rounded bg-muted/50"
+                      style={{ color: 'currentColor' }}
+                      dangerouslySetInnerHTML={{ 
+                        __html: `<svg viewBox="0 0 24 24" width="32" height="32">${selectedIcon.svg}</svg>` 
+                      }}
+                    />
+                    <div className="flex-1">
+                      <div className="font-medium">{selectedIcon.nameZh}</div>
+                      <div className="text-xs text-muted-foreground">{selectedIcon.name}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* 自定义SVG模式：输入SVG代码 */}
+            {contentMode === 'custom-svg' && (
+              <div>
+                <Label htmlFor="customSvg">{t("tools.icon-designer.custom_svg_label")}</Label>
+                <textarea
+                  id="customSvg"
+                  value={customSvg}
+                  onChange={(e) => setCustomSvg(e.target.value)}
+                  placeholder={t("tools.icon-designer.custom_svg_placeholder")}
+                  className="w-full mt-2 p-3 border rounded-lg font-mono text-sm min-h-[120px] bg-background"
+                  style={{ resize: 'vertical' }}
+                />
+                <p className="text-xs text-muted-foreground mt-1">
+                  {t("tools.icon-designer.custom_svg_hint")}
+                </p>
+              </div>
+            )}
 
             {/* 形状选择 */}
             <div>
@@ -543,36 +696,78 @@ export default function IconDesignerPage() {
               </Select>
             </div>
 
-            {/* 字体大小 */}
-            <div>
-              <Label htmlFor="fontSize">
-                {t("tools.icon-designer.font_size_label")}: {fontSize[0]}px
-              </Label>
-              <Slider
-                id="fontSize"
-                min={20}
-                max={180}
-                step={5}
-                value={fontSize}
-                onValueChange={setFontSize}
-                className="mt-2"
-              />
-            </div>
+            {/* 文字模式：字体大小和粗细 */}
+            {contentMode === 'text' && (
+              <>
+                <div>
+                  <Label htmlFor="fontSize">
+                    {t("tools.icon-designer.font_size_label")}: {fontSize[0]}px
+                  </Label>
+                  <Slider
+                    id="fontSize"
+                    min={20}
+                    max={180}
+                    step={5}
+                    value={fontSize}
+                    onValueChange={setFontSize}
+                    className="mt-2"
+                  />
+                </div>
 
-            {/* 字体粗细 */}
-            <div>
-              <Label htmlFor="fontWeight">{t("tools.icon-designer.font_weight_label")}</Label>
-              <Select value={fontWeight} onValueChange={(value) => setFontWeight(value as FontWeight)}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="normal">{t("tools.icon-designer.font_weights.normal")}</SelectItem>
-                  <SelectItem value="medium">{t("tools.icon-designer.font_weights.medium")}</SelectItem>
-                  <SelectItem value="bold">{t("tools.icon-designer.font_weights.bold")}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+                <div>
+                  <Label htmlFor="fontWeight">{t("tools.icon-designer.font_weight_label")}</Label>
+                  <Select value={fontWeight} onValueChange={(value) => setFontWeight(value as FontWeight)}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="normal">{t("tools.icon-designer.font_weights.normal")}</SelectItem>
+                      <SelectItem value="medium">{t("tools.icon-designer.font_weights.medium")}</SelectItem>
+                      <SelectItem value="bold">{t("tools.icon-designer.font_weights.bold")}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </>
+            )}
+
+            {/* 图标/自定义SVG模式：图标大小 */}
+            {(contentMode === 'icon' || contentMode === 'custom-svg') && (
+              <div>
+                <Label htmlFor="iconSize">
+                  {t("tools.icon-designer.icon_size_label")}: {iconSize[0]}%
+                </Label>
+                <Slider
+                  id="iconSize"
+                  min={20}
+                  max={200}
+                  step={5}
+                  value={iconSize}
+                  onValueChange={setIconSize}
+                  className="mt-2"
+                />
+              </div>
+            )}
+
+            {/* 图标库模式：图标颜色 */}
+            {contentMode === 'icon' && (
+              <div>
+                <Label htmlFor="iconColor">{t("tools.icon-designer.icon_color")}</Label>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    type="color"
+                    value={iconColor}
+                    onChange={(e) => setIconColor(e.target.value)}
+                    className="w-12 h-10 p-1 cursor-pointer"
+                  />
+                  <Input
+                    type="text"
+                    value={iconColor}
+                    onChange={(e) => setIconColor(e.target.value)}
+                    className="flex-1 uppercase"
+                  />
+                </div>
+              </div>
+            )}
 
             {/* 背景模式选择 */}
             <div>
@@ -599,17 +794,19 @@ export default function IconDesignerPage() {
               </Select>
             </div>
             
-            {/* 文字显示开关 */}
-            <div className="flex items-center justify-between p-3 border rounded-lg">
-              <Label htmlFor="showText" className="cursor-pointer">
-                {t("tools.icon-designer.show_text")}
-              </Label>
-              <Switch
-                id="showText"
-                checked={showText}
-                onCheckedChange={setShowText}
-              />
-            </div>
+            {/* 文字显示开关（仅文字模式） */}
+            {contentMode === 'text' && (
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <Label htmlFor="showText" className="cursor-pointer">
+                  {t("tools.icon-designer.show_text")}
+                </Label>
+                <Switch
+                  id="showText"
+                  checked={showText}
+                  onCheckedChange={setShowText}
+                />
+              </div>
+            )}
 
             {/* 纯色模式：颜色设置 */}
             {bgMode === 'solid' && (
@@ -632,7 +829,8 @@ export default function IconDesignerPage() {
                   </div>
                 </div>
 
-                {showText && (
+                {/* 文字颜色（仅文字模式） */}
+                {contentMode === 'text' && showText && (
                   <div>
                     <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
                     <div className="flex gap-2 mt-2">
@@ -710,8 +908,8 @@ export default function IconDesignerPage() {
                   </div>
                 </div>
 
-                {/* 文字颜色 */}
-                {showText && (
+                {/* 文字颜色（仅文字模式） */}
+                {contentMode === 'text' && showText && (
                   <div>
                     <Label htmlFor="textColor">{t("tools.icon-designer.text_color")}</Label>
                     <div className="flex gap-2 mt-2">
@@ -1240,6 +1438,97 @@ export default function IconDesignerPage() {
                           dangerouslySetInnerHTML={{ __html: previewSVG }} 
                         />
                         <span className="text-xs font-medium text-center leading-tight">{template.name}</span>
+                      </button>
+                    )
+                  })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 图标库选择弹窗 */}
+      {showIconLibrary && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-sm p-4"
+          onClick={() => setShowIconLibrary(false)}
+        >
+          <div 
+            className="relative bg-background border rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 弹框标题栏 */}
+            <div className="flex items-center justify-between p-6 border-b">
+              <div>
+                <h2 className="text-2xl font-bold">{t("tools.icon-designer.icon_library_title")}</h2>
+                <p className="text-sm text-muted-foreground mt-1">
+                  {ICON_LIBRARY.length} {t("tools.icon-designer.icons_available")}
+                </p>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setShowIconLibrary(false)}
+                className="h-10 w-10"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+
+            {/* 分类标签 */}
+            <div className="flex items-center gap-2 px-6 py-4 border-b overflow-x-auto">
+              <Button
+                variant={selectedIconCategory === 'all' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setSelectedIconCategory('all')}
+              >
+                {t("tools.icon-designer.all_icons")} ({ICON_LIBRARY.length})
+              </Button>
+              {ICON_CATEGORIES.map((cat) => {
+                const count = ICON_LIBRARY.filter(i => i.category === cat.id).length
+                return (
+                  <Button
+                    key={cat.id}
+                    variant={selectedIconCategory === cat.id ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedIconCategory(cat.id)}
+                  >
+                    {cat.nameZh} ({count})
+                  </Button>
+                )
+              })}
+            </div>
+
+            {/* 图标网格 */}
+            <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 180px)' }}>
+              <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3">
+                {ICON_LIBRARY
+                  .filter(icon => selectedIconCategory === 'all' || icon.category === selectedIconCategory)
+                  .map((icon) => {
+                    const isSelected = selectedIcon?.id === icon.id
+                    
+                    return (
+                      <button
+                        key={icon.id}
+                        onClick={() => {
+                          setSelectedIcon(icon)
+                          setShowIconLibrary(false)
+                        }}
+                        className={`flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all hover:shadow-lg ${
+                          isSelected 
+                            ? 'border-primary bg-primary/10 ring-2 ring-primary/20' 
+                            : 'border-muted hover:border-primary/50'
+                        }`}
+                        title={`${icon.nameZh} (${icon.name})`}
+                      >
+                        <div 
+                          className="w-full aspect-square flex items-center justify-center bg-muted/30 rounded p-1"
+                          style={{ color: 'currentColor' }}
+                          dangerouslySetInnerHTML={{ 
+                            __html: `<svg viewBox="0 0 24 24" width="32" height="32">${icon.svg}</svg>` 
+                          }}
+                        />
+                        <span className="text-xs text-center leading-tight line-clamp-2">{icon.nameZh}</span>
                       </button>
                     )
                   })}
