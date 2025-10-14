@@ -31,6 +31,22 @@ const PRESET_COLORS = [
   { name: 'Teal', bg: '#14B8A6', text: '#FFFFFF' },
 ]
 
+// SVG内容颜色预设（用于图标和自定义SVG）
+const SVG_PRESET_COLORS = [
+  { name: 'White', color: '#FFFFFF' },
+  { name: 'Black', color: '#000000' },
+  { name: 'Gray', color: '#6B7280' },
+  { name: 'Blue', color: '#3B82F6' },
+  { name: 'Green', color: '#10B981' },
+  { name: 'Purple', color: '#8B5CF6' },
+  { name: 'Red', color: '#EF4444' },
+  { name: 'Yellow', color: '#F59E0B' },
+  { name: 'Pink', color: '#EC4899' },
+  { name: 'Indigo', color: '#6366F1' },
+  { name: 'Teal', color: '#14B8A6' },
+  { name: 'Orange', color: '#F97316' },
+]
+
 const ICON_SIZES = [16, 32, 64, 128, 256, 512, 1024]
 
 export default function IconDesignerPage() {
@@ -50,6 +66,7 @@ export default function IconDesignerPage() {
   const [selectedIcon, setSelectedIcon] = useState<IconItem | null>(null)
   const [customSvg, setCustomSvg] = useState("")
   const [iconColor, setIconColor] = useState("#FFFFFF")
+  const [customSvgColor, setCustomSvgColor] = useState("#FFFFFF") // 自定义SVG颜色
   const [iconSize, setIconSize] = useState([60]) // 图标大小百分比
   
   // 图标库选择弹窗
@@ -208,6 +225,7 @@ export default function IconDesignerPage() {
         let viewBoxHeight = 24
         let viewBoxX = 0
         let viewBoxY = 0
+        let globalAttrs = '' // 存储SVG标签上的全局属性
         
         // 如果是完整的SVG标签，提取viewBox和内容
         if (svgContent.toLowerCase().startsWith('<svg')) {
@@ -223,12 +241,92 @@ export default function IconDesignerPage() {
             }
           }
           
+          // 提取SVG标签上的stroke相关属性
+          const svgTagMatch = svgContent.match(/<svg[^>]*>/i)
+          if (svgTagMatch) {
+            const svgTag = svgTagMatch[0]
+            // 提取stroke-width, stroke-linecap, stroke-linejoin等属性
+            const strokeWidth = svgTag.match(/stroke-width=["']([^"']*)["']/i)
+            const strokeLinecap = svgTag.match(/stroke-linecap=["']([^"']*)["']/i)
+            const strokeLinejoin = svgTag.match(/stroke-linejoin=["']([^"']*)["']/i)
+            
+            if (strokeWidth) globalAttrs += ` stroke-width="${strokeWidth[1]}"`
+            if (strokeLinecap) globalAttrs += ` stroke-linecap="${strokeLinecap[1]}"`
+            if (strokeLinejoin) globalAttrs += ` stroke-linejoin="${strokeLinejoin[1]}"`
+          }
+          
           // 提取SVG内容（去除svg标签）
           const match = svgContent.match(/<svg[^>]*>([\s\S]*)<\/svg>/i)
           if (match) {
             svgContent = match[1]
           }
         }
+        
+        // 检测是否是线条图标（原SVG中有fill="none"）
+        const isStrokeIcon = customSvg.includes('fill="none"') || customSvg.includes("fill='none'")
+        
+        // 应用颜色：替换currentColor
+        svgContent = svgContent
+          .replace(/stroke=["']currentColor["']/gi, `stroke="${customSvgColor}"`)
+          .replace(/fill=["']currentColor["']/gi, `fill="${customSvgColor}"`)
+        
+        // 如果不是线条图标，才替换fill="none"
+        if (!isStrokeIcon) {
+          svgContent = svgContent.replace(/fill=["']none["']/gi, `fill="${customSvgColor}"`)
+        }
+        
+        // 为没有颜色属性的元素添加颜色 - 使用更可靠的正则表达式（只匹配开标签）
+        svgContent = svgContent.replace(/<(path|circle|rect|ellipse|line|polyline|polygon)(\s[^<>]*?)?(\/?>)/gi, (match, tag, attrs, closing) => {
+          // 如果没有属性，初始化为空字符串
+          attrs = attrs || ''
+          
+          // 判断是否是自闭合标签
+          const isSelfClosing = closing === '/>'
+          
+          const hasStroke = /\bstroke\s*=/i.test(attrs)
+          const hasFill = /\bfill\s*=/i.test(attrs)
+          const hasStrokeWidth = /\bstroke-width\s*=/i.test(attrs)
+          const hasStrokeLinecap = /\bstroke-linecap\s*=/i.test(attrs)
+          const hasStrokeLinejoin = /\bstroke-linejoin\s*=/i.test(attrs)
+          
+          // 根据图标类型决定添加什么属性
+          let newAttrs = attrs
+          
+          if (isStrokeIcon) {
+            // 线条图标：只添加stroke，保持fill="none"
+            if (!hasStroke) {
+              newAttrs += ` stroke="${customSvgColor}"`
+            }
+            if (!hasFill) {
+              newAttrs += ` fill="none"`
+            }
+            // 添加全局stroke属性（如果元素本身没有这些属性）
+            if (globalAttrs) {
+              if (!hasStrokeWidth) {
+                const widthMatch = globalAttrs.match(/stroke-width="([^"]*)"/)
+                if (widthMatch) newAttrs += ` stroke-width="${widthMatch[1]}"`
+              }
+              if (!hasStrokeLinecap) {
+                const capMatch = globalAttrs.match(/stroke-linecap="([^"]*)"/)
+                if (capMatch) newAttrs += ` stroke-linecap="${capMatch[1]}"`
+              }
+              if (!hasStrokeLinejoin) {
+                const joinMatch = globalAttrs.match(/stroke-linejoin="([^"]*)"/)
+                if (joinMatch) newAttrs += ` stroke-linejoin="${joinMatch[1]}"`
+              }
+            }
+          } else {
+            // 填充图标：添加fill和stroke
+            if (!hasFill) {
+              newAttrs += ` fill="${customSvgColor}"`
+            }
+            if (!hasStroke && (tag === 'path' || tag === 'line' || tag === 'polyline' || tag === 'polygon')) {
+              newAttrs += ` stroke="${customSvgColor}"`
+            }
+          }
+          
+          return `<${tag}${newAttrs}${isSelfClosing ? '/>' : '>'}`
+        })
         
         // 计算居中偏移
         const centerOffsetX = viewBoxX + viewBoxWidth / 2
@@ -765,6 +863,78 @@ export default function IconDesignerPage() {
                     onChange={(e) => setIconColor(e.target.value)}
                     className="flex-1 uppercase"
                   />
+                </div>
+                
+                {/* 预设颜色选择 */}
+                <div className="mt-3">
+                  <Label className="text-xs">{t("tools.icon-designer.preset_colors")}</Label>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {SVG_PRESET_COLORS.map((preset) => (
+                      <button
+                        key={preset.name}
+                        onClick={() => setIconColor(preset.color)}
+                        className={`w-9 h-9 rounded-md border-2 transition-colors ${
+                          iconColor.toLowerCase() === preset.color.toLowerCase()
+                            ? 'border-primary ring-2 ring-primary/20'
+                            : 'border-border hover:border-primary'
+                        }`}
+                        style={{ backgroundColor: preset.color }}
+                        title={preset.name}
+                      >
+                        {preset.color === '#FFFFFF' && (
+                          <div className="w-full h-full rounded-sm border border-gray-200" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* 自定义SVG模式：SVG颜色 */}
+            {contentMode === 'custom-svg' && (
+              <div>
+                <Label htmlFor="customSvgColor">{t("tools.icon-designer.custom_svg_color")}</Label>
+                <div className="flex gap-2 mt-2">
+                  <Input
+                    type="color"
+                    value={customSvgColor}
+                    onChange={(e) => setCustomSvgColor(e.target.value)}
+                    className="w-12 h-10 p-1 cursor-pointer"
+                  />
+                  <Input
+                    type="text"
+                    value={customSvgColor}
+                    onChange={(e) => setCustomSvgColor(e.target.value)}
+                    className="flex-1 uppercase"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {t("tools.icon-designer.custom_svg_color_hint")}
+                </p>
+                
+                {/* 预设颜色选择 */}
+                <div className="mt-3">
+                  <Label className="text-xs">{t("tools.icon-designer.preset_colors")}</Label>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {SVG_PRESET_COLORS.map((preset) => (
+                      <button
+                        key={preset.name}
+                        onClick={() => setCustomSvgColor(preset.color)}
+                        className={`w-9 h-9 rounded-md border-2 transition-colors ${
+                          customSvgColor.toLowerCase() === preset.color.toLowerCase()
+                            ? 'border-primary ring-2 ring-primary/20'
+                            : 'border-border hover:border-primary'
+                        }`}
+                        style={{ backgroundColor: preset.color }}
+                        title={preset.name}
+                      >
+                        {preset.color === '#FFFFFF' && (
+                          <div className="w-full h-full rounded-sm border border-gray-200" />
+                        )}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
