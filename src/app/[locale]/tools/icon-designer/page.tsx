@@ -762,20 +762,99 @@ export default function IconDesignerPage() {
 
             {/* 自定义SVG模式：输入SVG代码 */}
             {contentMode === 'custom-svg' && (
-              <div>
-                <Label htmlFor="customSvg">{t("tools.icon-designer.custom_svg_label")}</Label>
-                <textarea
-                  id="customSvg"
-                  value={customSvg}
-                  onChange={(e) => setCustomSvg(e.target.value)}
-                  placeholder={t("tools.icon-designer.custom_svg_placeholder")}
-                  className="w-full mt-2 p-3 border rounded-lg font-mono text-sm min-h-[120px] bg-background"
-                  style={{ resize: 'vertical' }}
-                />
-                <p className="text-xs text-muted-foreground mt-1">
-                  {t("tools.icon-designer.custom_svg_hint")}
-                </p>
-              </div>
+              <>
+                <div>
+                  <Label htmlFor="customSvg">{t("tools.icon-designer.custom_svg_label")}</Label>
+                  <textarea
+                    id="customSvg"
+                    value={customSvg}
+                    onChange={(e) => setCustomSvg(e.target.value)}
+                    placeholder={t("tools.icon-designer.custom_svg_placeholder")}
+                    className="w-full mt-2 p-3 border rounded-lg font-mono text-sm min-h-[120px] bg-background"
+                    style={{ resize: 'vertical' }}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {t("tools.icon-designer.custom_svg_hint")}
+                  </p>
+                </div>
+
+                {/* SVG资源网站链接 */}
+                <div className="border rounded-lg p-4 bg-muted/20">
+                  <Label className="mb-2 block font-semibold">
+                    {t("tools.icon-designer.svg_resources_title")}
+                  </Label>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    {t("tools.icon-designer.svg_resources_desc")}
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {/* Lucide Icons */}
+                    <a
+                      href="https://lucide.dev/icons/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">Lucide</div>
+                      <div className="text-xs text-muted-foreground text-center">lucide.dev</div>
+                    </a>
+                    
+                    {/* iconfont 阿里图标 */}
+                    <a
+                      href="https://www.iconfont.cn/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">Iconfont</div>
+                      <div className="text-xs text-muted-foreground text-center">阿里图标</div>
+                    </a>
+
+                    {/* Heroicons */}
+                    <a
+                      href="https://heroicons.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">Heroicons</div>
+                      <div className="text-xs text-muted-foreground text-center">heroicons.com</div>
+                    </a>
+
+                    {/* Feather Icons */}
+                    <a
+                      href="https://feathericons.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">Feather</div>
+                      <div className="text-xs text-muted-foreground text-center">feathericons</div>
+                    </a>
+
+                    {/* Remix Icon */}
+                    <a
+                      href="https://remixicon.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">Remix</div>
+                      <div className="text-xs text-muted-foreground text-center">remixicon.com</div>
+                    </a>
+
+                    {/* SVG Repo */}
+                    <a
+                      href="https://www.svgrepo.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col items-center justify-center p-3 border rounded-md hover:bg-muted/50 hover:border-primary transition-colors group"
+                    >
+                      <div className="font-medium text-sm text-center mb-1">SVG Repo</div>
+                      <div className="text-xs text-muted-foreground text-center">svgrepo.com</div>
+                    </a>
+                  </div>
+                </div>
+              </>
             )}
 
             {/* 形状选择 */}
