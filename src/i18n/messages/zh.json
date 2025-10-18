@@ -335,6 +335,56 @@
         "keywords": "JSON转XML,数据转换,JSON处理,XML格式,数据交换,在线工具"
       }
     },
+    "xml-to-json": {
+      "name": "XML转JSON转换器",
+      "description": "将XML数据快速转换为JSON格式",
+      "input_title": "输入 XML",
+      "input_desc": "粘贴或输入要转换的 XML 数据",
+      "output_title": "输出 JSON",
+      "output_desc": "转换后的 JSON 数据",
+      "placeholder": "请输入要转换的XML数据...",
+      "output_placeholder": "转换后的JSON将显示在这里...",
+      "invalid_xml": "无效的XML格式，请检查输入",
+      "convert_success": "转换成功！",
+      "introduction": "XML转JSON转换器是专业的数据格式转换工具，能够将XML(可扩展标记语言)数据精确转换为JSON格式。XML广泛应用于配置文件、Web服务、数据交换等场景，而JSON是现代Web开发的主流数据格式。本工具智能解析XML结构，保留原始数据的层次关系和类型信息，生成规范的JSON输出，支持复杂的嵌套结构、属性处理，是开发者进行API集成、数据迁移、格式转换的理想工具。",
+      "features": [
+        "⚡ 快速转换，实时预览转换结果",
+        "🎯 智能解析，准确处理XML标签、属性和文本内容",
+        "🔄 保持结构，完整保留数据的层次关系",
+        "📋 一键复制，快速使用转换后的JSON数据",
+        "💾 支持下载，方便保存和分享转换结果",
+        "🔒 本地处理，数据安全不上传服务器",
+        "✨ 格式化输出，生成易读的JSON格式",
+        "📱 响应式设计，支持移动端和桌面端"
+      ],
+      "faq": [
+        {
+          "question": "什么是XML转JSON？为什么需要这种转换？",
+          "answer": "XML转JSON是将XML格式的数据转换为JSON格式的过程。许多传统系统使用XML格式，而现代Web API和JavaScript应用更倾向于使用JSON。这个工具帮助开发者在不同系统间进行数据格式转换，提高开发效率和数据兼容性。"
+        },
+        {
+          "question": "转换过程中XML属性会如何处理？",
+          "answer": "XML元素的属性会被转换为JSON对象中的特殊字段。通常使用'@'前缀或'_attributes'对象来保存属性值，确保属性信息不会丢失，同时与元素内容区分开来。"
+        },
+        {
+          "question": "如何处理重复的XML元素？",
+          "answer": "当XML中存在多个同名元素时，工具会智能地将它们转换为JSON数组。例如，多个<item>元素会被转换为一个items数组，保持所有数据完整性。"
+        },
+        {
+          "question": "转换后的JSON格式是否标准？",
+          "answer": "是的，工具生成的JSON完全符合JSON标准规范，具有正确的语法结构和格式化缩进，可以被任何JSON解析器正确解析和处理。"
+        },
+        {
+          "question": "数据转换是否安全？会上传到服务器吗？",
+          "answer": "完全安全！所有转换操作都在您的浏览器本地完成，数据不会上传到任何服务器。这确保了您的敏感数据和隐私得到最大程度的保护。"
+        }
+      ],
+      "meta": {
+        "title": "XML转JSON转换器",
+        "description": "在线XML转JSON工具，快速将XML数据转换为JSON格式。支持复杂嵌套结构、属性解析，提供格式化输出和一键复制下载功能。",
+        "keywords": "xml to json,xml转json,convert xml to json,xml to json converter,xml解析,数据转换,在线工具"
+      }
+    },
     "json-visualizer": {
       "name": "JSON可视化",
       "description": "以树形结构展示JSON数据",
