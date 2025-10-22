@@ -59,7 +59,8 @@ export default function Home() {
 
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-bold mb-4">{t("home.categories_title")}</h2>
+          <h2 className="text-2xl font-bold mb-2">{t("home.categories_title")}</h2>
+          <h3 className="text-lg text-muted-foreground mb-6">{t("home.categories_subtitle")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {toolsConfig.map((category) => (
               <Card key={category.id} className="hover:shadow-md transition-shadow">
@@ -83,7 +84,8 @@ export default function Home() {
 
         {popularTools.length > 0 && (
           <section>
-            <h2 className="text-2xl font-bold mb-4">{t("home.popular_tools_title")}</h2>
+            <h2 className="text-2xl font-bold mb-2">{t("home.popular_tools_title")}</h2>
+            <h3 className="text-lg text-muted-foreground mb-6">{t("home.popular_tools_subtitle")}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {popularTools.map((tool) => (
                 <Card key={tool.id} className="hover:shadow-md transition-shadow cursor-pointer">
@@ -101,7 +103,8 @@ export default function Home() {
         )}
 
         <section>
-          <h2 className="text-2xl font-bold mb-4">{t("home.features_title")}</h2>
+          <h2 className="text-2xl font-bold mb-2">{t("home.features_title")}</h2>
+          <h3 className="text-lg text-muted-foreground mb-6">{t("home.features_subtitle")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>

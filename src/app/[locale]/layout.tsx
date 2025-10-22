@@ -11,14 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
       template: '%s - IT Tools Collection',
       default: 'IT Tools Collection - Developer Toolbox'
     },
-    description: "All-in-one online developer tools collection with 30+ utilities: JSON formatter/converter/visualizer, Base64/URL encoder-decoder, MD5/SHA256/AES/RSA encryption, QR code generator, UUID generator, Cron parser, Docker run to compose converter, IP lookup, timestamp converter. Completely free, no installation required, multi-language support.",
+    description: "Discover 50+ developer tools for JSON processing, text conversion, encryption, network debugging, and image editing. Free, privacy-focused, updated weekly!",
     keywords: [
-      "online developer tools", "JSON formatter", "JSON to CSV", "JSON to YAML", "JSON to XML", "JSON visualizer",
-      "Base64 encoder decoder", "URL encoder decoder", "encryption tools", "MD5 hash generator", "SHA256 hash", "AES encryption", "RSA encryption", "HMAC generator",
-      "QR code generator", "UUID generator", "password generator", "Cron expression parser", "Docker tools", "Docker run to compose",
-      "IP address lookup", "timestamp converter", "color converter", "icon designer", "SVG placeholder generator", "Curl converter",
-      "developer toolbox", "programmer tools", "frontend tools", "free online tools", "web development tools", "API testing tools",
-      "hex encoder decoder", "binary encoder decoder", "time converter", "image tools", "crypto tools"
+      "developer tools, utilities for developers, format converters, JSON utilities, image processing tools, encryption tools, network debugging tools, high performance tools"
     ],
     authors: [{ name: "ToolkitPub" }],
     creator: "ToolkitPub",

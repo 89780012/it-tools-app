@@ -64,7 +64,10 @@
     "high_performance": "⚡ 高性能",
     "high_performance_desc": "基于 Next.js 和 TypeScript，提供快速响应的用户体验",
     "privacy_protection": "🔒 隐私保护",
-    "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全"
+    "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全",
+    "categories_subtitle": "浏览所有可用的工具类别和功能",
+    "popular_tools_subtitle": "最受开发者欢迎的实用工具推荐",
+    "features_subtitle": "现代化设计、多语言支持、隐私保护的开发者工具平台"
   },
   "categories": {
     "json_tools": "JSON 实用工具",

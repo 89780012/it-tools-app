@@ -64,7 +64,10 @@
     "high_performance": "⚡ High Performance",
     "high_performance_desc": "Based on Next.js and TypeScript, providing fast and responsive user experience",
     "privacy_protection": "🔒 Privacy Protection",
-    "privacy_protection_desc": "All tools run on client-side, ensuring your data privacy and security"
+    "privacy_protection_desc": "All tools run on client-side, ensuring your data privacy and security",
+    "categories_subtitle": "Browse all available tool categories and features",
+    "popular_tools_subtitle": "Most popular and useful tools recommended by developers",
+    "features_subtitle": "Modern design, multilingual support, privacy-focused developer tool platform"
   },
   "categories": {
     "json_tools": "JSON Utilities",
