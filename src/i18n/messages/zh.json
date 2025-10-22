@@ -149,9 +149,9 @@
         }
       ],
       "meta": {
-        "title": "JSON格式化工具",
-        "description": "在线JSON格式化、压缩和验证工具。支持JSON美化、压缩和语法验证，提升开发效率。",
-        "keywords": "JSON格式化,JSON美化,JSON压缩,JSON验证,在线工具"
+        "title": "JSON格式化工具 - 在线美化/压缩/验证",
+        "description": "免费在线JSON格式化工具,支持美化、压缩、语法验证,实时高亮显示错误,一键复制下载,提升开发效率。",
+        "keywords": "JSON格式化, JSON美化, JSON验证"
       }
     },
     "json-to-csv": {
@@ -212,9 +212,9 @@
         }
       ],
       "meta": {
-        "title": "JSON转CSV工具",
-        "description": "将JSON数据快速转换为CSV格式。支持复杂嵌套对象处理，提供便捷的数据格式转换功能。",
-        "keywords": "JSON转CSV,数据转换,JSON处理,CSV导出,在线工具"
+        "title": "JSON转CSV转换器 - 在线免费转换",
+        "description": "在线JSON转CSV转换工具,支持嵌套对象和数组智能处理,一键下载CSV文件,完全免费无限制。",
+        "keywords": "JSON转CSV, JSON转换器, CSV导出"
       }
     },
     "json-to-yaml": {
@@ -266,9 +266,9 @@
         }
       ],
       "meta": {
-        "title": "JSON转YAML工具",
-        "description": "将JSON数据快速转换为YAML格式。支持格式化输出，提供便捷的配置文件转换功能。",
-        "keywords": "JSON转YAML,数据转换,JSON处理,YAML格式,配置转换,在线工具"
+        "title": "JSON转YAML转换器 - 配置文件转换",
+        "description": "在线JSON转YAML转换工具,专为配置文件转换设计,支持格式化输出和语法验证,一键下载YAML文件。",
+        "keywords": "JSON转YAML, YAML转换器, 配置文件转换"
       }
     },
     "json-to-xml": {
@@ -333,9 +333,9 @@
         }
       ],
       "meta": {
-        "title": "JSON转XML工具",
-        "description": "将JSON数据快速转换为XML格式。支持自定义根元素，智能处理嵌套对象和数组，提供便捷的数据格式转换功能。",
-        "keywords": "JSON转XML,数据转换,JSON处理,XML格式,数据交换,在线工具"
+        "title": "JSON转XML转换器 - 数据交换工具",
+        "description": "在线JSON转XML转换器,支持自定义根元素、智能处理嵌套数据,适用于API数据交换和配置文件转换。",
+        "keywords": "JSON转XML, XML转换器, 数据交换"
       }
     },
     "xml-to-json": {
@@ -383,9 +383,9 @@
         }
       ],
       "meta": {
-        "title": "XML转JSON转换器",
-        "description": "在线XML转JSON工具，快速将XML数据转换为JSON格式。支持复杂嵌套结构、属性解析，提供格式化输出和一键复制下载功能。",
-        "keywords": "xml to json,xml转json,convert xml to json,xml to json converter,xml解析,数据转换,在线工具"
+        "title": "XML转JSON转换器 - 在线解析工具",
+        "description": "在线XML转JSON转换器,支持属性解析、复杂嵌套结构处理,提供格式化输出和一键复制下载功能。",
+        "keywords": "XML转JSON, XML解析器, XML转换器"
       }
     },
     "json-visualizer": {
@@ -442,9 +442,9 @@
         }
       ],
       "meta": {
-        "title": "JSON可视化工具",
-        "description": "以交互式树形结构展示JSON数据。支持展开/折叠节点，类型标识和统计信息，提供直观的JSON数据查看体验。",
-        "keywords": "JSON可视化,JSON树形结构,数据可视化,JSON查看器,数据分析,在线工具"
+        "title": "JSON可视化工具 - 树形查看器",
+        "description": "交互式JSON树形可视化工具,支持展开折叠节点、类型标识和数据统计,直观分析JSON结构。",
+        "keywords": "JSON可视化, JSON查看器, JSON树形"
       }
     },
     "json-generator": {
@@ -506,9 +506,9 @@
         }
       ],
       "meta": {
-        "title": "JSON数据生成器",
-        "description": "生成模拟JSON数据用于测试和开发。支持多种数据类型，灵活的字段配置，批量生成功能，满足各种测试场景需求。",
-        "keywords": "JSON生成器,模拟数据,测试数据,Mock数据,数据生成,开发工具,在线工具"
+        "title": "JSON数据生成器 - 模拟测试数据生成",
+        "description": "在线JSON模拟数据生成器,支持多种数据类型、灵活字段配置和批量生成,满足开发测试需求。",
+        "keywords": "JSON生成器, 模拟数据, 测试数据"
       }
     },
     "json-diff": {
@@ -613,9 +613,9 @@
         }
       ],
       "meta": {
-        "title": "JSON差异对比工具",
-        "description": "深度对比两个JSON数据的差异。提供详细的差异分析报告，支持可视化展示，帮助快速定位数据变更。",
-        "keywords": "JSON对比,JSON差异,数据对比,版本对比,差异分析,代码对比,在线工具"
+        "title": "JSON差异对比工具 - 在线对比分析",
+        "description": "在线JSON差异对比工具,深度分析两个JSON文件的差异,提供可视化报告,快速定位数据变更。",
+        "keywords": "JSON对比, JSON差异, 差异分析"
       }
     },
     "base64-encoder-decoder": {
@@ -665,9 +665,9 @@
       "encoded": "编码完成",
       "decoded": "解码完成",
       "meta": {
-        "title": "Base64编码解码工具",
-        "description": "在线Base64编码解码工具。支持文本与Base64字符串互转，适用于数据传输、API调用等开发场景。",
-        "keywords": "Base64编码,Base64解码,编码工具,解码工具,文本转换,在线工具"
+        "title": "Base64编码解码工具 - 在线文本转换",
+        "description": "在线Base64编码解码工具,支持文本快速编码解码,适用于数据传输、API开发,一键复制。",
+        "keywords": "Base64编码, Base64解码, 文本转换"
       }
     },
     "url-encoder-decoder": {
@@ -717,9 +717,9 @@
       "encoded": "编码完成",
       "decoded": "解码完成",
       "meta": {
-        "title": "URL编码解码工具",
-        "description": "在线URL编码解码工具。处理URL参数、特殊字符转义，支持encodeURIComponent格式，适用于前端开发。",
-        "keywords": "URL编码,URL解码,encodeURIComponent,decodeURIComponent,URL转义,在线工具"
+        "title": "URL编码解码工具 - encodeURIComponent",
+        "description": "在线URL编码解码工具,支持encodeURIComponent格式,处理URL参数和特殊字符转义,前端开发必备。",
+        "keywords": "URL编码, URL解码, encodeURIComponent"
       }
     },
     "uuid-generator": {
@@ -782,9 +782,9 @@
         }
       ],
       "meta": {
-        "title": "UUID生成器",
-        "description": "在线UUID批量生成工具。支持UUID v4标准，多种输出格式，快速生成全球唯一标识符。",
-        "keywords": "UUID生成器,唯一标识符,UUID v4,批量生成,GUID,在线工具"
+        "title": "UUID生成器 - 批量生成唯一标识符",
+        "description": "在线UUID批量生成工具,支持UUID v4标准,多种输出格式,快速生成全球唯一标识符。",
+        "keywords": "UUID生成器, 唯一标识符, GUID"
       }
     },
     "password-generator": {
@@ -851,9 +851,9 @@
         }
       ],
       "meta": {
-        "title": "密码生成器",
-        "description": "在线安全密码生成器。支持自定义长度、字符集，生成高强度随机密码，保护账户安全。",
-        "keywords": "密码生成器,随机密码,安全密码,密码强度,账户安全,在线工具"
+        "title": "密码生成器 - 生成高强度随机密码",
+        "description": "在线安全密码生成器,支持自定义长度、字符集,生成高强度随机密码,保护账户安全。",
+        "keywords": "密码生成器, 随机密码, 安全密码"
       }
     },
     "aes-encrypt-decrypt": {
@@ -923,9 +923,9 @@
         }
       ],
       "meta": {
-        "title": "AES加密解密工具",
-        "description": "在线AES加密解密工具。支持AES-256-CBC模式，提供安全的数据加密解密功能。",
-        "keywords": "AES加密,AES解密,对称加密,数据加密,信息安全,在线工具"
+        "title": "AES加密解密工具 - AES-256-CBC在线加密",
+        "description": "在线AES加密解密工具,支持AES-256-CBC模式,提供安全的对称加密算法保护数据。",
+        "keywords": "AES加密, AES解密, 数据加密"
       }
     },
     "rsa-encrypt-decrypt": {
@@ -1007,9 +1007,9 @@
         }
       ],
       "meta": {
-        "title": "RSA加密解密工具",
-        "description": "在线RSA加密解密工具。支持密钥对生成，公钥加密私钥解密，保障数据传输安全。",
-        "keywords": "RSA加密,RSA解密,非对称加密,公钥加密,私钥解密,数字签名,在线工具"
+        "title": "RSA加密解密工具 - 密钥生成与加密",
+        "description": "在线RSA加密解密工具,支持密钥对生成、公钥加密私钥解密,保障数据传输安全。",
+        "keywords": "RSA加密, RSA密钥生成, 非对称加密"
       }
     },
     "md5-hash": {
@@ -1055,9 +1055,9 @@
       "output_desc": "生成的MD5哈希值",
       "output_placeholder": "MD5哈希值将显示在这里...",
       "meta": {
-        "title": "MD5哈希生成器",
-        "description": "在线MD5哈希生成工具。快速计算文本的MD5哈希值，适用于数据校验和唯一标识。",
-        "keywords": "MD5哈希,哈希生成器,数据校验,MD5计算,在线工具"
+        "title": "MD5哈希生成器 - 在线MD5加密工具",
+        "description": "在线MD5哈希生成工具,快速计算文本的MD5值,适用于数据校验、完整性验证和唯一标识。",
+        "keywords": "MD5哈希, MD5生成器, 数据校验"
       }
     },
     "sha256-hash": {
@@ -1103,9 +1103,9 @@
         }
       ],
       "meta": {
-        "title": "SHA256哈希生成器",
-        "description": "在线SHA256哈希生成工具。生成安全的SHA256哈希值，广泛用于密码存储和数据完整性验证。",
-        "keywords": "SHA256哈希,哈希生成器,密码安全,数据完整性,SHA256计算,在线工具"
+        "title": "SHA256哈希生成器 - 安全加密工具",
+        "description": "在线SHA256哈希生成工具,生成安全的SHA-256哈希值,广泛用于密码存储和数据完整性验证。",
+        "keywords": "SHA256哈希, SHA256生成器, 密码加密"
       }
     },
     "sha1-hash": {
@@ -1151,9 +1151,9 @@
       "output_desc": "生成的SHA1哈希值",
       "output_placeholder": "SHA1哈希值将显示在这里...",
       "meta": {
-        "title": "SHA1哈希生成器",
-        "description": "在线SHA1哈希生成工具。计算文本的SHA1哈希值，用于数据校验和版本控制系统。",
-        "keywords": "SHA1哈希,哈希生成器,数据校验,SHA1计算,版本控制,在线工具"
+        "title": "SHA1哈希生成器 - Git版本控制工具",
+        "description": "在线SHA1哈希生成工具,计算文本的SHA-1哈希值,用于数据校验、Git版本控制和完整性验证。",
+        "keywords": "SHA1哈希, SHA1生成器, Git哈希"
       }
     },
     "hex-encoder-decoder": {
@@ -1203,9 +1203,9 @@
         }
       ],
       "meta": {
-        "title": "Hex编码解码器",
-        "description": "在线十六进制编码解码工具。支持文本与十六进制字符串互转，适用于数据处理和调试。",
-        "keywords": "Hex编码,十六进制解码,编码工具,解码工具,数据转换,在线工具"
+        "title": "Hex编码解码器 - 十六进制转换工具",
+        "description": "在线十六进制编码解码工具,支持文本与Hex字符串互转,适用于数据处理、调试和开发。",
+        "keywords": "Hex编码, 十六进制转换, Hex解码"
       }
     },
     "binary-encoder-decoder": {
@@ -1255,9 +1255,9 @@
         }
       ],
       "meta": {
-        "title": "Binary编码解码器",
-        "description": "在线二进制编码解码工具。支持文本与二进制字符串互转，适用于底层数据分析和学习。",
-        "keywords": "Binary编码,二进制解码,编码工具,解码工具,二进制转换,在线工具"
+        "title": "Binary编码解码器 - 二进制转换工具",
+        "description": "在线二进制编码解码工具,支持文本与二进制互转,适用于数据分析、调试和编程学习。",
+        "keywords": "Binary编码, 二进制转换, Binary解码"
       }
     },
     "qr-code-generator": {
@@ -1339,9 +1339,9 @@
         }
       ],
       "meta": {
-        "title": "二维码生成器",
-        "description": "在线二维码生成工具。支持自定义尺寸、颜色和纠错级别，生成高质量PNG/SVG格式二维码。",
-        "keywords": "二维码生成器,QR码,二维码制作,URL转二维码,在线工具"
+        "title": "二维码生成器 - 在线生成PNG/SVG二维码",
+        "description": "在线二维码生成工具,支持自定义尺寸、颜色和纠错级别,生成高质量PNG/SVG格式二维码。",
+        "keywords": "二维码生成器, QR码, 二维码制作"
       }
     },
     "svg-placeholder-generator": {
@@ -1414,9 +1414,9 @@
         }
       ],
       "meta": {
-        "title": "SVG占位图生成器",
-        "description": "在线SVG占位图片生成工具。支持自定义尺寸、文字、颜色和模板样式，快速生成占位图片。",
-        "keywords": "SVG占位图,占位图片生成器,placeholder,图片占位符,在线工具"
+        "title": "SVG占位图生成器 - 自定义占位图片",
+        "description": "在线SVG占位图片生成工具,支持自定义尺寸、文字、颜色和模板样式,快速生成占位图片。",
+        "keywords": "SVG占位图, 占位图生成器, 图片占位符"
       }
     },
     "icon-designer": {
@@ -1558,9 +1558,9 @@
         }
       ],
       "meta": {
-        "title": "字母图标设计器",
-        "description": "在线字母图标设计工具。使用字母、颜色和形状创建自定义SVG图标。导出多种尺寸用于头像、应用图标等。",
-        "keywords": "图标设计器,字母图标,头像生成器,图标制作,SVG图标,应用图标,标识制作,在线工具"
+        "title": "字母图标设计器 - 自定义SVG图标生成",
+        "description": "在线字母图标设计工具,使用字母、颜色和形状创建自定义SVG图标,导出多种尺寸用于头像、应用图标。",
+        "keywords": "图标设计器, 字母图标, 头像生成器"
       }
     },
     "hmac-generator": {
@@ -1632,9 +1632,9 @@
         }
       ],
       "meta": {
-        "title": "HMAC生成器",
-        "description": "在线HMAC生成工具。支持多种哈希算法，生成消息认证码，确保数据完整性和身份验证。",
-        "keywords": "HMAC生成器,消息认证码,哈希算法,数据完整性,身份验证,API签名,在线工具"
+        "title": "HMAC生成器 - API签名与消息认证",
+        "description": "在线HMAC生成工具,支持多种哈希算法,生成API签名和消息认证码,确保数据完整性和身份验证。",
+        "keywords": "HMAC生成器, API签名, 消息认证"
       }
     },
     "ip-lookup": {
@@ -1713,9 +1713,9 @@
         }
       ],
       "meta": {
-        "title": "IP地址查询工具",
-        "description": "在线IP地址查询工具。获取IP地址的地理位置、ISP信息、时区等详细信息。",
-        "keywords": "IP查询,IP地址,地理位置,网络信息,ISP查询,在线工具"
+        "title": "IP地址查询工具 - 查询地理位置与网络信息",
+        "description": "在线IP地址查询工具,获取IP地址的地理位置、ISP信息、时区等详细信息。",
+        "keywords": "IP查询, IP地址, 地理位置"
       }
     },
     "time-converter": {
@@ -1763,9 +1763,9 @@
         }
       ],
       "meta": {
-        "title": "毫秒时间转换器 - 时间戳与 yyyy-MM-dd HH:mm:ss 互转",
-        "description": "免费的在线工具，快速将毫秒时间戳转换为 yyyy-MM-dd HH:mm:ss 字符串，并支持反向转换与验证。",
-        "keywords": "毫秒时间戳,时间转换,yyyy-MM-dd HH:mm:ss,时间工具,在线转换"
+        "title": "时间戳转换器 - 毫秒与日期字符串互转",
+        "description": "免费的在线工具,快速将毫秒时间戳转换为yyyy-MM-dd HH:mm:ss字符串,并支持反向转换与验证。",
+        "keywords": "时间戳转换, 毫秒转换, 时间工具"
       }
     },
     "cron-expression-parser": {
@@ -1840,9 +1840,9 @@
         }
       ],
       "meta": {
-        "title": "Cron 表达式解析器 - 在线验证与预览",
-        "description": "免费的 Cron 表达式在线解析工具，支持语法校验、字段展开以及未来执行时间预览。",
-        "keywords": "Cron 表达式,任务调度,计划任务,表达式解析,Cron 校验"
+        "title": "Cron表达式解析器 - 在线验证测试",
+        "description": "免费的Cron表达式在线解析工具,支持语法校验、字段展开以及未来执行时间预览。",
+        "keywords": "Cron表达式, 任务调度, Cron校验"
       }
     },
     "curl-converter": {
@@ -1905,9 +1905,9 @@
         }
       ],
       "meta": {
-        "title": "cURL 命令转换器 - 转换为多种编程语言",
-        "description": "在线 cURL 命令转换工具。快速将 cURL 命令转换为 JavaScript、Python、Node.js、PHP、Go 等语言代码，支持在线测试。",
-        "keywords": "cURL转换,API测试,HTTP请求,代码生成,开发工具,在线工具"
+        "title": "cURL命令转换器 - 转JS/Python/PHP等",
+        "description": "在线cURL命令转换工具,快速将cURL命令转换为JavaScript、Python、Node.js、PHP、Go等语言代码,支持在线测试。",
+        "keywords": "cURL转换, API测试, 代码生成"
       }
     },
     "color-converter": {
@@ -1967,9 +1967,9 @@
         }
       ],
       "meta": {
-        "title": "颜色转换器 - HEX RGB HSL CSS 颜色格式转换",
-        "description": "在线颜色格式转换工具。支持 HEX、RGB、HSL 和 CSS 颜色名称之间的互相转换，实时预览，一键复制。",
-        "keywords": "颜色转换器,HEX转RGB,RGB转HSL,CSS颜色,颜色格式转换,在线工具"
+        "title": "颜色转换器 - HEX RGB HSL CSS格式转换",
+        "description": "在线颜色格式转换工具,支持HEX、RGB、HSL和CSS颜色名称之间的互相转换,实时预览,一键复制。",
+        "keywords": "颜色转换器, HEX转RGB, 颜色格式"
       }
     },
     "docker-run-to-compose": {
@@ -2027,9 +2027,9 @@
         }
       ],
       "meta": {
-        "title": "Docker Run 转 Compose 工具",
-        "description": "在线 Docker Run 命令转换工具。快速将 docker run 命令转换为 docker-compose.yml 配置文件，提升容器管理效率。",
-        "keywords": "Docker,docker-compose,容器编排,命令转换,YAML配置,DevOps工具,在线工具"
+        "title": "Docker Run转Compose工具 - 命令转YAML配置",
+        "description": "在线Docker Run命令转换工具,快速将docker run命令转换为docker-compose.yml配置文件,提升容器管理效率。",
+        "keywords": "Docker Compose, 容器编排, Docker转换"
       }
     },
     "base64-file-converter": {
@@ -2106,9 +2106,9 @@
         }
       ],
       "meta": {
-        "title": "Base64图片转换器",
-        "description": "在线Base64图片转换工具。支持图片与Base64编码的双向转换，适用于Web开发和数据嵌入。",
-        "keywords": "Base64转换,图片编码,编码工具,解码工具,图片转换,在线工具"
+        "title": "Base64图片转换器 - 图片与编码互转",
+        "description": "在线Base64图片转换工具,支持图片与Base64编码的双向转换,适用于Web开发和数据嵌入。",
+        "keywords": "Base64图片, 图片编码, Base64转换"
       }
     },
     "image-to-dot-matrix": {
@@ -2214,9 +2214,9 @@
         }
       ],
       "meta": {
-        "title": "图片转点阵图工具",
-        "description": "在线图片转点阵图工具。支持多种点形状、颜色模式，生成独特的点阵艺术效果，适用于设计和创意项目。",
-        "keywords": "点阵图,图片转换,艺术效果,像素艺术,图片处理,在线工具"
+        "title": "图片转点阵图工具 - 像素艺术效果生成",
+        "description": "在线图片转点阵图工具,支持多种点形状、颜色模式,生成独特的点阵艺术效果,适用于设计和创意项目。",
+        "keywords": "点阵图, 像素艺术, 图片效果"
       }
     }
   },

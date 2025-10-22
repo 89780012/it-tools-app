@@ -149,9 +149,9 @@
         }
       ],
       "meta": {
-        "title": "JSON Formatter Tool",
-        "description": "Online JSON formatting, compression and validation tool. Supports JSON beautification, compression and syntax validation to improve development efficiency.",
-        "keywords": "JSON formatter,JSON beautifier,JSON minify,JSON validator,online tool"
+        "title": "JSON Formatter - Beautify & Validate JSON Online",
+        "description": "Format, minify and validate JSON data instantly. Free online JSON beautifier with syntax highlighting, error detection and one-click copy.",
+        "keywords": "json formatter, json beautifier, json validator"
       }
     },
     "json-to-csv": {
@@ -212,9 +212,9 @@
         }
       ],
       "meta": {
-        "title": "JSON to CSV Converter Tool",
-        "description": "Quickly convert JSON data to CSV format. Supports complex nested object processing and provides convenient data format conversion functionality.",
-        "keywords": "JSON to CSV,data conversion,JSON processing,CSV export,online tool"
+        "title": "JSON to CSV Converter - Convert JSON to CSV Online Free",
+        "description": "Convert JSON to CSV format instantly. Handle nested objects and arrays with ease. Free online converter with download and copy features.",
+        "keywords": "json to csv, json converter, csv export"
       }
     },
     "json-to-yaml": {
@@ -266,9 +266,9 @@
         }
       ],
       "meta": {
-        "title": "JSON to YAML Converter Tool",
-        "description": "Quickly convert JSON data to YAML format. Supports formatted output and provides convenient configuration file conversion functionality.",
-        "keywords": "JSON to YAML,data conversion,JSON processing,YAML format,config conversion,online tool"
+        "title": "JSON to YAML Converter - Online Config File Converter",
+        "description": "Convert JSON to YAML format instantly for config files. Free online tool with formatted output, syntax validation and one-click download.",
+        "keywords": "json to yaml, yaml converter, config converter"
       }
     },
     "json-to-xml": {
@@ -333,9 +333,9 @@
         }
       ],
       "meta": {
-        "title": "JSON to XML Converter Tool",
-        "description": "Quickly convert JSON data to XML format. Supports custom root elements, intelligent handling of nested objects and arrays, providing convenient data format conversion functionality.",
-        "keywords": "JSON to XML,data conversion,JSON processing,XML format,data exchange,online tool"
+        "title": "JSON to XML Converter - Free Online Data Exchange Tool",
+        "description": "Convert JSON to XML instantly with custom root elements. Handle nested data intelligently. Free converter for data exchange and APIs.",
+        "keywords": "json to xml, xml converter, data exchange"
       }
     },
     "xml-to-json": {
@@ -383,9 +383,9 @@
         }
       ],
       "meta": {
-        "title": "XML to JSON Converter",
-        "description": "Online XML to JSON tool, quickly convert XML data to JSON format. Supports complex nested structures, attribute parsing, provides formatted output and one-click copy/download functionality.",
-        "keywords": "xml to json,convert xml to json,xml to json converter,xml parser,data conversion,online tool"
+        "title": "XML to JSON Converter - Parse & Convert XML to JSON Free",
+        "description": "Convert XML to JSON instantly with attribute parsing. Handle complex nested structures easily. Free online parser with formatted output.",
+        "keywords": "xml to json, xml parser, xml converter"
       }
     },
     "json-visualizer": {
@@ -442,9 +442,9 @@
         }
       ],
       "meta": {
-        "title": "JSON Visualizer Tool",
-        "description": "Display JSON data in interactive tree structure. Supports expand/collapse nodes, type identification and statistics, providing intuitive JSON data viewing experience.",
-        "keywords": "JSON visualizer,JSON tree structure,data visualization,JSON viewer,data analysis,online tool"
+        "title": "JSON Visualizer - Interactive Tree View & JSON Viewer",
+        "description": "Visualize JSON in interactive tree structure with expand/collapse. Free JSON viewer with type identification and statistics for easy analysis.",
+        "keywords": "json visualizer, json viewer, json tree"
       }
     },
     "json-generator": {
@@ -506,9 +506,9 @@
         }
       ],
       "meta": {
-        "title": "JSON Data Generator Tool",
-        "description": "Generate mock JSON data for testing and development. Supports multiple data types, flexible field configuration, batch generation functionality to meet various testing scenario requirements.",
-        "keywords": "JSON generator,mock data,test data,fake data,data generation,development tools,online tool"
+        "title": "JSON Generator - Create Mock Test Data for Development",
+        "description": "Generate mock JSON test data instantly. Support multiple data types with flexible field configuration. Free batch generator for development.",
+        "keywords": "json generator, mock data, test data"
       }
     },
     "json-diff": {
@@ -611,9 +611,9 @@
         }
       ],
       "meta": {
-        "title": "JSON Diff Comparison Tool",
-        "description": "Deep comparison of differences between two JSON data. Provides detailed difference analysis reports with visual display to help quickly locate data changes.",
-        "keywords": "JSON diff,JSON comparison,data comparison,version comparison,difference analysis,code comparison,online tool"
+        "title": "JSON Diff - Compare & Analyze JSON Differences Online",
+        "description": "Compare two JSON files and find differences instantly. Visual diff analysis with detailed reports. Free online tool for version control.",
+        "keywords": "json diff, json compare, difference analysis"
       }
     },
     "base64-encoder-decoder": {
@@ -663,9 +663,9 @@
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {
-        "title": "Base64 Encoder/Decoder Tool",
-        "description": "Online Base64 encoding and decoding tool. Convert text to/from Base64 strings for data transmission, API calls, and development scenarios.",
-        "keywords": "Base64 encoding,Base64 decoding,encoder,decoder,text conversion,online tool"
+        "title": "Base64 Encoder/Decoder - Online Text Conversion Free",
+        "description": "Encode and decode Base64 strings instantly. Free online converter for text, data transmission and API development with one-click copy.",
+        "keywords": "base64 encoder, base64 decoder, text conversion"
       }
     },
     "url-encoder-decoder": {
@@ -715,9 +715,9 @@
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {
-        "title": "URL Encoder/Decoder Tool",
-        "description": "Online URL encoding and decoding tool. Handle URL parameters and special character escaping with encodeURIComponent format support for frontend development.",
-        "keywords": "URL encoding,URL decoding,encodeURIComponent,decodeURIComponent,URL escaping,online tool"
+        "title": "URL Encoder/Decoder - encodeURIComponent Tool Free",
+        "description": "Encode and decode URLs with encodeURIComponent support. Handle URL parameters and special characters for frontend development. Free tool.",
+        "keywords": "url encoder, url decoder, encodeURIComponent"
       }
     },
     "uuid-generator": {
@@ -780,9 +780,9 @@
         }
       ],
       "meta": {
-        "title": "UUID Generator",
-        "description": "Online UUID batch generation tool. Supports UUID v4 standard with multiple output formats for quickly generating globally unique identifiers.",
-        "keywords": "UUID generator,unique identifier,UUID v4,batch generation,GUID,online tool"
+        "title": "UUID Generator - Create Unique IDs & GUIDs Online Free",
+        "description": "Generate UUID v4 unique identifiers instantly. Free batch UUID generator with multiple output formats for development projects.",
+        "keywords": "uuid generator, guid generator, unique id"
       }
     },
     "password-generator": {
@@ -849,9 +849,9 @@
         }
       ],
       "meta": {
-        "title": "Password Generator",
-        "description": "Online secure password generator. Support custom length and character sets to generate high-strength random passwords for account security.",
-        "keywords": "password generator,random password,secure password,password strength,account security,online tool"
+        "title": "Password Generator - Create Strong Random Passwords Free",
+        "description": "Generate secure random passwords with custom length and character sets. Free online password generator for account security.",
+        "keywords": "password generator, random password, strong password"
       }
     },
     "aes-encrypt-decrypt": {
@@ -921,9 +921,9 @@
         }
       ],
       "meta": {
-        "title": "AES Encrypt/Decrypt Tool",
-        "description": "Online AES encryption/decryption tool. Support AES-256-CBC mode for secure data encryption and decryption.",
-        "keywords": "AES encryption,AES decryption,symmetric encryption,data encryption,information security,online tool"
+        "title": "AES Encryption Tool - AES-256-CBC Encrypt/Decrypt Free",
+        "description": "Online AES encryption and decryption tool with AES-256-CBC support. Secure your data with symmetric encryption algorithm. Free to use.",
+        "keywords": "aes encryption, aes decrypt, data encryption"
       }
     },
     "rsa-encrypt-decrypt": {
@@ -1005,9 +1005,9 @@
         }
       ],
       "meta": {
-        "title": "RSA Encrypt/Decrypt Tool",
-        "description": "Online RSA encryption/decryption tool. Support key pair generation, public key encryption and private key decryption for secure data transmission.",
-        "keywords": "RSA encryption,RSA decryption,asymmetric encryption,public key encryption,private key decryption,digital signature,online tool"
+        "title": "RSA Encryption Tool - Generate Keys & Encrypt/Decrypt",
+        "description": "RSA encryption and decryption tool with key pair generation. Public key encryption and private key decryption for secure data transmission.",
+        "keywords": "rsa encryption, rsa key generator, asymmetric encryption"
       }
     },
     "md5-hash": {
@@ -1053,9 +1053,9 @@
       "output_desc": "Generated MD5 hash value",
       "output_placeholder": "MD5 hash will appear here...",
       "meta": {
-        "title": "MD5 Hash Generator",
-        "description": "Online MD5 hash generation tool. Quickly calculate MD5 hash values from text, suitable for data verification and unique identification.",
-        "keywords": "MD5 hash,hash generator,data verification,MD5 calculation,online tool"
+        "title": "MD5 Generator - Free Online Hash & Checksum Tool",
+        "description": "Generate MD5 hash instantly for text validation and checksum. Free online MD5 generator for data integrity verification.",
+        "keywords": "md5 generator, md5 hash, checksum"
       }
     },
     "sha256-hash": {
@@ -1101,9 +1101,9 @@
         }
       ],
       "meta": {
-        "title": "SHA256 Hash Generator",
-        "description": "Online SHA256 hash generation tool. Generate secure SHA256 hash values, widely used for password storage and data integrity verification.",
-        "keywords": "SHA256 hash,hash generator,password security,data integrity,SHA256 calculation,online tool"
+        "title": "SHA256 Generator - Secure Hash & Password Encryption",
+        "description": "Generate secure SHA256 hash for password encryption and data integrity. Free online SHA-256 hash generator with instant results.",
+        "keywords": "sha256 generator, sha256 hash, password encryption"
       }
     },
     "sha1-hash": {
@@ -1149,9 +1149,9 @@
         }
       ],
       "meta": {
-        "title": "SHA1 Hash Generator",
-        "description": "Online SHA1 hash generation tool. Calculate SHA1 hash values from text, used for data verification and version control systems.",
-        "keywords": "SHA1 hash,hash generator,data verification,SHA1 calculation,version control,online tool"
+        "title": "SHA1 Generator - Free Online Hash Calculator Tool",
+        "description": "Calculate SHA1 hash for data verification and version control. Free online SHA-1 generator used by Git and checksum validation.",
+        "keywords": "sha1 generator, sha1 hash, git hash"
       }
     },
     "hex-encoder-decoder": {
@@ -1201,9 +1201,9 @@
         }
       ],
       "meta": {
-        "title": "Hex Encoder/Decoder",
-        "description": "Online hexadecimal encoding and decoding tool. Convert text to/from hexadecimal strings for data processing and debugging.",
-        "keywords": "Hex encoding,hexadecimal decoding,encoder,decoder,data conversion,online tool"
+        "title": "Hex Encoder/Decoder - Convert Text to Hexadecimal Free",
+        "description": "Convert text to hexadecimal and vice versa. Free online hex encoder for data processing, debugging and development tasks.",
+        "keywords": "hex encoder, hexadecimal converter, hex decoder"
       }
     },
     "binary-encoder-decoder": {
@@ -1253,9 +1253,9 @@
         }
       ],
       "meta": {
-        "title": "Binary Encoder/Decoder",
-        "description": "Online binary encoding and decoding tool. Convert text to/from binary strings for low-level data analysis and learning.",
-        "keywords": "Binary encoding,binary decoding,encoder,decoder,binary conversion,online tool"
+        "title": "Binary Encoder/Decoder - Convert Text to Binary Online",
+        "description": "Convert text to binary code and decode binary to text instantly. Free online tool for data analysis, debugging and learning.",
+        "keywords": "binary encoder, binary decoder, binary converter"
       }
     },
     "qr-code-generator": {
@@ -1337,9 +1337,9 @@
         }
       ],
       "meta": {
-        "title": "QR Code Generator",
-        "description": "Online QR code generation tool. Support custom size, color and error correction level to generate high-quality PNG/SVG format QR codes.",
-        "keywords": "QR code generator,QR code maker,URL to QR code,barcode generator,online tool"
+        "title": "QR Code Generator - Create QR Codes Online Free PNG/SVG",
+        "description": "Generate custom QR codes with adjustable size, color and error correction. Free online QR maker with PNG and SVG export.",
+        "keywords": "qr code generator, qr maker, barcode generator"
       }
     },
     "svg-placeholder-generator": {
@@ -1412,9 +1412,9 @@
         }
       ],
       "meta": {
-        "title": "SVG Placeholder Generator",
-        "description": "Online SVG placeholder image generation tool. Support custom dimensions, text, colors and template styles for quick placeholder creation.",
-        "keywords": "SVG placeholder,placeholder generator,placeholder image,image placeholder,online tool"
+        "title": "SVG Placeholder Generator - Create Custom Placeholder Images",
+        "description": "Generate custom SVG placeholder images with adjustable size, text, color and templates. Free online tool for web development.",
+        "keywords": "svg placeholder, placeholder generator, image placeholder"
       }
     },
     "icon-designer": {
@@ -1556,9 +1556,9 @@
         }
       ],
       "meta": {
-        "title": "Letter Icon Designer",
-        "description": "Online letter icon design tool. Create custom SVG icons with letters, colors, and shapes. Export in multiple sizes for avatars, app icons, and more.",
-        "keywords": "icon designer,letter icon,avatar generator,icon maker,SVG icon,app icon,logo maker,online tool"
+        "title": "Letter Icon Designer - Create Custom SVG Icons & Avatars",
+        "description": "Design letter-based icons with custom colors and shapes. Export multiple sizes for avatars and app icons. Free online icon maker.",
+        "keywords": "icon designer, letter icon, avatar generator"
       }
     },
     "hmac-generator": {
@@ -1630,9 +1630,9 @@
         }
       ],
       "meta": {
-        "title": "HMAC Generator",
-        "description": "Online HMAC generation tool. Support multiple hash algorithms to generate message authentication codes for data integrity and identity verification.",
-        "keywords": "HMAC generator,message authentication code,hash algorithm,data integrity,identity verification,API signature,online tool"
+        "title": "HMAC Generator - API Signature & Message Authentication",
+        "description": "Generate HMAC for API signatures and message authentication. Support multiple hash algorithms for data integrity and identity verification.",
+        "keywords": "hmac generator, api signature, message authentication"
       }
     },
     "ip-lookup": {
@@ -1713,9 +1713,9 @@
         }
       ],
       "meta": {
-        "title": "IP Address Lookup Tool",
-        "description": "Online IP address lookup tool. Get geographical location, ISP information, timezone and other detailed information of IP addresses.",
-        "keywords": "IP lookup,IP address,geolocation,network information,ISP query,online tool"
+        "title": "IP Lookup - Check IP Address Location & Network Info",
+        "description": "Look up IP address geolocation, ISP information and timezone details. Free online IP checker for network analysis.",
+        "keywords": "ip lookup, ip address, geolocation"
       }
     },
     "time-converter": {
@@ -1763,9 +1763,9 @@
         }
       ],
       "meta": {
-        "title": "Milliseconds Time Converter - Timestamp to yyyy-MM-dd HH:mm:ss",
-        "description": "Free online tool to convert millisecond timestamps into yyyy-MM-dd HH:mm:ss strings and back again with instant validation.",
-        "keywords": "milliseconds to date,timestamp converter,date string to milliseconds,yyyy-MM-dd HH:mm:ss,time tools,online converter"
+        "title": "Timestamp Converter - Milliseconds to Date & Vice Versa",
+        "description": "Convert timestamps to yyyy-MM-dd HH:mm:ss format and vice versa. Free online time converter with validation support.",
+        "keywords": "timestamp converter, milliseconds to date, time converter"
       }
     },
     "cron-expression-parser": {
@@ -1840,9 +1840,9 @@
         }
       ],
       "meta": {
-        "title": "Cron Expression Parser - Validate cron schedules online",
-        "description": "Free online cron expression parser that validates syntax and previews upcoming run times with human-readable breakdowns.",
-        "keywords": "cron expression parser,cron validator,cron schedule preview,cron tester,automation tools"
+        "title": "Cron Parser - Validate & Test Cron Expressions Online",
+        "description": "Validate cron syntax and preview upcoming execution times. Free cron expression parser with field expansion and time preview.",
+        "keywords": "cron parser, cron validator, cron expression"
       }
     },
     "curl-converter": {
@@ -1905,9 +1905,9 @@
         }
       ],
       "meta": {
-        "title": "cURL Command Converter - Convert to Multiple Programming Languages",
-        "description": "Online cURL command conversion tool. Quickly convert cURL commands to JavaScript, Python, Node.js, PHP, Go and other language code with online testing support.",
-        "keywords": "cURL converter,API testing,HTTP request,code generation,developer tools,online tools"
+        "title": "cURL Converter - Convert to JavaScript, Python, PHP & More",
+        "description": "Convert cURL commands to JavaScript, Python, Node.js, PHP and Go code. Free online cURL converter with direct request testing.",
+        "keywords": "curl converter, api testing, code generator"
       }
     },
     "color-converter": {
@@ -1967,9 +1967,9 @@
         }
       ],
       "meta": {
-        "title": "Color Converter - HEX RGB HSL CSS Color Format Conversion",
-        "description": "Online color format conversion tool. Convert between HEX, RGB, HSL and CSS color names with real-time preview and one-click copy.",
-        "keywords": "color converter,HEX to RGB,RGB to HSL,CSS colors,color format conversion,online tool"
+        "title": "Color Converter - HEX RGB HSL CSS Color Format Tool",
+        "description": "Convert between HEX, RGB, HSL and CSS color names with live preview. Free online color format converter with one-click copy.",
+        "keywords": "color converter, hex to rgb, color format"
       }
     },
     "docker-run-to-compose": {
@@ -2027,9 +2027,9 @@
         }
       ],
       "meta": {
-        "title": "Docker Run to Compose Tool",
-        "description": "Online Docker Run command conversion tool. Quickly convert docker run commands to docker-compose.yml configuration files, improving container management efficiency.",
-        "keywords": "Docker,docker-compose,container orchestration,command conversion,YAML configuration,DevOps tools,online tools"
+        "title": "Docker Run to Compose - Convert Commands to YAML Config",
+        "description": "Convert docker run commands to docker-compose.yml configuration. Free online converter for container orchestration efficiency.",
+        "keywords": "docker compose, docker converter, container orchestration"
       }
     },
     "base64-file-converter": {
@@ -2106,9 +2106,9 @@
         }
       ],
       "meta": {
-        "title": "Base64 Image Converter",
-        "description": "Online Base64 image conversion tool. Supports bidirectional conversion between images and Base64 encoding for web development and data embedding.",
-        "keywords": "Base64 conversion,image encoding,encoding tool,decoding tool,image converter,online tool"
+        "title": "Base64 Image Converter - Image to Base64 & Vice Versa",
+        "description": "Convert images to Base64 encoding and decode Base64 to images. Support JPG, PNG, GIF, WebP formats. Free online tool.",
+        "keywords": "base64 image, image converter, base64 encoder"
       }
     },
     "image-to-dot-matrix": {
@@ -2214,9 +2214,9 @@
         }
       ],
       "meta": {
-        "title": "Image to Dot Matrix Tool",
-        "description": "Online image to dot matrix conversion tool. Supports multiple dot shapes and color modes, generates unique dot matrix artistic effects for design and creative projects.",
-        "keywords": "dot matrix,image conversion,artistic effect,pixel art,image processing,online tool"
+        "title": "Image to Dot Matrix - Convert Images to Pixel Art Effect",
+        "description": "Convert images or text to dot matrix art with multiple dot shapes and color modes. Free online tool for creative designs.",
+        "keywords": "dot matrix, pixel art, image effect"
       }
     }
   },
