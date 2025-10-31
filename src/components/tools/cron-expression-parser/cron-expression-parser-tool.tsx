@@ -306,7 +306,7 @@ export default function CronExpressionParserTool() {
   const now = new Date()
 
   return (
-    <div className="space-y-8">
+    <div className="container mx-auto p-6 space-y-8">
       {/* Cron 表达式格式说明 */}
       <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900 dark:bg-blue-950/20">
         <CardHeader>

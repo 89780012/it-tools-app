@@ -47,7 +47,7 @@ const SVG_PRESET_COLORS = [
   { name: 'Orange', color: '#F97316' },
 ]
 
-const ICON_SIZES = [16, 32, 64, 128, 256, 512, 1024]
+const ICON_SIZES = [16, 32, 64, 128, 192, 256, 512, 1024]
 
 export default function IconDesignerPage() {
   const t = useTranslations()
@@ -412,7 +412,6 @@ export default function IconDesignerPage() {
     img.src = url
   }
 
-  // 此处继续其他已有的函数... (downloadICO, createICO, createBitmap, downloadAllSizes, applyPresetColor, randomizeColors)
   
   // 批量下载ICO文件（每个尺寸单独一个ICO，打包成ZIP）
   const downloadICO = async (useSelectedSizes: boolean = false) => {

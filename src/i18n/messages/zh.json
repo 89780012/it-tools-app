@@ -515,7 +515,7 @@
       "name": "JSON差异对比",
       "description": "比较两个JSON数据的差异",
       "original": "原始数据",
-      "modified_data": "修改后数据",
+      "modified": "修改后数据",
       "left_placeholder": "请输入原始JSON数据...",
       "right_placeholder": "请输入修改后的JSON数据...",
       "compare_button": "对比差异",

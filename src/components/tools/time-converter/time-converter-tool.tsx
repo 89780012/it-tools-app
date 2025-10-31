@@ -100,7 +100,7 @@ export default function TimeConverterTool() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="container mx-auto p-6 space-y-8">
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>

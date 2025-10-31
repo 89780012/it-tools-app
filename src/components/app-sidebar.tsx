@@ -34,6 +34,7 @@ import {
   Palette,
   Terminal,
   Grid3x3,
+  Box,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -77,6 +78,7 @@ const toolIconMap = {
   palette: Palette,              // Color converter
   terminal: Terminal,            // cURL converter
   "grid-3x3": Grid3x3,           // Image to dot matrix
+  box: Box,                      // Docker run to compose
 }
 
 export function AppSidebar() {
