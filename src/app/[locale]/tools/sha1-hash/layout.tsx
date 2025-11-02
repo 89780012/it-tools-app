@@ -4,20 +4,19 @@ import { getTranslations, getLocale } from 'next-intl/server'
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   const t = await getTranslations({ locale, namespace: 'tools.sha1-hash.meta' })
-  const tSite = await getTranslations({ locale, namespace: 'meta' })
   
   return {
-    title: `${t('title')} - ${tSite('site.name')}`,
+    title: t('title'),
     description: t('description'),
     keywords: t('keywords'),
     openGraph: {
-      title: `${t('title')} - ${tSite('site.name')}`,
+      title: t('title'),
       description: t('description'),
       url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://www.toolkitpub.com'}/${locale === 'en' ? '' : locale + '/'}tools/sha1-hash`,
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${t('title')} - ${tSite('site.name')}`,
+      title: t('title'),
       description: t('description'),
     },
     alternates: {
