@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import {NextIntlClientProvider} from 'next-intl';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
+import { getLocale } from 'next-intl/server';
 
 
 const geistSans = Geist({
@@ -18,13 +19,15 @@ const geistMono = Geist_Mono({
 });
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-8Q613219YV" />
         <Script id="gtag-init">
