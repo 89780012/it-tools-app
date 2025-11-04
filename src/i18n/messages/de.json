@@ -1,121 +1,121 @@
 {
   "common": {
-    "tools": "Tools",
-    "language": "Language",
-    "theme": "Theme",
-    "search": "Search",
-    "clear": "Clear",
-    "copy": "Copy",
-    "format": "Format",
-    "minify": "Minify",
-    "convert": "Convert",
-    "download": "Download",
-    "generate": "Generate",
-    "input": "Input",
-    "output": "Output",
-    "upload_file": "Upload File",
-    "remove": "Remove",
-    "copied": "Copied",
-    "downloaded": "Downloaded",
-    "error": "Error",
-    "success": "Success",
-    "copy_failed": "Copy failed",
-    "home": "Home",
-    "coming_soon": "More tools coming soon...",
-    "click_sidebar": "Use via left sidebar menu",
-    "actions": "Actions",
-    "back_to_home": "Back to Home",
-    "close": "Close"
+    "tools": "Werkzeuge",
+    "language": "Sprache",
+    "theme": "Design",
+    "search": "Suchen",
+    "clear": "Löschen",
+    "copy": "Kopieren",
+    "format": "Formatieren",
+    "minify": "Minimieren",
+    "convert": "Konvertieren",
+    "download": "Herunterladen",
+    "generate": "Generieren",
+    "input": "Eingabe",
+    "output": "Ausgabe",
+    "upload_file": "Datei hochladen",
+    "remove": "Entfernen",
+    "copied": "Kopiert",
+    "downloaded": "Heruntergeladen",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "copy_failed": "Kopieren fehlgeschlagen",
+    "home": "Startseite",
+    "coming_soon": "Weitere Werkzeuge kommen bald...",
+    "click_sidebar": "Über das linke Seitenmenü verwenden",
+    "actions": "Aktionen",
+    "back_to_home": "Zurück zur Startseite",
+    "close": "Schließen"
   },
   "theme": {
-    "light": "Light",
-    "dark": "Dark",
+    "light": "Hell",
+    "dark": "Dunkel",
     "system": "System"
   },
   "header": {
-    "title": "IT Tools Collection",
-    "subtitle": "Essential Toolbox for Developers"
+    "title": "IT-Werkzeugsammlung",
+    "subtitle": "Unverzichtbare Werkzeugkiste für Entwickler"
   },
   "meta": {
     "site": {
-      "title": "IT Tools Collection - Developer Toolbox",
-      "name": "IT Tools Collection",
-      "description": "Online tools collection designed for developers, including JSON formatting, text processing, encryption/decryption and other practical tools",
-      "keywords": "developer tools,online tools,JSON tools,data conversion,text processing,frontend tools,toolbox"
+      "title": "IT-Werkzeugsammlung - Entwickler-Toolbox",
+      "name": "IT-Werkzeugsammlung",
+      "description": "Online-Werkzeugsammlung für Entwickler, einschließlich JSON-Formatierung, Textverarbeitung, Verschlüsselung/Entschlüsselung und anderen praktischen Werkzeugen",
+      "keywords": "Entwicklerwerkzeuge,Online-Werkzeuge,JSON-Tools,Datenkonvertierung,Textverarbeitung,Frontend-Tools,Toolbox"
     }
   },
   "home": {
-    "tools_total": "Total Tools",
-    "tools_categories": "Tool Categories",
-    "update_frequency": "Update Frequency",
-    "continuously_adding": "Continuously adding",
-    "cover_main_scenarios": "Cover main scenarios",
-    "weekly": "Weekly",
-    "new_tools_features": "New tools and features",
-    "categories_title": "Tool Categories",
-    "popular_tools_title": "Popular Tools",
-    "features_title": "Features",
-    "tools_count": "{count} tools",
-    "coming_soon": "Coming soon",
-    "modern_design": "🎨 Modern Design",
-    "modern_design_desc": "Built with shadcn/ui, supports light/dark theme switching, providing elegant user experience",
-    "multilingual": "🌐 Multilingual Support",
-    "multilingual_desc": "Supports Chinese and English interfaces to meet different language preferences",
-    "high_performance": "⚡ High Performance",
-    "high_performance_desc": "Based on Next.js and TypeScript, providing fast and responsive user experience",
-    "privacy_protection": "🔒 Privacy Protection",
-    "privacy_protection_desc": "All tools run on client-side, ensuring your data privacy and security",
-    "categories_subtitle": "Browse all available tool categories and features",
-    "popular_tools_subtitle": "Most popular and useful tools recommended by developers",
-    "features_subtitle": "Modern design, multilingual support, privacy-focused developer tool platform",
-    "new_language_announcement": "🎉 We're excited to announce that German (Deutsch) is now supported! Thank you for your support!"
+    "tools_total": "Werkzeuge insgesamt",
+    "tools_categories": "Werkzeug-Kategorien",
+    "update_frequency": "Aktualisierungshäufigkeit",
+    "continuously_adding": "Kontinuierlich hinzufügend",
+    "cover_main_scenarios": "Hauptszenarien abdecken",
+    "weekly": "Wöchentlich",
+    "new_tools_features": "Neue Werkzeuge und Funktionen",
+    "categories_title": "Werkzeug-Kategorien",
+    "popular_tools_title": "Beliebte Werkzeuge",
+    "features_title": "Funktionen",
+    "tools_count": "{count} Werkzeuge",
+    "coming_soon": "Demnächst verfügbar",
+    "modern_design": "🎨 Modernes Design",
+    "modern_design_desc": "Erstellt mit shadcn/ui, unterstützt Hell-/Dunkel-Theme-Umschaltung und bietet elegante Benutzererfahrung",
+    "multilingual": "🌐 Mehrsprachige Unterstützung",
+    "multilingual_desc": "Unterstützt Oberflächen in verschiedenen Sprachen, um unterschiedliche Sprachpräferenzen zu erfüllen",
+    "high_performance": "⚡ Hohe Leistung",
+    "high_performance_desc": "Basiert auf Next.js und TypeScript und bietet schnelle und reaktionsschnelle Benutzererfahrung",
+    "privacy_protection": "🔒 Datenschutz",
+    "privacy_protection_desc": "Alle Werkzeuge laufen client-seitig und gewährleisten Ihre Datensicherheit und Privatsphäre",
+    "categories_subtitle": "Durchsuchen Sie alle verfügbaren Werkzeug-Kategorien und Funktionen",
+    "popular_tools_subtitle": "Die beliebtesten und nützlichsten von Entwicklern empfohlenen Werkzeuge",
+    "features_subtitle": "Modernes Design, mehrsprachige Unterstützung, datenschutzorientierte Entwickler-Werkzeug-Plattform",
+    "new_language_announcement": "🎉 Wir freuen uns, bekannt zu geben, dass Deutsch jetzt unterstützt wird! Vielen Dank für Ihre Unterstützung!"
   },
   "categories": {
-    "json_tools": "JSON Utilities",
-    "json_tools_desc": "Formatting, inspection, and generation helpers for JSON",
-    "json_converters": "Format Converters",
-    "json_converters_desc": "Bidirectional conversion between JSON and CSV/YAML/XML",
-    "json-tools": "JSON Utilities",
-    "json-converters": "Converters",
-    "text": "Text Tools",
-    "text_desc": "Text processing and conversion tools",
-    "crypto": "Crypto Tools",
-    "crypto_desc": "Encryption, decryption and hash tools",
-    "network": "Network Tools",
-    "network_desc": "Network debugging and testing tools",
-    "time": "Time Tools",
-    "time_desc": "Time conversion, planning and age helpers",
-    "image": "Image Tools",
-    "image_desc": "Image processing and conversion tools",
-    "developer": "Developer Tools",
-    "developer_desc": "Utilities for cron, automation and power users",
-    "generators": "Generator Tools",
-    "generators_desc": "Random data generation tools for UUID, passwords, and more",
-    "docker": "Docker Tools",
-    "docker_desc": "Docker command conversion and configuration generation tools"
+    "json_tools": "JSON-Hilfsprogramme",
+    "json_tools_desc": "Formatierungs-, Inspektions- und Generierungshilfen für JSON",
+    "json_converters": "Format-Konverter",
+    "json_converters_desc": "Bidirektionale Konvertierung zwischen JSON und CSV/YAML/XML",
+    "json-tools": "JSON-Hilfsprogramme",
+    "json-converters": "Konverter",
+    "text": "Text-Werkzeuge",
+    "text_desc": "Textverarbeitungs- und Konvertierungswerkzeuge",
+    "crypto": "Krypto-Werkzeuge",
+    "crypto_desc": "Verschlüsselungs-, Entschlüsselungs- und Hash-Werkzeuge",
+    "network": "Netzwerk-Werkzeuge",
+    "network_desc": "Netzwerk-Debugging- und Test-Werkzeuge",
+    "time": "Zeit-Werkzeuge",
+    "time_desc": "Zeitkonvertierung, Planung und Altershelfer",
+    "image": "Bild-Werkzeuge",
+    "image_desc": "Bildverarbeitungs- und Konvertierungswerkzeuge",
+    "developer": "Entwickler-Werkzeuge",
+    "developer_desc": "Hilfsprogramme für Cron, Automatisierung und Power-User",
+    "generators": "Generator-Werkzeuge",
+    "generators_desc": "Zufallsdaten-Generierungswerkzeuge für UUID, Passwörter und mehr",
+    "docker": "Docker-Werkzeuge",
+    "docker_desc": "Docker-Befehlskonvertierung und Konfigurationsgenerierungswerkzeuge"
   },
   "changelog": {
-    "title": "Changelog",
-    "description": "View the development history and feature updates of the project",
-    "lastUpdated": "Last Updated",
-    "footer": "Continuously updating, stay tuned for more features...",
+    "title": "Änderungsprotokoll",
+    "description": "Zeigen Sie die Entwicklungsgeschichte und Feature-Updates des Projekts an",
+    "lastUpdated": "Zuletzt aktualisiert",
+    "footer": "Wird kontinuierlich aktualisiert, bleiben Sie dran für weitere Funktionen...",
     "meta": {
-      "title": "Changelog - IT Tools Collection",
-      "description": "Complete development history and feature update records of IT Tools Collection project",
-      "keywords": "changelog,version history,development history,feature updates,project changes"
+      "title": "Änderungsprotokoll - IT-Werkzeugsammlung",
+      "description": "Vollständige Entwicklungsgeschichte und Feature-Update-Aufzeichnungen des IT-Werkzeugsammlung-Projekts",
+      "keywords": "Änderungsprotokoll,Versionshistorie,Entwicklungsgeschichte,Feature-Updates,Projektänderungen"
     }
   },
   "tools": {
     "json-formatter": {
-      "name": "JSON Formatter",
-      "description": "Format, validate and minify JSON data",
-      "placeholder": "Please enter JSON data...",
-      "invalid": "Invalid JSON format",
-      "formatted": "Formatting completed",
-      "input_title": "Input JSON",
-      "output_title": "Output Result",
-      "output_desc": "Formatted JSON data",
-      "output_placeholder": "Formatted JSON will be displayed here...",
+      "name": "JSON-Formatierer",
+      "description": "JSON-Daten formatieren, validieren und minimieren",
+      "placeholder": "Bitte geben Sie JSON-Daten ein...",
+      "invalid": "Ungültiges JSON-Format",
+      "formatted": "Formatierung abgeschlossen",
+      "input_title": "JSON eingeben",
+      "output_title": "Ausgabeergebnis",
+      "output_desc": "Formatierte JSON-Daten",
+      "output_placeholder": "Formatiertes JSON wird hier angezeigt...",
       "introduction": "JSON Formatter is a powerful data processing tool designed specifically for developers. It can quickly parse, validate, and beautify JSON data, supporting real-time syntax checking, one-click formatting, and intelligent compression features. Whether it's API debugging, configuration file editing, data analysis, or code optimization, it provides convenient and efficient solutions. The tool runs completely on the client side, ensuring your sensitive data remains secure and reliable at all times.",
       "features": [
         "🎯 Real-time JSON syntax validation with intelligent error prompts",
@@ -156,8 +156,8 @@
       }
     },
     "json-to-csv": {
-      "name": "JSON to CSV",
-      "description": "Convert JSON data to CSV format",
+      "name": "JSON ⇄ CSV Konverter",
+      "description": "JSON-Daten in CSV-Format konvertieren",
       "placeholder": "Please enter JSON data (object array or single object)...",
       "csv_placeholder": "Please enter CSV data (first row as headers)...",
       "invalid": "Invalid JSON format",
@@ -219,8 +219,8 @@
       }
     },
     "json-to-yaml": {
-      "name": "JSON to YAML",
-      "description": "Convert JSON data to YAML format",
+      "name": "JSON ⇄ YAML Konverter",
+      "description": "JSON-Daten in YAML-Format konvertieren",
       "placeholder": "Please enter JSON data...",
       "yaml_placeholder": "Please enter YAML data...",
       "invalid": "Invalid JSON format",
@@ -273,8 +273,8 @@
       }
     },
     "json-to-xml": {
-      "name": "JSON to XML",
-      "description": "Convert JSON data to XML format",
+      "name": "JSON ⇄ XML Konverter",
+      "description": "JSON-Daten in XML-Format konvertieren",
       "placeholder": "Please enter JSON data...",
       "invalid": "Invalid JSON format",
       "convert_button": "Convert to XML",
@@ -340,8 +340,8 @@
       }
     },
     "xml-to-json": {
-      "name": "XML to JSON Converter",
-      "description": "Quickly convert XML data to JSON format",
+      "name": "XML zu JSON Konverter",
+      "description": "XML-Daten schnell in JSON-Format konvertieren",
       "input_title": "Input XML",
       "input_desc": "Paste or enter XML data to convert",
       "output_title": "Output JSON",
@@ -390,8 +390,8 @@
       }
     },
     "json-visualizer": {
-      "name": "JSON Visualizer",
-      "description": "Display JSON data in tree structure",
+      "name": "JSON-Visualisierer",
+      "description": "JSON-Daten in Baumstruktur anzeigen",
       "placeholder": "Please enter JSON data...",
       "parse_button": "Parse JSON",
       "input_placeholder": "Please enter JSON data to visualize...",
@@ -449,8 +449,8 @@
       }
     },
     "json-generator": {
-      "name": "JSON Data Generator",
-      "description": "Generate mock JSON data for testing",
+      "name": "JSON-Datengenerator",
+      "description": "Mock-JSON-Daten zum Testen generieren",
       "configuration": "Configuration",
       "record_count": "Record Count",
       "output_format": "Output Format",
@@ -513,8 +513,8 @@
       }
     },
     "json-diff": {
-      "name": "JSON Diff Comparison",
-      "description": "Compare differences between two JSON data",
+      "name": "JSON-Differenzvergleich",
+      "description": "Unterschiede zwischen zwei JSON-Daten vergleichen",
       "original": "Original Data",
       "modified": "Modified",
       "left_placeholder": "Please enter original JSON data...",
@@ -618,8 +618,8 @@
       }
     },
     "base64-encoder-decoder": {
-      "name": "Base64 Encoder/Decoder",
-      "description": "Base64 string encoding and decoding tool",
+      "name": "Base64-Encoder/Decoder",
+      "description": "Base64-String-Kodierungs- und Dekodierungswerkzeug",
       "placeholder": "Enter text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
@@ -670,8 +670,8 @@
       }
     },
     "url-encoder-decoder": {
-      "name": "URL Encoder/Decoder",
-      "description": "URL string encoding and decoding tool",
+      "name": "URL-Encoder/Decoder",
+      "description": "URL-String-Kodierungs- und Dekodierungswerkzeug",
       "placeholder": "Enter URL or text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
@@ -722,8 +722,8 @@
       }
     },
     "uuid-generator": {
-      "name": "UUID Generator",
-      "description": "Generate UUID unique identifiers in batch",
+      "name": "UUID-Generator",
+      "description": "UUID-eindeutige Kennungen stapelweise generieren",
       "settings_title": "Generation Settings",
       "settings_desc": "Configure UUID generation parameters",
       "count_label": "Generation Count",
@@ -787,8 +787,8 @@
       }
     },
     "password-generator": {
-      "name": "Password Generator",
-      "description": "Generate secure and reliable random passwords",
+      "name": "Passwort-Generator",
+      "description": "Sichere und zuverlässige Zufallspasswörter generieren",
       "settings_title": "Password Settings",
       "settings_desc": "Customize password generation rules",
       "length": "Password Length",
@@ -856,8 +856,8 @@
       }
     },
     "aes-encrypt-decrypt": {
-      "name": "AES Encrypt/Decrypt",
-      "description": "AES symmetric encryption algorithm tool",
+      "name": "AES-Verschlüsselung/Entschlüsselung",
+      "description": "AES-symmetrisches Verschlüsselungsalgorithmus-Werkzeug",
       "input_title": "Input Data",
       "input_desc": "Enter data to encrypt/decrypt",
       "input_placeholder": "Enter text to encrypt or decrypt...",
@@ -928,8 +928,8 @@
       }
     },
     "rsa-encrypt-decrypt": {
-      "name": "RSA Encrypt/Decrypt",
-      "description": "RSA asymmetric encryption algorithm tool",
+      "name": "RSA-Verschlüsselung/Entschlüsselung",
+      "description": "RSA-asymmetrisches Verschlüsselungsalgorithmus-Werkzeug",
       "encrypt_tab": "Encrypt/Decrypt",
       "keygen_tab": "Key Generation",
       "input_title": "Input Data",
@@ -1012,8 +1012,8 @@
       }
     },
     "md5-hash": {
-      "name": "MD5 Hash Generator",
-      "description": "Generate MD5 hash values from text",
+      "name": "MD5-Hash-Generator",
+      "description": "MD5-Hash-Werte aus Text generieren",
       "placeholder": "Enter text to calculate MD5 hash...",
       "generate": "Generate MD5",
       "input_title": "Input Text",
@@ -1060,8 +1060,8 @@
       }
     },
     "sha256-hash": {
-      "name": "SHA256 Hash Generator",
-      "description": "Generate SHA256 hash values from text",
+      "name": "SHA256-Hash-Generator",
+      "description": "SHA256-Hash-Werte aus Text generieren",
       "placeholder": "Enter text to calculate SHA256 hash...",
       "generate": "Generate SHA256",
       "input_title": "Input Text",
@@ -1108,8 +1108,8 @@
       }
     },
     "sha1-hash": {
-      "name": "SHA1 Hash Generator",
-      "description": "Generate SHA1 hash values from text",
+      "name": "SHA1-Hash-Generator",
+      "description": "SHA1-Hash-Werte aus Text generieren",
       "placeholder": "Enter text to calculate SHA1 hash...",
       "generate": "Generate SHA1",
       "input_title": "Input Text",
@@ -1156,8 +1156,8 @@
       }
     },
     "hex-encoder-decoder": {
-      "name": "Hex Encoder/Decoder",
-      "description": "Hexadecimal string encoding and decoding tool",
+      "name": "Hex-Encoder/Decoder",
+      "description": "Hexadezimale String-Kodierungs- und Dekodierungswerkzeug",
       "placeholder": "Enter text to encode/decode or hexadecimal...",
       "encode": "Encode to Hex",
       "decode": "Decode from Hex",
@@ -1208,8 +1208,8 @@
       }
     },
     "binary-encoder-decoder": {
-      "name": "Binary Encoder/Decoder",
-      "description": "Binary string encoding and decoding tool",
+      "name": "Binär-Encoder/Decoder",
+      "description": "Binäre String-Kodierungs- und Dekodierungswerkzeug",
       "placeholder": "Enter text to encode/decode or binary...",
       "encode": "Encode to Binary",
       "decode": "Decode from Binary",
@@ -1260,8 +1260,8 @@
       }
     },
     "qr-code-generator": {
-      "name": "QR Code Generator",
-      "description": "Generate custom QR code images",
+      "name": "QR-Code-Generator",
+      "description": "Benutzerdefinierte QR-Code-Bilder generieren",
       "placeholder": "Enter content to generate QR code...",
       "input_title": "Input Content",
       "input_desc": "Enter text, URL or other content",
@@ -1344,8 +1344,8 @@
       }
     },
     "svg-placeholder-generator": {
-      "name": "SVG Placeholder Generator",
-      "description": "Generate custom SVG placeholder images",
+      "name": "SVG-Platzhalter-Generator",
+      "description": "Benutzerdefinierte SVG-Platzhalterbilder generieren",
       "width_label": "Width",
       "height_label": "Height",
       "text_label": "Placeholder Text",
@@ -1419,8 +1419,8 @@
       }
     },
     "icon-designer": {
-      "name": "Icon Designer",
-      "description": "Design icons with text, icon library, or custom SVG, with custom colors and export in multiple sizes",
+      "name": "Symbol-Designer",
+      "description": "Symbole mit Text, Symbol-Bibliothek oder benutzerdefiniertem SVG mit benutzerdefinierten Farben entwerfen und in mehreren Größen exportieren",
       "settings_title": "Icon Settings",
       "settings_desc": "Customize your icon design",
       "content_mode": "Content Mode",
@@ -1563,8 +1563,8 @@
       }
     },
     "hmac-generator": {
-      "name": "HMAC Generator",
-      "description": "HMAC message authentication code generation tool",
+      "name": "HMAC-Generator",
+      "description": "HMAC-Nachrichtenauthentifizierungscode-Generierungswerkzeug",
       "input_title": "Input Configuration",
       "input_desc": "Configure HMAC generation parameters",
       "data_label": "Message Data",
@@ -1637,8 +1637,8 @@
       }
     },
     "ip-lookup": {
-      "name": "IP Address Lookup",
-      "description": "Query geographical location and network information of IP addresses",
+      "name": "IP-Adress-Abfrage",
+      "description": "Geografische Lage und Netzwerkinformationen von IP-Adressen abfragen",
       "input_title": "IP Address Input",
       "output_title": "Query Results",
       "placeholder": "Enter IP address (e.g. 8.8.8.8)",
@@ -1720,8 +1720,8 @@
       }
     },
     "time-converter": {
-      "name": "Milliseconds Time Converter",
-      "description": "Convert between millisecond timestamps and formatted date strings.",
+      "name": "Millisekunden-Zeit-Konverter",
+      "description": "Zwischen Millisekunden-Zeitstempel und formatierten Datumszeichenfolgen konvertieren.",
       "from_milliseconds_title": "Milliseconds → Date string",
       "from_milliseconds_description": "Paste or type a millisecond value to view the formatted time.",
       "milliseconds_input_label": "Milliseconds",
@@ -1770,8 +1770,8 @@
       }
     },
     "cron-expression-parser": {
-      "name": "Cron Expression Parser",
-      "description": "Validate cron syntax and preview upcoming schedules.",
+      "name": "Cron-Ausdruck-Parser",
+      "description": "Cron-Syntax validieren und bevorstehende Zeitpläne anzeigen.",
       "format_title": "Cron Expression Format Guide",
       "format_description": "Understand the structure of cron expressions and special characters.",
       "format": {
@@ -1847,8 +1847,8 @@
       }
     },
     "curl-converter": {
-      "name": "cURL Command Converter",
-      "description": "Convert cURL commands to code in various programming languages with testing capability",
+      "name": "cURL-Befehlskonverter",
+      "description": "cURL-Befehle in Code verschiedener Programmiersprachen mit Testfunktion konvertieren",
       "input_title": "Enter cURL Command",
       "input_desc": "Paste or type your cURL command",
       "input_placeholder": "Enter cURL command...\nExample: curl -X POST https://api.example.com/users \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"John\",\"email\":\"john@example.com\"}'",
@@ -1912,8 +1912,8 @@
       }
     },
     "color-converter": {
-      "name": "Color Converter",
-      "description": "Convert colors between HEX, RGB, HSL and CSS color names",
+      "name": "Farbkonverter",
+      "description": "Farben zwischen HEX, RGB, HSL und CSS-Farbnamen konvertieren",
       "input_title": "Input Color",
       "input_desc": "Enter color value in any format",
       "input_placeholder": "Enter color value, e.g.: #FF5733, rgb(255, 87, 51), hsl(9, 100%, 60%) or red",
@@ -1974,8 +1974,8 @@
       }
     },
     "docker-run-to-compose": {
-      "name": "Docker Run to Compose",
-      "description": "Convert docker run commands to docker-compose.yml format",
+      "name": "Docker Run zu Compose",
+      "description": "Docker-Run-Befehle in docker-compose.yml-Format konvertieren",
       "input_title": "Docker Run Command",
       "input_desc": "Paste or enter your docker run command",
       "input_placeholder": "Enter docker run command...\nExample: docker run -d -p 8080:80 --name my-nginx -v /data:/usr/share/nginx/html nginx:latest",
@@ -2034,8 +2034,8 @@
       }
     },
     "base64-file-converter": {
-      "name": "Base64 Image Converter",
-      "description": "Convert images to Base64 encoding and vice versa",
+      "name": "Base64-Bild-Konverter",
+      "description": "Bilder in Base64-Kodierung konvertieren und umgekehrt",
       "image_description": "Professional image Base64 encoding conversion tool, supporting JPG, PNG, GIF, WebP and other common image formats",
       "image_to_base64": "Image to Base64",
       "base64_to_image": "Base64 to Image",
@@ -2113,8 +2113,8 @@
       }
     },
     "image-to-dot-matrix": {
-      "name": "Image to Dot Matrix",
-      "description": "Convert images or text to dot matrix effect with multiple styles",
+      "name": "Bild zu Punktmatrix",
+      "description": "Bilder oder Text mit mehreren Stilen in Punktmatrix-Effekt konvertieren",
       "mode_title": "Input Mode",
       "mode_desc": "Choose to generate dot matrix from image or text",
       "mode_image": "Image Mode",
@@ -2222,18 +2222,18 @@
     }
   },
   "seo": {
-    "tool_introduction": "Tool Introduction",
-    "tool_features": "Key Features",
-    "frequently_asked_questions": "Frequently Asked Questions",
-    "related_tools": "Related Tools",
-    "all_tools": "All Tools",
-    "more_tools": "More Tools",
-    "tools_in_category": "Tools in Category",
-    "popular_tools": "Popular Tools",
-    "expand": "Expand",
-    "collapse": "Collapse",
-    "view_tool": "View Tool",
-    "try_now": "Try Now",
-    "showing_tools": "Showing {current} of {total} tools"
+    "tool_introduction": "Werkzeug-Einführung",
+    "tool_features": "Hauptfunktionen",
+    "frequently_asked_questions": "Häufig gestellte Fragen",
+    "related_tools": "Verwandte Werkzeuge",
+    "all_tools": "Alle Werkzeuge",
+    "more_tools": "Weitere Werkzeuge",
+    "tools_in_category": "Werkzeuge in der Kategorie",
+    "popular_tools": "Beliebte Werkzeuge",
+    "expand": "Erweitern",
+    "collapse": "Einklappen",
+    "view_tool": "Werkzeug anzeigen",
+    "try_now": "Jetzt ausprobieren",
+    "showing_tools": "Zeige {current} von {total} Werkzeugen"
   }
 }

@@ -3,7 +3,8 @@
 import { useTranslations } from 'next-intl'
 import { toolsConfig } from "@/lib/tools-config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Wrench, Star, TrendingUp, Zap } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Wrench, Star, TrendingUp, Zap, CheckCircle2 } from "lucide-react"
 
 export default function Home() {
   const t = useTranslations()
@@ -20,6 +21,13 @@ export default function Home() {
             <p className="text-xl text-muted-foreground mt-2">{t("header.subtitle")}</p>
           </div>
         </div>
+        
+        <Alert className="mb-6 border-primary/50 bg-primary/5">
+          <CheckCircle2 className="h-5 w-5 text-primary" />
+          <AlertDescription className="text-base">
+            {t("home.new_language_announcement")}
+          </AlertDescription>
+        </Alert>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           <Card>

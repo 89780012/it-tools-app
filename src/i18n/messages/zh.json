@@ -67,7 +67,8 @@
     "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全",
     "categories_subtitle": "浏览所有可用的工具类别和功能",
     "popular_tools_subtitle": "最受开发者欢迎的实用工具推荐",
-    "features_subtitle": "现代化设计、多语言支持、隐私保护的开发者工具平台"
+    "features_subtitle": "现代化设计、多语言支持、隐私保护的开发者工具平台",
+    "new_language_announcement": "🎉 我们很高兴地宣布，现在已支持德语（Deutsch）！感谢您的支持！"
   },
   "categories": {
     "json_tools": "JSON 实用工具",
