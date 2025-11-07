@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { getLocale } from 'next-intl/server'
 import LocaleLayoutClient from './layout-client'
 
+export const runtime = "edge";
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   

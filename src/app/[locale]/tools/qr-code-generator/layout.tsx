@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { getTranslations, getLocale } from 'next-intl/server'
 
+export const runtime = "edge";
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale()
   const t = await getTranslations({ locale, namespace: 'tools.qr-code-generator.meta' })

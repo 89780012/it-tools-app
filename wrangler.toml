@@ -1,0 +1,7 @@
+name = "it-tools-app"
+compatibility_date = "2025-11-07"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[env.production.vars]
+NEXT_PUBLIC_BASE_URL = "https://www.toolkitpub.com"
