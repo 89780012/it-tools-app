@@ -7,8 +7,6 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { getLocale } from 'next-intl/server';
 
-export const runtime = "edge";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

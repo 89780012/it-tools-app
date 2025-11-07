@@ -1,10 +1,10 @@
+"use client"
+
 import { getLocalizedChangelogData } from "@/lib/changelog-data";
 import { Timeline } from "@/components/changelog/timeline";
 import { useTranslations, useLocale } from "next-intl";
 import { Clock, GitBranch } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-export const runtime = "edge";
 
 export default function ChangelogPage() {
   const t = useTranslations('changelog');
