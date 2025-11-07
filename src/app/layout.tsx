@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -6,17 +5,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { getLocale } from 'next-intl/server';
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+export const runtime = "edge";
 
 export default async function RootLayout({
   children,
@@ -40,7 +29,7 @@ export default async function RootLayout({
         <Script async src="https://analytics.ahrefs.com/analytics.js" data-key="gwDfEr8zGU61r8dQsvmocw" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`antialiased`}
       >
         <ThemeProvider
           attribute="class"
