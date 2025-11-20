@@ -2,7 +2,7 @@
 
 import { useState, memo } from 'react'
 import { useTranslations } from 'next-intl'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -53,10 +53,10 @@ function ToolFAQComponent({ toolId, className }: ToolFAQProps) {
     <Card className={className}>
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
+          <h2 className="text-2xl font-semibold tracking-tight flex items-center gap-2">
             <span className="text-2xl">❓</span>
             {t('seo.frequently_asked_questions')}
-          </CardTitle>
+          </h2>
           <Button
             variant="outline"
             size="sm"
@@ -75,9 +75,9 @@ function ToolFAQComponent({ toolId, className }: ToolFAQProps) {
             onOpenChange={() => toggleItem(index)}
           >
             <CollapsibleTrigger className="flex w-full items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors text-left">
-              <span className="font-medium text-sm pr-2">
+              <h3 className="font-medium text-sm pr-2">
                 {item.question}
-              </span>
+              </h3>
               {openItems.has(index) ? (
                 <ChevronDown className="h-4 w-4 shrink-0" />
               ) : (

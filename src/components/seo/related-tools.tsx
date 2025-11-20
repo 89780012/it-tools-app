@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations, useLocale } from 'next-intl'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { toolsConfig } from "@/lib/tools-config"
@@ -77,10 +77,10 @@ export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsP
   return (
     <Card className={className}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
+        <h2 className="text-2xl font-semibold tracking-tight flex items-center gap-2">
           <span className="text-2xl">🔗</span>
           {t('seo.related_tools')}
-        </CardTitle>
+        </h2>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

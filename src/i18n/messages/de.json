@@ -661,6 +661,12 @@
       "output_desc": "Encoded/decoded text",
       "output_placeholder": "Encoding/decoding result will appear here...",
       "invalid_base64": "Invalid Base64 format",
+      "batch_mode": "Stapelmodus",
+      "batch_mode_desc": "Zeilenweise verarbeiten, jede Zeile unabhängig kodieren/dekodieren",
+      "batch_placeholder": "Geben Sie Text für die Stapelkodierung/-dekodierung ein, ein Element pro Zeile...",
+      "upload_file": "TXT-Datei hochladen",
+      "file_type_error": "Nur .txt-Dateien werden unterstützt",
+      "file_read_error": "Dateilesevorgang fehlgeschlagen, bitte erneut versuchen",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {

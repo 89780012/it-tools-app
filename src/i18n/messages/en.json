@@ -661,6 +661,12 @@
       "output_desc": "Encoded/decoded text",
       "output_placeholder": "Encoding/decoding result will appear here...",
       "invalid_base64": "Invalid Base64 format",
+      "batch_mode": "Batch Mode",
+      "batch_mode_desc": "Process line by line, encode/decode each line independently",
+      "batch_placeholder": "Enter text for batch encoding/decoding, one item per line...",
+      "upload_file": "Upload TXT File",
+      "file_type_error": "Only .txt files are supported",
+      "file_read_error": "File read failed, please try again",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {

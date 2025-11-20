@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslations } from 'next-intl'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 interface ToolIntroductionProps {
@@ -24,10 +24,10 @@ export function ToolIntroduction({ toolId, className }: ToolIntroductionProps) {
   return (
     <Card className={className}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
+        <h2 className="text-2xl font-semibold tracking-tight flex items-center gap-2">
           <span className="text-2xl">📖</span>
           {t('seo.tool_introduction')}
-        </CardTitle>
+        </h2>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* 工具介绍 */}

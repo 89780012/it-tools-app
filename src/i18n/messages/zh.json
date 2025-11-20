@@ -630,6 +630,12 @@
       "output_desc": "编码/解码后的文本",
       "output_placeholder": "编码/解码结果将显示在这里...",
       "invalid_base64": "无效的 Base64 格式",
+      "batch_mode": "批量模式",
+      "batch_mode_desc": "开启后按行处理，每行独立编码/解码",
+      "batch_placeholder": "请输入要批量编码/解码的文本，每行一条数据...",
+      "upload_file": "上传 TXT 文件",
+      "file_type_error": "仅支持 .txt 文件",
+      "file_read_error": "文件读取失败，请重试",
       "introduction": "Base64编码解码器是专业的字符串编码转换工具，支持文本、二进制数据和Base64格式之间的双向转换。广泛应用于Web开发、数据传输、邮件附件、图片编码等场景。采用标准Base64字符集，确保编码解码的准确性和兼容性，是开发者和技术人员的必备工具。",
       "features": [
         "🔄 支持文本到Base64的双向编码解码",
