@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/ip-lookup',
         'zh': 'https://www.toolkitpub.com/zh/tools/ip-lookup',
         'hi': 'https://www.toolkitpub.com/hi/tools/ip-lookup',
+        'de': 'https://www.toolkitpub.com/de/tools/ip-lookup',
       },
     },
   }

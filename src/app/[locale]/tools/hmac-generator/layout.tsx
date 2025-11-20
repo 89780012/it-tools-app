@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/hmac-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/hmac-generator',
         'hi': 'https://www.toolkitpub.com/hi/tools/hmac-generator',
+        'de': 'https://www.toolkitpub.com/de/tools/hmac-generator',
       },
     },
   }

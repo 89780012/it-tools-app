@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/base64-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/base64-encoder-decoder',
         'hi': 'https://www.toolkitpub.com/hi/tools/base64-encoder-decoder',
+        'de': 'https://www.toolkitpub.com/de/tools/base64-encoder-decoder',
       },
     },
   }

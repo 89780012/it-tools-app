@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/curl-converter',
         'zh': 'https://www.toolkitpub.com/zh/tools/curl-converter',
         'hi': 'https://www.toolkitpub.com/hi/tools/curl-converter',
+        'de': 'https://www.toolkitpub.com/de/tools/curl-converter',
       },
     },
   }

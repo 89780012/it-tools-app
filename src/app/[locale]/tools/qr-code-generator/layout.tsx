@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/qr-code-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/qr-code-generator',
         'hi': 'https://www.toolkitpub.com/hi/tools/qr-code-generator',
+        'de': 'https://www.toolkitpub.com/de/tools/qr-code-generator',
       },
     },
   }

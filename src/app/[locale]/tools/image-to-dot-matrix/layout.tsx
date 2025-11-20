@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/image-to-dot-matrix',
         'zh': 'https://www.toolkitpub.com/zh/tools/image-to-dot-matrix',
         'hi': 'https://www.toolkitpub.com/hi/tools/image-to-dot-matrix',
+        'de': 'https://www.toolkitpub.com/de/tools/image-to-dot-matrix',
       },
     },
   }

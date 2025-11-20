@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/color-converter',
         'zh': 'https://www.toolkitpub.com/zh/tools/color-converter',
         'hi': 'https://www.toolkitpub.com/hi/tools/color-converter',
+        'de': 'https://www.toolkitpub.com/de/tools/color-converter',
       },
     },
   }

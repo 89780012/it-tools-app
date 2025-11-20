@@ -27,6 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/json-to-yaml',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-yaml',
         'hi': 'https://www.toolkitpub.com/hi/tools/json-to-yaml',
+        'de': 'https://www.toolkitpub.com/de/tools/json-to-yaml',
       },
     },
   }

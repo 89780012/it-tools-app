@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/time-converter',
         'zh': 'https://www.toolkitpub.com/zh/tools/time-converter',
         'hi': 'https://www.toolkitpub.com/hi/tools/time-converter',
+        'de': 'https://www.toolkitpub.com/de/tools/time-converter',
       },
     },
   }

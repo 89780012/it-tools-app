@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/url-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/url-encoder-decoder',
         'hi': 'https://www.toolkitpub.com/hi/tools/url-encoder-decoder',
+        'de': 'https://www.toolkitpub.com/de/tools/url-encoder-decoder',
       },
     },
   }

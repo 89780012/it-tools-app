@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/icon-designer',
         'zh': 'https://www.toolkitpub.com/zh/tools/icon-designer',
         'hi': 'https://www.toolkitpub.com/hi/tools/icon-designer',
+        'de': 'https://www.toolkitpub.com/de/tools/icon-designer',
       },
     },
   }

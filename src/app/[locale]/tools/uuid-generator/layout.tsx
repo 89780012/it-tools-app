@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/uuid-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/uuid-generator',
         'hi': 'https://www.toolkitpub.com/hi/tools/uuid-generator',
+        'de': 'https://www.toolkitpub.com/de/tools/uuid-generator',
       },
     },
   }

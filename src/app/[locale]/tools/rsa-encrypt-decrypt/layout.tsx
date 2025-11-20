@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/rsa-encrypt-decrypt',
         'zh': 'https://www.toolkitpub.com/zh/tools/rsa-encrypt-decrypt',
         'hi': 'https://www.toolkitpub.com/hi/tools/rsa-encrypt-decrypt',
+        'de': 'https://www.toolkitpub.com/de/tools/rsa-encrypt-decrypt',
       },
     },
   }

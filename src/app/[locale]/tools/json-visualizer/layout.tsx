@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/json-visualizer',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-visualizer',
         'hi': 'https://www.toolkitpub.com/hi/tools/json-visualizer',
+        'de': 'https://www.toolkitpub.com/de/tools/json-visualizer',
       },
     },
   }

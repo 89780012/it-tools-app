@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/json-diff',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-diff',
         'hi': 'https://www.toolkitpub.com/hi/tools/json-diff',
+        'de': 'https://www.toolkitpub.com/de/tools/json-diff',
       },
     },
   }

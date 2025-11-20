@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/sha1-hash',
         'zh': 'https://www.toolkitpub.com/zh/tools/sha1-hash',
         'hi': 'https://www.toolkitpub.com/hi/tools/sha1-hash',
+        'de': 'https://www.toolkitpub.com/de/tools/sha1-hash',
       },
     },
   }

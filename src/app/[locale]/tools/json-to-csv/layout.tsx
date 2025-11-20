@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/json-to-csv',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-csv',
         'hi': 'https://www.toolkitpub.com/hi/tools/json-to-csv',
+        'de': 'https://www.toolkitpub.com/de/tools/json-to-csv',
       },
     },
   }

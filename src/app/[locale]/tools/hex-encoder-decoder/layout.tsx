@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/hex-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/hex-encoder-decoder',
         'hi': 'https://www.toolkitpub.com/hi/tools/hex-encoder-decoder',
+        'de': 'https://www.toolkitpub.com/de/tools/hex-encoder-decoder',
       },
     },
   }

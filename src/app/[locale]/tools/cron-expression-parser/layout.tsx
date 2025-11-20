@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/cron-expression-parser',
         'zh': 'https://www.toolkitpub.com/zh/tools/cron-expression-parser',
         'hi': 'https://www.toolkitpub.com/hi/tools/cron-expression-parser',
+        'de': 'https://www.toolkitpub.com/de/tools/cron-expression-parser',
       },
     },
   }

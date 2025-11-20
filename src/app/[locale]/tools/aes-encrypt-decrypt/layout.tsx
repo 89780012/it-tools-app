@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/aes-encrypt-decrypt',
         'zh': 'https://www.toolkitpub.com/zh/tools/aes-encrypt-decrypt',
         'hi': 'https://www.toolkitpub.com/hi/tools/aes-encrypt-decrypt',
+        'de': 'https://www.toolkitpub.com/de/tools/aes-encrypt-decrypt',
       },
     },
   }

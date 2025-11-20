@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/md5-hash',
         'zh': 'https://www.toolkitpub.com/zh/tools/md5-hash',
         'hi': 'https://www.toolkitpub.com/hi/tools/md5-hash',
+        'de': 'https://www.toolkitpub.com/de/tools/md5-hash',
       },
     },
   }

@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/docker-run-to-compose',
         'zh': 'https://www.toolkitpub.com/zh/tools/docker-run-to-compose',
         'hi': 'https://www.toolkitpub.com/hi/tools/docker-run-to-compose',
+        'de': 'https://www.toolkitpub.com/de/tools/docker-run-to-compose',
       },
     },
   }

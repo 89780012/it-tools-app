@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/svg-placeholder-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/svg-placeholder-generator',
         'hi': 'https://www.toolkitpub.com/hi/tools/svg-placeholder-generator',
+        'de': 'https://www.toolkitpub.com/de/tools/svg-placeholder-generator',
       },
     },
   }

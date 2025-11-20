@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/binary-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/binary-encoder-decoder',
         'hi': 'https://www.toolkitpub.com/hi/tools/binary-encoder-decoder',
+        'de': 'https://www.toolkitpub.com/de/tools/binary-encoder-decoder',
       },
     },
   }

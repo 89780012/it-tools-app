@@ -25,6 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'en': 'https://www.toolkitpub.com/tools/base64-file-converter',
         'zh': 'https://www.toolkitpub.com/zh/tools/base64-file-converter',
         'hi': 'https://www.toolkitpub.com/hi/tools/base64-file-converter',
+        'de': 'https://www.toolkitpub.com/de/tools/base64-file-converter',
       },
     },
   }
