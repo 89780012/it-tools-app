@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import {NextIntlClientProvider} from 'next-intl';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/next';
 import { getLocale } from 'next-intl/server';
 
 
