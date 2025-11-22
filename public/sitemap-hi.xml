@@ -321,4 +321,115 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/docker-run-to-compose"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/docker-run-to-compose"/>
   </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/xml-to-json</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/xml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/xml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/xml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/xml-to-json"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/csv-to-json</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/csv-to-json"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/csv-to-json"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/csv-to-json"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/csv-to-json"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/json-to-toml</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/json-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/json-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/json-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/json-to-toml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/toml-to-json</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/toml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/toml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/toml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/toml-to-json"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/toml-to-yaml</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/toml-to-yaml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/toml-to-yaml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/toml-to-yaml"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/toml-to-yaml"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/icon-designer</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/icon-designer"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/icon-designer"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/icon-designer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/icon-designer"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/image-to-dot-matrix</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/image-to-dot-matrix"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/image-to-dot-matrix"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/image-to-dot-matrix"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/image-to-dot-matrix"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/twitter-long-image</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/twitter-long-image"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/twitter-long-image"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/twitter-long-image"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/twitter-long-image"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/yaml-to-json</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/yaml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/yaml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/yaml-to-json"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/yaml-to-json"/>
+  </url>
+
+  <url>
+    <loc>https://www.toolkitpub.com/hi/tools/yaml-to-toml</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2025-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.toolkitpub.com/tools/yaml-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.toolkitpub.com/zh/tools/yaml-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://www.toolkitpub.com/hi/tools/yaml-to-toml"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/tools/yaml-to-toml"/>
+  </url>
+
 </urlset>
