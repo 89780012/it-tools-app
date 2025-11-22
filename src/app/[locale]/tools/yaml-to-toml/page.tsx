@@ -9,6 +9,7 @@ import { getTextareaClasses } from "@/lib/utils"
 import { useTranslations } from 'next-intl'
 import * as yaml from 'js-yaml'
 import * as TOML from '@iarna/toml'
+import type { JsonMap } from '@iarna/toml'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function YamlToTomlPage() {
@@ -30,8 +31,8 @@ database:
     }
 
     try {
-      const parsed = yaml.load(input)
-      const tomlOutput = TOML.stringify(parsed as Record<string, unknown>)
+      const parsed = yaml.load(input) as JsonMap
+      const tomlOutput = TOML.stringify(parsed)
       setOutput(tomlOutput)
       setError("")
     } catch {
