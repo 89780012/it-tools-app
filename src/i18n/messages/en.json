@@ -416,6 +416,86 @@
         "keywords": "yaml to json, config converter, yaml converter"
       }
     },
+    "yaml-to-toml": {
+      "name": "YAML to TOML",
+      "description": "Convert YAML configuration to TOML format",
+      "placeholder": "Please enter YAML data...",
+      "invalid_yaml": "Invalid YAML format",
+      "input_title": "Input YAML",
+      "input_desc": "Enter YAML configuration to convert",
+      "output_title": "Output TOML",
+      "output_desc": "Converted TOML configuration",
+      "output_placeholder": "Converted TOML will be displayed here...",
+      "introduction": "YAML to TOML Converter is a professional config file format converter that quickly transforms common YAML configurations to TOML format. TOML format is more concise and intuitive, especially suitable for Rust projects, Python configurations, and more. Supports complex nested structures, automatically handles data types, and generates standard TOML format output.",
+      "features": [
+        "🔄 One-click conversion from YAML to TOML configuration format",
+        "📝 Automatically generates readable TOML format",
+        "🎯 Supports complex nested objects and arrays",
+        "📋 Maintains data types and structural integrity",
+        "💾 Quick download of converted TOML files",
+        "⚡ Real-time conversion with instant preview",
+        "🎨 Supports light/dark themes",
+        "🔒 Local processing ensures data security"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios is YAML to TOML suitable for?",
+          "answer": "Mainly suitable for Rust project configs (Cargo.toml), Python project configs (pyproject.toml), Hugo static websites, and more. TOML format is more concise than YAML, particularly suited for manual editing and maintaining configuration files."
+        },
+        {
+          "question": "Will data types be lost during conversion?",
+          "answer": "No. Our converter strictly maintains data type integrity, including strings, numbers, booleans, datetimes, arrays, tables - all TOML-supported data types are accurately mapped."
+        },
+        {
+          "question": "Does the generated TOML file conform to standard format?",
+          "answer": "Yes, the generated TOML file fully conforms to TOML v1.0.0 standard specification and can be correctly read by any standard TOML parser."
+        }
+      ],
+      "meta": {
+        "title": "YAML to TOML Converter - Config File Format Converter",
+        "description": "Online YAML to TOML converter for config files. Suitable for Rust, Python and other project configurations. One-click download TOML files.",
+        "keywords": "yaml to toml, toml converter, config file converter"
+      }
+    },
+    "toml-to-yaml": {
+      "name": "TOML to YAML",
+      "description": "Convert TOML configuration to YAML format",
+      "placeholder": "Please enter TOML data...",
+      "invalid_toml": "Invalid TOML format",
+      "input_title": "Input TOML",
+      "input_desc": "Enter TOML configuration to convert",
+      "output_title": "Output YAML",
+      "output_desc": "Converted YAML configuration",
+      "output_placeholder": "Converted YAML will be displayed here...",
+      "introduction": "TOML to YAML Converter is a professional config file format converter that quickly transforms TOML configurations to YAML format. Supports reading Cargo.toml, pyproject.toml and other config files, converting to standard YAML format for use in Kubernetes, Docker Compose and other scenarios. Maintains data structure integrity and automatically handles TOML-specific data types.",
+      "features": [
+        "🔄 One-click conversion from TOML config to standard YAML format",
+        "🎯 Supports multi-level nested tables and array structures",
+        "📅 Automatically handles TOML datetime types",
+        "💾 Support downloading results for saving and sharing",
+        "⚡ Real-time conversion in browser, no file upload needed",
+        "🔒 No data upload, protects config file security"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios is TOML to YAML commonly used for?",
+          "answer": "Common scenarios include: converting Rust project Cargo.toml, Python project pyproject.toml configs to YAML for Kubernetes, Docker Compose and other tools; format conversion between different config management systems; converting TOML configs to more universal YAML format, etc."
+        },
+        {
+          "question": "Will the converted YAML change the original config meaning?",
+          "answer": "No. The tool preserves hierarchical relationships and data types from TOML, only changing the representation format. Note that TOML datetime types are converted to YAML timestamp format to maintain semantic consistency."
+        },
+        {
+          "question": "Does the tool support relatively large TOML files?",
+          "answer": "Yes, generally TOML files from hundreds of KB to a few MB can be converted normally. Due to browser performance limitations, extremely large files may have slight delays, so splitting them before conversion is recommended when appropriate."
+        }
+      ],
+      "meta": {
+        "title": "TOML to YAML Converter - Config File Format Converter",
+        "description": "Online TOML to YAML converter. Supports Cargo.toml, pyproject.toml and other config file format conversion. One-click copy or download results.",
+        "keywords": "toml to yaml, config converter, toml converter"
+      }
+    },
     "json-to-xml": {
       "name": "JSON to XML",
       "description": "Convert JSON data to XML format",

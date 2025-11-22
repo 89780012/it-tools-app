@@ -117,6 +117,22 @@ export const toolsConfig: ToolCategory[] = [
         category: "json-converters",
         path: "/tools/toml-to-json",
         icon: "file-json"
+      },
+      {
+        id: "yaml-to-toml",
+        nameKey: "tools.yaml-to-toml.name",
+        descriptionKey: "tools.yaml-to-toml.description",
+        category: "json-converters",
+        path: "/tools/yaml-to-toml",
+        icon: "file-cog"
+      },
+      {
+        id: "toml-to-yaml",
+        nameKey: "tools.toml-to-yaml.name",
+        descriptionKey: "tools.toml-to-yaml.description",
+        category: "json-converters",
+        path: "/tools/toml-to-yaml",
+        icon: "file-text"
       }
     ]
   },
