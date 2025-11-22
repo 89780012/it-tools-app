@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+
 import { Copy, RotateCcw, Download, KeyRound, Lock, Unlock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -19,6 +20,74 @@ export default function RsaEncryptDecryptPage() {
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)
+  const [isProcessing, setIsProcessing] = useState(false)
+
+  const arrayBufferToBase64 = (buffer: ArrayBuffer): string => {
+    const bytes = new Uint8Array(buffer)
+    let binary = ""
+    for (let i = 0; i < bytes.byteLength; i++) {
+      binary += String.fromCharCode(bytes[i])
+    }
+    return btoa(binary)
+  }
+
+  const base64ToArrayBuffer = (base64: string): ArrayBuffer => {
+    const binary = atob(base64)
+    const len = binary.length
+    const bytes = new Uint8Array(len)
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binary.charCodeAt(i)
+    }
+    return bytes.buffer
+  }
+
+  const pemToArrayBuffer = (pem: string): ArrayBuffer => {
+    const lines = pem.trim().split(/\r?\n/)
+    const base64 = lines
+      .filter((line) => !line.startsWith("-----"))
+      .join("")
+    return base64ToArrayBuffer(base64)
+  }
+
+  const exportKeyToPem = async (key: CryptoKey, type: "public" | "private"): Promise<string> => {
+    const format = type === "public" ? "spki" : "pkcs8"
+    const exported = await crypto.subtle.exportKey(format, key)
+    const base64 = arrayBufferToBase64(exported)
+    const chunkSize = 64
+    const chunks = base64.match(new RegExp(`.{1,${chunkSize}}`, "g")) || []
+    const body = chunks.join("\n")
+    const header = type === "public" ? "-----BEGIN PUBLIC KEY-----" : "-----BEGIN PRIVATE KEY-----"
+    const footer = type === "public" ? "-----END PUBLIC KEY-----" : "-----END PRIVATE KEY-----"
+    return `${header}\n${body}\n${footer}`
+  }
+
+  const importRsaPublicKey = async (pem: string): Promise<CryptoKey> => {
+    const keyData = pemToArrayBuffer(pem)
+    return crypto.subtle.importKey(
+      "spki",
+      keyData,
+      {
+        name: "RSA-OAEP",
+        hash: "SHA-256",
+      },
+      false,
+      ["encrypt"]
+    )
+  }
+
+  const importRsaPrivateKey = async (pem: string): Promise<CryptoKey> => {
+    const keyData = pemToArrayBuffer(pem)
+    return crypto.subtle.importKey(
+      "pkcs8",
+      keyData,
+      {
+        name: "RSA-OAEP",
+        hash: "SHA-256",
+      },
+      false,
+      ["decrypt"]
+    )
+  }
 
   const encryptData = async () => {
     if (!input.trim() || !publicKey.trim()) {
@@ -28,17 +97,35 @@ export default function RsaEncryptDecryptPage() {
       return
     }
 
+    if (typeof window === "undefined" || !window.crypto?.subtle) {
+      setError(t("tools.rsa-encrypt-decrypt.encrypt_failed"))
+      setOutput("")
+      setIsValid(false)
+      return
+    }
+
     try {
-      // Note: This is a simplified RSA implementation
-      // In production, use proper RSA libraries
-      const encrypted = btoa(input) // Placeholder for RSA encryption
-      setOutput(encrypted)
+      setIsProcessing(true)
+      const key = await importRsaPublicKey(publicKey)
+      const encoder = new TextEncoder()
+      const data = encoder.encode(input)
+      const encryptedBuffer = await crypto.subtle.encrypt(
+        {
+          name: "RSA-OAEP",
+        },
+        key,
+        data
+      )
+      const encryptedBase64 = arrayBufferToBase64(encryptedBuffer)
+      setOutput(encryptedBase64)
       setError("")
       setIsValid(true)
     } catch {
       setError(t("tools.rsa-encrypt-decrypt.encrypt_failed"))
       setOutput("")
       setIsValid(false)
+    } finally {
+      setIsProcessing(false)
     }
   }
 
@@ -50,33 +137,68 @@ export default function RsaEncryptDecryptPage() {
       return
     }
 
+    if (typeof window === "undefined" || !window.crypto?.subtle) {
+      setError(t("tools.rsa-encrypt-decrypt.decrypt_failed"))
+      setOutput("")
+      setIsValid(false)
+      return
+    }
+
     try {
-      // Note: This is a simplified RSA implementation
-      // In production, use proper RSA libraries
-      const decrypted = atob(input) // Placeholder for RSA decryption
-      setOutput(decrypted)
+      setIsProcessing(true)
+      const key = await importRsaPrivateKey(privateKey)
+      const encryptedBuffer = base64ToArrayBuffer(input.trim())
+      const decryptedBuffer = await crypto.subtle.decrypt(
+        {
+          name: "RSA-OAEP",
+        },
+        key,
+        encryptedBuffer
+      )
+      const decoder = new TextDecoder()
+      const decryptedText = decoder.decode(decryptedBuffer)
+      setOutput(decryptedText)
       setError("")
       setIsValid(true)
     } catch {
       setError(t("tools.rsa-encrypt-decrypt.decrypt_failed"))
       setOutput("")
       setIsValid(false)
+    } finally {
+      setIsProcessing(false)
     }
   }
 
-  const generateKeyPair = () => {
-    // Note: This generates placeholder keys
-    // In production, use proper RSA key generation
-    const publicKeyPEM = `-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7GvMvfj7...
------END PUBLIC KEY-----`
+  const generateKeyPair = async () => {
+    if (typeof window === "undefined" || !window.crypto?.subtle) {
+      setError(t("tools.rsa-encrypt-decrypt.encrypt_failed"))
+      return
+    }
 
-    const privateKeyPEM = `-----BEGIN PRIVATE KEY-----
-MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
------END PRIVATE KEY-----`
+    try {
+      setIsProcessing(true)
+      const keyPair = await crypto.subtle.generateKey(
+        {
+          name: "RSA-OAEP",
+          modulusLength: 2048,
+          publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+          hash: "SHA-256",
+        },
+        true,
+        ["encrypt", "decrypt"]
+      )
 
-    setPublicKey(publicKeyPEM)
-    setPrivateKey(privateKeyPEM)
+      const publicPem = await exportKeyToPem(keyPair.publicKey, "public")
+      const privatePem = await exportKeyToPem(keyPair.privateKey, "private")
+
+      setPublicKey(publicPem)
+      setPrivateKey(privatePem)
+      setError("")
+    } catch {
+      setError(t("tools.rsa-encrypt-decrypt.encrypt_failed"))
+    } finally {
+      setIsProcessing(false)
+    }
   }
 
   const copyToClipboard = async (text: string) => {
@@ -130,9 +252,9 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button onClick={generateKeyPair} className="w-full">
+            <Button onClick={generateKeyPair} className="w-full" disabled={isProcessing}>
               <KeyRound className="h-4 w-4 mr-2" />
-              {t("tools.rsa-encrypt-decrypt.generate_keys")}
+              {isProcessing ? t("tools.rsa-encrypt-decrypt.generating") : t("tools.rsa-encrypt-decrypt.generate_keys")}
             </Button>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -198,11 +320,11 @@ MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDs...
               )}
 
               <div className="flex gap-2">
-                <Button onClick={encryptData} className="flex-1">
+                <Button onClick={encryptData} className="flex-1" disabled={isProcessing}>
                   <Lock className="h-4 w-4 mr-2" />
                   {t("tools.rsa-encrypt-decrypt.encrypt")}
                 </Button>
-                <Button onClick={decryptData} variant="outline" className="flex-1">
+                <Button onClick={decryptData} variant="outline" className="flex-1" disabled={isProcessing}>
                   <Unlock className="h-4 w-4 mr-2" />
                   {t("tools.rsa-encrypt-decrypt.decrypt")}
                 </Button>

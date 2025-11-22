@@ -55,14 +55,6 @@ export const toolsConfig: ToolCategory[] = [
         icon: "table"
       },
       {
-        id: "csv-to-json",
-        nameKey: "tools.csv-to-json.name",
-        descriptionKey: "tools.csv-to-json.description",
-        category: "json-converters",
-        path: "/tools/csv-to-json",
-        icon: "file-json"
-      },
-      {
         id: "json-to-yaml",
         nameKey: "tools.json-to-yaml.name",
         descriptionKey: "tools.json-to-yaml.description",
@@ -70,6 +62,23 @@ export const toolsConfig: ToolCategory[] = [
         path: "/tools/json-to-yaml",
         icon: "file-text"
       },
+      {
+        id: "json-to-xml",
+        nameKey: "tools.json-to-xml.name",
+        descriptionKey: "tools.json-to-xml.description",
+        category: "json-converters",
+        path: "/tools/json-to-xml",
+        icon: "file-code"
+      },
+      {
+        id: "json-to-toml",
+        nameKey: "tools.json-to-toml.name",
+        descriptionKey: "tools.json-to-toml.description",
+        category: "json-converters",
+        path: "/tools/json-to-toml",
+        icon: "file-cog"
+      },
+
       {
         id: "yaml-to-json",
         nameKey: "tools.yaml-to-json.name",
@@ -79,12 +88,36 @@ export const toolsConfig: ToolCategory[] = [
         icon: "file-json"
       },
       {
-        id: "json-to-xml",
-        nameKey: "tools.json-to-xml.name",
-        descriptionKey: "tools.json-to-xml.description",
+        id: "yaml-to-toml",
+        nameKey: "tools.yaml-to-toml.name",
+        descriptionKey: "tools.yaml-to-toml.description",
         category: "json-converters",
-        path: "/tools/json-to-xml",
-        icon: "file-code"
+        path: "/tools/yaml-to-toml",
+        icon: "file-cog"
+      },
+      {
+        id: "toml-to-json",
+        nameKey: "tools.toml-to-json.name",
+        descriptionKey: "tools.toml-to-json.description",
+        category: "json-converters",
+        path: "/tools/toml-to-json",
+        icon: "file-json"
+      },
+      {
+        id: "toml-to-yaml",
+        nameKey: "tools.toml-to-yaml.name",
+        descriptionKey: "tools.toml-to-yaml.description",
+        category: "json-converters",
+        path: "/tools/toml-to-yaml",
+        icon: "file-text"
+      },
+      {
+        id: "csv-to-json",
+        nameKey: "tools.csv-to-json.name",
+        descriptionKey: "tools.csv-to-json.description",
+        category: "json-converters",
+        path: "/tools/csv-to-json",
+        icon: "file-json"
       },
       {
         id: "xml-to-json",
@@ -102,38 +135,6 @@ export const toolsConfig: ToolCategory[] = [
         path: "/tools/color-converter",
         icon: "palette"
       },
-      {
-        id: "json-to-toml",
-        nameKey: "tools.json-to-toml.name",
-        descriptionKey: "tools.json-to-toml.description",
-        category: "json-converters",
-        path: "/tools/json-to-toml",
-        icon: "file-cog"
-      },
-      {
-        id: "toml-to-json",
-        nameKey: "tools.toml-to-json.name",
-        descriptionKey: "tools.toml-to-json.description",
-        category: "json-converters",
-        path: "/tools/toml-to-json",
-        icon: "file-json"
-      },
-      {
-        id: "yaml-to-toml",
-        nameKey: "tools.yaml-to-toml.name",
-        descriptionKey: "tools.yaml-to-toml.description",
-        category: "json-converters",
-        path: "/tools/yaml-to-toml",
-        icon: "file-cog"
-      },
-      {
-        id: "toml-to-yaml",
-        nameKey: "tools.toml-to-yaml.name",
-        descriptionKey: "tools.toml-to-yaml.description",
-        category: "json-converters",
-        path: "/tools/toml-to-yaml",
-        icon: "file-text"
-      }
     ]
   },
   {
