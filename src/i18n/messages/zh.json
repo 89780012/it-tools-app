@@ -337,8 +337,8 @@
       }
     },
     "json-to-xml": {
-      "name": "JSON⇄XML转换器",
-      "description": "JSON与XML格式互相转换",
+      "name": "JSON转XML转换器",
+      "description": "将JSON数据转换为XML格式",
       "placeholder": "请输入JSON数据...",
       "invalid": "无效的JSON格式",
       "convert_button": "转换",
@@ -364,9 +364,9 @@
       "conversion_complete": "JSON转XML转换完成",
       "xml_copied": "XML数据已复制到剪贴板",
       "xml_downloaded": "XML文件已下载",
-      "introduction": "JSON⇄XML双向转换器是专业的数据格式转换工具，实现JSON与XML之间的精确双向转换。XML(可扩展标记语言)广泛应用于Web服务、配置文件、数据交换等场景，具有良好的可读性和结构化特性。支持自定义根元素名称，智能处理嵌套对象和数组结构，确保转换后的格式规范、可读性强，满足各种数据集成和系统间通信需求。",
+      "introduction": "JSON转XML转换器是专业的数据格式转换工具，实现JSON到XML格式之间的精确转换。XML(可扩展标记语言)广泛应用于Web服务、配置文件、数据交换等场景，具有良好的可读性和结构化特性。工具支持自定义根元素名称，智能处理嵌套对象和数组结构，确保转换后的XML格式规范、可读性强，满足各种数据集成和系统间通信需求。",
       "features": [
-        "🔄 JSON与XML双向转换，一键切换转换方向",
+        "🔄 支持将JSON数据一键转换为标准XML格式",
         "🏷️ JSON转XML时可自定义根元素名称",
         "🎯 智能处理嵌套对象和数组结构",
         "⚡ 实时转换处理，输入即时生成结果",

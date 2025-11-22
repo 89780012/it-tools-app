@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Copy, Download, RotateCcw, ArrowLeftRight } from "lucide-react"
+import { Copy, Download, RotateCcw } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { getTextareaClasses } from "@/lib/utils"
@@ -66,72 +66,12 @@ function escapeXml(str: string): string {
     .replace(/'/g, "&apos;")
 }
 
-function xmlToJson(xml: string): unknown {
-  const parser = new DOMParser()
-  const xmlDoc = parser.parseFromString(xml, "text/xml")
-  
-  // 检查解析错误
-  const parserError = xmlDoc.querySelector("parsererror")
-  if (parserError) {
-    throw new Error("Invalid XML")
-  }
-  
-  return parseXmlNode(xmlDoc.documentElement)
-}
-
-function parseXmlNode(node: Element): unknown {
-  // 如果节点没有子节点，返回文本内容
-  if (node.childNodes.length === 0) {
-    return null
-  }
-  
-  // 如果只有一个文本节点，返回其值
-  if (node.childNodes.length === 1 && node.childNodes[0].nodeType === 3) {
-    const text = node.childNodes[0].nodeValue?.trim() || ""
-    // 尝试转换为数字或布尔值
-    if (text === "true") return true
-    if (text === "false") return false
-    if (!isNaN(Number(text)) && text !== "") return Number(text)
-    return text
-  }
-  
-  // 收集所有元素子节点
-  const children: Element[] = []
-  for (let i = 0; i < node.childNodes.length; i++) {
-    const child = node.childNodes[i]
-    if (child.nodeType === 1) { // 元素节点
-      children.push(child as Element)
-    }
-  }
-  
-  if (children.length === 0) {
-    return node.textContent?.trim() || ""
-  }
-  
-  // 检查是否是数组（多个同名元素）
-  const tagNames = children.map(c => c.tagName)
-  const hasDuplicates = tagNames.some((tag, index) => tagNames.indexOf(tag) !== index)
-  
-  if (hasDuplicates || (children.length > 0 && children.every(c => c.tagName.endsWith("Item")))) {
-    // 数组格式
-    return children.map(child => parseXmlNode(child))
-  }
-  
-  // 对象格式
-  const result: Record<string, unknown> = {}
-  children.forEach(child => {
-    result[child.tagName] = parseXmlNode(child)
-  })
-  return result
-}
-
 export default function JsonXmlConverterPage() {
   const t = useTranslations()
   
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [rootElement, setRootElement] = useState("root")
-  const [mode, setMode] = useState<'json-to-xml' | 'xml-to-json'>('json-to-xml')
   const [error, setError] = useState("")
 
   const handleConvert = () => {
@@ -142,29 +82,14 @@ export default function JsonXmlConverterPage() {
     }
 
     try {
-      if (mode === 'json-to-xml') {
-        const parsed = JSON.parse(input)
-        const xml = jsonToXml(parsed, rootElement, 0)
-        setOutput(`<?xml version="1.0" encoding="UTF-8"?>\n${xml}`)
-        setError("")
-      } else {
-        const json = xmlToJson(input)
-        setOutput(JSON.stringify(json, null, 2))
-        setError("")
-      }
+      const parsed = JSON.parse(input)
+      const xml = jsonToXml(parsed, rootElement, 0)
+      setOutput(`<?xml version="1.0" encoding="UTF-8"?>\n${xml}`)
+      setError("")
     } catch {
-      setError(mode === 'json-to-xml' 
-        ? t("tools.json-to-xml.errors.invalid_json")
-        : t("tools.json-to-xml.errors.invalid_xml"))
+      setError(t("tools.json-to-xml.errors.invalid_json"))
       setOutput("")
     }
-  }
-
-  const switchMode = () => {
-    setMode(mode === 'json-to-xml' ? 'xml-to-json' : 'json-to-xml')
-    setInput(output)
-    setOutput("")
-    setError("")
   }
 
   const copyToClipboard = async () => {
@@ -175,12 +100,11 @@ export default function JsonXmlConverterPage() {
 
   const downloadFile = () => {
     if (output) {
-      const extension = mode === 'json-to-xml' ? 'xml' : 'json'
       const blob = new Blob([output], { type: "text/plain" })
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = `converted.${extension}`
+      a.download = `converted.xml`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -203,39 +127,26 @@ export default function JsonXmlConverterPage() {
         </p>
       </div>
 
-      <div className="flex gap-2 items-center justify-center">
-        <Button
-          onClick={switchMode}
-          variant="outline"
-          className="gap-2"
-        >
-          <ArrowLeftRight className="h-4 w-4" />
-          {mode === 'json-to-xml' ? 'JSON → XML' : 'XML → JSON'}
-        </Button>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
             <CardTitle>
-              {mode === 'json-to-xml' ? t("tools.json-to-xml.input_title") : t("tools.json-to-xml.xml_input_title")}
+              {t("tools.json-to-xml.input_title")}
             </CardTitle>
             <CardDescription>
-              {mode === 'json-to-xml' ? t("tools.json-to-xml.input_desc") : t("tools.json-to-xml.xml_input_desc")}
+              {t("tools.json-to-xml.input_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {mode === 'json-to-xml' && (
-              <div className="space-y-2">
-                <Label htmlFor="root-element">{t("tools.json-to-xml.root_element")}</Label>
-                <Input
-                  id="root-element"
-                  value={rootElement}
-                  onChange={(e) => setRootElement(e.target.value || "root")}
-                  placeholder="root"
-                />
-              </div>
-            )}
+            <div className="space-y-2">
+              <Label htmlFor="root-element">{t("tools.json-to-xml.root_element")}</Label>
+              <Input
+                id="root-element"
+                value={rootElement}
+                onChange={(e) => setRootElement(e.target.value || "root")}
+                placeholder="root"
+              />
+            </div>
             
             <Textarea
               value={input}
@@ -243,9 +154,7 @@ export default function JsonXmlConverterPage() {
                 setInput(e.target.value)
                 setError("")
               }}
-              placeholder={mode === 'json-to-xml' 
-                ? t("tools.json-to-xml.input_placeholder")
-                : t("tools.json-to-xml.xml_input_placeholder")}
+              placeholder={t("tools.json-to-xml.input_placeholder")}
               className={getTextareaClasses('input')}
             />
             
@@ -267,19 +176,17 @@ export default function JsonXmlConverterPage() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {mode === 'json-to-xml' ? t("tools.json-to-xml.output_title") : t("tools.json-to-xml.json_output_title")}
+              {t("tools.json-to-xml.output_title")}
             </CardTitle>
             <CardDescription>
-              {mode === 'json-to-xml' ? t("tools.json-to-xml.output_desc") : t("tools.json-to-xml.json_output_desc")}
+              {t("tools.json-to-xml.output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder={mode === 'json-to-xml' 
-                ? t("tools.json-to-xml.output_placeholder")
-                : t("tools.json-to-xml.json_output_placeholder")}
+              placeholder={t("tools.json-to-xml.output_placeholder")}
               className={getTextareaClasses('output')}
             />
             

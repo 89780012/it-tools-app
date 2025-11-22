@@ -337,8 +337,8 @@
       }
     },
     "json-to-xml": {
-      "name": "JSON ⇄ XML Konverter",
-      "description": "JSON-Daten in XML-Format konvertieren",
+      "name": "JSON zu XML Konverter",
+      "description": "JSON-Daten in das XML-Format konvertieren",
       "placeholder": "Please enter JSON data...",
       "invalid": "Invalid JSON format",
       "convert_button": "Convert to XML",
@@ -364,7 +364,7 @@
       "conversion_complete": "JSON to XML conversion completed",
       "xml_copied": "XML data copied to clipboard",
       "xml_downloaded": "XML file downloaded",
-      "introduction": "JSON to XML Converter is a professional data format conversion tool that enables precise conversion between JSON and XML formats. XML (eXtensible Markup Language) is widely used in Web services, configuration files, and data exchange scenarios, offering excellent readability and structured characteristics. This tool supports custom root element names, intelligently handles nested objects and arrays, ensures standardized and readable XML format after conversion, meeting various data integration and inter-system communication requirements.",
+      "introduction": "JSON to XML Converter is a professional data format conversion tool that enables precise conversion from JSON data into XML format. XML (eXtensible Markup Language) is widely used in web services, configuration files, and data exchange scenarios, offering excellent readability and structured characteristics. This tool supports custom root element names, intelligently handles nested objects and arrays, and ensures a standardized and readable XML format after conversion, meeting various data integration and inter-system communication requirements.",
       "features": [
         "🔄 Intelligent JSON to XML conversion maintaining data structure integrity",
         "🏷️ Custom XML root element names to meet different system requirements",
