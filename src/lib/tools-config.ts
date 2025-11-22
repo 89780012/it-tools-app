@@ -101,6 +101,22 @@ export const toolsConfig: ToolCategory[] = [
         category: "json-converters",
         path: "/tools/color-converter",
         icon: "palette"
+      },
+      {
+        id: "json-to-toml",
+        nameKey: "tools.json-to-toml.name",
+        descriptionKey: "tools.json-to-toml.description",
+        category: "json-converters",
+        path: "/tools/json-to-toml",
+        icon: "file-cog"
+      },
+      {
+        id: "toml-to-json",
+        nameKey: "tools.toml-to-json.name",
+        descriptionKey: "tools.toml-to-json.description",
+        category: "json-converters",
+        path: "/tools/toml-to-json",
+        icon: "file-json"
       }
     ]
   },

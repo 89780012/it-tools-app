@@ -297,6 +297,86 @@
         "keywords": "json to yaml, yaml converter, config converter"
       }
     },
+    "json-to-toml": {
+      "name": "JSON zu TOML",
+      "description": "JSON-Daten in TOML-Konfigurationsformat konvertieren",
+      "placeholder": "Bitte JSON-Daten eingeben...",
+      "invalid_json": "Ungültiges JSON-Format",
+      "input_title": "JSON-Eingabe",
+      "input_desc": "JSON-Daten eingeben, die konvertiert werden sollen",
+      "output_title": "TOML-Ausgabe",
+      "output_desc": "Konvertierte TOML-Konfiguration",
+      "output_placeholder": "Konvertiertes TOML wird hier angezeigt...",
+      "introduction": "Der JSON-zu-TOML-Konverter ist ein professionelles Tool zur Konvertierung von Konfigurationsdateiformaten, das JSON-Daten schnell in das TOML-Konfigurationsformat umwandelt. TOML ist ein leicht lesbares Konfigurationsdateiformat, das in Rust-Projekten, Python-Konfigurationen, Go-Anwendungen und mehr weit verbreitet ist. Unterstützt komplexe verschachtelte Strukturen, verarbeitet Datentypen automatisch und generiert standardisierte TOML-Formatausgaben.",
+      "features": [
+        "🔄 Ein-Klick-Konvertierung von JSON in TOML-Konfigurationsformat",
+        "📝 Generiert automatisch lesbares TOML-Format",
+        "🎯 Unterstützt komplexe verschachtelte Objekte und Arrays",
+        "📋 Erhält Integrität von Datentypen und Strukturen",
+        "💾 Schneller Download konvertierter TOML-Dateien",
+        "⚡ Echtzeitkonvertierung mit sofortiger Vorschau",
+        "🎨 Unterstützung für Hell-/Dunkelmodus",
+        "🔒 Lokale Verarbeitung gewährleistet Datensicherheit"
+      ],
+      "faq": [
+        {
+          "question": "Für welche Szenarien ist die JSON-zu-TOML-Konvertierung geeignet?",
+          "answer": "Hauptsächlich geeignet für Rust-Projektkonfiguration (Cargo.toml), Python-Projektkonfiguration (pyproject.toml), Hugo-Websites, Konfigurationsdateiverwaltung und mehr. Das TOML-Format ist prägnanter und intuitiver, besonders geeignet für manuelle Bearbeitung und Wartung von Konfigurationsdateien."
+        },
+        {
+          "question": "Gehen Datentypen während der Konvertierung verloren?",
+          "answer": "Nein. Unser Konverter bewahrt strikt die Integrität der Datentypen, einschließlich aller von TOML unterstützten Datentypen wie Strings, Zahlen, Booleans, Datetime, Arrays und Tabellen, die alle genau gemappt werden."
+        },
+        {
+          "question": "Entsprechen die generierten TOML-Dateien dem Standardformat?",
+          "answer": "Ja, die generierten TOML-Dateien entsprechen vollständig den TOML v1.0.0-Standardspezifikationen und können von jedem Standard-TOML-Parser korrekt gelesen werden, einschließlich Rusts toml crate, Pythons toml-Bibliothek usw."
+        }
+      ],
+      "meta": {
+        "title": "JSON zu TOML Konverter - Konfigurationsdatei-Formatkonvertierung",
+        "description": "Online JSON-zu-TOML-Konverter für Konfigurationsdateien. Unterstützt Formatkonvertierung für Rust-, Python- und andere Projektkonfigurationen. Ein-Klick-Download von TOML-Dateien.",
+        "keywords": "json zu toml, toml konverter, config konverter"
+      }
+    },
+    "toml-to-json": {
+      "name": "TOML zu JSON",
+      "description": "TOML-Konfiguration in JSON-Formatdaten konvertieren",
+      "placeholder": "Bitte TOML-Daten eingeben...",
+      "invalid_toml": "Ungültiges TOML-Format",
+      "input_title": "TOML-Eingabe",
+      "input_desc": "TOML-Konfiguration eingeben, die konvertiert werden soll",
+      "output_title": "JSON-Ausgabe",
+      "output_desc": "Konvertierte JSON-Daten",
+      "output_placeholder": "Konvertiertes JSON wird hier angezeigt...",
+      "introduction": "Der TOML-zu-JSON-Konverter ist ein professionelles Tool zur Konvertierung von Konfigurationsdateiformaten, das TOML-Konfigurationen schnell in JSON-Format umwandelt. Unterstützt das Lesen von Cargo.toml, pyproject.toml und anderen Konfigurationsdateien und konvertiert sie in standardisiertes JSON-Format für einfache Programmverarbeitung. Erhält die Datenstrukturintegrität und verarbeitet automatisch TOML-spezifische Datetime-Typen.",
+      "features": [
+        "🔄 Ein-Klick-Konvertierung von TOML-Konfiguration in standardisiertes JSON-Format",
+        "🎯 Unterstützt mehrstufig verschachtelte Tabellen- und Array-Strukturen",
+        "📅 Verarbeitet automatisch TOML-Datetime-Typen",
+        "💾 Unterstützt Ergebnis-Download zum Speichern und Teilen",
+        "⚡ Echtzeit-Browser-lokale Konvertierung, kein Datei-Upload erforderlich",
+        "🔒 Keine Datenübertragung, schützt Konfigurationsdateisicherheit"
+      ],
+      "faq": [
+        {
+          "question": "Für welche Szenarien wird die TOML-zu-JSON-Konvertierung typischerweise verwendet?",
+          "answer": "Häufige Szenarien sind: Lesen von Rust-Projekt Cargo.toml, Python-Projekt pyproject.toml und anderen Konfigurationsdateien und Konvertierung in JSON für die Programmverwendung; Konvertierung des TOML-Formats von Konfigurationsverwaltungstools in API-akzeptables JSON-Format; Konfigurationsformatkonvertierung zwischen verschiedenen Systemen usw."
+        },
+        {
+          "question": "Verändert das konvertierte JSON die ursprüngliche Konfigurationsbedeutung?",
+          "answer": "Nein. Das Tool bewahrt die hierarchischen Beziehungen und Datentypen in TOML und ändert nur das Darstellungsformat. Beachten Sie, dass TOML-Datetime-Typen in das ISO 8601-Stringformat konvertiert werden, um JSON-Kompatibilität zu gewährleisten."
+        },
+        {
+          "question": "Unterstützt das Tool relativ große TOML-Dateien?",
+          "answer": "Ja, im Allgemeinen können TOML-Dateien von mehreren hundert KB bis zu einigen MB normal konvertiert werden. Aufgrund von Browser-Leistungsbeschränkungen kann es bei extrem großen Dateien zu leichten Verzögerungen kommen, daher wird empfohlen, sie vor der Konvertierung gegebenenfalls aufzuteilen."
+        }
+      ],
+      "meta": {
+        "title": "TOML zu JSON Konverter - Konfigurationsdatei-Formatkonvertierung",
+        "description": "Online TOML-zu-JSON-Konverter. Unterstützt Cargo.toml, pyproject.toml und andere Konfigurationsdatei-Formatkonvertierung. Ein-Klick-Kopie oder Download von Ergebnissen.",
+        "keywords": "toml zu json, config konverter, toml konverter"
+      }
+    },
     "yaml-to-json": {
       "name": "YAML zu JSON",
       "description": "YAML-Konfigurationen in JSON-Daten konvertieren",

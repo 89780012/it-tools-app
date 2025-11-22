@@ -297,6 +297,86 @@
         "keywords": "JSON转YAML, YAML转换器, 配置文件转换"
       }
     },
+    "json-to-toml": {
+      "name": "JSON转TOML",
+      "description": "将JSON数据转换为TOML配置格式",
+      "placeholder": "请输入JSON数据...",
+      "invalid_json": "无效的JSON格式",
+      "input_title": "输入 JSON",
+      "input_desc": "输入要转换的 JSON 数据",
+      "output_title": "输出 TOML",
+      "output_desc": "转换后的 TOML 配置",
+      "output_placeholder": "转换后的 TOML 将显示在这里...",
+      "introduction": "JSON转TOML转换器是专业的配置文件格式转换工具,将JSON数据快速转换为TOML配置格式。TOML是一种易读的配置文件格式,广泛应用于Rust项目、Python配置、Go应用等场景。支持复杂嵌套结构,自动处理数据类型,生成标准的TOML格式输出。",
+      "features": [
+        "🔄 一键将JSON转换为TOML配置格式",
+        "📝 自动生成易读的TOML格式",
+        "🎯 支持复杂嵌套对象和数组",
+        "📋 保持数据类型和结构完整性",
+        "💾 快速下载转换后的TOML文件",
+        "⚡ 实时转换,即时预览效果",
+        "🎨 支持亮色/暗色主题",
+        "🔒 本地处理,确保数据安全"
+      ],
+      "faq": [
+        {
+          "question": "JSON转TOML适用于哪些场景?",
+          "answer": "主要适用于Rust项目配置(Cargo.toml)、Python项目配置(pyproject.toml)、Hugo静态网站、配置文件管理等场景。TOML格式更简洁直观,特别适合人工编辑和维护配置文件。"
+        },
+        {
+          "question": "转换过程中数据类型会丢失吗?",
+          "answer": "不会。我们的转换器严格保持数据类型完整性,包括字符串、数字、布尔值、日期时间、数组、表等所有TOML支持的数据类型都会准确映射。"
+        },
+        {
+          "question": "生成的TOML文件符合标准格式吗?",
+          "answer": "是的,生成的TOML文件完全符合TOML v1.0.0标准规范,可以被任何标准TOML解析器正确读取,包括Rust的toml crate、Python的toml库等。"
+        }
+      ],
+      "meta": {
+        "title": "JSON转TOML转换器 - 配置文件格式转换",
+        "description": "在线JSON转TOML转换工具,支持配置文件格式转换,适用于Rust、Python等项目配置,一键下载TOML文件。",
+        "keywords": "JSON转TOML, TOML转换器, 配置文件转换"
+      }
+    },
+    "toml-to-json": {
+      "name": "TOML转JSON",
+      "description": "将TOML配置转换为JSON格式数据",
+      "placeholder": "请输入TOML数据...",
+      "invalid_toml": "无效的TOML格式",
+      "input_title": "输入 TOML",
+      "input_desc": "输入要转换的 TOML 配置",
+      "output_title": "输出 JSON",
+      "output_desc": "转换后的 JSON 数据",
+      "output_placeholder": "转换后的 JSON 将显示在这里...",
+      "introduction": "TOML转JSON转换器是专业的配置文件格式转换工具,将TOML配置快速转换为JSON格式。支持读取Cargo.toml、pyproject.toml等配置文件,转换为标准JSON格式便于程序处理。保持数据结构完整,自动处理TOML特有的日期时间类型。",
+      "features": [
+        "🔄 将TOML配置一键转换为标准JSON格式",
+        "🎯 支持多层嵌套表和数组结构",
+        "📅 自动处理TOML日期时间类型",
+        "💾 支持结果下载,方便保存和分享",
+        "⚡ 浏览器本地实时转换,无需上传文件",
+        "🔒 不上传任何数据,保护配置文件安全"
+      ],
+      "faq": [
+        {
+          "question": "TOML转JSON通常用于哪些场景?",
+          "answer": "常见场景包括:读取Rust项目Cargo.toml、Python项目pyproject.toml等配置文件并转换为JSON供程序使用;将配置管理工具的TOML格式转换为API可接受的JSON格式;不同系统之间的配置格式转换等。"
+        },
+        {
+          "question": "转换后的JSON是否会改变原有配置含义?",
+          "answer": "不会。工具会保留TOML中的层级关系和数据类型,只改变表现形式。特别注意的是TOML的日期时间类型会转换为ISO 8601字符串格式,以保持JSON兼容性。"
+        },
+        {
+          "question": "工具是否支持较大的TOML文件?",
+          "answer": "支持,一般几百KB到几MB的TOML文件都可以正常转换。受限于浏览器性能,极大的文件可能会略有延迟,建议适当切分后再转换。"
+        }
+      ],
+      "meta": {
+        "title": "TOML转JSON转换器 - 配置文件格式转换",
+        "description": "在线TOML转JSON转换工具,支持Cargo.toml、pyproject.toml等配置文件格式转换,一键复制或下载结果。",
+        "keywords": "TOML转JSON, 配置转换, TOML转换器"
+      }
+    },
     "yaml-to-json": {
       "name": "YAML转JSON",
       "description": "将YAML配置转换为JSON格式数据",
