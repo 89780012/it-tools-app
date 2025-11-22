@@ -9,9 +9,11 @@ import { defaultLocale, Locale } from '@/i18n/config';
 const COOKIE_NAME = 'NEXT_LOCALE';
 
 export async function getLocale() {
+  console.log("current get locale :" , (await cookies()).get(COOKIE_NAME)?.value , " default locale: " , defaultLocale);
   return (await cookies()).get(COOKIE_NAME)?.value || defaultLocale;
 }
 
 export async function setLocale(locale: Locale) {
+   console.log("current set locale :" , locale);
   (await cookies()).set(COOKIE_NAME, locale);
 }
