@@ -71,6 +71,14 @@ export const toolsConfig: ToolCategory[] = [
         icon: "file-text"
       },
       {
+        id: "yaml-to-json",
+        nameKey: "tools.yaml-to-json.name",
+        descriptionKey: "tools.yaml-to-json.description",
+        category: "json-converters",
+        path: "/tools/yaml-to-json",
+        icon: "file-json"
+      },
+      {
         id: "json-to-xml",
         nameKey: "tools.json-to-xml.name",
         descriptionKey: "tools.json-to-xml.description",

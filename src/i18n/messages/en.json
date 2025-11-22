@@ -255,21 +255,13 @@
       "name": "JSON to YAML",
       "description": "Convert JSON data to YAML format",
       "placeholder": "Please enter JSON data...",
-      "yaml_placeholder": "Please enter YAML data...",
-      "invalid": "Invalid JSON format",
       "invalid_json": "Invalid JSON format",
-      "invalid_yaml": "Invalid YAML format",
       "convert": "Convert to YAML",
       "input_title": "Input JSON",
       "input_desc": "Enter JSON data to convert",
-      "yaml_input_title": "Input YAML",
-      "yaml_input_desc": "Enter YAML data to convert",
       "output_title": "Output YAML",
       "output_desc": "Converted YAML data",
-      "json_output_title": "Output JSON",
-      "json_output_desc": "Converted JSON data",
       "output_placeholder": "Converted YAML will be displayed here...",
-      "json_output_placeholder": "Converted JSON will be displayed here...",
       "introduction": "JSON to YAML Converter is a format conversion tool designed specifically for configuration file management and data exchange. It can losslessly convert JSON data structures to YAML format, supporting complex nested objects and array structures, and automatically generates readable YAML output with proper indentation. Suitable for various scenarios such as DevOps, configuration management, API documentation, etc.",
       "features": [
         "🔄 Lossless JSON to YAML format conversion",
@@ -303,6 +295,45 @@
         "title": "JSON to YAML Converter - Online Config File Converter",
         "description": "Convert JSON to YAML format instantly for config files. Free online tool with formatted output, syntax validation and one-click download.",
         "keywords": "json to yaml, yaml converter, config converter"
+      }
+    },
+    "yaml-to-json": {
+      "name": "YAML to JSON",
+      "description": "Convert YAML configuration to JSON data",
+      "placeholder": "Please enter YAML data...",
+      "invalid_yaml": "Invalid YAML format",
+      "input_title": "Input YAML",
+      "input_desc": "Enter YAML data to convert",
+      "output_title": "Output JSON",
+      "output_desc": "Converted JSON data",
+      "output_placeholder": "Converted JSON will be displayed here...",
+      "introduction": "YAML to JSON Converter is designed for configuration migration and data integration scenarios. It helps convert common YAML configuration files (such as Kubernetes manifests, Docker Compose files, CI/CD pipelines, etc.) into clean JSON structures that can be directly consumed by code or APIs. The tool supports complex nested structures and arrays, ensuring the converted JSON preserves the same semantics as the original YAML.",
+      "features": [
+        "🔄 One-click conversion from YAML configuration to standard JSON format",
+        "🎯 Supports deeply nested objects and array structures",
+        "🧩 Makes it easy to integrate configuration with backend/frontend code and APIs",
+        "💾 Support downloading the result for saving and sharing",
+        "⚡ Real-time conversion in the browser with no server dependency",
+        "🔒 No data upload, keeping sensitive configuration secure"
+      ],
+      "faq": [
+        {
+          "question": "What scenarios is YAML to JSON conversion commonly used for?",
+          "answer": "Typical scenarios include: converting Kubernetes, Docker Compose and other YAML configuration files to JSON for direct embedding in code; transforming YAML provided by ops/config teams into JSON for services to consume; converting data formats between heterogeneous systems, and more."
+        },
+        {
+          "question": "Will the converted JSON change the original configuration meaning?",
+          "answer": "No. The tool preserves the hierarchical relationships and data types in YAML (strings, numbers, booleans, objects, arrays, etc.) and only changes the representation format, not the semantics. For critical production configs, we still recommend validating the result in a staging environment first."
+        },
+        {
+          "question": "Does the tool support relatively large YAML files?",
+          "answer": "Yes. It can handle YAML files from hundreds of KB up to a few MB in most modern browsers. Very large files may be slightly slower due to browser limitations, so splitting them before conversion is recommended when necessary."
+        }
+      ],
+      "meta": {
+        "title": "YAML to JSON Converter - Config Format Converter",
+        "description": "Online YAML to JSON converter for config files. Supports nested structures and arrays. Great for Kubernetes/Docker configs. One-click copy or download.",
+        "keywords": "yaml to json, config converter, yaml converter"
       }
     },
     "json-to-xml": {

@@ -10,14 +10,14 @@ import { useTranslations } from 'next-intl'
 import * as yaml from 'js-yaml'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
-export default function JsonToYamlPage() {
+export default function YamlToJsonPage() {
   const t = useTranslations();
 
   const [input, setInput] = useState("")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 
-  const convertJsonToYaml = () => {
+  const convertYamlToJson = () => {
     if (!input.trim()) {
       setOutput("")
       setError("")
@@ -25,18 +25,12 @@ export default function JsonToYamlPage() {
     }
 
     try {
-      const parsed = JSON.parse(input)
-      const yamlOutput = yaml.dump(parsed, {
-        indent: 2,
-        lineWidth: -1,
-        noRefs: true,
-        sortKeys: false,
-        quotingType: '"'
-      })
-      setOutput(yamlOutput)
+      const parsed = yaml.load(input)
+      const jsonOutput = JSON.stringify(parsed, null, 2)
+      setOutput(jsonOutput)
       setError("")
     } catch {
-      setError(t("tools.json-to-yaml.invalid_json"))
+      setError(t("tools.yaml-to-json.invalid_yaml"))
       setOutput("")
     }
   }
@@ -49,11 +43,11 @@ export default function JsonToYamlPage() {
 
   const downloadFile = () => {
     if (output) {
-      const blob = new Blob([output], { type: "text/plain" })
+      const blob = new Blob([output], { type: "application/json" })
       const url = URL.createObjectURL(blob)
       const a = document.createElement("a")
       a.href = url
-      a.download = `converted.yaml`
+      a.download = `converted.json`
       document.body.appendChild(a)
       a.click()
       document.body.removeChild(a)
@@ -70,9 +64,9 @@ export default function JsonToYamlPage() {
   return (
     <div className="container mx-auto p-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">{t("tools.json-to-yaml.name")}</h1>
+        <h1 className="text-3xl font-bold">{t("tools.yaml-to-json.name")}</h1>
         <p className="text-muted-foreground mt-2">
-          {t("tools.json-to-yaml.description")}
+          {t("tools.yaml-to-json.description")}
         </p>
       </div>
 
@@ -80,10 +74,10 @@ export default function JsonToYamlPage() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {t("tools.json-to-yaml.input_title")}
+              {t("tools.yaml-to-json.input_title")}
             </CardTitle>
             <CardDescription>
-              {t("tools.json-to-yaml.input_desc")}
+              {t("tools.yaml-to-json.input_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -93,14 +87,14 @@ export default function JsonToYamlPage() {
                 setInput(e.target.value)
                 setError("")
               }}
-              placeholder={t("tools.json-to-yaml.placeholder")}
+              placeholder={t("tools.yaml-to-json.placeholder")}
               className={getTextareaClasses('input')}
             />
             {error && (
               <p className="text-sm text-red-500">{error}</p>
             )}
             <div className="flex gap-2">
-              <Button onClick={convertJsonToYaml} className="flex-1">
+              <Button onClick={convertYamlToJson} className="flex-1">
                 {t("common.convert")}
               </Button>
               <Button onClick={clearAll} variant="outline" size="icon">
@@ -113,17 +107,17 @@ export default function JsonToYamlPage() {
         <Card>
           <CardHeader>
             <CardTitle>
-              {t("tools.json-to-yaml.output_title")}
+              {t("tools.yaml-to-json.output_title")}
             </CardTitle>
             <CardDescription>
-              {t("tools.json-to-yaml.output_desc")}
+              {t("tools.yaml-to-json.output_desc")}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Textarea
               value={output}
               readOnly
-              placeholder={t("tools.json-to-yaml.output_placeholder")}
+              placeholder={t("tools.yaml-to-json.output_placeholder")}
               className={getTextareaClasses('output')}
             />
             <div className="flex gap-2">
@@ -140,8 +134,7 @@ export default function JsonToYamlPage() {
         </Card>
       </div>
 
-      {/* SEO 优化内容 */}
-      <ToolSEOSection toolId="json-to-yaml" />
+      <ToolSEOSection toolId="yaml-to-json" />
     </div>
   )
 }
