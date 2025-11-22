@@ -156,23 +156,16 @@
       }
     },
     "json-to-csv": {
-      "name": "JSON⇄CSV转换器",
-      "description": "JSON与CSV格式互相转换",
+      "name": "JSON转CSV",
+      "description": "将JSON数据转换为CSV格式",
       "placeholder": "请输入JSON数据（对象数组或单个对象）...",
-      "csv_placeholder": "请输入CSV数据（第一行为表头）...",
       "invalid": "无效的JSON格式",
-      "invalid_csv": "无效的CSV格式",
       "invalid_format": "请输入有效的JSON对象或对象数组",
       "input_title": "输入 JSON",
       "input_desc": "输入要转换的 JSON 数据",
-      "csv_input_title": "输入 CSV",
-      "csv_input_desc": "输入要转换的 CSV 数据",
       "output_title": "输出 CSV",
       "output_desc": "转换后的 CSV 数据",
-      "json_output_title": "输出 JSON",
-      "json_output_desc": "转换后的 JSON 数据",
       "output_placeholder": "转换后的 CSV 将显示在这里...",
-      "json_output_placeholder": "转换后的 JSON 将显示在这里...",
       "usage_title": "使用说明",
       "rows_columns": "{rows} 行 × {columns} 列",
       "usage_array_format": "• 支持 JSON 对象数组格式：",
@@ -183,14 +176,12 @@
       "usage_nested_examples": "user.name、user.address.city",
       "usage_array_stringify": "• 数组值会被转换为 JSON 字符串",
       "usage_csv_escape": "• 自动处理 CSV 特殊字符的转义",
-      "introduction": "JSON⇄CSV双向转换器是专业的数据格式转换工具，支持JSON与CSV之间的双向转换。可以将复杂的JSON数据结构快速转换为标准CSV格式，也可以将CSV表格数据解析为JSON对象数组。支持嵌套对象扁平化处理，智能识别数据类型并进行格式化输出。无论是数据分析、报表生成还是数据迁移，都能提供高效准确的解决方案。",
+      "introduction": "JSON转CSV转换器是专业的数据格式转换工具，将JSON数据快速转换为标准CSV格式。支持JSON对象数组和单对象的转换，自动处理嵌套对象扁平化，智能转义CSV特殊字符。非常适合数据导出、报表生成和Excel数据处理等场景。",
       "features": [
-        "🔄 JSON与CSV双向转换，一键切换转换方向",
         "📊 支持JSON对象数组和单对象转换",
-        "🔀 智能嵌套对象扁平化和反扁平化",
+        "🔀 智能嵌套对象扁平化处理",
         "📋 自动CSV特殊字符转义和格式化",
-        "💾 一键下载转换后的文件",
-        "🎯 支持复杂数据结构解析",
+        "💾 一键下载转换后的CSV文件",
         "⚡ 高性能处理大型数据集",
         "🔒 客户端处理，数据安全可靠"
       ],
@@ -206,16 +197,58 @@
         {
           "question": "转换后的CSV文件能直接在Excel中打开吗？",
           "answer": "是的，转换生成的CSV文件完全符合标准格式，可以直接在Excel、Numbers、Google Sheets等电子表格软件中打开和编辑。"
-        },
-        {
-          "question": "处理大型JSON文件时性能如何？",
-          "answer": "工具经过性能优化，可以高效处理包含数千条记录的大型JSON文件。建议单次处理的数据量不超过50MB，以确保最佳用户体验。"
         }
       ],
       "meta": {
         "title": "JSON转CSV转换器 - 在线免费转换",
         "description": "在线JSON转CSV转换工具,支持嵌套对象和数组智能处理,一键下载CSV文件,完全免费无限制。",
         "keywords": "JSON转CSV, JSON转换器, CSV导出"
+      }
+    },
+    "csv-to-json": {
+      "name": "CSV转JSON",
+      "description": "将CSV数据转换为JSON格式",
+      "placeholder": "请输入CSV数据（第一行为表头）...",
+      "invalid_csv": "无效的CSV格式",
+      "input_title": "输入 CSV",
+      "input_desc": "输入要转换的 CSV 数据",
+      "output_title": "输出 JSON",
+      "output_desc": "转换后的 JSON 数据",
+      "output_placeholder": "转换后的 JSON 将显示在这里...",
+      "usage_title": "使用说明",
+      "usage_csv_format": "• 第一行作为字段名（表头）",
+      "usage_auto_type": "• 自动识别数字和布尔值类型",
+      "usage_nested_restore": "• 支持点号分隔的嵌套对象还原",
+      "usage_quoted_values": "• 自动处理带引号的CSV值",
+      "usage_json_array": "• 支持解析数组格式的单元格",
+      "introduction": "CSV转JSON转换器是专业的数据格式转换工具，将CSV表格数据快速转换为JSON格式。自动识别数据类型，支持嵌套对象还原，智能处理CSV特殊字符和引号。非常适合数据导入、API对接和数据分析等场景。",
+      "features": [
+        "📊 智能解析CSV表格数据",
+        "🔀 自动还原嵌套对象结构",
+        "🎯 智能识别数字和布尔值类型",
+        "📋 处理CSV引号和特殊字符",
+        "💾 一键下载转换后的JSON文件",
+        "⚡ 高性能处理大型数据集",
+        "🔒 客户端处理，数据安全可靠"
+      ],
+      "faq": [
+        {
+          "question": "CSV数据需要什么格式？",
+          "answer": "CSV数据的第一行应该是字段名（表头），后续行是数据行。支持标准的逗号分隔，也支持带引号的值和嵌套的逗号。"
+        },
+        {
+          "question": "如何还原嵌套对象？",
+          "answer": "如果CSV表头使用点号分隔（如user.name、user.age），工具会自动将其还原为嵌套的JSON对象结构。"
+        },
+        {
+          "question": "如何识别数据类型？",
+          "answer": "工具会自动识别数字、布尔值（true/false）和JSON数组。如果值看起来像数字且可以正确解析，会自动转换为数字类型。"
+        }
+      ],
+      "meta": {
+        "title": "CSV转JSON转换器 - 在线免费转换",
+        "description": "在线CSV转JSON转换工具,支持嵌套对象还原和智能类型识别,一键下载JSON文件,完全免费无限制。",
+        "keywords": "CSV转JSON, CSV转换器, JSON导入"
       }
     },
     "json-to-yaml": {

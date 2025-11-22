@@ -156,66 +156,99 @@
       }
     },
     "json-to-csv": {
-      "name": "JSON ⇄ CSV Konverter",
+      "name": "JSON zu CSV",
       "description": "JSON-Daten in CSV-Format konvertieren",
-      "placeholder": "Please enter JSON data (object array or single object)...",
-      "csv_placeholder": "Please enter CSV data (first row as headers)...",
-      "invalid": "Invalid JSON format",
-      "invalid_csv": "Invalid CSV format",
-      "invalid_format": "Please enter valid JSON object or object array",
-      "input_title": "Input JSON",
-      "input_desc": "Enter JSON data to convert",
-      "csv_input_title": "Input CSV",
-      "csv_input_desc": "Enter CSV data to convert",
-      "output_title": "Output CSV",
-      "output_desc": "Converted CSV data",
-      "json_output_title": "Output JSON",
-      "json_output_desc": "Converted JSON data",
-      "output_placeholder": "Converted CSV will be displayed here...",
-      "json_output_placeholder": "Converted JSON will be displayed here...",
-      "usage_title": "Usage Instructions",
-      "rows_columns": "{rows} rows × {columns} columns",
-      "usage_array_format": "• Supports JSON object array format:",
+      "placeholder": "Bitte JSON-Daten eingeben (Objekt-Array oder einzelnes Objekt)...",
+      "invalid": "Ungültiges JSON-Format",
+      "invalid_format": "Bitte gültiges JSON-Objekt oder Objekt-Array eingeben",
+      "input_title": "JSON eingeben",
+      "input_desc": "JSON-Daten zur Konvertierung eingeben",
+      "output_title": "CSV ausgeben",
+      "output_desc": "Konvertierte CSV-Daten",
+      "output_placeholder": "Konvertierte CSV-Daten werden hier angezeigt...",
+      "usage_title": "Verwendungshinweise",
+      "rows_columns": "{rows} Zeilen × {columns} Spalten",
+      "usage_array_format": "• Unterstützt JSON-Objekt-Array-Format:",
       "usage_array_example": "['{\"name\":\"John\",\"age\":25}', ...]",
-      "usage_object_format": "• Supports single JSON object format:",
+      "usage_object_format": "• Unterstützt einzelnes JSON-Objekt-Format:",
       "usage_object_example": "'{\"name\":\"John\",\"age\":25}'",
-      "usage_nested_flatten": "• Nested objects will be flattened:",
+      "usage_nested_flatten": "• Verschachtelte Objekte werden abgeflacht:",
       "usage_nested_examples": "user.name, user.address.city",
-      "usage_array_stringify": "• Array values will be converted to JSON strings",
-      "usage_csv_escape": "• Automatically handles CSV special character escaping",
-      "introduction": "JSON to CSV Converter is a professional data format conversion tool that can quickly convert complex JSON data structures to standard CSV format. It supports object arrays, nested object flattening processing, intelligently identifies data types and performs formatted output. Whether it's data analysis, report generation, or data migration, it provides efficient and accurate solutions.",
+      "usage_array_stringify": "• Array-Werte werden in JSON-Strings konvertiert",
+      "usage_csv_escape": "• Automatische Behandlung von CSV-Sonderzeichen",
+      "introduction": "JSON zu CSV Konverter ist ein professionelles Datenformat-Konvertierungstool, das JSON-Daten schnell in das Standard-CSV-Format konvertiert. Unterstützt Objekt-Arrays und einzelne Objekte, automatische Abflachung verschachtelter Objekte und intelligente Escape-Zeichen für CSV-Sonderzeichen. Perfekt für Datenexport, Berichterstellung und Excel-Datenverarbeitung.",
       "features": [
-        "📊 Supports JSON object array and single object conversion",
-        "🔄 Smart nested object flattening processing",
-        "📋 Automatic CSV special character escaping and formatting",
-        "📈 Real-time display of row and column statistics",
-        "💾 One-click CSV file download",
-        "🎯 Supports complex data structure parsing",
-        "⚡ High-performance processing of large datasets",
-        "🔒 Client-side processing, secure and reliable data"
+        "📊 Unterstützt JSON-Objekt-Array und Einzelobjekt-Konvertierung",
+        "🔀 Intelligente Abflachung verschachtelter Objekte",
+        "📋 Automatische CSV-Sonderzeichen-Escape und Formatierung",
+        "💾 Ein-Klick CSV-Datei-Download",
+        "⚡ Hochleistungsverarbeitung großer Datensätze",
+        "🔒 Clientseitige Verarbeitung, sichere Daten"
       ],
       "faq": [
         {
-          "question": "What JSON data formats are supported for conversion?",
-          "answer": "The tool supports two main JSON formats: object array format (such as user lists, product data) and single object format. For complex nested structures, automatic flattening processing is performed to ensure CSV format compatibility."
+          "question": "Welche JSON-Datenformate werden zur Konvertierung unterstützt?",
+          "answer": "Das Tool unterstützt zwei Haupt-JSON-Formate: Objekt-Array-Format (wie Benutzerlisten, Produktdaten) und Einzelobjekt-Format. Für komplexe verschachtelte Strukturen wird automatisch eine Abflachung durchgeführt, um die CSV-Formatkompatibilität sicherzustellen."
         },
         {
-          "question": "How are nested objects and arrays handled?",
-          "answer": "Nested objects are automatically flattened into multiple columns (such as user.name, user.address.city), and array values are converted to JSON string format for storage. This maintains data integrity while ensuring CSV format standards."
+          "question": "Wie werden verschachtelte Objekte und Arrays behandelt?",
+          "answer": "Verschachtelte Objekte werden automatisch in mehrere Spalten abgeflacht (wie user.name, user.address.city), und Array-Werte werden in JSON-String-Format gespeichert. Dies bewahrt die Datenintegrität und gewährleistet CSV-Formatstandards."
         },
         {
-          "question": "Can the converted CSV file be opened directly in Excel?",
-          "answer": "Yes, the generated CSV file fully complies with standard formats and can be directly opened and edited in spreadsheet software such as Excel, Numbers, Google Sheets, etc."
-        },
-        {
-          "question": "How is performance when processing large JSON files?",
-          "answer": "The tool has been performance optimized and can efficiently process large JSON files containing thousands of records. We recommend that the data volume processed at one time does not exceed 50MB to ensure the best user experience."
+          "question": "Kann die konvertierte CSV-Datei direkt in Excel geöffnet werden?",
+          "answer": "Ja, die generierte CSV-Datei entspricht vollständig den Standardformaten und kann direkt in Tabellenkalkulationssoftware wie Excel, Numbers, Google Sheets usw. geöffnet und bearbeitet werden."
         }
       ],
       "meta": {
-        "title": "JSON to CSV Converter - Convert JSON to CSV Online Free",
-        "description": "Convert JSON to CSV format instantly. Handle nested objects and arrays with ease. Free online converter with download and copy features.",
-        "keywords": "json to csv, json converter, csv export"
+        "title": "JSON zu CSV Konverter - Kostenlos online konvertieren",
+        "description": "JSON zu CSV Format sofort konvertieren. Verschachtelte Objekte und Arrays einfach verarbeiten. Kostenloser Online-Konverter mit Download-Funktion.",
+        "keywords": "json zu csv, json konverter, csv export"
+      }
+    },
+    "csv-to-json": {
+      "name": "CSV zu JSON",
+      "description": "CSV-Daten in JSON-Format konvertieren",
+      "placeholder": "Bitte CSV-Daten eingeben (erste Zeile als Kopfzeilen)...",
+      "invalid_csv": "Ungültiges CSV-Format",
+      "input_title": "CSV eingeben",
+      "input_desc": "CSV-Daten zur Konvertierung eingeben",
+      "output_title": "JSON ausgeben",
+      "output_desc": "Konvertierte JSON-Daten",
+      "output_placeholder": "Konvertierte JSON-Daten werden hier angezeigt...",
+      "usage_title": "Verwendungshinweise",
+      "usage_csv_format": "• Erste Zeile als Feldnamen (Kopfzeilen)",
+      "usage_auto_type": "• Automatische Erkennung von Zahlen und booleschen Typen",
+      "usage_nested_restore": "• Unterstützt punktgetrennte verschachtelte Objektwiederherstellung",
+      "usage_quoted_values": "• Automatische Behandlung von CSV-Werten in Anführungszeichen",
+      "usage_json_array": "• Unterstützt Parsing von Array-Format-Zellen",
+      "introduction": "CSV zu JSON Konverter ist ein professionelles Datenformat-Konvertierungstool, das CSV-Tabellendaten schnell in JSON-Format konvertiert. Automatische Typenerkennung, Unterstützung für verschachtelte Objektwiederherstellung und intelligente Behandlung von CSV-Sonderzeichen und Anführungszeichen. Perfekt für Datenimport, API-Integration und Datenanalyse.",
+      "features": [
+        "📊 Intelligentes Parsing von CSV-Tabellendaten",
+        "🔀 Automatische Wiederherstellung verschachtelter Objektstrukturen",
+        "🎯 Intelligente Erkennung von Zahlen und booleschen Typen",
+        "📋 Behandelt CSV-Anführungszeichen und Sonderzeichen",
+        "💾 Ein-Klick JSON-Datei-Download",
+        "⚡ Hochleistungsverarbeitung großer Datensätze",
+        "🔒 Clientseitige Verarbeitung, sichere Daten"
+      ],
+      "faq": [
+        {
+          "question": "In welchem Format sollten CSV-Daten vorliegen?",
+          "answer": "Die erste Zeile der CSV-Daten sollte Feldnamen (Kopfzeilen) sein, gefolgt von Datenzeilen. Unterstützt Standard-Komma-Trennung sowie Werte in Anführungszeichen und verschachtelte Kommas."
+        },
+        {
+          "question": "Wie werden verschachtelte Objekte wiederhergestellt?",
+          "answer": "Wenn CSV-Kopfzeilen Punkttrennung verwenden (wie user.name, user.age), wird das Tool sie automatisch in verschachtelte JSON-Objektstrukturen wiederherstellen."
+        },
+        {
+          "question": "Wie werden Datentypen erkannt?",
+          "answer": "Das Tool erkennt automatisch Zahlen, boolesche Werte (true/false) und JSON-Arrays. Wenn ein Wert wie eine Zahl aussieht und korrekt geparst werden kann, wird er automatisch in einen Zahlentyp konvertiert."
+        }
+      ],
+      "meta": {
+        "title": "CSV zu JSON Konverter - Kostenlos online konvertieren",
+        "description": "CSV zu JSON Format sofort konvertieren. Unterstützt verschachtelte Objektwiederherstellung und intelligente Typenerkennung. Kostenloser Online-Konverter mit Download-Funktion.",
+        "keywords": "csv zu json, csv konverter, json import"
       }
     },
     "json-to-yaml": {

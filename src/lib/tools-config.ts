@@ -55,6 +55,14 @@ export const toolsConfig: ToolCategory[] = [
         icon: "table"
       },
       {
+        id: "csv-to-json",
+        nameKey: "tools.csv-to-json.name",
+        descriptionKey: "tools.csv-to-json.description",
+        category: "json-converters",
+        path: "/tools/csv-to-json",
+        icon: "file-json"
+      },
+      {
         id: "json-to-yaml",
         nameKey: "tools.json-to-yaml.name",
         descriptionKey: "tools.json-to-yaml.description",
