@@ -13,7 +13,12 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function TomlToJsonPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`title = "Demo App"
+port = 8080
+
+[database]
+host = "localhost"
+max_connections = 100`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

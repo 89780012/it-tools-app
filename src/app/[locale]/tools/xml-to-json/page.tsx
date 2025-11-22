@@ -13,7 +13,16 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function XmlToJsonPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <name>Alice</name>
+  <age>30</age>
+  <isAdmin>false</isAdmin>
+  <tags>
+    <tag>user</tag>
+    <tag>editor</tag>
+  </tags>
+</user>`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

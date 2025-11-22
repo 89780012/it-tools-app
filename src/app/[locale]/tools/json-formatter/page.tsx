@@ -12,7 +12,18 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function JsonFormatterPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`{
+  "name": "John Doe",
+  "age": 30,
+  "isAdmin": false,
+  "tags": ["user", "editor"],
+  "address": {
+    "street": "123 Main St",
+    "city": "Anytown",
+    "state": "CA",
+    "zip": "12345"
+  }
+}`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)

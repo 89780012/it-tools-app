@@ -16,7 +16,7 @@ import CryptoJS from 'crypto-js'
 export default function AesEncryptDecryptPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("Secret message to encrypt")
   const [key, setKey] = useState("")
   const [iv, setIv] = useState("")
   const [mode, setMode] = useState("CBC")

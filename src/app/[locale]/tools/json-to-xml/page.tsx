@@ -69,7 +69,7 @@ function escapeXml(str: string): string {
 export default function JsonXmlConverterPage() {
   const t = useTranslations()
   
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState('{"name":"Alice","age":30,"isAdmin":false,"tags":["user","editor"]}')
   const [output, setOutput] = useState("")
   const [rootElement, setRootElement] = useState("root")
   const [error, setError] = useState("")

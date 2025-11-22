@@ -13,7 +13,7 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function RsaEncryptDecryptPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("Secret message to encrypt with RSA")
   const [publicKey, setPublicKey] = useState("")
   const [privateKey, setPrivateKey] = useState("")
   const [output, setOutput] = useState("")

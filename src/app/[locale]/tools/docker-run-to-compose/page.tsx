@@ -310,7 +310,7 @@ function generateYamlFromCompose(compose: DockerCompose): string {
 export default function DockerRunToComposePage() {
   const t = useTranslations()
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("docker run -d --name myapp -p 8080:80 -e NODE_ENV=production myimage:latest")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

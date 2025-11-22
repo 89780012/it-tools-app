@@ -15,7 +15,7 @@ export default function Base64EncoderDecoderPage() {
   const t = useTranslations();
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("Hello, ")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)

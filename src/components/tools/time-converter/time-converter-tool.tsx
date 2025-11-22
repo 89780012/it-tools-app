@@ -29,8 +29,8 @@ export default function TimeConverterTool() {
   const t = useTranslations('tools.time-converter')
   const common = useTranslations('common')
 
-  const [millisecondsInput, setMillisecondsInput] = useState('')
-  const [stringInput, setStringInput] = useState('')
+  const [millisecondsInput, setMillisecondsInput] = useState('1700000000000')
+  const [stringInput, setStringInput] = useState('2025-01-01 12:30:00')
   const [copyTarget, setCopyTarget] = useState<string | null>(null)
 
   const millisecondsResult = useMemo<MillisecondsResult>(() => {

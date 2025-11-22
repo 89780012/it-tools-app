@@ -11,7 +11,9 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function CsvToJsonPage() {
   const t = useTranslations();
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`name,age,isAdmin
+Alice,30,false
+Bob,25,true`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

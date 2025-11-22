@@ -12,7 +12,7 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function HexEncoderDecoderPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("Hello")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)

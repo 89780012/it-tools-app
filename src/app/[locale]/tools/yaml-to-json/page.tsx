@@ -13,7 +13,12 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function YamlToJsonPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`name: Alice
+age: 30
+isAdmin: false
+tags:
+  - user
+  - editor`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

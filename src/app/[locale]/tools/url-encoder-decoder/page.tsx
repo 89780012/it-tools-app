@@ -12,7 +12,7 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function UrlEncoderDecoderPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("https://example.com/search?q=中文 测试&from=tool")
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
   const [isValid, setIsValid] = useState(true)

@@ -15,7 +15,10 @@ interface JsonRow {
 
 export default function JsonToCsvPage() {
   const t = useTranslations();
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState(`[
+  { "name": "Alice", "age": 30, "isAdmin": false },
+  { "name": "Bob", "age": 25, "isAdmin": true }
+]`)
   const [output, setOutput] = useState("")
   const [error, setError] = useState("")
 

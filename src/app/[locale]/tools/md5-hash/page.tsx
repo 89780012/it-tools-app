@@ -12,7 +12,7 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function MD5HashPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("The quick brown fox jumps over the lazy dog")
   const [output, setOutput] = useState("")
 
   const generateMD5 = async () => {

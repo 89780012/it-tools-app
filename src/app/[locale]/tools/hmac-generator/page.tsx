@@ -15,7 +15,7 @@ import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 export default function HmacGeneratorPage() {
   const t = useTranslations();
 
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState("The quick brown fox jumps over the lazy dog")
   const [secretKey, setSecretKey] = useState("")
   const [algorithm, setAlgorithm] = useState("SHA-256")
   const [output, setOutput] = useState("")
