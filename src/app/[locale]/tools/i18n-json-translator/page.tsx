@@ -206,7 +206,7 @@ export default function I18nJsonTranslatorPage() {
     () =>
       SOURCE_LANGUAGE_CODES.map((code) => ({
         value: code,
-        label: t(`common.languages.${code}` as any) || code,
+        label: (t(`common.languages.${code}` as Parameters<typeof t>[0]) as string) || code,
       })),
     [t]
   )
@@ -215,7 +215,7 @@ export default function I18nJsonTranslatorPage() {
     () =>
       TARGET_LANGUAGE_CODES.map((code) => ({
         value: code,
-        label: t(`common.languages.${code}` as any) || code,
+        label: (t(`common.languages.${code}` as Parameters<typeof t>[0]) as string) || code,
       })),
     [t]
   )

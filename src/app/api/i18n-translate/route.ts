@@ -113,7 +113,7 @@ Important rules:
     let translationsObj: Record<string, string>
     try {
       translationsObj = JSON.parse(content)
-    } catch (parseError) {
+    } catch {
       return NextResponse.json(
         { error: "Failed to parse translation response" },
         { status: 500 }
