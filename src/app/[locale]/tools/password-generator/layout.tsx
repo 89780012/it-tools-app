@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/password-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/password-generator',
-        'hi': 'https://www.toolkitpub.com/hi/tools/password-generator',
+        'es': 'https://www.toolkitpub.com/es/tools/password-generator',
         'de': 'https://www.toolkitpub.com/de/tools/password-generator',
+        'fr': 'https://www.toolkitpub.com/fr/tools/password-generator',
+        'it': 'https://www.toolkitpub.com/it/tools/password-generator',
+        'pt': 'https://www.toolkitpub.com/pt/tools/password-generator',
+        'ru': 'https://www.toolkitpub.com/ru/tools/password-generator',
+        'ja': 'https://www.toolkitpub.com/ja/tools/password-generator',
+        'ko': 'https://www.toolkitpub.com/ko/tools/password-generator',
+        'ar': 'https://www.toolkitpub.com/ar/tools/password-generator',
+        'hi': 'https://www.toolkitpub.com/hi/tools/password-generator',
       },
     },
   }

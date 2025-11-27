@@ -12,11 +12,13 @@ import {
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { setLocale } from '@/i18n/index';
 import { Locale } from '@/i18n/config';
+import { useTranslations } from 'next-intl';
 
 export function LanguageToggle() {
   const router = useRouter()
   const pathname = usePathname()
-  const locale = useLocale();
+  const locale = useLocale()
+  const t = useTranslations('common.languages');
 
   const switchLocale = async (newLocale: Locale) => {
     if (newLocale === locale) return;
@@ -37,30 +39,78 @@ export function LanguageToggle() {
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="max-h-80 overflow-y-auto">
         <DropdownMenuItem
           onClick={() => switchLocale("zh")}
           className={locale === "zh" ? "bg-accent" : ""}
         >
-          中文
+          {t('zh')}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => switchLocale("en")}
           className={locale === "en" ? "bg-accent" : ""}
         >
-          English
+          {t('en')}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => switchLocale("hi")}
-          className={locale === "hi" ? "bg-accent" : ""}
+          onClick={() => switchLocale("es")}
+          className={locale === "es" ? "bg-accent" : ""}
         >
-          हिंदी
+          {t('es')}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => switchLocale("de")}
           className={locale === "de" ? "bg-accent" : ""}
         >
-          Deutsch
+          {t('de')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("fr")}
+          className={locale === "fr" ? "bg-accent" : ""}
+        >
+          {t('fr')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("it")}
+          className={locale === "it" ? "bg-accent" : ""}
+        >
+          {t('it')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("pt")}
+          className={locale === "pt" ? "bg-accent" : ""}
+        >
+          {t('pt')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("ru")}
+          className={locale === "ru" ? "bg-accent" : ""}
+        >
+          {t('ru')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("ja")}
+          className={locale === "ja" ? "bg-accent" : ""}
+        >
+          {t('ja')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("ko")}
+          className={locale === "ko" ? "bg-accent" : ""}
+        >
+          {t('ko')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("ar")}
+          className={locale === "ar" ? "bg-accent" : ""}
+        >
+          {t('ar')}
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => switchLocale("hi")}
+          className={locale === "hi" ? "bg-accent" : ""}
+        >
+          {t('hi')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

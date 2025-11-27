@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/sha1-hash',
         'zh': 'https://www.toolkitpub.com/zh/tools/sha1-hash',
-        'hi': 'https://www.toolkitpub.com/hi/tools/sha1-hash',
+        'es': 'https://www.toolkitpub.com/es/tools/sha1-hash',
         'de': 'https://www.toolkitpub.com/de/tools/sha1-hash',
+        'fr': 'https://www.toolkitpub.com/fr/tools/sha1-hash',
+        'it': 'https://www.toolkitpub.com/it/tools/sha1-hash',
+        'pt': 'https://www.toolkitpub.com/pt/tools/sha1-hash',
+        'ru': 'https://www.toolkitpub.com/ru/tools/sha1-hash',
+        'ja': 'https://www.toolkitpub.com/ja/tools/sha1-hash',
+        'ko': 'https://www.toolkitpub.com/ko/tools/sha1-hash',
+        'ar': 'https://www.toolkitpub.com/ar/tools/sha1-hash',
+        'hi': 'https://www.toolkitpub.com/hi/tools/sha1-hash',
       },
     },
   }

@@ -25,8 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-diff',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-diff',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-diff',
+        'es': 'https://www.toolkitpub.com/es/tools/json-diff',
         'de': 'https://www.toolkitpub.com/de/tools/json-diff',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-diff',
+        'it': 'https://www.toolkitpub.com/it/tools/json-diff',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-diff',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-diff',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-diff',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-diff',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-diff',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-diff',
       },
     },
   }

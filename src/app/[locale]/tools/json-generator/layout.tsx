@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-generator',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-generator',
+        'es': 'https://www.toolkitpub.com/es/tools/json-generator',
         'de': 'https://www.toolkitpub.com/de/tools/json-generator',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-generator',
+        'it': 'https://www.toolkitpub.com/it/tools/json-generator',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-generator',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-generator',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-generator',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-generator',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-generator',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-generator',
       },
     },
   }

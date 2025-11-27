@@ -1,4 +1,6 @@
-interface LocalizedText {
+import type { Locale } from '@/i18n/config';
+
+interface LocalizedText extends Partial<Record<Locale, string>> {
   zh: string;
   en: string;
   hi: string;
@@ -18,6 +20,92 @@ export interface ChangelogEntry {
 }
 
 export const changelogData: ChangelogEntry[] = [
+  {
+    version: "v1.0.0",
+    date: "2025-12-05",
+    type: "major",
+    title: {
+      zh: "1.0.0 国际化升级与 i18n 翻译器",
+      en: "Internationalization Expansion with i18n Translator",
+      hi: "i18n अनुवादक के साथ अंतर्राष्ट्रीयकरण विस्तार",
+      de: "Internationalisierungsausbau mit i18n-Übersetzer",
+      es: "Expansión de internacionalización con traductor i18n",
+      fr: "Extension de l'internationalisation avec traducteur i18n",
+      it: "Espansione dell'internazionalizzazione con traduttore i18n",
+      pt: "Expansão da internacionalização com tradutor i18n",
+      ru: "Расширение интернационализации с переводчиком i18n",
+      ja: "i18n翻訳ツールによる国際化の拡張",
+      ko: "i18n 번역기와 함께하는 국제화 확장",
+      ar: "توسيع التعريب مع مترجم i18n"
+    },
+    description: {
+      zh: "上线 i18n 翻译器、补全 12 种语言文案并统一共享副本。",
+      en: "Launched the i18n translator, expanded coverage across 12 locales and harmonized shared copy.",
+      hi: "i18n ट्रांसलेटर शुरू किया गया, 12 भाषाओं में कवरेज बढ़ाई और साझा शब्दावली को एकरूप किया गया।",
+      de: "Den i18n-Übersetzer eingeführt, 12 Sprachen abgedeckt und gemeinsame Texte vereinheitlicht.",
+      es: "Lanzamos el traductor i18n, ampliamos 12 idiomas y unificamos los textos compartidos.",
+      fr: "Lancement du traducteur i18n, extension à 12 langues et harmonisation des textes partagés.",
+      it: "Lanciato il traduttore i18n, esteso a 12 lingue e unificati i testi condivisi.",
+      pt: "Lançamos o tradutor i18n, ampliamos para 12 idiomas e unificamos os textos compartilhados.",
+      ru: "Запущен переводчик i18n, расширена поддержка до 12 языков и унифицирован общий текст.",
+      ja: "i18n翻訳ツールを公開し、12言語を網羅して共通文言を統一しました。",
+      ko: "i18n 번역기를 선보이고 12개 언어를 포함하여 공통 문구를 통합했습니다.",
+      ar: "أطلقنا مترجم i18n، ووسعنا التغطية إلى 12 لغة ووحدنا النصوص المشتركة."
+    },
+    changes: [
+      {
+        type: "feat",
+        description: {
+          zh: "新增 i18n 翻译器工具，使团队可在工具区域内预览并发布各语言文案。",
+          en: "Added the i18n translator tool so the team can preview and publish locale-specific copy without leaving the tools workspace.",
+          hi: "i18n ट्रांसलेटर टूल जोड़ा गया ताकि टीम टूल्स कार्यक्षेत्र में रहकर स्थानीय सामग्री को पूर्वावलोकन और प्रकाशित कर सके।",
+          de: "Neues i18n-Übersetzer-Tool hinzugefügt, damit das Team locale-spezifische Texte direkt aus dem Tool-Arbeitsbereich prüfen und veröffentlichen kann.",
+          es: "Añadimos la herramienta traductor i18n para que el equipo pueda previsualizar y publicar textos por idioma desde el espacio de herramientas.",
+          fr: "Ajouté l'outil traducteur i18n afin que l'équipe puisse prévisualiser et publier les textes par langue depuis l'espace outils.",
+          it: "Aggiunto lo strumento traduttore i18n per permettere al team di visualizzare e pubblicare i testi localizzati direttamente dall'area strumenti.",
+          pt: "Adicionada a ferramenta tradutor i18n para que a equipe possa visualizar e publicar textos específicos de cada localidade sem sair do espaço de ferramentas.",
+          ru: "Добавлен инструмент переводчика i18n, чтобы команда могла просматривать и публиковать локализованные тексты не покидая рабочую область инструментов.",
+          ja: "ツール領域を離れずにロケール別の文言をプレビュー・公開できる i18n 翻訳ツールを追加しました。",
+          ko: "도구 영역에서 벗어나지 않고 로케일별 문구를 미리보고 배포할 수 있는 i18n 번역기 도구를 추가했습니다.",
+          ar: "أضفنا أداة مترجم i18n حتى يتمكن الفريق من معاينة ونشر المحتوى حسب اللغة دون مغادرة مساحة الأدوات."
+        }
+      },
+      {
+        type: "feat",
+        description: {
+          zh: "将所有工具的 metadata/alternates 扩展至 12 个语言，并刷新 sitemap 链接。",
+          en: "Expanded tool metadata/alternates to 12 locales and refreshed sitemap references.",
+          hi: "सभी टूल मेटाडेटा/alternates को 12 लोकल तक बढ़ाया और साइटमैप संदर्भों को ताज़ा किया।",
+          de: "Tool-Metadaten/Alternates auf 12 Locales ausgeweitet und Sitemap-Verweise erneuert.",
+          es: "Ampliamos los metadatos/alternates de las herramientas a 12 idiomas y actualizamos los enlaces del sitemap.",
+          fr: "Élargi les métadonnées/alternates des outils à 12 langues et actualisé les références du sitemap.",
+          it: "Estesi i metadati/alternates degli strumenti a 12 lingue supportate e aggiornati i riferimenti della sitemap.",
+          pt: "Expandimos os metadados/alternates das ferramentas para 12 idiomas e atualizamos os links do sitemap.",
+          ru: "Метаданные/альтернативы всех инструментов расширены до 12 локалей и обновлены ссылки карты сайта.",
+          ja: "すべてのツールのメタデータ/alternatesを12のロケールに拡張し、サイトマップ参照を更新しました。",
+          ko: "모든 도구의 메타데이터/alternates를 12개 로케일까지 확대하고 사이트맵 참조를 갱신했습니다.",
+          ar: "وسّعنا بيانات التعريف/البدائل لجميع الأدوات لتشمل 12 لغة ودعونا الروابط في خريطة الموقع."
+        }
+      },
+      {
+        type: "optimize",
+        description: {
+          zh: "记录 changelog 回退规则，确保翻译器发布在各语言中突出展现。",
+          en: "Documented changelog fallbacks so the translator release is highlighted across locales.",
+          hi: "चैन्ज़लॉग फॉलबैक दस्तावेज़ित किए ताकि अनुवादक रिलीज़ सभी भाषाओं में उभर कर आए।",
+          de: "Changelog-Fallbacks dokumentiert, damit der Übersetzer-Release in allen Locales hervorgehoben wird.",
+          es: "Documentamos los fallback del changelog para resaltar el lanzamiento del traductor en todos los idiomas.",
+          fr: "Documenté les fallback du changelog pour mettre en lumière la sortie du traducteur dans chaque langue.",
+          it: "Documentati i fallback del changelog per evidenziare il rilascio del traduttore su ogni lingua.",
+          pt: "Documentamos os fallback do changelog para destacar o lançamento do tradutor em todos os idiomas.",
+          ru: "Задокументировали откаты changelog, чтобы релиз переводчика выделялся во всех локалях.",
+          ja: "すべての言語で翻訳ツールのリリースが目立つように、changelog のフォールバックを記録しました。",
+          ko: "모든 로케일에서 번역기 릴리스가 돋보이도록 변경 로그 폴백을 기록했습니다.",
+          ar: "وثقنا خيارات التراجع في سجل التغييرات لإبراز إصدار المترجم في كل اللغات."
+        }
+      }
+    ]
+  },
   {
     version: "v0.9.0",
     date: "2025-11-22",
@@ -558,14 +646,18 @@ export interface LocalizedChangelogEntry {
 }
 
 // 获取本地化的 changelog 数据
+const resolveLocalizedText = (text: LocalizedText, locale: string): string => {
+  return text[locale as keyof LocalizedText] ?? text.en ?? text.zh;
+};
+
 export function getLocalizedChangelogData(locale: string = 'zh'): LocalizedChangelogEntry[] {
   return changelogData.map(entry => ({
     ...entry,
-    title: entry.title[locale as keyof LocalizedText] || entry.title.zh,
-    description: entry.description[locale as keyof LocalizedText] || entry.description.zh,
+    title: resolveLocalizedText(entry.title, locale),
+    description: resolveLocalizedText(entry.description, locale),
     changes: entry.changes.map(change => ({
       ...change,
-      description: change.description[locale as keyof LocalizedText] || change.description.zh
+      description: resolveLocalizedText(change.description, locale)
     }))
   }));
 }

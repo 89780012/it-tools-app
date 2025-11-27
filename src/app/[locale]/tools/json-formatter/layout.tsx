@@ -25,8 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-formatter',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-formatter',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-formatter',
+        'es': 'https://www.toolkitpub.com/es/tools/json-formatter',
         'de': 'https://www.toolkitpub.com/de/tools/json-formatter',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-formatter',
+        'it': 'https://www.toolkitpub.com/it/tools/json-formatter',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-formatter',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-formatter',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-formatter',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-formatter',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-formatter',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-formatter',
       },
     },
   }

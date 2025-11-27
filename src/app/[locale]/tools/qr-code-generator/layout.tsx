@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/qr-code-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/qr-code-generator',
-        'hi': 'https://www.toolkitpub.com/hi/tools/qr-code-generator',
+        'es': 'https://www.toolkitpub.com/es/tools/qr-code-generator',
         'de': 'https://www.toolkitpub.com/de/tools/qr-code-generator',
+        'fr': 'https://www.toolkitpub.com/fr/tools/qr-code-generator',
+        'it': 'https://www.toolkitpub.com/it/tools/qr-code-generator',
+        'pt': 'https://www.toolkitpub.com/pt/tools/qr-code-generator',
+        'ru': 'https://www.toolkitpub.com/ru/tools/qr-code-generator',
+        'ja': 'https://www.toolkitpub.com/ja/tools/qr-code-generator',
+        'ko': 'https://www.toolkitpub.com/ko/tools/qr-code-generator',
+        'ar': 'https://www.toolkitpub.com/ar/tools/qr-code-generator',
+        'hi': 'https://www.toolkitpub.com/hi/tools/qr-code-generator',
       },
     },
   }

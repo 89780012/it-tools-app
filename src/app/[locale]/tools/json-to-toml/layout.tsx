@@ -28,8 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-to-toml',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-toml',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-toml',
+        'es': 'https://www.toolkitpub.com/es/tools/json-to-toml',
         'de': 'https://www.toolkitpub.com/de/tools/json-to-toml',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-to-toml',
+        'it': 'https://www.toolkitpub.com/it/tools/json-to-toml',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-to-toml',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-to-toml',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-to-toml',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-to-toml',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-to-toml',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-toml',
       },
     },
   }

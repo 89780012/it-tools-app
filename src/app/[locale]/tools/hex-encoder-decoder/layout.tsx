@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/hex-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/hex-encoder-decoder',
-        'hi': 'https://www.toolkitpub.com/hi/tools/hex-encoder-decoder',
+        'es': 'https://www.toolkitpub.com/es/tools/hex-encoder-decoder',
         'de': 'https://www.toolkitpub.com/de/tools/hex-encoder-decoder',
+        'fr': 'https://www.toolkitpub.com/fr/tools/hex-encoder-decoder',
+        'it': 'https://www.toolkitpub.com/it/tools/hex-encoder-decoder',
+        'pt': 'https://www.toolkitpub.com/pt/tools/hex-encoder-decoder',
+        'ru': 'https://www.toolkitpub.com/ru/tools/hex-encoder-decoder',
+        'ja': 'https://www.toolkitpub.com/ja/tools/hex-encoder-decoder',
+        'ko': 'https://www.toolkitpub.com/ko/tools/hex-encoder-decoder',
+        'ar': 'https://www.toolkitpub.com/ar/tools/hex-encoder-decoder',
+        'hi': 'https://www.toolkitpub.com/hi/tools/hex-encoder-decoder',
       },
     },
   }

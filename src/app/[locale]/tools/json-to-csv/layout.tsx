@@ -25,8 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-to-csv',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-csv',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-csv',
+        'es': 'https://www.toolkitpub.com/es/tools/json-to-csv',
         'de': 'https://www.toolkitpub.com/de/tools/json-to-csv',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-to-csv',
+        'it': 'https://www.toolkitpub.com/it/tools/json-to-csv',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-to-csv',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-to-csv',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-to-csv',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-to-csv',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-to-csv',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-csv',
       },
     },
   }

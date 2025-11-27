@@ -26,8 +26,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/xml-to-json',
         'zh': 'https://www.toolkitpub.com/zh/tools/xml-to-json',
-        'hi': 'https://www.toolkitpub.com/hi/tools/xml-to-json',
+        'es': 'https://www.toolkitpub.com/es/tools/xml-to-json',
         'de': 'https://www.toolkitpub.com/de/tools/xml-to-json',
+        'fr': 'https://www.toolkitpub.com/fr/tools/xml-to-json',
+        'it': 'https://www.toolkitpub.com/it/tools/xml-to-json',
+        'pt': 'https://www.toolkitpub.com/pt/tools/xml-to-json',
+        'ru': 'https://www.toolkitpub.com/ru/tools/xml-to-json',
+        'ja': 'https://www.toolkitpub.com/ja/tools/xml-to-json',
+        'ko': 'https://www.toolkitpub.com/ko/tools/xml-to-json',
+        'ar': 'https://www.toolkitpub.com/ar/tools/xml-to-json',
+        'hi': 'https://www.toolkitpub.com/hi/tools/xml-to-json',
       },
     },
   }

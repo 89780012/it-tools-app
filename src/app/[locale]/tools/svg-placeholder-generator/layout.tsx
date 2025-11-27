@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/svg-placeholder-generator',
         'zh': 'https://www.toolkitpub.com/zh/tools/svg-placeholder-generator',
-        'hi': 'https://www.toolkitpub.com/hi/tools/svg-placeholder-generator',
+        'es': 'https://www.toolkitpub.com/es/tools/svg-placeholder-generator',
         'de': 'https://www.toolkitpub.com/de/tools/svg-placeholder-generator',
+        'fr': 'https://www.toolkitpub.com/fr/tools/svg-placeholder-generator',
+        'it': 'https://www.toolkitpub.com/it/tools/svg-placeholder-generator',
+        'pt': 'https://www.toolkitpub.com/pt/tools/svg-placeholder-generator',
+        'ru': 'https://www.toolkitpub.com/ru/tools/svg-placeholder-generator',
+        'ja': 'https://www.toolkitpub.com/ja/tools/svg-placeholder-generator',
+        'ko': 'https://www.toolkitpub.com/ko/tools/svg-placeholder-generator',
+        'ar': 'https://www.toolkitpub.com/ar/tools/svg-placeholder-generator',
+        'hi': 'https://www.toolkitpub.com/hi/tools/svg-placeholder-generator',
       },
     },
   }

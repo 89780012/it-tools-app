@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/cron-expression-parser',
         'zh': 'https://www.toolkitpub.com/zh/tools/cron-expression-parser',
-        'hi': 'https://www.toolkitpub.com/hi/tools/cron-expression-parser',
+        'es': 'https://www.toolkitpub.com/es/tools/cron-expression-parser',
         'de': 'https://www.toolkitpub.com/de/tools/cron-expression-parser',
+        'fr': 'https://www.toolkitpub.com/fr/tools/cron-expression-parser',
+        'it': 'https://www.toolkitpub.com/it/tools/cron-expression-parser',
+        'pt': 'https://www.toolkitpub.com/pt/tools/cron-expression-parser',
+        'ru': 'https://www.toolkitpub.com/ru/tools/cron-expression-parser',
+        'ja': 'https://www.toolkitpub.com/ja/tools/cron-expression-parser',
+        'ko': 'https://www.toolkitpub.com/ko/tools/cron-expression-parser',
+        'ar': 'https://www.toolkitpub.com/ar/tools/cron-expression-parser',
+        'hi': 'https://www.toolkitpub.com/hi/tools/cron-expression-parser',
       },
     },
   }

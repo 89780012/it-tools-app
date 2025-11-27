@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/time-converter',
         'zh': 'https://www.toolkitpub.com/zh/tools/time-converter',
-        'hi': 'https://www.toolkitpub.com/hi/tools/time-converter',
+        'es': 'https://www.toolkitpub.com/es/tools/time-converter',
         'de': 'https://www.toolkitpub.com/de/tools/time-converter',
+        'fr': 'https://www.toolkitpub.com/fr/tools/time-converter',
+        'it': 'https://www.toolkitpub.com/it/tools/time-converter',
+        'pt': 'https://www.toolkitpub.com/pt/tools/time-converter',
+        'ru': 'https://www.toolkitpub.com/ru/tools/time-converter',
+        'ja': 'https://www.toolkitpub.com/ja/tools/time-converter',
+        'ko': 'https://www.toolkitpub.com/ko/tools/time-converter',
+        'ar': 'https://www.toolkitpub.com/ar/tools/time-converter',
+        'hi': 'https://www.toolkitpub.com/hi/tools/time-converter',
       },
     },
   }

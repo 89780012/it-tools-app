@@ -25,8 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/icon-designer',
         'zh': 'https://www.toolkitpub.com/zh/tools/icon-designer',
-        'hi': 'https://www.toolkitpub.com/hi/tools/icon-designer',
+        'es': 'https://www.toolkitpub.com/es/tools/icon-designer',
         'de': 'https://www.toolkitpub.com/de/tools/icon-designer',
+        'fr': 'https://www.toolkitpub.com/fr/tools/icon-designer',
+        'it': 'https://www.toolkitpub.com/it/tools/icon-designer',
+        'pt': 'https://www.toolkitpub.com/pt/tools/icon-designer',
+        'ru': 'https://www.toolkitpub.com/ru/tools/icon-designer',
+        'ja': 'https://www.toolkitpub.com/ja/tools/icon-designer',
+        'ko': 'https://www.toolkitpub.com/ko/tools/icon-designer',
+        'ar': 'https://www.toolkitpub.com/ar/tools/icon-designer',
+        'hi': 'https://www.toolkitpub.com/hi/tools/icon-designer',
       },
     },
   }

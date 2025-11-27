@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/ip-lookup',
         'zh': 'https://www.toolkitpub.com/zh/tools/ip-lookup',
-        'hi': 'https://www.toolkitpub.com/hi/tools/ip-lookup',
+        'es': 'https://www.toolkitpub.com/es/tools/ip-lookup',
         'de': 'https://www.toolkitpub.com/de/tools/ip-lookup',
+        'fr': 'https://www.toolkitpub.com/fr/tools/ip-lookup',
+        'it': 'https://www.toolkitpub.com/it/tools/ip-lookup',
+        'pt': 'https://www.toolkitpub.com/pt/tools/ip-lookup',
+        'ru': 'https://www.toolkitpub.com/ru/tools/ip-lookup',
+        'ja': 'https://www.toolkitpub.com/ja/tools/ip-lookup',
+        'ko': 'https://www.toolkitpub.com/ko/tools/ip-lookup',
+        'ar': 'https://www.toolkitpub.com/ar/tools/ip-lookup',
+        'hi': 'https://www.toolkitpub.com/hi/tools/ip-lookup',
       },
     },
   }

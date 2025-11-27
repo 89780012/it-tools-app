@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/base64-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/base64-encoder-decoder',
-        'hi': 'https://www.toolkitpub.com/hi/tools/base64-encoder-decoder',
+        'es': 'https://www.toolkitpub.com/es/tools/base64-encoder-decoder',
         'de': 'https://www.toolkitpub.com/de/tools/base64-encoder-decoder',
+        'fr': 'https://www.toolkitpub.com/fr/tools/base64-encoder-decoder',
+        'it': 'https://www.toolkitpub.com/it/tools/base64-encoder-decoder',
+        'pt': 'https://www.toolkitpub.com/pt/tools/base64-encoder-decoder',
+        'ru': 'https://www.toolkitpub.com/ru/tools/base64-encoder-decoder',
+        'ja': 'https://www.toolkitpub.com/ja/tools/base64-encoder-decoder',
+        'ko': 'https://www.toolkitpub.com/ko/tools/base64-encoder-decoder',
+        'ar': 'https://www.toolkitpub.com/ar/tools/base64-encoder-decoder',
+        'hi': 'https://www.toolkitpub.com/hi/tools/base64-encoder-decoder',
       },
     },
   }

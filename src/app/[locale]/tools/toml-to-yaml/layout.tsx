@@ -28,8 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/toml-to-yaml',
         'zh': 'https://www.toolkitpub.com/zh/tools/toml-to-yaml',
-        'hi': 'https://www.toolkitpub.com/hi/tools/toml-to-yaml',
+        'es': 'https://www.toolkitpub.com/es/tools/toml-to-yaml',
         'de': 'https://www.toolkitpub.com/de/tools/toml-to-yaml',
+        'fr': 'https://www.toolkitpub.com/fr/tools/toml-to-yaml',
+        'it': 'https://www.toolkitpub.com/it/tools/toml-to-yaml',
+        'pt': 'https://www.toolkitpub.com/pt/tools/toml-to-yaml',
+        'ru': 'https://www.toolkitpub.com/ru/tools/toml-to-yaml',
+        'ja': 'https://www.toolkitpub.com/ja/tools/toml-to-yaml',
+        'ko': 'https://www.toolkitpub.com/ko/tools/toml-to-yaml',
+        'ar': 'https://www.toolkitpub.com/ar/tools/toml-to-yaml',
+        'hi': 'https://www.toolkitpub.com/hi/tools/toml-to-yaml',
       },
     },
   }

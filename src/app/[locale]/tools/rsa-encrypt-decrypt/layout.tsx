@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/rsa-encrypt-decrypt',
         'zh': 'https://www.toolkitpub.com/zh/tools/rsa-encrypt-decrypt',
-        'hi': 'https://www.toolkitpub.com/hi/tools/rsa-encrypt-decrypt',
+        'es': 'https://www.toolkitpub.com/es/tools/rsa-encrypt-decrypt',
         'de': 'https://www.toolkitpub.com/de/tools/rsa-encrypt-decrypt',
+        'fr': 'https://www.toolkitpub.com/fr/tools/rsa-encrypt-decrypt',
+        'it': 'https://www.toolkitpub.com/it/tools/rsa-encrypt-decrypt',
+        'pt': 'https://www.toolkitpub.com/pt/tools/rsa-encrypt-decrypt',
+        'ru': 'https://www.toolkitpub.com/ru/tools/rsa-encrypt-decrypt',
+        'ja': 'https://www.toolkitpub.com/ja/tools/rsa-encrypt-decrypt',
+        'ko': 'https://www.toolkitpub.com/ko/tools/rsa-encrypt-decrypt',
+        'ar': 'https://www.toolkitpub.com/ar/tools/rsa-encrypt-decrypt',
+        'hi': 'https://www.toolkitpub.com/hi/tools/rsa-encrypt-decrypt',
       },
     },
   }

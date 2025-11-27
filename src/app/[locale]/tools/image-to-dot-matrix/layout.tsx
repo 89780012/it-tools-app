@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/image-to-dot-matrix',
         'zh': 'https://www.toolkitpub.com/zh/tools/image-to-dot-matrix',
-        'hi': 'https://www.toolkitpub.com/hi/tools/image-to-dot-matrix',
+        'es': 'https://www.toolkitpub.com/es/tools/image-to-dot-matrix',
         'de': 'https://www.toolkitpub.com/de/tools/image-to-dot-matrix',
+        'fr': 'https://www.toolkitpub.com/fr/tools/image-to-dot-matrix',
+        'it': 'https://www.toolkitpub.com/it/tools/image-to-dot-matrix',
+        'pt': 'https://www.toolkitpub.com/pt/tools/image-to-dot-matrix',
+        'ru': 'https://www.toolkitpub.com/ru/tools/image-to-dot-matrix',
+        'ja': 'https://www.toolkitpub.com/ja/tools/image-to-dot-matrix',
+        'ko': 'https://www.toolkitpub.com/ko/tools/image-to-dot-matrix',
+        'ar': 'https://www.toolkitpub.com/ar/tools/image-to-dot-matrix',
+        'hi': 'https://www.toolkitpub.com/hi/tools/image-to-dot-matrix',
       },
     },
   }

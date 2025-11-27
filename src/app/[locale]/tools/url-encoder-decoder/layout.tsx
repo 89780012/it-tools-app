@@ -24,8 +24,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/url-encoder-decoder',
         'zh': 'https://www.toolkitpub.com/zh/tools/url-encoder-decoder',
-        'hi': 'https://www.toolkitpub.com/hi/tools/url-encoder-decoder',
+        'es': 'https://www.toolkitpub.com/es/tools/url-encoder-decoder',
         'de': 'https://www.toolkitpub.com/de/tools/url-encoder-decoder',
+        'fr': 'https://www.toolkitpub.com/fr/tools/url-encoder-decoder',
+        'it': 'https://www.toolkitpub.com/it/tools/url-encoder-decoder',
+        'pt': 'https://www.toolkitpub.com/pt/tools/url-encoder-decoder',
+        'ru': 'https://www.toolkitpub.com/ru/tools/url-encoder-decoder',
+        'ja': 'https://www.toolkitpub.com/ja/tools/url-encoder-decoder',
+        'ko': 'https://www.toolkitpub.com/ko/tools/url-encoder-decoder',
+        'ar': 'https://www.toolkitpub.com/ar/tools/url-encoder-decoder',
+        'hi': 'https://www.toolkitpub.com/hi/tools/url-encoder-decoder',
       },
     },
   }

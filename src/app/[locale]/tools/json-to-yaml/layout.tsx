@@ -26,8 +26,16 @@ export async function generateMetadata(): Promise<Metadata> {
       languages: {
         'en': 'https://www.toolkitpub.com/tools/json-to-yaml',
         'zh': 'https://www.toolkitpub.com/zh/tools/json-to-yaml',
-        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-yaml',
+        'es': 'https://www.toolkitpub.com/es/tools/json-to-yaml',
         'de': 'https://www.toolkitpub.com/de/tools/json-to-yaml',
+        'fr': 'https://www.toolkitpub.com/fr/tools/json-to-yaml',
+        'it': 'https://www.toolkitpub.com/it/tools/json-to-yaml',
+        'pt': 'https://www.toolkitpub.com/pt/tools/json-to-yaml',
+        'ru': 'https://www.toolkitpub.com/ru/tools/json-to-yaml',
+        'ja': 'https://www.toolkitpub.com/ja/tools/json-to-yaml',
+        'ko': 'https://www.toolkitpub.com/ko/tools/json-to-yaml',
+        'ar': 'https://www.toolkitpub.com/ar/tools/json-to-yaml',
+        'hi': 'https://www.toolkitpub.com/hi/tools/json-to-yaml',
       },
     },
   }
