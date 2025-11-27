@@ -25,7 +25,21 @@
     "click_sidebar": "点击左侧菜单使用",
     "actions": "操作",
     "back_to_home": "返回首页",
-    "close": "关闭"
+    "close": "关闭",
+    "languages": {
+      "en": "英文",
+      "zh": "中文",
+      "es": "西班牙文",
+      "de": "德文",
+      "fr": "法文",
+      "it": "意大利文",
+      "pt": "葡萄牙文",
+      "ru": "俄文",
+      "ja": "日文",
+      "ko": "韩文",
+      "ar": "阿拉伯文",
+      "hi": "印地文"
+    }
   },
   "theme": {
     "light": "亮色模式",
@@ -59,7 +73,7 @@
     "coming_soon": "即将推出",
     "modern_design": "🎨 现代化设计",
     "modern_design_desc": "基于 shadcn/ui 构建，支持亮色/暗色主题切换，提供优雅的用户体验",
-    "multilingual": "🌐 多语言支持", 
+    "multilingual": "🌐 多语言支持",
     "multilingual_desc": "支持中文和英文界面，满足不同用户的语言偏好",
     "high_performance": "⚡ 高性能",
     "high_performance_desc": "基于 Next.js 和 TypeScript，提供快速响应的用户体验",
@@ -686,7 +700,7 @@
       "min_value": "最小值",
       "max_value": "最大值",
       "length": "长度",
-      "field_type": "字段类型", 
+      "field_type": "字段类型",
       "string_length": "字符串长度",
       "array_length": "数组长度",
       "generate_button": "生成数据",
@@ -781,7 +795,7 @@
       "using_jsondiffpatch": "使用 jsondiffpatch",
       "comparison_result": "对比结果",
       "side_by_side": "并排对比",
-      "inline_mode": "内联模式", 
+      "inline_mode": "内联模式",
       "inline_diff_view": "内联差异视图",
       "show_only_differences": "仅显示差异",
       "deleted": "删除",
@@ -1885,13 +1899,13 @@
       "network_error": "网络连接错误",
       "info": {
         "basic": "基本信息",
-        "location": "地理位置", 
+        "location": "地理位置",
         "network": "网络信息",
         "security": "安全信息",
         "ip_address": "IP地址",
         "country": "国家",
         "region": "地区",
-        "city": "城市", 
+        "city": "城市",
         "postal_code": "邮政编码",
         "latitude": "纬度",
         "longitude": "经度",
@@ -2448,6 +2462,76 @@
         "title": "图片转点阵图工具 - 像素艺术效果生成",
         "description": "在线图片转点阵图工具,支持多种点形状、颜色模式,生成独特的点阵艺术效果,适用于设计和创意项目。",
         "keywords": "点阵图, 像素艺术, 图片效果"
+      }
+    },
+    "i18n-json-translator": {
+      "name": "i18n JSON 翻译器",
+      "description": "一次性翻译整个 JSON 语言文件。粘贴您的基础内容，选择目标语言，工具将使用扁平化的键调用您的 OpenRouter API。",
+      "workflow_badge": "i18n 工作流",
+      "source_title": "源 JSON",
+      "source_desc": "粘贴或拖放您的基础语言 JSON 文件。只有字符串值会被发送到翻译 API。",
+      "source_language": "源语言",
+      "target_languages": "目标语言",
+      "source_placeholder": "在此粘贴 JSON 语言数据...",
+      "translate_button": "开始翻译",
+      "sample_button": "使用示例数据",
+      "options_title": "翻译偏好设置",
+      "options_desc": "控制占位符、辅助文本和 HTML 片段在调用 API 之前的处理方式。",
+      "option_placeholders": "锁定占位符",
+      "option_placeholders_desc": "保护 ICU 变量（如 name、count），使翻译后的副本保留确切的标记。",
+      "option_skip_short": "跳过短字符串",
+      "option_skip_short_desc": "忽略短于所选长度的辅助标签。",
+      "option_strip_html": "去除 HTML 标签",
+      "option_strip_html_desc": "在将文本发送到模型之前移除 HTML 标签，避免标记损坏。",
+      "option_include_keys": "发送键提示",
+      "option_include_keys_desc": "附加键路径，为模型提供每个句子的更多上下文。",
+      "entries_detected": "检测到 {count} 个字符串需要翻译",
+      "progress_title": "翻译队列",
+      "progress_desc": "监控每种语言的等待、翻译或已完成状态。",
+      "completed": "已完成",
+      "failed": "失败",
+      "progress": "进度",
+      "entries": "条目",
+      "status": "状态",
+      "queued": "排队中",
+      "translating": "翻译中",
+      "output_title": "翻译结果",
+      "output_desc": "查看、复制或下载翻译后的语言 JSON。非字符串字段保持不变。",
+      "output_placeholder": "运行翻译以在此预览每种语言。",
+      "key_path": "键路径",
+      "preview": "预览",
+      "preview_limit": "预览中隐藏了 +{count} 个条目",
+      "copied_message": "已将 {language} 翻译复制到剪贴板",
+      "select_language_tip": "请至少选择一个目标语言",
+      "invalid_json": "源 JSON 包含语法错误",
+      "empty_entries": "未检测到字符串值。请确保您的 JSON 包含文本节点。",
+      "introduction": "i18n JSON 翻译器简化了团队本地化应用的方式。它扁平化嵌套的语言文件，保留键路径，仅将字符串值发送到基于 OpenRouter 的后端。API 响应后，工具会重建原始结构，您可以在几秒钟内复制或下载生产就绪的文件。",
+      "features": [
+        "自动提取每个嵌套键，并在翻译后恢复确切的 JSON 结构。",
+        "仅将字符串值发送到后端，因此数字、布尔值和元数据保持不变。",
+        "在内容发送到 LLM 之前，对占位符、HTML 标签和短辅助标签进行高级保护。",
+        "语言队列具有实时状态，以及每个翻译条目的差异友好预览。",
+        "即时操作，可按语言复制或下载完全格式化的语言文件。",
+        "100% 客户端解析，只有您的 API 端点接收需要翻译的值。"
+      ],
+      "faq": [
+        {
+          "question": "工具向我的 API 发送什么有效负载？",
+          "answer": "每个请求将 sourceLanguage、targetLanguage、entries（{key, value} 数组）和所选选项发布到 /api/i18n-translate。您可以将该有效负载转发到 OpenRouter 或任何自定义翻译服务。"
+        },
+        {
+          "question": "如何保护占位符和 HTML？",
+          "answer": "启用占位符锁定或 HTML 去除选项。工具保持 ICU 标记（如 {count}）完整，并可以在文本发送到模型之前移除 HTML 标签，防止标记损坏。"
+        },
+        {
+          "question": "我可以一次翻译多种语言吗？",
+          "answer": "可以。根据需要添加任意数量的目标语言。UI 独立跟踪每种语言，因此您知道哪些语言正在排队、运行、已完成或失败。"
+        }
+      ],
+      "meta": {
+        "title": "i18n JSON 翻译器 - 使用 OpenRouter 本地化 JSON 文件",
+        "description": "扁平化语言 JSON 键，将它们发送到您的 OpenRouter 翻译后端，并自动重建文件。",
+        "keywords": "i18n,json 翻译器,openrouter,本地化,翻译工具"
       }
     }
   },

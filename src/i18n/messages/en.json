@@ -25,7 +25,21 @@
     "click_sidebar": "Use via left sidebar menu",
     "actions": "Actions",
     "back_to_home": "Back to Home",
-    "close": "Close"
+    "close": "Close",
+    "languages": {
+      "en": "English",
+      "zh": "Chinese",
+      "es": "Spanish",
+      "de": "German",
+      "fr": "French",
+      "it": "Italian",
+      "pt": "Portuguese",
+      "ru": "Russian",
+      "ja": "Japanese",
+      "ko": "Korean",
+      "ar": "Arabic",
+      "hi": "Hindi"
+    }
   },
   "theme": {
     "light": "Light",
@@ -2448,6 +2462,76 @@
         "title": "Image to Dot Matrix - Convert Images to Pixel Art Effect",
         "description": "Convert images or text to dot matrix art with multiple dot shapes and color modes. Free online tool for creative designs.",
         "keywords": "dot matrix, pixel art, image effect"
+      }
+    },
+    "i18n-json-translator": {
+      "name": "i18n JSON Translator",
+      "description": "Translate entire JSON locale files in one go. Paste your base content, choose target languages, and the tool will call your OpenRouter-powered API with flattened keys.",
+      "workflow_badge": "i18n workflow",
+      "source_title": "Source JSON",
+      "source_desc": "Paste or drop your base locale JSON file. Only string values are sent to the translation API.",
+      "source_language": "Source language",
+      "target_languages": "Target languages",
+      "source_placeholder": "Paste JSON locale data here...",
+      "translate_button": "Start translation",
+      "sample_button": "Use sample data",
+      "options_title": "Translation preferences",
+      "options_desc": "Control how placeholders, helper texts, and HTML fragments are treated before we call your API.",
+      "option_placeholders": "Lock placeholders",
+      "option_placeholders_desc": "Protect ICU variables (e.g., name, count) so the translated copy keeps the exact tokens.",
+      "option_skip_short": "Skip short strings",
+      "option_skip_short_desc": "Ignore helper labels shorter than the selected length.",
+      "option_strip_html": "Strip HTML tags",
+      "option_strip_html_desc": "Remove HTML tags before sending text to the model to avoid broken markup.",
+      "option_include_keys": "Send key hints",
+      "option_include_keys_desc": "Attach the key path to give the model more context about each sentence.",
+      "entries_detected": "{count} strings detected for translation",
+      "progress_title": "Translation queue",
+      "progress_desc": "Monitor every language waiting, translating, or already finished.",
+      "completed": "Completed",
+      "failed": "Failed",
+      "progress": "Progress",
+      "entries": "Entries",
+      "status": "Status",
+      "queued": "Queued",
+      "translating": "Translating",
+      "output_title": "Translation result",
+      "output_desc": "Review, copy, or download the translated locale JSON. Non-string fields stay untouched.",
+      "output_placeholder": "Run the translation to preview each language here.",
+      "key_path": "Key path",
+      "preview": "Preview",
+      "preview_limit": "+{count} more entries hidden in preview",
+      "copied_message": "Copied {language} translation to clipboard",
+      "select_language_tip": "Select at least one target language",
+      "invalid_json": "Source JSON contains syntax errors",
+      "empty_entries": "No string values were detected. Make sure your JSON contains text nodes.",
+      "introduction": "i18n JSON Translator streamlines how teams localize apps. It flattens nested locale files, preserves key paths, and sends just the string values to your OpenRouter-based backend. After the API replies, the tool rebuilds the original structure so you can copy or download a production-ready file in seconds.",
+      "features": [
+        "Automatically extracts every nested key and restores the exact JSON structure after translation.",
+        "Sends only string values to the backend so numbers, booleans, and metadata remain untouched.",
+        "Advanced guardrails for placeholders, HTML tags, and short helper labels before content hits the LLM.",
+        "Language queue with live status plus diff-friendly previews for each translated entry.",
+        "Instant actions to copy or download a fully formatted locale file per language.",
+        "100% client-side parsing?only your API endpoint receives the values that require translation."
+      ],
+      "faq": [
+        {
+          "question": "What payload does the tool send to my API?",
+          "answer": "Each request posts sourceLanguage, targetLanguage, entries (array of {key, value}) and the selected options to /api/i18n-translate. You can forward that payload to OpenRouter or any custom translation service."
+        },
+        {
+          "question": "How are placeholders and HTML protected?",
+          "answer": "Enable the placeholder lock or HTML stripping options. The tool keeps ICU tokens such as {count} intact and can remove HTML tags before text hits the model, preventing broken markup."
+        },
+        {
+          "question": "Can I translate multiple languages at once?",
+          "answer": "Yes. Add as many target languages as needed. The UI tracks each language independently so you know which ones are queued, running, completed, or failed."
+        }
+      ],
+      "meta": {
+        "title": "i18n JSON Translator - Localize JSON files with OpenRouter",
+        "description": "Flatten locale JSON keys, send them to your OpenRouter translation backend, and rebuild the file automatically.",
+        "keywords": "i18n,json translator,openrouter,localization,translation tool"
       }
     }
   },

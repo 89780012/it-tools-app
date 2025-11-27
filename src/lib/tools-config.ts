@@ -168,6 +168,14 @@ export const toolsConfig: ToolCategory[] = [
         icon: "database"
       },
       {
+        id: "i18n-json-translator",
+        nameKey: "tools.i18n-json-translator.name",
+        descriptionKey: "tools.i18n-json-translator.description",
+        category: "json-tools",
+        path: "/tools/i18n-json-translator",
+        icon: "languages"
+      },
+      {
         id: "json-diff",
         nameKey: "tools.json-diff.name",
         descriptionKey: "tools.json-diff.description",

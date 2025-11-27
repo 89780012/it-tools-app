@@ -17,7 +17,7 @@ interface RelatedToolsProps {
 // 实际存在的工具页面列表
 const availableTools = [
   'json-formatter', 'json-to-csv', 'json-to-yaml', 'yaml-to-json', 'json-to-xml',
-  'json-diff', 'json-generator', 'json-visualizer',
+  'json-diff', 'json-generator', 'json-visualizer', 'i18n-json-translator',
   'base64-encoder-decoder', 'url-encoder-decoder',
   'md5-hash', 'sha256-hash', 'sha1-hash', 'hex-encoder-decoder',
   'binary-encoder-decoder', 'password-generator', 'aes-encrypt-decrypt',

@@ -37,6 +37,7 @@ import {
   Terminal,
   Grid3x3,
   Box,
+  Languages,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -83,6 +84,7 @@ const toolIconMap = {
   terminal: Terminal,            // cURL converter
   "grid-3x3": Grid3x3,           // Image to dot matrix
   box: Box,                      // Docker run to compose
+  languages: Languages,          // i18n translator
 }
 
 export function AppSidebar() {

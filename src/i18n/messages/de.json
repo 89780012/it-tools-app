@@ -25,7 +25,21 @@
     "click_sidebar": "Über das linke Seitenmenü verwenden",
     "actions": "Aktionen",
     "back_to_home": "Zurück zur Startseite",
-    "close": "Schließen"
+    "close": "Schließen",
+    "languages": {
+      "en": "Englisch",
+      "zh": "Chinesisch",
+      "es": "Spanisch",
+      "de": "Deutsch",
+      "fr": "Französisch",
+      "it": "Italienisch",
+      "pt": "Portugiesisch",
+      "ru": "Russisch",
+      "ja": "Japanisch",
+      "ko": "Koreanisch",
+      "ar": "Arabisch",
+      "hi": "Hindi"
+    }
   },
   "theme": {
     "light": "Hell",
@@ -2448,6 +2462,76 @@
         "title": "Image to Dot Matrix - Convert Images to Pixel Art Effect",
         "description": "Convert images or text to dot matrix art with multiple dot shapes and color modes. Free online tool for creative designs.",
         "keywords": "dot matrix, pixel art, image effect"
+      }
+    },
+    "i18n-json-translator": {
+      "name": "i18n JSON Übersetzer",
+      "description": "Übersetze komplette JSON-Locales mit wenigen Klicks. Basisdatei einfügen, Zielsprachen wählen und den OpenRouter-Dienst automatisch anstoßen.",
+      "workflow_badge": "i18n Workflow",
+      "source_title": "Quell-JSON",
+      "source_desc": "Füge deine Ausgangssprache ein. Nur Zeichenketten werden an die Übersetzungs-API gesendet.",
+      "source_language": "Ausgangssprache",
+      "target_languages": "Zielsprachen",
+      "source_placeholder": "JSON-Locales hier einfügen...",
+      "translate_button": "Übersetzung starten",
+      "sample_button": "Beispieldaten",
+      "options_title": "Übersetzungsoptionen",
+      "options_desc": "Bestimme, wie Platzhalter, kurze Texte und HTML behandelt werden, bevor die Anfrage dein Backend erreicht.",
+      "option_placeholders": "Platzhalter schützen",
+      "option_placeholders_desc": "ICU-Variablen (z.B. name, count) unverändert lassen, damit die Struktur erhalten bleibt.",
+      "option_skip_short": "Kurze Strings überspringen",
+      "option_skip_short_desc": "Hilfstexte unterhalb der gewählten Länge ignorieren.",
+      "option_strip_html": "HTML-Tags entfernen",
+      "option_strip_html_desc": "Tags vor dem Senden an das Modell entfernen, um fehlerhaftes Markup zu vermeiden.",
+      "option_include_keys": "Schlüssel-Kontext senden",
+      "option_include_keys_desc": "Den Schlüsselpfad mitsenden, damit das Modell den Kontext versteht.",
+      "entries_detected": "{count} Zeichenketten gefunden",
+      "progress_title": "Übersetzungsstatus",
+      "progress_desc": "Verfolge, welche Sprache wartet, läuft oder fertig ist.",
+      "completed": "Fertig",
+      "failed": "Fehlgeschlagen",
+      "progress": "Fortschritt",
+      "entries": "Einträge",
+      "status": "Status",
+      "queued": "Wartend",
+      "translating": "Übersetze",
+      "output_title": "Ergebnis",
+      "output_desc": "Überprüfe, kopiere oder lade die fertige Locale-Datei herunter.",
+      "output_placeholder": "Nach Abschluss erscheint hier die Ausgabe.",
+      "key_path": "Schlüsselpfad",
+      "preview": "Vorschau",
+      "preview_limit": "+{count} weitere Einträge verborgen",
+      "copied_message": "{language}-Übersetzung kopiert",
+      "select_language_tip": "Bitte wähle mindestens eine Zielsprache",
+      "invalid_json": "Das Quell-JSON ist ungültig",
+      "empty_entries": "Es wurden keine übersetzbaren Strings gefunden.",
+      "introduction": "Der i18n JSON Übersetzer automatisiert den gesamten Lokalisierungsfluss. Er zerlegt JSON-Dateien in flache Schlüssel, sendet nur die Texte an dein OpenRouter-Backend und setzt anschließend die ursprüngliche Struktur wieder zusammen, sodass du sofort produktionsreife Dateien erhältst.",
+      "features": [
+        "Erkennt verschachtelte Schlüssel automatisch und stellt die Struktur nach der Übersetzung wieder her.",
+        "Nur Zeichenketten verlassen den Browser — Zahlen und Metadaten bleiben unverändert.",
+        "Schutzmechanismen für Platzhalter, HTML und kurze UI-Texte.",
+        "Übersichtliche Queue mit Status für jede Sprache.",
+        "Ein Klick zum Kopieren oder Herunterladen jeder Zielsprache.",
+        "Parsing findet komplett clientseitig statt; nur notwendige Texte werden an dein API gesendet."
+      ],
+      "faq": [
+        {
+          "question": "Welche Daten sendet das Tool an mein Backend?",
+          "answer": "Die App ruft /api/i18n-translate auf und übergibt sourceLanguage, targetLanguage, entries (Schlüssel + Wert) sowie die gesetzten Optionen. Du kannst den Payload direkt an OpenRouter oder andere Dienste weiterreichen."
+        },
+        {
+          "question": "Wie werden Platzhalter geschützt?",
+          "answer": "Aktiviere die Option \"Platzhalter schützen\". Dadurch bleiben Token wie {count} erhalten und optional werden HTML-Tags vorab entfernt, damit das Modell sie nicht verändert."
+        },
+        {
+          "question": "Kann ich mehrere Sprachen gleichzeitig verarbeiten?",
+          "answer": "Ja. Wähle mehrere Zielsprachen — jede erhält ihren eigenen Status (wartend, aktiv, fertig oder fehlgeschlagen)."
+        }
+      ],
+      "meta": {
+        "title": "i18n JSON Übersetzer - Locale-Dateien automatisch übersetzen",
+        "description": "JSON-Schlüssel flatten, mit OpenRouter übersetzen und die ursprüngliche Struktur sofort wiederherstellen.",
+        "keywords": "i18n,json,übersetzer,openrouter,lokalisierung"
       }
     }
   },
