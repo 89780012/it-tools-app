@@ -63,13 +63,31 @@ export function flattenJsonWithOrder(obj: JsonObject): FlatEntry[] {
       return
     }
 
-    if (current && typeof current === 'object' && !Array.isArray(current)) {
+    // 处理数组 - 如果数组包含字符串,也需要扁平化
+    if (Array.isArray(current)) {
+      current.forEach((item, index) => {
+        if (typeof item === 'string') {
+          result.push({
+            path: [...path, String(index)].join('.'),
+            value: item,
+            depth: depth + 1,
+            index: globalIndex++
+          })
+        } else if (item && typeof item === 'object') {
+          // 如果数组项是对象,递归处理
+          traverse(item, [...path, String(index)], depth + 1)
+        }
+      })
+      return
+    }
+
+    if (current && typeof current === 'object') {
       Object.entries(current).forEach(([key, value]) => {
         traverse(value, [...path, key], depth + 1)
       })
     }
 
-    // 忽略数组、数字、布尔值和 null
+    // 忽略数字、布尔值和 null
   }
 
   traverse(obj, [], 0)
@@ -235,6 +253,38 @@ export function rebuildJson(
       return `[MISSING: ${fullPath}]`
     }
 
+    // 如果是数组,需要处理数组内容
+    if (Array.isArray(sourceNode)) {
+      // 检查数组是否全是字符串(可翻译的内容)
+      const allStrings = sourceNode.every(item => typeof item === 'string')
+
+      if (allStrings && sourceNode.length > 0) {
+        // 尝试从翻译结果中恢复数组
+        // 翻译 API 会将数组项逐个翻译,key 格式为: path.0, path.1, path.2...
+        const translatedArray: string[] = []
+        let hasTranslation = false
+
+        for (let i = 0; i < sourceNode.length; i++) {
+          const itemPath = `${fullPath}.${i}`
+          if (translations[itemPath]) {
+            translatedArray.push(translations[itemPath])
+            hasTranslation = true
+          } else {
+            // 如果某一项没有翻译,标记为缺失
+            translatedArray.push(`[MISSING: ${itemPath}]`)
+          }
+        }
+
+        // 如果有至少一项翻译成功,返回翻译后的数组
+        if (hasTranslation) {
+          return translatedArray as JsonValue
+        }
+      }
+
+      // 如果数组不是纯字符串,或者翻译完全失败,标记为缺失
+      return `[MISSING_ARRAY: ${fullPath}]` as JsonValue
+    }
+
     // 如果是对象,递归处理
     if (sourceNode && typeof sourceNode === 'object' && !Array.isArray(sourceNode)) {
       const rebuilt: JsonObject = {}
@@ -243,11 +293,6 @@ export function rebuildJson(
         rebuilt[key] = traverse(sourceValue, undefined, [...path, key])
       })
       return rebuilt
-    }
-
-    // 如果是数组,标记为缺失(数组不应该被翻译)
-    if (Array.isArray(sourceNode)) {
-      return `[MISSING_ARRAY: ${fullPath}]` as JsonValue
     }
 
     // 对于数字、布尔值等,直接使用源值作为兜底
