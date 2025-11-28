@@ -857,6 +857,95 @@
         "keywords": "JSON对比, JSON差异, 差异分析"
       }
     },
+    "json-key-fixer": {
+      "name": "JSON Key 比对修复工具",
+      "description": "自动检测和修复多语言翻译文件的key结构差异",
+      "badge": "翻译文件维护",
+      "drag_files": "拖拽或点击上传多个 JSON 文件",
+      "supported_formats": "支持 .json 格式文件",
+      "files": "文件列表",
+      "select_source_hint": "选择一个文件作为基准源文件",
+      "stats": "差异统计",
+      "order_diff": "顺序差异",
+      "missing_keys": "缺失key",
+      "extra_keys": "多余key",
+      "match_rate": "匹配率",
+      "fix_options": "修复选项",
+      "fix_order": "修复key顺序",
+      "fill_missing": "补全缺失key (AI翻译)",
+      "remove_extra": "删除多余key",
+      "start_fix": "开始修复",
+      "fixing": "修复中",
+      "download_zip": "下载ZIP",
+      "fix_progress": "修复进度",
+      "translation_progress": "翻译进度",
+      "completed": "已完成",
+      "failed": "失败",
+      "language_detected": "语种检测",
+      "confidence": "置信度",
+      "select_source": "选择源文件",
+      "no_source_selected": "请先选择一个源文件作为基准",
+      "fix_complete": "修复完成",
+      "download_success": "下载成功",
+      "upload_success": "上传成功",
+      "files_uploaded": "已上传 {count} 个文件",
+      "file_format_error": "文件格式错误",
+      "not_json_file": "{fileName} 不是 JSON 文件",
+      "file_process_failed": "文件处理失败",
+      "invalid_json_format": "无效的JSON格式",
+      "language_detection_failed": "语种检测失败",
+      "files_fixed": "已修复 {count} 个文件",
+      "zip_downloaded": "修复文件已打包下载",
+      "view_details": "查看详情",
+      "diff_dialog_title": "文件对比详情",
+      "diff_dialog_description": "查看 {fileName} 的修复前后对比",
+      "diff_stats_order": "顺序差异",
+      "diff_stats_missing": "缺失 key",
+      "diff_stats_extra": "多余 key",
+      "diff_stats_match": "匹配率",
+      "diff_view_title": "JSON 结构对比",
+      "diff_view_description": "红色表示删除,绿色表示新增或修改",
+      "diff_before": "修复前 (原始文件)",
+      "diff_after": "修复后 (已处理)",
+      "introduction": "JSON Key 比对修复工具是专为多语言翻译文件维护设计的专业工具，能够自动检测和修复翻译文件之间的key结构差异。通过智能语种识别、三维差异分析（顺序、缺失、多余）和AI翻译补全，帮助开发团队保持多语言文件的结构一致性。工具支持批量处理、可视化对比、一键修复，大幅提升国际化项目的维护效率。",
+      "features": [
+        "🔍 智能语种检测 - 基于大模型自动识别文件语言",
+        "📊 三维差异分析 - 检测key顺序、缺失、多余三类问题",
+        "🤖 AI翻译补全 - 自动翻译缺失的key内容",
+        "🔧 一键批量修复 - 自动重排序并补全翻译",
+        "📦 ZIP打包下载 - 修复后文件批量导出",
+        "📋 修复报告生成 - Markdown格式的详细报告",
+        "🎯 保序重构算法 - 严格按源文件顺序重建",
+        "⚡ 并发翻译引擎 - 批处理50条/批，高效处理"
+      ],
+      "faq": [
+        {
+          "question": "什么情况下需要使用 JSON Key 比对修复工具？",
+          "answer": "当你的多语言翻译文件（如zh.json、en.json、de.json）之间出现key结构不一致时，比如某些语言文件缺少新增的翻译key，或者key的顺序混乱导致Git diff难以阅读，这个工具可以自动检测并修复这些问题。"
+        },
+        {
+          "question": "工具如何检测文件的语种？",
+          "answer": "工具会提取JSON文件中前10个翻译文本，发送给大模型进行语言识别。大模型会分析语言特征、字符模式和词汇，返回语言代码（如zh、en）和置信度评分，确保准确识别文件语种。"
+        },
+        {
+          "question": "AI翻译功能的准确性如何？",
+          "answer": "工具使用与i18n-json-translator相同的翻译API，采用批处理50条/批、并发5个请求、最多重试3次的策略。翻译准确性取决于大模型质量，通常对于常见语言和标准文本准确率很高。翻译失败的key会在报告中标记，可手动补充。"
+        },
+        {
+          "question": "修复时会删除多余的key吗？",
+          "answer": "默认不会删除。工具提供'删除多余key'选项（默认关闭），让你选择是否移除目标文件中源文件没有的key。推荐保留多余key以避免意外数据丢失，可以手动review后决定是否删除。"
+        },
+        {
+          "question": "下载的ZIP包包含什么内容？",
+          "answer": "ZIP包包含所有修复后的JSON文件（保持原文件名）和一个README.md修复报告。报告包含修复概览、翻译统计、失败的key列表，方便你审查修复结果和手动处理失败项。"
+        }
+      ],
+      "meta": {
+        "title": "JSON Key 比对修复工具 - 多语言翻译文件维护",
+        "description": "在线JSON Key比对修复工具,自动检测和修复多语言翻译文件的结构差异,智能补全缺失key,提升国际化维护效率。",
+        "keywords": "JSON Key修复, 翻译文件维护, 多语言工具, i18n工具"
+      }
+    },
     "base64-encoder-decoder": {
       "name": "Base64 编码解码",
       "description": "Base64 字符串编码和解码工具",

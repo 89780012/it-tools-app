@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
 
 // 从环境变量读取 API 配置
-const API_URL = process.env.I18N_TRANSLATE_API_URL
-const API_KEY = process.env.I18N_TRANSLATE_API_KEY
-const API_MODEL = process.env.I18N_TRANSLATE_API_MODEL
+// const API_URL = process.env.I18N_TRANSLATE_API_URL
+// const API_KEY = process.env.I18N_TRANSLATE_API_KEY
+// const API_MODEL = process.env.I18N_TRANSLATE_API_MODEL
+
+const API_URL = "https://oapi.uk/v1/chat/completions"
+const API_KEY = "sk-2BzjTiDatY1C9bL9JiEQxDzaiRSWgVlJ6qlYozNnZw4TNwmS"
+const API_MODEL = "gpt-5-nano"
+
 
 // 语言代码映射到完整语言名称
 const LANGUAGE_NAMES: Record<string, string> = {

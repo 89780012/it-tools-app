@@ -182,6 +182,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "json-tools",
         path: "/tools/json-diff",
         icon: "git-compare"
+      },
+      {
+        id: "json-key-fixer",
+        nameKey: "tools.json-key-fixer.name",
+        descriptionKey: "tools.json-key-fixer.description",
+        category: "json-tools",
+        path: "/tools/json-key-fixer",
+        icon: "file-diff"
       }
     ]
   },
