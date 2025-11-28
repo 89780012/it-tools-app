@@ -23,7 +23,7 @@ export const changelogData: ChangelogEntry[] = [
   {
     version: "v1.0.0",
     date: "2025-12-05",
-    type: "major",
+    type: "minor",
     title: {
       zh: "1.0.0 国际化升级与 i18n 翻译器",
       en: "Internationalization Expansion with i18n Translator",
