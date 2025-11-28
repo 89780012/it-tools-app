@@ -28,17 +28,17 @@
     "close": "Close",
     "languages": {
       "en": "English",
-      "zh": "Chinese",
-      "es": "Spanish",
-      "de": "German",
-      "fr": "French",
-      "it": "Italian",
-      "pt": "Portuguese",
-      "ru": "Russian",
-      "ja": "Japanese",
-      "ko": "Korean",
-      "ar": "Arabic",
-      "hi": "Hindi"
+      "zh": "中文",
+      "es": "Español",
+      "de": "Deutsch",
+      "fr": "Français",
+      "it": "Italiano",
+      "pt": "Português",
+      "ru": "Русский",
+      "ja": "日本語",
+      "ko": "한국어",
+      "ar": "العربية",
+      "hi": "हिंदी"
     }
   },
   "theme": {

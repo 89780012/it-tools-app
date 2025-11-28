@@ -27,18 +27,18 @@
     "back_to_home": "返回首页",
     "close": "关闭",
     "languages": {
-      "en": "英文",
+      "en": "English",
       "zh": "中文",
-      "es": "西班牙文",
-      "de": "德文",
-      "fr": "法文",
-      "it": "意大利文",
-      "pt": "葡萄牙文",
-      "ru": "俄文",
-      "ja": "日文",
-      "ko": "韩文",
-      "ar": "阿拉伯文",
-      "hi": "印地文"
+      "es": "Español",
+      "de": "Deutsch",
+      "fr": "Français",
+      "it": "Italiano",
+      "pt": "Português",
+      "ru": "Русский",
+      "ja": "日本語",
+      "ko": "한국어",
+      "ar": "العربية",
+      "hi": "हिंदी"
     }
   },
   "theme": {

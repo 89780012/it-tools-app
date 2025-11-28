@@ -27,18 +27,18 @@
     "back_to_home": "Torna alla home",
     "close": "Chiudi",
     "languages": {
-      "en": "Inglese",
-      "zh": "Cinese",
-      "es": "Spagnolo",
-      "de": "Tedesco",
-      "fr": "Francese",
+      "en": "English",
+      "zh": "中文",
+      "es": "Español",
+      "de": "Deutsch",
+      "fr": "Français",
       "it": "Italiano",
-      "pt": "Portoghese",
-      "ru": "Russo",
-      "ja": "Giapponese",
-      "ko": "Coreano",
-      "ar": "Arabo",
-      "hi": "Hindi"
+      "pt": "Português",
+      "ru": "Русский",
+      "ja": "日本語",
+      "ko": "한국어",
+      "ar": "العربية",
+      "hi": "हिंदी"
     }
   },
   "theme": {
