@@ -1,18 +1,50 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
         <loc>https://www.toolkitpub.com/sitemap-en.xml</loc>
-        <lastmod>2025-11-22</lastmod>
+        <lastmod>2025-11-28</lastmod>
     </sitemap>
     <sitemap>
         <loc>https://www.toolkitpub.com/sitemap-zh.xml</loc>
-        <lastmod>2025-11-22</lastmod>
+        <lastmod>2025-11-28</lastmod>
     </sitemap>
     <sitemap>
-        <loc>https://www.toolkitpub.com/sitemap-hi.xml</loc>
-        <lastmod>2025-11-22</lastmod>
+        <loc>https://www.toolkitpub.com/sitemap-es.xml</loc>
+        <lastmod>2025-11-28</lastmod>
     </sitemap>
     <sitemap>
         <loc>https://www.toolkitpub.com/sitemap-de.xml</loc>
-        <lastmod>2025-11-22</lastmod>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-fr.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-it.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-pt.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-ru.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-ja.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-ko.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-ar.xml</loc>
+        <lastmod>2025-11-28</lastmod>
+    </sitemap>
+    <sitemap>
+        <loc>https://www.toolkitpub.com/sitemap-hi.xml</loc>
+        <lastmod>2025-11-28</lastmod>
     </sitemap>
 </sitemapindex>

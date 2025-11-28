@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- HI主页（有前缀） -->
+  <!-- AR主页（有前缀） -->
   <url>
-    <loc>https://www.toolkitpub.com/hi</loc>
+    <loc>https://www.toolkitpub.com/ar</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <lastmod>2025-11-28</lastmod>
@@ -22,9 +22,9 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.toolkitpub.com/"/>
   </url>
 
-  <!-- HI工具页面（有前缀） -->
+  <!-- AR工具页面（有前缀） -->
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/aes-encrypt-decrypt</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/aes-encrypt-decrypt</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -44,7 +44,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/base64-encoder-decoder</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/base64-encoder-decoder</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -64,7 +64,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/base64-file-converter</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/base64-file-converter</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -84,7 +84,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/binary-encoder-decoder</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/binary-encoder-decoder</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -104,7 +104,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/color-converter</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/color-converter</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -124,7 +124,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/cron-expression-parser</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/cron-expression-parser</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -144,7 +144,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/csv-to-json</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/csv-to-json</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -164,7 +164,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/curl-converter</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/curl-converter</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -184,7 +184,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/docker-run-to-compose</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/docker-run-to-compose</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -204,7 +204,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/hex-encoder-decoder</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/hex-encoder-decoder</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -224,7 +224,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/hmac-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/hmac-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -244,7 +244,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/i18n-json-translator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/i18n-json-translator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -264,7 +264,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/icon-designer</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/icon-designer</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -284,7 +284,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/image-to-dot-matrix</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/image-to-dot-matrix</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -304,7 +304,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/ip-lookup</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/ip-lookup</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -324,7 +324,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-diff</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-diff</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -344,7 +344,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-formatter</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-formatter</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -364,7 +364,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -384,7 +384,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-key-fixer</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-key-fixer</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -404,7 +404,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-to-csv</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-to-csv</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -424,7 +424,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-to-toml</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-to-toml</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -444,7 +444,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-to-xml</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-to-xml</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -464,7 +464,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-to-yaml</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-to-yaml</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -484,7 +484,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/json-visualizer</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/json-visualizer</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -504,7 +504,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/md5-hash</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/md5-hash</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -524,7 +524,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/password-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/password-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -544,7 +544,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/qr-code-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/qr-code-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -564,7 +564,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/rsa-encrypt-decrypt</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/rsa-encrypt-decrypt</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -584,7 +584,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/sha1-hash</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/sha1-hash</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -604,7 +604,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/sha256-hash</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/sha256-hash</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -624,7 +624,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/svg-placeholder-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/svg-placeholder-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -644,7 +644,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/time-converter</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/time-converter</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -664,7 +664,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/toml-to-json</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/toml-to-json</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -684,7 +684,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/toml-to-yaml</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/toml-to-yaml</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -704,7 +704,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/url-encoder-decoder</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/url-encoder-decoder</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -724,7 +724,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/uuid-generator</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/uuid-generator</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -744,7 +744,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/xml-to-json</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/xml-to-json</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -764,7 +764,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/yaml-to-json</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/yaml-to-json</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
@@ -784,7 +784,7 @@
   </url>
 
   <url>
-    <loc>https://www.toolkitpub.com/hi/tools/yaml-to-toml</loc>
+    <loc>https://www.toolkitpub.com/ar/tools/yaml-to-toml</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <lastmod>2025-11-28</lastmod>
