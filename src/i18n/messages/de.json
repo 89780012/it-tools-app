@@ -763,8 +763,9 @@
       "hide_unchanged": "Hide Unchanged",
       "no_differences": "No differences found",
       "total": "Total",
-      "added": "Added",
+      "added_count": "Hinzufügen",
       "removed": "Removed",
+      "modified_count": "Ändern",
       "unchanged": "Unchanged",
       "errors": {
         "empty_input": "Please enter both JSON data",
@@ -798,6 +799,7 @@
       "inline_diff_view": "Inline Diff View",
       "show_only_differences": "Show Only Differences",
       "deleted": "Deleted",
+      "added_item": "Hinzufügen",
       "moved": "Moved",
       "deleted_marked_red": "deleted content marked red",
       "added_marked_green": "added content marked green",
@@ -855,12 +857,112 @@
         "keywords": "json diff, json compare, difference analysis"
       }
     },
+    "json-key-fixer": {
+      "name": "JSON-Key-Vergleichs- und Reparaturwerkzeug",
+      "description": "Automatische Erkennung und Reparatur von Key-Strukturunterschieden in mehrsprachigen Übersetzungsdateien",
+      "badge": "Wartung von Übersetzungsdateien",
+      "drag_files": "Mehrere JSON-Dateien per Drag & Drop hochladen oder anklicken",
+      "supported_formats": "Unterstützt .json-Formatdateien",
+      "files": "Dateiliste",
+      "select_source_hint": "Wählen Sie eine Datei als Basisquelldatei aus",
+      "stats": "Differenzstatistik",
+      "order_diff": "Reihenfolgenunterschiede",
+      "missing_keys": "Fehlende Keys",
+      "extra_keys": "Überflüssige Keys",
+      "match_rate": "Übereinstimmungsrate",
+      "fix_options": "Reparaturoptionen",
+      "fix_order": "Key-Reihenfolge reparieren",
+      "fill_missing": "Fehlende Keys ergänzen (KI-Übersetzung)",
+      "remove_extra": "Überflüssige Keys löschen",
+      "start_fix": "Reparatur starten",
+      "fixing": "Reparatur läuft",
+      "download_zip": "ZIP herunterladen",
+      "fix_progress": "Reparaturfortschritt",
+      "translation_progress": "Übersetzungsfortschritt",
+      "completed": "Abgeschlossen",
+      "failed": "Fehlgeschlagen",
+      "language_detected": "Spracherkennung",
+      "confidence": "Konfidenz",
+      "select_source": "Quelldatei auswählen",
+      "no_source_selected": "Bitte wählen Sie zuerst eine Quelldatei als Basis aus",
+      "fix_complete": "Reparatur abgeschlossen",
+      "download_success": "Download erfolgreich",
+      "upload_success": "Upload erfolgreich",
+      "files_uploaded": "{count} Dateien hochgeladen",
+      "file_format_error": "Falsches Dateiformat",
+      "not_json_file": "{fileName} ist keine JSON-Datei",
+      "file_process_failed": "Datei konnte nicht verarbeitet werden",
+      "invalid_json_format": "Ungültiges JSON-Format",
+      "language_detection_failed": "Spracherkennung fehlgeschlagen",
+      "files_fixed": "{count} Dateien repariert",
+      "zip_downloaded": "Reparaturdateien wurden als ZIP-Datei heruntergeladen",
+      "view_details": "Details anzeigen",
+      "diff_dialog_title": "Details zum Dateivergleich",
+      "diff_dialog_description": "Vergleich vor und nach der Reparatur von {fileName} anzeigen",
+      "diff_stats_order": "Reihenfolgenunterschiede",
+      "diff_stats_missing": "Fehlende Keys",
+      "diff_stats_extra": "Überflüssige Keys",
+      "diff_stats_match": "Übereinstimmungsrate",
+      "diff_view_title": "JSON-Strukturvergleich",
+      "diff_view_description": "Rot bedeutet Löschen, Grün bedeutet Hinzufügen oder Ändern",
+      "diff_before": "Vorher (Originaldatei)",
+      "diff_after": "Nachher (Verarbeitet)",
+      "introduction": "Das JSON Key Vergleichs- und Reparaturtool ist ein professionelles Werkzeug, das speziell für die Pflege mehrsprachiger Übersetzungsdateien entwickelt wurde und in der Lage ist, Unterschiede in der Key-Struktur zwischen Übersetzungsdateien automatisch zu erkennen und zu beheben. Durch intelligente Spracherkennung, dreidimensionale Differenzanalyse (Reihenfolge, fehlend, überflüssig) und KI-Übersetzungsergänzung hilft es Entwicklungsteams, die strukturelle Konsistenz mehrsprachiger Dateien aufrechtzuerhalten. Das Tool unterstützt die Stapelverarbeitung, den visuellen Vergleich und die Ein-Klick-Reparatur, wodurch die Wartungseffizienz von Internationalisierungsprojekten erheblich verbessert wird.",
+      "features": [
+        "🔍 Intelligente Spracherkennung - Automatische Erkennung der Dateisprache basierend auf einem großen Modell",
+        "📊 Dreidimensionale Differenzanalyse - Erkennung von Problemen in Bezug auf Key-Reihenfolge, fehlende und überflüssige Keys",
+        "🤖 KI-Übersetzungsergänzung - Automatische Übersetzung fehlender Key-Inhalte",
+        "🔧 Ein-Klick-Stapelreparatur - Automatisches Umsortieren und Ergänzen von Übersetzungen",
+        "📦 ZIP-Paket-Download - Stapelweiser Export reparierter Dateien",
+        "📋 Erstellung eines Reparaturberichts - Detaillierter Bericht im Markdown-Format",
+        "🎯 Reihenfolgeerhaltender Rekonstruktionsalgorithmus - Strikte Rekonstruktion in der Reihenfolge der Quelldatei",
+        "⚡ Parallele Übersetzungs-Engine - Stapelverarbeitung von 50 Einträgen pro Stapel, effiziente Verarbeitung"
+      ],
+      "faq": [
+        {
+          "question": "Wann ist die Verwendung des JSON Key Vergleichs- und Reparaturtools erforderlich?",
+          "answer": "Wenn Ihre mehrsprachigen Übersetzungsdateien (z. B. zh.json, en.json, de.json) inkonsistente Key-Strukturen aufweisen, z. B. wenn in einigen Sprachdateien neu hinzugefügte Übersetzungsschlüssel fehlen oder die Reihenfolge der Schlüssel durcheinander ist, was das Lesen von Git-Diffs erschwert, kann dieses Tool diese Probleme automatisch erkennen und beheben."
+        },
+        {
+          "question": "Wie erkennt das Tool die Sprache der Datei?",
+          "answer": "Das Tool extrahiert die ersten 10 Übersetzungstexte aus der JSON-Datei und sendet sie an ein großes Modell zur Spracherkennung. Das große Modell analysiert Sprachmerkmale, Zeichenmuster und Vokabular und gibt Sprachcodes (z. B. zh, en) und Konfidenzwerte zurück, um eine genaue Erkennung der Dateisprache zu gewährleisten."
+        },
+        {
+          "question": "Wie genau ist die KI-Übersetzungsfunktion?",
+          "answer": "Das Tool verwendet die gleiche Übersetzungs-API wie i18n-json-translator und verwendet eine Strategie von 50 Einträgen pro Stapel, 5 parallelen Anfragen und maximal 3 Wiederholungsversuchen. Die Übersetzungsgenauigkeit hängt von der Qualität des großen Modells ab und ist in der Regel für gängige Sprachen und Standardtexte sehr hoch. Fehlgeschlagene Schlüssel werden im Bericht markiert und können manuell ergänzt werden."
+        },
+        {
+          "question": "Werden bei der Reparatur überflüssige Schlüssel gelöscht?",
+          "answer": "Standardmäßig werden sie nicht gelöscht. Das Tool bietet die Option 'Überflüssige Schlüssel löschen' (standardmäßig deaktiviert), mit der Sie auswählen können, ob Schlüssel, die in der Quelldatei nicht vorhanden sind, aus der Zieldatei entfernt werden sollen. Es wird empfohlen, überflüssige Schlüssel beizubehalten, um versehentlichen Datenverlust zu vermeiden. Sie können nach einer manuellen Überprüfung entscheiden, ob sie gelöscht werden sollen."
+        },
+        {
+          "question": "Was enthält das heruntergeladene ZIP-Paket?",
+          "answer": "Das ZIP-Paket enthält alle reparierten JSON-Dateien (mit Beibehaltung der ursprünglichen Dateinamen) und einen README.md-Reparaturbericht. Der Bericht enthält eine Reparaturübersicht, Übersetzungsstatistiken und eine Liste fehlgeschlagener Schlüssel, damit Sie die Reparaturergebnisse überprüfen und fehlgeschlagene Elemente manuell bearbeiten können."
+        }
+      ],
+      "meta": {
+        "title": "JSON Key Vergleichs- und Reparaturtool - Pflege mehrsprachiger Übersetzungsdateien",
+        "description": "Online-Tool zum Vergleichen und Reparieren von JSON-Keys, das Strukturunterschiede in mehrsprachigen Übersetzungsdateien automatisch erkennt und behebt, fehlende Schlüssel intelligent ergänzt und die Effizienz der Internationalisierungswartung verbessert.",
+        "keywords": "JSON Key Reparatur, Wartung von Übersetzungsdateien, Mehrsprachiges Tool, i18n-Tool"
+      }
+    },
     "base64-encoder-decoder": {
       "name": "Base64-Encoder/Decoder",
       "description": "Base64-String-Kodierungs- und Dekodierungswerkzeug",
       "placeholder": "Enter text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
+      "input_title": "Input Text",
+      "output_title": "Output Result",
+      "output_desc": "Encoded/decoded text",
+      "output_placeholder": "Encoding/decoding result will appear here...",
+      "invalid_base64": "Invalid Base64 format",
+      "batch_mode": "Stapelmodus",
+      "batch_mode_desc": "Zeilenweise verarbeiten, jede Zeile unabhängig kodieren/dekodieren",
+      "batch_placeholder": "Geben Sie Text für die Stapelkodierung/-dekodierung ein, ein Element pro Zeile...",
+      "upload_file": "TXT-Datei hochladen",
+      "file_type_error": "Nur .txt-Dateien werden unterstützt",
+      "file_read_error": "Dateilesevorgang fehlgeschlagen, bitte erneut versuchen",
       "introduction": "Base64 Encoder/Decoder is a professional string encoding conversion tool that supports bidirectional conversion between text, binary data, and Base64 format. Widely used in web development, data transmission, email attachments, and image encoding scenarios. Uses standard Base64 character set to ensure encoding and decoding accuracy and compatibility, making it an essential tool for developers and technical personnel.",
       "features": [
         "🔄 Bidirectional encoding and decoding between text and Base64",
@@ -894,17 +996,6 @@
           "answer": "No, Base64 is encoding, not encryption. It's just a data representation conversion that anyone can easily decode. If data security is needed, you should first encrypt the data then Base64 encode it, or use dedicated encryption tools."
         }
       ],
-      "input_title": "Input Text",
-      "output_title": "Output Result",
-      "output_desc": "Encoded/decoded text",
-      "output_placeholder": "Encoding/decoding result will appear here...",
-      "invalid_base64": "Invalid Base64 format",
-      "batch_mode": "Stapelmodus",
-      "batch_mode_desc": "Zeilenweise verarbeiten, jede Zeile unabhängig kodieren/dekodieren",
-      "batch_placeholder": "Geben Sie Text für die Stapelkodierung/-dekodierung ein, ein Element pro Zeile...",
-      "upload_file": "TXT-Datei hochladen",
-      "file_type_error": "Nur .txt-Dateien werden unterstützt",
-      "file_read_error": "Dateilesevorgang fehlgeschlagen, bitte erneut versuchen",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {
@@ -919,6 +1010,11 @@
       "placeholder": "Enter URL or text to encode/decode...",
       "encode": "Encode",
       "decode": "Decode",
+      "input_title": "Input Text/URL",
+      "output_title": "Output Result",
+      "output_desc": "Encoded/decoded URL",
+      "output_placeholder": "Encoding/decoding result will appear here...",
+      "invalid_url": "Invalid URL encoding format",
       "introduction": "URL Encoder/Decoder is a professional web address processing tool that supports URL string encoding and decoding operations. Follows RFC 3986 standards and can correctly handle Chinese, special characters, and spaces in URL conversion. Widely used in web development, API calls, and search engine optimization scenarios to ensure correct URL transmission and parsing.",
       "features": [
         "🌐 Standard URL encoding/decoding following RFC 3986 specifications",
@@ -952,11 +1048,6 @@
           "answer": "Decoding failure usually occurs because: 1) Incorrect URL encoding format; 2) Invalid hexadecimal characters; 3) Incomplete encoding. Check if the URL is valid, ensure % is followed by two valid hexadecimal digits, and try partial decoding if necessary."
         }
       ],
-      "input_title": "Input Text/URL",
-      "output_title": "Output Result",
-      "output_desc": "Encoded/decoded URL",
-      "output_placeholder": "Encoding/decoding result will appear here...",
-      "invalid_url": "Invalid URL encoding format",
       "encoded": "Encoded successfully",
       "decoded": "Decoded successfully",
       "meta": {
@@ -1357,9 +1448,6 @@
       "placeholder": "Enter text to calculate SHA1 hash...",
       "generate": "Generate SHA1",
       "input_title": "Input Text",
-      "output_title": "SHA1 Hash",
-      "output_desc": "Generated SHA1 hash value",
-      "output_placeholder": "SHA1 hash will appear here...",
       "introduction": "SHA1 Hash Generator is a secure hash algorithm tool that converts data of any length into a fixed-length 160-bit (40 hexadecimal characters) digest. SHA1 is more secure than MD5 and widely used in digital signatures, version control systems, and data integrity verification. While SHA1 is no longer recommended for high-security applications, it still plays an important role in many legacy systems.",
       "features": [
         "🔐 Standard SHA1 algorithm implementation, 160-bit secure hash",
@@ -1393,6 +1481,9 @@
           "answer": "SHA1 outputs 160-bit binary data, usually represented as 40 hexadecimal characters (0-9 and a-f). For example: da39a3ee5e6b4b0d3255bfef95601890afd80709. Regardless of input length, SHA1 output is always 40 characters."
         }
       ],
+      "output_title": "SHA1 Hash",
+      "output_desc": "Generated SHA1 hash value",
+      "output_placeholder": "SHA1 hash will appear here...",
       "meta": {
         "title": "SHA1 Generator - Free Online Hash Calculator Tool",
         "description": "Calculate SHA1 hash for data verification and version control. Free online SHA-1 generator used by Git and checksum validation.",

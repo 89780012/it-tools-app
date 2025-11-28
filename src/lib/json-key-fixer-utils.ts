@@ -259,7 +259,7 @@ export function rebuildJson(
       const allStrings = sourceNode.every(item => typeof item === 'string')
 
       if (allStrings && sourceNode.length > 0) {
-        // 尝试从翻译结果中恢复数组
+        // 尝试从翻译结果中恢复字符串数组
         // 翻译 API 会将数组项逐个翻译,key 格式为: path.0, path.1, path.2...
         const translatedArray: string[] = []
         let hasTranslation = false
@@ -281,7 +281,25 @@ export function rebuildJson(
         }
       }
 
-      // 如果数组不是纯字符串,或者翻译完全失败,标记为缺失
+      // 检查数组是否包含对象(比如 FAQ 数组)
+      const allObjects = sourceNode.every(item => item && typeof item === 'object' && !Array.isArray(item))
+
+      if (allObjects && sourceNode.length > 0) {
+        // 递归处理对象数组,重建每个对象
+        const rebuiltArray: JsonObject[] = []
+
+        for (let i = 0; i < sourceNode.length; i++) {
+          const sourceItem = sourceNode[i]
+          // 对于缺失的目标数组,targetNode 是 undefined,所以每个 item 也是 undefined
+          const targetItem = undefined
+          const rebuiltItem = traverse(sourceItem, targetItem, [...path, String(i)])
+          rebuiltArray.push(rebuiltItem as JsonObject)
+        }
+
+        return rebuiltArray as JsonValue
+      }
+
+      // 如果数组既不是纯字符串也不是纯对象,或者翻译完全失败,标记为缺失
       return `[MISSING_ARRAY: ${fullPath}]` as JsonValue
     }
 
