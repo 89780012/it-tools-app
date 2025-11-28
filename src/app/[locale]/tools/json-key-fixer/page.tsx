@@ -413,19 +413,6 @@ export default function JsonKeyFixerPage() {
     return map[languageName] || languageName.toLowerCase().slice(0, 2)
   }
 
-  // 计算统计信息
-  const totalStats = useMemo(() => {
-    const diffs = Object.values(diffResults)
-    return {
-      totalFiles: diffs.length,
-      totalOrderDiff: diffs.reduce((sum, d) => sum + d.stats.orderDiffCount, 0),
-      totalMissing: diffs.reduce((sum, d) => sum + d.stats.missingKeys.length, 0),
-      totalExtra: diffs.reduce((sum, d) => sum + d.stats.extraKeys.length, 0),
-      avgMatchRate: diffs.length > 0
-        ? Math.round(diffs.reduce((sum, d) => sum + d.stats.matchRate, 0) / diffs.length)
-        : 0
-    }
-  }, [diffResults])
 
   return (
     <div className="container mx-auto p-6 space-y-6">
@@ -496,7 +483,7 @@ export default function JsonKeyFixerPage() {
             </CardHeader>
             <CardContent>
               <RadioGroup value={sourceFileId || ''} onValueChange={setSourceFileId}>
-                <div className="space-y-3">
+                <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
                   {uploadedFiles.map(file => (
                     <div
                       key={file.id}
@@ -532,72 +519,98 @@ export default function JsonKeyFixerPage() {
           </Card>
 
           {/* 右侧: 差异统计 & 操作 */}
-          <Card>
-            <CardHeader>
-              <CardTitle>{t("tools.json-key-fixer.stats")}</CardTitle>
-              <CardDescription>
-                {sourceFileId ? '差异统计数据' : '请先选择源文件'}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {sourceFileId ? (
-                <>
-                  {/* 统计卡片 */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="p-3 border rounded-lg">
-                      <p className="text-2xl font-bold">{totalStats.totalOrderDiff}</p>
-                      <p className="text-sm text-muted-foreground">顺序差异</p>
-                    </div>
-                    <div className="p-3 border rounded-lg">
-                      <p className="text-2xl font-bold text-orange-600">{totalStats.totalMissing}</p>
-                      <p className="text-sm text-muted-foreground">缺失key</p>
-                    </div>
-                    <div className="p-3 border rounded-lg">
-                      <p className="text-2xl font-bold text-blue-600">{totalStats.totalExtra}</p>
-                      <p className="text-sm text-muted-foreground">多余key</p>
-                    </div>
-                    <div className="p-3 border rounded-lg">
-                      <p className="text-2xl font-bold text-green-600">{totalStats.avgMatchRate}%</p>
-                      <p className="text-sm text-muted-foreground">平均匹配率</p>
-                    </div>
+          <div className="space-y-6">
+            {/* 每个文件的差异统计 */}
+            {sourceFileId && Object.keys(diffResults).length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t("tools.json-key-fixer.stats")}</CardTitle>
+                  <CardDescription>
+                    每个文件相比源文件的差异统计
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+                    {Object.values(diffResults).map(diff => (
+                      <div
+                        key={diff.fileId}
+                        className="p-4 border rounded-lg space-y-3"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2">
+                            <FileText className="h-4 w-4 text-muted-foreground" />
+                            <span className="font-medium">{diff.fileName}</span>
+                          </div>
+                          <Badge variant="outline">{diff.language}</Badge>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="p-2 border rounded bg-muted/50">
+                            <p className="text-lg font-bold">{diff.stats.orderDiffCount}</p>
+                            <p className="text-xs text-muted-foreground">顺序差异</p>
+                          </div>
+                          <div className="p-2 border rounded bg-muted/50">
+                            <p className="text-lg font-bold text-orange-600">{diff.stats.missingKeys.length}</p>
+                            <p className="text-xs text-muted-foreground">缺失key</p>
+                          </div>
+                          <div className="p-2 border rounded bg-muted/50">
+                            <p className="text-lg font-bold text-blue-600">{diff.stats.extraKeys.length}</p>
+                            <p className="text-xs text-muted-foreground">多余key</p>
+                          </div>
+                          <div className="p-2 border rounded bg-muted/50">
+                            <p className="text-lg font-bold text-green-600">{diff.stats.matchRate}%</p>
+                            <p className="text-xs text-muted-foreground">匹配率</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
+                </CardContent>
+              </Card>
+            )}
 
+            {/* 修复选项和操作 */}
+            {sourceFileId && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>修复选项</CardTitle>
+                  <CardDescription>
+                    配置修复行为
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
                   {/* 修复选项 */}
-                  <div className="space-y-3 pt-2">
-                    <p className="text-sm font-medium">修复选项</p>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <Label htmlFor="fix-order" className="cursor-pointer">修复key顺序</Label>
-                        <Switch
-                          id="fix-order"
-                          checked={fixOptions.fixOrder}
-                          onCheckedChange={(checked) =>
-                            setFixOptions(prev => ({ ...prev, fixOrder: checked }))
-                          }
-                        />
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <Label htmlFor="fill-missing" className="cursor-pointer">
-                          补全缺失key (AI翻译)
-                        </Label>
-                        <Switch
-                          id="fill-missing"
-                          checked={fixOptions.fillMissing}
-                          onCheckedChange={(checked) =>
-                            setFixOptions(prev => ({ ...prev, fillMissing: checked }))
-                          }
-                        />
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <Label htmlFor="remove-extra" className="cursor-pointer">删除多余key</Label>
-                        <Switch
-                          id="remove-extra"
-                          checked={fixOptions.removeExtra}
-                          onCheckedChange={(checked) =>
-                            setFixOptions(prev => ({ ...prev, removeExtra: checked }))
-                          }
-                        />
-                      </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="fix-order" className="cursor-pointer">修复key顺序</Label>
+                      <Switch
+                        id="fix-order"
+                        checked={fixOptions.fixOrder}
+                        onCheckedChange={(checked) =>
+                          setFixOptions(prev => ({ ...prev, fixOrder: checked }))
+                        }
+                      />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="fill-missing" className="cursor-pointer">
+                        补全缺失key (AI翻译)
+                      </Label>
+                      <Switch
+                        id="fill-missing"
+                        checked={fixOptions.fillMissing}
+                        onCheckedChange={(checked) =>
+                          setFixOptions(prev => ({ ...prev, fillMissing: checked }))
+                        }
+                      />
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <Label htmlFor="remove-extra" className="cursor-pointer">删除多余key</Label>
+                      <Switch
+                        id="remove-extra"
+                        checked={fixOptions.removeExtra}
+                        onCheckedChange={(checked) =>
+                          setFixOptions(prev => ({ ...prev, removeExtra: checked }))
+                        }
+                      />
                     </div>
                   </div>
 
@@ -629,15 +642,19 @@ export default function JsonKeyFixerPage() {
                       下载ZIP
                     </Button>
                   </div>
-                </>
-              ) : (
-                <div className="text-center py-8 text-muted-foreground">
+                </CardContent>
+              </Card>
+            )}
+
+            {!sourceFileId && (
+              <Card>
+                <CardContent className="text-center py-8 text-muted-foreground">
                   <FileText className="h-12 w-12 mx-auto mb-2 opacity-50" />
                   <p>选择一个源文件以查看统计信息</p>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </div>
       )}
 
@@ -648,7 +665,7 @@ export default function JsonKeyFixerPage() {
             <CardTitle>修复进度</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2">
               {Object.values(fixTasks).map(task => (
                 <div key={task.fileId} className="space-y-2">
                   <div className="flex items-center justify-between">
