@@ -11,7 +11,8 @@ import {
   Loader2,
   FileDiff,
   X,
-  Eye
+  Eye,
+  RotateCcw
 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -360,6 +361,142 @@ export default function JsonKeyFixerPage() {
     })
   }
 
+  // 重试单个任务
+  const retryTask = async (fileId: string) => {
+    if (!sourceFileId) return
+
+    const sourceFile = uploadedFiles.find(f => f.id === sourceFileId)
+    const file = uploadedFiles.find(f => f.id === fileId)
+    const diff = diffResults[fileId]
+
+    if (!sourceFile || !file || !diff) return
+
+    // 重置任务状态
+    setFixTasks(prev => ({
+      ...prev,
+      [fileId]: {
+        ...prev[fileId],
+        status: 'fixing',
+        progress: 0,
+        error: undefined
+      }
+    }))
+
+    // 批量翻译配置
+    const BATCH_SIZE = 50
+
+    try {
+      // 如果需要翻译缺失的 key
+      const translations: Record<string, string> = {}
+      if (fixOptions.fillMissing && diff.stats.missingKeys.length > 0) {
+        setFixTasks(prev => ({
+          ...prev,
+          [fileId]: { ...prev[fileId], status: 'translating' }
+        }))
+
+        const sourceLanguage = detectLanguageCode(sourceFile.language)
+        const targetLanguage = detectLanguageCode(file.language)
+
+        // 准备翻译条目
+        const sourceFlat = flattenJsonWithOrder(sourceFile.content)
+        const entriesToTranslate = diff.stats.missingKeys.map(keyPath => {
+          const sourceEntry = sourceFlat.find(e => e.path === keyPath)
+          return {
+            key: keyPath,
+            value: sourceEntry?.value || ''
+          }
+        }).filter(e => e.value)
+
+        // 批量翻译
+        const totalBatches = Math.ceil(entriesToTranslate.length / BATCH_SIZE)
+        const failedKeys: string[] = []
+
+        for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
+          const start = batchIndex * BATCH_SIZE
+          const end = Math.min(start + BATCH_SIZE, entriesToTranslate.length)
+          const batchEntries = entriesToTranslate.slice(start, end)
+
+          try {
+            const response = await fetch('/api/i18n-translate', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                sourceLanguage,
+                targetLanguage,
+                entries: batchEntries,
+                options: {
+                  preservePlaceholders: true,
+                  skipHtml: false
+                }
+              })
+            })
+
+            if (response.ok) {
+              const data = await response.json()
+              Object.assign(translations, data.translations || {})
+            } else {
+              batchEntries.forEach(e => failedKeys.push(e.key))
+            }
+          } catch {
+            batchEntries.forEach(e => failedKeys.push(e.key))
+          }
+
+          // 更新进度
+          setFixTasks(prev => ({
+            ...prev,
+            [fileId]: {
+              ...prev[fileId],
+              progress: Math.round(((batchIndex + 1) / totalBatches) * 100),
+              translationStats: {
+                total: entriesToTranslate.length,
+                completed: Object.keys(translations).length,
+                failed: failedKeys
+              }
+            }
+          }))
+        }
+      }
+
+      // 重构 JSON
+      const fixedContent = rebuildJson(
+        sourceFile.content,
+        file.content,
+        translations,
+        { keepExtraKeys: !fixOptions.removeExtra }
+      )
+
+      setFixTasks(prev => ({
+        ...prev,
+        [fileId]: {
+          ...prev[fileId],
+          status: 'completed',
+          progress: 100,
+          fixedContent
+        }
+      }))
+
+      toast({
+        title: "重试成功",
+        description: `${file.file.name} 修复完成`
+      })
+    } catch (error) {
+      setFixTasks(prev => ({
+        ...prev,
+        [fileId]: {
+          ...prev[fileId],
+          status: 'failed',
+          error: error instanceof Error ? error.message : '修复失败'
+        }
+      }))
+
+      toast({
+        title: "重试失败",
+        description: `${file.file.name} 修复失败`,
+        variant: "destructive"
+      })
+    }
+  }
+
   // 下载 ZIP
   const downloadZip = async () => {
     const sourceFile = uploadedFiles.find(f => f.id === sourceFileId)
@@ -681,11 +818,31 @@ export default function JsonKeyFixerPage() {
                           {t("tools.json-key-fixer.view_details")}
                         </Button>
                       )}
+                      {task.status === 'completed' && task.translationStats && task.translationStats.failed.length > 0 && (
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => retryTask(task.fileId)}
+                          className="h-8 w-8"
+                        >
+                          <RotateCcw className="h-4 w-4" />
+                        </Button>
+                      )}
                       {task.status === 'completed' && (
                         <CheckCircle2 className="h-4 w-4 text-green-600" />
                       )}
                       {task.status === 'failed' && (
-                        <AlertCircle className="h-4 w-4 text-destructive" />
+                        <>
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            onClick={() => retryTask(task.fileId)}
+                            className="h-8 w-8"
+                          >
+                            <RotateCcw className="h-4 w-4" />
+                          </Button>
+                          <AlertCircle className="h-4 w-4 text-destructive" />
+                        </>
                       )}
                       {(task.status === 'translating' || task.status === 'fixing') && (
                         <Loader2 className="h-4 w-4 animate-spin" />
