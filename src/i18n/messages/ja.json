@@ -2553,6 +2553,586 @@
         "keywords": "ドット絵、ピクセルアート、画像効果"
       }
     },
+    "git-cheatsheet": {
+      "name": "Git チートシート",
+      "description": "Git よく使うコマンドのチートシート、Git コマンドを素早く検索してコピー",
+      "search_placeholder": "Git コマンドを検索...",
+      "copy_success": "コマンドはコピーされました",
+      "no_results": "一致するコマンドは見つかりませんでした",
+      "all_categories": "すべて",
+      "categories": {
+        "setup": "設定と初期化",
+        "basic": "基本操作",
+        "branch": "ブランチ管理",
+        "remote": "リモートリポジトリ",
+        "undo": "取り消しとリバート",
+        "stash": "ステージング操作",
+        "log": "ログを見る",
+        "tag": "タグ管理",
+        "merge": "マージとリベース",
+        "advanced": "高度な操作"
+      },
+      "commands": {
+        "setup": {
+          "init": {
+            "cmd": "git init",
+            "desc": "現在のディレクトリに新しい Git リポジトリを初期化する"
+          },
+          "init_bare": {
+            "cmd": "git init --bare",
+            "desc": "ベアリポジトリを初期化する（作業ディレクトリなし、サーバー用）"
+          },
+          "clone": {
+            "cmd": "git clone <url>",
+            "desc": "リモートリポジトリをローカルにクローンする"
+          },
+          "clone_depth": {
+            "cmd": "git clone --depth 1 <url>",
+            "desc": "浅いクローン、最新のコミットのみを取得する（時間とスペースを節約）"
+          },
+          "clone_branch": {
+            "cmd": "git clone -b <branch> <url>",
+            "desc": "指定されたブランチをクローンする"
+          },
+          "config_name": {
+            "cmd": "git config --global user.name \"名前\"",
+            "desc": "グローバルユーザー名を設定する"
+          },
+          "config_email": {
+            "cmd": "git config --global user.email \"邮箱\"",
+            "desc": "グローバルメールアドレスを設定する"
+          },
+          "config_list": {
+            "cmd": "git config --list",
+            "desc": "すべての設定を表示する"
+          },
+          "config_editor": {
+            "cmd": "git config --global core.editor vim",
+            "desc": "デフォルトエディタを設定する"
+          }
+        },
+        "basic": {
+          "status": {
+            "cmd": "git status",
+            "desc": "ワークツリーの状態を表示する"
+          },
+          "status_short": {
+            "cmd": "git status -s",
+            "desc": "簡潔な状態を表示する"
+          },
+          "add": {
+            "cmd": "git add <file>",
+            "desc": "ファイルをステージングエリアに追加する"
+          },
+          "add_all": {
+            "cmd": "git add .",
+            "desc": "すべての変更をステージングエリアに追加する"
+          },
+          "add_patch": {
+            "cmd": "git add -p",
+            "desc": "インタラクティブな追加、一部の変更を選択可能"
+          },
+          "commit": {
+            "cmd": "git commit -m \"提交信息\"",
+            "desc": "ステージングエリアの変更をコミットする"
+          },
+          "commit_amend": {
+            "cmd": "git commit --amend",
+            "desc": "最後のコミットを修正する"
+          },
+          "commit_amend_no_edit": {
+            "cmd": "git commit --amend --no-edit",
+            "desc": "最後のコミットを修正する（コミットメッセージは変更しない）"
+          },
+          "commit_all": {
+            "cmd": "git commit -am \"コミットメッセージ\"",
+            "desc": "追跡対象ファイルの変更をすべて追加してコミットする"
+          },
+          "diff": {
+            "cmd": "git diff",
+            "desc": "ワークツリーとステージングエリアの差分を表示する"
+          },
+          "diff_staged": {
+            "cmd": "git diff --staged",
+            "desc": "ステージングエリアと最後のコミットの差分を表示する"
+          },
+          "diff_commit": {
+            "cmd": "git diff <commit1> <commit2>",
+            "desc": "2つのコミットの差分を比較する"
+          },
+          "rm": {
+            "cmd": "git rm <file>",
+            "desc": "ファイルを削除し、削除操作を記録する"
+          },
+          "rm_cached": {
+            "cmd": "git rm --cached <file>",
+            "desc": "ステージングエリアからファイルを削除するが、ワークツリーのファイルは残す"
+          },
+          "mv": {
+            "cmd": "git mv <old> <new>",
+            "desc": "ファイルを移動または名前変更する"
+          }
+        },
+        "branch": {
+          "list": {
+            "cmd": "git branch",
+            "desc": "ローカルブランチを一覧表示する"
+          },
+          "list_all": {
+            "cmd": "git branch -a",
+            "desc": "すべてのブランチ（リモートを含む）を一覧表示する"
+          },
+          "list_remote": {
+            "cmd": "git branch -r",
+            "desc": "リモートブランチを一覧表示する"
+          },
+          "create": {
+            "cmd": "git branch <branch>",
+            "desc": "新しいブランチを作成する"
+          },
+          "checkout": {
+            "cmd": "git checkout <branch>",
+            "desc": "指定したブランチに切り替える"
+          },
+          "checkout_create": {
+            "cmd": "git checkout -b <branch>",
+            "desc": "新しいブランチを作成して切り替える"
+          },
+          "switch": {
+            "cmd": "git switch <branch>",
+            "desc": "ブランチを切り替える (Git 2.23+)"
+          },
+          "switch_create": {
+            "cmd": "git switch -c <branch>",
+            "desc": "ブランチを作成して切り替える (Git 2.23+)"
+          },
+          "delete": {
+            "cmd": "git branch -d <branch>",
+            "desc": "マージ済みのブランチを削除する"
+          },
+          "delete_force": {
+            "cmd": "git branch -D <branch>",
+            "desc": "ブランチを強制削除する"
+          },
+          "rename": {
+            "cmd": "git branch -m <old> <new>",
+            "desc": "ブランチの名前を変更する"
+          },
+          "upstream": {
+            "cmd": "git branch -u origin/<branch>",
+            "desc": "現在のブランチのアップストリームブランチを設定する"
+          },
+          "verbose": {
+            "cmd": "git branch -vv",
+            "desc": "ブランチの詳細情報（アップストリームブランチを含む）を表示する"
+          }
+        },
+        "remote": {
+          "list": {
+            "cmd": "git remote -v",
+            "desc": "リモートリポジトリの一覧を表示する"
+          },
+          "add": {
+            "cmd": "git remote add <name> <url>",
+            "desc": "リモートリポジトリを追加する"
+          },
+          "remove": {
+            "cmd": "git remote remove <name>",
+            "desc": "リモートリポジトリを削除する"
+          },
+          "rename": {
+            "cmd": "git remote rename <old> <new>",
+            "desc": "リモートリポジトリの名前を変更する"
+          },
+          "show": {
+            "cmd": "git remote show <name>",
+            "desc": "リモートリポジトリの詳細を表示する"
+          },
+          "set_url": {
+            "cmd": "git remote set-url <name> <url>",
+            "desc": "リモートリポジトリのURLを変更"
+          },
+          "fetch": {
+            "cmd": "git fetch <remote>",
+            "desc": "リモートリポジトリの更新を取得"
+          },
+          "fetch_all": {
+            "cmd": "git fetch --all",
+            "desc": "すべてのリモートリポジトリの更新を取得"
+          },
+          "fetch_prune": {
+            "cmd": "git fetch -p",
+            "desc": "更新を取得し、削除されたリモートブランチをクリーンアップ"
+          },
+          "pull": {
+            "cmd": "git pull",
+            "desc": "リモートブランチをプルしてマージ"
+          },
+          "pull_rebase": {
+            "cmd": "git pull --rebase",
+            "desc": "プルしてリベース"
+          },
+          "push": {
+            "cmd": "git push",
+            "desc": "リモートリポジトリにプッシュ"
+          },
+          "push_upstream": {
+            "cmd": "git push -u origin <branch>",
+            "desc": "プッシュしてアップストリームブランチを設定"
+          },
+          "push_force": {
+            "cmd": "git push --force",
+            "desc": "強制プッシュ（注意して使用）"
+          },
+          "push_force_lease": {
+            "cmd": "git push --force-with-lease",
+            "desc": "安全な強制プッシュ"
+          },
+          "push_tags": {
+            "cmd": "git push --tags",
+            "desc": "すべてのタグをプッシュ"
+          },
+          "push_delete": {
+            "cmd": "git push origin --delete <branch>",
+            "desc": "リモートブランチを削除"
+          }
+        },
+        "undo": {
+          "restore": {
+            "cmd": "git restore <file>",
+            "desc": "ワーキングツリーの変更を破棄（Git 2.23+）"
+          },
+          "restore_staged": {
+            "cmd": "git restore --staged <file>",
+            "desc": "ステージングを解除（Git 2.23+）"
+          },
+          "checkout_file": {
+            "cmd": "git checkout -- <file>",
+            "desc": "ワーキングツリーの変更を破棄（旧方式）"
+          },
+          "reset_soft": {
+            "cmd": "git reset --soft HEAD~1",
+            "desc": "最後のコミットを取り消し、変更をステージングエリアに残す"
+          },
+          "reset_mixed": {
+            "cmd": "git reset HEAD~1",
+            "desc": "最後のコミットを取り消し、変更をワーキングツリーに残す"
+          },
+          "reset_hard": {
+            "cmd": "git reset --hard HEAD~1",
+            "desc": "最後のコミットを取り消し、すべての変更を破棄"
+          },
+          "reset_file": {
+            "cmd": "git reset HEAD <file>",
+            "desc": "指定されたファイルのステージングを解除"
+          },
+          "reset_commit": {
+            "cmd": "git reset --hard <commit>",
+            "desc": "指定されたコミットにリセット"
+          },
+          "revert": {
+            "cmd": "git revert <commit>",
+            "desc": "指定されたコミットを取り消す新しいコミットを作成"
+          },
+          "revert_no_commit": {
+            "cmd": "git revert -n <commit>",
+            "desc": "コミットを取り消すが、自動コミットはしない"
+          },
+          "clean": {
+            "cmd": "git clean -fd",
+            "desc": "トラッキングされていないファイルとディレクトリを削除"
+          },
+          "clean_dry": {
+            "cmd": "git clean -nd",
+            "desc": "削除されるトラッキングされていないファイルをプレビュー"
+          }
+        },
+        "stash": {
+          "save": {
+            "cmd": "git stash",
+            "desc": "現在の変更をスタッシュ"
+          },
+          "save_message": {
+            "cmd": "git stash save \"説明メッセージ\"",
+            "desc": "スタッシュして説明を追加"
+          },
+          "save_untracked": {
+            "cmd": "git stash -u",
+            "desc": "未追跡ファイルを含むスタッシュ"
+          },
+          "list": {
+            "cmd": "git stash list",
+            "desc": "スタッシュリストを表示"
+          },
+          "pop": {
+            "cmd": "git stash pop",
+            "desc": "最新のスタッシュを復元して削除"
+          },
+          "apply": {
+            "cmd": "git stash apply",
+            "desc": "最新のスタッシュを復元するが削除しない"
+          },
+          "apply_index": {
+            "cmd": "git stash apply stash@{n}",
+            "desc": "指定されたスタッシュを復元"
+          },
+          "drop": {
+            "cmd": "git stash drop",
+            "desc": "最新のスタッシュを削除"
+          },
+          "drop_index": {
+            "cmd": "git stash drop stash@{n}",
+            "desc": "指定されたスタッシュを削除"
+          },
+          "clear": {
+            "cmd": "git stash clear",
+            "desc": "すべてのスタッシュをクリア"
+          },
+          "show": {
+            "cmd": "git stash show -p",
+            "desc": "スタッシュの詳細内容を表示"
+          },
+          "branch": {
+            "cmd": "git stash branch <branch>",
+            "desc": "スタッシュから新しいブランチを作成"
+          }
+        },
+        "log": {
+          "basic": {
+            "cmd": "git log",
+            "desc": "コミット履歴を表示"
+          },
+          "oneline": {
+            "cmd": "git log --oneline",
+            "desc": "コミット履歴を1行で表示"
+          },
+          "graph": {
+            "cmd": "git log --oneline --graph",
+            "desc": "コミット履歴をグラフで表示"
+          },
+          "all": {
+            "cmd": "git log --oneline --graph --all",
+            "desc": "すべてのブランチのコミット履歴を表示"
+          },
+          "number": {
+            "cmd": "git log -n <number>",
+            "desc": "最新のn回のコミットを表示"
+          },
+          "author": {
+            "cmd": "git log --author=\"名前\"",
+            "desc": "作者でコミットをフィルタリング"
+          },
+          "since": {
+            "cmd": "git log --since=\"2024-01-01\"",
+            "desc": "日付でコミットをフィルタリング"
+          },
+          "grep": {
+            "cmd": "git log --grep=\"キーワード\"",
+            "desc": "コミットメッセージで検索"
+          },
+          "file": {
+            "cmd": "git log -- <file>",
+            "desc": "指定されたファイルのコミット履歴を表示"
+          },
+          "stat": {
+            "cmd": "git log --stat",
+            "desc": "各コミットのファイル変更統計を表示"
+          },
+          "patch": {
+            "cmd": "git log -p",
+            "desc": "各コミットの詳細な差分を表示"
+          },
+          "reflog": {
+            "cmd": "git reflog",
+            "desc": "すべての操作履歴を表示（削除されたコミットを含む）"
+          },
+          "show": {
+            "cmd": "git show <commit>",
+            "desc": "指定されたコミットの詳細を表示"
+          },
+          "shortlog": {
+            "cmd": "git shortlog -sn",
+            "desc": "作者ごとにコミット数を統計"
+          }
+        },
+        "tag": {
+          "list": {
+            "cmd": "git tag",
+            "desc": "すべてのタグを一覧表示"
+          },
+          "list_pattern": {
+            "cmd": "git tag -l \"v1.*\"",
+            "desc": "パターンでタグを一覧表示"
+          },
+          "create": {
+            "cmd": "git tag <tagname>",
+            "desc": "軽量タグを作成"
+          },
+          "create_annotated": {
+            "cmd": "git tag -a <tagname> -m \"説明\"",
+            "desc": "注釈付きタグを作成"
+          },
+          "create_commit": {
+            "cmd": "git tag <tagname> <commit>",
+            "desc": "指定したコミットにタグを作成"
+          },
+          "show": {
+            "cmd": "git show <tagname>",
+            "desc": "タグの詳細を表示"
+          },
+          "delete": {
+            "cmd": "git tag -d <tagname>",
+            "desc": "ローカルタグを削除"
+          },
+          "push": {
+            "cmd": "git push origin <tagname>",
+            "desc": "単一のタグをプッシュ"
+          },
+          "push_all": {
+            "cmd": "git push origin --tags",
+            "desc": "すべてのタグをプッシュ"
+          },
+          "delete_remote": {
+            "cmd": "git push origin --delete <tagname>",
+            "desc": "リモートタグを削除"
+          }
+        },
+        "merge": {
+          "merge": {
+            "cmd": "git merge <branch>",
+            "desc": "指定したブランチを現在のブランチにマージ"
+          },
+          "merge_no_ff": {
+            "cmd": "git merge --no-ff <branch>",
+            "desc": "早送りなしマージ、ブランチ履歴を保持"
+          },
+          "merge_squash": {
+            "cmd": "git merge --squash <branch>",
+            "desc": "スカッシュマージ、すべてのコミットを1つにまとめる"
+          },
+          "merge_abort": {
+            "cmd": "git merge --abort",
+            "desc": "マージを中止"
+          },
+          "rebase": {
+            "cmd": "git rebase <branch>",
+            "desc": "現在のブランチを指定したブランチにリベース"
+          },
+          "rebase_interactive": {
+            "cmd": "git rebase -i HEAD~n",
+            "desc": "最近のn回のコミットをインタラクティブにリベース"
+          },
+          "rebase_continue": {
+            "cmd": "git rebase --continue",
+            "desc": "リベースを続行"
+          },
+          "rebase_abort": {
+            "cmd": "git rebase --abort",
+            "desc": "リベースを中止"
+          },
+          "cherry_pick": {
+            "cmd": "git cherry-pick <commit>",
+            "desc": "指定したコミットを現在のブランチに適用"
+          },
+          "cherry_pick_no_commit": {
+            "cmd": "git cherry-pick -n <commit>",
+            "desc": "コミットを適用するが、自動コミットしない"
+          }
+        },
+        "advanced": {
+          "bisect_start": {
+            "cmd": "git bisect start",
+            "desc": "二分探索を開始（問題のあるコミットを特定）"
+          },
+          "bisect_bad": {
+            "cmd": "git bisect bad",
+            "desc": "現在のコミットを問題ありとマーク"
+          },
+          "bisect_good": {
+            "cmd": "git bisect good <commit>",
+            "desc": "指定したコミットを正常とマーク"
+          },
+          "bisect_reset": {
+            "cmd": "git bisect reset",
+            "desc": "二分探索を終了"
+          },
+          "blame": {
+            "cmd": "git blame <file>",
+            "desc": "ファイルの各行の最終変更者を表示"
+          },
+          "blame_line": {
+            "cmd": "git blame -L 10,20 <file>",
+            "desc": "指定行範囲の変更者を確認"
+          },
+          "worktree_add": {
+            "cmd": "git worktree add <path> <branch>",
+            "desc": "新しい作業ツリーを作成"
+          },
+          "worktree_list": {
+            "cmd": "git worktree list",
+            "desc": "すべての作業ツリーを一覧表示"
+          },
+          "submodule_add": {
+            "cmd": "git submodule add <url> <path>",
+            "desc": "サブモジュールを追加"
+          },
+          "submodule_update": {
+            "cmd": "git submodule update --init --recursive",
+            "desc": "すべてのサブモジュールを初期化して更新"
+          },
+          "archive": {
+            "cmd": "git archive --format=zip HEAD > archive.zip",
+            "desc": "リポジトリをzipファイルにアーカイブ"
+          },
+          "gc": {
+            "cmd": "git gc",
+            "desc": "リポジトリのクリーンアップと最適化"
+          },
+          "fsck": {
+            "cmd": "git fsck",
+            "desc": "リポジトリの整合性をチェック"
+          }
+        }
+      },
+      "introduction": "Gitチートシートは、開発者向けに設計されたGitコマンドのクイックリファレンスツールです。基本的な操作から高度なテクニックまで、すべての一般的なコマンドを網羅し、機能別に分類され、高速検索とワンクリックコピーをサポートしています。Git初心者でも経験豊富な開発者でも、必要なコマンドを素早く見つけることができます。すべてのコマンドには明確な日本語の説明が付いており、Gitをよりよく理解し、使用するのに役立ちます。",
+      "features": [
+        "10以上のカテゴリで、Gitのすべての一般的なシナリオをカバー",
+        "100以上の一般的なコマンドを、基本から高度まで網羅的に収録",
+        "キーワード検索に対応し、必要なコマンドを素早く特定",
+        "ワンクリックでコマンドをコピーし、作業効率を向上",
+        "明確な日本語の説明で、理解しやすく学習しやすい",
+        "カテゴリ別に閲覧・絞り込み、関連コマンドを素早く検索",
+        "レスポンシブデザインで、モバイル端末での閲覧に対応",
+        "ローカルで実行可能、ネットワーク不要で使用可能"
+      ],
+      "faq": [
+        {
+          "question": "なぜGitチートシートが必要なのですか？",
+          "answer": "Gitコマンドは多く、パラメータも複雑なため、経験豊富な開発者でもすべてのコマンドを覚えるのは困難です。チートシートは、コマンドを素早く検索してコピーし、ドキュメントを参照する時間を節約し、開発効率を向上させるのに役立ちます。"
+        },
+        {
+          "question": "チートシートにはどのようなコマンドカテゴリが含まれていますか？",
+          "answer": "チートシートには、設定と初期化、基本操作、ブランチ管理、リモートリポジトリ、取り消しと元に戻す、ステージング操作、ログの表示、タグ管理、マージとリベース、高度な操作の10の主要カテゴリが含まれています。これにより、日常の開発におけるほぼすべてのGitの使用シナリオがカバーされます。"
+        },
+        {
+          "question": "必要なコマンドを素早く見つけるにはどうすればよいですか？",
+          "answer": "上部の検索ボックスにキーワードを入力して検索するか、カテゴリタグをクリックして特定の種類のコマンドを絞り込むことができます。検索はコマンド名と説明のあいまい一致をサポートしています。"
+        },
+        {
+          "question": "コピーしたコマンドは直接使用できますか？",
+          "answer": "ほとんどのコマンドは直接使用できますが、一部のコマンドの<パラメータ>は実際の値に置き換える必要があります。例えば、git clone <url>の<url>は実際のリポジトリURLに置き換える必要があります。"
+        },
+        {
+          "question": "チートシートは継続的に更新されますか？",
+          "answer": "はい、チートシートは継続的に更新され、新しい便利なコマンドやテクニックが追加され、最新のGitバージョンと同期が保たれます。"
+        }
+      ],
+      "meta": {
+        "title": "Gitチートシート - よく使うコマンドのクイックリファレンス",
+        "description": "Gitのよく使うコマンドのチートシート。設定、ブランチ、リモート、取り消し、ステージング、ログ、タグ、マージなど、すべてのシナリオをカバーし、検索とワンクリックコピーに対応しています。",
+        "keywords": "Gitチートシート, Gitコマンド, Gitチュートリアル, バージョン管理"
+      }
+    },
     "i18n-json-translator": {
       "name": "i18n JSON 翻訳ツール",
       "description": "JSON言語ファイル全体を一括翻訳します。基本の内容を貼り付け、ターゲット言語を選択すると、ツールは平坦化されたキーを使用して OpenRouter API を呼び出します。",

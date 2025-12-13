@@ -2553,6 +2553,586 @@
         "keywords": "도트 격자 그림, 픽셀 아트, 이미지 효과"
       }
     },
+    "git-cheatsheet": {
+      "name": "Git 빠른 참조표",
+      "description": "Git 자주 사용하는 명령어 빠른 참조표, Git 명령어를 빠르게 찾고 복사합니다.",
+      "search_placeholder": "Git 명령어 검색...",
+      "copy_success": "명령어가 복사되었습니다.",
+      "no_results": "일치하는 명령어를 찾을 수 없습니다.",
+      "all_categories": "전체",
+      "categories": {
+        "setup": "설정 및 초기화",
+        "basic": "기본 작업",
+        "branch": "브랜치 관리",
+        "remote": "원격 저장소",
+        "undo": "취소 및 되돌리기",
+        "stash": "스테이징 작업",
+        "log": "로그 보기",
+        "tag": "태그 관리",
+        "merge": "병합 및 리베이스",
+        "advanced": "고급 작업"
+      },
+      "commands": {
+        "setup": {
+          "init": {
+            "cmd": "git init",
+            "desc": "현재 디렉터리에 새 Git 저장소를 초기화합니다."
+          },
+          "init_bare": {
+            "cmd": "git init --bare",
+            "desc": "베어 저장소를 초기화합니다 (작업 디렉터리 없음, 서버용)."
+          },
+          "clone": {
+            "cmd": "git clone <url>",
+            "desc": "원격 저장소를 로컬로 복제합니다."
+          },
+          "clone_depth": {
+            "cmd": "git clone --depth 1 <url>",
+            "desc": "얕은 복제, 최신 커밋만 가져옵니다 (시간 및 공간 절약)."
+          },
+          "clone_branch": {
+            "cmd": "git clone -b <branch> <url>",
+            "desc": "지정된 브랜치를 복제합니다."
+          },
+          "config_name": {
+            "cmd": "git config --global user.name \"이름\"",
+            "desc": "전역 사용자 이름을 설정합니다."
+          },
+          "config_email": {
+            "cmd": "git config --global user.email \"이메일\"",
+            "desc": "전역 이메일을 설정합니다."
+          },
+          "config_list": {
+            "cmd": "git config --list",
+            "desc": "모든 설정을 확인합니다."
+          },
+          "config_editor": {
+            "cmd": "git config --global core.editor vim",
+            "desc": "기본 편집기를 설정합니다."
+          }
+        },
+        "basic": {
+          "status": {
+            "cmd": "git status",
+            "desc": "작업 영역 상태를 확인합니다."
+          },
+          "status_short": {
+            "cmd": "git status -s",
+            "desc": "간결한 상태를 확인합니다."
+          },
+          "add": {
+            "cmd": "git add <file>",
+            "desc": "파일을 스테이징 영역에 추가합니다."
+          },
+          "add_all": {
+            "cmd": "git add .",
+            "desc": "모든 변경 사항을 스테이징 영역에 추가합니다."
+          },
+          "add_patch": {
+            "cmd": "git add -p",
+            "desc": "대화형 추가, 일부 변경 사항을 선택할 수 있습니다."
+          },
+          "commit": {
+            "cmd": "git commit -m \"커밋 메시지\"",
+            "desc": "스테이징 영역의 변경 사항을 커밋합니다."
+          },
+          "commit_amend": {
+            "cmd": "git commit --amend",
+            "desc": "마지막 커밋을 수정합니다."
+          },
+          "commit_amend_no_edit": {
+            "cmd": "git commit --amend --no-edit",
+            "desc": "마지막 커밋을 수정합니다 (커밋 메시지 수정 없이)."
+          },
+          "commit_all": {
+            "cmd": "git commit -am \"커밋 메시지\"",
+            "desc": "추적 중인 모든 파일의 변경 사항을 추가하고 커밋"
+          },
+          "diff": {
+            "cmd": "git diff",
+            "desc": "작업 영역과 스테이징 영역의 차이점 보기"
+          },
+          "diff_staged": {
+            "cmd": "git diff --staged",
+            "desc": "스테이징 영역과 마지막 커밋의 차이점 보기"
+          },
+          "diff_commit": {
+            "cmd": "git diff <commit1> <commit2>",
+            "desc": "두 커밋의 차이점 비교"
+          },
+          "rm": {
+            "cmd": "git rm <file>",
+            "desc": "파일 삭제 및 삭제 작업 기록"
+          },
+          "rm_cached": {
+            "cmd": "git rm --cached <file>",
+            "desc": "스테이징 영역에서 파일 제거, 작업 영역 파일은 유지"
+          },
+          "mv": {
+            "cmd": "git mv <old> <new>",
+            "desc": "파일 이동 또는 이름 변경"
+          }
+        },
+        "branch": {
+          "list": {
+            "cmd": "git branch",
+            "desc": "로컬 브랜치 목록 표시"
+          },
+          "list_all": {
+            "cmd": "git branch -a",
+            "desc": "모든 브랜치 목록 표시 (원격 포함)"
+          },
+          "list_remote": {
+            "cmd": "git branch -r",
+            "desc": "원격 브랜치 목록 표시"
+          },
+          "create": {
+            "cmd": "git branch <branch>",
+            "desc": "새 브랜치 생성"
+          },
+          "checkout": {
+            "cmd": "git checkout <branch>",
+            "desc": "지정된 브랜치로 전환"
+          },
+          "checkout_create": {
+            "cmd": "git checkout -b <branch>",
+            "desc": "새 브랜치 생성 및 전환"
+          },
+          "switch": {
+            "cmd": "git switch <branch>",
+            "desc": "브랜치 전환 (Git 2.23+)"
+          },
+          "switch_create": {
+            "cmd": "git switch -c <branch>",
+            "desc": "브랜치 생성 및 전환 (Git 2.23+)"
+          },
+          "delete": {
+            "cmd": "git branch -d <branch>",
+            "desc": "병합된 브랜치 삭제"
+          },
+          "delete_force": {
+            "cmd": "git branch -D <branch>",
+            "desc": "강제로 브랜치 삭제"
+          },
+          "rename": {
+            "cmd": "git branch -m <old> <new>",
+            "desc": "브랜치 이름 변경"
+          },
+          "upstream": {
+            "cmd": "git branch -u origin/<branch>",
+            "desc": "현재 브랜치의 업스트림 브랜치 설정"
+          },
+          "verbose": {
+            "cmd": "git branch -vv",
+            "desc": "브랜치 상세 정보 보기 (업스트림 브랜치 포함)"
+          }
+        },
+        "remote": {
+          "list": {
+            "cmd": "git remote -v",
+            "desc": "원격 저장소 목록 보기"
+          },
+          "add": {
+            "cmd": "git remote add <name> <url>",
+            "desc": "원격 저장소 추가"
+          },
+          "remove": {
+            "cmd": "git remote remove <name>",
+            "desc": "원격 저장소 제거"
+          },
+          "rename": {
+            "cmd": "git remote rename <old> <new>",
+            "desc": "원격 저장소 이름 변경"
+          },
+          "show": {
+            "cmd": "git remote show <name>",
+            "desc": "원격 저장소 상세 정보 보기"
+          },
+          "set_url": {
+            "cmd": "git remote set-url <name> <url>",
+            "desc": "원격 저장소 URL 수정"
+          },
+          "fetch": {
+            "cmd": "git fetch <remote>",
+            "desc": "원격 저장소 업데이트 가져오기"
+          },
+          "fetch_all": {
+            "cmd": "git fetch --all",
+            "desc": "모든 원격 저장소 업데이트 가져오기"
+          },
+          "fetch_prune": {
+            "cmd": "git fetch -p",
+            "desc": "업데이트를 가져오고 삭제된 원격 브랜치 정리"
+          },
+          "pull": {
+            "cmd": "git pull",
+            "desc": "원격 브랜치 가져와 병합"
+          },
+          "pull_rebase": {
+            "cmd": "git pull --rebase",
+            "desc": "가져와 리베이스"
+          },
+          "push": {
+            "cmd": "git push",
+            "desc": "원격 저장소로 푸시"
+          },
+          "push_upstream": {
+            "cmd": "git push -u origin <branch>",
+            "desc": "푸시하고 업스트림 브랜치 설정"
+          },
+          "push_force": {
+            "cmd": "git push --force",
+            "desc": "강제 푸시 (주의해서 사용)"
+          },
+          "push_force_lease": {
+            "cmd": "git push --force-with-lease",
+            "desc": "안전한 강제 푸시"
+          },
+          "push_tags": {
+            "cmd": "git push --tags",
+            "desc": "모든 태그 푸시"
+          },
+          "push_delete": {
+            "cmd": "git push origin --delete <branch>",
+            "desc": "원격 브랜치 삭제"
+          }
+        },
+        "undo": {
+          "restore": {
+            "cmd": "git restore <file>",
+            "desc": "작업 영역 변경 사항 버리기 (Git 2.23+)"
+          },
+          "restore_staged": {
+            "cmd": "git restore --staged <file>",
+            "desc": "스테이징 취소 (Git 2.23+)"
+          },
+          "checkout_file": {
+            "cmd": "git checkout -- <file>",
+            "desc": "작업 영역 변경 사항 버리기 (이전 방식)"
+          },
+          "reset_soft": {
+            "cmd": "git reset --soft HEAD~1",
+            "desc": "마지막 커밋 되돌리기, 변경 사항은 스테이징 영역에 유지"
+          },
+          "reset_mixed": {
+            "cmd": "git reset HEAD~1",
+            "desc": "마지막 커밋 되돌리기, 변경 사항은 작업 영역에 유지"
+          },
+          "reset_hard": {
+            "cmd": "git reset --hard HEAD~1",
+            "desc": "마지막 커밋 되돌리기, 모든 변경 사항 버리기"
+          },
+          "reset_file": {
+            "cmd": "git reset HEAD <file>",
+            "desc": "지정된 파일 스테이징 취소"
+          },
+          "reset_commit": {
+            "cmd": "git reset --hard <commit>",
+            "desc": "지정된 커밋으로 재설정"
+          },
+          "revert": {
+            "cmd": "git revert <commit>",
+            "desc": "지정된 커밋을 되돌리는 새 커밋 생성"
+          },
+          "revert_no_commit": {
+            "cmd": "git revert -n <commit>",
+            "desc": "커밋 되돌리기 (자동 커밋 안 함)"
+          },
+          "clean": {
+            "cmd": "git clean -fd",
+            "desc": "추적되지 않은 파일 및 디렉터리 삭제"
+          },
+          "clean_dry": {
+            "cmd": "git clean -nd",
+            "desc": "삭제될 추적되지 않은 파일 미리 보기"
+          }
+        },
+        "stash": {
+          "save": {
+            "cmd": "git stash",
+            "desc": "현재 변경 사항 임시 저장"
+          },
+          "save_message": {
+            "cmd": "git stash save \"설명 메시지\"",
+            "desc": "임시 저장하고 설명 추가"
+          },
+          "save_untracked": {
+            "cmd": "git stash -u",
+            "desc": "추적되지 않은 파일 포함하여 임시 저장"
+          },
+          "list": {
+            "cmd": "git stash list",
+            "desc": "임시 저장 목록 보기"
+          },
+          "pop": {
+            "cmd": "git stash pop",
+            "desc": "가장 최근 임시 저장 복원 및 삭제"
+          },
+          "apply": {
+            "cmd": "git stash apply",
+            "desc": "가장 최근 임시 저장 복원 (삭제 안 함)"
+          },
+          "apply_index": {
+            "cmd": "git stash apply stash@{n}",
+            "desc": "지정된 임시 저장 복원"
+          },
+          "drop": {
+            "cmd": "git stash drop",
+            "desc": "가장 최근 임시 저장 삭제"
+          },
+          "drop_index": {
+            "cmd": "git stash drop stash@{n}",
+            "desc": "지정된 임시 저장 삭제"
+          },
+          "clear": {
+            "cmd": "git stash clear",
+            "desc": "모든 임시 저장 비우기"
+          },
+          "show": {
+            "cmd": "git stash show -p",
+            "desc": "임시 저장의 상세 내용 보기"
+          },
+          "branch": {
+            "cmd": "git stash branch <branch>",
+            "desc": "임시 저장에서 새 브랜치 생성"
+          }
+        },
+        "log": {
+          "basic": {
+            "cmd": "git log",
+            "desc": "커밋 히스토리 보기"
+          },
+          "oneline": {
+            "cmd": "git log --oneline",
+            "desc": "한 줄로 커밋 히스토리 표시"
+          },
+          "graph": {
+            "cmd": "git log --oneline --graph",
+            "desc": "그래프로 커밋 히스토리 표시"
+          },
+          "all": {
+            "cmd": "git log --oneline --graph --all",
+            "desc": "모든 브랜치의 커밋 히스토리 표시"
+          },
+          "number": {
+            "cmd": "git log -n <number>",
+            "desc": "최근 n개 커밋 표시"
+          },
+          "author": {
+            "cmd": "git log --author=\"이름\"",
+            "desc": "작성자별로 커밋 필터링"
+          },
+          "since": {
+            "cmd": "git log --since=\"2024-01-01\"",
+            "desc": "날짜별로 커밋 필터링"
+          },
+          "grep": {
+            "cmd": "git log --grep=\"키워드\"",
+            "desc": "커밋 메시지로 검색"
+          },
+          "file": {
+            "cmd": "git log -- <file>",
+            "desc": "지정된 파일의 커밋 히스토리 보기"
+          },
+          "stat": {
+            "cmd": "git log --stat",
+            "desc": "각 커밋의 파일 변경 통계 표시"
+          },
+          "patch": {
+            "cmd": "git log -p",
+            "desc": "각 커밋의 상세 차이점 표시"
+          },
+          "reflog": {
+            "cmd": "git reflog",
+            "desc": "모든 작업 기록 보기 (삭제된 커밋 포함)"
+          },
+          "show": {
+            "cmd": "git show <commit>",
+            "desc": "지정된 커밋의 상세 정보 보기"
+          },
+          "shortlog": {
+            "cmd": "git shortlog -sn",
+            "desc": "작성자별 커밋 수 통계"
+          }
+        },
+        "tag": {
+          "list": {
+            "cmd": "git tag",
+            "desc": "모든 태그 나열"
+          },
+          "list_pattern": {
+            "cmd": "git tag -l \"v1.*\"",
+            "desc": "패턴으로 태그 나열"
+          },
+          "create": {
+            "cmd": "git tag <tagname>",
+            "desc": "경량 태그 생성"
+          },
+          "create_annotated": {
+            "cmd": "git tag -a <tagname> -m \"설명\"",
+            "desc": "주석이 있는 태그 생성"
+          },
+          "create_commit": {
+            "cmd": "git tag <tagname> <commit>",
+            "desc": "특정 커밋에 태그 생성"
+          },
+          "show": {
+            "cmd": "git show <tagname>",
+            "desc": "태그 상세 보기"
+          },
+          "delete": {
+            "cmd": "git tag -d <tagname>",
+            "desc": "로컬 태그 삭제"
+          },
+          "push": {
+            "cmd": "git push origin <tagname>",
+            "desc": "단일 태그 푸시"
+          },
+          "push_all": {
+            "cmd": "git push origin --tags",
+            "desc": "모든 태그 푸시"
+          },
+          "delete_remote": {
+            "cmd": "git push origin --delete <tagname>",
+            "desc": "원격 태그 삭제"
+          }
+        },
+        "merge": {
+          "merge": {
+            "cmd": "git merge <branch>",
+            "desc": "지정된 브랜치를 현재 브랜치로 병합"
+          },
+          "merge_no_ff": {
+            "cmd": "git merge --no-ff <branch>",
+            "desc": "빨리 감기(fast-forward) 없이 병합, 브랜치 히스토리 유지"
+          },
+          "merge_squash": {
+            "cmd": "git merge --squash <branch>",
+            "desc": "스쿼시 병합, 모든 커밋을 하나로 병합"
+          },
+          "merge_abort": {
+            "cmd": "git merge --abort",
+            "desc": "병합 중단"
+          },
+          "rebase": {
+            "cmd": "git rebase <branch>",
+            "desc": "현재 브랜치를 지정된 브랜치로 리베이스"
+          },
+          "rebase_interactive": {
+            "cmd": "git rebase -i HEAD~n",
+            "desc": "최근 n개 커밋을 대화형 리베이스"
+          },
+          "rebase_continue": {
+            "cmd": "git rebase --continue",
+            "desc": "리베이스 계속"
+          },
+          "rebase_abort": {
+            "cmd": "git rebase --abort",
+            "desc": "리베이스 중단"
+          },
+          "cherry_pick": {
+            "cmd": "git cherry-pick <commit>",
+            "desc": "지정된 커밋을 현재 브랜치에 적용"
+          },
+          "cherry_pick_no_commit": {
+            "cmd": "git cherry-pick -n <commit>",
+            "desc": "커밋을 적용하지만 자동 커밋하지 않음"
+          }
+        },
+        "advanced": {
+          "bisect_start": {
+            "cmd": "git bisect start",
+            "desc": "이분 탐색 시작 (문제 커밋 찾기)"
+          },
+          "bisect_bad": {
+            "cmd": "git bisect bad",
+            "desc": "현재 커밋을 문제 있음으로 표시"
+          },
+          "bisect_good": {
+            "cmd": "git bisect good <commit>",
+            "desc": "지정된 커밋을 정상으로 표시"
+          },
+          "bisect_reset": {
+            "cmd": "git bisect reset",
+            "desc": "이분 탐색 종료"
+          },
+          "blame": {
+            "cmd": "git blame <file>",
+            "desc": "파일 각 줄의 마지막 수정자 보기"
+          },
+          "blame_line": {
+            "cmd": "git blame -L 10,20 <파일>",
+            "desc": "지정된 행 범위의 수정자 확인"
+          },
+          "worktree_add": {
+            "cmd": "git worktree add <경로> <브랜치>",
+            "desc": "새 작업 트리 생성"
+          },
+          "worktree_list": {
+            "cmd": "git worktree list",
+            "desc": "모든 작업 트리 나열"
+          },
+          "submodule_add": {
+            "cmd": "git submodule add <URL> <경로>",
+            "desc": "서브모듈 추가"
+          },
+          "submodule_update": {
+            "cmd": "git submodule update --init --recursive",
+            "desc": "모든 서브모듈 초기화 및 업데이트"
+          },
+          "archive": {
+            "cmd": "git archive --format=zip HEAD > archive.zip",
+            "desc": "저장소를 zip 파일로 압축"
+          },
+          "gc": {
+            "cmd": "git gc",
+            "desc": "저장소 정리 및 최적화"
+          },
+          "fsck": {
+            "cmd": "git fsck",
+            "desc": "저장소 무결성 검사"
+          }
+        }
+      },
+      "introduction": "Git 치트 시트는 개발자를 위해 특별히 설계된 Git 명령 빠른 참조 도구입니다. 기본 작업부터 고급 기술까지 모든 일반적인 명령을 다루며, 기능별로 분류되어 빠른 검색 및 원클릭 복사를 지원합니다. Git 초보자든 숙련된 개발자든 여기에서 필요한 명령을 빠르게 찾을 수 있습니다. 모든 명령에는 명확한 중국어 설명이 제공되어 Git을 더 잘 이해하고 사용하는 데 도움이 됩니다.",
+      "features": [
+        "10개 이상의 카테고리, Git의 모든 일반적인 시나리오를 다룸",
+        "100개 이상의 일반적인 명령, 기초부터 고급까지 모두 수록",
+        "키워드 검색 지원, 필요한 명령을 빠르게 찾을 수 있음",
+        "원클릭 명령 복사, 작업 효율성 향상",
+        "명확한 중국어 설명, 이해하고 배우기 쉬움",
+        "카테고리별 탐색 및 필터링, 관련 명령을 빠르게 찾을 수 있음",
+        "반응형 디자인, 모바일 기기에서 확인 가능",
+        "로컬 실행, 네트워크 없이 사용 가능"
+      ],
+      "faq": [
+        {
+          "question": "Git 치트 시트가 왜 필요한가요?",
+          "answer": "Git 명령은 많고 매개변수가 복잡하여 숙련된 개발자라도 모든 명령을 기억하기 어렵습니다. 치트 시트는 명령을 빠르게 찾고 복사하여 문서 검색 시간을 절약하고 개발 효율성을 높이는 데 도움이 됩니다."
+        },
+        {
+          "question": "치트 시트에는 어떤 명령 카테고리가 포함되어 있나요?",
+          "answer": "치트 시트에는 10가지 주요 카테고리가 포함되어 있습니다: 구성 및 초기화, 기본 작업, 브랜치 관리, 원격 저장소, 취소 및 되돌리기, 스테이징 작업, 로그 보기, 태그 관리, 병합 및 리베이스, 고급 작업. 일상적인 개발에서 거의 모든 Git 사용 시나리오를 다룹니다."
+        },
+        {
+          "question": "필요한 명령을 어떻게 빠르게 찾을 수 있나요?",
+          "answer": "상단의 검색창에 키워드를 입력하여 검색하거나, 카테고리 태그를 클릭하여 특정 유형의 명령을 필터링할 수 있습니다. 검색은 명령 이름과 설명의 퍼지 매칭을 지원합니다."
+        },
+        {
+          "question": "복사한 명령을 바로 사용할 수 있나요?",
+          "answer": "대부분의 명령은 바로 사용할 수 있지만, 일부 명령의 <매개변수>는 실제 값으로 대체해야 합니다. 예를 들어 git clone <url>의 <url>은 실제 저장소 주소로 대체해야 합니다."
+        },
+        {
+          "question": "치트 시트는 계속 업데이트되나요?",
+          "answer": "네, 새로운 유용한 명령과 기술을 추가하여 최신 Git 버전과 동기화되도록 치트 시트를 계속 업데이트할 것입니다."
+        }
+      ],
+      "meta": {
+        "title": "Git 치트 시트 - 일반적인 명령 빠른 참조",
+        "description": "Git 일반 명령 치트 시트, 구성, 브랜치, 원격, 취소, 스테이징, 로그, 태그, 병합 등 모든 시나리오를 다루며 검색 및 원클릭 복사를 지원합니다.",
+        "keywords": "Git 치트 시트, Git 명령, Git 튜토리얼, 버전 관리"
+      }
+    },
     "i18n-json-translator": {
       "name": "i18n JSON 번역기",
       "description": "JSON 언어 파일을 한 번에 번역합니다. 기본 내용을 붙여넣고 대상 언어를 선택하면, 도구가 평탄화된 키를 사용하여 OpenRouter API를 호출합니다.",

@@ -2553,6 +2553,586 @@
         "keywords": "النمط النقطي، فن البكسل، تأثير الصورة"
       }
     },
+    "git-cheatsheet": {
+      "name": "ورقة غش Git",
+      "description": "ورقة غش لأوامر Git الشائعة، للبحث السريع ونسخ أوامر Git",
+      "search_placeholder": "ابحث عن أوامر Git...",
+      "copy_success": "تم نسخ الأمر",
+      "no_results": "لم يتم العثور على أمر مطابق",
+      "all_categories": "الكل",
+      "categories": {
+        "setup": "التكوين والتهيئة",
+        "basic": "العمليات الأساسية",
+        "branch": "إدارة الفروع",
+        "remote": "المستودعات البعيدة",
+        "undo": "التراجع والعودة",
+        "stash": "عمليات التخزين المؤقت",
+        "log": "عرض السجلات",
+        "tag": "إدارة العلامات",
+        "merge": "الدمج وإعادة الأساس",
+        "advanced": "العمليات المتقدمة"
+      },
+      "commands": {
+        "setup": {
+          "init": {
+            "cmd": "git init",
+            "desc": "تهيئة مستودع Git جديد في الدليل الحالي"
+          },
+          "init_bare": {
+            "cmd": "git init --bare",
+            "desc": "تهيئة مستودع مجرد (بدون دليل عمل، يستخدم للخوادم)"
+          },
+          "clone": {
+            "cmd": "git clone <url>",
+            "desc": "استنساخ مستودع بعيد إلى المحلي"
+          },
+          "clone_depth": {
+            "cmd": "git clone --depth 1 <url>",
+            "desc": "استنساخ سطحي، يجلب آخر إرسال فقط (يوفر الوقت والمساحة)"
+          },
+          "clone_branch": {
+            "cmd": "git clone -b <branch> <url>",
+            "desc": "استنساخ فرع محدد"
+          },
+          "config_name": {
+            "cmd": "git config --global user.name \"الاسم\"",
+            "desc": "تعيين اسم المستخدم العام"
+          },
+          "config_email": {
+            "cmd": "git config --global user.email \"البريد الإلكتروني\"",
+            "desc": "تعيين البريد الإلكتروني العام"
+          },
+          "config_list": {
+            "cmd": "git config --list",
+            "desc": "عرض جميع التكوينات"
+          },
+          "config_editor": {
+            "cmd": "git config --global core.editor vim",
+            "desc": "تعيين المحرر الافتراضي"
+          }
+        },
+        "basic": {
+          "status": {
+            "cmd": "git status",
+            "desc": "عرض حالة منطقة العمل"
+          },
+          "status_short": {
+            "cmd": "git status -s",
+            "desc": "عرض حالة موجزة"
+          },
+          "add": {
+            "cmd": "git add <file>",
+            "desc": "إضافة ملف إلى منطقة التخزين المؤقت"
+          },
+          "add_all": {
+            "cmd": "git add .",
+            "desc": "إضافة جميع التغييرات إلى منطقة التخزين المؤقت"
+          },
+          "add_patch": {
+            "cmd": "git add -p",
+            "desc": "إضافة تفاعلية، يمكن اختيار جزء من التغييرات"
+          },
+          "commit": {
+            "cmd": "git commit -m \"رسالة الالتزام\"",
+            "desc": "الالتزام بالتغييرات في منطقة التخزين المؤقت"
+          },
+          "commit_amend": {
+            "cmd": "git commit --amend",
+            "desc": "تعديل آخر التزام"
+          },
+          "commit_amend_no_edit": {
+            "cmd": "git commit --amend --no-edit",
+            "desc": "تعديل آخر التزام (دون تعديل رسالة الالتزام)"
+          },
+          "commit_all": {
+            "cmd": "git commit -am \"رسالة الالتزام\"",
+            "desc": "إضافة جميع التغييرات في الملفات المتتبعة والالتزام بها"
+          },
+          "diff": {
+            "cmd": "git diff",
+            "desc": "عرض الفروقات بين منطقة العمل ومنطقة التجهيز"
+          },
+          "diff_staged": {
+            "cmd": "git diff --staged",
+            "desc": "عرض الفروقات بين منطقة التجهيز وآخر التزام"
+          },
+          "diff_commit": {
+            "cmd": "git diff <commit1> <commit2>",
+            "desc": "مقارنة الفروقات بين التزامين"
+          },
+          "rm": {
+            "cmd": "git rm <file>",
+            "desc": "حذف الملف وتسجيل عملية الحذف"
+          },
+          "rm_cached": {
+            "cmd": "git rm --cached <file>",
+            "desc": "إزالة الملف من منطقة التجهيز، مع الاحتفاظ به في منطقة العمل"
+          },
+          "mv": {
+            "cmd": "git mv <old> <new>",
+            "desc": "نقل أو إعادة تسمية الملف"
+          }
+        },
+        "branch": {
+          "list": {
+            "cmd": "git branch",
+            "desc": "سرد الفروع المحلية"
+          },
+          "list_all": {
+            "cmd": "git branch -a",
+            "desc": "سرد جميع الفروع (بما في ذلك البعيدة)"
+          },
+          "list_remote": {
+            "cmd": "git branch -r",
+            "desc": "سرد الفروع البعيدة"
+          },
+          "create": {
+            "cmd": "git branch <branch>",
+            "desc": "إنشاء فرع جديد"
+          },
+          "checkout": {
+            "cmd": "git checkout <branch>",
+            "desc": "التبديل إلى الفرع المحدد"
+          },
+          "checkout_create": {
+            "cmd": "git checkout -b <branch>",
+            "desc": "إنشاء فرع جديد والتبديل إليه"
+          },
+          "switch": {
+            "cmd": "git switch <branch>",
+            "desc": "التبديل بين الفروع (Git 2.23+)"
+          },
+          "switch_create": {
+            "cmd": "git switch -c <branch>",
+            "desc": "إنشاء فرع والتبديل إليه (Git 2.23+)"
+          },
+          "delete": {
+            "cmd": "git branch -d <branch>",
+            "desc": "حذف الفرع المدمج"
+          },
+          "delete_force": {
+            "cmd": "git branch -D <branch>",
+            "desc": "حذف الفرع بالقوة"
+          },
+          "rename": {
+            "cmd": "git branch -m <old> <new>",
+            "desc": "إعادة تسمية الفرع"
+          },
+          "upstream": {
+            "cmd": "git branch -u origin/<branch>",
+            "desc": "تعيين الفرع العلوي للفرع الحالي"
+          },
+          "verbose": {
+            "cmd": "git branch -vv",
+            "desc": "عرض تفاصيل الفرع (بما في ذلك الفرع العلوي)"
+          }
+        },
+        "remote": {
+          "list": {
+            "cmd": "git remote -v",
+            "desc": "عرض قائمة المستودعات البعيدة"
+          },
+          "add": {
+            "cmd": "git remote add <name> <url>",
+            "desc": "إضافة مستودع بعيد"
+          },
+          "remove": {
+            "cmd": "git remote remove <name>",
+            "desc": "إزالة مستودع بعيد"
+          },
+          "rename": {
+            "cmd": "git remote rename <old> <new>",
+            "desc": "إعادة تسمية مستودع بعيد"
+          },
+          "show": {
+            "cmd": "git remote show <name>",
+            "desc": "عرض تفاصيل المستودع البعيد"
+          },
+          "set_url": {
+            "cmd": "git remote set-url <name> <url>",
+            "desc": "تعديل عنوان URL للمستودع البعيد"
+          },
+          "fetch": {
+            "cmd": "git fetch <remote>",
+            "desc": "جلب تحديثات المستودع البعيد"
+          },
+          "fetch_all": {
+            "cmd": "git fetch --all",
+            "desc": "جلب تحديثات جميع المستودعات البعيدة"
+          },
+          "fetch_prune": {
+            "cmd": "git fetch -p",
+            "desc": "جلب التحديثات وتنظيف الفروع البعيدة المحذوفة"
+          },
+          "pull": {
+            "cmd": "git pull",
+            "desc": "سحب ودمج الفرع البعيد"
+          },
+          "pull_rebase": {
+            "cmd": "git pull --rebase",
+            "desc": "سحب وإعادة ترسيخ"
+          },
+          "push": {
+            "cmd": "git push",
+            "desc": "الدفع إلى المستودع البعيد"
+          },
+          "push_upstream": {
+            "cmd": "git push -u origin <branch>",
+            "desc": "الدفع وتعيين الفرع العلوي"
+          },
+          "push_force": {
+            "cmd": "git push --force",
+            "desc": "دفع إجباري (استخدم بحذر)"
+          },
+          "push_force_lease": {
+            "cmd": "git push --force-with-lease",
+            "desc": "دفع إجباري آمن"
+          },
+          "push_tags": {
+            "cmd": "git push --tags",
+            "desc": "دفع جميع الوسوم"
+          },
+          "push_delete": {
+            "cmd": "git push origin --delete <branch>",
+            "desc": "حذف الفرع البعيد"
+          }
+        },
+        "undo": {
+          "restore": {
+            "cmd": "git restore <file>",
+            "desc": "تجاهل التغييرات في منطقة العمل (Git 2.23+)"
+          },
+          "restore_staged": {
+            "cmd": "git restore --staged <file>",
+            "desc": "إلغاء التخزين المؤقت (Git 2.23+)"
+          },
+          "checkout_file": {
+            "cmd": "git checkout -- <file>",
+            "desc": "تجاهل التغييرات في منطقة العمل (الطريقة القديمة)"
+          },
+          "reset_soft": {
+            "cmd": "git reset --soft HEAD~1",
+            "desc": "التراجع عن آخر تثبيت، مع الاحتفاظ بالتغييرات في منطقة التخزين المؤقت"
+          },
+          "reset_mixed": {
+            "cmd": "git reset HEAD~1",
+            "desc": "التراجع عن آخر تثبيت، مع الاحتفاظ بالتغييرات في منطقة العمل"
+          },
+          "reset_hard": {
+            "cmd": "git reset --hard HEAD~1",
+            "desc": "التراجع عن آخر تثبيت، مع تجاهل جميع التغييرات"
+          },
+          "reset_file": {
+            "cmd": "git reset HEAD <file>",
+            "desc": "إلغاء تخزين ملف معين مؤقتًا"
+          },
+          "reset_commit": {
+            "cmd": "git reset --hard <commit>",
+            "desc": "إعادة تعيين إلى تثبيت معين"
+          },
+          "revert": {
+            "cmd": "git revert <commit>",
+            "desc": "إنشاء تثبيت جديد للتراجع عن تثبيت معين"
+          },
+          "revert_no_commit": {
+            "cmd": "git revert -n <commit>",
+            "desc": "التراجع عن تثبيت ولكن لا يتم التثبيت تلقائيًا"
+          },
+          "clean": {
+            "cmd": "git clean -fd",
+            "desc": "حذف الملفات والدلائل غير المتتبعة"
+          },
+          "clean_dry": {
+            "cmd": "git clean -nd",
+            "desc": "معاينة الملفات غير المتتبعة التي سيتم حذفها"
+          }
+        },
+        "stash": {
+          "save": {
+            "cmd": "git stash",
+            "desc": "تخزين التغييرات الحالية مؤقتًا"
+          },
+          "save_message": {
+            "cmd": "git stash save \"رسالة وصفية\"",
+            "desc": "تخزين مؤقت وإضافة وصف"
+          },
+          "save_untracked": {
+            "cmd": "git stash -u",
+            "desc": "تخزين مؤقت يشمل الملفات غير المتعقبة"
+          },
+          "list": {
+            "cmd": "git stash list",
+            "desc": "عرض قائمة التخزين المؤقت"
+          },
+          "pop": {
+            "cmd": "git stash pop",
+            "desc": "استعادة آخر تخزين مؤقت وحذفه"
+          },
+          "apply": {
+            "cmd": "git stash apply",
+            "desc": "استعادة آخر تخزين مؤقت ولكن لا تحذفه"
+          },
+          "apply_index": {
+            "cmd": "git stash apply stash@{n}",
+            "desc": "استعادة التخزين المؤقت المحدد"
+          },
+          "drop": {
+            "cmd": "git stash drop",
+            "desc": "حذف آخر تخزين مؤقت"
+          },
+          "drop_index": {
+            "cmd": "git stash drop stash@{n}",
+            "desc": "حذف التخزين المؤقت المحدد"
+          },
+          "clear": {
+            "cmd": "git stash clear",
+            "desc": "مسح جميع التخزينات المؤقتة"
+          },
+          "show": {
+            "cmd": "git stash show -p",
+            "desc": "عرض المحتوى التفصيلي للتخزين المؤقت"
+          },
+          "branch": {
+            "cmd": "git stash branch <branch>",
+            "desc": "إنشاء فرع جديد من التخزين المؤقت"
+          }
+        },
+        "log": {
+          "basic": {
+            "cmd": "git log",
+            "desc": "عرض سجل التعهدات"
+          },
+          "oneline": {
+            "cmd": "git log --oneline",
+            "desc": "عرض سجل التعهدات في سطر واحد"
+          },
+          "graph": {
+            "cmd": "git log --oneline --graph",
+            "desc": "عرض سجل التعهدات بشكل رسومي"
+          },
+          "all": {
+            "cmd": "git log --oneline --graph --all",
+            "desc": "عرض سجل التعهدات لجميع الفروع"
+          },
+          "number": {
+            "cmd": "git log -n <number>",
+            "desc": "عرض آخر n تعهد"
+          },
+          "author": {
+            "cmd": "git log --author=\"الاسم\"",
+            "desc": "تصفية التعهدات حسب المؤلف"
+          },
+          "since": {
+            "cmd": "git log --since=\"2024-01-01\"",
+            "desc": "تصفية التعهدات حسب التاريخ"
+          },
+          "grep": {
+            "cmd": "git log --grep=\"كلمة مفتاحية\"",
+            "desc": "البحث حسب رسالة التعهد"
+          },
+          "file": {
+            "cmd": "git log -- <file>",
+            "desc": "عرض سجل تعهدات ملف محدد"
+          },
+          "stat": {
+            "cmd": "git log --stat",
+            "desc": "عرض إحصائيات تغييرات الملفات لكل تعهد"
+          },
+          "patch": {
+            "cmd": "git log -p",
+            "desc": "عرض الفروقات التفصيلية لكل تعهد"
+          },
+          "reflog": {
+            "cmd": "git reflog",
+            "desc": "عرض جميع سجلات العمليات (بما في ذلك التعهدات المحذوفة)"
+          },
+          "show": {
+            "cmd": "git show <commit>",
+            "desc": "عرض تفاصيل تعهد محدد"
+          },
+          "shortlog": {
+            "cmd": "git shortlog -sn",
+            "desc": "إحصاء عدد التعهدات حسب المؤلف"
+          }
+        },
+        "tag": {
+          "list": {
+            "cmd": "git tag",
+            "desc": "إدراج جميع العلامات"
+          },
+          "list_pattern": {
+            "cmd": "git tag -l \"v1.*\"",
+            "desc": "إدراج العلامات حسب النمط"
+          },
+          "create": {
+            "cmd": "git tag <tagname>",
+            "desc": "إنشاء علامة خفيفة الوزن"
+          },
+          "create_annotated": {
+            "cmd": "git tag -a <tagname> -m \"وصف\"",
+            "desc": "إنشاء علامة مشروحة"
+          },
+          "create_commit": {
+            "cmd": "git tag <tagname> <commit>",
+            "desc": "إنشاء علامة لالتزام محدد"
+          },
+          "show": {
+            "cmd": "git show <tagname>",
+            "desc": "عرض تفاصيل العلامة"
+          },
+          "delete": {
+            "cmd": "git tag -d <tagname>",
+            "desc": "حذف علامة محلية"
+          },
+          "push": {
+            "cmd": "git push origin <tagname>",
+            "desc": "دفع علامة واحدة"
+          },
+          "push_all": {
+            "cmd": "git push origin --tags",
+            "desc": "دفع جميع العلامات"
+          },
+          "delete_remote": {
+            "cmd": "git push origin --delete <tagname>",
+            "desc": "حذف علامة عن بعد"
+          }
+        },
+        "merge": {
+          "merge": {
+            "cmd": "git merge <branch>",
+            "desc": "دمج الفرع المحدد في الفرع الحالي"
+          },
+          "merge_no_ff": {
+            "cmd": "git merge --no-ff <branch>",
+            "desc": "دمج غير سريع التقديم، مع الاحتفاظ بتاريخ الفرع"
+          },
+          "merge_squash": {
+            "cmd": "git merge --squash <branch>",
+            "desc": "دمج ضغط، يدمج جميع الالتزامات في التزام واحد"
+          },
+          "merge_abort": {
+            "cmd": "git merge --abort",
+            "desc": "إحباط الدمج"
+          },
+          "rebase": {
+            "cmd": "git rebase <branch>",
+            "desc": "إعادة ترسيخ الفرع الحالي إلى الفرع المحدد"
+          },
+          "rebase_interactive": {
+            "cmd": "git rebase -i HEAD~n",
+            "desc": "إعادة ترسيخ تفاعلية لآخر n التزامات"
+          },
+          "rebase_continue": {
+            "cmd": "git rebase --continue",
+            "desc": "متابعة إعادة الترسيخ"
+          },
+          "rebase_abort": {
+            "cmd": "git rebase --abort",
+            "desc": "إحباط إعادة الترسيخ"
+          },
+          "cherry_pick": {
+            "cmd": "git cherry-pick <commit>",
+            "desc": "تطبيق الالتزام المحدد على الفرع الحالي"
+          },
+          "cherry_pick_no_commit": {
+            "cmd": "git cherry-pick -n <commit>",
+            "desc": "تطبيق الالتزام ولكن بدون التزام تلقائي"
+          }
+        },
+        "advanced": {
+          "bisect_start": {
+            "cmd": "git bisect start",
+            "desc": "بدء البحث الثنائي (لتحديد الالتزام المشكل)"
+          },
+          "bisect_bad": {
+            "cmd": "git bisect bad",
+            "desc": "وضع علامة على الالتزام الحالي بأنه سيء"
+          },
+          "bisect_good": {
+            "cmd": "git bisect good <commit>",
+            "desc": "وضع علامة على الالتزام المحدد بأنه جيد"
+          },
+          "bisect_reset": {
+            "cmd": "git bisect reset",
+            "desc": "إنهاء البحث الثنائي"
+          },
+          "blame": {
+            "cmd": "git blame <file>",
+            "desc": "عرض آخر معدّل لكل سطر في الملف"
+          },
+          "blame_line": {
+            "cmd": "git blame -L 10,20 <file>",
+            "desc": "عرض من قام بالتعديل على نطاق معين من الأسطر"
+          },
+          "worktree_add": {
+            "cmd": "git worktree add <path> <branch>",
+            "desc": "إنشاء شجرة عمل جديدة"
+          },
+          "worktree_list": {
+            "cmd": "git worktree list",
+            "desc": "عرض جميع أشجار العمل"
+          },
+          "submodule_add": {
+            "cmd": "git submodule add <url> <path>",
+            "desc": "إضافة وحدة فرعية"
+          },
+          "submodule_update": {
+            "cmd": "git submodule update --init --recursive",
+            "desc": "تهيئة وتحديث جميع الوحدات الفرعية"
+          },
+          "archive": {
+            "cmd": "git archive --format=zip HEAD > archive.zip",
+            "desc": "ضغط المستودع كملف zip"
+          },
+          "gc": {
+            "cmd": "git gc",
+            "desc": "تنظيف وتحسين المستودع"
+          },
+          "fsck": {
+            "cmd": "git fsck",
+            "desc": "التحقق من سلامة المستودع"
+          }
+        }
+      },
+      "introduction": "ورقة Git المرجعية السريعة هي أداة مرجعية سريعة لأوامر Git مصممة خصيصًا للمطورين. تغطي جميع الأوامر الشائعة من العمليات الأساسية إلى التقنيات المتقدمة، منظمة حسب الوظيفة، وتدعم البحث السريع والنسخ بنقرة واحدة. سواء كنت مبتدئًا في Git أو مطورًا ذا خبرة، يمكنك العثور بسرعة على الأمر الذي تحتاجه هنا. جميع الأوامر مصحوبة بشروحات واضحة باللغة الصينية لمساعدتك على فهم Git واستخدامه بشكل أفضل.",
+      "features": [
+        "أكثر من 10 فئات، تغطي جميع سيناريوهات Git الشائعة",
+        "أكثر من 100 أمر شائع، تغطية شاملة من الأساسيات إلى المتقدمة",
+        "يدعم البحث بالكلمات المفتاحية، لتحديد موقع الأمر المطلوب بسرعة",
+        "نسخ الأوامر بنقرة واحدة، لزيادة كفاءة العمل",
+        "شروحات واضحة باللغة الصينية، سهلة الفهم والتعلم",
+        "تصفح وتصفية حسب الفئة، للعثور بسرعة على الأوامر ذات الصلة",
+        "تصميم متجاوب، يدعم العرض على الأجهزة المحمولة",
+        "يعمل محليًا، يمكن استخدامه بدون اتصال بالإنترنت"
+      ],
+      "faq": [
+        {
+          "question": "لماذا تحتاج إلى ورقة Git المرجعية السريعة؟",
+          "answer": "أوامر Git كثيرة ومعقدة المعلمات، حتى المطورين ذوي الخبرة يجدون صعوبة في تذكرها كلها. يمكن أن تساعدك الورقة المرجعية السريعة في البحث عن الأوامر ونسخها بسرعة، مما يوفر وقت مراجعة الوثائق ويزيد من كفاءة التطوير."
+        },
+        {
+          "question": "ما هي فئات الأوامر التي تتضمنها الورقة المرجعية السريعة؟",
+          "answer": "تتضمن الورقة المرجعية السريعة 10 فئات رئيسية: التكوين والتهيئة، العمليات الأساسية، إدارة الفروع، المستودعات البعيدة، التراجع والعودة، عمليات التخزين المؤقت، عرض السجلات، إدارة العلامات، الدمج وإعادة الأساس، العمليات المتقدمة. تغطي تقريبًا جميع سيناريوهات استخدام Git في التطوير اليومي."
+        },
+        {
+          "question": "كيف تجد الأمر الذي تحتاجه بسرعة؟",
+          "answer": "يمكنك استخدام مربع البحث العلوي لإدخال الكلمات المفتاحية للبحث، أو النقر على علامات الفئات لتصفية أنواع معينة من الأوامر. يدعم البحث المطابقة الجزئية لاسم الأمر ووصفه."
+        },
+        {
+          "question": "هل يمكن استخدام الأوامر المنسوخة مباشرة؟",
+          "answer": "يمكن استخدام معظم الأوامر مباشرة، ولكن بعض الأوامر تتطلب استبدال <الوسيطة> بقيمة فعلية. على سبيل المثال، يجب استبدال <url> في git clone <url> بعنوان المستودع الفعلي."
+        },
+        {
+          "question": "هل سيتم تحديث الورقة المرجعية السريعة باستمرار؟",
+          "answer": "نعم، سنقوم بتحديث الورقة المرجعية السريعة باستمرار، وإضافة أوامر وتقنيات جديدة ومفيدة، لضمان توافق المحتوى مع أحدث إصدارات Git."
+        }
+      ],
+      "meta": {
+        "title": "ورقة Git المرجعية السريعة - مرجع سريع للأوامر الشائعة",
+        "description": "ورقة Git المرجعية السريعة للأوامر الشائعة، تغطي جميع السيناريوهات مثل التكوين، الفروع، البعيد، التراجع، التخزين المؤقت، السجلات، العلامات، الدمج، إلخ، وتدعم البحث والنسخ بنقرة واحدة.",
+        "keywords": "ورقة Git المرجعية السريعة, أوامر Git, دروس Git, التحكم في الإصدارات"
+      }
+    },
     "i18n-json-translator": {
       "name": "مُترجم JSON لـ i18n",
       "description": "ترجمة كاملة لملف JSON اللغوي مرة واحدة. الصق المحتوى الأساسي لديك، واختر اللغة الهدف، ستستخدم الأداة مفاتيح مسطحة لاستدعاء واجهة OpenRouter API.",

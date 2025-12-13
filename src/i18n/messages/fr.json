@@ -2553,6 +2553,586 @@
         "keywords": "Image matricielle, pixel art, effets d'image."
       }
     },
+    "git-cheatsheet": {
+      "name": "Aide-mémoire Git",
+      "description": "Aide-mémoire des commandes Git courantes, pour trouver et copier rapidement les commandes Git",
+      "search_placeholder": "Rechercher une commande Git...",
+      "copy_success": "Commande copiée",
+      "no_results": "Aucune commande correspondante trouvée",
+      "all_categories": "Tout",
+      "categories": {
+        "setup": "Configuration et initialisation",
+        "basic": "Opérations de base",
+        "branch": "Gestion des branches",
+        "remote": "Dépôts distants",
+        "undo": "Annuler et revenir en arrière",
+        "stash": "Opérations de staging",
+        "log": "Afficher les journaux",
+        "tag": "Gestion des tags",
+        "merge": "Fusionner et rebaser",
+        "advanced": "Opérations avancées"
+      },
+      "commands": {
+        "setup": {
+          "init": {
+            "cmd": "git init",
+            "desc": "Initialise un nouveau dépôt Git dans le répertoire actuel"
+          },
+          "init_bare": {
+            "cmd": "git init --bare",
+            "desc": "Initialise un dépôt nu (sans répertoire de travail, pour les serveurs)"
+          },
+          "clone": {
+            "cmd": "git clone <url>",
+            "desc": "Clone un dépôt distant localement"
+          },
+          "clone_depth": {
+            "cmd": "git clone --depth 1 <url>",
+            "desc": "Clonage superficiel, n'obtient que le dernier commit (économise du temps et de l'espace)"
+          },
+          "clone_branch": {
+            "cmd": "git clone -b <branch> <url>",
+            "desc": "Clone une branche spécifique"
+          },
+          "config_name": {
+            "cmd": "git config --global user.name \"Nom\"",
+            "desc": "Définit le nom d'utilisateur global"
+          },
+          "config_email": {
+            "cmd": "git config --global user.email \"Email\"",
+            "desc": "Définit l'adresse e-mail globale"
+          },
+          "config_list": {
+            "cmd": "git config --list",
+            "desc": "Affiche toutes les configurations"
+          },
+          "config_editor": {
+            "cmd": "git config --global core.editor vim",
+            "desc": "Définit l'éditeur par défaut"
+          }
+        },
+        "basic": {
+          "status": {
+            "cmd": "git status",
+            "desc": "Affiche l'état de l'espace de travail"
+          },
+          "status_short": {
+            "cmd": "git status -s",
+            "desc": "Affiche l'état concis"
+          },
+          "add": {
+            "cmd": "git add <file>",
+            "desc": "Ajoute un fichier à la zone de staging"
+          },
+          "add_all": {
+            "cmd": "git add .",
+            "desc": "Ajoute toutes les modifications à la zone de staging"
+          },
+          "add_patch": {
+            "cmd": "git add -p",
+            "desc": "Ajout interactif, permet de sélectionner des modifications partielles"
+          },
+          "commit": {
+            "cmd": "git commit -m \"Message de commit\"",
+            "desc": "Commite les modifications de la zone de staging"
+          },
+          "commit_amend": {
+            "cmd": "git commit --amend",
+            "desc": "Modifie le dernier commit"
+          },
+          "commit_amend_no_edit": {
+            "cmd": "git commit --amend --no-edit",
+            "desc": "Modifie le dernier commit (sans modifier le message de commit)"
+          },
+          "commit_all": {
+            "cmd": "git commit -am \"Message de commit\"",
+            "desc": "Ajouter toutes les modifications des fichiers suivis et commiter"
+          },
+          "diff": {
+            "cmd": "git diff",
+            "desc": "Voir les différences entre le répertoire de travail et l'index"
+          },
+          "diff_staged": {
+            "cmd": "git diff --staged",
+            "desc": "Voir les différences entre l'index et le dernier commit"
+          },
+          "diff_commit": {
+            "cmd": "git diff <commit1> <commit2>",
+            "desc": "Comparer les différences entre deux commits"
+          },
+          "rm": {
+            "cmd": "git rm <fichier>",
+            "desc": "Supprimer un fichier et enregistrer l'opération de suppression"
+          },
+          "rm_cached": {
+            "cmd": "git rm --cached <fichier>",
+            "desc": "Retirer un fichier de l'index, mais le conserver dans le répertoire de travail"
+          },
+          "mv": {
+            "cmd": "git mv <ancien> <nouveau>",
+            "desc": "Déplacer ou renommer un fichier"
+          }
+        },
+        "branch": {
+          "list": {
+            "cmd": "git branch",
+            "desc": "Lister les branches locales"
+          },
+          "list_all": {
+            "cmd": "git branch -a",
+            "desc": "Lister toutes les branches (y compris distantes)"
+          },
+          "list_remote": {
+            "cmd": "git branch -r",
+            "desc": "Lister les branches distantes"
+          },
+          "create": {
+            "cmd": "git branch <branche>",
+            "desc": "Créer une nouvelle branche"
+          },
+          "checkout": {
+            "cmd": "git checkout <branche>",
+            "desc": "Basculer vers la branche spécifiée"
+          },
+          "checkout_create": {
+            "cmd": "git checkout -b <branche>",
+            "desc": "Créer et basculer vers une nouvelle branche"
+          },
+          "switch": {
+            "cmd": "git switch <branche>",
+            "desc": "Basculer de branche (Git 2.23+)"
+          },
+          "switch_create": {
+            "cmd": "git switch -c <branche>",
+            "desc": "Créer et basculer de branche (Git 2.23+)"
+          },
+          "delete": {
+            "cmd": "git branch -d <branche>",
+            "desc": "Supprimer une branche fusionnée"
+          },
+          "delete_force": {
+            "cmd": "git branch -D <branche>",
+            "desc": "Supprimer une branche de force"
+          },
+          "rename": {
+            "cmd": "git branch -m <ancien> <nouveau>",
+            "desc": "Renommer une branche"
+          },
+          "upstream": {
+            "cmd": "git branch -u origin/<branche>",
+            "desc": "Définir la branche amont pour la branche actuelle"
+          },
+          "verbose": {
+            "cmd": "git branch -vv",
+            "desc": "Voir les détails de la branche (y compris la branche amont)"
+          }
+        },
+        "remote": {
+          "list": {
+            "cmd": "git remote -v",
+            "desc": "Voir la liste des dépôts distants"
+          },
+          "add": {
+            "cmd": "git remote add <nom> <url>",
+            "desc": "Ajouter un dépôt distant"
+          },
+          "remove": {
+            "cmd": "git remote remove <nom>",
+            "desc": "Supprimer un dépôt distant"
+          },
+          "rename": {
+            "cmd": "git remote rename <ancien> <nouveau>",
+            "desc": "Renommer un dépôt distant"
+          },
+          "show": {
+            "cmd": "git remote show <nom>",
+            "desc": "Voir les détails d'un dépôt distant"
+          },
+          "set_url": {
+            "cmd": "git remote set-url <name> <url>",
+            "desc": "Modifier l'URL du dépôt distant"
+          },
+          "fetch": {
+            "cmd": "git fetch <remote>",
+            "desc": "Récupérer les mises à jour du dépôt distant"
+          },
+          "fetch_all": {
+            "cmd": "git fetch --all",
+            "desc": "Récupérer les mises à jour de tous les dépôts distants"
+          },
+          "fetch_prune": {
+            "cmd": "git fetch -p",
+            "desc": "Récupérer les mises à jour et nettoyer les branches distantes supprimées"
+          },
+          "pull": {
+            "cmd": "git pull",
+            "desc": "Tirer et fusionner la branche distante"
+          },
+          "pull_rebase": {
+            "cmd": "git pull --rebase",
+            "desc": "Tirer et rebaser"
+          },
+          "push": {
+            "cmd": "git push",
+            "desc": "Pousser vers le dépôt distant"
+          },
+          "push_upstream": {
+            "cmd": "git push -u origin <branch>",
+            "desc": "Pousser et définir la branche amont"
+          },
+          "push_force": {
+            "cmd": "git push --force",
+            "desc": "Poussée forcée (à utiliser avec prudence)"
+          },
+          "push_force_lease": {
+            "cmd": "git push --force-with-lease",
+            "desc": "Poussée forcée sécurisée"
+          },
+          "push_tags": {
+            "cmd": "git push --tags",
+            "desc": "Pousser toutes les étiquettes"
+          },
+          "push_delete": {
+            "cmd": "git push origin --delete <branch>",
+            "desc": "Supprimer une branche distante"
+          }
+        },
+        "undo": {
+          "restore": {
+            "cmd": "git restore <file>",
+            "desc": "Annuler les modifications de la zone de travail (Git 2.23+)"
+          },
+          "restore_staged": {
+            "cmd": "git restore --staged <file>",
+            "desc": "Annuler la mise en zone de préparation (Git 2.23+)"
+          },
+          "checkout_file": {
+            "cmd": "git checkout -- <file>",
+            "desc": "Annuler les modifications de la zone de travail (ancienne méthode)"
+          },
+          "reset_soft": {
+            "cmd": "git reset --soft HEAD~1",
+            "desc": "Annuler le dernier commit, en conservant les modifications dans la zone de préparation"
+          },
+          "reset_mixed": {
+            "cmd": "git reset HEAD~1",
+            "desc": "Annuler le dernier commit, en conservant les modifications dans la zone de travail"
+          },
+          "reset_hard": {
+            "cmd": "git reset --hard HEAD~1",
+            "desc": "Annuler le dernier commit, en supprimant toutes les modifications"
+          },
+          "reset_file": {
+            "cmd": "git reset HEAD <file>",
+            "desc": "Annuler la mise en zone de préparation du fichier spécifié"
+          },
+          "reset_commit": {
+            "cmd": "git reset --hard <commit>",
+            "desc": "Réinitialiser à un commit spécifique"
+          },
+          "revert": {
+            "cmd": "git revert <commit>",
+            "desc": "Créer un nouveau commit pour annuler le commit spécifié"
+          },
+          "revert_no_commit": {
+            "cmd": "git revert -n <commit>",
+            "desc": "Annuler le commit sans le valider automatiquement"
+          },
+          "clean": {
+            "cmd": "git clean -fd",
+            "desc": "Supprimer les fichiers et répertoires non suivis"
+          },
+          "clean_dry": {
+            "cmd": "git clean -nd",
+            "desc": "Prévisualiser les fichiers non suivis qui seront supprimés"
+          }
+        },
+        "stash": {
+          "save": {
+            "cmd": "git stash",
+            "desc": "Mettre de côté les modifications actuelles"
+          },
+          "save_message": {
+            "cmd": "git stash save \"Message de description\"",
+            "desc": "Mettre en réserve et ajouter une description"
+          },
+          "save_untracked": {
+            "cmd": "git stash -u",
+            "desc": "Mettre en réserve y compris les fichiers non suivis"
+          },
+          "list": {
+            "cmd": "git stash list",
+            "desc": "Afficher la liste des réserves"
+          },
+          "pop": {
+            "cmd": "git stash pop",
+            "desc": "Restaurer la réserve la plus récente et la supprimer"
+          },
+          "apply": {
+            "cmd": "git stash apply",
+            "desc": "Restaurer la réserve la plus récente mais ne pas la supprimer"
+          },
+          "apply_index": {
+            "cmd": "git stash apply stash@{n}",
+            "desc": "Restaurer la réserve spécifiée"
+          },
+          "drop": {
+            "cmd": "git stash drop",
+            "desc": "Supprimer la réserve la plus récente"
+          },
+          "drop_index": {
+            "cmd": "git stash drop stash@{n}",
+            "desc": "Supprimer la réserve spécifiée"
+          },
+          "clear": {
+            "cmd": "git stash clear",
+            "desc": "Vider toutes les réserves"
+          },
+          "show": {
+            "cmd": "git stash show -p",
+            "desc": "Afficher le contenu détaillé de la réserve"
+          },
+          "branch": {
+            "cmd": "git stash branch <branch>",
+            "desc": "Créer une nouvelle branche à partir de la réserve"
+          }
+        },
+        "log": {
+          "basic": {
+            "cmd": "git log",
+            "desc": "Afficher l'historique des commits"
+          },
+          "oneline": {
+            "cmd": "git log --oneline",
+            "desc": "Afficher l'historique des commits sur une seule ligne"
+          },
+          "graph": {
+            "cmd": "git log --oneline --graph",
+            "desc": "Afficher l'historique des commits graphiquement"
+          },
+          "all": {
+            "cmd": "git log --oneline --graph --all",
+            "desc": "Afficher l'historique des commits de toutes les branches"
+          },
+          "number": {
+            "cmd": "git log -n <number>",
+            "desc": "Afficher les n derniers commits"
+          },
+          "author": {
+            "cmd": "git log --author=\"Nom\"",
+            "desc": "Filtrer les commits par auteur"
+          },
+          "since": {
+            "cmd": "git log --since=\"2024-01-01\"",
+            "desc": "Filtrer les commits par date"
+          },
+          "grep": {
+            "cmd": "git log --grep=\"Mot-clé\"",
+            "desc": "Rechercher par message de commit"
+          },
+          "file": {
+            "cmd": "git log -- <fichier>",
+            "desc": "Afficher l'historique des commits d'un fichier spécifique"
+          },
+          "stat": {
+            "cmd": "git log --stat",
+            "desc": "Afficher les statistiques de modification des fichiers pour chaque commit"
+          },
+          "patch": {
+            "cmd": "git log -p",
+            "desc": "Afficher les différences détaillées pour chaque commit"
+          },
+          "reflog": {
+            "cmd": "git reflog",
+            "desc": "Afficher l'historique de toutes les opérations (y compris les commits supprimés)"
+          },
+          "show": {
+            "cmd": "git show <commit>",
+            "desc": "Afficher les détails d'un commit spécifique"
+          },
+          "shortlog": {
+            "cmd": "git shortlog -sn",
+            "desc": "Compter le nombre de commits par auteur"
+          }
+        },
+        "tag": {
+          "list": {
+            "cmd": "git tag",
+            "desc": "Lister tous les tags"
+          },
+          "list_pattern": {
+            "cmd": "git tag -l \"v1.*\"",
+            "desc": "Lister les tags par motif"
+          },
+          "create": {
+            "cmd": "git tag <tagname>",
+            "desc": "Créer un tag léger"
+          },
+          "create_annotated": {
+            "cmd": "git tag -a <tagname> -m \"Description\"",
+            "desc": "Créer un tag annoté"
+          },
+          "create_commit": {
+            "cmd": "git tag <tagname> <commit>",
+            "desc": "Créer un tag pour un commit spécifique"
+          },
+          "show": {
+            "cmd": "git show <tagname>",
+            "desc": "Afficher les détails du tag"
+          },
+          "delete": {
+            "cmd": "git tag -d <tagname>",
+            "desc": "Supprimer un tag local"
+          },
+          "push": {
+            "cmd": "git push origin <tagname>",
+            "desc": "Pousser un seul tag"
+          },
+          "push_all": {
+            "cmd": "git push origin --tags",
+            "desc": "Pousser tous les tags"
+          },
+          "delete_remote": {
+            "cmd": "git push origin --delete <tagname>",
+            "desc": "Supprimer un tag distant"
+          }
+        },
+        "merge": {
+          "merge": {
+            "cmd": "git merge <branch>",
+            "desc": "Fusionner la branche spécifiée dans la branche actuelle"
+          },
+          "merge_no_ff": {
+            "cmd": "git merge --no-ff <branch>",
+            "desc": "Fusion sans avance rapide, conserve l'historique des branches"
+          },
+          "merge_squash": {
+            "cmd": "git merge --squash <branch>",
+            "desc": "Fusion par écrasement, fusionne tous les commits en un seul"
+          },
+          "merge_abort": {
+            "cmd": "git merge --abort",
+            "desc": "Annuler la fusion"
+          },
+          "rebase": {
+            "cmd": "git rebase <branch>",
+            "desc": "Rebaser la branche actuelle sur la branche spécifiée"
+          },
+          "rebase_interactive": {
+            "cmd": "git rebase -i HEAD~n",
+            "desc": "Rebasement interactif des n derniers commits"
+          },
+          "rebase_continue": {
+            "cmd": "git rebase --continue",
+            "desc": "Continuer le rebasement"
+          },
+          "rebase_abort": {
+            "cmd": "git rebase --abort",
+            "desc": "Annuler le rebasement"
+          },
+          "cherry_pick": {
+            "cmd": "git cherry-pick <commit>",
+            "desc": "Appliquer le commit spécifié à la branche actuelle"
+          },
+          "cherry_pick_no_commit": {
+            "cmd": "git cherry-pick -n <commit>",
+            "desc": "Appliquer le commit sans le committer automatiquement"
+          }
+        },
+        "advanced": {
+          "bisect_start": {
+            "cmd": "git bisect start",
+            "desc": "Démarrer la recherche dichotomique (localiser le commit problématique)"
+          },
+          "bisect_bad": {
+            "cmd": "git bisect bad",
+            "desc": "Marquer le commit actuel comme problématique"
+          },
+          "bisect_good": {
+            "cmd": "git bisect good <commit>",
+            "desc": "Marquer le commit spécifié comme bon"
+          },
+          "bisect_reset": {
+            "cmd": "git bisect reset",
+            "desc": "Terminer la recherche dichotomique"
+          },
+          "blame": {
+            "cmd": "git blame <file>",
+            "desc": "Afficher le dernier modificateur de chaque ligne d'un fichier"
+          },
+          "blame_line": {
+            "cmd": "git blame -L 10,20 <file>",
+            "desc": "Voir les modificateurs pour une plage de lignes spécifique"
+          },
+          "worktree_add": {
+            "cmd": "git worktree add <path> <branch>",
+            "desc": "Créer un nouvel arbre de travail"
+          },
+          "worktree_list": {
+            "cmd": "git worktree list",
+            "desc": "Lister tous les arbres de travail"
+          },
+          "submodule_add": {
+            "cmd": "git submodule add <url> <path>",
+            "desc": "Ajouter un sous-module"
+          },
+          "submodule_update": {
+            "cmd": "git submodule update --init --recursive",
+            "desc": "Initialiser et mettre à jour tous les sous-modules"
+          },
+          "archive": {
+            "cmd": "git archive --format=zip HEAD > archive.zip",
+            "desc": "Archiver le dépôt en fichier zip"
+          },
+          "gc": {
+            "cmd": "git gc",
+            "desc": "Nettoyer et optimiser le dépôt"
+          },
+          "fsck": {
+            "cmd": "git fsck",
+            "desc": "Vérifier l'intégrité du dépôt"
+          }
+        }
+      },
+      "introduction": "La Fiche de Référence Rapide Git est un outil de référence rapide des commandes Git conçu pour les développeurs. Elle couvre toutes les commandes courantes, des opérations de base aux techniques avancées, organisées par fonction, avec prise en charge de la recherche rapide et de la copie en un clic. Que vous soyez un débutant Git ou un développeur expérimenté, vous trouverez rapidement les commandes dont vous avez besoin ici. Toutes les commandes sont accompagnées d'explications claires en français, pour vous aider à mieux comprendre et utiliser Git.",
+      "features": [
+        "Plus de 10 catégories, couvrant tous les scénarios Git courants",
+        "Plus de 100 commandes courantes, de base à avancées, toutes incluses",
+        "Prise en charge de la recherche par mots-clés pour localiser rapidement les commandes nécessaires",
+        "Copie de commande en un clic, améliorant l'efficacité du travail",
+        "Des explications claires en français, faciles à comprendre et à apprendre",
+        "Navigation et filtrage par catégorie pour trouver rapidement les commandes pertinentes",
+        "Conception réactive, compatible avec la visualisation sur mobile",
+        "Fonctionne localement, utilisable sans connexion internet"
+      ],
+      "faq": [
+        {
+          "question": "Pourquoi avez-vous besoin de la Fiche de Référence Rapide Git ?",
+          "answer": "Les commandes Git sont nombreuses et leurs paramètres complexes, ce qui rend difficile de toutes les mémoriser, même pour les développeurs expérimentés. La fiche de référence rapide vous aide à trouver et copier rapidement les commandes, économisant ainsi le temps de consultation de la documentation et améliorant l'efficacité du développement."
+        },
+        {
+          "question": "Quelles catégories de commandes la fiche de référence rapide contient-elle ?",
+          "answer": "La fiche de référence rapide contient 10 grandes catégories : Configuration et Initialisation, Opérations de Base, Gestion des Branches, Dépôts Distants, Annulation et Retour en arrière, Opérations de Staging, Consultation des Journaux, Gestion des Étiquettes, Fusion et Rebasage, Opérations Avancées. Elle couvre presque tous les scénarios d'utilisation de Git dans le développement quotidien."
+        },
+        {
+          "question": "Comment trouver rapidement la commande dont vous avez besoin ?",
+          "answer": "Vous pouvez utiliser la barre de recherche en haut pour saisir des mots-clés, ou cliquer sur les étiquettes de catégorie pour filtrer les commandes d'un type spécifique. La recherche prend en charge la correspondance floue pour les noms de commandes et les descriptions."
+        },
+        {
+          "question": "Les commandes copiées peuvent-elles être utilisées directement ?",
+          "answer": "La plupart des commandes peuvent être utilisées directement, mais certains <paramètres> doivent être remplacés par des valeurs réelles. Par exemple, <url> dans git clone <url> doit être remplacé par l'adresse réelle du dépôt."
+        },
+        {
+          "question": "La fiche de référence rapide sera-t-elle mise à jour en permanence ?",
+          "answer": "Oui, nous mettrons à jour la fiche de référence rapide en permanence, en ajoutant de nouvelles commandes et astuces utiles, afin de garantir que le contenu reste synchronisé avec les dernières versions de Git."
+        }
+      ],
+      "meta": {
+        "title": "Fiche de Référence Rapide Git - Référence rapide des commandes courantes",
+        "description": "Fiche de référence rapide des commandes Git courantes, couvrant tous les scénarios tels que la configuration, les branches, les dépôts distants, l'annulation, le staging, les journaux, les étiquettes, la fusion, etc., avec prise en charge de la recherche et de la copie en un clic.",
+        "keywords": "Fiche de référence rapide Git, Commandes Git, Tutoriel Git, Contrôle de version"
+      }
+    },
     "i18n-json-translator": {
       "name": "Traducteur JSON i18n",
       "description": "Traduction complète d’un fichier JSON de langue. Collez votre contenu de base, choisissez la langue cible; l’outil utilisera des clés aplaties pour appeler votre API OpenRouter.",
