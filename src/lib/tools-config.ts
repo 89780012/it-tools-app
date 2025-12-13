@@ -37,6 +37,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "developer",
         path: "/tools/curl-converter",
         icon: "terminal"
+      },
+      {
+        id: "git-cheatsheet",
+        nameKey: "tools.git-cheatsheet.name",
+        descriptionKey: "tools.git-cheatsheet.description",
+        category: "developer",
+        path: "/tools/git-cheatsheet",
+        icon: "git-branch"
       }
     ]
   },

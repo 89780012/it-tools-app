@@ -2553,6 +2553,586 @@
         "keywords": "点阵图, 像素艺术, 图片效果"
       }
     },
+    "git-cheatsheet": {
+      "name": "Git 速查表",
+      "description": "Git 常用命令速查表，快速查找和复制 Git 命令",
+      "search_placeholder": "搜索 Git 命令...",
+      "copy_success": "命令已复制",
+      "no_results": "未找到匹配的命令",
+      "all_categories": "全部",
+      "categories": {
+        "setup": "配置与初始化",
+        "basic": "基础操作",
+        "branch": "分支管理",
+        "remote": "远程仓库",
+        "undo": "撤销与回退",
+        "stash": "暂存操作",
+        "log": "查看日志",
+        "tag": "标签管理",
+        "merge": "合并与变基",
+        "advanced": "高级操作"
+      },
+      "commands": {
+        "setup": {
+          "init": {
+            "cmd": "git init",
+            "desc": "在当前目录初始化一个新的 Git 仓库"
+          },
+          "init_bare": {
+            "cmd": "git init --bare",
+            "desc": "初始化一个裸仓库（无工作目录，用于服务器）"
+          },
+          "clone": {
+            "cmd": "git clone <url>",
+            "desc": "克隆远程仓库到本地"
+          },
+          "clone_depth": {
+            "cmd": "git clone --depth 1 <url>",
+            "desc": "浅克隆，只获取最新一次提交（节省时间和空间）"
+          },
+          "clone_branch": {
+            "cmd": "git clone -b <branch> <url>",
+            "desc": "克隆指定分支"
+          },
+          "config_name": {
+            "cmd": "git config --global user.name \"名字\"",
+            "desc": "设置全局用户名"
+          },
+          "config_email": {
+            "cmd": "git config --global user.email \"邮箱\"",
+            "desc": "设置全局邮箱"
+          },
+          "config_list": {
+            "cmd": "git config --list",
+            "desc": "查看所有配置"
+          },
+          "config_editor": {
+            "cmd": "git config --global core.editor vim",
+            "desc": "设置默认编辑器"
+          }
+        },
+        "basic": {
+          "status": {
+            "cmd": "git status",
+            "desc": "查看工作区状态"
+          },
+          "status_short": {
+            "cmd": "git status -s",
+            "desc": "查看简洁状态"
+          },
+          "add": {
+            "cmd": "git add <file>",
+            "desc": "添加文件到暂存区"
+          },
+          "add_all": {
+            "cmd": "git add .",
+            "desc": "添加所有更改到暂存区"
+          },
+          "add_patch": {
+            "cmd": "git add -p",
+            "desc": "交互式添加，可选择部分更改"
+          },
+          "commit": {
+            "cmd": "git commit -m \"提交信息\"",
+            "desc": "提交暂存区的更改"
+          },
+          "commit_amend": {
+            "cmd": "git commit --amend",
+            "desc": "修改最后一次提交"
+          },
+          "commit_amend_no_edit": {
+            "cmd": "git commit --amend --no-edit",
+            "desc": "修改最后一次提交（不修改提交信息）"
+          },
+          "commit_all": {
+            "cmd": "git commit -am \"提交信息\"",
+            "desc": "添加所有已跟踪文件的更改并提交"
+          },
+          "diff": {
+            "cmd": "git diff",
+            "desc": "查看工作区与暂存区的差异"
+          },
+          "diff_staged": {
+            "cmd": "git diff --staged",
+            "desc": "查看暂存区与最后一次提交的差异"
+          },
+          "diff_commit": {
+            "cmd": "git diff <commit1> <commit2>",
+            "desc": "比较两次提交的差异"
+          },
+          "rm": {
+            "cmd": "git rm <file>",
+            "desc": "删除文件并记录删除操作"
+          },
+          "rm_cached": {
+            "cmd": "git rm --cached <file>",
+            "desc": "从暂存区移除文件，但保留工作区文件"
+          },
+          "mv": {
+            "cmd": "git mv <old> <new>",
+            "desc": "移动或重命名文件"
+          }
+        },
+        "branch": {
+          "list": {
+            "cmd": "git branch",
+            "desc": "列出本地分支"
+          },
+          "list_all": {
+            "cmd": "git branch -a",
+            "desc": "列出所有分支（包括远程）"
+          },
+          "list_remote": {
+            "cmd": "git branch -r",
+            "desc": "列出远程分支"
+          },
+          "create": {
+            "cmd": "git branch <branch>",
+            "desc": "创建新分支"
+          },
+          "checkout": {
+            "cmd": "git checkout <branch>",
+            "desc": "切换到指定分支"
+          },
+          "checkout_create": {
+            "cmd": "git checkout -b <branch>",
+            "desc": "创建并切换到新分支"
+          },
+          "switch": {
+            "cmd": "git switch <branch>",
+            "desc": "切换分支（Git 2.23+）"
+          },
+          "switch_create": {
+            "cmd": "git switch -c <branch>",
+            "desc": "创建并切换分支（Git 2.23+）"
+          },
+          "delete": {
+            "cmd": "git branch -d <branch>",
+            "desc": "删除已合并的分支"
+          },
+          "delete_force": {
+            "cmd": "git branch -D <branch>",
+            "desc": "强制删除分支"
+          },
+          "rename": {
+            "cmd": "git branch -m <old> <new>",
+            "desc": "重命名分支"
+          },
+          "upstream": {
+            "cmd": "git branch -u origin/<branch>",
+            "desc": "设置当前分支的上游分支"
+          },
+          "verbose": {
+            "cmd": "git branch -vv",
+            "desc": "查看分支详细信息（包括上游分支）"
+          }
+        },
+        "remote": {
+          "list": {
+            "cmd": "git remote -v",
+            "desc": "查看远程仓库列表"
+          },
+          "add": {
+            "cmd": "git remote add <name> <url>",
+            "desc": "添加远程仓库"
+          },
+          "remove": {
+            "cmd": "git remote remove <name>",
+            "desc": "移除远程仓库"
+          },
+          "rename": {
+            "cmd": "git remote rename <old> <new>",
+            "desc": "重命名远程仓库"
+          },
+          "show": {
+            "cmd": "git remote show <name>",
+            "desc": "查看远程仓库详情"
+          },
+          "set_url": {
+            "cmd": "git remote set-url <name> <url>",
+            "desc": "修改远程仓库 URL"
+          },
+          "fetch": {
+            "cmd": "git fetch <remote>",
+            "desc": "获取远程仓库的更新"
+          },
+          "fetch_all": {
+            "cmd": "git fetch --all",
+            "desc": "获取所有远程仓库的更新"
+          },
+          "fetch_prune": {
+            "cmd": "git fetch -p",
+            "desc": "获取更新并清理已删除的远程分支"
+          },
+          "pull": {
+            "cmd": "git pull",
+            "desc": "拉取并合并远程分支"
+          },
+          "pull_rebase": {
+            "cmd": "git pull --rebase",
+            "desc": "拉取并变基"
+          },
+          "push": {
+            "cmd": "git push",
+            "desc": "推送到远程仓库"
+          },
+          "push_upstream": {
+            "cmd": "git push -u origin <branch>",
+            "desc": "推送并设置上游分支"
+          },
+          "push_force": {
+            "cmd": "git push --force",
+            "desc": "强制推送（谨慎使用）"
+          },
+          "push_force_lease": {
+            "cmd": "git push --force-with-lease",
+            "desc": "安全的强制推送"
+          },
+          "push_tags": {
+            "cmd": "git push --tags",
+            "desc": "推送所有标签"
+          },
+          "push_delete": {
+            "cmd": "git push origin --delete <branch>",
+            "desc": "删除远程分支"
+          }
+        },
+        "undo": {
+          "restore": {
+            "cmd": "git restore <file>",
+            "desc": "丢弃工作区的更改（Git 2.23+）"
+          },
+          "restore_staged": {
+            "cmd": "git restore --staged <file>",
+            "desc": "取消暂存（Git 2.23+）"
+          },
+          "checkout_file": {
+            "cmd": "git checkout -- <file>",
+            "desc": "丢弃工作区的更改（旧方式）"
+          },
+          "reset_soft": {
+            "cmd": "git reset --soft HEAD~1",
+            "desc": "撤销最后一次提交，保留更改在暂存区"
+          },
+          "reset_mixed": {
+            "cmd": "git reset HEAD~1",
+            "desc": "撤销最后一次提交，保留更改在工作区"
+          },
+          "reset_hard": {
+            "cmd": "git reset --hard HEAD~1",
+            "desc": "撤销最后一次提交，丢弃所有更改"
+          },
+          "reset_file": {
+            "cmd": "git reset HEAD <file>",
+            "desc": "取消暂存指定文件"
+          },
+          "reset_commit": {
+            "cmd": "git reset --hard <commit>",
+            "desc": "重置到指定提交"
+          },
+          "revert": {
+            "cmd": "git revert <commit>",
+            "desc": "创建一个新提交来撤销指定提交"
+          },
+          "revert_no_commit": {
+            "cmd": "git revert -n <commit>",
+            "desc": "撤销提交但不自动提交"
+          },
+          "clean": {
+            "cmd": "git clean -fd",
+            "desc": "删除未跟踪的文件和目录"
+          },
+          "clean_dry": {
+            "cmd": "git clean -nd",
+            "desc": "预览将要删除的未跟踪文件"
+          }
+        },
+        "stash": {
+          "save": {
+            "cmd": "git stash",
+            "desc": "暂存当前更改"
+          },
+          "save_message": {
+            "cmd": "git stash save \"描述信息\"",
+            "desc": "暂存并添加描述"
+          },
+          "save_untracked": {
+            "cmd": "git stash -u",
+            "desc": "暂存包括未跟踪的文件"
+          },
+          "list": {
+            "cmd": "git stash list",
+            "desc": "查看暂存列表"
+          },
+          "pop": {
+            "cmd": "git stash pop",
+            "desc": "恢复最近的暂存并删除"
+          },
+          "apply": {
+            "cmd": "git stash apply",
+            "desc": "恢复最近的暂存但不删除"
+          },
+          "apply_index": {
+            "cmd": "git stash apply stash@{n}",
+            "desc": "恢复指定的暂存"
+          },
+          "drop": {
+            "cmd": "git stash drop",
+            "desc": "删除最近的暂存"
+          },
+          "drop_index": {
+            "cmd": "git stash drop stash@{n}",
+            "desc": "删除指定的暂存"
+          },
+          "clear": {
+            "cmd": "git stash clear",
+            "desc": "清空所有暂存"
+          },
+          "show": {
+            "cmd": "git stash show -p",
+            "desc": "查看暂存的详细内容"
+          },
+          "branch": {
+            "cmd": "git stash branch <branch>",
+            "desc": "从暂存创建新分支"
+          }
+        },
+        "log": {
+          "basic": {
+            "cmd": "git log",
+            "desc": "查看提交历史"
+          },
+          "oneline": {
+            "cmd": "git log --oneline",
+            "desc": "单行显示提交历史"
+          },
+          "graph": {
+            "cmd": "git log --oneline --graph",
+            "desc": "图形化显示提交历史"
+          },
+          "all": {
+            "cmd": "git log --oneline --graph --all",
+            "desc": "显示所有分支的提交历史"
+          },
+          "number": {
+            "cmd": "git log -n <number>",
+            "desc": "显示最近 n 次提交"
+          },
+          "author": {
+            "cmd": "git log --author=\"名字\"",
+            "desc": "按作者筛选提交"
+          },
+          "since": {
+            "cmd": "git log --since=\"2024-01-01\"",
+            "desc": "按日期筛选提交"
+          },
+          "grep": {
+            "cmd": "git log --grep=\"关键词\"",
+            "desc": "按提交信息搜索"
+          },
+          "file": {
+            "cmd": "git log -- <file>",
+            "desc": "查看指定文件的提交历史"
+          },
+          "stat": {
+            "cmd": "git log --stat",
+            "desc": "显示每次提交的文件变更统计"
+          },
+          "patch": {
+            "cmd": "git log -p",
+            "desc": "显示每次提交的详细差异"
+          },
+          "reflog": {
+            "cmd": "git reflog",
+            "desc": "查看所有操作记录（包括已删除的提交）"
+          },
+          "show": {
+            "cmd": "git show <commit>",
+            "desc": "查看指定提交的详情"
+          },
+          "shortlog": {
+            "cmd": "git shortlog -sn",
+            "desc": "按作者统计提交数量"
+          }
+        },
+        "tag": {
+          "list": {
+            "cmd": "git tag",
+            "desc": "列出所有标签"
+          },
+          "list_pattern": {
+            "cmd": "git tag -l \"v1.*\"",
+            "desc": "按模式列出标签"
+          },
+          "create": {
+            "cmd": "git tag <tagname>",
+            "desc": "创建轻量标签"
+          },
+          "create_annotated": {
+            "cmd": "git tag -a <tagname> -m \"描述\"",
+            "desc": "创建带注释的标签"
+          },
+          "create_commit": {
+            "cmd": "git tag <tagname> <commit>",
+            "desc": "为指定提交创建标签"
+          },
+          "show": {
+            "cmd": "git show <tagname>",
+            "desc": "查看标签详情"
+          },
+          "delete": {
+            "cmd": "git tag -d <tagname>",
+            "desc": "删除本地标签"
+          },
+          "push": {
+            "cmd": "git push origin <tagname>",
+            "desc": "推送单个标签"
+          },
+          "push_all": {
+            "cmd": "git push origin --tags",
+            "desc": "推送所有标签"
+          },
+          "delete_remote": {
+            "cmd": "git push origin --delete <tagname>",
+            "desc": "删除远程标签"
+          }
+        },
+        "merge": {
+          "merge": {
+            "cmd": "git merge <branch>",
+            "desc": "合并指定分支到当前分支"
+          },
+          "merge_no_ff": {
+            "cmd": "git merge --no-ff <branch>",
+            "desc": "非快进合并，保留分支历史"
+          },
+          "merge_squash": {
+            "cmd": "git merge --squash <branch>",
+            "desc": "压缩合并，将所有提交合并为一个"
+          },
+          "merge_abort": {
+            "cmd": "git merge --abort",
+            "desc": "中止合并"
+          },
+          "rebase": {
+            "cmd": "git rebase <branch>",
+            "desc": "将当前分支变基到指定分支"
+          },
+          "rebase_interactive": {
+            "cmd": "git rebase -i HEAD~n",
+            "desc": "交互式变基最近 n 次提交"
+          },
+          "rebase_continue": {
+            "cmd": "git rebase --continue",
+            "desc": "继续变基"
+          },
+          "rebase_abort": {
+            "cmd": "git rebase --abort",
+            "desc": "中止变基"
+          },
+          "cherry_pick": {
+            "cmd": "git cherry-pick <commit>",
+            "desc": "将指定提交应用到当前分支"
+          },
+          "cherry_pick_no_commit": {
+            "cmd": "git cherry-pick -n <commit>",
+            "desc": "应用提交但不自动提交"
+          }
+        },
+        "advanced": {
+          "bisect_start": {
+            "cmd": "git bisect start",
+            "desc": "开始二分查找（定位问题提交）"
+          },
+          "bisect_bad": {
+            "cmd": "git bisect bad",
+            "desc": "标记当前提交为有问题"
+          },
+          "bisect_good": {
+            "cmd": "git bisect good <commit>",
+            "desc": "标记指定提交为正常"
+          },
+          "bisect_reset": {
+            "cmd": "git bisect reset",
+            "desc": "结束二分查找"
+          },
+          "blame": {
+            "cmd": "git blame <file>",
+            "desc": "查看文件每行的最后修改者"
+          },
+          "blame_line": {
+            "cmd": "git blame -L 10,20 <file>",
+            "desc": "查看指定行范围的修改者"
+          },
+          "worktree_add": {
+            "cmd": "git worktree add <path> <branch>",
+            "desc": "创建新的工作树"
+          },
+          "worktree_list": {
+            "cmd": "git worktree list",
+            "desc": "列出所有工作树"
+          },
+          "submodule_add": {
+            "cmd": "git submodule add <url> <path>",
+            "desc": "添加子模块"
+          },
+          "submodule_update": {
+            "cmd": "git submodule update --init --recursive",
+            "desc": "初始化并更新所有子模块"
+          },
+          "archive": {
+            "cmd": "git archive --format=zip HEAD > archive.zip",
+            "desc": "将仓库打包为 zip 文件"
+          },
+          "gc": {
+            "cmd": "git gc",
+            "desc": "清理和优化仓库"
+          },
+          "fsck": {
+            "cmd": "git fsck",
+            "desc": "检查仓库完整性"
+          }
+        }
+      },
+      "introduction": "Git 速查表是专为开发者设计的 Git 命令快速参考工具。涵盖了从基础操作到高级技巧的所有常用命令，按功能分类组织，支持快速搜索和一键复制。无论你是 Git 新手还是经验丰富的开发者，都能在这里快速找到需要的命令。所有命令都配有清晰的中文说明，帮助你更好地理解和使用 Git。",
+      "features": [
+        "10+ 分类，覆盖 Git 所有常用场景",
+        "100+ 常用命令，从基础到高级全面收录",
+        "支持关键词搜索，快速定位所需命令",
+        "一键复制命令，提升工作效率",
+        "清晰的中文说明，易于理解和学习",
+        "分类浏览和筛选，快速找到相关命令",
+        "响应式设计，支持移动端查看",
+        "本地运行，无需网络即可使用"
+      ],
+      "faq": [
+        {
+          "question": "为什么需要 Git 速查表？",
+          "answer": "Git 命令众多且参数复杂，即使是经验丰富的开发者也难以记住所有命令。速查表可以帮助你快速查找和复制命令，节省查阅文档的时间，提升开发效率。"
+        },
+        {
+          "question": "速查表包含哪些命令分类？",
+          "answer": "速查表包含 10 大分类：配置与初始化、基础操作、分支管理、远程仓库、撤销与回退、暂存操作、查看日志、标签管理、合并与变基、高级操作。涵盖了日常开发中几乎所有的 Git 使用场景。"
+        },
+        {
+          "question": "如何快速找到需要的命令？",
+          "answer": "你可以使用顶部的搜索框输入关键词进行搜索，也可以点击分类标签筛选特定类型的命令。搜索支持命令名称和描述的模糊匹配。"
+        },
+        {
+          "question": "复制的命令可以直接使用吗？",
+          "answer": "大多数命令可以直接使用，但部分命令中的 <参数> 需要替换为实际值。例如 git clone <url> 中的 <url> 需要替换为实际的仓库地址。"
+        },
+        {
+          "question": "速查表会持续更新吗？",
+          "answer": "是的，我们会持续更新速查表，添加新的实用命令和技巧，确保内容与最新的 Git 版本保持同步。"
+        }
+      ],
+      "meta": {
+        "title": "Git 速查表 - 常用命令快速参考",
+        "description": "Git 常用命令速查表，涵盖配置、分支、远程、撤销、暂存、日志、标签、合并等所有场景，支持搜索和一键复制。",
+        "keywords": "Git速查表, Git命令, Git教程, 版本控制"
+      }
+    },
     "i18n-json-translator": {
       "name": "i18n JSON 翻译器",
       "description": "一次性翻译整个 JSON 语言文件。粘贴您的基础内容，选择目标语言，工具将使用扁平化的键调用您的 OpenRouter API。",
