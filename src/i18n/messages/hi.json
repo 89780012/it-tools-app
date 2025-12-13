@@ -3269,6 +3269,614 @@
         "description": "निःशुल्क ऑनलाइन पाठ वर्ण सांख्यिकी उपकरण, वास्तविक समय में वर्ण संख्या, शब्द संख्या, पंक्तियों की संख्या, अनुच्छेदों की संख्या की गणना करता है, चीनी और अंग्रेजी मिश्रित पाठ का समर्थन करता है, लेखन और सामग्री निर्माण के लिए उपयुक्त है।",
         "keywords": "वर्ण गणना, शब्द गणना, पाठ गणना"
       }
+    },
+    "linux-log-helper": {
+      "name": "Linux लॉग सहायक",
+      "description": "Linux लॉग खोज और संपीड़ित फ़ाइल अनज़िप कमांड त्वरित संदर्भ तालिका",
+      "tab_search": "लॉग खोज",
+      "tab_decompress": "अनज़िप कमांड",
+      "search_title": "लॉग खोज कमांड",
+      "search_desc": "सामान्यतः उपयोग किए जाने वाले Linux लॉग खोज और फ़िल्टरिंग कमांड, जिनमें grep, awk, sed जैसे उपकरण शामिल हैं",
+      "decompress_title": "अनज़िप कमांड",
+      "decompress_desc": "सामान्यतः उपयोग किए जाने वाले संपीड़ित फ़ाइल अनज़िप कमांड, जो tar, gzip, zip, bzip2, xz, rar, 7z जैसे प्रारूपों का समर्थन करते हैं",
+      "search_placeholder": "कमांड खोजें...",
+      "all_categories": "सभी",
+      "copy_success": "कमांड कॉपी किया गया",
+      "no_results": "कोई मिलान कमांड नहीं मिला",
+      "result_count": "{count} कमांड मिले",
+      "search_categories": {
+        "basic_search": "मूल खोज",
+        "time_filter": "समय फ़िल्टर",
+        "pattern_match": "पैटर्न मिलान",
+        "real_time": "वास्तविक समय की निगरानी",
+        "combine": "संयुक्त कमांड",
+        "log_files": "सामान्य लॉग फ़ाइलें"
+      },
+      "decompress_categories": {
+        "tar": "tar संग्रह",
+        "gzip": "gzip संपीड़न",
+        "zip": "zip संपीड़न",
+        "bzip2": "bzip2 संपीड़न",
+        "xz": "xz संपीड़न",
+        "rar": "rar संपीड़न",
+        "7z": "7z संपीड़न"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"कीवर्ड\" /var/log/syslog",
+            "desc": "लॉग फ़ाइल में कीवर्ड वाली पंक्तियों को खोजें"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "केस-संवेदी न होकर error खोजें"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "मिलान वाली पंक्तियों की संख्या गिनें"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "मिलान वाली पंक्तियों की पंक्ति संख्या दिखाएं"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "मिलान वाली पंक्ति और उससे पहले और बाद की 3 पंक्तियों का संदर्भ दिखाएं"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "मिलान वाली पंक्ति और उससे पहले की 5 पंक्तियाँ दिखाएं"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "मिलान वाली पंक्ति और उसके बाद की 5 पंक्तियाँ दिखाएं"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "debug वाली पंक्तियों को बाहर करें"
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "निर्देशिका में सभी फ़ाइलों को पुनरावर्ती रूप से खोजें"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "केवल मिलान वाली सामग्री वाली फ़ाइलों के नाम दिखाएं"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "लॉग फ़ाइल में \"error\" निश्चित स्ट्रिंग वाली पंक्तियों को खोजें (रेगुलर एक्सप्रेशन का समर्थन नहीं करता)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "निर्दिष्ट समय के बाद के लॉग देखें"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "निर्दिष्ट समय से पहले के लॉग देखें"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "आज के लॉग देखें"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "कल के लॉग देखें"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "पिछले 1 घंटे के लॉग देखें"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "पिछले 30 मिनट के लॉग देखें"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "निर्दिष्ट समय सीमा के लॉग निकालें"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "समय सीमा को फ़िल्टर करने के लिए awk का उपयोग करें"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "कई कीवर्ड्स को रेगुलर एक्सप्रेशन से मैच करें"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "पूरे शब्द का सटीक मिलान करें"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "आईपी ​​पते का मिलान करें"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "ईमेल पते का मिलान करें"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "लॉग के पहले तीन फ़ील्ड निकालें"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "HTTP स्टेटस कोड >= 500 वाले अनुरोधों को फ़िल्टर करें"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "लॉग में संवेदनशील जानकारी बदलें"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "स्पेस से विभाजित करें और निर्दिष्ट फ़ील्ड निकालें"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "लॉग फ़ाइल को वास्तविक समय में ट्रैक करें"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "अंतिम 100 लॉग लाइनें देखें"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "वास्तविक समय में ट्रैक करें और कीवर्ड फ़िल्टर करें"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "एक साथ कई लॉग फ़ाइलों को ट्रैक करें"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "systemd लॉग को वास्तविक समय में ट्रैक करें"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "निर्दिष्ट सेवा के लॉग को वास्तविक समय में ट्रैक करें"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "less का उपयोग करके वास्तविक समय में ट्रैक करें (Ctrl+C दबाकर रोकें, F दबाकर जारी रखें)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "स्प्लिट स्क्रीन में एक साथ कई लॉग देखें (multitail इंस्टॉल करना होगा)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "कई फ़िल्टर शर्तों को संयोजित करें"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "त्रुटियों की संख्या गिनें और क्रमबद्ध करें"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "फ़ील्ड के योग की गणना करें (जैसे प्रतिक्रिया का आकार)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "कई लॉग फ़ाइलों में खोजें"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "संपीड़ित लॉग फ़ाइलों में खोजें"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "संपीड़ित लॉग को अनज़िप करें और खोजें"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "xargs का उपयोग करके बैच खोज"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "खोज परिणाम स्क्रीन और फ़ाइल दोनों पर आउटपुट करें"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "सिस्टम लॉग (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "सिस्टम लॉग (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "प्रमाणीकरण लॉग (लॉगिन, sudo आदि)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "सुरक्षा लॉग (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "कर्नेल बूट लॉग"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "कर्नेल लॉग"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Nginx एक्सेस लॉग"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Nginx त्रुटि लॉग"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Apache एक्सेस लॉग"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Apache त्रुटि लॉग"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "MySQL त्रुटि लॉग"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Docker कंटेनर लॉग"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "tar संग्रह फ़ाइल को अनज़िप करें"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "निर्दिष्ट निर्देशिका में अनज़िप करें"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "tar संग्रह की सामग्री देखें"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "tar.gz फ़ाइल को अनज़िप करें"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "tar.bz2 फ़ाइल को अनज़िप करें"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "tar.xz फ़ाइल को अनज़िप करें"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "tar संग्रह बनाएँ"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "tar.gz संपीड़ित संग्रह बनाएँ"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "वर्तमान निर्देशिका में सभी tar.gz फ़ाइलों को बैच में अनज़िप करें"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "tar.gz को निर्दिष्ट निर्देशिका में बैच में अनज़िप करें"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "tar.gz को उनके संबंधित समान नाम वाली निर्देशिकाओं में बैच में अनज़िप करें"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "सभी tar.gz फ़ाइलों को पुनरावर्ती रूप से खोजें और अनज़िप करें"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "tar.gz को समानांतर में अनज़िप करें (4 प्रक्रियाएँ)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "gzip फ़ाइल को अनज़िप करें (मूल फ़ाइल हटाएँ)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "gzip फ़ाइल को अनज़िप करें (मूल फ़ाइल रखें)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "gzip फ़ाइल को अनज़िप करें"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "मानक आउटपुट में अनज़िप करें"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "फ़ाइल को संपीड़ित करें"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "उच्चतम संपीड़न अनुपात के साथ संपीड़ित करें"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "निर्देशिका में सभी फ़ाइलों को पुनरावर्ती रूप से संपीड़ित करें"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "वर्तमान निर्देशिका में सभी gz फ़ाइलों को बैच में अनज़िप करें"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "gz फ़ाइलों को बैच में अनज़िप करें (मूल फ़ाइलें रखें)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "zip फ़ाइल को अनज़िप करें"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "निर्दिष्ट निर्देशिका में अनज़िप करें"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "zip फ़ाइल की सामग्री देखें"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "zip फ़ाइल की अखंडता का परीक्षण करें"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "अनज़िप करें और मौजूदा फ़ाइलों को अधिलेखित करें"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "शांत रूप से अनज़िप करें (विवरण न दिखाएँ)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "zip संपीड़ित फ़ाइल बनाएँ"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "एन्क्रिप्टेड zip फ़ाइल बनाएँ"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "वर्तमान निर्देशिका में सभी zip फ़ाइलों को बैच में अनज़िप करें"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "zip को निर्दिष्ट निर्देशिका में बैच में अनज़िप करें"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "बैच में ज़िप फ़ाइलों को उनके संबंधित समान-नाम वाले डायरेक्टरी में अनज़िप करें।"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "सभी ज़िप फ़ाइलों को रिकर्सिवली ढूंढें और अनज़िप करें।"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "bzip2 फ़ाइल को डीकंप्रेस करें।"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "bzip2 फ़ाइल को डीकंप्रेस करें (मूल फ़ाइल को रखें)।"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "bzip2 फ़ाइल को डीकंप्रेस करें।"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "मानक आउटपुट पर डीकंप्रेस करें।"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "फ़ाइल को कंप्रेस करें।"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "उच्चतम संपीड़न अनुपात के साथ कंप्रेस करें।"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "वर्तमान डायरेक्टरी में सभी bz2 फ़ाइलों को बैच में डीकंप्रेस करें।"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "बैच में bz2 फ़ाइलों को डीकंप्रेस करें (मूल फ़ाइलों को रखें)।"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "xz फ़ाइल को डीकंप्रेस करें।"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "xz फ़ाइल को डीकंप्रेस करें (मूल फ़ाइल को रखें)।"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "xz फ़ाइल को डीकंप्रेस करें।"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "मानक आउटपुट पर डीकंप्रेस करें।"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "फ़ाइल को कंप्रेस करें।"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "उच्चतम संपीड़न अनुपात के साथ कंप्रेस करें।"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "मल्टी-थ्रेडिंग का उपयोग करके कंप्रेस करें।"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "वर्तमान डायरेक्टरी में सभी xz फ़ाइलों को बैच में डीकंप्रेस करें।"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "बैच में xz फ़ाइलों को डीकंप्रेस करें (मूल फ़ाइलों को रखें)।"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "rar फ़ाइल को डीकंप्रेस करें (डायरेक्टरी संरचना को बनाए रखें)।"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "rar फ़ाइल को डीकंप्रेस करें (डायरेक्टरी संरचना को न रखें)।"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "निर्दिष्ट डायरेक्टरी में डीकंप्रेस करें।"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "rar फ़ाइल की सामग्री देखें।"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "rar फ़ाइल की अखंडता का परीक्षण करें।"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "rar कंप्रेस्ड फ़ाइल बनाएं (rar इंस्टॉलेशन आवश्यक है)।"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "वर्तमान निर्देशिका की सभी rar फ़ाइलों को बैच में अनज़िप करें"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "rar को निर्दिष्ट निर्देशिका में बैच में अनज़िप करें"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "rar को उनके संबंधित समान नाम वाली निर्देशिकाओं में बैच में अनज़िप करें"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "7z फ़ाइल को अनज़िप करें (निर्देशिका संरचना को बनाए रखते हुए)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "7z फ़ाइल को अनज़िप करें (निर्देशिका संरचना को बनाए बिना)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "निर्दिष्ट निर्देशिका में अनज़िप करें"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "7z फ़ाइल की सामग्री देखें"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "7z फ़ाइल की अखंडता का परीक्षण करें"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "7z संपीड़ित फ़ाइल बनाएँ"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "एन्क्रिप्टेड 7z फ़ाइल को अनज़िप करें"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "उच्चतम संपीड़न अनुपात का उपयोग करके 7z फ़ाइल बनाएँ"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "वर्तमान निर्देशिका की सभी 7z फ़ाइलों को बैच में अनज़िप करें"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "7z को निर्दिष्ट निर्देशिका में बैच में अनज़िप करें"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "7z को उनके संबंधित समान नाम वाली निर्देशिकाओं में बैच में अनज़िप करें"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "7z को समानांतर में अनज़िप करें (4 प्रक्रियाएँ)"
+          }
+        }
+      },
+      "introduction": "लिनक्स लॉग असिस्टेंट सिस्टम प्रशासकों और डेवलपर्स के लिए डिज़ाइन किया गया एक त्वरित कमांड संदर्भ उपकरण है, जिसमें लॉग खोज, फ़िल्टरिंग और संपीड़ित फ़ाइल अनज़िपिंग के लिए सामान्य कमांड शामिल हैं। चाहे सिस्टम की समस्याओं का निवारण करना हो, एप्लिकेशन लॉग का विश्लेषण करना हो, या विभिन्न संपीड़ित प्रारूपों में लॉग फ़ाइलों को संसाधित करना हो, आपको यहां आवश्यक कमांड तुरंत मिल जाएंगे। सभी कमांड स्पष्ट हिंदी विवरण के साथ आते हैं और एक-क्लिक कॉपी का समर्थन करते हैं, जिससे आपको लॉग विश्लेषण और संचालन कार्य अधिक कुशलता से करने में मदद मिलती है।",
+      "features": [
+        "6 प्रमुख लॉग खोज श्रेणियाँ, जिनमें बुनियादी खोज, समय फ़िल्टरिंग, पैटर्न मिलान जैसे परिदृश्य शामिल हैं",
+        "7 प्रकार के संपीड़न प्रारूप समर्थित हैं, जिनमें tar, gzip, zip, bzip2, xz, rar, 7z शामिल हैं",
+        "प्रत्येक प्रारूप में एकल फ़ाइल और बैच अनज़िप कमांड शामिल हैं",
+        "70+ सामान्य कमांड, बुनियादी से लेकर उन्नत तक पूरी तरह से शामिल",
+        "आवश्यक कमांड को तुरंत खोजने के लिए कीवर्ड खोज का समर्थन करता है",
+        "कार्य कुशलता बढ़ाने के लिए एक-क्लिक कमांड कॉपी",
+        "स्पष्ट हिंदी विवरण, समझने और सीखने में आसान",
+        "संबंधित कमांड को तुरंत खोजने के लिए श्रेणी के अनुसार ब्राउज़ करें और फ़िल्टर करें"
+      ],
+      "faq": [
+        {
+          "question": "लिनक्स लॉग असिस्टेंट की आवश्यकता क्यों है?",
+          "answer": "लिनक्स सिस्टम लॉग विश्लेषण संचालन और विकास में एक सामान्य कार्य है, लेकिन संबंधित कमांड पैरामीटर जटिल और भूलने में आसान होते हैं। लॉग असिस्टेंट वर्गीकृत और व्यवस्थित सामान्य कमांड प्रदान करता है, जो त्वरित खोज और एक-क्लिक कॉपी का समर्थन करता है, जिससे लॉग विश्लेषण दक्षता में काफी सुधार होता है।"
+        },
+        {
+          "question": "कौन से लॉग खोज परिदृश्य समर्थित हैं?",
+          "answer": "6 प्रमुख खोज परिदृश्य समर्थित हैं: बुनियादी खोज (grep के विभिन्न उपयोग), समय फ़िल्टरिंग (journalctl समय सीमा), पैटर्न मिलान (नियमित अभिव्यक्ति, IP/ईमेल मिलान), वास्तविक समय निगरानी (tail -f, journalctl -f), संयुक्त कमांड (पाइप, सॉर्टिंग सांख्यिकी), सामान्य लॉग फ़ाइल स्थान संदर्भ।"
+        },
+        {
+          "question": "कौन से संपीड़न प्रारूपों का अनज़िपिंग समर्थित है?",
+          "answer": "7 सामान्य संपीड़न प्रारूप समर्थित हैं: tar (जिसमें tar.gz, tar.bz2, tar.xz शामिल हैं), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z। प्रत्येक प्रारूप अनज़िपिंग, निर्माण, सामग्री देखने आदि के लिए सामान्य कमांड प्रदान करता है। इसके अतिरिक्त, एक समर्पित बैच अनज़िपिंग श्रेणी भी प्रदान की जाती है, जो लूप अनज़िपिंग, रिकर्सिव खोज अनज़िपिंग, समानांतर अनज़िपिंग जैसे उन्नत परिदृश्यों का समर्थन करती है।"
+        },
+        {
+          "question": "आवश्यक कमांड को तुरंत कैसे खोजें?",
+          "answer": "आप शीर्ष पर खोज बॉक्स का उपयोग करके कीवर्ड खोज सकते हैं, या विशिष्ट प्रकार के कमांड को फ़िल्टर करने के लिए श्रेणी टैग पर क्लिक कर सकते हैं। खोज कमांड नाम और विवरण के अस्पष्ट मिलान का समर्थन करती है, जिससे त्वरित स्थान आसान हो जाता है।"
+        },
+        {
+          "question": "क्या कॉपी किए गए कमांड का सीधे उपयोग किया जा सकता है?",
+          "answer": "अधिकांश कमांड का सीधे उपयोग किया जा सकता है, लेकिन वास्तविक स्थिति के अनुसार कमांड में फ़ाइल पथ, कीवर्ड और अन्य मापदंडों को बदलना आवश्यक है। यह सलाह दी जाती है कि पहले कमांड के अर्थ को समझें, और फिर वास्तविक आवश्यकताओं के अनुसार मापदंडों को समायोजित करने के बाद उनका उपयोग करें।"
+        }
+      ],
+      "meta": {
+        "title": "लिनक्स लॉग असिस्टेंट - लॉग खोज और अनज़िप कमांड त्वरित संदर्भ",
+        "description": "Linux लॉग खोज और संपीड़ित फ़ाइल डीकंप्रेसन कमांड त्वरित संदर्भ तालिका, जिसमें grep, awk, sed, journalctl जैसे लॉग विश्लेषण उपकरण, साथ ही tar, gzip, zip, 7z जैसे डीकंप्रेसन कमांड शामिल हैं, और खोज तथा एक-क्लिक कॉपी का समर्थन करता है।",
+        "keywords": "Linux लॉग, grep कमांड, लॉग खोज, डीकंप्रेसन कमांड, tar कमांड"
+      }
     }
   },
   "seo": {

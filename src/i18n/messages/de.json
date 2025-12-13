@@ -3269,6 +3269,614 @@
         "description": "Kostenloses Online-Textzeichenstatistik-Tool, das Zeichen, Wörter, Zeilen und Absätze in Echtzeit zählt, gemischte chinesische und englische Texte unterstützt und sich zum Schreiben und für die Inhaltserstellung eignet.",
         "keywords": "Zeichenstatistik, Wortstatistik, Textstatistik"
       }
+    },
+    "linux-log-helper": {
+      "name": "Linux Log-Assistent",
+      "description": "Linux Log-Suche und Befehlsübersicht zum Entpacken komprimierter Dateien",
+      "tab_search": "Log-Suche",
+      "tab_decompress": "Entpackbefehle",
+      "search_title": "Log-Suchbefehle",
+      "search_desc": "Häufig verwendete Linux-Befehle zur Log-Suche und -Filterung, einschließlich Tools wie grep, awk, sed",
+      "decompress_title": "Entpackbefehle",
+      "decompress_desc": "Häufig verwendete Befehle zum Entpacken komprimierter Dateien, unterstützt Formate wie tar, gzip, zip, bzip2, xz, rar, 7z",
+      "search_placeholder": "Suchbefehle...",
+      "all_categories": "Alle",
+      "copy_success": "Befehl kopiert",
+      "no_results": "Keine passenden Befehle gefunden",
+      "result_count": "{count} Befehle gefunden",
+      "search_categories": {
+        "basic_search": "Grundlegende Suche",
+        "time_filter": "Zeitfilterung",
+        "pattern_match": "Musterabgleich",
+        "real_time": "Echtzeitüberwachung",
+        "combine": "Kombinierte Befehle",
+        "log_files": "Häufige Log-Dateien"
+      },
+      "decompress_categories": {
+        "tar": "tar-Archiv",
+        "gzip": "gzip-Kompression",
+        "zip": "zip-Kompression",
+        "bzip2": "bzip2-Kompression",
+        "xz": "xz-Kompression",
+        "rar": "rar-Kompression",
+        "7z": "7z-Kompression"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"Schlüsselwort\" /var/log/syslog",
+            "desc": "Zeilen in Log-Dateien suchen, die das Schlüsselwort enthalten"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "Suche nach \"error\" unter Ignorierung der Groß-/Kleinschreibung"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "Anzahl der übereinstimmenden Zeilen zählen"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "Zeilennummern der übereinstimmenden Zeilen anzeigen"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "Übereinstimmende Zeile und 3 Zeilen Kontext davor und danach anzeigen"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "Übereinstimmende Zeile und die 5 vorherigen Zeilen anzeigen"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "Übereinstimmende Zeile und die 5 nachfolgenden Zeilen anzeigen"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "Zeilen ausschließen, die \"debug\" enthalten"
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "Rekursive Suche in allen Dateien eines Verzeichnisses"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "Nur Dateinamen anzeigen, die den passenden Inhalt enthalten"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "Zeilen in Log-Dateien suchen, die die feste Zeichenfolge \"error\" enthalten (unterstützt keine regulären Ausdrücke)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "Logs nach einem bestimmten Zeitpunkt anzeigen"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "Protokolle bis zu einem bestimmten Zeitpunkt anzeigen"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "Heutige Protokolle anzeigen"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "Gestrige Protokolle anzeigen"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "Protokolle der letzten Stunde anzeigen"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "Protokolle der letzten 30 Minuten anzeigen"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "Protokolle für einen bestimmten Zeitraum extrahieren"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "Zeitbereich mit awk filtern"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "Mehrere Schlüsselwörter mit regulärem Ausdruck abgleichen"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "Exakte Übereinstimmung ganzer Wörter"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "IP-Adressen abgleichen"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "E-Mail-Adressen abgleichen"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "Die ersten drei Felder des Protokolls extrahieren"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "Anfragen mit HTTP-Statuscode >= 500 filtern"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "Sensible Informationen in Protokollen ersetzen"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "Nach Leerzeichen aufteilen und bestimmte Felder extrahieren"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "Protokolldateien in Echtzeit verfolgen"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "Die letzten 100 Zeilen des Protokolls anzeigen"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "In Echtzeit verfolgen und Schlüsselwörter filtern"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "Mehrere Protokolldateien gleichzeitig verfolgen"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "systemd-Protokolle in Echtzeit verfolgen"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "Protokolle eines bestimmten Dienstes in Echtzeit verfolgen"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "Mit less in Echtzeit verfolgen (Ctrl+C zum Stoppen, F zum Fortsetzen)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "Mehrere Protokolle gleichzeitig in geteiltem Bildschirm anzeigen (multitail muss installiert sein)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "Mehrere Filterbedingungen kombinieren"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "Fehlerhäufigkeit zählen und sortieren"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "Summierung eines Feldes (z.B. Antwortgröße)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "In mehreren Logdateien suchen"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "Komprimierte Logdateien durchsuchen"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "Komprimierte Logs entpacken und durchsuchen"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "Batch-Suche mit xargs"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "Suchergebnisse gleichzeitig auf Bildschirm und in Datei ausgeben"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "System-Log (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "System-Log (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "Authentifizierungs-Log (Anmeldung, sudo etc.)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "Sicherheits-Log (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "Kernel-Boot-Log"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "Kernel-Log"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Nginx-Zugriffs-Log"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Nginx-Fehler-Log"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Apache-Zugriffs-Log"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Apache-Fehler-Log"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "MySQL-Fehler-Log"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Docker-Container-Logs"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "tar-Archiv entpacken"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "In ein bestimmtes Verzeichnis entpacken"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "Inhalt eines tar-Archivs anzeigen"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "tar.gz-Datei entpacken"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "tar.bz2-Datei entpacken"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "tar.xz-Datei entpacken"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "tar-Archiv erstellen"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "Erstelle ein tar.gz-Kompressionsarchiv"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "Entpacke alle tar.gz-Dateien im aktuellen Verzeichnis stapelweise"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "Entpacke tar.gz-Dateien stapelweise in ein angegebenes Verzeichnis"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "Entpacke tar.gz-Dateien stapelweise in ihre jeweiligen gleichnamigen Verzeichnisse"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "Finde und entpacke alle tar.gz-Dateien rekursiv"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "Entpacke tar.gz parallel (4 Prozesse)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "Entpacke gzip-Datei (Originaldatei löschen)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "Entpacke gzip-Datei (Originaldatei beibehalten)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "Entpacke gzip-Datei"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "Entpacke in die Standardausgabe"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "Komprimiere Datei"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "Komprimiere mit höchster Kompressionsrate"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "Komprimiere rekursiv alle Dateien in einem Verzeichnis"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "Entpacke alle gz-Dateien im aktuellen Verzeichnis stapelweise"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "Entpacke gz-Dateien stapelweise (Originaldatei beibehalten)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "Entpacke zip-Datei"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "Entpacke in ein angegebenes Verzeichnis"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "Zeige den Inhalt einer zip-Datei an"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "Teste die Integrität einer zip-Datei"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "Entpacke und überschreibe vorhandene Dateien"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "Entpacke still (keine Details anzeigen)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "Erstelle eine zip-Kompressionsdatei"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "Erstelle eine verschlüsselte zip-Datei"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "Entpacke alle zip-Dateien im aktuellen Verzeichnis stapelweise"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "Entpacke zip-Dateien stapelweise in ein angegebenes Verzeichnis"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "Batch-Entpacken von zip-Dateien in ihre jeweiligen gleichnamigen Verzeichnisse"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "Alle zip-Dateien rekursiv suchen und entpacken"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "bzip2-Datei entpacken"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "bzip2-Datei entpacken (Originaldatei beibehalten)"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "bzip2-Datei entpacken"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "In die Standardausgabe entpacken"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "Datei komprimieren"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "Mit höchster Kompressionsrate komprimieren"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "Alle bz2-Dateien im aktuellen Verzeichnis stapelweise entpacken"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "bz2-Dateien stapelweise entpacken (Originaldateien beibehalten)"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "xz-Datei entpacken"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "xz-Datei entpacken (Originaldatei beibehalten)"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "xz-Datei entpacken"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "In die Standardausgabe entpacken"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "Datei komprimieren"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "Mit höchster Kompressionsrate komprimieren"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "Mit Multithreading komprimieren"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "Alle xz-Dateien im aktuellen Verzeichnis stapelweise entpacken"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "xz-Dateien stapelweise entpacken (Originaldateien beibehalten)"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "rar-Datei entpacken (Verzeichnisstruktur beibehalten)"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "rar-Datei entpacken (Verzeichnisstruktur nicht beibehalten)"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "In das angegebene Verzeichnis entpacken"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "Inhalt der rar-Datei anzeigen"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "Integrität der rar-Datei testen"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "rar-Archiv erstellen (rar-Installation erforderlich)"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "Alle rar-Dateien im aktuellen Verzeichnis stapelweise entpacken"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "rar-Dateien stapelweise in ein bestimmtes Verzeichnis entpacken"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "rar-Dateien stapelweise in gleichnamige Verzeichnisse entpacken"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "7z-Datei entpacken (Verzeichnisstruktur beibehalten)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "7z-Datei entpacken (Verzeichnisstruktur nicht beibehalten)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "In ein bestimmtes Verzeichnis entpacken"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "Inhalt einer 7z-Datei anzeigen"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "Integrität einer 7z-Datei testen"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "7z-Archiv erstellen"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "Verschlüsselte 7z-Datei entpacken"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "7z-Datei mit höchster Kompressionsrate erstellen"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "Alle 7z-Dateien im aktuellen Verzeichnis stapelweise entpacken"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "7z-Dateien stapelweise in ein bestimmtes Verzeichnis entpacken"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "7z-Dateien stapelweise in gleichnamige Verzeichnisse entpacken"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "7z parallel entpacken (4 Prozesse)"
+          }
+        }
+      },
+      "introduction": "Der Linux Log-Assistent ist ein Befehls-Nachschlagewerk, das speziell für Systemadministratoren und Entwickler entwickelt wurde. Es enthält gängige Befehle zum Suchen, Filtern und Entpacken von komprimierten Dateien. Egal, ob Sie Systemfehler beheben, Anwendungslogs analysieren oder Protokolldateien in verschiedenen Komprimierungsformaten verarbeiten müssen, hier finden Sie schnell die benötigten Befehle. Alle Befehle sind mit klaren chinesischen Erklärungen versehen und unterstützen das Kopieren mit einem Klick, um Ihnen eine effizientere Protokollanalyse und Betriebsverwaltung zu ermöglichen.",
+      "features": [
+        "6 Hauptkategorien für die Log-Suche, die Szenarien wie Basissuche, Zeitfilterung und Musterabgleich abdecken",
+        "Unterstützung für 7 Komprimierungsformate, darunter tar, gzip, zip, bzip2, xz, rar, 7z",
+        "Jedes Format enthält Befehle zum Entpacken einzelner Dateien und zum Stapelentpacken",
+        "Über 70 gängige Befehle, umfassend von grundlegend bis fortgeschritten",
+        "Unterstützt Stichwortsuche, um benötigte Befehle schnell zu finden",
+        "Befehle mit einem Klick kopieren, um die Arbeitseffizienz zu steigern",
+        "Klare chinesische Erklärungen, leicht verständlich und lernbar",
+        "Kategorisiertes Browsen und Filtern, um relevante Befehle schnell zu finden"
+      ],
+      "faq": [
+        {
+          "question": "Warum braucht man den Linux Log-Assistenten?",
+          "answer": "Die Analyse von Linux-Systemprotokollen ist eine häufige Aufgabe in Betrieb und Entwicklung, aber die zugehörigen Befehlsparameter sind komplex und leicht zu vergessen. Der Log-Assistent bietet kategorisierte und organisierte gängige Befehle, unterstützt die schnelle Suche und das Kopieren mit einem Klick, was die Effizienz der Log-Analyse erheblich verbessert."
+        },
+        {
+          "question": "Welche Log-Suchszenarien werden unterstützt?",
+          "answer": "Es werden 6 Hauptsuchszenarien unterstützt: Basissuche (verschiedene grep-Anwendungen), Zeitfilterung (journalctl-Zeitbereich), Musterabgleich (reguläre Ausdrücke, IP-/E-Mail-Abgleich), Echtzeitüberwachung (tail -f, journalctl -f), Kombinationsbefehle (Pipes, Sortierung und Statistik), Referenz für gängige Log-Dateipositionen."
+        },
+        {
+          "question": "Welche Komprimierungsformate werden zum Entpacken unterstützt?",
+          "answer": "Es werden 7 gängige Komprimierungsformate unterstützt: tar (einschließlich tar.gz, tar.bz2, tar.xz), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z. Jedes Format bietet gängige Befehle zum Entpacken, Erstellen und Anzeigen des Inhalts. Darüber hinaus gibt es eine spezielle Kategorie für das Stapelentpacken, die fortgeschrittene Szenarien wie Schleifenentpacken, rekursives Suchen und Entpacken sowie paralleles Entpacken unterstützt."
+        },
+        {
+          "question": "Wie finde ich schnell die benötigten Befehle?",
+          "answer": "Sie können das Suchfeld oben verwenden, um Stichwörter einzugeben, oder auf Kategorielabels klicken, um Befehle bestimmter Typen zu filtern. Die Suche unterstützt die unscharfe Übereinstimmung von Befehlsnamen und Beschreibungen, um eine schnelle Lokalisierung zu erleichtern."
+        },
+        {
+          "question": "Können die kopierten Befehle direkt verwendet werden?",
+          "answer": "Die meisten Befehle können direkt verwendet werden, aber es ist notwendig, Dateipfade, Stichwörter und andere Parameter in den Befehlen je nach tatsächlicher Situation zu ersetzen. Es wird empfohlen, zuerst die Bedeutung des Befehls zu verstehen und dann die Parameter entsprechend den tatsächlichen Anforderungen anzupassen, bevor Sie ihn verwenden."
+        }
+      ],
+      "meta": {
+        "title": "Linux Log-Assistent - Befehls-Nachschlagewerk für Log-Suche und Entpacken",
+        "description": "Schnellübersicht der Linux-Befehle zur Log-Suche und zum Entpacken komprimierter Dateien, die Log-Analyse-Tools wie grep, awk, sed, journalctl sowie Entpackungsbefehle wie tar, gzip, zip, 7z umfasst und Suche sowie Ein-Klick-Kopieren unterstützt.",
+        "keywords": "Linux-Logs, grep-Befehl, Log-Suche, Entpackungsbefehle, tar-Befehl"
+      }
     }
   },
   "seo": {

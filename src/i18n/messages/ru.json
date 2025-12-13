@@ -3267,6 +3267,614 @@
         "description": "Бесплатный онлайн-инструмент для статистики символов текста, подсчитывающий в реальном времени количество символов, слов, строк, абзацев, поддерживающий смешанные китайско-английские тексты, подходящий для написания и создания контента.",
         "keywords": "Статистика символов, Статистика слов, Статистика текста"
       }
+    },
+    "linux-log-helper": {
+      "name": "Помощник по журналам Linux",
+      "description": "Шпаргалка по поиску в журналах Linux и командам распаковки сжатых файлов",
+      "tab_search": "Поиск по журналам",
+      "tab_decompress": "Команды распаковки",
+      "search_title": "Команды поиска по журналам",
+      "search_desc": "Часто используемые команды поиска и фильтрации журналов Linux, включая такие инструменты, как grep, awk, sed и другие",
+      "decompress_title": "Команды распаковки",
+      "decompress_desc": "Часто используемые команды распаковки сжатых файлов, поддерживающие форматы tar, gzip, zip, bzip2, xz, rar, 7z и другие",
+      "search_placeholder": "Поиск команд...",
+      "all_categories": "Все",
+      "copy_success": "Команда скопирована",
+      "no_results": "Соответствующие команды не найдены",
+      "result_count": "Найдено {count} команд",
+      "search_categories": {
+        "basic_search": "Базовый поиск",
+        "time_filter": "Фильтрация по времени",
+        "pattern_match": "Сопоставление с образцом",
+        "real_time": "Мониторинг в реальном времени",
+        "combine": "Комбинированные команды",
+        "log_files": "Общие файлы журналов"
+      },
+      "decompress_categories": {
+        "tar": "Архив tar",
+        "gzip": "Сжатие gzip",
+        "zip": "Сжатие zip",
+        "bzip2": "Сжатие bzip2",
+        "xz": "Сжатие xz",
+        "rar": "Сжатие rar",
+        "7z": "Сжатие 7z"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"ключевое_слово\" /var/log/syslog",
+            "desc": "Поиск строк, содержащих ключевое слово, в файле журнала"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "Поиск \"error\" без учета регистра"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "Подсчет количества совпадающих строк"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "Отображение номеров совпадающих строк"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "Отображение совпадающей строки и 3 строк контекста до и после нее"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "Отображение совпадающей строки и 5 предыдущих строк"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "Отображение совпадающей строки и 5 последующих строк"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "Исключение строк, содержащих \"debug\""
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "Рекурсивный поиск по всем файлам в каталоге"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "Отображение только имен файлов, содержащих совпадение"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "Поиск строк, содержащих фиксированную строку \"error\", в файлах журнала (не поддерживает регулярные выражения)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "Просмотр журналов после указанного времени"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "Просмотр логов до указанного времени"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "Просмотр логов за сегодня"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "Просмотр логов за вчера"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "Просмотр логов за последний час"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "Просмотр логов за последние 30 минут"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "Извлечение логов за указанный диапазон времени"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "Фильтрация диапазона времени с помощью awk"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "Сопоставление нескольких ключевых слов с использованием регулярных выражений"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "Точное совпадение целого слова"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "Сопоставление IP-адресов"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "Сопоставление адресов электронной почты"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "Извлечение первых трех полей лога"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "Фильтрация запросов с HTTP-статусом >= 500"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "Замена конфиденциальной информации в логах"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "Разделение по пробелам и извлечение указанных полей"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "Отслеживание файла логов в реальном времени"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "Просмотр последних 100 строк лога"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "Отслеживание в реальном времени и фильтрация по ключевым словам"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "Одновременное отслеживание нескольких файлов логов"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "Отслеживание логов systemd в реальном времени"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "Отслеживание логов указанной службы в реальном времени"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "Отслеживание в реальном времени с помощью less (нажмите Ctrl+C для остановки, F для продолжения)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "Одновременный просмотр нескольких логов на разделенном экране (требуется установка multitail)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "Комбинирование нескольких условий фильтрации"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "Подсчет количества ошибок и их сортировка"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "Подсчет суммы поля (например, размера ответа)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "Поиск в нескольких файлах журнала"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "Поиск в сжатых файлах журнала"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "Распаковка и поиск в сжатых журналах"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "Массовый поиск с использованием xargs"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "Вывод результатов поиска на экран и в файл одновременно"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "Системный журнал (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "Системный журнал (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "Журнал аутентификации (вход, sudo и т.д.)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "Журнал безопасности (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "Журнал загрузки ядра"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "Журнал ядра"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Журнал доступа Nginx"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Журнал ошибок Nginx"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Журнал доступа Apache"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Журнал ошибок Apache"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "Журнал ошибок MySQL"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Журнал контейнера Docker"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "Распаковка архива tar"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "Распаковка в указанную директорию"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "Просмотр содержимого архива tar"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "Распаковка файла tar.gz"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "Распаковка файла tar.bz2"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "Распаковка файла tar.xz"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "Создание архива tar"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "Создать архив tar.gz"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "Распаковать все файлы tar.gz в текущем каталоге"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "Распаковать tar.gz в указанный каталог"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "Распаковать tar.gz в каталоги с их собственными именами"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "Рекурсивно найти и распаковать все файлы tar.gz"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "Параллельная распаковка tar.gz (4 процесса)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "Распаковать файл gzip (удалить исходный файл)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "Распаковать файл gzip (сохранить исходный файл)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "Распаковать файл gzip"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "Распаковать в стандартный вывод"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "Сжать файл"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "Сжать с максимальной степенью сжатия"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "Рекурсивно сжать все файлы в каталоге"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "Распаковать все файлы gz в текущем каталоге"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "Распаковать файлы gz (сохранить исходные файлы)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "Распаковать zip-файл"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "Распаковать в указанный каталог"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "Просмотреть содержимое zip-файла"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "Проверить целостность zip-файла"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "Распаковать и перезаписать существующие файлы"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "Тихая распаковка (без отображения подробностей)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "Создать zip-архив"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "Создать зашифрованный zip-файл"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "Распаковать все zip-файлы в текущем каталоге"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "Распаковать zip в указанный каталог"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "Распаковать все zip-архивы в одноименные каталоги"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "Рекурсивно найти и распаковать все zip-файлы"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "Распаковать bzip2-файл"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "Распаковать bzip2-файл (сохранить исходный файл)"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "Распаковать bzip2-файл"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "Распаковать в стандартный вывод"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "Сжать файл"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "Сжать с максимальной степенью сжатия"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "Массовая распаковка всех bz2-файлов в текущем каталоге"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "Массовая распаковка bz2-файлов (сохранить исходные файлы)"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "Распаковать xz-файл"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "Распаковать xz-файл (сохранить исходный файл)"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "Распаковать xz-файл"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "Распаковать в стандартный вывод"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "Сжать файл"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "Сжать с максимальной степенью сжатия"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "Сжать с использованием многопоточности"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "Массовая распаковка всех xz-файлов в текущем каталоге"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "Массовая распаковка xz-файлов (сохранить исходные файлы)"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "Распаковать rar-файл (с сохранением структуры каталогов)"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "Распаковать rar-файл (без сохранения структуры каталогов)"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "Распаковать в указанный каталог"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "Просмотреть содержимое rar-файла"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "Проверить целостность rar-файла"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "Создать rar-архив (требуется установка rar)"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "Массовая распаковка всех файлов rar в текущем каталоге"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "Массовая распаковка rar в указанный каталог"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "Массовая распаковка rar в одноименные каталоги"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "Распаковка файла 7z (с сохранением структуры каталогов)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "Распаковка файла 7z (без сохранения структуры каталогов)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "Распаковка в указанный каталог"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "Просмотр содержимого файла 7z"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "Проверка целостности файла 7z"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "Создание архива 7z"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "Распаковка зашифрованного файла 7z"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "Создание файла 7z с максимальной степенью сжатия"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "Массовая распаковка всех файлов 7z в текущем каталоге"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "Массовая распаковка 7z в указанный каталог"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "Массовая распаковка 7z в одноименные каталоги"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "Параллельная распаковка 7z (4 процесса)"
+          }
+        }
+      },
+      "introduction": "Linux Log Assistant — это инструмент для быстрого поиска команд, разработанный специально для системных администраторов и разработчиков, охватывающий часто используемые команды для поиска, фильтрации и распаковки сжатых файлов журналов. Будь то устранение неполадок системы, анализ журналов приложений или обработка файлов журналов различных форматов сжатия, здесь вы сможете быстро найти нужную команду. Все команды сопровождаются четкими китайскими описаниями и поддерживают копирование одним нажатием, что помогает вам более эффективно выполнять анализ журналов и операции по обслуживанию.",
+      "features": [
+        "6 основных категорий поиска по журналам, охватывающих базовый поиск, фильтрацию по времени, сопоставление с образцом и другие сценарии",
+        "Поддержка 7 форматов сжатия, включая tar, gzip, zip, bzip2, xz, rar, 7z",
+        "Каждый формат включает команды для распаковки одного файла и массовой распаковки",
+        "Более 70 часто используемых команд, от базовых до продвинутых, полностью собраны",
+        "Поддержка поиска по ключевым словам для быстрого нахождения нужной команды",
+        "Копирование команды одним нажатием, повышение эффективности работы",
+        "Четкие китайские описания, легкие для понимания и изучения",
+        "Просмотр и фильтрация по категориям для быстрого нахождения соответствующих команд"
+      ],
+      "faq": [
+        {
+          "question": "Зачем нужен Linux Log Assistant?",
+          "answer": "Анализ системных журналов Linux — это обычная задача в эксплуатации и разработке, но связанные с ней параметры команд сложны и легко забываются. Log Assistant предоставляет систематизированные часто используемые команды, поддерживает быстрый поиск и копирование одним нажатием, что значительно повышает эффективность анализа журналов."
+        },
+        {
+          "question": "Какие сценарии поиска по журналам поддерживаются?",
+          "answer": "Поддерживаются 6 основных сценариев поиска: базовый поиск (различные применения grep), фильтрация по времени (диапазон времени journalctl), сопоставление с образцом (регулярные выражения, сопоставление IP/email), мониторинг в реальном времени (tail -f, journalctl -f), комбинированные команды (конвейеры, сортировка и статистика), а также ссылки на часто используемые расположения файлов журналов."
+        },
+        {
+          "question": "Какие форматы сжатия поддерживаются для распаковки?",
+          "answer": "Поддерживаются 7 распространенных форматов сжатия: tar (включая tar.gz, tar.bz2, tar.xz), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z. Для каждого формата предоставляются часто используемые команды для распаковки, создания и просмотра содержимого. Кроме того, доступна специальная категория для массовой распаковки, поддерживающая расширенные сценарии, такие как циклическая распаковка, рекурсивный поиск и распаковка, параллельная распаковка."
+        },
+        {
+          "question": "Как быстро найти нужную команду?",
+          "answer": "Вы можете использовать строку поиска вверху для ввода ключевых слов или нажать на метки категорий для фильтрации команд определенного типа. Поиск поддерживает нечеткое сопоставление по названию команды и описанию, что облегчает быстрое нахождение."
+        },
+        {
+          "question": "Можно ли использовать скопированные команды напрямую?",
+          "answer": "Большинство команд можно использовать напрямую, но необходимо заменить параметры, такие как пути к файлам, ключевые слова и т. д., в соответствии с фактической ситуацией. Рекомендуется сначала понять значение команды, а затем использовать ее после корректировки параметров в соответствии с вашими реальными потребностями."
+        }
+      ],
+      "meta": {
+        "title": "Linux Log Assistant - Быстрый поиск команд для анализа журналов и распаковки",
+        "description": "Шпаргалка по командам поиска логов Linux и распаковки сжатых файлов, охватывающая такие инструменты анализа логов, как grep, awk, sed, journalctl, а также команды распаковки, такие как tar, gzip, zip, 7z, с поддержкой поиска и копирования в один клик.",
+        "keywords": "Логи Linux, Команда grep, Поиск логов, Команды распаковки, Команда tar"
+      }
     }
   },
   "seo": {

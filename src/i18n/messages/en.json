@@ -3269,6 +3269,614 @@
         "description": "Free online text character counter tool, real-time statistics for characters, words, lines, and paragraphs, supports mixed Chinese and English text, suitable for writing and content creation.",
         "keywords": "Character Count, Word Count, Text Statistics"
       }
+    },
+    "linux-log-helper": {
+      "name": "Linux Log Assistant",
+      "description": "Linux Log Search and Archive Extraction Command Cheat Sheet",
+      "tab_search": "Log Search",
+      "tab_decompress": "Extraction Commands",
+      "search_title": "Log Search Commands",
+      "search_desc": "Common Linux log search and filtering commands, including tools like grep, awk, sed, etc.",
+      "decompress_title": "Extraction Commands",
+      "decompress_desc": "Common archive extraction commands, supporting formats like tar, gzip, zip, bzip2, xz, rar, 7z, etc.",
+      "search_placeholder": "Search commands...",
+      "all_categories": "All",
+      "copy_success": "Command copied",
+      "no_results": "No matching commands found",
+      "result_count": "Found {count} commands",
+      "search_categories": {
+        "basic_search": "Basic Search",
+        "time_filter": "Time Filtering",
+        "pattern_match": "Pattern Matching",
+        "real_time": "Real-time Monitoring",
+        "combine": "Combined Commands",
+        "log_files": "Common Log Files"
+      },
+      "decompress_categories": {
+        "tar": "tar Archive",
+        "gzip": "gzip Compression",
+        "zip": "zip Compression",
+        "bzip2": "bzip2 Compression",
+        "xz": "xz Compression",
+        "rar": "rar Compression",
+        "7z": "7z Compression"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"keyword\" /var/log/syslog",
+            "desc": "Search for lines containing the keyword in log files"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "Search for \"error\" ignoring case"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "Count matching lines"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "Display line numbers of matching lines"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "Display matching lines and 3 lines of context before and after"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "Display matching lines and 5 lines before"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "Display matching lines and 5 lines after"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "Exclude lines containing \"debug\""
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "Recursively search all files in the directory"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "Only display filenames containing matching content"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "Search for lines containing the fixed string \"error\" in log files (does not support regular expressions)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "View logs after a specified time"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "View logs before a specified time"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "View today's logs"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "View yesterday's logs"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "View logs from the last 1 hour"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "View logs from the last 30 minutes"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "Extract logs within a specified time range"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "Filter time range using awk"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "Match multiple keywords using regular expressions"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "Exactly match whole words"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "Match IP addresses"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "Match email addresses"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "Extract the first three fields of logs"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "Filter requests with HTTP status code >= 500"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "Replace sensitive information in logs"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "Split by space and extract specified fields"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "Real-time log file tracking"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "View the last 100 lines of logs"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "Real-time tracking and keyword filtering"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "Track multiple log files simultaneously"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "Real-time tracking of systemd logs"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "Real-time tracking of logs for a specified service"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "Real-time tracking using less (press Ctrl+C to stop, F to continue)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "View multiple logs simultaneously in split-screen (multitail installation required)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "Combine multiple filter conditions"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "Count error occurrences and sort them"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "Calculate the sum of a field (e.g., response size)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "Search across multiple log files"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "Search compressed log files"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "Decompress and search compressed logs"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "Batch search using xargs"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "Output search results to screen and file simultaneously"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "System log (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "System log (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "Authentication log (login, sudo, etc.)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "Security log (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "Kernel boot log"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "Kernel log"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Nginx access log"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Nginx error log"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Apache access log"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Apache error log"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "MySQL error log"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Docker container logs"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "Extract tar archive"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "Extract to a specified directory"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "View tar archive contents"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "Extract tar.gz file"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "Extract tar.bz2 file"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "Extract tar.xz file"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "Create tar archive"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "Create tar.gz compressed archive"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "Batch decompress all tar.gz files in the current directory"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "Batch decompress tar.gz to a specified directory"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "Batch decompress tar.gz to their respective same-named directories"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "Recursively find and decompress all tar.gz files"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "Parallel decompress tar.gz (4 processes)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "Decompress gzip file (delete original file)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "Decompress gzip file (keep original file)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "Decompress gzip file"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "Decompress to standard output"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "Compress file"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "Compress with highest compression ratio"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "Recursively compress all files in a directory"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "Batch decompress all gz files in the current directory"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "Batch decompress gz files (keep original files)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "Decompress zip file"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "Decompress to a specified directory"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "View zip file contents"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "Test zip file integrity"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "Decompress and overwrite existing files"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "Silent decompress (do not show details)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "Create zip compressed file"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "Create encrypted zip file"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "Batch decompress all zip files in the current directory"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "Batch decompress zip to a specified directory"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "Batch unzip zip files to their respective same-named directories"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "Recursively find and unzip all zip files"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "Decompress bzip2 file"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "Decompress bzip2 file (keep original file)"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "Decompress bzip2 file"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "Decompress to standard output"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "Compress file"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "Compress with highest compression ratio"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "Batch decompress all bz2 files in the current directory"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "Batch decompress bz2 files (keep original files)"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "Decompress xz file"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "Decompress xz file (keep original file)"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "Decompress xz file"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "Decompress to standard output"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "Compress file"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "Compress with highest compression ratio"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "Compress using multiple threads"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "Batch decompress all xz files in the current directory"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "Batch decompress xz files (keep original files)"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "Extract rar file (preserve directory structure)"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "Extract rar file (do not preserve directory structure)"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "Extract to specified directory"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "View rar file contents"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "Test rar file integrity"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "Create rar archive (rar must be installed)"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "Batch extract all rar files in the current directory"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "Batch extract rar to a specified directory"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "Batch extract rar to their respective same-named directories"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "Extract 7z file (preserve directory structure)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "Extract 7z file (do not preserve directory structure)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "Extract to a specified directory"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "View 7z file contents"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "Test 7z file integrity"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "Create 7z archive"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "Extract encrypted 7z file"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "Create 7z file with maximum compression ratio"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "Batch extract all 7z files in the current directory"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "Batch extract 7z to a specified directory"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "Batch extract 7z to their respective same-named directories"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "Parallel extract 7z (4 processes)"
+          }
+        }
+      },
+      "introduction": "Linux Log Assistant is a command quick-reference tool designed for system administrators and developers, covering common commands for log searching, filtering, and compressed file extraction. Whether troubleshooting system failures, analyzing application logs, or handling log files in various compressed formats, you can quickly find the commands you need here. All commands come with clear Chinese explanations and support one-click copying, helping you perform log analysis and operations more efficiently.",
+      "features": [
+        "6 major log search categories, covering scenarios such as basic search, time filtering, and pattern matching",
+        "Supports 7 compression formats, including tar, gzip, zip, bzip2, xz, rar, 7z",
+        "Each format includes single-file and batch extraction commands",
+        "70+ common commands, comprehensively covering from basic to advanced",
+        "Supports keyword search to quickly locate desired commands",
+        "One-click command copying to improve work efficiency",
+        "Clear Chinese explanations, easy to understand and learn",
+        "Categorized browsing and filtering to quickly find relevant commands"
+      ],
+      "faq": [
+        {
+          "question": "Why do you need Linux Log Assistant?",
+          "answer": "Linux system log analysis is a common task in operations and development, but related command parameters are complex and easily forgotten. The Log Assistant provides categorized common commands, supporting quick lookup and one-click copying, greatly improving log analysis efficiency."
+        },
+        {
+          "question": "Which log search scenarios are supported?",
+          "answer": "Supports 6 major search scenarios: basic search (various grep usages), time filtering (journalctl time range), pattern matching (regular expressions, IP/email matching), real-time monitoring (tail -f, journalctl -f), combined commands (pipes, sorting and statistics), and common log file location references."
+        },
+        {
+          "question": "Which compressed formats are supported for extraction?",
+          "answer": "Supports 7 common compression formats: tar (including tar.gz, tar.bz2, tar.xz), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z. Each format provides common commands for extraction, creation, and viewing contents. Additionally, a dedicated batch extraction category is provided, supporting advanced scenarios such as loop extraction, recursive search and extraction, and parallel extraction."
+        },
+        {
+          "question": "How to quickly find the commands you need?",
+          "answer": "You can use the search bar at the top to enter keywords, or click on category tags to filter specific types of commands. The search supports fuzzy matching of command names and descriptions, making it easy to quickly locate."
+        },
+        {
+          "question": "Can copied commands be used directly?",
+          "answer": "Most commands can be used directly, but you need to replace parameters such as file paths and keywords in the command according to the actual situation. It is recommended to first understand the meaning of the command, and then adjust the parameters according to your actual needs before using it."
+        }
+      ],
+      "meta": {
+        "title": "Linux Log Assistant - Log Search and Extraction Command Quick Reference",
+        "description": "Linux Log Search and Compressed File Decompression Command Quick Reference, covering log analysis tools such as grep, awk, sed, journalctl, as well as decompression commands like tar, gzip, zip, 7z, supports searching and one-click copying.",
+        "keywords": "Linux logs, grep command, log search, decompression command, tar command"
+      }
     }
   },
   "seo": {

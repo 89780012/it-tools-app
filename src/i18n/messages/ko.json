@@ -3267,6 +3267,614 @@
         "description": "무료 온라인 텍스트 문자 통계 도구, 문자 수, 단어 수, 줄 수, 단락 수를 실시간으로 통계하며, 중국어 및 영어 혼합 텍스트를 지원하여 글쓰기 및 콘텐츠 제작에 적합합니다.",
         "keywords": "문자 통계, 단어 수 통계, 텍스트 통계"
       }
+    },
+    "linux-log-helper": {
+      "name": "Linux 로그 도우미",
+      "description": "Linux 로그 검색 및 압축 파일 압축 해제 명령 빠른 참조표",
+      "tab_search": "로그 검색",
+      "tab_decompress": "압축 해제 명령",
+      "search_title": "로그 검색 명령",
+      "search_desc": "grep, awk, sed 등 도구를 포함한 자주 사용되는 Linux 로그 검색 및 필터링 명령",
+      "decompress_title": "압축 해제 명령",
+      "decompress_desc": "tar, gzip, zip, bzip2, xz, rar, 7z 등 형식을 지원하는 자주 사용되는 압축 파일 압축 해제 명령",
+      "search_placeholder": "명령 검색...",
+      "all_categories": "전체",
+      "copy_success": "명령이 복사되었습니다",
+      "no_results": "일치하는 명령을 찾을 수 없습니다",
+      "result_count": "{count}개의 명령을 찾았습니다",
+      "search_categories": {
+        "basic_search": "기본 검색",
+        "time_filter": "시간 필터링",
+        "pattern_match": "패턴 일치",
+        "real_time": "실시간 모니터링",
+        "combine": "조합 명령",
+        "log_files": "일반적인 로그 파일"
+      },
+      "decompress_categories": {
+        "tar": "tar 아카이브",
+        "gzip": "gzip 압축",
+        "zip": "zip 압축",
+        "bzip2": "bzip2 압축",
+        "xz": "xz 압축",
+        "rar": "rar 압축",
+        "7z": "7z 압축"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"키워드\" /var/log/syslog",
+            "desc": "로그 파일에서 키워드를 포함하는 행 검색"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "대소문자 구분 없이 error 검색"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "일치하는 행 수 통계"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "일치하는 행의 행 번호 표시"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "일치하는 행 및 앞뒤 3줄의 컨텍스트 표시"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "일치하는 행 및 앞 5줄 표시"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "일치하는 행 및 뒤 5줄 표시"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "debug를 포함하는 행 제외"
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "디렉토리 내 모든 파일 재귀적으로 검색"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "일치하는 내용을 포함하는 파일 이름만 표시"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "로그 파일에서 error 고정 문자열을 포함하는 행 검색 (정규 표현식 미지원)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "지정된 시간 이후의 로그 보기"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "지정된 시간 이전 로그 보기"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "오늘 로그 보기"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "어제 로그 보기"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "최근 1시간 로그 보기"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "최근 30분 로그 보기"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "지정된 시간 범위 로그 추출"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "awk를 사용하여 시간 범위 필터링"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "정규 표현식을 사용하여 여러 키워드 일치"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "정확한 전체 단어 일치"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "IP 주소 일치"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "이메일 주소 일치"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "로그의 처음 세 필드 추출"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "HTTP 상태 코드 >= 500인 요청 필터링"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "로그의 민감한 정보 대체"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "공백으로 분할하여 지정된 필드 추출"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "로그 파일 실시간 추적"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "마지막 100줄 로그 보기"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "실시간 추적 및 키워드 필터링"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "여러 로그 파일 동시 추적"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "systemd 로그 실시간 추적"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "지정된 서비스 로그 실시간 추적"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "less를 사용하여 실시간 추적 (Ctrl+C로 중지, F로 계속)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "화면 분할로 여러 로그 동시 보기 (multitail 설치 필요)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "여러 필터 조건 결합"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "오류 발생 횟수 통계 및 정렬"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "필드 합계 통계 (예: 응답 크기)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "여러 로그 파일에서 검색"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "압축된 로그 파일 검색"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "압축 해제 및 압축 로그 검색"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "xargs를 사용하여 일괄 검색"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "검색 결과를 화면과 파일에 동시에 출력"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "시스템 로그 (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "시스템 로그 (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "인증 로그 (로그인, sudo 등)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "보안 로그 (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "커널 부팅 로그"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "커널 로그"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Nginx 접근 로그"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Nginx 오류 로그"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Apache 접근 로그"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Apache 오류 로그"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "MySQL 오류 로그"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Docker 컨테이너 로그"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "tar 아카이브 파일 압축 해제"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "지정된 디렉토리로 압축 해제"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "tar 아카이브 내용 보기"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "tar.gz 파일 압축 해제"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "tar.bz2 파일 압축 해제"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "tar.xz 파일 압축 해제"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "tar 아카이브 생성"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "tar.gz 압축 아카이브 생성"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "현재 디렉토리의 모든 tar.gz 파일 일괄 압축 해제"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "지정된 디렉토리로 tar.gz 일괄 압축 해제"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "tar.gz를 각 파일과 동일한 이름의 디렉토리로 일괄 압축 해제"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "모든 tar.gz 파일 재귀적으로 찾아 압축 해제"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "tar.gz 병렬 압축 해제 (4개 프로세스)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "gzip 파일 압축 해제 (원본 파일 삭제)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "gzip 파일 압축 해제 (원본 파일 유지)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "gzip 파일 압축 해제"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "표준 출력으로 압축 해제"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "파일 압축"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "최고 압축률로 압축"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "디렉토리 내 모든 파일 재귀적으로 압축"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "현재 디렉토리의 모든 gz 파일 일괄 압축 해제"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "gz 파일 일괄 압축 해제 (원본 파일 유지)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "zip 파일 압축 해제"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "지정된 디렉토리로 압축 해제"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "zip 파일 내용 보기"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "zip 파일 무결성 테스트"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "압축 해제 및 기존 파일 덮어쓰기"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "자동 압축 해제 (자세한 정보 표시 안 함)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "zip 압축 파일 생성"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "암호화된 zip 파일 생성"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "현재 디렉토리의 모든 zip 파일 일괄 압축 해제"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "지정된 디렉토리로 zip 일괄 압축 해제"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "각 이름과 동일한 디렉터리로 zip 파일 일괄 압축 해제"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "모든 zip 파일 재귀적으로 찾아 압축 해제"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "bzip2 파일 압축 해제"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "bzip2 파일 압축 해제 (원본 파일 유지)"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "bzip2 파일 압축 해제"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "표준 출력으로 압축 해제"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "파일 압축"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "최고 압축률로 압축"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "현재 디렉터리의 모든 bz2 파일 일괄 압축 해제"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "bz2 파일 일괄 압축 해제 (원본 파일 유지)"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "xz 파일 압축 해제"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "xz 파일 압축 해제 (원본 파일 유지)"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "xz 파일 압축 해제"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "표준 출력으로 압축 해제"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "파일 압축"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "최고 압축률로 압축"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "다중 스레드를 사용하여 압축"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "현재 디렉터리의 모든 xz 파일 일괄 압축 해제"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "xz 파일 일괄 압축 해제 (원본 파일 유지)"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "rar 파일 압축 해제 (디렉터리 구조 유지)"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "rar 파일 압축 해제 (디렉터리 구조 유지 안 함)"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "지정된 디렉터리로 압축 해제"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "rar 파일 내용 보기"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "rar 파일 무결성 테스트"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "rar 압축 파일 생성 (rar 설치 필요)"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "현재 디렉토리의 모든 rar 파일 일괄 압축 해제"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "지정된 디렉토리로 rar 일괄 압축 해제"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "각각 동일한 이름의 디렉토리로 rar 일괄 압축 해제"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "7z 파일 압축 해제 (디렉토리 구조 유지)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "7z 파일 압축 해제 (디렉토리 구조 유지 안 함)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "지정된 디렉토리로 압축 해제"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "7z 파일 내용 보기"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "7z 파일 무결성 테스트"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "7z 압축 파일 생성"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "암호화된 7z 파일 압축 해제"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "최고 압축률로 7z 파일 생성"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "현재 디렉토리의 모든 7z 파일 일괄 압축 해제"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "지정된 디렉토리로 7z 일괄 압축 해제"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "각각 동일한 이름의 디렉토리로 7z 일괄 압축 해제"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "7z 병렬 압축 해제 (4개 프로세스)"
+          }
+        }
+      },
+      "introduction": "Linux 로그 도우미는 시스템 관리자와 개발자를 위해 설계된 명령 빠른 참조 도구로, 로그 검색, 필터링 및 압축 파일 압축 해제에 자주 사용되는 명령을 포함합니다. 시스템 오류를 해결하거나, 애플리케이션 로그를 분석하거나, 다양한 압축 형식의 로그 파일을 처리할 때 필요한 명령을 여기에서 빠르게 찾을 수 있습니다. 모든 명령에는 명확한 중국어 설명이 제공되며, 원클릭 복사를 지원하여 로그 분석 및 운영 작업을 보다 효율적으로 수행할 수 있도록 돕습니다.",
+      "features": [
+        "기본 검색, 시간 필터링, 패턴 일치 등 6가지 주요 로그 검색 분류",
+        "tar, gzip, zip, bzip2, xz, rar, 7z를 포함한 7가지 압축 형식 지원",
+        "각 형식에는 단일 파일 및 일괄 압축 해제 명령이 포함되어 있습니다.",
+        "기본부터 고급까지 70개 이상의 자주 사용되는 명령 전체 수록",
+        "키워드 검색 지원, 필요한 명령을 빠르게 찾을 수 있습니다.",
+        "원클릭 명령 복사, 작업 효율성 향상",
+        "명확한 중국어 설명, 이해하기 쉽고 배우기 용이",
+        "분류별 탐색 및 필터링, 관련 명령을 빠르게 찾을 수 있습니다."
+      ],
+      "faq": [
+        {
+          "question": "Linux 로그 도우미가 필요한 이유는 무엇인가요?",
+          "answer": "Linux 시스템 로그 분석은 운영 및 개발에서 흔한 작업이지만, 관련 명령 매개변수는 복잡하고 잊어버리기 쉽습니다. 로그 도우미는 분류된 자주 사용되는 명령을 제공하여 빠른 검색 및 원클릭 복사를 지원함으로써 로그 분석 효율성을 크게 향상시킵니다."
+        },
+        {
+          "question": "어떤 로그 검색 시나리오를 지원하나요?",
+          "answer": "6가지 주요 검색 시나리오를 지원합니다: 기본 검색 (grep의 다양한 사용법), 시간 필터링 (journalctl 시간 범위), 패턴 일치 (정규 표현식, IP/이메일 일치), 실시간 모니터링 (tail -f, journalctl -f), 조합 명령 (파이프, 정렬 통계), 일반적인 로그 파일 위치 참조."
+        },
+        {
+          "question": "어떤 압축 형식의 압축 해제를 지원하나요?",
+          "answer": "7가지 일반적인 압축 형식을 지원합니다: tar (tar.gz, tar.bz2, tar.xz 포함), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z. 각 형식은 압축 해제, 생성, 내용 보기 등 자주 사용되는 명령을 제공합니다. 또한, 반복 압축 해제, 재귀 검색 압축 해제, 병렬 압축 해제와 같은 고급 시나리오를 지원하는 특별한 일괄 압축 해제 분류도 제공합니다."
+        },
+        {
+          "question": "필요한 명령을 빠르게 찾는 방법은 무엇인가요?",
+          "answer": "상단의 검색창에 키워드를 입력하여 검색하거나, 분류 태그를 클릭하여 특정 유형의 명령을 필터링할 수 있습니다. 검색은 명령 이름과 설명의 퍼지 매칭을 지원하여 빠르게 찾을 수 있도록 돕습니다."
+        },
+        {
+          "question": "복사한 명령을 바로 사용할 수 있나요?",
+          "answer": "대부분의 명령은 바로 사용할 수 있지만, 실제 상황에 따라 명령 내의 파일 경로, 키워드 등의 매개변수를 바꿔야 합니다. 명령의 의미를 먼저 이해하고 실제 요구 사항에 따라 매개변수를 조정한 후 사용하는 것이 좋습니다."
+        }
+      ],
+      "meta": {
+        "title": "Linux 로그 도우미 - 로그 검색 및 압축 해제 명령 빠른 참조",
+        "description": "Linux 로그 검색 및 압축 파일 압축 해제 명령어 빠른 참조표, grep, awk, sed, journalctl 등 로그 분석 도구 및 tar, gzip, zip, 7z 등 압축 해제 명령어를 포함하며 검색 및 원클릭 복사 기능을 지원합니다.",
+        "keywords": "Linux 로그, grep 명령어, 로그 검색, 압축 해제 명령어, tar 명령어"
+      }
     }
   },
   "seo": {

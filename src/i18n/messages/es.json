@@ -3267,6 +3267,614 @@
         "description": "Herramienta gratuita en línea para contar caracteres de texto, que cuenta en tiempo real el número de caracteres, palabras, líneas y párrafos. Admite texto mixto chino-inglés y es adecuada para la escritura y la creación de contenido.",
         "keywords": "Conteo de caracteres, Conteo de palabras, Conteo de texto"
       }
+    },
+    "linux-log-helper": {
+      "name": "Asistente de Registros de Linux",
+      "description": "Hoja de referencia rápida de comandos de búsqueda de registros y descompresión de archivos comprimidos de Linux",
+      "tab_search": "Búsqueda de Registros",
+      "tab_decompress": "Comandos de Descompresión",
+      "search_title": "Comandos de Búsqueda de Registros",
+      "search_desc": "Comandos comunes de búsqueda y filtrado de registros de Linux, incluyendo herramientas como grep, awk, sed",
+      "decompress_title": "Comandos de Descompresión",
+      "decompress_desc": "Comandos comunes para descomprimir archivos, compatibles con formatos como tar, gzip, zip, bzip2, xz, rar, 7z",
+      "search_placeholder": "Buscar comandos...",
+      "all_categories": "Todos",
+      "copy_success": "Comando copiado",
+      "no_results": "No se encontraron comandos coincidentes",
+      "result_count": "Se encontraron {count} comandos",
+      "search_categories": {
+        "basic_search": "Búsqueda Básica",
+        "time_filter": "Filtrado por Tiempo",
+        "pattern_match": "Coincidencia de Patrones",
+        "real_time": "Monitoreo en Tiempo Real",
+        "combine": "Comandos Combinados",
+        "log_files": "Archivos de Registro Comunes"
+      },
+      "decompress_categories": {
+        "tar": "Archivo tar",
+        "gzip": "Compresión gzip",
+        "zip": "Compresión zip",
+        "bzip2": "Compresión bzip2",
+        "xz": "Compresión xz",
+        "rar": "Compresión rar",
+        "7z": "Compresión 7z"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"palabra clave\" /var/log/syslog",
+            "desc": "Busca líneas que contengan la palabra clave en el archivo de registro"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "Busca \"error\" ignorando mayúsculas y minúsculas"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "Cuenta el número de líneas coincidentes"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "Muestra el número de línea de las líneas coincidentes"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "Muestra la línea coincidente y 3 líneas de contexto antes y después"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "Muestra la línea coincidente y las 5 líneas anteriores"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "Muestra la línea coincidente y las 5 líneas posteriores"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "Excluye líneas que contengan \"debug\""
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "Busca recursivamente en todos los archivos del directorio"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "Solo muestra los nombres de archivo que contienen el contenido coincidente"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "Busca líneas que contengan la cadena fija \"error\" en los archivos de registro (no soporta expresiones regulares)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "Muestra los registros posteriores a la hora especificada"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "Ver registros anteriores a una hora específica"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "Ver los registros de hoy"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "Ver los registros de ayer"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "Ver los registros de la última hora"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "Ver los registros de los últimos 30 minutos"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "Extraer registros de un rango de tiempo específico"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "Usar awk para filtrar por rango de tiempo"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "Coincidir múltiples palabras clave usando expresiones regulares"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "Coincidencia exacta de palabras completas"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "Coincidir direcciones IP"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "Coincidir direcciones de correo electrónico"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "Extraer los tres primeros campos del registro"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "Filtrar solicitudes con código de estado HTTP >= 500"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "Reemplazar información sensible en los registros"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "Dividir por espacios y extraer campos específicos"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "Rastrear archivos de registro en tiempo real"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "Ver las últimas 100 líneas del registro"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "Rastrear en tiempo real y filtrar palabras clave"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "Rastrear múltiples archivos de registro simultáneamente"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "Rastrear registros de systemd en tiempo real"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "Rastrear registros de un servicio específico en tiempo real"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "Rastrear en tiempo real usando less (presionar Ctrl+C para detener, F para continuar)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "Ver múltiples registros simultáneamente en pantalla dividida (requiere instalar multitail)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "Combinar múltiples condiciones de filtro"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "Contar ocurrencias de errores y ordenar"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "Sumar el total de un campo (ej. tamaño de respuesta)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "Buscar en múltiples archivos de registro"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "Buscar en archivos de registro comprimidos"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "Descomprimir y buscar en registros comprimidos"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "Buscar por lotes usando xargs"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "Mostrar resultados de búsqueda en pantalla y archivo simultáneamente"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "Registro del sistema (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "Registro del sistema (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "Registro de autenticación (inicio de sesión, sudo, etc.)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "Registro de seguridad (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "Registro de arranque del kernel"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "Registro del kernel"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Registro de acceso de Nginx"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Registro de errores de Nginx"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Registro de acceso de Apache"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Registro de errores de Apache"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "Registro de errores de MySQL"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Registro de contenedor Docker"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "Descomprimir archivo tar"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "Descomprimir en un directorio específico"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "Ver contenido de archivo tar"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "Descomprimir archivo tar.gz"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "Descomprimir archivo tar.bz2"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "Descomprimir archivo tar.xz"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "Crear archivo tar"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archivo.tar.gz /ruta/a/archivos",
+            "desc": "Crear archivo comprimido tar.gz"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "Descomprimir por lotes todos los archivos tar.gz del directorio actual"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /directorio/destino; done",
+            "desc": "Descomprimir por lotes tar.gz en un directorio específico"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "Descomprimir por lotes tar.gz en sus respectivos directorios con el mismo nombre"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /ruta -name \"*.tar.gz\" -exec tar -xzvf {} -C /destino \\;",
+            "desc": "Buscar y descomprimir recursivamente todos los archivos tar.gz"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "Descomprimir tar.gz en paralelo (4 procesos)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d archivo.gz",
+            "desc": "Descomprimir archivo gzip (eliminar archivo original)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk archivo.gz",
+            "desc": "Descomprimir archivo gzip (conservar archivo original)"
+          },
+          "gunzip": {
+            "cmd": "gunzip archivo.gz",
+            "desc": "Descomprimir archivo gzip"
+          },
+          "zcat": {
+            "cmd": "zcat archivo.gz > archivo.txt",
+            "desc": "Descomprimir a la salida estándar"
+          },
+          "gzip_compress": {
+            "cmd": "gzip archivo.txt",
+            "desc": "Comprimir archivo"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 archivo.txt",
+            "desc": "Comprimir con la máxima relación de compresión"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /ruta/al/directorio",
+            "desc": "Comprimir recursivamente todos los archivos en el directorio"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "Descomprimir por lotes todos los archivos .gz del directorio actual"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "Descomprimir por lotes archivos .gz (conservar archivo original)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archivo.zip",
+            "desc": "Descomprimir archivo zip"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archivo.zip -d /directorio/destino",
+            "desc": "Descomprimir en un directorio específico"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archivo.zip",
+            "desc": "Ver contenido del archivo zip"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archivo.zip",
+            "desc": "Probar la integridad del archivo zip"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archivo.zip",
+            "desc": "Descomprimir y sobrescribir archivos existentes"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archivo.zip",
+            "desc": "Descomprimir silenciosamente (sin mostrar detalles)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archivo.zip /ruta/a/archivos",
+            "desc": "Crear archivo comprimido zip"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archivo.zip /ruta/a/archivos",
+            "desc": "Crear archivo zip cifrado"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "Descomprimir por lotes todos los archivos zip del directorio actual"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /directorio/destino; done",
+            "desc": "Descomprimir por lotes zip en un directorio específico"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "Descomprimir archivos zip por lotes en sus directorios homónimos."
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "Buscar y descomprimir recursivamente todos los archivos zip."
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "Descomprimir archivo bzip2."
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "Descomprimir archivo bzip2 (conservar archivo original)."
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "Descomprimir archivo bzip2."
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "Descomprimir a la salida estándar."
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "Comprimir archivo."
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "Comprimir con la máxima relación de compresión."
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "Descomprimir por lotes todos los archivos bz2 del directorio actual."
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "Descomprimir archivos bz2 por lotes (conservar archivos originales)."
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "Descomprimir archivo xz."
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "Descomprimir archivo xz (conservar archivo original)."
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "Descomprimir archivo xz."
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "Descomprimir a la salida estándar."
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "Comprimir archivo."
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "Comprimir con la máxima relación de compresión."
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "Comprimir usando múltiples hilos."
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "Descomprimir por lotes todos los archivos xz del directorio actual."
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "Descomprimir archivos xz por lotes (conservar archivos originales)."
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "Descomprimir archivo rar (conservar estructura de directorios)."
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "Descomprimir archivo rar (no conservar estructura de directorios)."
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "Descomprimir en el directorio especificado."
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "Ver contenido del archivo rar."
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "Probar la integridad del archivo rar."
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "Crear archivo comprimido rar (requiere instalación de rar)."
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "Descomprimir por lotes todos los archivos rar en el directorio actual"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "Descomprimir rar por lotes en un directorio específico"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "Descomprimir rar por lotes en sus respectivos directorios con el mismo nombre"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "Descomprimir archivo 7z (conservando la estructura de directorios)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "Descomprimir archivo 7z (sin conservar la estructura de directorios)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "Descomprimir en un directorio específico"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "Ver contenido del archivo 7z"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "Probar la integridad del archivo 7z"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "Crear archivo comprimido 7z"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "Descomprimir archivo 7z cifrado"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "Crear archivo 7z con la máxima relación de compresión"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "Descomprimir por lotes todos los archivos 7z en el directorio actual"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "Descomprimir 7z por lotes en un directorio específico"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "Descomprimir 7z por lotes en sus respectivos directorios con el mismo nombre"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "Descomprimir 7z en paralelo (4 procesos)"
+          }
+        }
+      },
+      "introduction": "El Asistente de Registros de Linux es una herramienta de referencia rápida de comandos diseñada para administradores de sistemas y desarrolladores, que cubre comandos comunes para la búsqueda, filtrado y descompresión de archivos de registro comprimidos. Ya sea para solucionar fallos del sistema, analizar registros de aplicaciones o procesar archivos de registro en varios formatos comprimidos, aquí podrá encontrar rápidamente los comandos que necesita. Todos los comandos vienen con explicaciones claras en chino y admiten la copia con un solo clic, lo que le ayuda a realizar el análisis de registros y el trabajo de operaciones de manera más eficiente.",
+      "features": [
+        "6 categorías principales de búsqueda de registros, que cubren búsqueda básica, filtrado por tiempo, coincidencia de patrones y otros escenarios",
+        "Soporte para 7 formatos de compresión, incluyendo tar, gzip, zip, bzip2, xz, rar, 7z",
+        "Cada formato incluye comandos de descompresión de un solo archivo y por lotes",
+        "Más de 70 comandos comunes, recopilados exhaustivamente desde lo básico hasta lo avanzado",
+        "Soporte para búsqueda por palabras clave, para localizar rápidamente el comando deseado",
+        "Copia de comandos con un solo clic, mejorando la eficiencia del trabajo",
+        "Explicaciones claras en chino, fáciles de entender y aprender",
+        "Navegación y filtrado por categorías, para encontrar rápidamente comandos relevantes"
+      ],
+      "faq": [
+        {
+          "question": "¿Por qué necesita el Asistente de Registros de Linux?",
+          "answer": "El análisis de registros del sistema Linux es una tarea común en operaciones y desarrollo, pero los parámetros de los comandos relacionados son complejos y fáciles de olvidar. El Asistente de Registros proporciona comandos comunes organizados por categorías, lo que permite una búsqueda rápida y una copia con un solo clic, mejorando en gran medida la eficiencia del análisis de registros."
+        },
+        {
+          "question": "¿Qué escenarios de búsqueda de registros son compatibles?",
+          "answer": "Admite 6 escenarios principales de búsqueda: búsqueda básica (varios usos de grep), filtrado por tiempo (rango de tiempo de journalctl), coincidencia de patrones (expresiones regulares, coincidencia de IP/correo electrónico), monitoreo en tiempo real (tail -f, journalctl -f), comandos combinados (pipes, estadísticas de clasificación), referencia de ubicaciones comunes de archivos de registro."
+        },
+        {
+          "question": "¿Qué formatos de compresión son compatibles para la descompresión?",
+          "answer": "Admite 7 formatos de compresión comunes: tar (incluyendo tar.gz, tar.bz2, tar.xz), gzip (.gz), zip, bzip2 (.bz2), xz, rar, 7z. Cada formato ofrece comandos comunes como descompresión, creación y visualización de contenido. Además, se proporciona una categoría dedicada a la descompresión por lotes, que admite escenarios avanzados como descompresión en bucle, descompresión con búsqueda recursiva y descompresión paralela."
+        },
+        {
+          "question": "¿Cómo encontrar rápidamente el comando necesario?",
+          "answer": "Puede usar la barra de búsqueda superior para ingresar palabras clave, o hacer clic en las etiquetas de categoría para filtrar tipos específicos de comandos. La búsqueda admite la coincidencia difusa de nombres y descripciones de comandos, lo que facilita la localización rápida."
+        },
+        {
+          "question": "¿Se pueden usar directamente los comandos copiados?",
+          "answer": "La mayoría de los comandos se pueden usar directamente, pero es necesario reemplazar parámetros como rutas de archivo y palabras clave en el comando según la situación real. Se recomienda comprender primero el significado del comando y luego ajustar los parámetros según las necesidades reales antes de usarlo."
+        }
+      ],
+      "meta": {
+        "title": "Asistente de Registros de Linux - Referencia rápida de comandos de búsqueda y descompresión de registros",
+        "description": "Hoja de trucos de comandos de búsqueda de registros y descompresión de archivos comprimidos de Linux, que cubre herramientas de análisis de registros como grep, awk, sed, journalctl, y comandos de descompresión como tar, gzip, zip, 7z, compatible con búsqueda y copia con un solo clic.",
+        "keywords": "Registros de Linux, Comando grep, Búsqueda de registros, Comandos de descompresión, Comando tar"
+      }
     }
   },
   "seo": {

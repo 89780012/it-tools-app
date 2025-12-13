@@ -3267,6 +3267,614 @@
         "description": "免费在线文本字符统计工具,实时统计字符数、字数、行数、段落数,支持中英文混合文本,适用于写作和内容创作。",
         "keywords": "字符统计, 字数统计, 文本统计"
       }
+    },
+    "linux-log-helper": {
+      "name": "Linux 日志助手",
+      "description": "Linux 日志搜索和压缩文件解压命令速查表",
+      "tab_search": "日志搜索",
+      "tab_decompress": "解压命令",
+      "search_title": "日志搜索命令",
+      "search_desc": "常用的 Linux 日志搜索和过滤命令，包括 grep、awk、sed 等工具",
+      "decompress_title": "解压命令",
+      "decompress_desc": "常用的压缩文件解压命令，支持 tar、gzip、zip、bzip2、xz、rar、7z 等格式",
+      "search_placeholder": "搜索命令...",
+      "all_categories": "全部",
+      "copy_success": "命令已复制",
+      "no_results": "未找到匹配的命令",
+      "result_count": "找到 {count} 个命令",
+      "search_categories": {
+        "basic_search": "基础搜索",
+        "time_filter": "时间过滤",
+        "pattern_match": "模式匹配",
+        "real_time": "实时监控",
+        "combine": "组合命令",
+        "log_files": "常见日志文件"
+      },
+      "decompress_categories": {
+        "tar": "tar 归档",
+        "gzip": "gzip 压缩",
+        "zip": "zip 压缩",
+        "bzip2": "bzip2 压缩",
+        "xz": "xz 压缩",
+        "rar": "rar 压缩",
+        "7z": "7z 压缩"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"关键词\" /var/log/syslog",
+            "desc": "在日志文件中搜索包含关键词的行"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "忽略大小写搜索 error"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "统计匹配行数"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "显示匹配行的行号"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "显示匹配行及前后3行上下文"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "显示匹配行及前5行"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "显示匹配行及后5行"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "排除包含 debug 的行"
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "递归搜索目录下所有文件"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "只显示包含匹配内容的文件名"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "从日志文件中搜索包含 error 固定字符串 的行（不支持正则表达式）"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "查看指定时间之后的日志"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "查看指定时间之前的日志"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "查看今天的日志"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "查看昨天的日志"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "查看最近1小时的日志"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "查看最近30分钟的日志"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "提取指定时间范围的日志"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "使用 awk 过滤时间范围"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "使用正则表达式匹配多个关键词"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "精确匹配完整单词"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "匹配 IP 地址"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "匹配邮箱地址"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "提取日志的前三个字段"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "筛选 HTTP 状态码 >= 500 的请求"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "替换日志中的敏感信息"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "按空格分割并提取指定字段"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "实时追踪日志文件"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "查看最后100行日志"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "实时追踪并过滤关键词"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "同时追踪多个日志文件"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "实时追踪 systemd 日志"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "实时追踪指定服务的日志"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "使用 less 实时追踪（按 Ctrl+C 停止，F 继续）"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "分屏同时查看多个日志（需安装 multitail）"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "组合多个过滤条件"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "统计错误出现次数并排序"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "统计字段总和（如响应大小）"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "在多个日志文件中搜索"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "搜索压缩的日志文件"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "解压并搜索压缩日志"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "使用 xargs 批量搜索"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "搜索结果同时输出到屏幕和文件"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "系统日志（Debian/Ubuntu）"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "系统日志（RHEL/CentOS）"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "认证日志（登录、sudo 等）"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "安全日志（RHEL/CentOS）"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "内核启动日志"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "内核日志"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "Nginx 访问日志"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "Nginx 错误日志"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "Apache 访问日志"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "Apache 错误日志"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "MySQL 错误日志"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "Docker 容器日志"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "解压 tar 归档文件"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "解压到指定目录"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "查看 tar 归档内容"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "解压 tar.gz 文件"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "解压 tar.bz2 文件"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "解压 tar.xz 文件"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "创建 tar 归档"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "创建 tar.gz 压缩归档"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "批量解压当前目录所有 tar.gz 文件"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "批量解压 tar.gz 到指定目录"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "批量解压 tar.gz 到各自同名目录"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "递归查找并解压所有 tar.gz 文件"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "并行解压 tar.gz（4 个进程）"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "解压 gzip 文件（删除原文件）"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "解压 gzip 文件（保留原文件）"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "解压 gzip 文件"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "解压到标准输出"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "压缩文件"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "最高压缩比压缩"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "递归压缩目录下所有文件"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "批量解压当前目录所有 gz 文件"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "批量解压 gz 文件（保留原文件）"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "解压 zip 文件"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "解压到指定目录"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "查看 zip 文件内容"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "测试 zip 文件完整性"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "解压并覆盖已存在的文件"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "静默解压（不显示详细信息）"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "创建 zip 压缩文件"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "创建加密的 zip 文件"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "批量解压当前目录所有 zip 文件"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "批量解压 zip 到指定目录"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "批量解压 zip 到各自同名目录"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "递归查找并解压所有 zip 文件"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "解压 bzip2 文件"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "解压 bzip2 文件（保留原文件）"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "解压 bzip2 文件"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "解压到标准输出"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "压缩文件"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "最高压缩比压缩"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "批量解压当前目录所有 bz2 文件"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "批量解压 bz2 文件（保留原文件）"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "解压 xz 文件"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "解压 xz 文件（保留原文件）"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "解压 xz 文件"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "解压到标准输出"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "压缩文件"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "最高压缩比压缩"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "使用多线程压缩"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "批量解压当前目录所有 xz 文件"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "批量解压 xz 文件（保留原文件）"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "解压 rar 文件（保留目录结构）"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "解压 rar 文件（不保留目录结构）"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "解压到指定目录"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "查看 rar 文件内容"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "测试 rar 文件完整性"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "创建 rar 压缩文件（需安装 rar）"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "批量解压当前目录所有 rar 文件"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "批量解压 rar 到指定目录"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "批量解压 rar 到各自同名目录"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "解压 7z 文件（保留目录结构）"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "解压 7z 文件（不保留目录结构）"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "解压到指定目录"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "查看 7z 文件内容"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "测试 7z 文件完整性"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "创建 7z 压缩文件"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "解压加密的 7z 文件"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "使用最高压缩比创建 7z 文件"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "批量解压当前目录所有 7z 文件"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "批量解压 7z 到指定目录"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "批量解压 7z 到各自同名目录"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "并行解压 7z（4 个进程）"
+          }
+        }
+      },
+      "introduction": "Linux 日志助手是专为系统管理员和开发者设计的命令速查工具，涵盖了日志搜索、过滤和压缩文件解压的常用命令。无论是排查系统故障、分析应用日志，还是处理各种压缩格式的日志文件，都能在这里快速找到需要的命令。所有命令都配有清晰的中文说明，支持一键复制，帮助你更高效地进行日志分析和运维工作。",
+      "features": [
+        "6 大日志搜索分类，覆盖基础搜索、时间过滤、模式匹配等场景",
+        "7 种压缩格式支持，包括 tar、gzip、zip、bzip2、xz、rar、7z",
+        "每种格式都包含单文件和批量解压命令",
+        "70+ 常用命令，从基础到高级全面收录",
+        "支持关键词搜索，快速定位所需命令",
+        "一键复制命令，提升工作效率",
+        "清晰的中文说明，易于理解和学习",
+        "分类浏览和筛选，快速找到相关命令"
+      ],
+      "faq": [
+        {
+          "question": "为什么需要 Linux 日志助手？",
+          "answer": "Linux 系统日志分析是运维和开发中的常见任务，但相关命令参数复杂且容易遗忘。日志助手提供了分类整理的常用命令，支持快速查找和一键复制，大大提升日志分析效率。"
+        },
+        {
+          "question": "支持哪些日志搜索场景？",
+          "answer": "支持 6 大搜索场景：基础搜索（grep 各种用法）、时间过滤（journalctl 时间范围）、模式匹配（正则表达式、IP/邮箱匹配）、实时监控（tail -f、journalctl -f）、组合命令（管道、排序统计）、常见日志文件位置参考。"
+        },
+        {
+          "question": "支持哪些压缩格式的解压？",
+          "answer": "支持 7 种常见压缩格式：tar（包括 tar.gz、tar.bz2、tar.xz）、gzip（.gz）、zip、bzip2（.bz2）、xz、rar、7z。每种格式都提供解压、创建、查看内容等常用命令。另外还提供专门的批量解压分类，支持循环解压、递归查找解压、并行解压等高级场景。"
+        },
+        {
+          "question": "如何快速找到需要的命令？",
+          "answer": "可以使用顶部的搜索框输入关键词搜索，也可以点击分类标签筛选特定类型的命令。搜索支持命令名称和描述的模糊匹配，方便快速定位。"
+        },
+        {
+          "question": "复制的命令可以直接使用吗？",
+          "answer": "大多数命令可以直接使用，但需要根据实际情况替换命令中的文件路径、关键词等参数。建议先理解命令的含义，再根据实际需求调整参数后使用。"
+        }
+      ],
+      "meta": {
+        "title": "Linux 日志助手 - 日志搜索和解压命令速查",
+        "description": "Linux 日志搜索和压缩文件解压命令速查表，涵盖 grep、awk、sed、journalctl 等日志分析工具，以及 tar、gzip、zip、7z 等解压命令，支持搜索和一键复制。",
+        "keywords": "Linux日志, grep命令, 日志搜索, 解压命令, tar命令"
+      }
     }
   },
   "seo": {

@@ -36,6 +36,7 @@ import {
   ChevronsUpDown,
   Palette,
   Terminal,
+  TerminalSquare,
   Grid3x3,
   Box,
   Languages,
@@ -85,6 +86,7 @@ const toolIconMap = {
   "clock-8": Clock8,
   palette: Palette,              // Color converter
   terminal: Terminal,            // cURL converter
+  "terminal-square": TerminalSquare, // Linux log helper
   "grid-3x3": Grid3x3,           // Image to dot matrix
   box: Box,                      // Docker run to compose
   languages: Languages,          // i18n translator

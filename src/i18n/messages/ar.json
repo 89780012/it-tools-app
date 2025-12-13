@@ -3267,6 +3267,614 @@
         "description": "أداة مجانية عبر الإنترنت لإحصاء أحرف النص، تقوم بإحصاء عدد الأحرف والكلمات والأسطر والفقرات في الوقت الفعلي، تدعم النصوص المختلطة باللغتين الصينية والإنجليزية، ومناسبة للكتابة وإنشاء المحتوى.",
         "keywords": "إحصاء الأحرف، إحصاء الكلمات، إحصاء النص"
       }
+    },
+    "linux-log-helper": {
+      "name": "مساعد سجلات لينكس",
+      "description": "ورقة مرجعية سريعة لأوامر البحث في سجلات لينكس وفك ضغط الملفات المضغوطة",
+      "tab_search": "البحث في السجلات",
+      "tab_decompress": "أوامر فك الضغط",
+      "search_title": "أوامر البحث في السجلات",
+      "search_desc": "أوامر لينكس الشائعة للبحث في السجلات وتصفيتها، بما في ذلك أدوات مثل grep و awk و sed",
+      "decompress_title": "أوامر فك الضغط",
+      "decompress_desc": "أوامر فك ضغط الملفات المضغوطة الشائعة، تدعم تنسيقات مثل tar و gzip و zip و bzip2 و xz و rar و 7z",
+      "search_placeholder": "أوامر البحث...",
+      "all_categories": "الكل",
+      "copy_success": "تم نسخ الأمر",
+      "no_results": "لم يتم العثور على أوامر مطابقة",
+      "result_count": "تم العثور على {count} أمر",
+      "search_categories": {
+        "basic_search": "بحث أساسي",
+        "time_filter": "تصفية حسب الوقت",
+        "pattern_match": "مطابقة الأنماط",
+        "real_time": "مراقبة في الوقت الفعلي",
+        "combine": "أوامر مدمجة",
+        "log_files": "ملفات السجل الشائعة"
+      },
+      "decompress_categories": {
+        "tar": "أرشفة tar",
+        "gzip": "ضغط gzip",
+        "zip": "ضغط zip",
+        "bzip2": "ضغط bzip2",
+        "xz": "ضغط xz",
+        "rar": "ضغط rar",
+        "7z": "ضغط 7z"
+      },
+      "search_commands": {
+        "basic_search": {
+          "grep_simple": {
+            "cmd": "grep \"كلمة_مفتاحية\" /var/log/syslog",
+            "desc": "البحث عن الأسطر التي تحتوي على كلمة مفتاحية في ملف السجل"
+          },
+          "grep_ignore_case": {
+            "cmd": "grep -i \"error\" /var/log/syslog",
+            "desc": "البحث عن \"error\" مع تجاهل حالة الأحرف"
+          },
+          "grep_count": {
+            "cmd": "grep -c \"error\" /var/log/syslog",
+            "desc": "عد الأسطر المطابقة"
+          },
+          "grep_line_number": {
+            "cmd": "grep -n \"error\" /var/log/syslog",
+            "desc": "عرض أرقام أسطر المطابقة"
+          },
+          "grep_context": {
+            "cmd": "grep -C 3 \"error\" /var/log/syslog",
+            "desc": "عرض الأسطر المطابقة و3 أسطر قبلها وبعدها"
+          },
+          "grep_before": {
+            "cmd": "grep -B 5 \"error\" /var/log/syslog",
+            "desc": "عرض الأسطر المطابقة و5 أسطر قبلها"
+          },
+          "grep_after": {
+            "cmd": "grep -A 5 \"error\" /var/log/syslog",
+            "desc": "عرض الأسطر المطابقة و5 أسطر بعدها"
+          },
+          "grep_invert": {
+            "cmd": "grep -v \"debug\" /var/log/syslog",
+            "desc": "استبعاد الأسطر التي تحتوي على \"debug\""
+          },
+          "grep_recursive": {
+            "cmd": "grep -r \"error\" /var/log/",
+            "desc": "البحث بشكل متكرر في جميع الملفات داخل الدليل"
+          },
+          "grep_files_only": {
+            "cmd": "grep -l \"error\" /var/log/*",
+            "desc": "عرض أسماء الملفات التي تحتوي على المحتوى المطابق فقط"
+          },
+          "grep_file_fixed": {
+            "cmd": "grep -F \"error\" /var/log/*.log",
+            "desc": "البحث عن الأسطر التي تحتوي على السلسلة النصية الثابتة \"error\" في ملفات السجل (لا يدعم التعبيرات النمطية)"
+          }
+        },
+        "time_filter": {
+          "journalctl_since": {
+            "cmd": "journalctl --since \"2024-01-01 00:00:00\"",
+            "desc": "عرض السجلات بعد وقت محدد"
+          },
+          "journalctl_until": {
+            "cmd": "journalctl --until \"2024-01-01 23:59:59\"",
+            "desc": "عرض السجلات قبل وقت محدد"
+          },
+          "journalctl_today": {
+            "cmd": "journalctl --since today",
+            "desc": "عرض سجلات اليوم"
+          },
+          "journalctl_yesterday": {
+            "cmd": "journalctl --since yesterday --until today",
+            "desc": "عرض سجلات الأمس"
+          },
+          "journalctl_hours": {
+            "cmd": "journalctl --since \"1 hour ago\"",
+            "desc": "عرض سجلات الساعة الأخيرة"
+          },
+          "journalctl_minutes": {
+            "cmd": "journalctl --since \"30 minutes ago\"",
+            "desc": "عرض سجلات آخر 30 دقيقة"
+          },
+          "sed_time_range": {
+            "cmd": "sed -n '/Jan 01 10:00/,/Jan 01 12:00/p' /var/log/syslog",
+            "desc": "استخراج سجلات ضمن نطاق زمني محدد"
+          },
+          "awk_time_filter": {
+            "cmd": "awk '/2024-01-01 10:/ && /2024-01-01 12:/' /var/log/app.log",
+            "desc": "استخدام awk لتصفية النطاق الزمني"
+          }
+        },
+        "pattern_match": {
+          "grep_regex": {
+            "cmd": "grep -E \"error|warning|critical\" /var/log/syslog",
+            "desc": "مطابقة كلمات مفتاحية متعددة باستخدام التعبيرات النمطية"
+          },
+          "grep_word": {
+            "cmd": "grep -w \"error\" /var/log/syslog",
+            "desc": "مطابقة دقيقة لكلمة كاملة"
+          },
+          "grep_ip": {
+            "cmd": "grep -E \"[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\" /var/log/auth.log",
+            "desc": "مطابقة عنوان IP"
+          },
+          "grep_email": {
+            "cmd": "grep -E \"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\" /var/log/mail.log",
+            "desc": "مطابقة عنوان البريد الإلكتروني"
+          },
+          "awk_field": {
+            "cmd": "awk '{print $1, $2, $3}' /var/log/syslog",
+            "desc": "استخراج الحقول الثلاثة الأولى من السجل"
+          },
+          "awk_condition": {
+            "cmd": "awk '$9 >= 500' /var/log/nginx/access.log",
+            "desc": "تصفية الطلبات التي تحتوي على رمز حالة HTTP >= 500"
+          },
+          "sed_replace": {
+            "cmd": "sed 's/password=[^ ]*/password=****/g' /var/log/app.log",
+            "desc": "استبدال المعلومات الحساسة في السجلات"
+          },
+          "cut_field": {
+            "cmd": "cut -d' ' -f1,2,3 /var/log/syslog",
+            "desc": "تقسيم حسب المسافة واستخراج حقول محددة"
+          }
+        },
+        "real_time": {
+          "tail_follow": {
+            "cmd": "tail -f /var/log/syslog",
+            "desc": "تتبع ملفات السجل في الوقت الفعلي"
+          },
+          "tail_lines": {
+            "cmd": "tail -n 100 /var/log/syslog",
+            "desc": "عرض آخر 100 سطر من السجل"
+          },
+          "tail_follow_grep": {
+            "cmd": "tail -f /var/log/syslog | grep --line-buffered \"error\"",
+            "desc": "تتبع وتصفية الكلمات المفتاحية في الوقت الفعلي"
+          },
+          "tail_multiple": {
+            "cmd": "tail -f /var/log/syslog /var/log/auth.log",
+            "desc": "تتبع عدة ملفات سجل في نفس الوقت"
+          },
+          "journalctl_follow": {
+            "cmd": "journalctl -f",
+            "desc": "تتبع سجلات systemd في الوقت الفعلي"
+          },
+          "journalctl_unit": {
+            "cmd": "journalctl -u nginx.service -f",
+            "desc": "تتبع سجلات خدمة محددة في الوقت الفعلي"
+          },
+          "less_follow": {
+            "cmd": "less +F /var/log/syslog",
+            "desc": "استخدام less للتتبع في الوقت الفعلي (اضغط Ctrl+C للإيقاف، F للمتابعة)"
+          },
+          "multitail": {
+            "cmd": "multitail /var/log/syslog /var/log/auth.log",
+            "desc": "عرض عدة سجلات في شاشات مقسمة في نفس الوقت (يتطلب تثبيت multitail)"
+          }
+        },
+        "combine": {
+          "grep_pipe": {
+            "cmd": "cat /var/log/syslog | grep \"error\" | grep -v \"debug\"",
+            "desc": "دمج شروط تصفية متعددة"
+          },
+          "grep_sort_uniq": {
+            "cmd": "grep \"error\" /var/log/syslog | sort | uniq -c | sort -rn",
+            "desc": "إحصاء عدد مرات ظهور الأخطاء وفرزها"
+          },
+          "awk_sum": {
+            "cmd": "awk '{sum+=$10} END {print sum}' /var/log/nginx/access.log",
+            "desc": "حساب مجموع الحقول (مثل حجم الاستجابة)"
+          },
+          "find_grep": {
+            "cmd": "find /var/log -name \"*.log\" -exec grep -l \"error\" {} \\;",
+            "desc": "البحث في ملفات سجل متعددة"
+          },
+          "zgrep": {
+            "cmd": "zgrep \"error\" /var/log/syslog.*.gz",
+            "desc": "البحث في ملفات السجل المضغوطة"
+          },
+          "zcat_grep": {
+            "cmd": "zcat /var/log/syslog.1.gz | grep \"error\"",
+            "desc": "فك ضغط سجل مضغوط والبحث فيه"
+          },
+          "xargs_grep": {
+            "cmd": "find /var/log -name \"*.log\" | xargs grep \"error\"",
+            "desc": "البحث دفعة واحدة باستخدام xargs"
+          },
+          "tee_output": {
+            "cmd": "grep \"error\" /var/log/syslog | tee errors.txt",
+            "desc": "إخراج نتائج البحث إلى الشاشة والملف في نفس الوقت"
+          }
+        },
+        "log_files": {
+          "syslog": {
+            "cmd": "/var/log/syslog",
+            "desc": "سجل النظام (Debian/Ubuntu)"
+          },
+          "messages": {
+            "cmd": "/var/log/messages",
+            "desc": "سجل النظام (RHEL/CentOS)"
+          },
+          "auth_log": {
+            "cmd": "/var/log/auth.log",
+            "desc": "سجل المصادقة (تسجيل الدخول، sudo، إلخ.)"
+          },
+          "secure": {
+            "cmd": "/var/log/secure",
+            "desc": "سجل الأمان (RHEL/CentOS)"
+          },
+          "dmesg": {
+            "cmd": "/var/log/dmesg",
+            "desc": "سجل بدء تشغيل النواة"
+          },
+          "kern_log": {
+            "cmd": "/var/log/kern.log",
+            "desc": "سجل النواة"
+          },
+          "nginx_access": {
+            "cmd": "/var/log/nginx/access.log",
+            "desc": "سجل وصول Nginx"
+          },
+          "nginx_error": {
+            "cmd": "/var/log/nginx/error.log",
+            "desc": "سجل أخطاء Nginx"
+          },
+          "apache_access": {
+            "cmd": "/var/log/apache2/access.log",
+            "desc": "سجل وصول Apache"
+          },
+          "apache_error": {
+            "cmd": "/var/log/apache2/error.log",
+            "desc": "سجل أخطاء Apache"
+          },
+          "mysql_error": {
+            "cmd": "/var/log/mysql/error.log",
+            "desc": "سجل أخطاء MySQL"
+          },
+          "docker_logs": {
+            "cmd": "docker logs <container_name>",
+            "desc": "سجل حاوية Docker"
+          }
+        }
+      },
+      "decompress_commands": {
+        "tar": {
+          "tar_extract": {
+            "cmd": "tar -xvf archive.tar",
+            "desc": "فك ضغط أرشيف tar"
+          },
+          "tar_extract_dir": {
+            "cmd": "tar -xvf archive.tar -C /target/directory",
+            "desc": "فك الضغط إلى دليل محدد"
+          },
+          "tar_list": {
+            "cmd": "tar -tvf archive.tar",
+            "desc": "عرض محتويات أرشيف tar"
+          },
+          "tar_gz_extract": {
+            "cmd": "tar -xzvf archive.tar.gz",
+            "desc": "فك ضغط ملف tar.gz"
+          },
+          "tar_bz2_extract": {
+            "cmd": "tar -xjvf archive.tar.bz2",
+            "desc": "فك ضغط ملف tar.bz2"
+          },
+          "tar_xz_extract": {
+            "cmd": "tar -xJvf archive.tar.xz",
+            "desc": "فك ضغط ملف tar.xz"
+          },
+          "tar_create": {
+            "cmd": "tar -cvf archive.tar /path/to/files",
+            "desc": "إنشاء أرشيف tar"
+          },
+          "tar_gz_create": {
+            "cmd": "tar -czvf archive.tar.gz /path/to/files",
+            "desc": "إنشاء أرشيف مضغوط tar.gz"
+          },
+          "batch_tar_gz": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\"; done",
+            "desc": "فك ضغط جميع ملفات tar.gz في الدليل الحالي دفعة واحدة"
+          },
+          "batch_tar_gz_dir": {
+            "cmd": "for f in *.tar.gz; do tar -xzvf \"$f\" -C /target/dir; done",
+            "desc": "فك ضغط ملفات tar.gz إلى دليل محدد دفعة واحدة"
+          },
+          "batch_tar_gz_subdir": {
+            "cmd": "for f in *.tar.gz; do mkdir -p \"${f%.tar.gz}\" && tar -xzvf \"$f\" -C \"${f%.tar.gz}\"; done",
+            "desc": "فك ضغط ملفات tar.gz إلى أدلة تحمل نفس الاسم دفعة واحدة"
+          },
+          "batch_find_tar_gz": {
+            "cmd": "find /path -name \"*.tar.gz\" -exec tar -xzvf {} -C /target \\;",
+            "desc": "البحث بشكل متكرر وفك ضغط جميع ملفات tar.gz"
+          },
+          "batch_parallel_tar": {
+            "cmd": "ls *.tar.gz | xargs -P 4 -I {} tar -xzvf {}",
+            "desc": "فك ضغط ملفات tar.gz بالتوازي (4 عمليات)"
+          }
+        },
+        "gzip": {
+          "gzip_decompress": {
+            "cmd": "gzip -d file.gz",
+            "desc": "فك ضغط ملف gzip (حذف الملف الأصلي)"
+          },
+          "gzip_keep": {
+            "cmd": "gzip -dk file.gz",
+            "desc": "فك ضغط ملف gzip (الاحتفاظ بالملف الأصلي)"
+          },
+          "gunzip": {
+            "cmd": "gunzip file.gz",
+            "desc": "فك ضغط ملف gzip"
+          },
+          "zcat": {
+            "cmd": "zcat file.gz > file.txt",
+            "desc": "فك الضغط إلى الإخراج القياسي"
+          },
+          "gzip_compress": {
+            "cmd": "gzip file.txt",
+            "desc": "ضغط الملف"
+          },
+          "gzip_best": {
+            "cmd": "gzip -9 file.txt",
+            "desc": "الضغط بأقصى نسبة ضغط"
+          },
+          "gzip_recursive": {
+            "cmd": "gzip -r /path/to/directory",
+            "desc": "ضغط جميع الملفات في الدليل بشكل متكرر"
+          },
+          "batch_gz": {
+            "cmd": "gunzip *.gz",
+            "desc": "فك ضغط جميع ملفات gz في الدليل الحالي دفعة واحدة"
+          },
+          "batch_gz_keep": {
+            "cmd": "gunzip -k *.gz",
+            "desc": "فك ضغط ملفات gz دفعة واحدة (الاحتفاظ بالملف الأصلي)"
+          }
+        },
+        "zip": {
+          "unzip": {
+            "cmd": "unzip archive.zip",
+            "desc": "فك ضغط ملف zip"
+          },
+          "unzip_dir": {
+            "cmd": "unzip archive.zip -d /target/directory",
+            "desc": "فك الضغط إلى دليل محدد"
+          },
+          "unzip_list": {
+            "cmd": "unzip -l archive.zip",
+            "desc": "عرض محتويات ملف zip"
+          },
+          "unzip_test": {
+            "cmd": "unzip -t archive.zip",
+            "desc": "اختبار سلامة ملف zip"
+          },
+          "unzip_overwrite": {
+            "cmd": "unzip -o archive.zip",
+            "desc": "فك الضغط وتجاوز الملفات الموجودة"
+          },
+          "unzip_quiet": {
+            "cmd": "unzip -q archive.zip",
+            "desc": "فك ضغط صامت (لا يعرض تفاصيل)"
+          },
+          "zip_create": {
+            "cmd": "zip -r archive.zip /path/to/files",
+            "desc": "إنشاء ملف zip مضغوط"
+          },
+          "zip_password": {
+            "cmd": "zip -e -r archive.zip /path/to/files",
+            "desc": "إنشاء ملف zip مشفر"
+          },
+          "batch_zip": {
+            "cmd": "for f in *.zip; do unzip \"$f\"; done",
+            "desc": "فك ضغط جميع ملفات zip في الدليل الحالي دفعة واحدة"
+          },
+          "batch_zip_dir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d /target/dir; done",
+            "desc": "فك ضغط ملفات zip إلى دليل محدد دفعة واحدة"
+          },
+          "batch_zip_subdir": {
+            "cmd": "for f in *.zip; do unzip \"$f\" -d \"${f%.zip}\"; done",
+            "desc": "فك ضغط ملفات zip دفعة واحدة إلى مجلدات تحمل نفس الاسم"
+          },
+          "batch_find_zip": {
+            "cmd": "find /path -name \"*.zip\" -exec unzip {} -d /target \\;",
+            "desc": "البحث وفك ضغط جميع ملفات zip بشكل متكرر"
+          }
+        },
+        "bzip2": {
+          "bzip2_decompress": {
+            "cmd": "bzip2 -d file.bz2",
+            "desc": "فك ضغط ملف bzip2"
+          },
+          "bzip2_keep": {
+            "cmd": "bzip2 -dk file.bz2",
+            "desc": "فك ضغط ملف bzip2 (مع الاحتفاظ بالملف الأصلي)"
+          },
+          "bunzip2": {
+            "cmd": "bunzip2 file.bz2",
+            "desc": "فك ضغط ملف bzip2"
+          },
+          "bzcat": {
+            "cmd": "bzcat file.bz2 > file.txt",
+            "desc": "فك الضغط إلى الإخراج القياسي"
+          },
+          "bzip2_compress": {
+            "cmd": "bzip2 file.txt",
+            "desc": "ضغط الملف"
+          },
+          "bzip2_best": {
+            "cmd": "bzip2 -9 file.txt",
+            "desc": "الضغط بأعلى نسبة ضغط"
+          },
+          "batch_bz2": {
+            "cmd": "bunzip2 *.bz2",
+            "desc": "فك ضغط جميع ملفات bz2 في الدليل الحالي دفعة واحدة"
+          },
+          "batch_bz2_keep": {
+            "cmd": "bzip2 -dk *.bz2",
+            "desc": "فك ضغط ملفات bz2 دفعة واحدة (مع الاحتفاظ بالملفات الأصلية)"
+          }
+        },
+        "xz": {
+          "xz_decompress": {
+            "cmd": "xz -d file.xz",
+            "desc": "فك ضغط ملف xz"
+          },
+          "xz_keep": {
+            "cmd": "xz -dk file.xz",
+            "desc": "فك ضغط ملف xz (مع الاحتفاظ بالملف الأصلي)"
+          },
+          "unxz": {
+            "cmd": "unxz file.xz",
+            "desc": "فك ضغط ملف xz"
+          },
+          "xzcat": {
+            "cmd": "xzcat file.xz > file.txt",
+            "desc": "فك الضغط إلى الإخراج القياسي"
+          },
+          "xz_compress": {
+            "cmd": "xz file.txt",
+            "desc": "ضغط الملف"
+          },
+          "xz_best": {
+            "cmd": "xz -9 file.txt",
+            "desc": "الضغط بأعلى نسبة ضغط"
+          },
+          "xz_threads": {
+            "cmd": "xz -T0 file.txt",
+            "desc": "الضغط باستخدام خيوط متعددة"
+          },
+          "batch_xz": {
+            "cmd": "unxz *.xz",
+            "desc": "فك ضغط جميع ملفات xz في الدليل الحالي دفعة واحدة"
+          },
+          "batch_xz_keep": {
+            "cmd": "xz -dk *.xz",
+            "desc": "فك ضغط ملفات xz دفعة واحدة (مع الاحتفاظ بالملفات الأصلية)"
+          }
+        },
+        "rar": {
+          "unrar_extract": {
+            "cmd": "unrar x archive.rar",
+            "desc": "فك ضغط ملف rar (مع الاحتفاظ بهيكل الدليل)"
+          },
+          "unrar_flat": {
+            "cmd": "unrar e archive.rar",
+            "desc": "فك ضغط ملف rar (بدون الاحتفاظ بهيكل الدليل)"
+          },
+          "unrar_dir": {
+            "cmd": "unrar x archive.rar /target/directory/",
+            "desc": "فك الضغط إلى دليل محدد"
+          },
+          "unrar_list": {
+            "cmd": "unrar l archive.rar",
+            "desc": "عرض محتويات ملف rar"
+          },
+          "unrar_test": {
+            "cmd": "unrar t archive.rar",
+            "desc": "اختبار سلامة ملف rar"
+          },
+          "rar_create": {
+            "cmd": "rar a archive.rar /path/to/files",
+            "desc": "إنشاء ملف rar مضغوط (يتطلب تثبيت rar)"
+          },
+          "batch_rar": {
+            "cmd": "for f in *.rar; do unrar x \"$f\"; done",
+            "desc": "فك ضغط جميع ملفات rar في الدليل الحالي دفعة واحدة"
+          },
+          "batch_rar_dir": {
+            "cmd": "for f in *.rar; do unrar x \"$f\" /target/dir/; done",
+            "desc": "فك ضغط ملفات rar إلى دليل محدد دفعة واحدة"
+          },
+          "batch_rar_subdir": {
+            "cmd": "for f in *.rar; do mkdir -p \"${f%.rar}\" && unrar x \"$f\" \"${f%.rar}/\"; done",
+            "desc": "فك ضغط ملفات rar إلى أدلة تحمل نفس اسمها دفعة واحدة"
+          }
+        },
+        "7z": {
+          "7z_extract": {
+            "cmd": "7z x archive.7z",
+            "desc": "فك ضغط ملف 7z (مع الحفاظ على بنية الدليل)"
+          },
+          "7z_flat": {
+            "cmd": "7z e archive.7z",
+            "desc": "فك ضغط ملف 7z (بدون الحفاظ على بنية الدليل)"
+          },
+          "7z_dir": {
+            "cmd": "7z x archive.7z -o/target/directory",
+            "desc": "فك الضغط إلى دليل محدد"
+          },
+          "7z_list": {
+            "cmd": "7z l archive.7z",
+            "desc": "عرض محتويات ملف 7z"
+          },
+          "7z_test": {
+            "cmd": "7z t archive.7z",
+            "desc": "اختبار سلامة ملف 7z"
+          },
+          "7z_create": {
+            "cmd": "7z a archive.7z /path/to/files",
+            "desc": "إنشاء ملف مضغوط 7z"
+          },
+          "7z_password": {
+            "cmd": "7z x -pPASSWORD archive.7z",
+            "desc": "فك ضغط ملف 7z المشفر"
+          },
+          "7z_ultra": {
+            "cmd": "7z a -mx=9 archive.7z /path/to/files",
+            "desc": "إنشاء ملف 7z بأعلى نسبة ضغط"
+          },
+          "batch_7z": {
+            "cmd": "for f in *.7z; do 7z x \"$f\"; done",
+            "desc": "فك ضغط جميع ملفات 7z في الدليل الحالي دفعة واحدة"
+          },
+          "batch_7z_dir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o/target/dir; done",
+            "desc": "فك ضغط ملفات 7z إلى دليل محدد دفعة واحدة"
+          },
+          "batch_7z_subdir": {
+            "cmd": "for f in *.7z; do 7z x \"$f\" -o\"${f%.7z}\"; done",
+            "desc": "فك ضغط ملفات 7z إلى أدلة تحمل نفس اسمها دفعة واحدة"
+          },
+          "batch_parallel_7z": {
+            "cmd": "ls *.7z | xargs -P 4 -I {} 7z x {}",
+            "desc": "فك ضغط 7z بالتوازي (4 عمليات)"
+          }
+        }
+      },
+      "introduction": "مساعد سجلات Linux هو أداة مرجعية سريعة للأوامر مصممة خصيصًا لمديري الأنظمة والمطورين، وتغطي الأوامر الشائعة للبحث في السجلات وتصفيتها وفك ضغط الملفات المضغوطة. سواء كنت تستكشف أخطاء النظام، أو تحلل سجلات التطبيقات، أو تتعامل مع ملفات السجلات بتنسيقات ضغط مختلفة، يمكنك العثور بسرعة على الأمر الذي تحتاجه هنا. جميع الأوامر مصحوبة بشروحات واضحة باللغة الصينية، وتدعم النسخ بنقرة واحدة، مما يساعدك على إجراء تحليل السجلات وعمليات التشغيل والصيانة بكفاءة أكبر.",
+      "features": [
+        "6 فئات رئيسية للبحث في السجلات، تغطي سيناريوهات مثل البحث الأساسي، تصفية الوقت، مطابقة الأنماط، والمزيد.",
+        "دعم 7 أنواع من تنسيقات الضغط، بما في ذلك tar و gzip و zip و bzip2 و xz و rar و 7z.",
+        "كل تنسيق يتضمن أوامر فك الضغط لملف واحد ولعدة ملفات دفعة واحدة.",
+        "أكثر من 70 أمرًا شائعًا، مجمعة بالكامل من الأساسي إلى المتقدم.",
+        "يدعم البحث بالكلمات الرئيسية لتحديد موقع الأمر المطلوب بسرعة.",
+        "نسخ الأوامر بنقرة واحدة، لزيادة كفاءة العمل.",
+        "شروحات واضحة باللغة الصينية، سهلة الفهم والتعلم.",
+        "تصفح وتصفية حسب الفئة، للعثور بسرعة على الأوامر ذات الصلة."
+      ],
+      "faq": [
+        {
+          "question": "لماذا تحتاج إلى مساعد سجلات Linux؟",
+          "answer": "تحليل سجلات نظام Linux هو مهمة شائعة في عمليات التشغيل والصيانة والتطوير، ولكن معلمات الأوامر ذات الصلة معقدة وسهلة النسيان. يوفر مساعد السجلات أوامر شائعة منظمة حسب الفئة، ويدعم البحث السريع والنسخ بنقرة واحدة، مما يحسن بشكل كبير من كفاءة تحليل السجلات."
+        },
+        {
+          "question": "ما هي سيناريوهات البحث في السجلات المدعومة؟",
+          "answer": "يدعم 6 سيناريوهات بحث رئيسية: البحث الأساسي (استخدامات grep المختلفة)، تصفية الوقت (نطاق وقت journalctl)، مطابقة الأنماط (التعبيرات العادية، مطابقة IP/البريد الإلكتروني)، المراقبة في الوقت الفعلي (tail -f، journalctl -f)، الأوامر المركبة (الأنابيب، الفرز والإحصاء)، ومراجع مواقع ملفات السجلات الشائعة."
+        },
+        {
+          "question": "ما هي تنسيقات الضغط المدعومة لفك الضغط؟",
+          "answer": "يدعم 7 تنسيقات ضغط شائعة: tar (بما في ذلك tar.gz، tar.bz2، tar.xz)، gzip (.gz)، zip، bzip2 (.bz2)، xz، rar، 7z. يوفر كل تنسيق أوامر شائعة مثل فك الضغط، الإنشاء، وعرض المحتويات. بالإضافة إلى ذلك، يوفر فئة مخصصة لفك الضغط دفعة واحدة، تدعم سيناريوهات متقدمة مثل فك الضغط المتكرر، البحث المتكرر لفك الضغط، وفك الضغط المتوازي."
+        },
+        {
+          "question": "كيف يمكنني العثور بسرعة على الأمر الذي أحتاجه؟",
+          "answer": "يمكنك استخدام مربع البحث في الأعلى لإدخال الكلمات الرئيسية للبحث، أو النقر على علامات التبويب الفئوية لتصفية أنواع معينة من الأوامر. يدعم البحث المطابقة الغامضة لأسماء الأوامر وأوصافها، مما يسهل تحديد الموقع بسرعة."
+        },
+        {
+          "question": "هل يمكن استخدام الأوامر المنسوخة مباشرة؟",
+          "answer": "يمكن استخدام معظم الأوامر مباشرة، ولكن قد تحتاج إلى استبدال معلمات مثل مسارات الملفات والكلمات الرئيسية في الأمر وفقًا للحالة الفعلية. يوصى بفهم معنى الأمر أولاً، ثم تعديل المعلمات حسب الحاجة قبل الاستخدام."
+        }
+      ],
+      "meta": {
+        "title": "مساعد سجلات Linux - مرجع سريع لأوامر البحث في السجلات وفك الضغط",
+        "description": "جدول مرجعي سريع لأوامر البحث في سجلات Linux وفك ضغط الملفات المضغوطة، يغطي أدوات تحليل السجلات مثل grep و awk و sed و journalctl، بالإضافة إلى أوامر فك الضغط مثل tar و gzip و zip و 7z، ويدعم البحث والنسخ بنقرة واحدة.",
+        "keywords": "سجلات Linux، أمر grep، البحث في السجلات، أمر فك الضغط، أمر tar"
+      }
     }
   },
   "seo": {

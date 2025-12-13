@@ -45,6 +45,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "developer",
         path: "/tools/git-cheatsheet",
         icon: "git-branch"
+      },
+      {
+        id: "linux-log-helper",
+        nameKey: "tools.linux-log-helper.name",
+        descriptionKey: "tools.linux-log-helper.description",
+        category: "developer",
+        path: "/tools/linux-log-helper",
+        icon: "terminal-square"
       }
     ]
   },
