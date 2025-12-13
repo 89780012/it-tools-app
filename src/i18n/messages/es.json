@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "Todas las herramientas",
+    "search_placeholder": "Buscar herramientas...",
+    "all_categories": "Todo",
+    "showing_tools": "{count} herramientas en total",
+    "no_tools_found": "No se encontraron herramientas coincidentes",
     "tools_total": "Número total de herramientas",
     "tools_categories": "Clasificación de herramientas",
     "update_frequency": "Frecuencia de actualización",
@@ -3201,6 +3206,66 @@
         "title": "Traductor i18n JSON - Localización de archivos JSON con OpenRouter.",
         "description": "Aplana las claves JSON de idioma, envíelas al backend de traducción de OpenRouter y reconstruya automáticamente los archivos.",
         "keywords": "i18n, json, traductor, OpenRouter, localización, herramienta de traducción"
+      }
+    },
+    "text-counter": {
+      "name": "Contador de caracteres de texto",
+      "description": "Cuenta el número de caracteres, palabras, líneas y otra información del texto",
+      "placeholder": "Por favor, introduce o pega el texto a contar...",
+      "input_title": "Introducir texto",
+      "input_desc": "Introduce el contenido del texto a contar",
+      "output_title": "Resultados del conteo",
+      "output_desc": "Estadísticas en tiempo real de varios indicadores del texto",
+      "copy_stats": "Copiar resultados del conteo",
+      "stats": {
+        "characters": "Caracteres totales",
+        "characters_no_spaces": "Caracteres (sin espacios)",
+        "words": "Palabras totales",
+        "chinese_words": "Palabras chinas",
+        "english_words": "Palabras en inglés",
+        "numbers": "Números",
+        "sentences": "Oraciones",
+        "paragraphs": "Párrafos",
+        "lines": "Líneas",
+        "bytes": "Bytes (UTF-8)"
+      },
+      "introduction": "El Contador de caracteres de texto es una herramienta profesional de análisis de texto que puede contar en tiempo real varios indicadores del texto, incluyendo el número total de caracteres, caracteres sin espacios, palabras chinas, palabras en inglés, números, oraciones, párrafos, líneas y bytes. Admite el conteo preciso de texto mixto chino-inglés y se utiliza ampliamente en escenarios como el conteo de palabras para escritura, la verificación de palabras en tesis, las limitaciones de contenido en redes sociales y el análisis de artículos SEO. La herramienta se ejecuta completamente de forma local, protegiendo la privacidad del texto del usuario.",
+      "features": [
+        "📊 Conteo en tiempo real, los indicadores se muestran instantáneamente al escribir",
+        "🇨🇳 Reconocimiento preciso de caracteres chinos y palabras en inglés",
+        "🔢 Conteo inteligente de números, oraciones y párrafos",
+        "📝 Admite el conteo de texto mixto chino-inglés",
+        "📋 Copia todos los resultados del conteo con un solo clic",
+        "🎯 Cálculo preciso de bytes UTF-8",
+        "🔒 Procesamiento local, protege la privacidad del texto",
+        "📱 Diseño responsivo, compatible con dispositivos móviles"
+      ],
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre el número de caracteres y el número de palabras?",
+          "answer": "El número de caracteres cuenta todos los caracteres en el texto, incluyendo espacios, signos de puntuación, etc. El número de palabras se refiere a unidades de palabras significativas: en chino se cuenta por caracteres individuales, en inglés por palabras separadas por espacios, y los números consecutivos se cuentan como un solo número. Por ejemplo, 'Hello 你好 123' tiene 12 caracteres y 3 palabras (1 palabra en inglés + 2 caracteres chinos + 1 número)."
+        },
+        {
+          "question": "¿Cómo contar las palabras de una tesis o artículo?",
+          "answer": "Pega el texto en el cuadro de entrada y la herramienta contará automáticamente todos los indicadores. Para trabajos académicos, generalmente se presta atención al 'Número total de palabras' (caracteres chinos + palabras en inglés) o 'Caracteres (sin espacios)'. Los estándares de conteo de palabras pueden variar entre diferentes revistas y universidades, por lo que se recomienda elegir el indicador apropiado según los requisitos específicos."
+        },
+        {
+          "question": "¿Cómo se calcula el número de oraciones?",
+          "answer": "El número de oraciones se calcula utilizando los puntos (.), signos de interrogación (?) y signos de exclamación (!) en chino e inglés como delimitadores. Los signos de puntuación consecutivos se cuentan solo una vez, y el contenido en blanco no se incluye en el número de oraciones."
+        },
+        {
+          "question": "¿Para qué sirve el número de bytes UTF-8?",
+          "answer": "El número de bytes UTF-8 refleja el tamaño real del texto al almacenarlo o transmitirlo. Los caracteres chinos suelen ocupar 3 bytes en la codificación UTF-8, mientras que los caracteres ingleses ocupan 1 byte. Esto es muy útil para escenarios como límites de longitud de campos de base de datos, límites de tamaño de solicitudes API y estimación del tamaño de archivos."
+        },
+        {
+          "question": "¿Qué idiomas admite la herramienta para el conteo?",
+          "answer": "La herramienta está optimizada principalmente para texto mixto chino-inglés, pudiendo distinguir con precisión entre caracteres chinos y palabras en inglés. Para otros idiomas (como japonés, coreano, etc.), se contará por número de caracteres. El conteo de números admite todos los dígitos arábigos."
+        }
+      ],
+      "meta": {
+        "title": "Herramienta de conteo de caracteres de texto - Contador de palabras en línea",
+        "description": "Herramienta gratuita en línea para contar caracteres de texto, que cuenta en tiempo real el número de caracteres, palabras, líneas y párrafos. Admite texto mixto chino-inglés y es adecuada para la escritura y la creación de contenido.",
+        "keywords": "Conteo de caracteres, Conteo de palabras, Conteo de texto"
       }
     }
   },

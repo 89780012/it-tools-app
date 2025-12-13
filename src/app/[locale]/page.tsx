@@ -1,165 +1,177 @@
 "use client"
 
+import { useState, useMemo } from 'react'
 import { useTranslations } from 'next-intl'
 import { toolsConfig } from "@/lib/tools-config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Wrench, Star, TrendingUp, Zap, CheckCircle2 } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Search, Heart } from "lucide-react"
+import { Link } from "@/i18n/navigation"
+import * as LucideIcons from "lucide-react"
+
+// Dynamic icon component
+function DynamicIcon({ name, className }: { name?: string; className?: string }) {
+  if (!name) return null
+
+  // Convert kebab-case to PascalCase
+  const iconName = name
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('') as keyof typeof LucideIcons
+
+  const IconComponent = LucideIcons[iconName] as React.ComponentType<{ className?: string }>
+
+  if (!IconComponent) return null
+
+  return <IconComponent className={className} />
+}
 
 export default function Home() {
   const t = useTranslations()
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [favorites, setFavorites] = useState<Set<string>>(new Set())
 
-  const popularTools = toolsConfig.flatMap(category => category.tools).slice(0, 6)
+  // Get all tools with their category info
+  const allTools = useMemo(() => {
+    return toolsConfig.flatMap(category =>
+      category.tools.map(tool => ({
+        ...tool,
+        categoryId: category.id,
+        categoryNameKey: category.nameKey
+      }))
+    )
+  }, [])
+
+  // Filter tools based on search and category
+  const filteredTools = useMemo(() => {
+    return allTools.filter(tool => {
+      // Category filter
+      if (selectedCategory && tool.categoryId !== selectedCategory) {
+        return false
+      }
+
+      // Search filter
+      if (searchQuery) {
+        const query = searchQuery.toLowerCase()
+        const name = t(tool.nameKey).toLowerCase()
+        const description = t(tool.descriptionKey).toLowerCase()
+        return name.includes(query) || description.includes(query)
+      }
+
+      return true
+    })
+  }, [allTools, searchQuery, selectedCategory, t])
+
+  // Toggle favorite
+  const toggleFavorite = (toolId: string, e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setFavorites(prev => {
+      const newFavorites = new Set(prev)
+      if (newFavorites.has(toolId)) {
+        newFavorites.delete(toolId)
+      } else {
+        newFavorites.add(toolId)
+      }
+      return newFavorites
+    })
+  }
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="mb-8">
-        <div className="flex items-center space-x-3 mb-4">
-          <Wrench className="h-8 w-8 text-primary" />
-          <div>
-            <h1 className="text-4xl font-bold">{t("header.title")}</h1>
-            <p className="text-xl text-muted-foreground mt-2">{t("header.subtitle")}</p>
-          </div>
-        </div>
-        
-        <Alert className="mb-6 border-primary/50 bg-primary/5">
-          <CheckCircle2 className="h-5 w-5 text-primary" />
-          <AlertDescription className="text-base">
-            {t("home.new_language_announcement")}
-          </AlertDescription>
-        </Alert>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t("home.tools_total")}</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">50+</div>
-              <p className="text-xs text-muted-foreground">{t("home.continuously_adding")}</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t("home.tools_categories")}</CardTitle>
-              <Star className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{toolsConfig.length}</div>
-              <p className="text-xs text-muted-foreground">{t("home.cover_main_scenarios")}</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t("home.update_frequency")}</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{t("home.weekly")}</div>
-              <p className="text-xs text-muted-foreground">{t("home.new_tools_features")}</p>
-            </CardContent>
-          </Card>
+    <div className="container mx-auto p-4 md:p-6">
+      {/* Header with search */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold mb-4">{t("home.all_tools")}</h1>
+
+        {/* Search input */}
+        <div className="relative max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder={t("home.search_placeholder")}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
         </div>
       </div>
 
-      <div className="space-y-8">
-        <section>
-          <h2 className="text-2xl font-bold mb-2">{t("home.categories_title")}</h2>
-          <h3 className="text-lg text-muted-foreground mb-6">{t("home.categories_subtitle")}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {toolsConfig.map((category) => (
-              <Card key={category.id} className="hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <span>{t(category.nameKey)}</span>
-                  </CardTitle>
-                  <CardDescription>{t(category.descriptionKey)}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    {category.tools.length > 0
-                      ? t("home.tools_count", { count: category.tools.length })
-                      : t("home.coming_soon")}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {popularTools.length > 0 && (
-          <section>
-            <h2 className="text-2xl font-bold mb-2">{t("home.popular_tools_title")}</h2>
-            <h3 className="text-lg text-muted-foreground mb-6">{t("home.popular_tools_subtitle")}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {popularTools.map((tool) => (
-                <Card key={tool.id} className="hover:shadow-md transition-shadow cursor-pointer">
-                  <CardHeader>
-                    <CardTitle className="text-lg">{t(tool.nameKey)}</CardTitle>
-                    <CardDescription>{t(tool.descriptionKey)}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-primary">{t("common.click_sidebar")}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section>
-          <h2 className="text-2xl font-bold mb-2">{t("home.features_title")}</h2>
-          <h3 className="text-lg text-muted-foreground mb-6">{t("home.features_subtitle")}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>{t("home.modern_design")}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  {t("home.modern_design_desc")}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>{t("home.multilingual")}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  {t("home.multilingual_desc")}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>{t("home.high_performance")}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  {t("home.high_performance_desc")}
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>{t("home.privacy_protection")}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  {t("home.privacy_protection_desc")}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+      {/* Category filter */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        <Badge
+          variant={selectedCategory === null ? "default" : "outline"}
+          className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+          onClick={() => setSelectedCategory(null)}
+        >
+          {t("home.all_categories")}
+        </Badge>
+        {toolsConfig.map((category) => (
+          <Badge
+            key={category.id}
+            variant={selectedCategory === category.id ? "default" : "outline"}
+            className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+            onClick={() => setSelectedCategory(category.id)}
+          >
+            {t(category.nameKey)}
+          </Badge>
+        ))}
       </div>
+
+      {/* Tools count */}
+      <p className="text-sm text-muted-foreground mb-4">
+        {t("home.showing_tools", { count: filteredTools.length })}
+      </p>
+
+      {/* Tools grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {filteredTools.map((tool) => (
+          <Link key={tool.id} href={tool.path} className="block">
+            <Card className="h-full hover:shadow-lg hover:border-primary/50 transition-all cursor-pointer group">
+              <CardHeader className="pb-2">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <DynamicIcon name={tool.icon} className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="text-base font-semibold line-clamp-1">
+                      {t(tool.nameKey)}
+                    </CardTitle>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 shrink-0"
+                    onClick={(e) => toggleFavorite(tool.id, e)}
+                  >
+                    <Heart
+                      className={`h-4 w-4 ${
+                        favorites.has(tool.id)
+                          ? "fill-red-500 text-red-500"
+                          : "text-muted-foreground"
+                      }`}
+                    />
+                  </Button>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="line-clamp-2 text-sm">
+                  {t(tool.descriptionKey)}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
+
+      {/* No results */}
+      {filteredTools.length === 0 && (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">{t("home.no_tools_found")}</p>
+        </div>
+      )}
     </div>
   )
 }

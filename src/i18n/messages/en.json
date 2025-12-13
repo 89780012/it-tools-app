@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "All Tools",
+    "search_placeholder": "Search tools...",
+    "all_categories": "All",
+    "showing_tools": "{count} tools in total",
+    "no_tools_found": "No matching tools found",
     "tools_total": "Total Tools",
     "tools_categories": "Tool Categories",
     "update_frequency": "Update Frequency",
@@ -3203,6 +3208,66 @@
         "title": "i18n JSON Translator - Localize JSON files with OpenRouter",
         "description": "Flatten locale JSON keys, send them to your OpenRouter translation backend, and rebuild the file automatically.",
         "keywords": "i18n,json translator,openrouter,localization,translation tool"
+      }
+    },
+    "text-counter": {
+      "name": "Text Character Counter",
+      "description": "Count characters, words, lines, and other information in text",
+      "placeholder": "Please enter or paste the text to be counted...",
+      "input_title": "Enter Text",
+      "input_desc": "Enter the text content to be counted",
+      "output_title": "Statistics Results",
+      "output_desc": "Real-time statistics of various text metrics",
+      "copy_stats": "Copy Statistics Results",
+      "stats": {
+        "characters": "Total Characters",
+        "characters_no_spaces": "Characters (excluding spaces)",
+        "words": "Total Words",
+        "chinese_words": "Chinese Characters",
+        "english_words": "English Words",
+        "numbers": "Numbers",
+        "sentences": "Sentences",
+        "paragraphs": "Paragraphs",
+        "lines": "Lines",
+        "bytes": "Bytes (UTF-8)"
+      },
+      "introduction": "The Text Character Counter is a professional text analysis tool that provides real-time statistics for various text metrics, including total characters, characters (excluding spaces), Chinese characters, English words, numbers, sentences, paragraphs, lines, and bytes. It supports accurate counting of mixed Chinese and English text and is widely used in scenarios such as writing word count, thesis word count checking, social media content limits, and SEO article analysis. The tool runs entirely locally, ensuring user text privacy and security.",
+      "features": [
+        "📊 Real-time statistics, metrics displayed instantly upon input",
+        "🇨🇳 Accurately identifies Chinese characters and English words",
+        "🔢 Intelligently counts numbers, sentences, and paragraphs",
+        "📝 Supports mixed Chinese and English text counting",
+        "📋 One-click copy of all statistics results",
+        "🎯 Accurate UTF-8 byte count calculation",
+        "🔒 Local processing, protects text privacy",
+        "📱 Responsive design, supports mobile devices"
+      ],
+      "faq": [
+        {
+          "question": "What is the difference between character count and word count?",
+          "answer": "Character count tallies all characters in the text, including spaces, punctuation, etc. Word count refers to meaningful lexical units: Chinese characters are counted individually, English words are counted by space separation, and consecutive numbers are counted as one number. For example, 'Hello 你好 123' has a character count of 12 and a word count of 3 (1 English word + 2 Chinese characters + 1 number)."
+        },
+        {
+          "question": "How to count words in a thesis or article?",
+          "answer": "Paste the text into the input box, and the tool will automatically count various metrics. For academic papers, 'Total Words' (Chinese characters + English words) or 'Characters (excluding spaces)' are usually the focus. Different journals and schools may have different word count standards, so it is recommended to choose the appropriate metric based on specific requirements."
+        },
+        {
+          "question": "How are sentences counted?",
+          "answer": "Sentences are counted using periods (. or 。), question marks (? or ？), and exclamation marks (! or !) in both Chinese and English as delimiters. Consecutive punctuation marks are counted only once, and blank content is not included in the sentence count."
+        },
+        {
+          "question": "What is the use of UTF-8 byte count?",
+          "answer": "The UTF-8 byte count reflects the actual size of the text when stored or transmitted. Chinese characters typically occupy 3 bytes in UTF-8 encoding, while English characters occupy 1 byte. This is very useful for scenarios such as database field length limits, API request size limits, and file size estimation."
+        },
+        {
+          "question": "Which languages does the tool support for counting?",
+          "answer": "The tool is primarily optimized for mixed Chinese and English text, accurately distinguishing between Chinese characters and English words. For other languages (e.g., Japanese, Korean), it counts by character. Number counting supports all Arabic numerals."
+        }
+      ],
+      "meta": {
+        "title": "Text Character Counter - Online Word Count",
+        "description": "Free online text character counter tool, real-time statistics for characters, words, lines, and paragraphs, supports mixed Chinese and English text, suitable for writing and content creation.",
+        "keywords": "Character Count, Word Count, Text Statistics"
       }
     }
   },

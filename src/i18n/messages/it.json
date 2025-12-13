@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "Tutti gli strumenti",
+    "search_placeholder": "Cerca strumenti...",
+    "all_categories": "Tutti",
+    "showing_tools": "Totale {count} strumenti",
+    "no_tools_found": "Nessuno strumento corrispondente trovato",
     "tools_total": "Numero totale di strumenti",
     "tools_categories": "Categoria degli strumenti",
     "update_frequency": "Frequenza di aggiornamento",
@@ -3201,6 +3206,66 @@
         "title": "Traduttore i18n JSON - Localizza file JSON con OpenRouter.",
         "description": "Appiattisci le chiavi JSON delle lingue, inviale al backend di traduzione OpenRouter e ricostruisci automaticamente il file.",
         "keywords": "Traduttore i18n, JSON, OpenRouter, localizzazione, strumento di traduzione"
+      }
+    },
+    "text-counter": {
+      "name": "Conteggio caratteri testo",
+      "description": "Conta il numero di caratteri, parole, righe e altre informazioni di un testo",
+      "placeholder": "Inserisci o incolla il testo da contare...",
+      "input_title": "Inserisci testo",
+      "input_desc": "Inserisci il contenuto del testo da contare",
+      "output_title": "Risultati del conteggio",
+      "output_desc": "Conta in tempo reale le varie metriche del testo",
+      "copy_stats": "Copia i risultati del conteggio",
+      "stats": {
+        "characters": "Numero totale di caratteri",
+        "characters_no_spaces": "Numero di caratteri (senza spazi)",
+        "words": "Numero totale di parole",
+        "chinese_words": "Numero di caratteri cinesi",
+        "english_words": "Numero di parole inglesi",
+        "numbers": "Numero di cifre",
+        "sentences": "Numero di frasi",
+        "paragraphs": "Numero di paragrafi",
+        "lines": "Numero di righe",
+        "bytes": "Numero di byte (UTF-8)"
+      },
+      "introduction": "Lo strumento di conteggio caratteri testo è uno strumento professionale di analisi testuale, in grado di contare in tempo reale varie metriche del testo, inclusi il numero totale di caratteri, il numero di caratteri senza spazi, il numero di caratteri cinesi, il numero di parole inglesi, il numero di cifre, il numero di frasi, il numero di paragrafi, il numero di righe e il numero di byte. Supporta il conteggio preciso di testi misti cinese-inglese ed è ampiamente utilizzato in scenari come il conteggio delle parole per la scrittura, il controllo del numero di parole di tesi, i limiti di contenuto dei social media, l'analisi di articoli SEO, ecc. Lo strumento funziona completamente in locale, proteggendo la privacy del testo dell'utente.",
+      "features": [
+        "📊 Conteggio in tempo reale, le metriche vengono visualizzate immediatamente all'inserimento",
+        "🇨🇳 Riconoscimento preciso di caratteri cinesi e parole inglesi",
+        "🔢 Conteggio intelligente di cifre, frasi e paragrafi",
+        "📝 Supporta il conteggio di testi misti cinese-inglese",
+        "📋 Copia tutti i risultati del conteggio con un clic",
+        "🎯 Calcolo preciso del numero di byte UTF-8",
+        "🔒 Elaborazione locale, protezione della privacy del testo",
+        "📱 Design responsive, supporta i dispositivi mobili"
+      ],
+      "faq": [
+        {
+          "question": "Qual è la differenza tra numero di caratteri e numero di parole?",
+          "answer": "Il numero di caratteri conta tutti i caratteri nel testo, inclusi spazi, punteggiatura, ecc. Il numero di parole si riferisce a unità di parole significative: il cinese è contato per singolo carattere, l'inglese per parole separate da spazi, e i numeri consecutivi sono contati come un'unica cifra. Ad esempio, 'Hello 你好 123' ha 12 caratteri e 3 parole (1 parola inglese + 2 caratteri cinesi + 1 cifra)."
+        },
+        {
+          "question": "Come contare le parole di una tesi o di un articolo?",
+          "answer": "Incolla il testo nella casella di input e lo strumento conterà automaticamente le varie metriche. Per le tesi accademiche, di solito ci si concentra sul 'Numero totale di parole' (caratteri cinesi + parole inglesi) o sul 'Numero di caratteri (senza spazi)'. Gli standard di conteggio delle parole possono variare tra diverse riviste e università, si consiglia di scegliere l'indicatore appropriato in base ai requisiti specifici."
+        },
+        {
+          "question": "Come viene calcolato il numero di frasi?",
+          "answer": "Il numero di frasi viene calcolato utilizzando i punti (.), i punti interrogativi (?) e i punti esclamativi (!) cinesi e inglesi come separatori. I segni di punteggiatura consecutivi vengono contati solo una volta, e il contenuto vuoto non viene incluso nel conteggio delle frasi."
+        },
+        {
+          "question": "A cosa serve il numero di byte UTF-8?",
+          "answer": "Il numero di byte UTF-8 riflette la dimensione effettiva del testo durante l'archiviazione o la trasmissione. I caratteri cinesi occupano solitamente 3 byte nella codifica UTF-8, mentre i caratteri inglesi occupano 1 byte. Questo è molto utile per scenari come i limiti di lunghezza dei campi del database, i limiti di dimensione delle richieste API, la stima delle dimensioni dei file, ecc."
+        },
+        {
+          "question": "Quali lingue supporta lo strumento per il conteggio?",
+          "answer": "Lo strumento è ottimizzato principalmente per testi misti cinese-inglese, ed è in grado di distinguere con precisione i caratteri cinesi dalle parole inglesi. Per altre lingue (come giapponese, coreano, ecc.), il conteggio verrà effettuato per numero di caratteri. Il conteggio delle cifre supporta tutti i numeri arabi."
+        }
+      ],
+      "meta": {
+        "title": "Strumento di conteggio caratteri testo - Conteggio parole online",
+        "description": "Strumento gratuito online per il conteggio dei caratteri del testo, conta in tempo reale il numero di caratteri, parole, righe, paragrafi, supporta testi misti cinese-inglese, adatto per la scrittura e la creazione di contenuti.",
+        "keywords": "Conteggio caratteri, Conteggio parole, Statistiche testo"
       }
     }
   },

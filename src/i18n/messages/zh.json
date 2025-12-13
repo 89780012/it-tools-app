@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "全部工具",
+    "search_placeholder": "搜索工具...",
+    "all_categories": "全部",
+    "showing_tools": "共 {count} 个工具",
+    "no_tools_found": "没有找到匹配的工具",
     "tools_total": "工具总数",
     "tools_categories": "工具分类",
     "update_frequency": "更新频率",

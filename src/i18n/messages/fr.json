@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "Tous les outils",
+    "search_placeholder": "Rechercher un outil...",
+    "all_categories": "Tout",
+    "showing_tools": "{count} outils au total",
+    "no_tools_found": "Aucun outil correspondant trouvé",
     "tools_total": "Nombre total d'outils",
     "tools_categories": "Catégories d'outils",
     "update_frequency": "Fréquence de mise à jour",
@@ -3201,6 +3206,66 @@
         "title": "i18n JSON traducteur - Localisation de fichiers JSON avec OpenRouter.",
         "description": "Aplatir les clés JSON linguistiques, les envoyer vers votre backend OpenRouter de traduction, puis reconstruire automatiquement le fichier.",
         "keywords": "i18n, json, traducteur, OpenRouter, localisation, outil de traduction"
+      }
+    },
+    "text-counter": {
+      "name": "Compteur de caractères de texte",
+      "description": "Compte le nombre de caractères, de mots, de lignes, etc., d'un texte.",
+      "placeholder": "Veuillez saisir ou coller le texte à analyser...",
+      "input_title": "Saisir le texte",
+      "input_desc": "Saisissez le contenu du texte à analyser",
+      "output_title": "Résultats de l'analyse",
+      "output_desc": "Statistiques en temps réel des indicateurs de texte",
+      "copy_stats": "Copier les résultats de l'analyse",
+      "stats": {
+        "characters": "Nombre total de caractères",
+        "characters_no_spaces": "Nombre de caractères (sans espaces)",
+        "words": "Nombre total de mots",
+        "chinese_words": "Nombre de caractères chinois",
+        "english_words": "Nombre de mots anglais",
+        "numbers": "Nombre de chiffres",
+        "sentences": "Nombre de phrases",
+        "paragraphs": "Nombre de paragraphes",
+        "lines": "Nombre de lignes",
+        "bytes": "Nombre d'octets (UTF-8)"
+      },
+      "introduction": "L'outil de comptage de caractères de texte est un outil d'analyse de texte professionnel qui peut compter en temps réel divers indicateurs de texte, y compris le nombre total de caractères, le nombre de caractères sans espaces, le nombre de caractères chinois, le nombre de mots anglais, le nombre de chiffres, le nombre de phrases, le nombre de paragraphes, le nombre de lignes et le nombre d'octets. Il prend en charge le comptage précis de textes mixtes chinois et anglais et est largement utilisé pour le comptage de mots dans l'écriture, la vérification du nombre de mots dans les thèses, les limites de contenu des médias sociaux, l'analyse d'articles SEO, etc. L'outil fonctionne entièrement localement, protégeant la confidentialité du texte de l'utilisateur.",
+      "features": [
+        "📊 Statistiques en temps réel, les indicateurs s'affichent instantanément dès la saisie",
+        "🇨🇳 Reconnaissance précise des caractères chinois et des mots anglais",
+        "🔢 Comptage intelligent des chiffres, des phrases et des paragraphes",
+        "📝 Prend en charge le comptage de textes mixtes chinois et anglais",
+        "📋 Copier tous les résultats en un clic",
+        "🎯 Calcul précis du nombre d'octets UTF-8",
+        "🔒 Traitement local, protection de la confidentialité du texte",
+        "📱 Conception réactive, compatible avec les appareils mobiles"
+      ],
+      "faq": [
+        {
+          "question": "Quelle est la différence entre le nombre de caractères et le nombre de mots ?",
+          "answer": "Le nombre de caractères compte tous les caractères du texte, y compris les espaces, la ponctuation, etc. Le nombre de mots fait référence à des unités de mots significatives : les caractères chinois sont comptés individuellement, les mots anglais sont comptés par des espaces, et une séquence de chiffres est comptée comme un seul nombre. Par exemple, 'Hello 你好 123' a 12 caractères et 3 mots (1 mot anglais + 2 caractères chinois + 1 nombre)."
+        },
+        {
+          "question": "Comment compter les mots d'une thèse ou d'un article ?",
+          "answer": "Collez le texte dans le champ de saisie, et l'outil comptera automatiquement les différents indicateurs. Pour les articles universitaires, l'attention est généralement portée sur le 'Nombre total de mots' (caractères chinois + mots anglais) ou le 'Nombre de caractères (sans espaces)'. Les normes de comptage de mots peuvent varier selon les revues et les universités, il est donc conseillé de choisir l'indicateur approprié en fonction des exigences spécifiques."
+        },
+        {
+          "question": "Comment le nombre de phrases est-il calculé ?",
+          "answer": "Le nombre de phrases est calculé en utilisant les points (.), les points d'interrogation (?) et les points d'exclamation (!) comme séparateurs, qu'ils soient en chinois ou en anglais. Les signes de ponctuation consécutifs ne sont comptés qu'une seule fois, et le contenu vide n'est pas inclus dans le nombre de phrases."
+        },
+        {
+          "question": "À quoi sert le nombre d'octets UTF-8 ?",
+          "answer": "Le nombre d'octets UTF-8 reflète la taille réelle du texte lors du stockage ou de la transmission. Les caractères chinois occupent généralement 3 octets en encodage UTF-8, tandis que les caractères anglais occupent 1 octet. C'est très utile pour les limites de longueur des champs de base de données, les limites de taille des requêtes API, l'estimation de la taille des fichiers, etc."
+        },
+        {
+          "question": "Quelles langues l'outil prend-il en charge pour le comptage ?",
+          "answer": "L'outil est principalement optimisé pour les textes mixtes chinois et anglais, capable de distinguer précisément les caractères chinois et les mots anglais. Pour les autres langues (comme le japonais, le coréen, etc.), le comptage se fera par nombre de caractères. Le comptage des chiffres prend en charge tous les chiffres arabes."
+        }
+      ],
+      "meta": {
+        "title": "Outil de comptage de caractères de texte - Compteur de mots en ligne",
+        "description": "Outil gratuit de comptage de caractères de texte en ligne, qui compte en temps réel le nombre de caractères, de mots, de lignes et de paragraphes, prend en charge les textes mixtes chinois et anglais, et est adapté à l'écriture et à la création de contenu.",
+        "keywords": "Comptage de caractères, Comptage de mots, Statistiques de texte"
       }
     }
   },

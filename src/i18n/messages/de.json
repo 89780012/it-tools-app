@@ -59,6 +59,11 @@
     }
   },
   "home": {
+    "all_tools": "Alle Tools",
+    "search_placeholder": "Tools suchen...",
+    "all_categories": "Alle",
+    "showing_tools": "Insgesamt {count} Tools",
+    "no_tools_found": "Keine passenden Tools gefunden",
     "tools_total": "Werkzeuge insgesamt",
     "tools_categories": "Werkzeug-Kategorien",
     "update_frequency": "Aktualisierungshäufigkeit",
@@ -3203,6 +3208,66 @@
         "title": "i18n JSON Übersetzer - Locale-Dateien automatisch übersetzen",
         "description": "JSON-Schlüssel flatten, mit OpenRouter übersetzen und die ursprüngliche Struktur sofort wiederherstellen.",
         "keywords": "i18n,json,übersetzer,openrouter,lokalisierung"
+      }
+    },
+    "text-counter": {
+      "name": "Textzeichenstatistik",
+      "description": "Zählt Zeichen, Wörter, Zeilen und andere Informationen eines Textes",
+      "placeholder": "Bitte geben Sie den zu zählenden Text ein oder fügen Sie ihn ein...",
+      "input_title": "Text eingeben",
+      "input_desc": "Geben Sie den zu zählenden Textinhalt ein",
+      "output_title": "Statistikergebnisse",
+      "output_desc": "Echtzeit-Statistik verschiedener Textindikatoren",
+      "copy_stats": "Statistikergebnisse kopieren",
+      "stats": {
+        "characters": "Gesamtzeichenzahl",
+        "characters_no_spaces": "Zeichenzahl (ohne Leerzeichen)",
+        "words": "Gesamtwortzahl",
+        "chinese_words": "Anzahl chinesischer Zeichen",
+        "english_words": "Anzahl englischer Wörter",
+        "numbers": "Anzahl der Ziffern",
+        "sentences": "Satzanzahl",
+        "paragraphs": "Absatzanzahl",
+        "lines": "Zeilenanzahl",
+        "bytes": "Byte-Anzahl (UTF-8)"
+      },
+      "introduction": "Das Textzeichenstatistik-Tool ist ein professionelles Textanalyse-Tool, das verschiedene Textindikatoren in Echtzeit zählen kann, darunter die Gesamtzeichenzahl, Zeichenzahl (ohne Leerzeichen), Anzahl chinesischer Zeichen, Anzahl englischer Wörter, Anzahl der Ziffern, Satzanzahl, Absatzanzahl, Zeilenanzahl und Byte-Anzahl. Es unterstützt die präzise Zählung von gemischten chinesischen und englischen Texten und wird häufig in Szenarien wie der Zählung von Wörtern beim Schreiben, der Überprüfung von Dissertationen, der Begrenzung von Social-Media-Inhalten und der SEO-Artikelanalyse eingesetzt. Das Tool läuft vollständig lokal und schützt die Privatsphäre der Benutzertexte.",
+      "features": [
+        "📊 Echtzeit-Statistik, sofortige Anzeige der Indikatoren bei Eingabe",
+        "🇨🇳 Präzise Erkennung von chinesischen Zeichen und englischen Wörtern",
+        "🔢 Intelligente Zählung von Ziffern, Sätzen und Absätzen",
+        "📝 Unterstützt die Zählung von gemischten chinesischen und englischen Texten",
+        "📋 Alle Statistikergebnisse mit einem Klick kopieren",
+        "🎯 Präzise Berechnung der UTF-8 Byte-Anzahl",
+        "🔒 Lokale Verarbeitung, Schutz der Textprivatsphäre",
+        "📱 Responsives Design, unterstützt mobile Geräte"
+      ],
+      "faq": [
+        {
+          "question": "Was ist der Unterschied zwischen Zeichenzahl und Wortzahl?",
+          "answer": "Die Zeichenzahl zählt alle Zeichen im Text, einschließlich Leerzeichen, Satzzeichen usw. Die Wortzahl bezieht sich auf sinnvolle Worteinheiten: Chinesische Zeichen werden einzeln gezählt, englische Wörter werden durch Leerzeichen getrennt gezählt, und aufeinanderfolgende Ziffern werden als eine Zahl gezählt. Zum Beispiel hat 'Hello 你好 123' eine Zeichenzahl von 12 und eine Wortzahl von 3 (1 englisches Wort + 2 chinesische Zeichen + 1 Zahl)."
+        },
+        {
+          "question": "Wie zählt man die Wörter einer Dissertation oder eines Artikels?",
+          "answer": "Fügen Sie den Text in das Eingabefeld ein, und das Tool zählt automatisch alle Indikatoren. Bei wissenschaftlichen Arbeiten wird in der Regel die 'Gesamtwortzahl' (chinesische Zeichen + englische Wörter) oder die 'Zeichenzahl (ohne Leerzeichen)' beachtet. Da die Standards für die Wortzählung je nach Zeitschrift und Universität variieren können, wird empfohlen, den geeigneten Indikator gemäß den spezifischen Anforderungen auszuwählen."
+        },
+        {
+          "question": "Wie wird die Satzanzahl berechnet?",
+          "answer": "Die Satzanzahl wird anhand von Satzzeichen im Chinesischen und Englischen (Punkt [. oder 。], Fragezeichen [? oder ？], Ausrufezeichen [! oder ！]) als Trennzeichen berechnet. Aufeinanderfolgende Satzzeichen werden nur einmal gezählt, und leere Inhalte werden nicht zur Satzanzahl gezählt."
+        },
+        {
+          "question": "Wozu dient die UTF-8 Byte-Anzahl?",
+          "answer": "Die UTF-8 Byte-Anzahl spiegelt die tatsächliche Größe des Textes bei der Speicherung oder Übertragung wider. Chinesische Zeichen belegen in der UTF-8-Kodierung in der Regel 3 Bytes, englische Zeichen 1 Byte. Dies ist sehr nützlich für Szenarien wie Datenbankfeldlängenbeschränkungen, API-Anforderungsgrößenbeschränkungen und Dateigrößenabschätzungen."
+        },
+        {
+          "question": "Welche Sprachen unterstützt das Tool bei der Statistik?",
+          "answer": "Das Tool ist hauptsächlich für gemischte chinesische und englische Texte optimiert und kann chinesische Zeichen und englische Wörter präzise unterscheiden. Für andere Sprachen (wie Japanisch, Koreanisch usw.) wird die Zeichenzahl gezählt. Die Ziffernstatistik unterstützt alle arabischen Ziffern."
+        }
+      ],
+      "meta": {
+        "title": "Textzeichenstatistik-Tool - Online-Wortzähler",
+        "description": "Kostenloses Online-Textzeichenstatistik-Tool, das Zeichen, Wörter, Zeilen und Absätze in Echtzeit zählt, gemischte chinesische und englische Texte unterstützt und sich zum Schreiben und für die Inhaltserstellung eignet.",
+        "keywords": "Zeichenstatistik, Wortstatistik, Textstatistik"
       }
     }
   },
