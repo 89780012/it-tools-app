@@ -2371,6 +2371,1249 @@
         "keywords": "Docker Compose, 컨테이너 오케스트레이션, Docker 변환"
       }
     },
+    "docker-cheatsheet": {
+      "name": "Docker 명령어 빠른 참조",
+      "description": "Docker 자주 사용하는 명령어 빠른 참조표, 빠르게 Docker 명령어를 찾고 복사",
+      "search_placeholder": "Docker 명령어 검색...",
+      "copy_success": "명령어가 복사되었습니다",
+      "no_results": "일치하는 명령어를 찾을 수 없습니다",
+      "all_categories": "전체",
+      "results_count": "{count}개의 명령어를 찾았습니다",
+      "categories": {
+        "containers": "컨테이너 관리",
+        "images": "이미지 관리",
+        "volumes": "데이터 볼륨",
+        "networks": "네트워크 관리",
+        "compose": "Docker Compose",
+        "system": "시스템 관리",
+        "registry": "이미지 레지스트리",
+        "build": "이미지 빌드"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [OPTIONS] IMAGE",
+            "desc": "새로운 컨테이너 생성 및 시작"
+          },
+          "run_detach": {
+            "cmd": "docker run -d IMAGE",
+            "desc": "백그라운드에서 컨테이너 실행"
+          },
+          "run_name": {
+            "cmd": "docker run --name NAME IMAGE",
+            "desc": "컨테이너 이름 지정하여 실행"
+          },
+          "run_port": {
+            "cmd": "docker run -p HOST:CONTAINER IMAGE",
+            "desc": "포트 매핑하여 컨테이너 실행"
+          },
+          "run_volume": {
+            "cmd": "docker run -v HOST:CONTAINER IMAGE",
+            "desc": "볼륨 마운트하여 컨테이너 실행"
+          },
+          "run_env": {
+            "cmd": "docker run -e KEY=VALUE IMAGE",
+            "desc": "환경 변수 설정하여 컨테이너 실행"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm IMAGE",
+            "desc": "컨테이너 종료 후 자동 삭제"
+          },
+          "run_it": {
+            "cmd": "docker run -it IMAGE /bin/bash",
+            "desc": "인터랙티브 방식으로 컨테이너 실행"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "실행 중인 컨테이너 목록 보기"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "모든 컨테이너 목록 보기(중지된 컨테이너 포함)"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "컨테이너 ID만 표시"
+          },
+          "start": {
+            "cmd": "docker start CONTAINER",
+            "desc": "중지된 컨테이너 시작"
+          },
+          "stop": {
+            "cmd": "docker stop CONTAINER",
+            "desc": "실행 중인 컨테이너 중지"
+          },
+          "restart": {
+            "cmd": "docker restart CONTAINER",
+            "desc": "컨테이너 재시작"
+          },
+          "kill": {
+            "cmd": "docker kill CONTAINER",
+            "desc": "강제로 컨테이너 중지"
+          },
+          "rm": {
+            "cmd": "docker rm CONTAINER",
+            "desc": "중지된 컨테이너 삭제"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f CONTAINER",
+            "desc": "강제로 컨테이너 삭제(실행 중인 컨테이너 포함)"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "모든 중지된 컨테이너 삭제"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER COMMAND",
+            "desc": "실행 중인 컨테이너 내에서 명령어 실행"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "컨테이너의 bash 터미널에 진입"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "컨테이너 로그 확인"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "컨테이너 로그 실시간 추적"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "마지막 100줄 로그 확인"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "컨테이너 상세 정보 확인"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "컨테이너 내에서 실행 중인 프로세스 확인"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "컨테이너 리소스 사용량 실시간 표시"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:SRC DEST",
+            "desc": "컨테이너에서 파일을 호스트로 복사"
+          },
+          "cp_to": {
+            "cmd": "docker cp SRC CONTAINER:DEST",
+            "desc": "호스트에서 컨테이너로 파일 복사"
+          },
+          "rename": {
+            "cmd": "docker rename OLD NEW",
+            "desc": "컨테이너 이름 변경"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "컨테이너 일시 정지"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "일시 정지된 컨테이너 복원"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "컨테이너가 중지될 때까지 대기하고 종료 코드 반환"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "실행 중인 컨테이너에 연결"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "컨테이너 포트 매핑 확인"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "컨테이너 구성 업데이트"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "로컬 이미지 목록 보기"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "모든 이미지 목록 보기(중간 레이어 포함)"
+          },
+          "pull": {
+            "cmd": "docker pull IMAGE",
+            "desc": "레지스트리에서 이미지 다운로드"
+          },
+          "pull_tag": {
+            "cmd": "docker pull IMAGE:TAG",
+            "desc": "지정된 태그의 이미지 다운로드"
+          },
+          "push": {
+            "cmd": "docker push IMAGE",
+            "desc": "이미지 레지스트리에 업로드"
+          },
+          "rmi": {
+            "cmd": "docker rmi IMAGE",
+            "desc": "이미지 삭제"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f IMAGE",
+            "desc": "강제로 이미지 삭제"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "모든 떠다니는 이미지 삭제"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "이미지에 새로운 태그 생성"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "이미지 빌드 이력 확인"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "이미지 상세 정보 확인"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "이미지를 tar 파일로 저장"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "tar 파일에서 이미지 로드"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "tar 파일에서 이미지 가져오기"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "컨테이너를 tar 파일로 내보내기"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "컨테이너에서 새로운 이미지 생성"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "Docker Hub에서 이미지 검색"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "사용하지 않는 이미지 삭제"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "모든 사용하지 않는 이미지 삭제"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "모든 데이터 볼륨 목록 보기"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "데이터 볼륨 생성"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "데이터 볼륨 상세 정보 보기"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "데이터 볼륨 삭제"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "모든 사용하지 않는 데이터 볼륨 삭제"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "데이터 볼륨 백업"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "데이터 볼륨 복구"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "모든 네트워크 목록 보기"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "네트워크 생성"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "브리지 네트워크 생성"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "오버레이 네트워크 생성"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "네트워크 상세 정보 보기"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "네트워크 삭제"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "컨테이너를 네트워크에 연결"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "컨테이너를 네트워크에서 분리"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "모든 사용되지 않는 네트워크 삭제"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "모든 서비스 생성 및 시작"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "백그라운드에서 모든 서비스 시작"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "이미지 빌드 및 서비스 시작"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "모든 서비스 중지 및 삭제"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "서비스 중지 및 데이터 볼륨 삭제"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "기존 서비스 시작"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "서비스 중지"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "서비스 재시작"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "서비스 상태 나열"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "서비스 로그 보기"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "서비스 로그 실시간 추적"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "서비스 컨테이너에서 명령 실행"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "서비스 이미지 빌드"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "서비스 이미지 다운로드"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "구성 검증 및 보기"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "일회성 명령 실행"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "서비스 인스턴스 수 확장"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "Docker 시스템 정보 표시"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "Docker 버전 정보 표시"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "Docker 디스크 사용량 표시"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "사용되지 않는 데이터 정리"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "모든 사용되지 않는 데이터 정리"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "사용되지 않는 데이터를 포함한 데이터 볼륨 정리"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "Docker 이벤트 실시간 가져오기"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "특정 유형의 이벤트 필터링"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "Docker Hub에 로그인"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "지정된 이미지 레지스트리에 로그인"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "Docker Hub에서 로그아웃"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "지정된 이미지 레지스트리에서 로그아웃"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "Dockerfile에서 이미지 빌드"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "지정된 Dockerfile로 빌드"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "캐시를 사용하지 않고 빌드"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "빌드 매개변수 전달"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "다중 단계 빌드의 특정 단계 빌드"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "다중 플랫폼 빌드"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "새 빌더 생성 및 사용"
+          }
+        }
+      },
+      "introduction": "Docker 명령어 요약은 개발자와 운영자용으로 설계된 Docker 명령어 빠른 참조 도구입니다. 컨테이너 관리, 이미지 작업, 데이터 볼륨, 네트워크 설정, Docker Compose 등 모든 일반 명령어를 기능별로 분류하여 제공하며, 빠른 검색과 한 번의 클릭으로 복사 기능을 지원합니다. Docker 초보자이든 경험 많은 DevOps 엔지니어이든 필요한 명령어를 빠르게 찾을 수 있습니다.",
+      "features": [
+        "8개의 주요 분류로 Docker의 모든 일반적인 사용 사례를 포함",
+        "100개 이상의 일반 명령어를 기초부터 고급까지 전부 수록",
+        "키워드 검색 지원으로 필요한 명령어를 빠르게 찾을 수 있음",
+        "한 번의 클릭으로 명령어 복사하여 작업 효율성 향상",
+        "명확한 중국어 설명으로 이해하고 학습하기 쉬움",
+        "분류별 브라우징 및 필터링을 통해 관련 명령어 빠르게 찾기",
+        "반응형 디자인으로 모바일에서도 확인 가능",
+        "로컬에서 실행되어 인터넷 없이도 사용 가능"
+      ],
+      "faq": [
+        {
+          "question": "Docker 명령어 요약이 필요한 이유는?",
+          "answer": "Docker 명령어는 많고 매개변수가 복잡하여 경험 많은 개발자조차 모든 명령어를 기억하기 어렵습니다. 요약표는 명령어를 빠르게 찾아 복사할 수 있도록 도와주어 문서를 검색하는 시간을 절약하고 개발 및 운영 효율을 향상시킵니다."
+        },
+        {
+          "question": "요약표에는 어떤 명령어 분류가 포함되어 있나요?",
+          "answer": "요약표에는 8개의 주요 분류가 포함되어 있습니다: 컨테이너 관리, 이미지 관리, 데이터 볼륨, 네트워크 관리, Docker Compose, 시스템 관리, 이미지 레지스트리, 이미지 빌드. 일상적인 개발 및 운영에서 거의 모든 Docker 사용 사례를 포함합니다."
+        },
+        {
+          "question": "필요한 명령어를 빠르게 찾는 방법은?",
+          "answer": "상단 검색창에 키워드를 입력하여 검색하거나, 분류 태그를 클릭하여 특정 유형의 명령어를 필터링할 수 있습니다. 검색은 명령어 이름과 설명의 부정확한 매칭을 지원합니다."
+        },
+        {
+          "question": "복사한 명령어를 바로 사용할 수 있나요?",
+          "answer": "대부분의 명령어는 바로 사용할 수 있지만, 일부 명령어의 대문자 매개변수(예: CONTAINER, IMAGE, NAME)는 실제 값으로 대체해야 합니다. 예를 들어 docker stop CONTAINER의 CONTAINER는 실제 컨테이너 이름 또는 ID로 대체해야 합니다."
+        },
+        {
+          "question": "요약표는 지속적으로 업데이트되나요?",
+          "answer": "네, 우리는 지속적으로 요약표를 업데이트하여 새로운 실용적인 명령어와 팁을 추가하여 최신 Docker 버전과 내용을 동기화합니다."
+        }
+      ],
+      "meta": {
+        "title": "Docker 명령어 요약 - 일반 명령어 빠른 참조",
+        "description": "컨테이너, 이미지, 데이터 볼륨, 네트워크, Compose 등 모든 시나리오를 포함하는 Docker 일반 명령어 요약표로, 검색 및 한 번의 클릭 복사 기능을 지원합니다.",
+        "keywords": "Docker 명령어, Docker 요약표, 컨테이너 관리, Docker 튜토리얼"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Nginx 구성 요약",
+      "description": "Nginx 일반적인 구성 조각 빠른 참조표, 구성 코드 빠르게 검색 및 복사",
+      "search_placeholder": "Nginx 구성 검색...",
+      "copy_success": "구성이 복사되었습니다",
+      "no_results": "일치하는 구성이 없습니다",
+      "all_categories": "전체",
+      "results_count": "{count}개의 구성 찾음",
+      "categories": {
+        "basic": "기본 구성",
+        "server": "Server 블록",
+        "location": "Location 매칭",
+        "proxy": "역방향 프록시",
+        "ssl": "SSL/HTTPS",
+        "cache": "캐시 구성",
+        "gzip": "Gzip 압축",
+        "security": "보안 구성",
+        "logging": "로그 구성",
+        "performance": "성능 최적화"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "작업 프로세스 수 자동 설정 (보통 CPU 코어 수와 동일)"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "각 작업 프로세스의 최대 연결 수 설정"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "MIME 유형 구성 포함"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "효율적인 파일 전송 활성화"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "장기 연결 타임아웃 시간 설정"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "클라이언트 요청 본문 최대 크기 설정"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "Nginx 버전 번호 숨기기"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "기본 Server 블록 구성"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "여러 도메인 구성"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "와일드카드 도메인 구성"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "기본 서버 설정"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "IPv6 주소 감시"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# 또는 alias 사용\nalias /var/www/files/;",
+            "desc": "루트 디렉토리 또는 별칭 설정"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # 정확한 매칭\n}",
+            "desc": "정확한 경로 매칭"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # 접두사 매칭\n}",
+            "desc": "접두사 매칭 경로"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # 정규 표현식 매칭 (대소문자 구분)\n}",
+            "desc": "정규 표현식 매칭"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\.\\(jpg|jpeg|png|gif\\)$ {\n    # 정규 표현식 매칭 (대소문자 구분 없음)\n}",
+            "desc": "대소문자 구분 없는 정규 표현식 매칭"
+          },
+          "priority_match": {
+            "config": "location ^~ /images/ {\\n    # 우선 접두사 매칭\\n}",
+            "desc": "우선 접두사 매칭 (정규 표현식보다 우선)"
+          },
+          "try_files": {
+            "config": "location / {\\n    try_files $uri $uri/ /index.html;\\n}",
+            "desc": "파일 시도 순서 (SPA 애플리케이션에서 자주 사용)"
+          },
+          "internal": {
+            "config": "location /internal/ {\\n    internal;\\n}",
+            "desc": "내부 요청만 허용"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "location /api/ {\\n    proxy_pass http://backend:3000/;\\n}",
+            "desc": "기본 역방향 프록시 구성"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host;\\nproxy_set_header X-Real-IP $remote_addr;\\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\\nproxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "프록시 요청 헤더 설정"
+          },
+          "websocket": {
+            "config": "location /ws/ {\\n    proxy_pass http://backend:3000/;\\n    proxy_http_version 1.1;\\n    proxy_set_header Upgrade $http_upgrade;\\n    proxy_set_header Connection \"upgrade\";\\n}",
+            "desc": "WebSocket 프록시 구성"
+          },
+          "upstream": {
+            "config": "upstream backend {\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n    keepalive 32;\\n}",
+            "desc": "상류 서버 그룹 정의"
+          },
+          "load_balance": {
+            "config": "upstream backend {\\n    least_conn;  # 또는 ip_hash;\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n}",
+            "desc": "로드 밸런싱 구성"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s;\\nproxy_send_timeout 60s;\\nproxy_read_timeout 60s;",
+            "desc": "프록시 타임아웃 설정"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on;\\nproxy_buffer_size 4k;\\nproxy_buffers 8 4k;",
+            "desc": "프록시 버퍼 구성"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server {\\n    listen 443 ssl http2;\\n    ssl_certificate /path/to/cert.pem;\\n    ssl_certificate_key /path/to/key.pem;\\n}",
+            "desc": "기본 SSL 구성"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "SSL 프로토콜 버전 설정"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;\\nssl_prefer_server_ciphers on;",
+            "desc": "암호화 키 설정"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m;\\nssl_session_timeout 1d;",
+            "desc": "SSL 세션 캐시"
+          },
+          "http_to_https": {
+            "config": "server {\\n    listen 80;\\n    server_name example.com;\\n    return 301 https://$server_name$request_uri;\\n}",
+            "desc": "HTTP를 HTTPS로 리디렉션"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "HSTS 활성화"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on;\\nssl_stapling_verify on;\\nresolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "OCSP Stapling 활성화"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "location ~* \\.\\(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2\\)$ {\\n    expires 30d;\\n    add_header Cache-Control \"public, immutable\";\\n}",
+            "desc": "정적 리소스 캐시"
+          },
+          "no_cache": {
+            "config": "location /api/ {\\n    add_header Cache-Control \"no-store, no-cache, must-revalidate\";\\n}",
+            "desc": "캐시 비활성화"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g;\\n\\nlocation / {\\n    proxy_cache my_cache;\\n    proxy_cache_valid 200 1d;\\n}",
+            "desc": "프록시 캐시 구성"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "ETag 활성화"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "조건부 요청 활성화"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on;\\ngzip_vary on;\\ngzip_min_length 1024;\\ngzip_comp_level 6;",
+            "desc": "기본 Gzip 압축 구성"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "압축할 MIME 유형 설정"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "프록시 요청에 압축 활성화"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "예측 압축 파일 활성화"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "CORS 크로스 도메인 구성"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "XSS 및 클릭 재난 방지"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "콘텐츠 보안 정책"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "요청 속도 제한"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "숨김 파일 접근 금지"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "IP 화이트리스트"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "접근 로그 구성"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "오류 로그 구성"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "사용자 정의 로그 형식"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "JSON 형식 로그"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "접근 로그 비활성화"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "조건 로그(오류만 기록)"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "파일 디스크립터 캐시"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "다중 연결 수락 및 epoll 활성화"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "FastCGI 캐시"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "연결 수 제한"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "타임아웃 최적화"
+          }
+        }
+      },
+      "introduction": "Nginx 구성 빠른 참조는 웹 개발자와 운영 담당자를 위해 설계된 Nginx 구성 빠른 참조 도구입니다. 기본 구성부터 고급 최적화까지 모든 일반적인 구성 조각을 포함하며, 기능별로 분류되어 있으며, 빠른 검색과 한 번의 클릭으로 복사가 가능합니다. Nginx 초보자이든 경험 많은 운영 엔지니어이든 필요한 구성 코드를 빠르게 찾을 수 있습니다.",
+      "features": [
+        "10개의 주요 분류로 Nginx의 모든 일반적인 구성 시나리오를 포함",
+        "60개 이상의 일반적인 구성 조각을 기본부터 고급까지 완전히 수록",
+        "키워드 검색 지원으로 필요한 구성 빠르게 찾기",
+        "한 번의 클릭으로 구성 코드 복사하여 작업 효율 향상",
+        "명확한 중국어 설명으로 이해하고 학습하기 쉬움",
+        "분류별 브라우징 및 필터링을 통해 관련 구성 빠르게 찾기",
+        "반응형 디자인으로 모바일 보기 지원",
+        "로컬에서 실행 가능하여 인터넷 없이도 사용 가능"
+      ],
+      "faq": [
+        {
+          "question": "왜 Nginx 구성 빠른 참조가 필요한가요?",
+          "answer": "Nginx 구성 구문은 복잡하고 명령어가 많아서, 경험 많은 운영 담당자조차 모든 구성 항목을 기억하기 어렵습니다. 빠른 참조표는 구성 코드를 빠르게 찾아 복사할 수 있도록 도와주어 문서를 검색하는 시간을 절약하고 구성 효율을 높입니다."
+        },
+        {
+          "question": "빠른 참조표에는 어떤 구성 분류가 포함되어 있나요?",
+          "answer": "빠른 참조표에는 10개의 주요 분류가 포함되어 있습니다: 기본 구성, Server 블록, Location 매칭, 역방향 프록시, SSL/HTTPS, 캐시 구성, Gzip 압축, 보안 구성, 로그 구성, 성능 최적화. 일상적인 운영에서 거의 모든 Nginx 구성 시나리오를 포함합니다."
+        },
+        {
+          "question": "필요한 구성은 어떻게 빠르게 찾을 수 있나요?",
+          "answer": "위쪽 검색창에 키워드를 입력하여 검색할 수 있으며, 카테고리 태그를 클릭하여 특정 유형의 구성 항목을 필터링할 수 있습니다. 검색은 구성 코드와 설명의 부정확한 일치를 지원합니다."
+        },
+        {
+          "question": "복사한 구성은 바로 사용할 수 있습니까?",
+          "answer": "대부분의 구성은 바로 사용할 수 있지만, 실제 상황에 따라 경로, 도메인, 포트 등의 매개변수를 수정해야 합니다. 테스트 환경에서 확인한 후 생산 환경에 적용하는 것이 좋습니다."
+        },
+        {
+          "question": "요약표는 지속적으로 업데이트됩니까?",
+          "answer": "네, 우리는 요약표를 지속적으로 업데이트하여 새로운 실용적인 구성과 최선의 실천을 추가하여 최신 Nginx 버전과의 동기화를 보장합니다."
+        }
+      ],
+      "meta": {
+        "title": "Nginx 구성 요약 - 일반적인 구성 빠른 참조",
+        "description": "Nginx 일반 구성 요약표로, 역방향 프록시, SSL, 캐시, 보안, 성능 최적화 등 모든 시나리오를 포함하며, 검색 및 한 번의 클릭으로 복사 기능을 지원합니다.",
+        "keywords": "Nginx 구성, Nginx 요약표, 역방향 프록시, Nginx 튜토리얼"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "Linux 방화벽 요약",
+      "description": "Linux 방화벽 일반 명령어 요약표로 iptables, firewalld, ufw 등을 포함합니다.",
+      "search_placeholder": "방화벽 명령어 검색...",
+      "copy_success": "명령어가 복사되었습니다",
+      "no_results": "일치하는 명령어를 찾을 수 없습니다",
+      "all_categories": "모두",
+      "results_count": "{count}개의 명령어를 찾았습니다",
+      "categories": {
+        "iptables_basic": "iptables 기본",
+        "iptables_whitelist": "iptables 허용 목록",
+        "iptables_rules": "iptables 규칙",
+        "firewalld_basic": "firewalld 기본",
+        "firewalld_rules": "firewalld 규칙",
+        "ufw_basic": "UFW 기본",
+        "ufw_rules": "UFW 규칙",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "모든 규칙 나열(상세 모드)"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "규칙 나열 및 행 번호 표시"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "NAT 테이블 규칙 나열"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "현재 규칙을 파일에 저장"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "파일에서 규칙 복원"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "모든 규칙 지우기"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "NAT 테이블 규칙 지우기"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "모든 사용자 정의 체인 삭제"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "모든 카운터 초기화"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "INPUT 체인 기본 정책을 DROP로 설정"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "INPUT 체인 기본 정책을 ACCEPT로 설정"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "지정된 IP 접근 허용"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "지정된 네트워크 세그먼트 접근 허용"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "지정된 IP가 지정된 포트에 액세스할 수 있도록 허용"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "지정된 IP의 액세스를 거부"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "지정된 네트워크 구간의 액세스를 거부"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "확립된 연결을 허용"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "로컬 루프백 인터페이스를 허용"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "화이트리스트 IP만 허용 (완전한 구성)"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "SSH 연결 허용 (포트 22)"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "HTTP 연결 허용 (포트 80)"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "HTTPS 연결 허용 (포트 443)"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "MySQL 연결 허용 (포트 3306)"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "Redis 연결 허용 (포트 6379)"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "포트 범위 8000-9000 허용"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "Ping 요청 허용"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "Ping 요청 금지"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "INPUT 체인의 3번째 규칙 삭제"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "1번째 줄에 규칙 삽입"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "버려진 데이터 패킷 기록"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "SSH 연결 속도 제한"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "포트 전달 80에서 8080으로"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "NAT 위장 활성화 (공유 인터넷)"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "방화벽 상태 확인"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "방화벽 시작"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "방화벽 중지"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "부팅 시 자동 시작 설정"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "부팅 시 자동 시작 비활성화"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "구성 재로드"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "현재 영역의 모든 구성 목록"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "사용 가능한 모든 영역 목록"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "기본 영역 가져오기"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "기본 영역 설정"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "사용 가능한 모든 서비스 목록"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "영구적으로 HTTP 서비스 추가"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "영구적으로 HTTP 서비스 제거"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "영구적으로 포트 8080 열기"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "영구적으로 포트 8080 닫기"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "영구적으로 포트 범위 열기"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "신뢰할 수 있는 소스 IP 구간 추가"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "신뢰할 수 있는 소스 IP 구간 제거"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "풍부한 규칙: 지정된 IP 허용"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "풍부한 규칙: 지정된 IP 거부"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "풍부한 규칙: 네트워크 구간에서 지정된 포트 접근 허용"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "포트 포워딩 80에서 8080으로"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "NAT 가짜 주소 활성화"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "방화벽 상태 확인(상세)"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "방화벽 활성화"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "방화벽 비활성화"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "모든 규칙 재설정"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "기본적으로 모든 들어오는 연결 거부"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "기본적으로 모든 나가는 연결 허용"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "규칙 재로드"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "번호가 붙은 규칙 목록 표시"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "SSH 서비스 허용"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "HTTP 서비스 허용"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "HTTPS 서비스 허용"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "TCP 포트 8080 허용"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "포트 범위 8000-9000 허용"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "지정된 IP의 모든 액세스 허용"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "지정된 서브넷의 모든 액세스 허용"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "지정된 IP가 포트 22에 액세스하도록 허용"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "지정된 IP의 모든 액세스 거부"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "TCP 포트 3306 거부"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "8080 허용 규칙 삭제"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "제3규칙 삭제"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "제1줄에 규칙 삽입"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "SSH 연결 속도 제한(폭력적 공격 방지)"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "모든 규칙 목록"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "모든 규칙 삭제"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "테이블 추가"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\\\; }",
+            "desc": "체인 추가"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "포트 22 허용"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "지정된 IP 허용"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "지정된 IP 거부"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "규칙을 파일에 저장"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "파일에서 규칙 복원"
+          }
+        }
+      },
+      "introduction": "리눅스 방화벽 빠른 참조는 시스템 관리자 및 운영 담당자를 위해 설계된 방화벽 명령어 빠른 참조 도구입니다. iptables, firewalld, ufw, nftables 등의 주요 방화벽 도구의 일반 명령어를 포함하며, 특히 IP 화이트리스트, 포트 개방, 액세스 제어 등의 실용적인 구성이 포함되어 있습니다. 빠른 검색과 클릭 복사 기능을 지원하여 서버 보안을 효율적으로 관리할 수 있습니다.",
+      "features": [
+        "8개의 분류로 주요 리눅스 방화벽 도구를 모두 포함",
+        "80개 이상의 일반 명령어, 기본부터 고급까지 모두 수록",
+        "IP 화이트리스트 구성, 빠른 액세스 제어 구현",
+        "iptables, firewalld, ufw, nftables 지원",
+        "한 번의 클릭으로 명령어 복사, 운영 효율 향상",
+        "명확한 중국어 설명, 이해 및 학습이 용이",
+        "분류별 브라우징 및 필터링을 통해 관련 명령어 빠르게 찾기",
+        "로컬에서 실행, 인터넷 없이도 사용 가능"
+      ],
+      "faq": [
+        {
+          "question": "어떤 방화벽 도구를 선택해야 할까요?",
+          "answer": "CentOS/RHEL 7+는 firewalld를 추천하며, Ubuntu/Debian은 ufw를 추천합니다. 세밀한 제어가 필요하거나 오래된 시스템에서는 iptables를 사용하고, 신형 시스템은 nftables를 고려할 수 있습니다. firewalld와 ufw는 iptables의 프론트엔드로 사용이 더 쉽습니다."
+        },
+        {
+          "question": "IP 화이트리스트를 어떻게 설정하나요?",
+          "answer": "먼저 기본 정책을 모든 인바운드 트래픽 거부로 설정한 후 허용할 IP 또는 서브넷을 추가합니다. iptables는 -A INPUT -s IP -j ACCEPT을 사용하고, firewalld는 --add-source 또는 풍부한 규칙을 사용하며, ufw는 allow from IP를 사용합니다."
+        },
+        {
+          "question": "규칙을 수정한 후 재시작해야 하나요?",
+          "answer": "iptables 규칙은 즉시 적용되지만 재부팅 시 사라지므로 iptables-save로 저장해야 합니다. firewalld는 --permanent 파라미터를 사용한 후 --reload를 실행해야 합니다. ufw 규칙은 자동으로 저장됩니다. 수정 후 규칙이 적용되었는지 확인하는 것이 좋습니다."
+        },
+        {
+          "question": "자신을 서버 밖으로 잠그는 것을 어떻게 방지하나요?",
+          "answer": "1) 먼저 현재 SSH 연결의 IP를 허용합니다; 2) at 명령어를 사용하여 규칙 복원을 예약합니다; 3) 콘솔 또는 IPMI를 통해 접근합니다; 4) 테스트 전에 현재 규칙을 백업하여 복원할 수 있도록 합니다."
+        },
+        {
+          "question": "요약표는 지속적으로 업데이트되나요?",
+          "answer": "네, 우리는 요약표를 지속적으로 업데이트하여 새로운 실용 명령어와 최선의 실천 방법을 추가하여 최신 Linux 배포판과의 동기화를 유지할 것입니다."
+        }
+      ],
+      "meta": {
+        "title": "리눅스 방화벽 요약표 - iptables/firewalld/ufw 명령어 참조",
+        "description": "리눅스 방화벽 일반 명령어 요약표, iptables, firewalld, ufw, nftables 포함, IP 화이트리스트, 포트 열기 등 설정 포함, 검색 및 한 번의 클릭 복사 지원",
+        "keywords": "리눅스 방화벽, iptables, firewalld, ufw, IP 화이트리스트"
+      }
+    },
     "base64-file-converter": {
       "name": "Base64 이미지 변환기",
       "description": "이미지와 Base64 인코딩 간 상호 변환 도구",

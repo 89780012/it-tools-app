@@ -2371,6 +2371,1249 @@
         "keywords": "Docker Compose、コンテナ編成、Docker 変換"
       }
     },
+    "docker-cheatsheet": {
+      "name": "Docker コマンドクイックリファレンス",
+      "description": "Dockerのよく使うコマンドクイックリファレンス表。Dockerコマンドをすばやく検索・コピー",
+      "search_placeholder": "Docker コマンドを検索...",
+      "copy_success": "コマンドをコピーしました",
+      "no_results": "一致するコマンドが見つかりません",
+      "all_categories": "すべて",
+      "results_count": "{count} 個のコマンドが見つかりました",
+      "categories": {
+        "containers": "コンテナ管理",
+        "images": "イメージ管理",
+        "volumes": "データボリューム",
+        "networks": "ネットワーク管理",
+        "compose": "Docker Compose",
+        "system": "システム管理",
+        "registry": "イメージレジストリ",
+        "build": "イメージビルド"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [OPTIONS] IMAGE",
+            "desc": "新しいコンテナを作成して起動"
+          },
+          "run_detach": {
+            "cmd": "docker run -d IMAGE",
+            "desc": "バックグラウンドでコンテナを実行"
+          },
+          "run_name": {
+            "cmd": "docker run --name NAME IMAGE",
+            "desc": "コンテナ名を指定して実行"
+          },
+          "run_port": {
+            "cmd": "docker run -p HOST:CONTAINER IMAGE",
+            "desc": "ポートをマッピングしてコンテナを実行"
+          },
+          "run_volume": {
+            "cmd": "docker run -v HOST:CONTAINER IMAGE",
+            "desc": "ボリュームをマウントしてコンテナを実行"
+          },
+          "run_env": {
+            "cmd": "docker run -e KEY=VALUE IMAGE",
+            "desc": "環境変数を設定してコンテナを実行"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm IMAGE",
+            "desc": "コンテナが終了したら自動的に削除"
+          },
+          "run_it": {
+            "cmd": "docker run -it IMAGE /bin/bash",
+            "desc": "インタラクティブにコンテナを実行"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "実行中のコンテナを一覧表示"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "すべてのコンテナ（停止中も含む）を一覧表示"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "コンテナIDのみを表示"
+          },
+          "start": {
+            "cmd": "docker start CONTAINER",
+            "desc": "停止中のコンテナを起動"
+          },
+          "stop": {
+            "cmd": "docker stop CONTAINER",
+            "desc": "実行中のコンテナを停止"
+          },
+          "restart": {
+            "cmd": "docker restart CONTAINER",
+            "desc": "コンテナを再起動"
+          },
+          "kill": {
+            "cmd": "docker kill CONTAINER",
+            "desc": "コンテナを強制停止"
+          },
+          "rm": {
+            "cmd": "docker rm CONTAINER",
+            "desc": "停止中のコンテナを削除"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f CONTAINER",
+            "desc": "実行中のコンテナを含むコンテナを強制削除"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "停止しているすべてのコンテナを削除"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER COMMAND",
+            "desc": "実行中のコンテナ内でコマンドを実行"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "コンテナのbashターミナルにアクセス"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "コンテナのログを表示"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "コンテナのログをリアルタイムで追跡"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "最後の100行のログを表示"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "コンテナの詳細情報を表示"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "コンテナ内で実行されているプロセスを表示"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "コンテナのリソース使用状況をリアルタイムで表示"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:SRC DEST",
+            "desc": "コンテナからホストにファイルをコピー"
+          },
+          "cp_to": {
+            "cmd": "docker cp SRC CONTAINER:DEST",
+            "desc": "ホストからコンテナにファイルをコピー"
+          },
+          "rename": {
+            "cmd": "docker rename OLD NEW",
+            "desc": "コンテナの名前を変更"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "コンテナを一時停止"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "一時停止したコンテナを再開"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "コンテナの停止を待ち、終了コードを返す"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "実行中のコンテナに接続"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "コンテナのポートマッピングを表示"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "コンテナの設定を更新"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "ローカルのイメージを一覧表示"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "すべてのイメージを一覧表示（中間レイヤーも含む）"
+          },
+          "pull": {
+            "cmd": "docker pull IMAGE",
+            "desc": "リポジトリからイメージを取得"
+          },
+          "pull_tag": {
+            "cmd": "docker pull IMAGE:TAG",
+            "desc": "指定のタグのイメージを取得"
+          },
+          "push": {
+            "cmd": "docker push IMAGE",
+            "desc": "イメージをリポジトリにプッシュ"
+          },
+          "rmi": {
+            "cmd": "docker rmi IMAGE",
+            "desc": "イメージを削除"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f IMAGE",
+            "desc": "強制的にイメージを削除"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "すべての孤立したイメージを削除する"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "イメージに新しいタグを作成する"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "イメージの構築履歴を表示する"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "イメージの詳細情報を表示する"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "イメージをtarファイルに保存する"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "tarファイルからイメージをロードする"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "tarファイルからイメージをインポートする"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "コンテナをtarファイルにエクスポートする"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "コンテナから新しいイメージを作成する"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "Docker Hubでイメージを検索する"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "使用されていないイメージを削除する"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "すべての使用されていないイメージを削除する"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "すべてのデータボリュームを一覧表示する"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "データボリュームを作成する"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "データボリュームの詳細を表示する"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "データボリュームを削除する"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "すべての使用されていないデータボリュームを削除する"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "データボリュームをバックアップする"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "データボリュームを復元する"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "すべてのネットワークを一覧表示する"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "ネットワークを作成する"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "ブリッジネットワークを作成する"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "オーバーレイネットワークを作成する"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "ネットワークの詳細を表示する"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "ネットワークを削除する"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "コンテナをネットワークに接続する"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "コンテナをネットワークから切断する"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "使用されていないすべてのネットワークを削除する"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "すべてのサービスを作成して起動する"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "バックグラウンドですべてのサービスを起動する"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "イメージをビルドしてサービスを起動する"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "すべてのサービスを停止して削除する"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "サービスを停止してデータボリュームを削除する"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "既存のサービスを起動する"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "サービスを停止する"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "サービスを再起動する"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "サービスの状態を表示する"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "サービスのログを表示する"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "サービスのログをリアルタイムで追跡する"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "サービスコンテナ内でコマンドを実行する"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "サービスイメージをビルドする"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "サービスイメージをプルする"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "構成を検証して表示する"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "一時的なコマンドを実行する"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "サービスのインスタンス数を拡張する"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "Dockerシステム情報を表示する"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "Dockerのバージョン情報を表示する"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "Dockerのディスク使用状況を表示する"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "使用されていないデータをクリーンアップする"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "すべての使用されていないデータをクリーンアップする"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "使用されていないデータ、データボリュームを含む"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "Dockerイベントをリアルタイムで取得"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "特定の種類のイベントをフィルタリング"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "Docker Hubにログイン"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "指定されたイメージレジストリにログイン"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "Docker Hubからログアウト"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "指定されたイメージレジストリからログアウト"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "Dockerfileからイメージを構築"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "指定されたDockerfileで構築"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "キャッシュを使わず構築"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "ビルドパラメータを渡す"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "マルチステージビルドの特定のステージを構築"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "マルチプラットフォーム構築"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "新しいビルドエンジンを作成して使用"
+          }
+        }
+      },
+      "introduction": "Dockerコマンドクイックリファレンスは、開発者およびオペレーション担当者向けに設計されたDockerコマンドのクイックリファレンスツールです。コンテナ管理、イメージ操作、データボリューム、ネットワーク設定、Docker Composeなど、すべての一般的なコマンドを機能別に分類し、高速検索とワンクリックコピーをサポートしています。Dockerの初心者でも経験豊富なDevOpsエンジニアでも、必要なコマンドをすばやく見つけることができます。",
+      "features": [
+        "8つの大分類で、Dockerのすべての一般的なシナリオをカバー",
+        "100以上の一般的なコマンドを、基礎から高度まで網羅",
+        "キーワード検索をサポートし、必要なコマンドをすばやく特定",
+        "ワンクリックでコマンドをコピーし、作業効率を向上",
+        "明確な中国語説明で、理解しやすく学習しやすい",
+        "分類別閲覧とフィルタリングで、関連するコマンドをすばやく見つける",
+        "レスポンシブデザインで、モバイル端末での閲覧も可能",
+        "ローカルで実行可能で、インターネット接続なしでも使用可能"
+      ],
+      "faq": [
+        {
+          "question": "なぜDockerコマンドクイックリファレンスが必要なのか？",
+          "answer": "Dockerコマンドは多く、パラメータも複雑で、経験豊富な開発者でさえすべてのコマンドを覚えるのは難しい。クイックリファレンス表は、コマンドのすばやい検索とコピーを可能にし、ドキュメントを調べる時間を節約し、開発とオペレーションの効率を向上させる。"
+        },
+        {
+          "question": "クイックリファレンス表にはどのようなコマンド分類が含まれていますか？",
+          "answer": "クイックリファレンス表には8つの大分類が含まれています：コンテナ管理、イメージ管理、データボリューム、ネットワーク管理、Docker Compose、システム管理、イメージレジストリ、イメージ構築。日常的な開発とオペレーションにおけるほぼすべてのDockerの使用シナリオをカバーしています。"
+        },
+        {
+          "question": "必要なコマンドをすばやく見つけるにはどうすればいいですか？",
+          "answer": "上部の検索ボックスにキーワードを入力して検索するか、分類タグをクリックして特定のタイプのコマンドをフィルタリングできます。検索はコマンド名と説明の部分一致をサポートしています。"
+        },
+        {
+          "question": "コピーしたコマンドはすぐに使用できますか？",
+          "answer": "ほとんどのコマンドはすぐに使用できますが、一部のコマンドの大文字パラメータ（例：CONTAINER、IMAGE、NAME）は実際の値に置き換える必要があります。たとえば、docker stop CONTAINERのCONTAINERは実際のコンテナ名またはIDに置き換える必要があります。"
+        },
+        {
+          "question": "クイックリファレンス表は継続的に更新されますか？",
+          "answer": "はい、新しい実用的なコマンドやテクニックを追加し、最新のDockerバージョンと常に同期するように継続的に更新していきます。"
+        }
+      ],
+      "meta": {
+        "title": "Dockerコマンドクイックリファレンス - 一般的なコマンドのすばやい参照",
+        "description": "Dockerの一般的なコマンドクイックリファレンス表。コンテナ、イメージ、データボリューム、ネットワーク、Composeなど、すべてのシナリオをカバーし、検索とワンクリックコピーをサポート",
+        "keywords": "Dockerコマンド、Dockerクイックリファレンス表、コンテナ管理、Dockerチュートリアル"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Nginx設定クイックリファレンス",
+      "description": "Nginxのよく使う設定断片クイックリファレンス、設定コードの迅速な検索とコピー",
+      "search_placeholder": "Nginx設定を検索...",
+      "copy_success": "設定がコピーされました",
+      "no_results": "一致する設定が見つかりません",
+      "all_categories": "すべて",
+      "results_count": "{count}個の設定が見つかりました",
+      "categories": {
+        "basic": "基本設定",
+        "server": "Serverブロック",
+        "location": "Locationマッチング",
+        "proxy": "リバースプロキシ",
+        "ssl": "SSL/HTTPS",
+        "cache": "キャッシュ設定",
+        "gzip": "Gzip圧縮",
+        "security": "セキュリティ設定",
+        "logging": "ログ設定",
+        "performance": "パフォーマンス最適化"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "ワークプロセス数を自動設定（通常はCPUコア数と同じ）"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "各ワークプロセスの最大接続数を設定"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "MIMEタイプ設定を含む"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "効率的なファイル転送を有効にする"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "長時間接続のタイムアウト時間を設定"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "クライアントリクエストボディの最大サイズを設定"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "Nginxのバージョン番号を隠す"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "基本的なServerブロック設定"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "複数のドメインを設定"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "ワイルドカードドメインを設定"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "デフォルトサーバーを設定"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "IPv6アドレスを監視"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# またはaliasを使用\nalias /var/www/files/;",
+            "desc": "ルートディレクトリまたは別名を設定"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # 精確マッチング\n}",
+            "desc": "正確なパスマッチング"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # 接頭辞マッチング\n}",
+            "desc": "接頭辞マッチングパス"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # 正規表現マッチング（大文字小文字区別）\n}",
+            "desc": "正規表現マッチング"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\.\\(jpg|jpeg|png|gif\\)$ {\n    # 正規表現マッチング（大文字小文字区別なし）\n}",
+            "desc": "大文字小文字区別なしの正規表現マッチング"
+          },
+          "priority_match": {
+            "config": "location ^~ /images/ {\\n    # 優先プレフィックス一致\\n}",
+            "desc": "優先プレフィックス一致（正規表現より優先）"
+          },
+          "try_files": {
+            "config": "location / {\\n    try_files $uri $uri/ /index.html;\\n}",
+            "desc": "ファイルの試行順序（SPAアプリでよく使われる）"
+          },
+          "internal": {
+            "config": "location /internal/ {\\n    internal;\\n}",
+            "desc": "内部リクエストのみアクセス可能"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "location /api/ {\\n    proxy_pass http://backend:3000/;\\n}",
+            "desc": "基本的なリバースプロキシ設定"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host;\\nproxy_set_header X-Real-IP $remote_addr;\\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\\nproxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "プロキシリクエストヘッダーの設定"
+          },
+          "websocket": {
+            "config": "location /ws/ {\\n    proxy_pass http://backend:3000/;\\n    proxy_http_version 1.1;\\n    proxy_set_header Upgrade $http_upgrade;\\n    proxy_set_header Connection \"upgrade\";\\n}",
+            "desc": "WebSocketプロキシ設定"
+          },
+          "upstream": {
+            "config": "upstream backend {\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n    keepalive 32;\\n}",
+            "desc": "上流サーバーグループの定義"
+          },
+          "load_balance": {
+            "config": "upstream backend {\\n    least_conn;  # または ip_hash;\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n}",
+            "desc": "負荷分散設定"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s;\\nproxy_send_timeout 60s;\\nproxy_read_timeout 60s;",
+            "desc": "プロキシタイムアウト設定"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on;\\nproxy_buffer_size 4k;\\nproxy_buffers 8 4k;",
+            "desc": "プロキシバッファ設定"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server {\\n    listen 443 ssl http2;\\n    ssl_certificate /path/to/cert.pem;\\n    ssl_certificate_key /path/to/key.pem;\\n}",
+            "desc": "基本的なSSL設定"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "SSLプロトコルバージョンの設定"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;\\nssl_prefer_server_ciphers on;",
+            "desc": "暗号スイートの設定"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m;\\nssl_session_timeout 1d;",
+            "desc": "SSLセッションキャッシュ"
+          },
+          "http_to_https": {
+            "config": "server {\\n    listen 80;\\n    server_name example.com;\\n    return 301 https://$server_name$request_uri;\\n}",
+            "desc": "HTTPをHTTPSにリダイレクト"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "HSTSを有効化"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on;\\nssl_stapling_verify on;\\nresolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "OCSP Staplingを有効化"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "location ~* \\\\.\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ {\\n    expires 30d;\\n    add_header Cache-Control \"public, immutable\";\\n}",
+            "desc": "静的リソースキャッシュ"
+          },
+          "no_cache": {
+            "config": "location /api/ {\\n    add_header Cache-Control \"no-store, no-cache, must-revalidate\";\\n}",
+            "desc": "キャッシュを無効化"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g;\\n\\nlocation / {\\n    proxy_cache my_cache;\\n    proxy_cache_valid 200 1d;\\n}",
+            "desc": "プロキシキャッシュ設定"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "ETagを有効化"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "条件リクエストを有効化"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on;\\ngzip_vary on;\\ngzip_min_length 1024;\\ngzip_comp_level 6;",
+            "desc": "基本的なGzip圧縮設定"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "圧縮するMIMEタイプの設定"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "プロキシリクエストに圧縮を有効化"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "プリコンプレッションファイルの有効化"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "CORSクロスドメイン設定"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "XSSおよびクリックジャッキング防护"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "コンテンツセキュリティポリシー"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "リクエストレート制限"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "隠しファイルへのアクセス禁止"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "IPホワイトリスト"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "アクセスログ設定"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "エラーログ設定"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n            '$status $body_bytes_sent \"$http_referer\" '\n            '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "カスタムログフォーマット"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "JSON形式ログ"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "アクセスログの無効化"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "条件ログ（エラーのみ記録）"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "ファイルディスクリプタキャッシュ"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "マルチ接続受信とepollの有効化"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "FastCGIキャッシュ"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "接続数制限"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "タイムアウト最適化"
+          }
+        }
+      },
+      "introduction": "Nginx配置速查は、Web開発者および運用担当者向けに設計されたNginxの設定の迅速な参照ツールです。基本設定から高度な最適化まで、すべての一般的な設定断片をカバーし、機能別に整理されており、迅速な検索とワンクリックコピーが可能です。Nginx初心者でも経験豊富な運用エンジニアでも、必要な設定コードをすぐに見つけることができます。",
+      "features": [
+        "10の大分類で、Nginxのすべての一般的な設定シナリオをカバー",
+        "60以上の一般的な設定断片を、基礎から高度まで網羅",
+        "キーワード検索に対応し、必要な設定を迅速に特定",
+        "ワンクリックで設定コードをコピーし、作業効率を向上",
+        "明確な中国語説明で、理解しやすく学習しやすい",
+        "分類別閲覧とフィルタリングで、関連設定をすばやく見つける",
+        "レスポンシブデザインで、モバイル端末での閲覧もサポート",
+        "ローカルで実行可能で、インターネット接続なしでも使用可能"
+      ],
+      "faq": [
+        {
+          "question": "なぜNginx設定速查が必要なのか？",
+          "answer": "Nginxの設定構文は複雑で、多くの指令があり、経験豊富な運用担当者でもすべての設定を覚えておくのは難しいです。速查表は、設定コードを迅速に検索・コピーするのに役立ち、ドキュメントを調べる時間を節約し、設定効率を向上させます。"
+        },
+        {
+          "question": "速查表にはどのような設定分類が含まれていますか？",
+          "answer": "速查表には10の大分類が含まれています：基本設定、Serverブロック、Locationマッチング、リバースプロキシ、SSL/HTTPS、キャッシュ設定、Gzip圧縮、セキュリティ設定、ログ設定、パフォーマンス最適化。日常の運用でほぼすべてのNginx設定シナリオをカバーしています。"
+        },
+        {
+          "question": "必要な設定をすばやく見つけるにはどうすればいいですか？",
+          "answer": "上部の検索ボックスにキーワードを入力して検索するか、カテゴリータグをクリックして特定のタイプの設定をフィルタリングできます。検索は設定コードと説明の部分一致検索をサポートしています。"
+        },
+        {
+          "question": "コピーした設定はそのまま使用できますか？",
+          "answer": "ほとんどの設定はそのまま使用できますが、実際の状況に応じてパス、ドメイン、ポートなどのパラメータを変更する必要があります。テスト環境で確認した後、本番環境に適用することを推奨します。"
+        },
+        {
+          "question": "クイックリファレンスは継続的に更新されますか？",
+          "answer": "はい、新しい実用的な設定やベストプラクティスを追加し、最新のNginxバージョンと常に同期するように、クイックリファレンスを継続的に更新しています。"
+        }
+      ],
+      "meta": {
+        "title": "Nginx設定クイックリファレンス - 一般的な設定のすばやい参照",
+        "description": "Nginxの一般的な設定クイックリファレンス表。リバースプロキシ、SSL、キャッシュ、セキュリティ、パフォーマンス最適化など、すべてのシナリオをカバーし、検索とワンクリックコピーが可能です。",
+        "keywords": "Nginx設定、Nginxクイックリファレンス表、リバースプロキシ、Nginxチュートリアル"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "Linuxファイアウォールクイックリファレンス",
+      "description": "Linuxファイアウォールの一般的なコマンドクイックリファレンス表。iptables、firewalld、ufwなど含まれます。",
+      "search_placeholder": "ファイアウォールコマンドを検索...",
+      "copy_success": "コマンドがコピーされました",
+      "no_results": "一致するコマンドが見つかりません",
+      "all_categories": "すべて",
+      "results_count": "{count}個のコマンドが見つかりました",
+      "categories": {
+        "iptables_basic": "iptablesの基礎",
+        "iptables_whitelist": "iptablesホワイトリスト",
+        "iptables_rules": "iptablesルール",
+        "firewalld_basic": "firewalldの基礎",
+        "firewalld_rules": "firewalldルール",
+        "ufw_basic": "UFWの基礎",
+        "ufw_rules": "UFWルール",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "すべてのルールを表示（詳細モード）"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "ルールを表示し、行番号を表示"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "NATテーブルのルールを表示"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "現在のルールをファイルに保存"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "ファイルからルールを復元"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "すべてのルールをクリア"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "NATテーブルのルールをクリア"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "すべてのカスタムチェーンを削除"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "すべてのカウンターをクリア"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "INPUTチェーンのデフォルトポリシーをDROPに設定"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "INPUTチェーンのデフォルトポリシーをACCEPTに設定"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "指定されたIPのアクセスを許可"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "指定されたネットワークセグメントのアクセスを許可"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "指定のIPからの指定ポートへのアクセスを許可"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "指定のIPからのアクセスを拒否"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "指定のネットワークセグメントからのアクセスを拒否"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "既に確立された接続を許可"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "ローカルループバックインターフェースを許可"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "ホワイトリストIPのみを許可（完全な設定）"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "SSH接続を許可（ポート22）"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "HTTP接続を許可（ポート80）"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "HTTPS接続を許可（ポート443）"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "MySQL接続を許可（ポート3306）"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "Redis接続を許可（ポート6379）"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "ポート範囲8000-9000を許可"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "Pingリクエストを許可"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "Pingリクエストを禁止"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "INPUTチェーンの第3規則を削除"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "第1行に規則を挿入"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "破棄されたデータパケットを記録"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "SSH接続のレート制限"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "ポート転送 80 から 8080"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "NATマスカレードを有効化（インターネット共有）"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "ファイアウォールの状態を表示"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "ファイアウォールを起動"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "ファイアウォールを停止"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "起動時に自動起動を設定"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "起動時に自動起動を無効化"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "設定を再読み込み"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "現在の領域のすべての設定を表示"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "利用可能なすべての領域を表示"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "デフォルト領域を取得"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "デフォルト領域を設定"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "利用可能なすべてのサービスを表示"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "HTTPサービスを永続的に追加"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "HTTPサービスを永続的に削除"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "ポート8080を永続的に開放"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "ポート8080を永続的に閉鎖"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "ポート範囲を永続的に開放"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "信頼するソースIPセグメントを追加"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "信頼するソースIPセグメントを削除"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "豊富なルール：指定されたIPを許可"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "豊富なルール：指定されたIPを拒否"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "豊富なルール：ネットワークセグメントからの指定ポートアクセスを許可"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "ポート転送 80 から 8080"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "NATマスカレードを有効化"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "ファイアウォールの状態を詳細に表示"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "ファイアウォールを有効化"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "ファイアウォールを無効化"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "すべてのルールをリセット"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "すべてのインバウンドをデフォルトで拒否"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "すべてのアウトバウンドをデフォルトで許可"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "ルールを再読み込み"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "番号付きのルールリストを表示"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "SSHサービスを許可"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "HTTPサービスを許可"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "HTTPSサービスを許可"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "TCPポート8080を許可"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "ポート範囲8000-9000を許可"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "指定IPのすべてのアクセスを許可"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "指定ネットワークセグメントのすべてのアクセスを許可"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "指定IPのポート22へのアクセスを許可"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "指定IPのすべてのアクセスを拒否"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "TCPポート3306を拒否"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "8080の許可ルールを削除"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "第3のルールを削除"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "第1行にルールを挿入"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "SSH接続の速度制限（暴力的なログイン攻撃防止）"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "すべてのルールを表示"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "すべてのルールを削除"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "テーブルを追加"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\\\; }",
+            "desc": "チェーンを追加"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "ポート22を許可"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "指定IPを許可"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "指定IPを拒否"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "ルールをファイルに保存"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "ファイルからルールを復元"
+          }
+        }
+      },
+      "introduction": "Linuxファイアウォールクイックリファレンスは、システム管理者および運用担当者向けに設計されたファイアウォールコマンドの迅速な参照ツールです。iptables、firewalld、ufw、nftablesなどの主要なファイアウォールツールの一般的なコマンドを網羅しており、特にIPホワイトリスト、ポート開放、アクセス制御などの実用的な設定を含んでいます。高速検索とワンクリックコピーをサポートし、サーバーのセキュリティを効率的に管理するのに役立ちます。",
+      "features": [
+        "8つの主要カテゴリで、主流のLinuxファイアウォールツールをカバー",
+        "80以上の一般的なコマンドを、基礎から上級まで網羅",
+        "IPホワイトリストの設定で、迅速なアクセス制御を実現",
+        "iptables、firewalld、ufw、nftablesをサポート",
+        "ワンクリックでコマンドをコピーし、運用効率を向上",
+        "明確な中国語説明で、理解と学習が容易",
+        "カテゴリ別閲覧とフィルタリングで、関連コマンドをすばやく検索",
+        "ローカルで実行可能。インターネット接続なしでも使用可能"
+      ],
+      "faq": [
+        {
+          "question": "どのファイアウォールツールを選択すべきか？",
+          "answer": "CentOS/RHEL 7以降はfirewalldを推奨、Ubuntu/Debianはufwを推奨。細かい制御が必要な場合や古いシステムではiptablesを使用。新しいシステムにはnftablesを検討。firewalldとufwはiptablesのフロントエンドで、使いやすい。"
+        },
+        {
+          "question": "IPホワイトリストを設定するには？",
+          "answer": "まず、デフォルトのポリシーをすべてのインバウンドトラフィックを拒否に設定し、次に許可するIPまたはネットワークセグメントを追加する。iptablesでは-A INPUT -s IP -j ACCEPTを使用、firewalldでは--add-sourceまたはリッチルールを使用、ufwではallow from IPを使用する。"
+        },
+        {
+          "question": "ルールを変更した後、再起動が必要ですか？",
+          "answer": "iptablesルールは即座に有効になるが、再起動後に失われるため、iptables-saveで保存する必要がある。firewalldは--permanentオプションを使用した後、--reloadが必要。ufwのルールは自動的に保存される。変更後、ルールが有効になっているか確認することを推奨する。"
+        },
+        {
+          "question": "自分自身をサーバーの外に閉じ込めないようにするには？",
+          "answer": "1) まず現在のSSH接続のIPを許可する；2) atコマンドを使用してルールの復元を予定する；3) コンソールまたはIPMIでアクセスする；4) テスト前に現在のルールを保存して復元できるようにする。"
+        },
+        {
+          "question": "クイックリファレンスは継続的に更新されますか？",
+          "answer": "はい、最新のLinuxディストリビューションと同期しているように、新しい実用的なコマンドやベストプラクティスを追加し、クイックリファレンスを継続的に更新していきます。"
+        }
+      ],
+      "meta": {
+        "title": "Linuxファイアウォールクイックリファレンス - iptables/firewalld/ufwコマンドリファレンス",
+        "description": "Linuxファイアウォールの一般的なコマンドクイックリファレンステーブル。iptables、firewalld、ufw、nftablesをカバーし、IPホワイトリスト、ポート開放などの設定を含み、検索とワンクリックコピーに対応。",
+        "keywords": "Linuxファイアウォール、iptables、firewalld、ufw、IPホワイトリスト"
+      }
+    },
     "base64-file-converter": {
       "name": "Base64画像変換ツール",
       "description": "画像とBase64エンコードの相互変換ツール",

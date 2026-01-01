@@ -2371,6 +2371,1249 @@
         "keywords": "Docker Compose، تنظيم الحاويات، تحويل Docker"
       }
     },
+    "docker-cheatsheet": {
+      "name": "ملف سريع لأوامر Docker",
+      "description": "جدول سريع لأوامر Docker الشائعة، للبحث السريع ونسخ أوامر Docker",
+      "search_placeholder": "البحث عن أوامر Docker...",
+      "copy_success": "تم نسخ الأمر",
+      "no_results": "لم يتم العثور على أمر مطابق",
+      "all_categories": "الكل",
+      "results_count": "تم العثور على {count} أمر",
+      "categories": {
+        "containers": "إدارة الحاويات",
+        "images": "إدارة الصور",
+        "volumes": "卷 البيانات",
+        "networks": "إدارة الشبكات",
+        "compose": "Docker Compose",
+        "system": "إدارة النظام",
+        "registry": "مستودع الصور",
+        "build": "بناء الصور"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [OPTIONS] IMAGE",
+            "desc": "إنشاء وتشغيل حاوية جديدة"
+          },
+          "run_detach": {
+            "cmd": "docker run -d IMAGE",
+            "desc": "تشغيل الحاوية في الخلفية"
+          },
+          "run_name": {
+            "cmd": "docker run --name NAME IMAGE",
+            "desc": "تشغيل الحاوية مع اسم محدد"
+          },
+          "run_port": {
+            "cmd": "docker run -p HOST:CONTAINER IMAGE",
+            "desc": "تشغيل الحاوية مع تعيين المنفذ"
+          },
+          "run_volume": {
+            "cmd": "docker run -v HOST:CONTAINER IMAGE",
+            "desc": "تشغيل الحاوية مع تثبيت Volume"
+          },
+          "run_env": {
+            "cmd": "docker run -e KEY=VALUE IMAGE",
+            "desc": "تشغيل الحاوية مع تعيين متغيرات بيئة"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm IMAGE",
+            "desc": "حذف الحاوية تلقائيًا عند إيقافها"
+          },
+          "run_it": {
+            "cmd": "docker run -it IMAGE /bin/bash",
+            "desc": "تشغيل الحاوية بشكل تفاعلي"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "عرض الحاويات الجارية"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "عرض جميع الحاويات (بما في ذلك المتوقفة)"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "عرض معرفات الحاويات فقط"
+          },
+          "start": {
+            "cmd": "docker start CONTAINER",
+            "desc": "بدء الحاوية المتوقفة"
+          },
+          "stop": {
+            "cmd": "docker stop CONTAINER",
+            "desc": "إيقاف الحاوية الجارية"
+          },
+          "restart": {
+            "cmd": "docker restart CONTAINER",
+            "desc": "إعادة تشغيل الحاوية"
+          },
+          "kill": {
+            "cmd": "docker kill CONTAINER",
+            "desc": "إيقاف الحاوية قسريًا"
+          },
+          "rm": {
+            "cmd": "docker rm CONTAINER",
+            "desc": "حذف الحاوية المتوقفة"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f CONTAINER",
+            "desc": "حذف الحاوية قسريًا (بما في ذلك الجارية)"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "حذف جميع الحاويات المتوقفة"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER COMMAND",
+            "desc": "تنفيذ أمر داخل حاوية قيد التشغيل"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "الدخول إلى محطة bash للحاوية"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "عرض سجلات الحاوية"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "تتبع سجلات الحاوية في الوقت الفعلي"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "عرض آخر 100 سطر من السجلات"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "عرض معلومات مفصلة عن الحاوية"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "عرض العمليات القائمة داخل الحاوية"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "عرض استخدام موارد الحاوية في الوقت الفعلي"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:SRC DEST",
+            "desc": "نسخ ملف من الحاوية إلى المضيف"
+          },
+          "cp_to": {
+            "cmd": "docker cp SRC CONTAINER:DEST",
+            "desc": "نسخ ملف من المضيف إلى الحاوية"
+          },
+          "rename": {
+            "cmd": "docker rename OLD NEW",
+            "desc": "إعادة تسمية الحاوية"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "إيقاف الحاوية مؤقتًا"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "استئناف الحاوية الموقوفة"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "انتظار توقف الحاوية وعرض كود الخروج"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "الاتصال بالحاوية القيد التشغيل"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "عرض تعيين المنافذ للحاوية"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "تحديث تكوين الحاوية"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "عرض قائمة الصور المحلية"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "عرض جميع الصور (بما في ذلك الطبقات الوسطى)"
+          },
+          "pull": {
+            "cmd": "docker pull IMAGE",
+            "desc": "سحب صورة من المستودع"
+          },
+          "pull_tag": {
+            "cmd": "docker pull IMAGE:TAG",
+            "desc": "سحب صورة بعلامة محددة"
+          },
+          "push": {
+            "cmd": "docker push IMAGE",
+            "desc": "إرسال الصورة إلى المستودع"
+          },
+          "rmi": {
+            "cmd": "docker rmi IMAGE",
+            "desc": "حذف الصورة"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f IMAGE",
+            "desc": "حذف الصورة قسرًا"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "حذف جميع الصور العائمة"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "إنشاء تسمية جديدة للصورة"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "عرض سجل بناء الصورة"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "عرض معلومات مفصلة عن الصورة"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "حفظ الصورة كملف tar"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "تحميل الصورة من ملف tar"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "استيراد الصورة من ملف tar"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "تصدير الحاوية كملف tar"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "إنشاء صورة جديدة من الحاوية"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "البحث عن صور في Docker Hub"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "حذف الصور غير المستخدمة"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "حذف جميع الصور غير المستخدمة"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "عرض جميع وحدات التخزين"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "إنشاء وحدة تخزين"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "عرض تفاصيل وحدة التخزين"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "حذف وحدة التخزين"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "حذف جميع وحدات التخزين غير المستخدمة"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "نسخ احتياطي لوحدة التخزين"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "استعادة وحدة التخزين"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "عرض جميع الشبكات"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "إنشاء شبكة"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "إنشاء شبكة جسر"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "إنشاء شبكة تغطية"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "عرض تفاصيل الشبكة"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "حذف الشبكة"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "ربط الحاوية بالشبكة"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "فصل الحاوية عن الشبكة"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "حذف جميع الشبكات غير المستخدمة"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "إنشاء وتشغيل جميع الخدمات"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "تشغيل جميع الخدمات في الخلفية"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "بناء الصورة وتشغيل الخدمات"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "إيقاف وحذف جميع الخدمات"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "إيقاف الخدمات وحذف وحدات التخزين"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "بدء الخدمات الموجودة بالفعل"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "إيقاف الخدمات"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "إعادة تشغيل الخدمات"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "عرض حالة الخدمات"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "عرض سجلات الخدمات"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "تتبع سجلات الخدمات في الوقت الفعلي"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "تنفيذ أمر داخل حاوية الخدمة"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "بناء صورة الخدمة"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "سحب صورة الخدمة"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "التحقق من التكوين وعرضه"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "تشغيل أمر لمرة واحدة"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "توسيع عدد مثيلات الخدمة"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "عرض معلومات نظام Docker"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "عرض معلومات إصدار Docker"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "عرض استخدام مساحة القرص في Docker"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "تنظيف البيانات غير المستخدمة"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "تنظيف جميع البيانات غير المستخدمة"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "تنظيف البيانات غير المستخدمة بما في ذلك وحدات البيانات"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "الحصول على أحداث Docker في الوقت الفعلي"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "تصفية أنواع معينة من الأحداث"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "تسجيل الدخول إلى Docker Hub"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "تسجيل الدخول إلى مستودع صور محدد"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "تسجيل الخروج من Docker Hub"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "تسجيل الخروج من مستودع صور محدد"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "بناء صورة من Dockerfile"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "تحديد Dockerfile للبناء"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "البناء بدون استخدام الذاكرة المؤقتة"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "تمرير معلمات البناء"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "بناء مرحلة محددة من بناء متعدد المراحل"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "البناء متعدد المنصات"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "إنشاء وتشغيل مُنشئ جديد"
+          }
+        }
+      },
+      "introduction": "دليل أوامر Docker السريع مصمم للمطورين وموظفي الصيانة كأداة مرجعية سريعة لأوامر Docker. يغطي إدارة الحاويات، وعمليات الصور، ووحدات البيانات، وتكوين الشبكات، وDocker Compose، وكل الأوامر الشائعة الأخرى، ومرتبة حسب الوظيفة، وتدعم البحث السريع والنسخ الفوري. بغض النظر عما إذا كنت مبتدئًا في Docker أو مهندس DevOps ذا خبرة، يمكنك العثور على الأوامر التي تحتاجها بسرعة هنا.",
+      "features": [
+        "8 فئات رئيسية، تغطي جميع السيناريوهات الشائعة لـ Docker",
+        "أكثر من 100 أمر شائع، تغطي من الأساسيات إلى المتقدمة بالكامل",
+        "يدعم البحث بالكلمات المفتاحية، للعثور بسرعة على الأمر المطلوب",
+        "نسخ الأوامر بنقرة واحدة، لتحسين كفاءة العمل",
+        "توضيحات صينية واضحة، سهلة الفهم والتعلم",
+        "تصفح وتصفية حسب الفئة، للعثور بسرعة على الأوامر ذات الصلة",
+        "تصميم متجاوب، يدعم عرض على الأجهزة المحمولة",
+        "التشغيل المحلي، لا يتطلب اتصال بالإنترنت للاستخدام"
+      ],
+      "faq": [
+        {
+          "question": "لماذا نحتاج إلى دليل أوامر Docker السريع؟",
+          "answer": "أوامر Docker كثيرة ومعقدة من حيث المعلمات، حتى المطورين ذوي الخبرة يصعب عليهم تذكر جميع الأوامر. يمكن أن يساعدك دليل المراجعة السريعة في العثور بسرعة على الأوامر ونسخها، مما يوفر وقت البحث في الوثائق ويعزز كفاءة التطوير والصيانة."
+        },
+        {
+          "question": "ما هي فئات الأوامر الموجودة في دليل المراجعة السريعة؟",
+          "answer": "يحتوي دليل المراجعة السريعة على 8 فئات رئيسية: إدارة الحاويات، إدارة الصور، وحدات البيانات، إدارة الشبكات، Docker Compose، إدارة النظام، مستودعات الصور، وبناء الصور. يغطي جميع سيناريوهات استخدام Docker في التطوير والصيانة اليومية تقريبًا."
+        },
+        {
+          "question": "كيف يمكن العثور بسرعة على الأمر المطلوب؟",
+          "answer": "يمكنك استخدام مربع البحث في الأعلى لإدخال الكلمة المفتاحية للبحث، أو النقر على علامات التصنيف لتصفية أنواع معينة من الأوامر. يدعم البحث التطابق غير الدقيق لأسماء الأوامر والوصف."
+        },
+        {
+          "question": "هل يمكن استخدام الأمر المُنسخ مباشرة؟",
+          "answer": "يمكن استخدام معظم الأوامر مباشرة، ولكن بعض المعلمات الكبيرة (مثل CONTAINER، IMAGE، NAME) تحتاج إلى استبدالها بالقيم الفعلية. على سبيل المثال، في الأمر docker stop CONTAINER، يجب استبدال CONTAINER باسم أو معرف الحاوية الفعلي."
+        },
+        {
+          "question": "هل سيتم تحديث دليل المراجعة السريعة باستمرار؟",
+          "answer": "نعم، سنقوم بتحديث دليل المراجعة السريعة باستمرار، وإضافة أوامر وتقنيات مفيدة جديدة، لضمان تزامن المحتوى مع أحدث إصدارات Docker."
+        }
+      ],
+      "meta": {
+        "title": "دليل أوامر Docker السريع - مرجع سريع للأوامر الشائعة",
+        "description": "جدول مراجعة سريع لأوامر Docker الشائعة، يغطي جميع السيناريوهات مثل الحاويات، الصور، وحدات البيانات، الشبكات، وCompose، ويدعم البحث والنسخ الفوري.",
+        "keywords": "أوامر Docker، جدول مراجعة سريع لـ Docker، إدارة الحاويات، دليل تعليمي لـ Docker"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "دليل إعدادات Nginx السريع",
+      "description": "جدول موجز لقطعة التكوين الشائعة لـ Nginx، للعثور السريع ونسخ كود التكوين",
+      "search_placeholder": "ابحث في تكوين Nginx...",
+      "copy_success": "تم نسخ التكوين",
+      "no_results": "لم يتم العثور على تكوين مطابق",
+      "all_categories": "الكل",
+      "results_count": "تم العثور على {count} تكوينات",
+      "categories": {
+        "basic": "تكوين أساسي",
+        "server": "كتلة Server",
+        "location": "تطابق Location",
+        "proxy": "النوعية العكسية",
+        "ssl": "SSL/HTTPS",
+        "cache": "تكوين التخزين المؤقت",
+        "gzip": "ضغط Gzip",
+        "security": "تكوين الأمان",
+        "logging": "تكوين السجلات",
+        "performance": "تحسين الأداء"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "تلقائي تعيين عدد عمليات العمل (عادة يساوي عدد نوى المعالج)"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "تعيين الحد الأقصى لعدد الاتصالات لكل عملية عمل"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "تضمين تكوين أنواع MIME"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "تمكين نقل الملفات بكفاءة"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "تعيين وقت انتهاء الاتصال الطويل"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "تعيين الحد الأقصى لحجم جسم الطلب من العميل"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "إخفاء رقم إصدار Nginx"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "تكوين كتلة Server الأساسية"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "تكوين عدة نطاقات"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "تكوين نطاقات عامة"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "تعيين الخادم الافتراضي"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "مراقبة عنوان IPv6"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# أو استخدام alias\nalias /var/www/files/;",
+            "desc": "تعيين الدليل الجذر أو التسمية البديلة"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # مطابقة دقيقة\n}",
+            "desc": "مطابقة دقيقة للمسار"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # مطابقة بادئة\n}",
+            "desc": "مطابقة بادئة للمسار"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # مطابقة منتظمة (حساسة لحالة الأحرف)\n}",
+            "desc": "مطابقة التعبيرات النمطية"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\.\\(jpg|jpeg|png|gif)$ {\n    # مطابقة منتظمة (غير حساسة لحالة الأحرف)\n}",
+            "desc": "مطابقة منتظمة غير حساسة لحالة الأحرف"
+          },
+          "priority_match": {
+            "config": "location ^~ /images/ {\\n    # تطابق البادئة الأولوية\\n}",
+            "desc": "تطابق البادئة الأولوية (أعلى من التعبيرات النمطية)"
+          },
+          "try_files": {
+            "config": "location / {\\n    try_files $uri $uri/ /index.html;\\n}",
+            "desc": "ترتيب محاولة الملفات (شائع في تطبيقات SPA)"
+          },
+          "internal": {
+            "config": "location /internal/ {\\n    internal;\\n}",
+            "desc": "يُسمح بالوصول فقط من الطلبات الداخلية"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "location /api/ {\\n    proxy_pass http://backend:3000/;\\n}",
+            "desc": "تكوين بسيط للوكلاء العكسيين"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host;\\nproxy_set_header X-Real-IP $remote_addr;\\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\\nproxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "تعيين رؤوس طلب الوكيل"
+          },
+          "websocket": {
+            "config": "location /ws/ {\\n    proxy_pass http://backend:3000/;\\n    proxy_http_version 1.1;\\n    proxy_set_header Upgrade $http_upgrade;\\n    proxy_set_header Connection \"upgrade\";\\n}",
+            "desc": "تكوين وكيل WebSocket"
+          },
+          "upstream": {
+            "config": "upstream backend {\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n    keepalive 32;\\n}",
+            "desc": "تحديد مجموعة الخوادم العلوية"
+          },
+          "load_balance": {
+            "config": "upstream backend {\\n    least_conn;  # أو ip_hash;\\n    server 127.0.0.1:3000;\\n    server 127.0.0.1:3001;\\n}",
+            "desc": "تكوين توازن التحميل"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s;\\nproxy_send_timeout 60s;\\nproxy_read_timeout 60s;",
+            "desc": "إعدادات تجاوز الوقت للوكلاء"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on;\\nproxy_buffer_size 4k;\\nproxy_buffers 8 4k;",
+            "desc": "تكوين مخزن الذاكرة المؤقتة للوكلاء"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server {\\n    listen 443 ssl http2;\\n    ssl_certificate /path/to/cert.pem;\\n    ssl_certificate_key /path/to/key.pem;\\n}",
+            "desc": "تكوين SSL الأساسي"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "تعيين إصدارات بروتوكول SSL"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;\\nssl_prefer_server_ciphers on;",
+            "desc": "تعيين مجموعات التشفير"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m;\\nssl_session_timeout 1d;",
+            "desc": "مخبأ جلسة SSL"
+          },
+          "http_to_https": {
+            "config": "server {\\n    listen 80;\\n    server_name example.com;\\n    return 301 https://$server_name$request_uri;\\n}",
+            "desc": "إعادة توجيه HTTP إلى HTTPS"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "تمكين HSTS"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on;\\nssl_stapling_verify on;\\nresolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "تمكين OCSP Stapling"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "location ~* \\\\.\\\\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ {\\n    expires 30d;\\n    add_header Cache-Control \"public, immutable\";\\n}",
+            "desc": "تخزين الموارد الثابتة في الذاكرة المؤقتة"
+          },
+          "no_cache": {
+            "config": "location /api/ {\\n    add_header Cache-Control \"no-store, no-cache, must-revalidate\";\\n}",
+            "desc": "تعطيل التخزين المؤقت"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g;\\n\\nlocation / {\\n    proxy_cache my_cache;\\n    proxy_cache_valid 200 1d;\\n}",
+            "desc": "تكوين التخزين المؤقت للوكلاء"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "تمكين ETag"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "تمكين طلبات شرطية"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on;\\ngzip_vary on;\\ngzip_min_length 1024;\\ngzip_comp_level 6;\\ngzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "تكوين ضغط Gzip الأساسي"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "تعيين أنواع MIME للضغط"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "تمكين الضغط للطلبات المُجدولة"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "تمكين الملفات المضغوطة مسبقًا"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "تكوين CORS عبر المجالات"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "حماية من XSS وحيل النقر"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "استراتيجية الأمان المحتوى"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "تقييد معدل الطلبات"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "منع الوصول إلى الملفات المخفية"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "قائمة بيضاء للعناوين IP"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "تكوين سجلات الوصول"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "تكوين سجلات الأخطاء"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                \"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "تنسيق سجل مخصص"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "سجلات بتنسيق JSON"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "تعطيل سجلات الوصول"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "سجلات شرطية (تسجيل الأخطاء فقط)"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "ذاكرة التخزين المؤقت لdescriptor الملفات"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "تمكين قبول الاتصالات المتعددة و epoll"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "تخزين FastCGI المؤقت"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "تقييد عدد الاتصالات"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "تحسين التوقيتات"
+          }
+        }
+      },
+      "introduction": "دليل الإعدادات السريعة لـ Nginx مصمم خصيصًا للمطورين وموظفي التشغيل. يغطي مجموعة من قطع الإعدادات الشائعة من الإعدادات الأساسية إلى التحسينات المتقدمة، ومرتبة حسب الوظائف، وتدعم البحث السريع والنسخ الفوري. سواء كنت مبتدئًا في Nginx أو مهندس تشغيل ذا خبرة، يمكنك العثور بسرعة على كود الإعدادات التي تحتاجها.",
+      "features": [
+        "10 فئات رئيسية، تغطي جميع سيناريوهات الإعدادات الشائعة لـ Nginx",
+        "أكثر من 60 قطعة إعداد شائعة، تغطي من الأساسيات إلى المتقدمة بشكل شامل",
+        "يدعم البحث حسب الكلمات المفتاحية، للعثور بسرعة على الإعدادات المطلوبة",
+        "نسخ كود الإعدادات بنقرة واحدة، لتحسين كفاءة العمل",
+        "توضيحات صينية واضحة، سهلة الفهم والتعلم",
+        "تصفح وتصفية حسب الفئة، للعثور بسرعة على الإعدادات ذات الصلة",
+        "تصميم متجاوب، يدعم عرض على الأجهزة المحمولة",
+        "تشغيل محلي، لا يتطلب اتصالًا بالإنترنت"
+      ],
+      "faq": [
+        {
+          "question": "لماذا تحتاج إلى دليل الإعدادات السريعة لـ Nginx؟",
+          "answer": "بنية إعدادات Nginx معقدة، والتعليمات كثيرة، وحتى موظفي التشغيل ذوي الخبرة يصعب عليهم تذكر جميع الإعدادات. يمكن أن يساعدك دليل الإعدادات السريعة في العثور بسرعة على كود الإعدادات ونسخه، مما يوفر الوقت في قراءة الوثائق ويعزز كفاءة الإعداد."
+        },
+        {
+          "question": "ما هي فئات الإعدادات التي يحتويها دليل الإعدادات السريعة؟",
+          "answer": "يحتوي دليل الإعدادات السريعة على 10 فئات رئيسية: الإعدادات الأساسية، كتلة Server، مطابقة Location، وكيل عكسي، SSL/HTTPS، إعدادات التخزين المؤقت، ضغط Gzip، إعدادات الأمان، إعدادات السجل، وتحسين الأداء. يغطي جميع سيناريوهات إعدادات Nginx المستخدمة في التشغيل اليومي تقريبًا."
+        },
+        {
+          "question": "كيف تجد بسرعة الإعدادات التي تحتاجها؟",
+          "answer": "يمكنك استخدام مربع البحث في الأعلى لإدخال الكلمات الرئيسية للبحث، أو النقر على علامات التصنيف لتصفية أنواع معينة من الإعدادات. يدعم البحث التطابق غير الدقيق لرمز الإعدادات والوصف."
+        },
+        {
+          "question": "هل يمكن استخدام الإعدادات المنسوخة مباشرة؟",
+          "answer": "يمكن استخدام معظم الإعدادات مباشرة، ولكن يجب تعديل المعلمات مثل المسار وال domaine والمنفذ وفقًا للحالة الفعلية. يُوصى بالتحقق منها في بيئة الاختبار قبل تطبيقها على بيئة الإنتاج."
+        },
+        {
+          "question": "هل سيتم تحديث جدول المراجعة السريعة باستمرار؟",
+          "answer": "نعم، سنقوم بتحديث جدول المراجعة السريعة باستمرار، وإضافة إعدادات عملية جديدة وأفضل الممارسات، لضمان تزامن المحتوى مع أحدث إصدارات Nginx."
+        }
+      ],
+      "meta": {
+        "title": "جدول مراجعة سريعة لتكوين Nginx - مرجع سريع للإعدادات الشائعة",
+        "description": "جدول مراجعة سريعة لإعدادات Nginx الشائعة، يغطي جميع السيناريوهات مثل وكيل العكسي، SSL، التخزين المؤقت، الأمان، وتحسين الأداء، ويدعم البحث والنسخ الفوري.",
+        "keywords": "تكوين Nginx، جدول مراجعة سريعة لـ Nginx، وكيل عكسي، تعليمات Nginx"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "جدول مراجعة سريعة لجدار الحماية في لينكس",
+      "description": "جدول مراجعة سريعة لأوامر جدار الحماية الشائعة في لينكس، تشمل iptables، firewalld، ufw، إلخ",
+      "search_placeholder": "البحث عن أوامر جدار الحماية...",
+      "copy_success": "تم نسخ الأمر",
+      "no_results": "لم يتم العثور على أمر مطابق",
+      "all_categories": "الكل",
+      "results_count": "تم العثور على {count} أمر",
+      "categories": {
+        "iptables_basic": "أساسيات iptables",
+        "iptables_whitelist": "قائمة بيضاء iptables",
+        "iptables_rules": "قواعد iptables",
+        "firewalld_basic": "أساسيات firewalld",
+        "firewalld_rules": "قواعد firewalld",
+        "ufw_basic": "أساسيات UFW",
+        "ufw_rules": "قواعد UFW",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "عرض جميع القواعد (وضع تفصيلي)"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "عرض القواعد وعرض أرقام الصفوف"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "عرض قواعد جدول NAT"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "حفظ القواعد الحالية في ملف"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "استعادة القواعد من ملف"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "مسح جميع القواعد"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "مسح قواعد جدول NAT"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "حذف جميع السلاسل المخصصة"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "مسح جميع العدادات"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "تعيين سياسة السلسلة INPUT الافتراضية إلى DROP"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "تعيين سياسة السلسلة INPUT الافتراضية إلى ACCEPT"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "السماح بوصول عنوان IP محدد"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "السماح بوصول نطاق شبكة محدد"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "السماح بوصول عنوان IP محدد إلى منفذ محدد"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "رفض وصول عنوان IP محدد"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "رفض وصول نطاق الشبكة المحدد"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "السماح بالاتصالات المنشأة"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "السماح بواجهة الحلقة المحلية"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "السماح فقط بعناوين IP في القائمة البيضاء (التكوين الكامل)"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "السماح بالاتصال SSH (المنفذ 22)"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "السماح بالاتصال HTTP (المنفذ 80)"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "السماح بالاتصال HTTPS (المنفذ 443)"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "السماح بالاتصال MySQL (المنفذ 3306)"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "السماح بالاتصال Redis (المنفذ 6379)"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "السماح بمجموعة المنافذ 8000-9000"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "السماح بطلبات Ping"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "حظر طلبات Ping"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "حذف القاعدة الثالثة في سلسلة INPUT"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "إدراج القاعدة في الصف الأول"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "تسجيل الحزم المرفوضة"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "تقييد معدل اتصالات SSH"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "إعادة توجيه المنفذ 80 إلى 8080"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "تمكين التخفي NAT (مشاركة الإنترنت)"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "عرض حالة الجدار الناري"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "بدء الجدار الناري"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "إيقاف الجدار الناري"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "تعيين بدء التشغيل التلقائي عند التشغيل"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "تعطيل البدء التلقائي عند التشغيل"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "إعادة تحميل الإعدادات"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "عرض جميع إعدادات المنطقة الحالية"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "عرض جميع المناطق المتاحة"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "الحصول على المنطقة الافتراضية"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "تعيين المنطقة الافتراضية"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "عرض جميع الخدمات المتاحة"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "إضافة خدمة HTTP بشكل دائم"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "إزالة خدمة HTTP بشكل دائم"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "فتح المنفذ 8080 بشكل دائم"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "إغلاق المنفذ 8080 بشكل دائم"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "فتح نطاق منافذ بشكل دائم"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "إضافة نطاق IP المصدر الموثوق به"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "إزالة نطاق IP المصدر الموثوق به"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "قاعدة غنية: السماح بعنوان IP معين"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "قاعدة غنية: رفض عنوان IP معين"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "قاعدة غنية: السماح بوصول نطاق إلى منفذ معين"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "إعادة توجيه المنفذ 80 إلى 8080"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "تمكين التمويه NAT"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "عرض حالة الجدار الناري (مفصلة)"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "تمكين الجدار الناري"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "تعطيل الجدار الناري"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "إعادة تعيين جميع القواعد"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "رفض جميع الاتصالات الواردة افتراضيًا"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "السماح بجميع الاتصالات الصادرة افتراضيًا"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "إعادة تحميل القواعد"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "عرض قائمة القواعد المُرقمة"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "تمكين خدمة SSH"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "تمكين خدمة HTTP"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "تمكين خدمة HTTPS"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "تمكين المنفذ TCP 8080"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "تمكين نطاق المنافذ 8000-9000"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "تمكين جميع الاتصالات من عنوان IP محدد"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "تمكين جميع الاتصالات من نطاق الشبكة المحدد"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "تمكين الوصول من عنوان IP محدد إلى المنفذ 22"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "رفض جميع الاتصالات من عنوان IP محدد"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "رفض المنفذ TCP 3306"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "حذف قاعدة تمكين المنفذ 8080"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "حذف القاعدة رقم 3"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "إدراج قاعدة في السطر الأول"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "تقييد معدل اتصالات SSH (لمنع الهجمات القسرية)"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "عرض جميع القواعد"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "مسح جميع القواعد"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "إضافة جدول"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\; }",
+            "desc": "إضافة سلسلة"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "تمكين المنفذ 22"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "تمكين عنوان IP محدد"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "رفض عنوان IP محدد"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "حفظ القواعد في ملف"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "استعادة القواعد من ملف"
+          }
+        }
+      },
+      "introduction": "دليل اختصارات جدار الحماية لـ Linux مصمم خصيصًا لمديري الأنظمة وموظفي الصيانة. يغطي الأوامر الشائعة لأدوات جدار الحماية الرئيسية مثل iptables، firewalld، ufw، nftables، ويشمل بشكل خاص تكوينات عملية مثل قائمة IP البيضاء، فتح المنافذ، والتحكم في الوصول. يدعم البحث السريع والنسخ الفوري، مما يساعدك على إدارة أمان الخادم بكفاءة.",
+      "features": [
+        "8 فئات رئيسية، تغطي أدوات جدار الحماية الرئيسية في Linux",
+        "أكثر من 80 أمرًا شائعًا، تغطي من الأساسيات إلى المتقدمة بالكامل",
+        "تكوين قائمة بيضاء للعنوان IP، لتحقيق التحكم في الوصول بسرعة",
+        "يدعم iptables، firewalld، ufw، nftables",
+        "نسخ الأوامر بنقرة واحدة، لتحسين كفاءة الصيانة",
+        "توضيحات صينية واضحة، سهلة الفهم والتعلم",
+        "تصنيف التصفح والتصفية، للعثور بسرعة على الأوامر ذات الصلة",
+        "التشغيل المحلي، لا يتطلب اتصالاً بالإنترنت للاستخدام"
+      ],
+      "faq": [
+        {
+          "question": "أي أداة جدار ناري يجب اختيارها؟",
+          "answer": "يوصى باستخدام firewalld على CentOS/RHEL 7+، ويوصى باستخدام ufw على Ubuntu/Debian، واستخدام iptables للتحكم الدقيق أو الأنظمة القديمة، ويمكن التفكير في nftables للأنظمة الجديدة. firewalld و ufw هما واجهتان لـ iptables، وأسهل في الاستخدام."
+        },
+        {
+          "question": "كيفية إعداد قائمة بيضاء للعنوان IP؟",
+          "answer": "أولاً، قم بتعيين الاستراتيجية الافتراضية لرفض جميع حركة المرور الواردة، ثم أضف عناوين IP أو نطاقات الشبكة المسموح بها. يستخدم iptables -A INPUT -s IP -j ACCEPT، ويستخدم firewalld --add-source أو قواعد غنية، ويستخدم ufw allow from IP."
+        },
+        {
+          "question": "هل يتطلب تعديل القواعد إعادة التشغيل؟",
+          "answer": "تُنفذ قواعد iptables فورًا ولكنها تضيع بعد إعادة التشغيل، ويجب استخدام iptables-save لحفظها. يستخدم firewalld --permanent ثم --reload. تُحفظ قواعد ufw تلقائيًا. يُنصح بالتحقق من تأثير القواعد بعد التعديل."
+        },
+        {
+          "question": "كيف يمكن منع حبس نفسك خارج الخادم؟",
+          "answer": "1) أولاً، امنح إذن لعنوان IP للاتصال SSH الحالي؛ 2) استخدم أمر at لتعيين استعادة القواعد في وقت محدد؛ 3) الوصول عبر واجهة التحكم أو IPMI؛ 4) حفظ القواعد الحالية قبل الاختبار لاستعادة الحالة."
+        },
+        {
+          "question": "هل سيتم تحديث جدول المراجعة السريعة باستمرار؟",
+          "answer": "نعم، سنقوم بتحديث جدول المراجعة السريعة باستمرار، وإضافة أوامر مفيدة جديدة وأفضل الممارسات، لضمان تزامن المحتوى مع أحدث إصدارات Linux."
+        }
+      ],
+      "meta": {
+        "title": "جدول مراجعة سريعة لجدار الحماية في Linux - مرجع أوامر iptables/firewalld/ufw",
+        "description": "جدول مراجعة سريعة لأوامر جدار الحماية الشائعة في Linux، يشمل iptables، firewalld، ufw، nftables، ويغطي تكوينات مثل قائمة بيضاء للعنوان IP، وفتح المنافذ، ويدعم البحث والنسخ بنقرة واحدة.",
+        "keywords": "جدار الحماية في Linux، iptables، firewalld، ufw، قائمة بيضاء للعنوان IP"
+      }
+    },
     "base64-file-converter": {
       "name": "محول Base64 للصور",
       "description": "أداة تحويل الصور إلى Base64 والعكس",

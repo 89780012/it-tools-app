@@ -2373,6 +2373,1249 @@
         "keywords": "docker compose, docker कन्वर्टर, कंटेनर ऑर्केस्ट्रेशन"
       }
     },
+    "docker-cheatsheet": {
+      "name": "डॉकर कमांड रैपिड रेफरेंस",
+      "description": "डॉकर आमतौर पर उपयोग किए जाने वाले कमांड्स की रैपिड रेफरेंस टेबल, डॉकर कमांड्स को तेजी से खोजें और कॉपी करें",
+      "search_placeholder": "डॉकर कमांड्स खोजें...",
+      "copy_success": "कमांड कॉपी कर दिया गया है",
+      "no_results": "मैचिंग कमांड नहीं मिला",
+      "all_categories": "सभी",
+      "results_count": "{count} कमांड्स मिले",
+      "categories": {
+        "containers": "कंटेनर प्रबंधन",
+        "images": "इमेज प्रबंधन",
+        "volumes": "डेटा वॉल्यूम",
+        "networks": "नेटवर्क प्रबंधन",
+        "compose": "डॉकर कॉम्पोज",
+        "system": "सिस्टम प्रबंधन",
+        "registry": "इमेज रिपोजिटरी",
+        "build": "इमेज बिल्डिंग"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [OPTIONS] IMAGE",
+            "desc": "एक नया कंटेनर बनाएं और शुरू करें"
+          },
+          "run_detach": {
+            "cmd": "docker run -d IMAGE",
+            "desc": "बैकग्राउंड में कंटेनर चलाएं"
+          },
+          "run_name": {
+            "cmd": "docker run --name NAME IMAGE",
+            "desc": "कंटेनर नाम निर्दिष्ट करके चलाएं"
+          },
+          "run_port": {
+            "cmd": "docker run -p HOST:CONTAINER IMAGE",
+            "desc": "पोर्ट मैपिंग करके कंटेनर चलाएं"
+          },
+          "run_volume": {
+            "cmd": "docker run -v HOST:CONTAINER IMAGE",
+            "desc": "वॉल्यूम माउंट करके कंटेनर चलाएं"
+          },
+          "run_env": {
+            "cmd": "docker run -e KEY=VALUE IMAGE",
+            "desc": "पर्यावरण चर सेट करके कंटेनर चलाएं"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm IMAGE",
+            "desc": "कंटेनर बंद होने के बाद स्वचालित रूप से हटाएं"
+          },
+          "run_it": {
+            "cmd": "docker run -it IMAGE /bin/bash",
+            "desc": "इंटरैक्टिव कंटेनर चलाएं"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "चल रहे कंटेनरों की सूची बनाएं"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "सभी कंटेनरों की सूची बनाएं (शुरू हुए और रुके हुए दोनों)"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "केवल कंटेनर ID दिखाएं"
+          },
+          "start": {
+            "cmd": "docker start CONTAINER",
+            "desc": "रुके हुए कंटेनर को शुरू करें"
+          },
+          "stop": {
+            "cmd": "docker stop CONTAINER",
+            "desc": "चल रहे कंटेनर को रोकें"
+          },
+          "restart": {
+            "cmd": "docker restart CONTAINER",
+            "desc": "कंटेनर को रीस्टार्ट करें"
+          },
+          "kill": {
+            "cmd": "docker kill CONTAINER",
+            "desc": "कंटेनर को जबरदस्ती रोकें"
+          },
+          "rm": {
+            "cmd": "docker rm CONTAINER",
+            "desc": "रुके हुए कंटेनर को हटाएं"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f CONTAINER",
+            "desc": "कंटेनर को जबरदस्ती हटाएं (चल रहे शामिल)"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "सभी बंद कंटेनरों को हटाएं"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER COMMAND",
+            "desc": "चल रहे कंटेनर के अंदर कमांड चलाएं"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "कंटेनर के बैश टर्मिनल में प्रवेश करें"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "कंटेनर लॉग देखें"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "कंटेनर लॉग का वास्तविक समय में ट्रैकिंग करें"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "अंतिम 100 पंक्तियों के लॉग देखें"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "कंटेनर की विस्तृत जानकारी देखें"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "कंटेनर के अंदर चल रही प्रक्रियाओं को देखें"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "कंटेनर संसाधन उपयोग को वास्तविक समय में दिखाएं"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:SRC DEST",
+            "desc": "कंटेनर से फाइल को होस्ट पर कॉपी करें"
+          },
+          "cp_to": {
+            "cmd": "docker cp SRC CONTAINER:DEST",
+            "desc": "होस्ट से फाइल को कंटेनर में कॉपी करें"
+          },
+          "rename": {
+            "cmd": "docker rename OLD NEW",
+            "desc": "कंटेनर का नाम बदलें"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "कंटेनर को अस्थायी रूप से रोकें"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "रोके गए कंटेनर को पुनर्स्थापित करें"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "कंटेनर के रुकने की प्रतीक्षा करें और निकासी कोड लौटाएं"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "चल रहे कंटेनर से जुड़ें"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "कंटेनर पोर्ट मैपिंग देखें"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "कंटेनर विन्यास को अपडेट करें"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "स्थानीय छवियों की सूची बनाएं"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "सभी छवियों की सूची बनाएं (मध्यवर्ती परतों सहित)"
+          },
+          "pull": {
+            "cmd": "docker pull IMAGE",
+            "desc": "रिपॉजिटरी से छवि डाउनलोड करें"
+          },
+          "pull_tag": {
+            "cmd": "docker pull IMAGE:TAG",
+            "desc": "निर्दिष्ट टैग वाली छवि डाउनलोड करें"
+          },
+          "push": {
+            "cmd": "docker push IMAGE",
+            "desc": "छवि को रिपॉजिटरी में भेजें"
+          },
+          "rmi": {
+            "cmd": "docker rmi IMAGE",
+            "desc": "छवि हटाएं"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f IMAGE",
+            "desc": "जबरदस्ती छवि हटाएं"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "सभी लटकते छवियों को हटाएं"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "छवि के लिए नया टैग बनाएं"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "छवि निर्माण इतिहास देखें"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "छवि का विस्तृत विवरण देखें"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "छवि को tar फ़ाइल में सहेजें"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "tar फ़ाइल से छवि लोड करें"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "tar फ़ाइल से छवि आयात करें"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "कंटेनर को tar फ़ाइल में निर्यात करें"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "कंटेनर से नई छवि बनाएं"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "Docker Hub में छवि खोजें"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "उपयोग नहीं होने वाली छवियों को हटाएं"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "सभी उपयोग नहीं होने वाली छवियों को हटाएं"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "सभी डेटा वॉल्यूम की सूची बनाएं"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "डेटा वॉल्यूम बनाएं"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "डेटा वॉल्यूम विवरण देखें"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "डेटा वॉल्यूम हटाएं"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "सभी उपयोग नहीं होने वाले डेटा वॉल्यूम को हटाएं"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "डेटा वॉल्यूम का बैकअप लें"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "डेटा वॉल्यूम की बहाली करें"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "सभी नेटवर्कों की सूची बनाएं"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "नेटवर्क बनाएं"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "ब्रिज नेटवर्क बनाएं"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "ओवरले नेटवर्क बनाएं"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "नेटवर्क विवरण देखें"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "नेटवर्क हटाएं"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "कंटेनर को नेटवर्क से जोड़ें"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "कंटेनर को नेटवर्क से अलग करें"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "सभी अनउपयोगी नेटवर्क हटाएं"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "सभी सेवाओं को बनाएं और शुरू करें"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "सभी सेवाओं को बैकग्राउंड में शुरू करें"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "इमेज बनाएं और सेवा शुरू करें"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "सभी सेवाओं को बंद करें और हटाएं"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "सेवाओं को बंद करें और डेटा वॉल्यूम हटाएं"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "मौजूदा सेवाओं को शुरू करें"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "सेवाओं को बंद करें"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "सेवाओं को पुनरारंभ करें"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "सेवा स्थिति सूचीबद्ध करें"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "सेवा लॉग देखें"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "सेवा लॉग का वास्तविक समय में ट्रैकिंग करें"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "सेवा कंटेनर में कमांड चलाएं"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "सेवा इमेज बनाएं"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "सेवा इमेज डाउनलोड करें"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "विनिर्माण और विनिर्माण देखें"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "एक बार के लिए कमांड चलाएं"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "सेवा इंस्टेंस की संख्या बढ़ाएं"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "Docker सिस्टम जानकारी दिखाएं"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "Docker संस्करण जानकारी दिखाएं"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "Docker डिस्क उपयोग दिखाएं"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "अनउपयोगी डेटा साफ करें"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "सभी अनउपयोगी डेटा साफ करें"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "अनिर्वाहित डेटा को डेटा वॉल्यूम सहित साफ करें"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "Docker घटनाओं को वास्तविक समय में प्राप्त करें"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "विशिष्ट प्रकार की घटनाओं को फ़िल्टर करें"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "Docker Hub में लॉग इन करें"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "निर्दिष्ट इमेज रिपोजिटरी में लॉग इन करें"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "Docker Hub से लॉग आउट करें"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "निर्दिष्ट इमेज रिपोजिटरी से लॉग आउट करें"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "Dockerfile से इमेज बनाएं"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "Dockerfile निर्दिष्ट करें"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "कैश का उपयोग न करके बिल्ड करें"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "बिल्ड पैरामीटर पास करें"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "मल्टी-स्टेज बिल्ड के निर्दिष्ट चरण को बिल्ड करें"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "मल्टी-प्लेटफॉर्म बिल्डिंग"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "नया बिल्डर बनाएं और उपयोग करें"
+          }
+        }
+      },
+      "introduction": "Docker कमांड फास्ट रेफरेंस डेवलपर्स और ऑपरेशन्स पर्सनल के लिए डिज़ाइन किया गया Docker कमांड का एक त्वरित संदर्भ टूल है। यह कंटेनर प्रबंधन, इमेज ऑपरेशन, डेटा वॉल्यूम, नेटवर्क कॉन्फ़िगरेशन, Docker Compose जैसे सभी आम कमांड को कवर करता है, जो कार्य के आधार पर वर्गीकृत होते हैं, और त्वरित खोज और एक क्लिक में कॉपी का समर्थन करते हैं। चाहे आप Docker नवीन हों या अनुभवी DevOps इंजीनियर, आप यहां आवश्यक कमांड जल्दी से ढूंढ सकते हैं।",
+      "features": [
+        "8 बड़े वर्ग, Docker के सभी आम दृश्यों को कवर करते हैं",
+        "100+ आम कमांड, बुनियादी से उन्नत तक सभी शामिल हैं",
+        "कीवर्ड खोज का समर्थन, आवश्यक कमांड को तेजी से खोजें",
+        "एक क्लिक में कमांड कॉपी करें, कार्यक्षमता में सुधार करें",
+        "स्पष्ट चीनी विवरण, समझने और सीखने में आसान",
+        "वर्गीकृत ब्राउज़िंग और फ़िल्टर, जुड़े हुए कमांड को तेजी से खोजें",
+        "रिस्पॉन्सिव डिज़ाइन, मोबाइल दृश्य का समर्थन",
+        "स्थानीय रूप से चलाएं, बिना नेटवर्क के उपयोग करें"
+      ],
+      "faq": [
+        {
+          "question": "Docker कमांड फास्ट रेफरेंस क्यों आवश्यक है?",
+          "answer": "Docker कमांड बहुत अधिक हैं और पैरामीटर जटिल हैं, यहां तक कि अनुभवी डेवलपर्स भी सभी कमांड याद नहीं रख सकते हैं। फास्ट रेफरेंस टेबल आपको तेजी से कमांड खोजने और कॉपी करने में मदद कर सकती है, दस्तावेज़ खोजने के समय को बचाती है, और विकास और ऑपरेशन दक्षता में सुधार करती है।"
+        },
+        {
+          "question": "फास्ट रेफरेंस टेबल में कौन सी कमांड शामिल हैं?",
+          "answer": "फास्ट रेफरेंस टेबल में 8 बड़े वर्ग शामिल हैं: कंटेनर प्रबंधन, इमेज प्रबंधन, डेटा वॉल्यूम, नेटवर्क प्रबंधन, Docker Compose, सिस्टम प्रबंधन, इमेज रिपोजिटरी, इमेज बिल्डिंग। यह दैनिक विकास और ऑपरेशन में लगभग सभी Docker उपयोग स्थितियों को कवर करता है।"
+        },
+        {
+          "question": "कैसे आवश्यक कमांड को जल्दी से खोजें?",
+          "answer": "आप शीर्ष पर सर्च बॉक्स में कीवर्ड दर्ज करके खोज कर सकते हैं, या वर्ग लेबल पर क्लिक करके विशिष्ट प्रकार के कमांड को फ़िल्टर कर सकते हैं। खोज कमांड नाम और विवरण के अनुमानित मैच का समर्थन करती है।"
+        },
+        {
+          "question": "कॉपी की गई कमांड सीधे उपयोग की जा सकती है?",
+          "answer": "अधिकांश कमांड सीधे उपयोग की जा सकती हैं, लेकिन कुछ कमांड में बड़े अक्षरों वाले पैरामीटर (जैसे CONTAINER, IMAGE, NAME) को वास्तविक मानों से बदलना होगा। उदाहरण के लिए, docker stop CONTAINER में CONTAINER को वास्तविक कंटेनर नाम या ID से बदलना होगा।"
+        },
+        {
+          "question": "क्या फास्ट रेफरेंस टेबल को निरंतर अपडेट किया जाएगा?",
+          "answer": "हां, हम फास्ट रेफरेंस टेबल को निरंतर अपडेट करेंगे, नए उपयोगी कमांड और तकनीक जोड़ेंगे, यह सुनिश्चित करने के लिए कि सामग्री नवीनतम Docker संस्करण के साथ संगत रहे।"
+        }
+      ],
+      "meta": {
+        "title": "Docker कमांड फास्ट रेफरेंस - आम कमांड त्वरित संदर्भ",
+        "description": "Docker आम कमांड फास्ट रेफरेंस टेबल, कंटेनर, इमेज, डेटा वॉल्यूम, नेटवर्क, Compose जैसे सभी दृश्यों को कवर करती है, खोज और एक क्लिक में कॉपी का समर्थन करती है।",
+        "keywords": "Docker कमांड, Docker फास्ट रेफरेंस टेबल, कंटेनर प्रबंधन, Docker ट्यूटोरियल"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Nginx विन्यास फास्ट रेफरेंस",
+      "description": "Nginx आम उपयोग कॉन्फ़िगरेशन खंड रैपिड रिफरेंस टेबल, त्वरित खोज और कॉपी कॉन्फ़िगरेशन कोड",
+      "search_placeholder": "Nginx कॉन्फ़िगरेशन खोजें...",
+      "copy_success": "कॉन्फ़िगरेशन कॉपी किया गया",
+      "no_results": "मैचिंग कॉन्फ़िगरेशन नहीं मिला",
+      "all_categories": "सभी",
+      "results_count": "{count} कॉन्फ़िगरेशन मिले",
+      "categories": {
+        "basic": "आधारभूत कॉन्फ़िगरेशन",
+        "server": "Server ब्लॉक",
+        "location": "Location मैचिंग",
+        "proxy": "रिवर्स प्रॉक्सी",
+        "ssl": "SSL/HTTPS",
+        "cache": "कैश कॉन्फ़िगरेशन",
+        "gzip": "Gzip संपीड़न",
+        "security": "सुरक्षा कॉन्फ़िगरेशन",
+        "logging": "लॉग कॉन्फ़िगरेशन",
+        "performance": "प्रदर्शन अनुकूलन"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "कार्य प्रोसेस की संख्या स्वचालित रूप से सेट करें (आमतौर पर CPU कोर की संख्या के बराबर)"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "प्रत्येक कार्य प्रोसेस के लिए अधिकतम कनेक्शन संख्या सेट करें"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "MIME प्रकार कॉन्फ़िगरेशन शामिल करें"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "कुशल फाइल ट्रांसफर सक्षम करें"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "लंबी कनेक्शन टाइमआउट समय सेट करें"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "क्लाइंट अनुरोध बॉडी का अधिकतम आकार सेट करें"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "Nginx संस्करण नंबर छिपाएं"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "आधारभूत Server ब्लॉक कॉन्फ़िगरेशन"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "कई डोमेन नाम कॉन्फ़िगर करें"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "वाइल्डकार्ड डोमेन नाम कॉन्फ़िगर करें"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "डिफ़ॉल्ट सर्वर सेट करें"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "IPv6 एड्रेस की निगरानी करें"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# या alias का उपयोग करें\nalias /var/www/files/;",
+            "desc": "रूट डायरेक्टरी या एलियास सेट करें"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # सटीक मैचिंग\n}",
+            "desc": "सटीक मार्ग मैचिंग"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # प्रीफिक्स मैचिंग\n}",
+            "desc": "प्रीफिक्स मार्ग मैचिंग"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # नियमित अभिव्यक्ति मैचिंग (केस-संवेदनशील)\n}",
+            "desc": "नियमित अभिव्यक्ति मैचिंग"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\. (jpg|jpeg|png|gif)$ {\n    # नियमित अभिव्यक्ति मैचिंग (केस-असंवेदनशील)\n}",
+            "desc": "केस-असंवेदनशील नियमित अभिव्यक्ति मैचिंग"
+          },
+          "priority_match": {
+            "config": "स्थान ^~ /images/ { # प्राथमिक पूर्व-प्रत्यय मिलान }",
+            "desc": "प्राथमिक पूर्व-प्रत्यय मिलान (नियमित अभिव्यक्ति से अधिक प्राथमिकता)"
+          },
+          "try_files": {
+            "config": "स्थान / { try_files $uri $uri/ /index.html; }",
+            "desc": "फ़ाइल प्रयास क्रम (SPA ऐप्लिकेशन में आम उपयोग)"
+          },
+          "internal": {
+            "config": "स्थान /internal/ { internal; }",
+            "desc": "केवल आंतरिक अनुरोधों की अनुमति"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "स्थान /api/ { proxy_pass http://backend:3000/; }",
+            "desc": "मूल रिवर्स प्रॉक्सी कॉन्फ़िगरेशन"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "प्रॉक्सी अनुरोध हेडर सेट करें"
+          },
+          "websocket": {
+            "config": "स्थान /ws/ { proxy_pass http://backend:3000/; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection \"upgrade\"; }",
+            "desc": "WebSocket प्रॉक्सी कॉन्फ़िगरेशन"
+          },
+          "upstream": {
+            "config": "upstream backend { server 127.0.0.1:3000; server 127.0.0.1:3001; keepalive 32; }",
+            "desc": "ऊपरी सर्वर समूह परिभाषित करें"
+          },
+          "load_balance": {
+            "config": "upstream backend { least_conn; # या ip_hash; server 127.0.0.1:3000; server 127.0.0.1:3001; }",
+            "desc": "लोड बैलेंसिंग कॉन्फ़िगरेशन"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s; proxy_send_timeout 60s; proxy_read_timeout 60s;",
+            "desc": "प्रॉक्सी टाइमआउट सेटिंग्स"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on; proxy_buffer_size 4k; proxy_buffers 8 4k;",
+            "desc": "प्रॉक्सी बफर कॉन्फ़िगरेशन"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server { listen 443 ssl http2; ssl_certificate /path/to/cert.pem; ssl_certificate_key /path/to/key.pem; }",
+            "desc": "मूल SSL कॉन्फ़िगरेशन"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "SSL प्रोटोकॉल संस्करण सेट करें"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256; ssl_prefer_server_ciphers on;",
+            "desc": "एन्क्रिप्शन सेट सेट करें"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m; ssl_session_timeout 1d;",
+            "desc": "SSL सत्र कैश"
+          },
+          "http_to_https": {
+            "config": "server { listen 80; server_name example.com; return 301 https://$server_name$request_uri; }",
+            "desc": "HTTP से HTTPS पर रीडायरेक्ट"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "HSTS सक्षम करें"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on; ssl_stapling_verify on; resolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "OCSP Stapling सक्षम करें"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "स्थान ~* \\. (css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ { expires 30d; add_header Cache-Control \"public, immutable\"; }",
+            "desc": "स्थिर संसाधन कैश"
+          },
+          "no_cache": {
+            "config": "स्थान /api/ { add_header Cache-Control \"no-store, no-cache, must-revalidate\"; }",
+            "desc": "कैश अक्षम करें"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g; स्थान / { proxy_cache my_cache; proxy_cache_valid 200 1d; }",
+            "desc": "प्रॉक्सी कैश कॉन्फ़िगरेशन"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "ETag सक्षम करें"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "शर्तात्मक अनुरोध सक्षम करें"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on; gzip_vary on; gzip_min_length 1024; gzip_comp_level 6;",
+            "desc": "मूल Gzip संपीड़न कॉन्फ़िगरेशन"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "संपीड़न के लिए MIME प्रकार सेट करें"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "प्रॉक्सी अनुरोधों के लिए संपीड़न सक्षम करें"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "पूर्व-संपीड़ित फ़ाइलें सक्षम करें"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "CORS क्रॉस-डोमेन कॉन्फ़िगरेशन"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "XSS और क्लिक हैकिंग सुरक्षा"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "कंटेंट सुरक्षा नीति"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "अनुरोध दर सीमा"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "छिपी हुई फ़ाइलों की एक्सेस प्रतिबंधित करें"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "IP व्हाइटलिस्ट"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "एक्सेस लॉग कॉन्फ़िगरेशन"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "त्रुटि लॉग कॉन्फ़िगरेशन"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "कस्टम लॉग फॉर्मेट"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "JSON फॉर्मेट लॉग"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "एक्सेस लॉग अक्षम करें"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "शर्त लॉग (केवल त्रुटियाँ रिकॉर्ड करें)"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "फ़ाइल डिस्क्रिप्टर कैश"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "बहु-कनेक्शन स्वीकार और epoll सक्षम करें"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "FastCGI कैश"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "कनेक्शन संख्या सीमा"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "टाइमआउट अनुकूलन"
+          }
+        }
+      },
+      "introduction": "Nginx कॉन्फ़िगरेशन रैपिड रेफरेंस वेब डेवलपर्स और ऑपरेशन्स इंजीनियर्स के लिए डिज़ाइन किया गया Nginx कॉन्फ़िगरेशन का एक त्वरित संदर्भ टूल है। इसमें आधारभूत कॉन्फ़िगरेशन से लेकर उन्नत अनुकूलन तक सभी आम कॉन्फ़िगरेशन खंड शामिल हैं, जो कार्यों के आधार पर वर्गीकृत हैं, और त्वरित खोज और एक क्लिक में कॉपी का समर्थन करते हैं। चाहे आप Nginx के नए उपयोगकर्ता हों या अनुभवी ऑपरेशन इंजीनियर, आप यहाँ आवश्यक कॉन्फ़िगरेशन कोड जल्दी से ढूंढ सकते हैं।",
+      "features": [
+        "10 बड़े वर्ग, Nginx के सभी आम कॉन्फ़िगरेशन स्थितियों को कवर करते हैं",
+        "60+ आम कॉन्फ़िगरेशन खंड, आधारभूत से उन्नत तक पूरी तरह से शामिल",
+        "कीवर्ड खोज का समर्थन, आवश्यक कॉन्फ़िगरेशन तक त्वरित पहुँच",
+        "एक क्लिक में कॉन्फ़िगरेशन कोड कॉपी करें, कार्यक्षमता में सुधार",
+        "स्पष्ट चीनी व्याख्या, समझने और सीखने में आसान",
+        "वर्गीकृत ब्राउज़िंग और फ़िल्टर, जुड़े हुए कॉन्फ़िगरेशन को जल्दी खोजें",
+        "रिस्पॉन्सिव डिज़ाइन, मोबाइल दृश्य देखने के लिए समर्थन",
+        "स्थानीय रूप से चलाएँ, बिना नेटवर्क के उपयोग करें"
+      ],
+      "faq": [
+        {
+          "question": "Nginx कॉन्फ़िगरेशन रैपिड रेफरेंस की आवश्यकता क्यों है?",
+          "answer": "Nginx कॉन्फ़िगरेशन सिंटैक्स जटिल है, निर्देश बहुत हैं, यहां तक कि अनुभवी ऑपरेशन इंजीनियर्स भी सभी कॉन्फ़िगरेशन याद नहीं रख सकते। रैपिड रेफरेंस टेबल आपको कॉन्फ़िगरेशन कोड को त्वरित रूप से खोजने और कॉपी करने में मदद कर सकती है, दस्तावेज़ खोजने के समय को बचाती है, और कॉन्फ़िगरेशन दक्षता में सुधार करती है।"
+        },
+        {
+          "question": "रैपिड रेफरेंस टेबल में कौन सी कॉन्फ़िगरेशन वर्ग शामिल हैं?",
+          "answer": "रैपिड रेफरेंस टेबल में 10 बड़े वर्ग शामिल हैं: आधारभूत कॉन्फ़िगरेशन, Server ब्लॉक, Location मैचिंग, रिवर्स प्रॉक्सी, SSL/HTTPS, कैश कॉन्फ़िगरेशन, Gzip संपीड़न, सुरक्षा कॉन्फ़िगरेशन, लॉग कॉन्फ़िगरेशन, प्रदर्शन अनुकूलन। इसमें दैनिक ऑपरेशन में लगभग सभी Nginx कॉन्फ़िगरेशन स्थितियाँ शामिल हैं।"
+        },
+        {
+          "question": "आवश्यक कॉन्फ़िगरेशन को कैसे जल्दी खोजें?",
+          "answer": "आप शीर्ष पर स्थित खोज बॉक्स में कीवर्ड दर्ज करके खोज कर सकते हैं, या विशिष्ट प्रकार की कॉन्फ़िगरेशन को फ़िल्टर करने के लिए वर्ग लेबल पर क्लिक कर सकते हैं। खोज विन्यास कोड और विवरण के अस्पष्ट मैच का समर्थन करती है।"
+        },
+        {
+          "question": "कॉपी की गई कॉन्फ़िगरेशन का उपयोग सीधे किया जा सकता है?",
+          "answer": "अधिकांश कॉन्फ़िगरेशन सीधे उपयोग किए जा सकते हैं, लेकिन वास्तविक स्थिति के अनुसार पथ, डोमेन, पोर्ट आदि पैरामीटरों को संशोधित करने की आवश्यकता होती है। उत्पादन परिवेश में लागू करने से पहले परीक्षण परिवेश में जांच करने की सलाह दी जाती है।"
+        },
+        {
+          "question": "क्षेत्रफल सूचकांक निरंतर अपडेट किया जाएगा?",
+          "answer": "हाँ, हम क्षेत्रफल सूचकांक को निरंतर अपडेट करते रहेंगे, नए उपयोगी कॉन्फ़िगरेशन और सर्वोत्तम प्रथाओं को जोड़ेंगे, ताकि सामग्री नवीनतम Nginx संस्करण के साथ संगत रहे।"
+        }
+      ],
+      "meta": {
+        "title": "Nginx कॉन्फ़िगरेशन क्षेत्रफल सूचकांक - आम उपयोग कॉन्फ़िगरेशन त्वरित संदर्भ",
+        "description": "Nginx आम कॉन्फ़िगरेशन क्षेत्रफल सूचकांक, रिवर्स प्रॉक्सी, SSL, कैश, सुरक्षा, प्रदर्शन अनुकूलन आदि सभी परिदृश्यों को शामिल करता है, खोज और एक क्लिक में कॉपी का समर्थन करता है।",
+        "keywords": "Nginx कॉन्फ़िगरेशन, Nginx क्षेत्रफल सूचकांक, रिवर्स प्रॉक्सी, Nginx ट्यूटोरियल"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "लिनक्स फ़ायरवॉल क्षेत्रफल सूचकांक",
+      "description": "लिनक्स फ़ायरवॉल आम आदेश क्षेत्रफल सूचकांक, iptables, firewalld, ufw आदि शामिल हैं",
+      "search_placeholder": "फ़ायरवॉल आदेश खोजें...",
+      "copy_success": "आदेश कॉपी कर लिया गया है",
+      "no_results": "मैचिंग आदेश नहीं मिला",
+      "all_categories": "सभी",
+      "results_count": "{count} आदेश मिले",
+      "categories": {
+        "iptables_basic": "iptables बुनियादी",
+        "iptables_whitelist": "iptables व्हाइटलिस्ट",
+        "iptables_rules": "iptables नियम",
+        "firewalld_basic": "firewalld बुनियादी",
+        "firewalld_rules": "firewalld नियम",
+        "ufw_basic": "UFW बुनियादी",
+        "ufw_rules": "UFW नियम",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "सभी नियमों को सूचीबद्ध करें (विस्तृत मोड)"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "नियमों को सूचीबद्ध करें और पंक्ति संख्या दिखाएँ"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "NAT टेबल नियमों को सूचीबद्ध करें"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "वर्तमान नियमों को फ़ाइल में सहेजें"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "फ़ाइल से नियमों को पुनर्स्थापित करें"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "सभी नियमों को साफ़ करें"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "NAT टेबल नियमों को साफ़ करें"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "सभी उपयोगकर्ता परिभाषित श्रृंखलाओं को हटाएं"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "सभी गिनतियों को शून्य करें"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "INPUT श्रृंखला की डिफ़ॉल्ट नीति को DROP पर सेट करें"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "INPUT श्रृंखला की डिफ़ॉल्ट नीति को ACCEPT पर सेट करें"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "निर्दिष्ट IP एक्सेस की अनुमति दें"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "निर्दिष्ट नेटवर्क सेगमेंट एक्सेस की अनुमति दें"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "निर्दिष्ट IP द्वारा निर्दिष्ट पोर्ट तक पहुंच की अनुमति"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "निर्दिष्ट IP द्वारा पहुंच को अस्वीकार करें"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "निर्दिष्ट नेटवर्क खंड द्वारा पहुंच को अस्वीकार करें"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "स्थापित कनेक्शन की अनुमति दें"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "लोकल लूपबैक इंटरफेस की अनुमति दें"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "केवल व्हाइटलिस्ट IP की अनुमति (पूर्ण कॉन्फ़िगरेशन)"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "SSH कनेक्शन की अनुमति दें (पोर्ट 22)"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "HTTP कनेक्शन की अनुमति दें (पोर्ट 80)"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "HTTPS कनेक्शन की अनुमति दें (पोर्ट 443)"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "MySQL कनेक्शन की अनुमति दें (पोर्ट 3306)"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "Redis कनेक्शन की अनुमति दें (पोर्ट 6379)"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "पोर्ट रेंज 8000-9000 की अनुमति दें"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "Ping प्रश्न की अनुमति दें"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "Ping प्रश्न को अस्वीकार करें"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "INPUT श्रृंखला में तीसरे नियम को हटाएं"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "पहली पंक्ति में नियम डालें"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "अस्वीकृत डेटाग्राम को रिकॉर्ड करें"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "SSH कनेक्शन दर को सीमित करें"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "पोर्ट 80 से 8080 तक पोर्ट फॉरवर्डिंग"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "NAT मास्करेड सक्षम करें (शेयर्ड इंटरनेट)"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "फायरवॉल स्थिति देखें"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "फायरवॉल शुरू करें"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "फायरवॉल बंद करें"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "बूट पर स्वचालित शुरू होने के लिए सेट करें"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "बूट पर स्वचालित शुरू होने को अक्षम करें"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "विन्यास को पुनः लोड करें"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "वर्तमान क्षेत्र के सभी विन्यासों की सूची बनाएं"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "सभी उपलब्ध क्षेत्रों की सूची बनाएं"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "डिफ़ॉल्ट क्षेत्र प्राप्त करें"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "डिफ़ॉल्ट क्षेत्र सेट करें"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "सभी उपलब्ध सेवाओं की सूची बनाएं"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "स्थायी रूप से HTTP सेवा जोड़ें"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "स्थायी रूप से HTTP सेवा हटाएं"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "स्थायी रूप से पोर्ट 8080 खोलें"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "स्थायी रूप से पोर्ट 8080 बंद करें"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "स्थायी रूप से पोर्ट सीमा खोलें"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "विश्वसनीय स्रोत IP नेटवर्क जोड़ें"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "विश्वसनीय स्रोत IP नेटवर्क हटाएं"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "रिच नियम: निर्दिष्ट IP की अनुमति दें"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "रिच नियम: निर्दिष्ट IP को अस्वीकार करें"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "रिच नियम: नेटवर्क खंड को निर्दिष्ट पोर्ट तक पहुंच की अनुमति दें"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "पोर्ट फॉरवर्डिंग 80 से 8080 तक"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "NAT मास्किंग सक्षम करें"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "फ़ायरवॉल स्थिति देखें (विस्तृत)"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "फ़ायरवॉल सक्षम करें"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "फ़ायरवॉल अक्षम करें"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "सभी नियमों को रीसेट करें"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "डिफ़ॉल्ट रूप से सभी इनकमिंग को अस्वीकार करें"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "डिफ़ॉल्ट रूप से सभी आउटगोइंग को अनुमति दें"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "नियमों को पुनः लोड करें"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "नंबर वाली नियमों की सूची दिखाएं"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "SSH सेवा की अनुमति दें"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "HTTP सेवा की अनुमति दें"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "HTTPS सेवा की अनुमति दें"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "TCP पोर्ट 8080 की अनुमति दें"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "पोर्ट सीमा 8000-9000 की अनुमति दें"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "निर्दिष्ट IP के सभी प्रवेश की अनुमति दें"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "निर्दिष्ट नेटवर्क खंड के सभी प्रवेश की अनुमति दें"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "निर्दिष्ट IP के पोर्ट 22 तक प्रवेश की अनुमति दें"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "निर्दिष्ट IP के सभी प्रवेश को अस्वीकार करें"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "TCP पोर्ट 3306 को अस्वीकार करें"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "8080 की अनुमति वाले नियम को हटाएं"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "तीसरे नियम को हटाएं"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "पहली पंक्ति में नियम डालें"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "SSH कनेक्शन दर को सीमित करें (बलपूर्वक अनुक्रमण के विरुद्ध)"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "सभी नियमों की सूची दिखाएं"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "सभी नियमों को साफ करें"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "टेबल जोड़ें"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\\\; }",
+            "desc": "चेन जोड़ें"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "पोर्ट 22 की अनुमति दें"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "निर्दिष्ट IP की अनुमति दें"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "निर्दिष्ट IP को अस्वीकार करें"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "नियमों को फ़ाइल में सहेजें"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "फ़ाइल से नियमों को पुनर्स्थापित करें"
+          }
+        }
+      },
+      "introduction": "लिनक्स फ़ायरवॉल रैपिड रेफरेंस सिस्टम एडमिनिस्ट्रेटर और ऑपरेशन्स प्रोफेशनल्स के लिए डिज़ाइन किया गया फ़ायरवॉल कमांड रैपिड रेफरेंस टूल है। इसमें iptables, firewalld, ufw, nftables जैसे मुख्य फ़ायरवॉल टूल्स के उपयोगी कमांड शामिल हैं, विशेष रूप से IP व्हाइटलिस्ट, पोर्ट ओपनिंग, एक्सेस कंट्रोल जैसी उपयोगी कॉन्फ़िगरेशन शामिल हैं। इसमें तेज़ खोज और एक क्लिक में कॉपी का समर्थन है, जो आपको सर्वर सुरक्षा का कुशलतापूर्वक प्रबंधन करने में मदद करता है।",
+      "features": [
+        "8 बड़ी श्रेणियां, मुख्य लिनक्स फ़ायरवॉल टूल्स को कवर करती हैं",
+        "80+ उपयोगी कमांड, बुनियादी से उन्नत तक पूरी तरह से शामिल हैं",
+        "IP व्हाइटलिस्ट कॉन्फ़िगरेशन, त्वरित एक्सेस कंट्रोल के लिए",
+        "iptables, firewalld, ufw, nftables का समर्थन करता है",
+        "एक क्लिक में कमांड कॉपी करें, ऑपरेशन दक्षता में सुधार",
+        "स्पष्ट चीनी भाषा में स्पष्टीकरण, समझने और सीखने में आसान",
+        "वर्गीकृत ब्राउज़िंग और फ़िल्टरिंग, संबंधित कमांड तेजी से खोजें",
+        "स्थानीय रूप से चलाएं, इंटरनेट की आवश्यकता नहीं"
+      ],
+      "faq": [
+        {
+          "question": "कौन सा फ़ायरवॉल टूल चुनना चाहिए?",
+          "answer": "CentOS/RHEL 7+ के लिए firewalld की सिफारिश की जाती है, Ubuntu/Debian के लिए ufw की सिफारिश की जाती है, निश्चित नियंत्रण या पुराने सिस्टम के लिए iptables का उपयोग करें, नए सिस्टम के लिए nftables पर विचार करें। firewalld और ufw iptables के फ्रंट-एंड हैं, उपयोग में आसान हैं।"
+        },
+        {
+          "question": "IP व्हाइटलिस्ट कैसे सेट करें?",
+          "answer": "सबसे पहले डिफ़ॉल्ट नीति को सभी इनबाउंड ट्रैफ़िक को अस्वीकार करने के लिए सेट करें, फिर अनुमति देने वाले IP या नेटवर्क खंड जोड़ें। iptables में -A INPUT -s IP -j ACCEPT का उपयोग करें, firewalld में --add-source या रिच रूल्स का उपयोग करें, ufw में allow from IP का उपयोग करें।"
+        },
+        {
+          "question": "नियमों में संशोधन के बाद रीबूट करने की आवश्यकता होती है?",
+          "answer": "iptables नियम तुरंत लागू होते हैं लेकिन रीबूट के बाद खो जाते हैं, iptables-save का उपयोग करके सहेजना आवश्यक है। firewalld में --permanent पैरामीटर का उपयोग करने के बाद --reload की आवश्यकता होती है। ufw नियम स्वचालित रूप से सहेजे जाते हैं। संशोधन के बाद नियमों के लागू होने की जांच करने की सलाह दी जाती है।"
+        },
+        {
+          "question": "अपने आप को सर्वर के बाहर लॉक करने से कैसे बचें?",
+          "answer": "1) पहले वर्तमान SSH कनेक्शन के IP को अनुमति दें; 2) at कमांड का उपयोग करके नियमों को बहाल करने के लिए समय सेट करें; 3) कंट्रोल टैर्मिनल या IPMI के माध्यम से पहुंचें; 4) परीक्षण से पहले वर्तमान नियमों को सहेजें ताकि बहाल किया जा सके।"
+        },
+        {
+          "question": "क्विक रेफरेंस टेबल को निरंतर अपडेट किया जाएगा?",
+          "answer": "हां, हम क्विक रेफरेंस टेबल को निरंतर अपडेट करेंगे, नए उपयोगी कमांड और शीर्ष अभ्यास जोड़ेंगे, यह सुनिश्चित करने के लिए कि सामग्री नवीनतम Linux रिलीज़ के साथ संगत रहे।"
+        }
+      ],
+      "meta": {
+        "title": "लिनक्स फ़ायरवॉल क्विक रेफरेंस - iptables/firewalld/ufw कमांड रेफरेंस",
+        "description": "लिनक्स फ़ायरवॉल आम उपयोग कमांड क्विक रेफरेंस टेबल, iptables, firewalld, ufw, nftables को कवर करती है, IP व्हाइटलिस्ट, पोर्ट खोलने आदि कॉन्फ़िगरेशन शामिल है, खोज और एक क्लिक में कॉपी का समर्थन करती है।",
+        "keywords": "लिनक्स फ़ायरवॉल, iptables, firewalld, ufw, IP व्हाइटलिस्ट"
+      }
+    },
     "base64-file-converter": {
       "name": "Base64 इमेज कनवर्टर",
       "description": "इमेज को Base64 एन्कोडिंग में कनवर्ट करें और इसके विपरीत",

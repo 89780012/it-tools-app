@@ -41,6 +41,8 @@ import {
   Box,
   Languages,
   FileDiff,
+  Server,
+  Shield,
 } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
@@ -91,6 +93,8 @@ const toolIconMap = {
   box: Box,                      // Docker run to compose
   languages: Languages,          // i18n translator
   "file-diff": FileDiff,         // JSON key fixer
+  server: Server,                // Nginx cheatsheet
+  shield: Shield,                // Firewall cheatsheet
 }
 
 export function AppSidebar() {

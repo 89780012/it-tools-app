@@ -66,6 +66,8 @@ interface FixTask {
     completed: number
     failed: string[]
   }
+  // 保存已成功翻译的内容，用于重试时复用
+  successfulTranslations?: Record<string, string>
   error?: string
 }
 
@@ -253,9 +255,10 @@ export default function JsonKeyFixerPage() {
 
     // 批量翻译配置
     const BATCH_SIZE = 50
+    const MAX_CONCURRENT_BATCHES = 5 // 限制并发数，避免API过载
 
-    // 处理每个文件
-    for (const fileId of Object.keys(tasks)) {
+    // 并行处理每个文件
+    const processFile = async (fileId: string) => {
       const file = uploadedFiles.find(f => f.id === fileId)!
       const diff = diffResults[fileId]
 
@@ -285,11 +288,13 @@ export default function JsonKeyFixerPage() {
           }
         }).filter(e => e.value)
 
-        // 批量翻译
+        // 并行批量翻译
         const totalBatches = Math.ceil(entriesToTranslate.length / BATCH_SIZE)
         const failedKeys: string[] = []
+        let completedBatches = 0
 
-        for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
+        // 创建单个批次的翻译任务
+        const translateBatch = async (batchIndex: number) => {
           const start = batchIndex * BATCH_SIZE
           const end = Math.min(start + BATCH_SIZE, entriesToTranslate.length)
           const batchEntries = entriesToTranslate.slice(start, end)
@@ -311,28 +316,52 @@ export default function JsonKeyFixerPage() {
 
             if (response.ok) {
               const data = await response.json()
-              Object.assign(translations, data.translations || {})
+              return { success: true, translations: data.translations || {}, failedKeys: [] as string[] }
             } else {
-              batchEntries.forEach(e => failedKeys.push(e.key))
+              return { success: false, translations: {} as Record<string, string>, failedKeys: batchEntries.map(e => e.key) }
             }
           } catch {
-            batchEntries.forEach(e => failedKeys.push(e.key))
-          }
-
-          // 更新进度
-          setFixTasks(prev => ({
-            ...prev,
-            [fileId]: {
-              ...prev[fileId],
-              progress: Math.round(((batchIndex + 1) / totalBatches) * 100),
-              translationStats: {
-                total: entriesToTranslate.length,
-                completed: Object.keys(translations).length,
-                failed: failedKeys
+            return { success: false, translations: {} as Record<string, string>, failedKeys: batchEntries.map(e => e.key) }
+          } finally {
+            completedBatches++
+            setFixTasks(prev => ({
+              ...prev,
+              [fileId]: {
+                ...prev[fileId],
+                progress: Math.round((completedBatches / totalBatches) * 100)
               }
-            }
-          }))
+            }))
+          }
         }
+
+        // 分组并行执行（控制并发数）
+        for (let i = 0; i < totalBatches; i += MAX_CONCURRENT_BATCHES) {
+          const batchGroup = Array.from(
+            { length: Math.min(MAX_CONCURRENT_BATCHES, totalBatches - i) },
+            (_, idx) => translateBatch(i + idx)
+          )
+          const results = await Promise.all(batchGroup)
+          
+          // 合并结果
+          results.forEach(result => {
+            Object.assign(translations, result.translations)
+            failedKeys.push(...result.failedKeys)
+          })
+        }
+
+        // 更新最终翻译统计，并保存成功的翻译
+        setFixTasks(prev => ({
+          ...prev,
+          [fileId]: {
+            ...prev[fileId],
+            translationStats: {
+              total: entriesToTranslate.length,
+              completed: Object.keys(translations).length,
+              failed: failedKeys
+            },
+            successfulTranslations: { ...translations }
+          }
+        }))
       }
 
       // 重构 JSON
@@ -354,6 +383,9 @@ export default function JsonKeyFixerPage() {
       }))
     }
 
+    // 并行执行所有文件的翻译任务
+    await Promise.all(Object.keys(tasks).map(fileId => processFile(fileId)))
+
     setIsFixing(false)
     toast({
       title: "修复完成",
@@ -368,15 +400,29 @@ export default function JsonKeyFixerPage() {
     const sourceFile = uploadedFiles.find(f => f.id === sourceFileId)
     const file = uploadedFiles.find(f => f.id === fileId)
     const diff = diffResults[fileId]
+    const existingTask = fixTasks[fileId]
 
     if (!sourceFile || !file || !diff) return
+
+    // 获取之前成功的翻译和失败的 key
+    const previousTranslations = existingTask?.successfulTranslations || {}
+    const failedKeysToRetry = existingTask?.translationStats?.failed || []
+
+    // 如果没有失败的 key，直接返回
+    if (failedKeysToRetry.length === 0) {
+      toast({
+        title: "无需重试",
+        description: "没有失败的翻译需要重试"
+      })
+      return
+    }
 
     // 重置任务状态
     setFixTasks(prev => ({
       ...prev,
       [fileId]: {
         ...prev[fileId],
-        status: 'fixing',
+        status: 'translating',
         progress: 0,
         error: undefined
       }
@@ -384,80 +430,102 @@ export default function JsonKeyFixerPage() {
 
     // 批量翻译配置
     const BATCH_SIZE = 50
+    const MAX_CONCURRENT_BATCHES = 5 // 限制并发数，避免API过载
 
     try {
-      // 如果需要翻译缺失的 key
-      const translations: Record<string, string> = {}
-      if (fixOptions.fillMissing && diff.stats.missingKeys.length > 0) {
-        setFixTasks(prev => ({
-          ...prev,
-          [fileId]: { ...prev[fileId], status: 'translating' }
-        }))
+      // 复用之前成功的翻译
+      const translations: Record<string, string> = { ...previousTranslations }
+      
+      const sourceLanguage = detectLanguageCode(sourceFile.language)
+      const targetLanguage = detectLanguageCode(file.language)
 
-        const sourceLanguage = detectLanguageCode(sourceFile.language)
-        const targetLanguage = detectLanguageCode(file.language)
+      // 只准备失败的 key 进行重新翻译
+      const sourceFlat = flattenJsonWithOrder(sourceFile.content)
+      const entriesToTranslate = failedKeysToRetry.map(keyPath => {
+        const sourceEntry = sourceFlat.find(e => e.path === keyPath)
+        return {
+          key: keyPath,
+          value: sourceEntry?.value || ''
+        }
+      }).filter(e => e.value)
 
-        // 准备翻译条目
-        const sourceFlat = flattenJsonWithOrder(sourceFile.content)
-        const entriesToTranslate = diff.stats.missingKeys.map(keyPath => {
-          const sourceEntry = sourceFlat.find(e => e.path === keyPath)
-          return {
-            key: keyPath,
-            value: sourceEntry?.value || ''
-          }
-        }).filter(e => e.value)
+      // 并行批量翻译
+      const totalBatches = Math.ceil(entriesToTranslate.length / BATCH_SIZE)
+      const newFailedKeys: string[] = []
+      let completedBatches = 0
 
-        // 批量翻译
-        const totalBatches = Math.ceil(entriesToTranslate.length / BATCH_SIZE)
-        const failedKeys: string[] = []
+      // 创建单个批次的翻译任务
+      const translateBatch = async (batchIndex: number) => {
+        const start = batchIndex * BATCH_SIZE
+        const end = Math.min(start + BATCH_SIZE, entriesToTranslate.length)
+        const batchEntries = entriesToTranslate.slice(start, end)
 
-        for (let batchIndex = 0; batchIndex < totalBatches; batchIndex++) {
-          const start = batchIndex * BATCH_SIZE
-          const end = Math.min(start + BATCH_SIZE, entriesToTranslate.length)
-          const batchEntries = entriesToTranslate.slice(start, end)
-
-          try {
-            const response = await fetch('/api/i18n-translate', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                sourceLanguage,
-                targetLanguage,
-                entries: batchEntries,
-                options: {
-                  preservePlaceholders: true,
-                  skipHtml: false
-                }
-              })
+        try {
+          const response = await fetch('/api/i18n-translate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sourceLanguage,
+              targetLanguage,
+              entries: batchEntries,
+              options: {
+                preservePlaceholders: true,
+                skipHtml: false
+              }
             })
+          })
 
-            if (response.ok) {
-              const data = await response.json()
-              Object.assign(translations, data.translations || {})
-            } else {
-              batchEntries.forEach(e => failedKeys.push(e.key))
-            }
-          } catch {
-            batchEntries.forEach(e => failedKeys.push(e.key))
+          if (response.ok) {
+            const data = await response.json()
+            return { success: true, translations: data.translations || {}, failedKeys: [] as string[] }
+          } else {
+            return { success: false, translations: {} as Record<string, string>, failedKeys: batchEntries.map(e => e.key) }
           }
-
-          // 更新进度
+        } catch {
+          return { success: false, translations: {} as Record<string, string>, failedKeys: batchEntries.map(e => e.key) }
+        } finally {
+          completedBatches++
           setFixTasks(prev => ({
             ...prev,
             [fileId]: {
               ...prev[fileId],
-              progress: Math.round(((batchIndex + 1) / totalBatches) * 100),
-              translationStats: {
-                total: entriesToTranslate.length,
-                completed: Object.keys(translations).length,
-                failed: failedKeys
-              }
+              progress: Math.round((completedBatches / totalBatches) * 100)
             }
           }))
         }
       }
 
-      // 重构 JSON
+      // 分组并行执行（控制并发数）
+      for (let i = 0; i < totalBatches; i += MAX_CONCURRENT_BATCHES) {
+        const batchGroup = Array.from(
+          { length: Math.min(MAX_CONCURRENT_BATCHES, totalBatches - i) },
+          (_, idx) => translateBatch(i + idx)
+        )
+        const results = await Promise.all(batchGroup)
+        
+        // 合并结果
+        results.forEach(result => {
+          Object.assign(translations, result.translations)
+          newFailedKeys.push(...result.failedKeys)
+        })
+      }
+
+      // 更新最终翻译统计，保存所有成功的翻译
+      const totalMissingKeys = diff.stats.missingKeys.length
+      setFixTasks(prev => ({
+        ...prev,
+        [fileId]: {
+          ...prev[fileId],
+          translationStats: {
+            total: totalMissingKeys,
+            completed: Object.keys(translations).length,
+            failed: newFailedKeys
+          },
+          successfulTranslations: { ...translations }
+        }
+      }))
+
+      // 重构 JSON（使用所有成功的翻译）
       const fixedContent = rebuildJson(
         sourceFile.content,
         file.content,
@@ -475,9 +543,11 @@ export default function JsonKeyFixerPage() {
         }
       }))
 
+      const retriedCount = failedKeysToRetry.length
+      const newSuccessCount = retriedCount - newFailedKeys.length
       toast({
-        title: "重试成功",
-        description: `${file.file.name} 修复完成`
+        title: "重试完成",
+        description: `${file.file.name}: 重试 ${retriedCount} 个，成功 ${newSuccessCount} 个${newFailedKeys.length > 0 ? `，仍有 ${newFailedKeys.length} 个失败` : ''}`
       })
     } catch (error) {
       setFixTasks(prev => ({

@@ -47,6 +47,22 @@ export const toolsConfig: ToolCategory[] = [
         icon: "git-branch"
       },
       {
+        id: "nginx-cheatsheet",
+        nameKey: "tools.nginx-cheatsheet.name",
+        descriptionKey: "tools.nginx-cheatsheet.description",
+        category: "developer",
+        path: "/tools/nginx-cheatsheet",
+        icon: "server"
+      },
+      {
+        id: "firewall-cheatsheet",
+        nameKey: "tools.firewall-cheatsheet.name",
+        descriptionKey: "tools.firewall-cheatsheet.description",
+        category: "developer",
+        path: "/tools/firewall-cheatsheet",
+        icon: "shield"
+      },
+      {
         id: "linux-log-helper",
         nameKey: "tools.linux-log-helper.name",
         descriptionKey: "tools.linux-log-helper.description",
@@ -294,6 +310,14 @@ export const toolsConfig: ToolCategory[] = [
         category: "docker",
         path: "/tools/docker-run-to-compose",
         icon: "box"
+      },
+      {
+        id: "docker-cheatsheet",
+        nameKey: "tools.docker-cheatsheet.name",
+        descriptionKey: "tools.docker-cheatsheet.description",
+        category: "docker",
+        path: "/tools/docker-cheatsheet",
+        icon: "terminal"
       }
     ]
   },

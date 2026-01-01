@@ -2371,6 +2371,1249 @@
         "keywords": "Docker Compose, orchestrazione dei container, conversione Docker."
       }
     },
+    "docker-cheatsheet": {
+      "name": "Riferimento rapido dei comandi Docker",
+      "description": "Tabella di riferimento rapido dei comandi Docker comuni, per trovare e copiare rapidamente i comandi Docker",
+      "search_placeholder": "Cerca comandi Docker...",
+      "copy_success": "Comando copiato",
+      "no_results": "Nessun comando corrispondente trovato",
+      "all_categories": "Tutti",
+      "results_count": "Trovati {count} comandi",
+      "categories": {
+        "containers": "Gestione dei container",
+        "images": "Gestione delle immagini",
+        "volumes": "Volumi dei dati",
+        "networks": "Gestione della rete",
+        "compose": "Docker Compose",
+        "system": "Gestione del sistema",
+        "registry": "Registro delle immagini",
+        "build": "Costruzione delle immagini"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [OPZIONI] IMMAGINE",
+            "desc": "Crea ed avvia un nuovo container"
+          },
+          "run_detach": {
+            "cmd": "docker run -d IMMAGINE",
+            "desc": "Esegui il container in background"
+          },
+          "run_name": {
+            "cmd": "docker run --name NOME IMMAGINE",
+            "desc": "Esegui il container con un nome specifico"
+          },
+          "run_port": {
+            "cmd": "docker run -p HOST:CONTAINER IMMAGINE",
+            "desc": "Esegui il container con la mappatura delle porte"
+          },
+          "run_volume": {
+            "cmd": "docker run -v HOST:CONTAINER IMMAGINE",
+            "desc": "Esegui il container con il montaggio del volume"
+          },
+          "run_env": {
+            "cmd": "docker run -e CHIAVE=VALORE IMMAGINE",
+            "desc": "Imposta le variabili d'ambiente per eseguire il container"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm IMMAGINE",
+            "desc": "Elimina automaticamente il container dopo la sua uscita"
+          },
+          "run_it": {
+            "cmd": "docker run -it IMMAGINE /bin/bash",
+            "desc": "Esegui il container in modalità interattiva"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "Elencare i container in esecuzione"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "Elencare tutti i container (inclusi quelli fermati)"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "Mostra solo gli ID dei container"
+          },
+          "start": {
+            "cmd": "docker start CONTAINER",
+            "desc": "Avvia un container fermato"
+          },
+          "stop": {
+            "cmd": "docker stop CONTAINER",
+            "desc": "Ferma un container in esecuzione"
+          },
+          "restart": {
+            "cmd": "docker restart CONTAINER",
+            "desc": "Riavvia il container"
+          },
+          "kill": {
+            "cmd": "docker kill CONTAINER",
+            "desc": "Ferma forzatamente il container"
+          },
+          "rm": {
+            "cmd": "docker rm CONTAINER",
+            "desc": "Elimina un container fermato"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f CONTAINER",
+            "desc": "Elimina forzatamente il container (incluso quello in esecuzione)"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "Elimina tutti i contenitori arrestati"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER COMANDO",
+            "desc": "Esegui un comando all'interno di un contenitore in esecuzione"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "Accedi alla shell bash del contenitore"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "Visualizza i log del contenitore"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "Monitora in tempo reale i log del contenitore"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "Visualizza le ultime 100 righe dei log"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "Visualizza informazioni dettagliate sul contenitore"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "Visualizza i processi in esecuzione all'interno del contenitore"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "Visualizza in tempo reale l'utilizzo delle risorse dei contenitori"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:SRC DEST",
+            "desc": "Copia un file dal contenitore all'host"
+          },
+          "cp_to": {
+            "cmd": "docker cp SRC CONTAINER:DEST",
+            "desc": "Copia un file dall'host al contenitore"
+          },
+          "rename": {
+            "cmd": "docker rename VECCHIO NUOVO",
+            "desc": "Rinomina il contenitore"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "Mette in pausa il contenitore"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "Riprende il contenitore in pausa"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "Attende che il contenitore si fermi e restituisce il codice di uscita"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "Connettiti a un contenitore in esecuzione"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "Visualizza la mappatura delle porte del contenitore"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "Aggiorna la configurazione del contenitore"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "Elencare le immagini locali"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "Elencare tutte le immagini (inclusi i livelli intermedi)"
+          },
+          "pull": {
+            "cmd": "docker pull IMMAGINE",
+            "desc": "Scarica un'immagine dal repository"
+          },
+          "pull_tag": {
+            "cmd": "docker pull IMMAGINE:ETICHETTA",
+            "desc": "Scarica un'immagine con un'etichetta specifica"
+          },
+          "push": {
+            "cmd": "docker push IMMAGINE",
+            "desc": "Carica un'immagine nel repository"
+          },
+          "rmi": {
+            "cmd": "docker rmi IMMAGINE",
+            "desc": "Elimina un'immagine"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f IMMAGINE",
+            "desc": "Elimina forzatamente un'immagine"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "Elimina tutte le immagini orfane"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "Crea un nuovo tag per l'immagine"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "Visualizza la cronologia di creazione dell'immagine"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "Visualizza informazioni dettagliate sull'immagine"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "Salva l'immagine come file tar"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "Carica l'immagine da un file tar"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "Importa l'immagine da un file tar"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "Esporta il contenitore come file tar"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "Crea una nuova immagine dal contenitore"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "Cerca immagini su Docker Hub"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "Elimina le immagini non utilizzate"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "Elimina tutte le immagini non utilizzate"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "Elencare tutti i volumi dati"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "Crea un volume dati"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "Visualizza i dettagli del volume dati"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "Elimina il volume dati"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "Elimina tutti i volumi dati non utilizzati"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "Backup del volume dati"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "Ripristino del volume dati"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "Elencare tutte le reti"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "Crea una rete"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "Crea una rete bridge"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "Crea una rete overlay"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "Visualizza i dettagli della rete"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "Elimina la rete"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "Collegare il contenitore alla rete"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "Scollegare il contenitore dalla rete"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "Eliminare tutte le reti non utilizzate"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "Creare e avviare tutti i servizi"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "Avviare tutti i servizi in background"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "Costruire l'immagine e avviare i servizi"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "Fermare e eliminare tutti i servizi"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "Fermare i servizi e eliminare i volumi di dati"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "Avviare i servizi esistenti"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "Fermare i servizi"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "Riavviare i servizi"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "Elencare lo stato dei servizi"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "Visualizzare i log dei servizi"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "Seguire in tempo reale i log dei servizi"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "Eseguire un comando nel contenitore del servizio"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "Costruire l'immagine del servizio"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "Scaricare l'immagine del servizio"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "Verificare e visualizzare la configurazione"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "Eseguire un comando una tantum"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "Espandere il numero di istanze del servizio"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "Mostrare le informazioni del sistema Docker"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "Mostrare le informazioni sulla versione di Docker"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "Mostrare l'uso del disco di Docker"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "Pulire i dati non utilizzati"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "Pulire tutti i dati non utilizzati"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "Pulizia dei dati non utilizzati, inclusi i volumi di dati"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "Ottieni in tempo reale gli eventi di Docker"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "Filtra eventi di tipo specifico"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "Accedi a Docker Hub"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "Accedi a un repository di immagini specifico"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "Disconnettiti da Docker Hub"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "Disconnettiti da un repository di immagini specifico"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "Costruisci un'immagine dal Dockerfile"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "Specifica il Dockerfile per la costruzione"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "Costruisci senza usare la cache"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "Passa parametri di costruzione"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "Costruisci una fase specifica in un processo a più fasi"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "Costruzione multi-piattaforma"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "Crea e utilizza un nuovo costruttore"
+          }
+        }
+      },
+      "introduction": "La tabella di riferimento rapido dei comandi Docker è uno strumento di riferimento rapido progettato per sviluppatori e amministratori di sistema. Copre tutti i comandi comuni relativi alla gestione dei container, alle operazioni con le immagini, ai volumi di dati, alla configurazione della rete e a Docker Compose, organizzati per funzionalità, con supporto per la ricerca rapida e la copia istantanea. Sia che tu sia un principiante in Docker o un esperto ingegnere DevOps, qui potrai trovare rapidamente il comando di cui hai bisogno.",
+      "features": [
+        "8 categorie principali, che coprono tutte le situazioni comuni di Docker",
+        "Più di 100 comandi comuni, inclusi da quelli di base a quelli avanzati",
+        "Supporto per la ricerca per parole chiave, per trovare rapidamente il comando desiderato",
+        "Copia istantanea del comando, per aumentare l'efficienza del lavoro",
+        "Spiegazioni chiare in cinese, facili da comprendere e imparare",
+        "Navigazione per categorie e filtraggio, per trovare rapidamente i comandi correlati",
+        "Progettazione responsiva, supporto per la visualizzazione su dispositivi mobili",
+        "Esecuzione locale, utilizzabile senza connessione a internet"
+      ],
+      "faq": [
+        {
+          "question": "Perché hai bisogno di una tabella di riferimento rapido per i comandi Docker?",
+          "answer": "I comandi Docker sono numerosi e i parametri sono complessi, anche gli sviluppatori esperti hanno difficoltà a ricordare tutti i comandi. La tabella di riferimento rapido ti aiuta a trovare e copiare rapidamente i comandi, risparmiando tempo nella consultazione della documentazione e aumentando l'efficienza nello sviluppo e nella gestione."
+        },
+        {
+          "question": "Quali categorie di comandi sono incluse nella tabella di riferimento rapido?",
+          "answer": "La tabella di riferimento rapido include 8 categorie principali: gestione dei container, gestione delle immagini, volumi di dati, gestione della rete, Docker Compose, gestione del sistema, repository di immagini e costruzione di immagini. Copre quasi tutte le situazioni di utilizzo di Docker nella vita quotidiana di sviluppo e gestione."
+        },
+        {
+          "question": "Come trovare rapidamente il comando necessario?",
+          "answer": "Puoi utilizzare la barra di ricerca in alto per inserire una parola chiave, oppure fare clic sui tag di categoria per filtrare comandi di tipo specifico. La ricerca supporta il matching parziale del nome del comando e della descrizione."
+        },
+        {
+          "question": "I comandi copiati possono essere utilizzati direttamente?",
+          "answer": "La maggior parte dei comandi può essere utilizzata direttamente, ma alcuni parametri in maiuscolo (come CONTAINER, IMAGE, NAME) devono essere sostituiti con valori effettivi. Ad esempio, in docker stop CONTAINER, CONTAINER deve essere sostituito con il nome o l'ID effettivo del container."
+        },
+        {
+          "question": "La tabella di riferimento rapido verrà aggiornata periodicamente?",
+          "answer": "Sì, aggiorniamo costantemente la tabella di riferimento rapida, aggiungendo nuovi comandi utili e tecniche, per garantire che il contenuto sia allineato con la versione più recente di Docker."
+        }
+      ],
+      "meta": {
+        "title": "Tabella di riferimento rapido dei comandi Docker - Riferimento rapido ai comandi comuni",
+        "description": "Tabella di riferimento rapido dei comandi Docker comuni, che copre tutti gli scenari relativi a container, immagini, volumi di dati, rete e Compose, con supporto per ricerca e copia istantanea.",
+        "keywords": "Comandi Docker, tabella di riferimento rapido Docker, gestione dei container, tutorial Docker"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Tabella di riferimento rapido per la configurazione di Nginx",
+      "description": "Tabella di riferimento rapido per frammenti di configurazione Nginx comuni, per trovare e copiare rapidamente il codice di configurazione",
+      "search_placeholder": "Cerca configurazione Nginx...",
+      "copy_success": "Configurazione copiata",
+      "no_results": "Nessuna configurazione corrispondente trovata",
+      "all_categories": "Tutti",
+      "results_count": "Trovate {count} configurazioni",
+      "categories": {
+        "basic": "Configurazione di base",
+        "server": "Blocco Server",
+        "location": "Corrispondenza Location",
+        "proxy": "Proxy inverso",
+        "ssl": "SSL/HTTPS",
+        "cache": "Configurazione della cache",
+        "gzip": "Compressione Gzip",
+        "security": "Configurazione di sicurezza",
+        "logging": "Configurazione dei log",
+        "performance": "Ottimizzazione delle prestazioni"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "Imposta automaticamente il numero di processi di lavoro (di solito uguale al numero di core della CPU)"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "Imposta il numero massimo di connessioni per processo di lavoro"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "Includi la configurazione dei tipi MIME"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "Abilita la trasmissione efficiente dei file"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "Imposta il tempo di timeout per le connessioni persistenti"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "Imposta la dimensione massima del corpo della richiesta del client"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "Nasconde il numero di versione di Nginx"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "Configurazione di base del blocco Server"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "Configura più domini"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "Configura domini con caratteri jolly"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "Imposta il server predefinito"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "Ascolta l'indirizzo IPv6"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# Oppure utilizzare alias\nalias /var/www/files/;",
+            "desc": "Imposta la directory radice o un alias"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # Corrispondenza esatta\n}",
+            "desc": "Corrispondenza esatta del percorso"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # Corrispondenza in prefisso\n}",
+            "desc": "Corrispondenza in prefisso del percorso"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # Corrispondenza con espressione regolare (distingue maiuscole da minuscole)\n}",
+            "desc": "Corrispondenza con espressione regolare"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\.\\(jpg|jpeg|png|gif)$ {\n    # Corrispondenza con espressione regolare (non distingue maiuscole da minuscole)\n}",
+            "desc": "Corrispondenza con espressione regolare senza distinzione tra maiuscole e minuscole"
+          },
+          "priority_match": {
+            "config": "location ^~ /images/ { # Matcha prefisso prioritario }",
+            "desc": "Matcha prefisso prioritario (precede le espressioni regolari)"
+          },
+          "try_files": {
+            "config": "location / { try_files $uri $uri/ /index.html; }",
+            "desc": "Ordine di tentativo dei file (comune per le applicazioni SPA)"
+          },
+          "internal": {
+            "config": "location /internal/ { internal; }",
+            "desc": "Accesso consentito solo alle richieste interne"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "location /api/ { proxy_pass http://backend:3000/; }",
+            "desc": "Configurazione di base del proxy inverso"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "Impostazione degli header della richiesta proxy"
+          },
+          "websocket": {
+            "config": "location /ws/ { proxy_pass http://backend:3000/; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection \"upgrade\"; }",
+            "desc": "Configurazione del proxy WebSocket"
+          },
+          "upstream": {
+            "config": "upstream backend { server 127.0.0.1:3000; server 127.0.0.1:3001; keepalive 32; }",
+            "desc": "Definizione del gruppo di server upstream"
+          },
+          "load_balance": {
+            "config": "upstream backend { least_conn; # o ip_hash; server 127.0.0.1:3000; server 127.0.0.1:3001; }",
+            "desc": "Configurazione del bilanciamento del carico"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s; proxy_send_timeout 60s; proxy_read_timeout 60s;",
+            "desc": "Impostazioni dei timeout del proxy"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on; proxy_buffer_size 4k; proxy_buffers 8 4k;",
+            "desc": "Configurazione della buffer del proxy"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server { listen 443 ssl http2; ssl_certificate /path/to/cert.pem; ssl_certificate_key /path/to/key.pem; }",
+            "desc": "Configurazione di base SSL"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "Impostazione della versione del protocollo SSL"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256; ssl_prefer_server_ciphers on;",
+            "desc": "Impostazione delle suite di cifratura"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m; ssl_session_timeout 1d;",
+            "desc": "Cache della sessione SSL"
+          },
+          "http_to_https": {
+            "config": "server { listen 80; server_name example.com; return 301 https://$server_name$request_uri; }",
+            "desc": "Ridirezione HTTP a HTTPS"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "Abilita HSTS"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on; ssl_stapling_verify on; resolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "Abilita OCSP Stapling"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "location ~* \\.\\(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2\\)$ { expires 30d; add_header Cache-Control \"public, immutable\"; }",
+            "desc": "Caching delle risorse statiche"
+          },
+          "no_cache": {
+            "config": "location /api/ { add_header Cache-Control \"no-store, no-cache, must-revalidate\"; }",
+            "desc": "Disabilita il caching"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g; location / { proxy_cache my_cache; proxy_cache_valid 200 1d; }",
+            "desc": "Configurazione del caching del proxy"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "Abilita ETag"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "Abilita richieste condizionali"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on; gzip_vary on; gzip_min_length 1024; gzip_comp_level 6;",
+            "desc": "Configurazione di base della compressione Gzip"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "Impostazione dei tipi MIME da comprimere"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "Abilita la compressione per le richieste proxy"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "Abilita i file pre-compressi"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "Configurazione CORS跨域"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "Protezione contro XSS e clickjacking"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "Politica di sicurezza dei contenuti"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "Limitazione della velocità delle richieste"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "Blocco dell'accesso ai file nascosti"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "Whitelist IP"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "Configurazione del log di accesso"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "Configurazione del log di errore"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "Formato personalizzato del log"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "Log in formato JSON"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "Disabilita il log di accesso"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "Log condizionale (registra solo errori)"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "Cache dei descrittori di file"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "Abilita l'accettazione multipla delle connessioni e epoll"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "Cache FastCGI"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "Limitazione del numero di connessioni"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "Ottimizzazione dei timeout"
+          }
+        }
+      },
+      "introduction": "Nginx Config Quick Reference è uno strumento di riferimento rapido per la configurazione di Nginx, progettato per sviluppatori web e amministratori di sistema. Copre tutti i frammenti di configurazione comuni, dalla configurazione di base alle ottimizzazioni avanzate, organizzati per funzionalità, con supporto per la ricerca rapida e la copia con un solo clic. Sia che tu sia un principiante di Nginx o un ingegnere di sistema esperto, puoi trovare rapidamente il codice di configurazione di cui hai bisogno qui.",
+      "features": [
+        "10 grandi categorie che coprono tutte le scene di configurazione comuni di Nginx",
+        "Oltre 60 frammenti di configurazione comuni, inclusi da base a avanzato",
+        "Supporto per la ricerca per parole chiave, per trovare rapidamente la configurazione desiderata",
+        "Copia con un solo clic del codice di configurazione, per aumentare l'efficienza del lavoro",
+        "Spiegazioni cinesi chiare, facili da comprendere e imparare",
+        "Navigazione e filtraggio per categorie, per trovare rapidamente le configurazioni correlate",
+        "Progettazione responsiva, supporto per la visualizzazione su dispositivi mobili",
+        "Esecuzione locale, senza necessità di connessione a Internet"
+      ],
+      "faq": [
+        {
+          "question": "Perché hai bisogno di un riferimento rapido per la configurazione di Nginx?",
+          "answer": "La sintassi della configurazione di Nginx è complessa, con molte direttive, e anche gli amministratori di sistema esperti hanno difficoltà a ricordare tutte le configurazioni. La tabella di riferimento ti aiuta a trovare e copiare rapidamente il codice di configurazione, risparmiando tempo nella consultazione della documentazione e aumentando l'efficienza della configurazione."
+        },
+        {
+          "question": "Quali categorie di configurazione sono incluse nella tabella di riferimento?",
+          "answer": "La tabella di riferimento include 10 grandi categorie: configurazione di base, blocco Server, corrispondenza Location, proxy inverso, SSL/HTTPS, configurazione della cache, compressione Gzip, configurazione della sicurezza, configurazione dei log e ottimizzazione delle prestazioni. Copre quasi tutte le scene di configurazione di Nginx utilizzate nella manutenzione quotidiana."
+        },
+        {
+          "question": "Come trovare rapidamente la configurazione necessaria?",
+          "answer": "Puoi utilizzare la casella di ricerca in alto per inserire parole chiave e cercare, oppure fare clic sui tag di categoria per filtrare tipi specifici di configurazioni. La ricerca supporta la corrispondenza parziale del codice e della descrizione della configurazione."
+        },
+        {
+          "question": "Le configurazioni copiate possono essere utilizzate direttamente?",
+          "answer": "La maggior parte delle configurazioni può essere utilizzata direttamente, ma è necessario modificare parametri come percorsi, domini, porte, in base alla situazione reale. Si consiglia di verificare l'ambiente di test prima di applicarle all'ambiente di produzione."
+        },
+        {
+          "question": "La tabella di riferimento verrà aggiornata continuamente?",
+          "answer": "Sì, aggiorniamo continuamente la tabella di riferimento, aggiungendo nuove configurazioni utili e best practice, per garantire che il contenuto sia allineato alla versione più recente di Nginx."
+        }
+      ],
+      "meta": {
+        "title": "Tabella di riferimento per le configurazioni Nginx - Riferimento rapido per le configurazioni comuni",
+        "description": "Tabella di riferimento per le configurazioni Nginx comuni, che copre tutti i casi, inclusi il proxy inverso, SSL, caching, sicurezza e ottimizzazione delle prestazioni, con funzionalità di ricerca e copia con un solo clic.",
+        "keywords": "Configurazione Nginx, tabella di riferimento Nginx, proxy inverso, tutorial Nginx"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "Tabella di riferimento per il firewall Linux",
+      "description": "Tabella di riferimento per i comandi comuni del firewall Linux, inclusi iptables, firewalld, ufw, ecc.",
+      "search_placeholder": "Cerca comandi del firewall...",
+      "copy_success": "Comando copiato",
+      "no_results": "Nessun comando corrispondente trovato",
+      "all_categories": "Tutti",
+      "results_count": "Trovati {count} comandi",
+      "categories": {
+        "iptables_basic": "Base di iptables",
+        "iptables_whitelist": "Whitelist di iptables",
+        "iptables_rules": "Regole di iptables",
+        "firewalld_basic": "Base di firewalld",
+        "firewalld_rules": "Regole di firewalld",
+        "ufw_basic": "Base di UFW",
+        "ufw_rules": "Regole di UFW",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "Elenco di tutte le regole (modalità dettagliata)"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "Elenco delle regole con visualizzazione dei numeri di riga"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "Elenco delle regole della tabella NAT"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "Salva le regole correnti in un file"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "Ripristina le regole da un file"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "Pulisci tutte le regole"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "Pulisci le regole della tabella NAT"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "Elimina tutte le catene personalizzate"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "Azzera tutti i contatori"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "Imposta la strategia predefinita della catena INPUT su DROP"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "Imposta la strategia predefinita della catena INPUT su ACCEPT"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "Consenti l'accesso da un IP specifico"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "Consenti l'accesso da una sotto-rete specifica"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "Consenti l'accesso da indirizzi IP specifici a porte specifiche"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "Rifiuta l'accesso da indirizzi IP specifici"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "Rifiuta l'accesso da segmenti di rete specifici"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "Consenti connessioni già stabilite"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "Consenti l'interfaccia di loopback locale"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "Consenti solo gli indirizzi IP della whitelist (configurazione completa)"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "Consenti connessioni SSH (porta 22)"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "Consenti connessioni HTTP (porta 80)"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "Consenti connessioni HTTPS (porta 443)"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "Consenti connessioni MySQL (porta 3306)"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "Consenti connessioni Redis (porta 6379)"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "Consenti la port range 8000-9000"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "Consenti richieste Ping"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "Blocca richieste Ping"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "Elimina la regola numero 3 nella catena INPUT"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "Inserisci una regola nella prima riga"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "Registra i pacchetti scartati"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "Limita la velocità delle connessioni SSH"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "Inoltro di porta da 80 a 8080"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "Abilita NAT mascheramento (condivisione di connessione Internet)"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "Visualizza lo stato del firewall"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "Avvia il firewall"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "Ferma il firewall"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "Imposta l'avvio automatico all'avvio"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "Disabilita l'avvio automatico all'avvio"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "Ricarica la configurazione"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "Elenco di tutte le configurazioni della zona corrente"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "Elenco di tutte le zone disponibili"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "Ottieni la zona predefinita"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "Imposta la zona predefinita"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "Elenco di tutti i servizi disponibili"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "Aggiungi permanentemente il servizio HTTP"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "Rimuovi permanentemente il servizio HTTP"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "Apri permanentemente la porta 8080"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "Chiudi permanentemente la porta 8080"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "Apri permanentemente un intervallo di porte"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "Aggiungi un segmento IP sorgente fidato"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "Rimuovi un segmento IP sorgente fidato"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "Regola avanzata: permetti IP specifico"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "Regola avanzata: rifiuta IP specifico"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "Regola avanzata: permetti accesso a una porta specifica da un segmento di rete"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "Inoltro di porta da 80 a 8080"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "Abilita la mascheratura NAT"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "Visualizza lo stato del firewall (dettagliato)"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "Abilita il firewall"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "Disabilita il firewall"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "Reimposta tutte le regole"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "Rifiuta per default tutto il traffico in entrata"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "Permetti per default tutto il traffico in uscita"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "Ricarica le regole"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "Mostra elenco delle regole con numerazione"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "Permetti il servizio SSH"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "Permetti il servizio HTTP"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "Permetti il servizio HTTPS"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "Permetti la porta TCP 8080"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "Permetti la gamma di porte 8000-9000"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "Permetti tutti i accessi da un IP specifico"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "Permetti tutti i accessi da una sotto-rete specifica"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "Permetti l'accesso da un IP specifico alla porta 22"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "Rifiuta tutti i accessi da un IP specifico"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "Rifiuta la porta TCP 3306"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "Elimina la regola che permette la porta 8080"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "Elimina la regola numero 3"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "Inserisci una regola nella riga 1"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "Limita la velocità delle connessioni SSH (per prevenire attacchi di forza bruta)"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "Elencare tutte le regole"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "Pulisci tutte le regole"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "Aggiungi una tabella"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\\\; }",
+            "desc": "Aggiungi una catena"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "Permetti la porta 22"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "Permetti un IP specifico"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "Rifiuta un IP specifico"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "Salva le regole in un file"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "Ripristina le regole da un file"
+          }
+        }
+      },
+      "introduction": "La guida rapida al firewall Linux è uno strumento di riferimento rapido per amministratori di sistema e operatori di manutenzione. Copre i comandi comuni di strumenti di firewall principali come iptables, firewalld, ufw, nftables, con particolare attenzione alle configurazioni pratiche come whitelist IP, apertura di porte e controllo di accesso. Supporta la ricerca rapida e la copia con un solo clic, aiutandoti a gestire in modo efficiente la sicurezza del server.",
+      "features": [
+        "8 categorie principali, coprono gli strumenti di firewall Linux più diffusi",
+        "Oltre 80 comandi comuni, inclusi da base a avanzato",
+        "Configurazione della whitelist IP, per implementare rapidamente il controllo di accesso",
+        "Supporto a iptables, firewalld, ufw, nftables",
+        "Copia con un solo clic del comando, per aumentare l'efficienza della manutenzione",
+        "Istruzioni in cinese chiaro, facili da comprendere e imparare",
+        "Navegazione e filtraggio per categorie, per trovare rapidamente i comandi pertinenti",
+        "Esecuzione locale, utilizzabile senza connessione a internet"
+      ],
+      "faq": [
+        {
+          "question": "Quale strumento di firewall dovrebbe essere scelto?",
+          "answer": "CentOS/RHEL 7+ consiglia l'uso di firewalld, Ubuntu/Debian consiglia l'uso di ufw, per un controllo preciso o sistemi vecchi si consiglia iptables, per sistemi nuovi si può considerare nftables. firewalld e ufw sono interfacce per iptables, più facili da usare."
+        },
+        {
+          "question": "Come impostare una whitelist IP?",
+          "answer": "Prima impostare la politica predefinita per rifiutare tutto il traffico in entrata, quindi aggiungere gli IP o le subnet consentiti. iptables utilizza -A INPUT -s IP -j ACCEPT, firewalld utilizza --add-source o regole avanzate, ufw utilizza allow from IP."
+        },
+        {
+          "question": "È necessario riavviare dopo la modifica delle regole?",
+          "answer": "Le regole di iptables entrano immediatamente in vigore ma vengono perse al riavvio, è necessario utilizzare iptables-save per salvarle. firewalld richiede --reload dopo l'uso del parametro --permanent. Le regole di ufw vengono salvate automaticamente. Si consiglia di verificare che le regole siano applicate dopo la modifica."
+        },
+        {
+          "question": "Come evitare di bloccarsi fuori dal server?",
+          "answer": "1) Consentire prima l'IP della connessione SSH attuale; 2) Utilizzare il comando at per impostare un ripristino programmato delle regole; 3) Accedere tramite console o IPMI; 4) Salvare le regole attuali prima di testare per poterle ripristinare."
+        },
+        {
+          "question": "La tabella di riferimento verrà aggiornata continuamente?",
+          "answer": "Sì, aggiorniamo continuamente la tabella di riferimento, aggiungendo nuovi comandi utili e best practice, per garantire che il contenuto sia allineato con le ultime versioni di Linux."
+        }
+      ],
+      "meta": {
+        "title": "Riferimento comandi per firewall Linux - iptables/firewalld/ufw",
+        "description": "Tabella di riferimento rapido per i comandi comuni del firewall Linux, che include iptables, firewalld, ufw, nftables, con configurazioni come whitelist IP e apertura di porte, supporto alla ricerca e copia con un solo clic.",
+        "keywords": "Firewall Linux, iptables, firewalld, ufw, whitelist IP"
+      }
+    },
     "base64-file-converter": {
       "name": "Convertitore di immagini Base64",
       "description": "Strumento di conversione reciproca tra immagini e codifica Base64.",

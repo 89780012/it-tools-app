@@ -2371,6 +2371,1249 @@
         "keywords": "Docker Compose, оркестрация контейнеров, конвертация Docker"
       }
     },
+    "docker-cheatsheet": {
+      "name": "Справочник команд Docker",
+      "description": "Справочник часто используемых команд Docker, быстрый поиск и копирование команд Docker",
+      "search_placeholder": "Поиск команд Docker...",
+      "copy_success": "Команда скопирована",
+      "no_results": "Совпадений не найдено",
+      "all_categories": "Все",
+      "results_count": "Найдено {count} команд",
+      "categories": {
+        "containers": "Управление контейнерами",
+        "images": "Управление образами",
+        "volumes": "Объемы данных",
+        "networks": "Управление сетями",
+        "compose": "Docker Compose",
+        "system": "Системное управление",
+        "registry": "Репозиторий образов",
+        "build": "Сборка образов"
+      },
+      "commands": {
+        "containers": {
+          "run": {
+            "cmd": "docker run [ОПЦИИ] ОБРАЗ",
+            "desc": "Создать и запустить новый контейнер"
+          },
+          "run_detach": {
+            "cmd": "docker run -d ОБРАЗ",
+            "desc": "Запуск контейнера в фоновом режиме"
+          },
+          "run_name": {
+            "cmd": "docker run --name ИМЯ ОБРАЗ",
+            "desc": "Запуск контейнера с указанием имени"
+          },
+          "run_port": {
+            "cmd": "docker run -p ХОСТ:КОНТЕЙНЕР ОБРАЗ",
+            "desc": "Запуск контейнера с маппингом портов"
+          },
+          "run_volume": {
+            "cmd": "docker run -v ХОСТ:КОНТЕЙНЕР ОБРАЗ",
+            "desc": "Запуск контейнера с подключением тома"
+          },
+          "run_env": {
+            "cmd": "docker run -e КЛЮЧ=ЗНАЧЕНИЕ ОБРАЗ",
+            "desc": "Запуск контейнера с установкой переменных окружения"
+          },
+          "run_rm": {
+            "cmd": "docker run --rm ОБРАЗ",
+            "desc": "Автоматическое удаление контейнера после остановки"
+          },
+          "run_it": {
+            "cmd": "docker run -it ОБРАЗ /bin/bash",
+            "desc": "Интерактивный запуск контейнера"
+          },
+          "ps": {
+            "cmd": "docker ps",
+            "desc": "Список запущенных контейнеров"
+          },
+          "ps_all": {
+            "cmd": "docker ps -a",
+            "desc": "Список всех контейнеров (включая остановленные)"
+          },
+          "ps_quiet": {
+            "cmd": "docker ps -q",
+            "desc": "Только отображение идентификаторов контейнеров"
+          },
+          "start": {
+            "cmd": "docker start КОНТЕЙНЕР",
+            "desc": "Запуск остановленного контейнера"
+          },
+          "stop": {
+            "cmd": "docker stop КОНТЕЙНЕР",
+            "desc": "Остановка работающего контейнера"
+          },
+          "restart": {
+            "cmd": "docker restart КОНТЕЙНЕР",
+            "desc": "Перезапуск контейнера"
+          },
+          "kill": {
+            "cmd": "docker kill КОНТЕЙНЕР",
+            "desc": "Принудительная остановка контейнера"
+          },
+          "rm": {
+            "cmd": "docker rm КОНТЕЙНЕР",
+            "desc": "Удаление остановленного контейнера"
+          },
+          "rm_force": {
+            "cmd": "docker rm -f КОНТЕЙНЕР",
+            "desc": "Принудительное удаление контейнера (включая работающий)"
+          },
+          "rm_all": {
+            "cmd": "docker rm $(docker ps -aq)",
+            "desc": "Удалить все остановленные контейнеры"
+          },
+          "exec": {
+            "cmd": "docker exec -it CONTAINER КОМАНДА",
+            "desc": "Выполнить команду внутри работающего контейнера"
+          },
+          "exec_bash": {
+            "cmd": "docker exec -it CONTAINER /bin/bash",
+            "desc": "Войти в bash-терминал контейнера"
+          },
+          "logs": {
+            "cmd": "docker logs CONTAINER",
+            "desc": "Просмотреть журнал контейнера"
+          },
+          "logs_follow": {
+            "cmd": "docker logs -f CONTAINER",
+            "desc": "Реальное время отслеживания журнала контейнера"
+          },
+          "logs_tail": {
+            "cmd": "docker logs --tail 100 CONTAINER",
+            "desc": "Просмотреть последние 100 строк журнала"
+          },
+          "inspect": {
+            "cmd": "docker inspect CONTAINER",
+            "desc": "Просмотреть подробную информацию о контейнере"
+          },
+          "top": {
+            "cmd": "docker top CONTAINER",
+            "desc": "Просмотреть процессы, работающие внутри контейнера"
+          },
+          "stats": {
+            "cmd": "docker stats",
+            "desc": "Реальное время отображения использования ресурсов контейнером"
+          },
+          "cp": {
+            "cmd": "docker cp CONTAINER:ИСТОЧНИК НАЗНАЧЕНИЕ",
+            "desc": "Скопировать файл из контейнера на хост"
+          },
+          "cp_to": {
+            "cmd": "docker cp ИСТОЧНИК CONTAINER:НАЗНАЧЕНИЕ",
+            "desc": "Скопировать файл с хоста в контейнер"
+          },
+          "rename": {
+            "cmd": "docker rename СТАРЫЙ НОВЫЙ",
+            "desc": "Переименовать контейнер"
+          },
+          "pause": {
+            "cmd": "docker pause CONTAINER",
+            "desc": "Приостановить контейнер"
+          },
+          "unpause": {
+            "cmd": "docker unpause CONTAINER",
+            "desc": "Возобновить приостановленный контейнер"
+          },
+          "wait": {
+            "cmd": "docker wait CONTAINER",
+            "desc": "Ожидать остановки контейнера и вернуть код выхода"
+          },
+          "attach": {
+            "cmd": "docker attach CONTAINER",
+            "desc": "Подключиться к работающему контейнеру"
+          },
+          "port": {
+            "cmd": "docker port CONTAINER",
+            "desc": "Просмотреть сопоставление портов контейнера"
+          },
+          "update": {
+            "cmd": "docker update --restart=always CONTAINER",
+            "desc": "Обновить конфигурацию контейнера"
+          }
+        },
+        "images": {
+          "images": {
+            "cmd": "docker images",
+            "desc": "Перечислить локальные образы"
+          },
+          "images_all": {
+            "cmd": "docker images -a",
+            "desc": "Перечислить все образы (включая промежуточные слои)"
+          },
+          "pull": {
+            "cmd": "docker pull ОБРАЗ",
+            "desc": "Загрузить образ из репозитория"
+          },
+          "pull_tag": {
+            "cmd": "docker pull ОБРАЗ:ТЕГ",
+            "desc": "Загрузить образ с указанным тегом"
+          },
+          "push": {
+            "cmd": "docker push ОБРАЗ",
+            "desc": "Отправить образ в репозиторий"
+          },
+          "rmi": {
+            "cmd": "docker rmi ОБРАЗ",
+            "desc": "Удалить образ"
+          },
+          "rmi_force": {
+            "cmd": "docker rmi -f ОБРАЗ",
+            "desc": "Принудительно удалить образ"
+          },
+          "rmi_dangling": {
+            "cmd": "docker rmi $(docker images -f dangling=true -q)",
+            "desc": "Удалить все несвязанные образы"
+          },
+          "tag": {
+            "cmd": "docker tag SOURCE TARGET",
+            "desc": "Создать новый тег для образа"
+          },
+          "history": {
+            "cmd": "docker history IMAGE",
+            "desc": "Просмотреть историю создания образа"
+          },
+          "inspect": {
+            "cmd": "docker inspect IMAGE",
+            "desc": "Просмотреть подробную информацию об образе"
+          },
+          "save": {
+            "cmd": "docker save -o FILE.tar IMAGE",
+            "desc": "Сохранить образ в файл tar"
+          },
+          "load": {
+            "cmd": "docker load -i FILE.tar",
+            "desc": "Загрузить образ из файла tar"
+          },
+          "import": {
+            "cmd": "docker import FILE.tar IMAGE",
+            "desc": "Импортировать образ из файла tar"
+          },
+          "export": {
+            "cmd": "docker export CONTAINER > FILE.tar",
+            "desc": "Экспортировать контейнер в файл tar"
+          },
+          "commit": {
+            "cmd": "docker commit CONTAINER IMAGE",
+            "desc": "Создать новый образ из контейнера"
+          },
+          "search": {
+            "cmd": "docker search TERM",
+            "desc": "Поиск образов в Docker Hub"
+          },
+          "prune": {
+            "cmd": "docker image prune",
+            "desc": "Удалить неиспользуемые образы"
+          },
+          "prune_all": {
+            "cmd": "docker image prune -a",
+            "desc": "Удалить все неиспользуемые образы"
+          }
+        },
+        "volumes": {
+          "ls": {
+            "cmd": "docker volume ls",
+            "desc": "Перечислить все тома данных"
+          },
+          "create": {
+            "cmd": "docker volume create NAME",
+            "desc": "Создать том данных"
+          },
+          "inspect": {
+            "cmd": "docker volume inspect NAME",
+            "desc": "Просмотреть подробную информацию о томе данных"
+          },
+          "rm": {
+            "cmd": "docker volume rm NAME",
+            "desc": "Удалить том данных"
+          },
+          "prune": {
+            "cmd": "docker volume prune",
+            "desc": "Удалить все неиспользуемые тома данных"
+          },
+          "backup": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data",
+            "desc": "Резервное копирование тома данных"
+          },
+          "restore": {
+            "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /",
+            "desc": "Восстановление тома данных"
+          }
+        },
+        "networks": {
+          "ls": {
+            "cmd": "docker network ls",
+            "desc": "Перечислить все сети"
+          },
+          "create": {
+            "cmd": "docker network create NAME",
+            "desc": "Создать сеть"
+          },
+          "create_bridge": {
+            "cmd": "docker network create --driver bridge NAME",
+            "desc": "Создать мостовую сеть"
+          },
+          "create_overlay": {
+            "cmd": "docker network create --driver overlay NAME",
+            "desc": "Создать накладную сеть"
+          },
+          "inspect": {
+            "cmd": "docker network inspect NAME",
+            "desc": "Просмотреть подробную информацию о сети"
+          },
+          "rm": {
+            "cmd": "docker network rm NAME",
+            "desc": "Удалить сеть"
+          },
+          "connect": {
+            "cmd": "docker network connect NETWORK CONTAINER",
+            "desc": "Подключение контейнера к сети"
+          },
+          "disconnect": {
+            "cmd": "docker network disconnect NETWORK CONTAINER",
+            "desc": "Отключение контейнера от сети"
+          },
+          "prune": {
+            "cmd": "docker network prune",
+            "desc": "Удаление всех неиспользуемых сетей"
+          }
+        },
+        "compose": {
+          "up": {
+            "cmd": "docker compose up",
+            "desc": "Создание и запуск всех сервисов"
+          },
+          "up_detach": {
+            "cmd": "docker compose up -d",
+            "desc": "Запуск всех сервисов в фоновом режиме"
+          },
+          "up_build": {
+            "cmd": "docker compose up --build",
+            "desc": "Сборка образа и запуск сервиса"
+          },
+          "down": {
+            "cmd": "docker compose down",
+            "desc": "Остановка и удаление всех сервисов"
+          },
+          "down_volumes": {
+            "cmd": "docker compose down -v",
+            "desc": "Остановка сервиса и удаление томов данных"
+          },
+          "start": {
+            "cmd": "docker compose start",
+            "desc": "Запуск существующего сервиса"
+          },
+          "stop": {
+            "cmd": "docker compose stop",
+            "desc": "Остановка сервиса"
+          },
+          "restart": {
+            "cmd": "docker compose restart",
+            "desc": "Перезапуск сервиса"
+          },
+          "ps": {
+            "cmd": "docker compose ps",
+            "desc": "Список состояний сервисов"
+          },
+          "logs": {
+            "cmd": "docker compose logs",
+            "desc": "Просмотр журналов сервиса"
+          },
+          "logs_follow": {
+            "cmd": "docker compose logs -f",
+            "desc": "Реальное время отслеживания журналов сервиса"
+          },
+          "exec": {
+            "cmd": "docker compose exec SERVICE COMMAND",
+            "desc": "Выполнение команды в контейнере сервиса"
+          },
+          "build": {
+            "cmd": "docker compose build",
+            "desc": "Сборка образа сервиса"
+          },
+          "pull": {
+            "cmd": "docker compose pull",
+            "desc": "Загрузка образа сервиса"
+          },
+          "config": {
+            "cmd": "docker compose config",
+            "desc": "Проверка и просмотр конфигурации"
+          },
+          "run": {
+            "cmd": "docker compose run SERVICE COMMAND",
+            "desc": "Выполнение одноразовой команды"
+          },
+          "scale": {
+            "cmd": "docker compose up --scale SERVICE=NUM",
+            "desc": "Масштабирование количества экземпляров сервиса"
+          }
+        },
+        "system": {
+          "info": {
+            "cmd": "docker info",
+            "desc": "Отображение информации о системе Docker"
+          },
+          "version": {
+            "cmd": "docker version",
+            "desc": "Отображение информации о версии Docker"
+          },
+          "df": {
+            "cmd": "docker system df",
+            "desc": "Отображение использования дискового пространства Docker"
+          },
+          "prune": {
+            "cmd": "docker system prune",
+            "desc": "Очистка неиспользуемых данных"
+          },
+          "prune_all": {
+            "cmd": "docker system prune -a",
+            "desc": "Очистка всех неиспользуемых данных"
+          },
+          "prune_volumes": {
+            "cmd": "docker system prune --volumes",
+            "desc": "Очистка неиспользуемых данных, включая тома данных"
+          },
+          "events": {
+            "cmd": "docker events",
+            "desc": "Получение событий Docker в реальном времени"
+          },
+          "events_filter": {
+            "cmd": "docker events --filter 'type=container'",
+            "desc": "Фильтрация событий определенного типа"
+          }
+        },
+        "registry": {
+          "login": {
+            "cmd": "docker login",
+            "desc": "Вход в Docker Hub"
+          },
+          "login_server": {
+            "cmd": "docker login SERVER",
+            "desc": "Вход в указанный реестр образов"
+          },
+          "logout": {
+            "cmd": "docker logout",
+            "desc": "Выход из Docker Hub"
+          },
+          "logout_server": {
+            "cmd": "docker logout SERVER",
+            "desc": "Выход из указанного реестра образов"
+          }
+        },
+        "build": {
+          "build": {
+            "cmd": "docker build -t NAME .",
+            "desc": "Сборка образа из Dockerfile"
+          },
+          "build_file": {
+            "cmd": "docker build -f Dockerfile.dev -t NAME .",
+            "desc": "Сборка с указанием Dockerfile"
+          },
+          "build_no_cache": {
+            "cmd": "docker build --no-cache -t NAME .",
+            "desc": "Сборка без использования кэша"
+          },
+          "build_arg": {
+            "cmd": "docker build --build-arg KEY=VALUE -t NAME .",
+            "desc": "Передача параметров сборки"
+          },
+          "build_target": {
+            "cmd": "docker build --target STAGE -t NAME .",
+            "desc": "Сборка указанной стадии многостадийной сборки"
+          },
+          "buildx_build": {
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .",
+            "desc": "Многоплатформенная сборка"
+          },
+          "buildx_create": {
+            "cmd": "docker buildx create --use",
+            "desc": "Создание и использование нового сборщика"
+          }
+        }
+      },
+      "introduction": "Справочник команд Docker — это быстрый справочник команд Docker, разработанный для разработчиков и операторов. Он охватывает все распространенные команды, такие как управление контейнерами, операции с образами, тома данных, настройка сети, Docker Compose и т.д., организованные по функциональным категориям, с поддержкой быстрого поиска и копирования одним нажатием. Независимо от того, являетесь ли вы новичком в Docker или опытным инженером DevOps, вы сможете быстро найти нужную команду здесь.",
+      "features": [
+        "8 категорий, охватывающих все распространенные сценарии Docker",
+        "Более 100 распространенных команд, охватывающих все уровни — от базовых до продвинутых",
+        "Поддержка поиска по ключевым словам для быстрого поиска нужной команды",
+        "Копирование команды одним нажатием, повышение эффективности работы",
+        "Ясные пояснения на китайском языке, легко понять и изучить",
+        "Просмотр по категориям и фильтрация, быстрый поиск соответствующих команд",
+        "Адаптивный дизайн, поддержка просмотра на мобильных устройствах",
+        "Локальное выполнение, можно использовать без подключения к сети"
+      ],
+      "faq": [
+        {
+          "question": "Зачем нужен справочник команд Docker?",
+          "answer": "Команд Docker многочисленны и параметры сложны, даже опытные разработчики не могут запомнить все команды. Справочник поможет быстро найти и скопировать команды, сэкономив время на просмотре документации и повысив эффективность разработки и эксплуатации."
+        },
+        {
+          "question": "Какие категории команд включает справочник?",
+          "answer": "Справочник включает 8 категорий: управление контейнерами, управление образами, тома данных, управление сетью, Docker Compose, системное управление, реестр образов, сборка образов. Охватывает почти все сценарии использования Docker в повседневной разработке и эксплуатации."
+        },
+        {
+          "question": "Как быстро найти нужную команду?",
+          "answer": "Вы можете использовать поисковую строку вверху для ввода ключевых слов, а также нажать на метки категорий для фильтрации определенных типов команд. Поиск поддерживает нечеткое совпадение по названию команды и описанию."
+        },
+        {
+          "question": "Можно ли использовать скопированную команду напрямую?",
+          "answer": "Большинство команд можно использовать напрямую, но некоторые параметры в верхнем регистре (например, CONTAINER, IMAGE, NAME) необходимо заменить на фактические значения. Например, в команде docker stop CONTAINER нужно заменить CONTAINER на фактическое имя или ID контейнера."
+        },
+        {
+          "question": "Будет ли справочник обновляться?",
+          "answer": "Да, мы будем постоянно обновлять справочник, добавляя новые полезные команды и советы, чтобы содержание оставалось синхронизированным с последней версией Docker."
+        }
+      ],
+      "meta": {
+        "title": "Справочник команд Docker — быстрая справка по распространенным командам",
+        "description": "Справочник распространенных команд Docker, охватывающий все сценарии: контейнеры, образы, тома данных, сеть, Compose, поддерживает поиск и копирование одним нажатием.",
+        "keywords": "Команды Docker, справочник по Docker, управление контейнерами, учебник по Docker"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Справочник по конфигурации Nginx",
+      "description": "Справочная таблица часто используемых фрагментов конфигурации Nginx, быстрый поиск и копирование кода конфигурации",
+      "search_placeholder": "Поиск конфигурации Nginx...",
+      "copy_success": "Конфигурация скопирована",
+      "no_results": "Совпадающая конфигурация не найдена",
+      "all_categories": "Все",
+      "results_count": "Найдено {count} конфигураций",
+      "categories": {
+        "basic": "Базовая конфигурация",
+        "server": "Блок Server",
+        "location": "Совпадение Location",
+        "proxy": "Обратный прокси",
+        "ssl": "SSL/HTTPS",
+        "cache": "Конфигурация кэширования",
+        "gzip": "Сжатие Gzip",
+        "security": "Безопасная конфигурация",
+        "logging": "Конфигурация журнала",
+        "performance": "Оптимизация производительности"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": {
+            "config": "worker_processes auto;",
+            "desc": "Автоматическое установление количества рабочих процессов (обычно равно количеству ядер CPU)"
+          },
+          "worker_connections": {
+            "config": "events {\n    worker_connections 1024;\n}",
+            "desc": "Установка максимального количества соединений для каждого рабочего процесса"
+          },
+          "include_mime": {
+            "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;",
+            "desc": "Включение конфигурации MIME-типов"
+          },
+          "sendfile": {
+            "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;",
+            "desc": "Включение эффективной передачи файлов"
+          },
+          "keepalive": {
+            "config": "keepalive_timeout 65;",
+            "desc": "Установка времени ожидания длительного соединения"
+          },
+          "client_max_body": {
+            "config": "client_max_body_size 100M;",
+            "desc": "Установка максимального размера тела запроса клиента"
+          },
+          "server_tokens": {
+            "config": "server_tokens off;",
+            "desc": "Скрытие номера версии Nginx"
+          }
+        },
+        "server": {
+          "basic_server": {
+            "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}",
+            "desc": "Базовая конфигурация блока Server"
+          },
+          "multi_domain": {
+            "config": "server_name example.com www.example.com;",
+            "desc": "Конфигурация нескольких доменов"
+          },
+          "wildcard_domain": {
+            "config": "server_name *.example.com;",
+            "desc": "Конфигурация домена с подстановочным знаком"
+          },
+          "default_server": {
+            "config": "listen 80 default_server;",
+            "desc": "Установка сервера по умолчанию"
+          },
+          "ipv6": {
+            "config": "listen [::]:80;",
+            "desc": "Мониторинг адреса IPv6"
+          },
+          "root_alias": {
+            "config": "root /var/www/html;\n# или использовать alias\nalias /var/www/files/;",
+            "desc": "Установка корневого каталога или псевдонима"
+          }
+        },
+        "location": {
+          "exact_match": {
+            "config": "location = /path {\n    # точное совпадение\n}",
+            "desc": "Точное совпадение пути"
+          },
+          "prefix_match": {
+            "config": "location /api/ {\n    # префиксное совпадение\n}",
+            "desc": "Префиксное совпадение пути"
+          },
+          "regex_match": {
+            "config": "location ~ \\.php$ {\n    # регулярное совпадение (регистрозависимое)\n}",
+            "desc": "Совпадение с регулярным выражением"
+          },
+          "regex_case_insensitive": {
+            "config": "location ~* \\.\\(jpg|jpeg|png|gif\\)$ {\n    # регулярное совпадение (независимое от регистра)\n}",
+            "desc": "Независимое от регистра регулярное совпадение"
+          },
+          "priority_match": {
+            "config": "location ^~ /images/ { # Приоритетное сопоставление префикса }",
+            "desc": "Приоритетное сопоставление префикса (выше, чем регулярное выражение)"
+          },
+          "try_files": {
+            "config": "location / { try_files $uri $uri/ /index.html; }",
+            "desc": "Порядок попытки файлов (часто используется в приложениях SPA)"
+          },
+          "internal": {
+            "config": "location /internal/ { internal; }",
+            "desc": "Доступ только для внутренних запросов"
+          }
+        },
+        "proxy": {
+          "basic_proxy": {
+            "config": "location /api/ { proxy_pass http://backend:3000/; }",
+            "desc": "Базовая конфигурация обратного прокси"
+          },
+          "proxy_headers": {
+            "config": "proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_set_header X-Forwarded-Proto $scheme;",
+            "desc": "Настройка заголовков прокси-запроса"
+          },
+          "websocket": {
+            "config": "location /ws/ { proxy_pass http://backend:3000/; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection \"upgrade\"; }",
+            "desc": "Конфигурация прокси WebSocket"
+          },
+          "upstream": {
+            "config": "upstream backend { server 127.0.0.1:3000; server 127.0.0.1:3001; keepalive 32; }",
+            "desc": "Определение группы серверов-источников"
+          },
+          "load_balance": {
+            "config": "upstream backend { least_conn; # или ip_hash; server 127.0.0.1:3000; server 127.0.0.1:3001; }",
+            "desc": "Конфигурация балансировки нагрузки"
+          },
+          "proxy_timeout": {
+            "config": "proxy_connect_timeout 60s; proxy_send_timeout 60s; proxy_read_timeout 60s;",
+            "desc": "Настройки таймаута прокси"
+          },
+          "proxy_buffer": {
+            "config": "proxy_buffering on; proxy_buffer_size 4k; proxy_buffers 8 4k;",
+            "desc": "Настройка буфера прокси"
+          }
+        },
+        "ssl": {
+          "basic_ssl": {
+            "config": "server { listen 443 ssl http2; ssl_certificate /path/to/cert.pem; ssl_certificate_key /path/to/key.pem; }",
+            "desc": "Базовая конфигурация SSL"
+          },
+          "ssl_protocols": {
+            "config": "ssl_protocols TLSv1.2 TLSv1.3;",
+            "desc": "Настройка версии протокола SSL"
+          },
+          "ssl_ciphers": {
+            "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256; ssl_prefer_server_ciphers on;",
+            "desc": "Настройка шифровальных наборов"
+          },
+          "ssl_session": {
+            "config": "ssl_session_cache shared:SSL:10m; ssl_session_timeout 1d;",
+            "desc": "Кэш сессий SSL"
+          },
+          "http_to_https": {
+            "config": "server { listen 80; server_name example.com; return 301 https://$server_name$request_uri; }",
+            "desc": "Перенаправление HTTP на HTTPS"
+          },
+          "hsts": {
+            "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;",
+            "desc": "Включение HSTS"
+          },
+          "ocsp_stapling": {
+            "config": "ssl_stapling on; ssl_stapling_verify on; resolver 8.8.8.8 8.8.4.4 valid=300s;",
+            "desc": "Включение OCSP Stapling"
+          }
+        },
+        "cache": {
+          "static_cache": {
+            "config": "location ~* \\. (css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ { expires 30d; add_header Cache-Control \"public, immutable\"; }",
+            "desc": "Кэширование статических ресурсов"
+          },
+          "no_cache": {
+            "config": "location /api/ { add_header Cache-Control \"no-store, no-cache, must-revalidate\"; }",
+            "desc": "Отключение кэширования"
+          },
+          "proxy_cache": {
+            "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g; location / { proxy_cache my_cache; proxy_cache_valid 200 1d; }",
+            "desc": "Конфигурация кэширования прокси"
+          },
+          "etag": {
+            "config": "etag on;",
+            "desc": "Включение ETag"
+          },
+          "if_modified": {
+            "config": "if_modified_since before;",
+            "desc": "Включение условных запросов"
+          }
+        },
+        "gzip": {
+          "basic_gzip": {
+            "config": "gzip on; gzip_vary on; gzip_min_length 1024; gzip_comp_level 6;",
+            "desc": "Базовая конфигурация сжатия Gzip"
+          },
+          "gzip_types": {
+            "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;",
+            "desc": "Настройка MIME-типов для сжатия"
+          },
+          "gzip_proxied": {
+            "config": "gzip_proxied any;",
+            "desc": "Включение сжатия для прокси-запросов"
+          },
+          "gzip_static": {
+            "config": "gzip_static on;",
+            "desc": "Включить предварительно сжатые файлы"
+          }
+        },
+        "security": {
+          "cors": {
+            "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";",
+            "desc": "Конфигурация CORS для кросс-доменных запросов"
+          },
+          "xss_protection": {
+            "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;",
+            "desc": "Защита от XSS и клик-хакинга"
+          },
+          "csp": {
+            "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";",
+            "desc": "Политика безопасности содержимого"
+          },
+          "rate_limit": {
+            "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}",
+            "desc": "Ограничение скорости запросов"
+          },
+          "deny_access": {
+            "config": "location ~ /\\. {\n    deny all;\n}",
+            "desc": "Запрет доступа к скрытым файлам"
+          },
+          "ip_whitelist": {
+            "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}",
+            "desc": "Белый список IP"
+          }
+        },
+        "logging": {
+          "access_log": {
+            "config": "access_log /var/log/nginx/access.log;",
+            "desc": "Конфигурация журнала доступа"
+          },
+          "error_log": {
+            "config": "error_log /var/log/nginx/error.log warn;",
+            "desc": "Конфигурация журнала ошибок"
+          },
+          "custom_format": {
+            "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                '\"$http_user_agent\" \"$http_x_forwarded_for\"';",
+            "desc": "Пользовательский формат журнала"
+          },
+          "json_log": {
+            "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';",
+            "desc": "Журнал в формате JSON"
+          },
+          "disable_log": {
+            "config": "access_log off;",
+            "desc": "Отключить журнал доступа"
+          },
+          "conditional_log": {
+            "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;",
+            "desc": "Условный журнал (запись только ошибок)"
+          }
+        },
+        "performance": {
+          "open_file_cache": {
+            "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;",
+            "desc": "Кэш дескрипторов файлов"
+          },
+          "multi_accept": {
+            "config": "events {\n    multi_accept on;\n    use epoll;\n}",
+            "desc": "Включить многократное принятие соединений и epoll"
+          },
+          "fastcgi_cache": {
+            "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}",
+            "desc": "Кэш FastCGI"
+          },
+          "connection_limit": {
+            "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;",
+            "desc": "Ограничение числа соединений"
+          },
+          "timeout_tuning": {
+            "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;",
+            "desc": "Оптимизация тайм-аутов"
+          }
+        }
+      },
+      "introduction": "Справочник по конфигурации Nginx — это инструмент быстрого поиска конфигурации, разработанный для веб-разработчиков и системных администраторов. Он охватывает все распространенные фрагменты конфигурации от базовых до продвинутых, организованные по функциональным категориям, с поддержкой быстрого поиска и копирования одним нажатием. Независимо от того, являетесь ли вы новичком в Nginx или опытным инженером по эксплуатации, вы сможете быстро найти нужный фрагмент конфигурации.",
+      "features": [
+        "10 основных категорий, охватывающих все распространенные сценарии конфигурации Nginx",
+        "Более 60 распространенных фрагментов конфигурации, охватывающих все уровни — от базовых до продвинутых",
+        "Поддержка поиска по ключевым словам для быстрого поиска нужной конфигурации",
+        "Одно нажатие для копирования кода конфигурации, повышение эффективности работы",
+        "Ясные китайские объяснения, легко понять и изучить",
+        "Просмотр по категориям и фильтрация, быстрое нахождение соответствующей конфигурации",
+        "Адаптивный дизайн, поддержка просмотра на мобильных устройствах",
+        "Локальное выполнение, можно использовать без подключения к интернету"
+      ],
+      "faq": [
+        {
+          "question": "Зачем нужен справочник по конфигурации Nginx?",
+          "answer": "Синтаксис конфигурации Nginx сложен, команды многочисленны, и даже опытные системные администраторы не могут запомнить все конфигурации. Справочник помогает быстро найти и скопировать код конфигурации, экономя время на просмотре документации и повышая эффективность конфигурирования."
+        },
+        {
+          "question": "Какие категории конфигурации включены в справочник?",
+          "answer": "Справочник включает 10 основных категорий: базовая конфигурация, блоки Server, сопоставление Location, обратный прокси, SSL/HTTPS, конфигурация кэша, сжатие Gzip, безопасность, журнал и оптимизация производительности. Охватывает почти все сценарии конфигурации Nginx, используемые в повседневной эксплуатации."
+        },
+        {
+          "question": "Как быстро найти нужную конфигурацию?",
+          "answer": "Вы можете ввести ключевые слова в поисковую строку вверху для поиска, а также нажать на теги категорий для фильтрации определенных типов конфигураций. Поиск поддерживает нечеткое сопоставление кода конфигурации и описания."
+        },
+        {
+          "question": "Можно ли использовать скопированную конфигурацию напрямую?",
+          "answer": "Большинство конфигураций можно использовать напрямую, но необходимо изменить параметры, такие как пути, домены, порты, в соответствии с реальными условиями. Рекомендуется проверить их в тестовой среде перед применением в производственной среде."
+        },
+        {
+          "question": "Будет ли обновляться справочная таблица?",
+          "answer": "Да, мы будем постоянно обновлять справочную таблицу, добавляя новые полезные конфигурации и лучшие практики, чтобы содержимое оставалось синхронизированным с последней версией Nginx."
+        }
+      ],
+      "meta": {
+        "title": "Справочная таблица конфигурации Nginx - быстрый обзор распространенных конфигураций",
+        "description": "Справочная таблица распространенных конфигураций Nginx, охватывающая все сценарии, включая обратный прокси, SSL, кэширование, безопасность, оптимизацию производительности, с поддержкой поиска и копирования одним нажатием.",
+        "keywords": "Конфигурация Nginx, справочная таблица Nginx, обратный прокси, учебник Nginx"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "Справочная таблица Linux-брандмауэра",
+      "description": "Справочная таблица распространенных команд Linux-брандмауэра, включая iptables, firewalld, ufw и т.д.",
+      "search_placeholder": "Поиск команд брандмауэра...",
+      "copy_success": "Команда скопирована",
+      "no_results": "Соответствующая команда не найдена",
+      "all_categories": "Все",
+      "results_count": "Найдено {count} команд",
+      "categories": {
+        "iptables_basic": "Основы iptables",
+        "iptables_whitelist": "Список разрешенных (белый список) в iptables",
+        "iptables_rules": "Правила iptables",
+        "firewalld_basic": "Основы firewalld",
+        "firewalld_rules": "Правила firewalld",
+        "ufw_basic": "Основы UFW",
+        "ufw_rules": "Правила UFW",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": {
+            "cmd": "iptables -L -n -v",
+            "desc": "Вывод всех правил (подробный режим)"
+          },
+          "list_line": {
+            "cmd": "iptables -L -n --line-numbers",
+            "desc": "Вывод правил с отображением номеров строк"
+          },
+          "list_nat": {
+            "cmd": "iptables -t nat -L -n -v",
+            "desc": "Вывод правил таблицы NAT"
+          },
+          "save": {
+            "cmd": "iptables-save > /etc/iptables.rules",
+            "desc": "Сохранение текущих правил в файл"
+          },
+          "restore": {
+            "cmd": "iptables-restore < /etc/iptables.rules",
+            "desc": "Восстановление правил из файла"
+          },
+          "flush": {
+            "cmd": "iptables -F",
+            "desc": "Очистка всех правил"
+          },
+          "flush_nat": {
+            "cmd": "iptables -t nat -F",
+            "desc": "Очистка правил таблицы NAT"
+          },
+          "delete_chain": {
+            "cmd": "iptables -X",
+            "desc": "Удаление всех пользовательских цепочек"
+          },
+          "zero": {
+            "cmd": "iptables -Z",
+            "desc": "Сброс всех счетчиков"
+          },
+          "policy_drop": {
+            "cmd": "iptables -P INPUT DROP",
+            "desc": "Установка политики по умолчанию для цепочки INPUT в DROP"
+          },
+          "policy_accept": {
+            "cmd": "iptables -P INPUT ACCEPT",
+            "desc": "Установка политики по умолчанию для цепочки INPUT в ACCEPT"
+          }
+        },
+        "iptables_whitelist": {
+          "allow_ip": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT",
+            "desc": "Разрешение доступа для указанного IP"
+          },
+          "allow_subnet": {
+            "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT",
+            "desc": "Разрешение доступа для указанного сетевого сегмента"
+          },
+          "allow_ip_port": {
+            "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT",
+            "desc": "Разрешить доступ по указанному IP-адресу к указанному порту"
+          },
+          "deny_ip": {
+            "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP",
+            "desc": "Запретить доступ по указанному IP-адресу"
+          },
+          "deny_subnet": {
+            "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP",
+            "desc": "Запретить доступ из указанного сетевого сегмента"
+          },
+          "allow_established": {
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "Разрешить установленные соединения"
+          },
+          "allow_loopback": {
+            "cmd": "iptables -A INPUT -i lo -j ACCEPT",
+            "desc": "Разрешить локальный интерфейс loopback"
+          },
+          "whitelist_only": {
+            "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "desc": "Разрешить только IP-адреса из белого списка (полная конфигурация)"
+          }
+        },
+        "iptables_rules": {
+          "allow_ssh": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "desc": "Разрешить SSH-соединение (порт 22)"
+          },
+          "allow_http": {
+            "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT",
+            "desc": "Разрешить HTTP-соединение (порт 80)"
+          },
+          "allow_https": {
+            "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT",
+            "desc": "Разрешить HTTPS-соединение (порт 443)"
+          },
+          "allow_mysql": {
+            "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT",
+            "desc": "Разрешить соединение с MySQL (порт 3306)"
+          },
+          "allow_redis": {
+            "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT",
+            "desc": "Разрешить соединение с Redis (порт 6379)"
+          },
+          "allow_range": {
+            "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT",
+            "desc": "Разрешить диапазон портов 8000-9000"
+          },
+          "allow_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT",
+            "desc": "Разрешить запросы Ping"
+          },
+          "deny_ping": {
+            "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP",
+            "desc": "Запретить запросы Ping"
+          },
+          "delete_rule": {
+            "cmd": "iptables -D INPUT 3",
+            "desc": "Удалить правило №3 в цепочке INPUT"
+          },
+          "insert_rule": {
+            "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT",
+            "desc": "Вставить правило в первую строку"
+          },
+          "log_dropped": {
+            "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"",
+            "desc": "Запись отброшенных пакетов"
+          },
+          "rate_limit": {
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT",
+            "desc": "Ограничение скорости SSH-соединений"
+          },
+          "port_forward": {
+            "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
+            "desc": "Перенаправление порта 80 на 8080"
+          },
+          "masquerade": {
+            "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE",
+            "desc": "Включить NAT-маскировку (общий доступ в интернет)"
+          }
+        },
+        "firewalld_basic": {
+          "status": {
+            "cmd": "firewall-cmd --state",
+            "desc": "Просмотр состояния брандмауэра"
+          },
+          "start": {
+            "cmd": "systemctl start firewalld",
+            "desc": "Запустить брандмауэр"
+          },
+          "stop": {
+            "cmd": "systemctl stop firewalld",
+            "desc": "Остановить брандмауэр"
+          },
+          "enable": {
+            "cmd": "systemctl enable firewalld",
+            "desc": "Настроить автозапуск при загрузке"
+          },
+          "disable": {
+            "cmd": "systemctl disable firewalld",
+            "desc": "Отключить автозапуск при загрузке"
+          },
+          "reload": {
+            "cmd": "firewall-cmd --reload",
+            "desc": "Перезагрузить конфигурацию"
+          },
+          "list_all": {
+            "cmd": "firewall-cmd --list-all",
+            "desc": "Перечислить все конфигурации текущей зоны"
+          },
+          "list_zones": {
+            "cmd": "firewall-cmd --get-zones",
+            "desc": "Перечислить все доступные зоны"
+          },
+          "get_zone": {
+            "cmd": "firewall-cmd --get-default-zone",
+            "desc": "Получить доменную зону по умолчанию"
+          },
+          "set_zone": {
+            "cmd": "firewall-cmd --set-default-zone=public",
+            "desc": "Установить доменную зону по умолчанию"
+          },
+          "list_services": {
+            "cmd": "firewall-cmd --get-services",
+            "desc": "Перечислить все доступные службы"
+          }
+        },
+        "firewalld_rules": {
+          "add_service": {
+            "cmd": "firewall-cmd --permanent --add-service=http",
+            "desc": "Постоянно добавить службу HTTP"
+          },
+          "remove_service": {
+            "cmd": "firewall-cmd --permanent --remove-service=http",
+            "desc": "Постоянно удалить службу HTTP"
+          },
+          "add_port": {
+            "cmd": "firewall-cmd --permanent --add-port=8080/tcp",
+            "desc": "Постоянно открыть порт 8080"
+          },
+          "remove_port": {
+            "cmd": "firewall-cmd --permanent --remove-port=8080/tcp",
+            "desc": "Постоянно закрыть порт 8080"
+          },
+          "add_port_range": {
+            "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp",
+            "desc": "Постоянно открыть диапазон портов"
+          },
+          "add_source": {
+            "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24",
+            "desc": "Добавить доверенный диапазон IP-адресов"
+          },
+          "remove_source": {
+            "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24",
+            "desc": "Удалить доверенный диапазон IP-адресов"
+          },
+          "rich_rule_allow": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'",
+            "desc": "Богатое правило: разрешить определенный IP"
+          },
+          "rich_rule_deny": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'",
+            "desc": "Богатое правило: отклонить определенный IP"
+          },
+          "rich_rule_port": {
+            "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'",
+            "desc": "Богатое правило: разрешить доступ из сети к определенному порту"
+          },
+          "port_forward": {
+            "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080",
+            "desc": "Перенаправление порта 80 на 8080"
+          },
+          "masquerade": {
+            "cmd": "firewall-cmd --permanent --add-masquerade",
+            "desc": "Включить NAT-маскировку"
+          }
+        },
+        "ufw_basic": {
+          "status": {
+            "cmd": "ufw status verbose",
+            "desc": "Просмотр состояния брандмауэра (подробно)"
+          },
+          "enable": {
+            "cmd": "ufw enable",
+            "desc": "Включить брандмауэр"
+          },
+          "disable": {
+            "cmd": "ufw disable",
+            "desc": "Отключить брандмауэр"
+          },
+          "reset": {
+            "cmd": "ufw reset",
+            "desc": "Сбросить все правила"
+          },
+          "default_deny": {
+            "cmd": "ufw default deny incoming",
+            "desc": "По умолчанию отклонять весь входящий трафик"
+          },
+          "default_allow": {
+            "cmd": "ufw default allow outgoing",
+            "desc": "По умолчанию разрешать весь исходящий трафик"
+          },
+          "reload": {
+            "cmd": "ufw reload",
+            "desc": "Перезагрузить правила"
+          },
+          "numbered": {
+            "cmd": "ufw status numbered",
+            "desc": "Показать список правил с номерами"
+          }
+        },
+        "ufw_rules": {
+          "allow_ssh": {
+            "cmd": "ufw allow ssh",
+            "desc": "Разрешить службу SSH"
+          },
+          "allow_http": {
+            "cmd": "ufw allow http",
+            "desc": "Разрешить службу HTTP"
+          },
+          "allow_https": {
+            "cmd": "ufw allow https",
+            "desc": "Разрешить службу HTTPS"
+          },
+          "allow_port": {
+            "cmd": "ufw allow 8080/tcp",
+            "desc": "Разрешить TCP-порт 8080"
+          },
+          "allow_range": {
+            "cmd": "ufw allow 8000:9000/tcp",
+            "desc": "Разрешить диапазон портов 8000-9000"
+          },
+          "allow_from_ip": {
+            "cmd": "ufw allow from 192.168.1.100",
+            "desc": "Разрешить все доступы от указанного IP"
+          },
+          "allow_from_subnet": {
+            "cmd": "ufw allow from 192.168.1.0/24",
+            "desc": "Разрешить все доступы от указанного сегмента сети"
+          },
+          "allow_from_ip_port": {
+            "cmd": "ufw allow from 192.168.1.100 to any port 22",
+            "desc": "Разрешить доступ от указанного IP к порту 22"
+          },
+          "deny_from_ip": {
+            "cmd": "ufw deny from 10.0.0.100",
+            "desc": "Запретить все доступы от указанного IP"
+          },
+          "deny_port": {
+            "cmd": "ufw deny 3306/tcp",
+            "desc": "Запретить TCP-порт 3306"
+          },
+          "delete_rule": {
+            "cmd": "ufw delete allow 8080/tcp",
+            "desc": "Удалить правило, разрешающее 8080"
+          },
+          "delete_numbered": {
+            "cmd": "ufw delete 3",
+            "desc": "Удалить правило №3"
+          },
+          "insert_rule": {
+            "cmd": "ufw insert 1 allow from 192.168.1.100",
+            "desc": "Вставить правило в строку 1"
+          },
+          "limit_ssh": {
+            "cmd": "ufw limit ssh",
+            "desc": "Ограничить скорость подключений SSH (защита от брутфорса)"
+          }
+        },
+        "nftables": {
+          "list": {
+            "cmd": "nft list ruleset",
+            "desc": "Вывести все правила"
+          },
+          "flush": {
+            "cmd": "nft flush ruleset",
+            "desc": "Очистить все правила"
+          },
+          "add_table": {
+            "cmd": "nft add table inet filter",
+            "desc": "Добавить таблицу"
+          },
+          "add_chain": {
+            "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\; }",
+            "desc": "Добавить цепочку"
+          },
+          "allow_port": {
+            "cmd": "nft add rule inet filter input tcp dport 22 accept",
+            "desc": "Разрешить порт 22"
+          },
+          "allow_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept",
+            "desc": "Разрешить указанный IP"
+          },
+          "deny_ip": {
+            "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop",
+            "desc": "Запретить указанный IP"
+          },
+          "save": {
+            "cmd": "nft list ruleset > /etc/nftables.conf",
+            "desc": "Сохранить правила в файл"
+          },
+          "restore": {
+            "cmd": "nft -f /etc/nftables.conf",
+            "desc": "Восстановить правила из файла"
+          }
+        }
+      },
+      "introduction": "Справочник по командам Linux-файрвола — это инструмент быстрого поиска команд для системных администраторов и операторов. Охватывает основные инструменты файрвола, такие как iptables, firewalld, ufw, nftables, включая часто используемые команды, особенно конфигурации, такие как белые списки IP, открытие портов и контроль доступа. Поддерживает быстрый поиск и копирование одним нажатием, помогая эффективно управлять безопасностью сервера.",
+      "features": [
+        "8 категорий, охватывающих основные инструменты файрвола Linux",
+        "Более 80 часто используемых команд, включая базовые и продвинутые",
+        "Настройка белого списка IP-адресов для быстрого контроля доступа",
+        "Поддержка iptables, firewalld, ufw, nftables",
+        "Однократное копирование команды для повышения эффективности обслуживания",
+        "Ясные инструкции на китайском языке, легко понять и изучить",
+        "Категорийный просмотр и фильтрация для быстрого поиска соответствующих команд",
+        "Локальное выполнение, можно использовать без подключения к сети"
+      ],
+      "faq": [
+        {
+          "question": "Какой инструмент брандмауэра следует выбрать?",
+          "answer": "Рекомендуется использовать firewalld для CentOS/RHEL 7+, ufw для Ubuntu/Debian, iptables для точного контроля или старых систем, nftables для новых систем. firewalld и ufw являются фронтендами для iptables и проще в использовании."
+        },
+        {
+          "question": "Как настроить белый список IP-адресов?",
+          "answer": "Сначала установите политику по умолчанию, запрещающую весь входящий трафик, затем добавьте разрешенные IP-адреса или подсети. iptables использует -A INPUT -s IP -j ACCEPT, firewalld использует --add-source или расширенные правила, ufw использует allow from IP."
+        },
+        {
+          "question": "Требуется ли перезагрузка после изменения правил?",
+          "answer": "Правила iptables вступают в силу немедленно, но при перезагрузке теряются, необходимо использовать iptables-save для сохранения. firewalld требует --reload после использования --permanent. Правила ufw сохраняются автоматически. Рекомендуется проверять, вступили ли правила в силу после изменения."
+        },
+        {
+          "question": "Как избежать блокировки себя на сервере?",
+          "answer": "1) Сначала разрешить IP-адрес текущего SSH-подключения; 2) Использовать команду at для установки времени восстановления правил; 3) Доступ через консоль или IPMI; 4) Сохранить текущие правила перед тестированием для возможности восстановления."
+        },
+        {
+          "question": "Будет ли справочная таблица обновляться?",
+          "answer": "Да, мы будем постоянно обновлять справочную таблицу, добавляя новые полезные команды и лучшие практики, чтобы содержание оставалось синхронизированным с последними версиями Linux."
+        }
+      ],
+      "meta": {
+        "title": "Справочная таблица по брандмауэру Linux - команды iptables/firewalld/ufw",
+        "description": "Справочная таблица по часто используемым командам брандмауэра Linux, включающая iptables, firewalld, ufw, nftables, с конфигурацией белого списка IP-адресов, открытия портов и т.д., поддержка поиска и копирования команд одним нажатием.",
+        "keywords": "Брандмауэр Linux, iptables, firewalld, ufw, белый список IP-адресов"
+      }
+    },
     "base64-file-converter": {
       "name": "Конвертер изображений в Base64",
       "description": "Инструмент двустороннего преобразования изображений и Base64-кодирования",

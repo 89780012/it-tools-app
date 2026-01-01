@@ -2371,6 +2371,490 @@
         "keywords": "Docker Compose, 容器编排, Docker转换"
       }
     },
+    "docker-cheatsheet": {
+      "name": "Docker 命令速查",
+      "description": "Docker 常用命令速查表，快速查找和复制 Docker 命令",
+      "search_placeholder": "搜索 Docker 命令...",
+      "copy_success": "命令已复制",
+      "no_results": "未找到匹配的命令",
+      "all_categories": "全部",
+      "results_count": "找到 {count} 个命令",
+      "categories": {
+        "containers": "容器管理",
+        "images": "镜像管理",
+        "volumes": "数据卷",
+        "networks": "网络管理",
+        "compose": "Docker Compose",
+        "system": "系统管理",
+        "registry": "镜像仓库",
+        "build": "镜像构建"
+      },
+      "commands": {
+        "containers": {
+          "run": { "cmd": "docker run [OPTIONS] IMAGE", "desc": "创建并启动一个新容器" },
+          "run_detach": { "cmd": "docker run -d IMAGE", "desc": "后台运行容器" },
+          "run_name": { "cmd": "docker run --name NAME IMAGE", "desc": "指定容器名称运行" },
+          "run_port": { "cmd": "docker run -p HOST:CONTAINER IMAGE", "desc": "映射端口运行容器" },
+          "run_volume": { "cmd": "docker run -v HOST:CONTAINER IMAGE", "desc": "挂载卷运行容器" },
+          "run_env": { "cmd": "docker run -e KEY=VALUE IMAGE", "desc": "设置环境变量运行容器" },
+          "run_rm": { "cmd": "docker run --rm IMAGE", "desc": "容器退出后自动删除" },
+          "run_it": { "cmd": "docker run -it IMAGE /bin/bash", "desc": "交互式运行容器" },
+          "ps": { "cmd": "docker ps", "desc": "列出运行中的容器" },
+          "ps_all": { "cmd": "docker ps -a", "desc": "列出所有容器（包括已停止）" },
+          "ps_quiet": { "cmd": "docker ps -q", "desc": "只显示容器ID" },
+          "start": { "cmd": "docker start CONTAINER", "desc": "启动已停止的容器" },
+          "stop": { "cmd": "docker stop CONTAINER", "desc": "停止运行中的容器" },
+          "restart": { "cmd": "docker restart CONTAINER", "desc": "重启容器" },
+          "kill": { "cmd": "docker kill CONTAINER", "desc": "强制停止容器" },
+          "rm": { "cmd": "docker rm CONTAINER", "desc": "删除已停止的容器" },
+          "rm_force": { "cmd": "docker rm -f CONTAINER", "desc": "强制删除容器（包括运行中）" },
+          "rm_all": { "cmd": "docker rm $(docker ps -aq)", "desc": "删除所有已停止的容器" },
+          "exec": { "cmd": "docker exec -it CONTAINER COMMAND", "desc": "在运行中的容器内执行命令" },
+          "exec_bash": { "cmd": "docker exec -it CONTAINER /bin/bash", "desc": "进入容器的bash终端" },
+          "logs": { "cmd": "docker logs CONTAINER", "desc": "查看容器日志" },
+          "logs_follow": { "cmd": "docker logs -f CONTAINER", "desc": "实时跟踪容器日志" },
+          "logs_tail": { "cmd": "docker logs --tail 100 CONTAINER", "desc": "查看最后100行日志" },
+          "inspect": { "cmd": "docker inspect CONTAINER", "desc": "查看容器详细信息" },
+          "top": { "cmd": "docker top CONTAINER", "desc": "查看容器内运行的进程" },
+          "stats": { "cmd": "docker stats", "desc": "实时显示容器资源使用情况" },
+          "cp": { "cmd": "docker cp CONTAINER:SRC DEST", "desc": "从容器复制文件到主机" },
+          "cp_to": { "cmd": "docker cp SRC CONTAINER:DEST", "desc": "从主机复制文件到容器" },
+          "rename": { "cmd": "docker rename OLD NEW", "desc": "重命名容器" },
+          "pause": { "cmd": "docker pause CONTAINER", "desc": "暂停容器" },
+          "unpause": { "cmd": "docker unpause CONTAINER", "desc": "恢复暂停的容器" },
+          "wait": { "cmd": "docker wait CONTAINER", "desc": "等待容器停止并返回退出码" },
+          "attach": { "cmd": "docker attach CONTAINER", "desc": "连接到运行中的容器" },
+          "port": { "cmd": "docker port CONTAINER", "desc": "查看容器端口映射" },
+          "update": { "cmd": "docker update --restart=always CONTAINER", "desc": "更新容器配置" }
+        },
+        "images": {
+          "images": { "cmd": "docker images", "desc": "列出本地镜像" },
+          "images_all": { "cmd": "docker images -a", "desc": "列出所有镜像（包括中间层）" },
+          "pull": { "cmd": "docker pull IMAGE", "desc": "从仓库拉取镜像" },
+          "pull_tag": { "cmd": "docker pull IMAGE:TAG", "desc": "拉取指定标签的镜像" },
+          "push": { "cmd": "docker push IMAGE", "desc": "推送镜像到仓库" },
+          "rmi": { "cmd": "docker rmi IMAGE", "desc": "删除镜像" },
+          "rmi_force": { "cmd": "docker rmi -f IMAGE", "desc": "强制删除镜像" },
+          "rmi_dangling": { "cmd": "docker rmi $(docker images -f dangling=true -q)", "desc": "删除所有悬空镜像" },
+          "tag": { "cmd": "docker tag SOURCE TARGET", "desc": "为镜像创建新标签" },
+          "history": { "cmd": "docker history IMAGE", "desc": "查看镜像构建历史" },
+          "inspect": { "cmd": "docker inspect IMAGE", "desc": "查看镜像详细信息" },
+          "save": { "cmd": "docker save -o FILE.tar IMAGE", "desc": "将镜像保存为tar文件" },
+          "load": { "cmd": "docker load -i FILE.tar", "desc": "从tar文件加载镜像" },
+          "import": { "cmd": "docker import FILE.tar IMAGE", "desc": "从tar文件导入镜像" },
+          "export": { "cmd": "docker export CONTAINER > FILE.tar", "desc": "将容器导出为tar文件" },
+          "commit": { "cmd": "docker commit CONTAINER IMAGE", "desc": "从容器创建新镜像" },
+          "search": { "cmd": "docker search TERM", "desc": "在Docker Hub搜索镜像" },
+          "prune": { "cmd": "docker image prune", "desc": "删除未使用的镜像" },
+          "prune_all": { "cmd": "docker image prune -a", "desc": "删除所有未使用的镜像" }
+        },
+        "volumes": {
+          "ls": { "cmd": "docker volume ls", "desc": "列出所有数据卷" },
+          "create": { "cmd": "docker volume create NAME", "desc": "创建数据卷" },
+          "inspect": { "cmd": "docker volume inspect NAME", "desc": "查看数据卷详情" },
+          "rm": { "cmd": "docker volume rm NAME", "desc": "删除数据卷" },
+          "prune": { "cmd": "docker volume prune", "desc": "删除所有未使用的数据卷" },
+          "backup": { "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar cvf /backup/backup.tar /data", "desc": "备份数据卷" },
+          "restore": { "cmd": "docker run --rm -v NAME:/data -v $(pwd):/backup alpine tar xvf /backup/backup.tar -C /", "desc": "恢复数据卷" }
+        },
+        "networks": {
+          "ls": { "cmd": "docker network ls", "desc": "列出所有网络" },
+          "create": { "cmd": "docker network create NAME", "desc": "创建网络" },
+          "create_bridge": { "cmd": "docker network create --driver bridge NAME", "desc": "创建桥接网络" },
+          "create_overlay": { "cmd": "docker network create --driver overlay NAME", "desc": "创建覆盖网络" },
+          "inspect": { "cmd": "docker network inspect NAME", "desc": "查看网络详情" },
+          "rm": { "cmd": "docker network rm NAME", "desc": "删除网络" },
+          "connect": { "cmd": "docker network connect NETWORK CONTAINER", "desc": "将容器连接到网络" },
+          "disconnect": { "cmd": "docker network disconnect NETWORK CONTAINER", "desc": "将容器从网络断开" },
+          "prune": { "cmd": "docker network prune", "desc": "删除所有未使用的网络" }
+        },
+        "compose": {
+          "up": { "cmd": "docker compose up", "desc": "创建并启动所有服务" },
+          "up_detach": { "cmd": "docker compose up -d", "desc": "后台启动所有服务" },
+          "up_build": { "cmd": "docker compose up --build", "desc": "构建镜像并启动服务" },
+          "down": { "cmd": "docker compose down", "desc": "停止并删除所有服务" },
+          "down_volumes": { "cmd": "docker compose down -v", "desc": "停止服务并删除数据卷" },
+          "start": { "cmd": "docker compose start", "desc": "启动已存在的服务" },
+          "stop": { "cmd": "docker compose stop", "desc": "停止服务" },
+          "restart": { "cmd": "docker compose restart", "desc": "重启服务" },
+          "ps": { "cmd": "docker compose ps", "desc": "列出服务状态" },
+          "logs": { "cmd": "docker compose logs", "desc": "查看服务日志" },
+          "logs_follow": { "cmd": "docker compose logs -f", "desc": "实时跟踪服务日志" },
+          "exec": { "cmd": "docker compose exec SERVICE COMMAND", "desc": "在服务容器中执行命令" },
+          "build": { "cmd": "docker compose build", "desc": "构建服务镜像" },
+          "pull": { "cmd": "docker compose pull", "desc": "拉取服务镜像" },
+          "config": { "cmd": "docker compose config", "desc": "验证并查看配置" },
+          "run": { "cmd": "docker compose run SERVICE COMMAND", "desc": "运行一次性命令" },
+          "scale": { "cmd": "docker compose up --scale SERVICE=NUM", "desc": "扩展服务实例数量" }
+        },
+        "system": {
+          "info": { "cmd": "docker info", "desc": "显示Docker系统信息" },
+          "version": { "cmd": "docker version", "desc": "显示Docker版本信息" },
+          "df": { "cmd": "docker system df", "desc": "显示Docker磁盘使用情况" },
+          "prune": { "cmd": "docker system prune", "desc": "清理未使用的数据" },
+          "prune_all": { "cmd": "docker system prune -a", "desc": "清理所有未使用的数据" },
+          "prune_volumes": { "cmd": "docker system prune --volumes", "desc": "清理包括数据卷的未使用数据" },
+          "events": { "cmd": "docker events", "desc": "实时获取Docker事件" },
+          "events_filter": { "cmd": "docker events --filter 'type=container'", "desc": "过滤特定类型的事件" }
+        },
+        "registry": {
+          "login": { "cmd": "docker login", "desc": "登录Docker Hub" },
+          "login_server": { "cmd": "docker login SERVER", "desc": "登录指定镜像仓库" },
+          "logout": { "cmd": "docker logout", "desc": "登出Docker Hub" },
+          "logout_server": { "cmd": "docker logout SERVER", "desc": "登出指定镜像仓库" }
+        },
+        "build": {
+          "build": { "cmd": "docker build -t NAME .", "desc": "从Dockerfile构建镜像" },
+          "build_file": { "cmd": "docker build -f Dockerfile.dev -t NAME .", "desc": "指定Dockerfile构建" },
+          "build_no_cache": { "cmd": "docker build --no-cache -t NAME .", "desc": "不使用缓存构建" },
+          "build_arg": { "cmd": "docker build --build-arg KEY=VALUE -t NAME .", "desc": "传递构建参数" },
+          "build_target": { "cmd": "docker build --target STAGE -t NAME .", "desc": "构建多阶段的指定阶段" },
+          "buildx_build": { "cmd": "docker buildx build --platform linux/amd64,linux/arm64 -t NAME .", "desc": "多平台构建" },
+          "buildx_create": { "cmd": "docker buildx create --use", "desc": "创建并使用新的构建器" }
+        }
+      },
+      "introduction": "Docker 命令速查是专为开发者和运维人员设计的 Docker 命令快速参考工具。涵盖了容器管理、镜像操作、数据卷、网络配置、Docker Compose 等所有常用命令，按功能分类组织，支持快速搜索和一键复制。无论你是 Docker 新手还是经验丰富的 DevOps 工程师，都能在这里快速找到需要的命令。",
+      "features": [
+        "8 大分类，覆盖 Docker 所有常用场景",
+        "100+ 常用命令，从基础到高级全面收录",
+        "支持关键词搜索，快速定位所需命令",
+        "一键复制命令，提升工作效率",
+        "清晰的中文说明，易于理解和学习",
+        "分类浏览和筛选，快速找到相关命令",
+        "响应式设计，支持移动端查看",
+        "本地运行，无需网络即可使用"
+      ],
+      "faq": [
+        {
+          "question": "为什么需要 Docker 命令速查？",
+          "answer": "Docker 命令众多且参数复杂，即使是经验丰富的开发者也难以记住所有命令。速查表可以帮助你快速查找和复制命令，节省查阅文档的时间，提升开发和运维效率。"
+        },
+        {
+          "question": "速查表包含哪些命令分类？",
+          "answer": "速查表包含 8 大分类：容器管理、镜像管理、数据卷、网络管理、Docker Compose、系统管理、镜像仓库、镜像构建。涵盖了日常开发和运维中几乎所有的 Docker 使用场景。"
+        },
+        {
+          "question": "如何快速找到需要的命令？",
+          "answer": "你可以使用顶部的搜索框输入关键词进行搜索，也可以点击分类标签筛选特定类型的命令。搜索支持命令名称和描述的模糊匹配。"
+        },
+        {
+          "question": "复制的命令可以直接使用吗？",
+          "answer": "大多数命令可以直接使用，但部分命令中的大写参数（如 CONTAINER、IMAGE、NAME）需要替换为实际值。例如 docker stop CONTAINER 中的 CONTAINER 需要替换为实际的容器名称或ID。"
+        },
+        {
+          "question": "速查表会持续更新吗？",
+          "answer": "是的，我们会持续更新速查表，添加新的实用命令和技巧，确保内容与最新的 Docker 版本保持同步。"
+        }
+      ],
+      "meta": {
+        "title": "Docker 命令速查 - 常用命令快速参考",
+        "description": "Docker 常用命令速查表，涵盖容器、镜像、数据卷、网络、Compose 等所有场景，支持搜索和一键复制。",
+        "keywords": "Docker命令, Docker速查表, 容器管理, Docker教程"
+      }
+    },
+    "nginx-cheatsheet": {
+      "name": "Nginx 配置速查",
+      "description": "Nginx 常用配置片段速查表，快速查找和复制配置代码",
+      "search_placeholder": "搜索 Nginx 配置...",
+      "copy_success": "配置已复制",
+      "no_results": "未找到匹配的配置",
+      "all_categories": "全部",
+      "results_count": "找到 {count} 个配置",
+      "categories": {
+        "basic": "基础配置",
+        "server": "Server 块",
+        "location": "Location 匹配",
+        "proxy": "反向代理",
+        "ssl": "SSL/HTTPS",
+        "cache": "缓存配置",
+        "gzip": "Gzip 压缩",
+        "security": "安全配置",
+        "logging": "日志配置",
+        "performance": "性能优化"
+      },
+      "configs": {
+        "basic": {
+          "worker_processes": { "config": "worker_processes auto;", "desc": "自动设置工作进程数（通常等于CPU核心数）" },
+          "worker_connections": { "config": "events {\n    worker_connections 1024;\n}", "desc": "设置每个工作进程的最大连接数" },
+          "include_mime": { "config": "include /etc/nginx/mime.types;\ndefault_type application/octet-stream;", "desc": "包含 MIME 类型配置" },
+          "sendfile": { "config": "sendfile on;\ntcp_nopush on;\ntcp_nodelay on;", "desc": "启用高效文件传输" },
+          "keepalive": { "config": "keepalive_timeout 65;", "desc": "设置长连接超时时间" },
+          "client_max_body": { "config": "client_max_body_size 100M;", "desc": "设置客户端请求体最大大小" },
+          "server_tokens": { "config": "server_tokens off;", "desc": "隐藏 Nginx 版本号" }
+        },
+        "server": {
+          "basic_server": { "config": "server {\n    listen 80;\n    server_name example.com;\n    root /var/www/html;\n    index index.html;\n}", "desc": "基础 Server 块配置" },
+          "multi_domain": { "config": "server_name example.com www.example.com;", "desc": "配置多个域名" },
+          "wildcard_domain": { "config": "server_name *.example.com;", "desc": "配置通配符域名" },
+          "default_server": { "config": "listen 80 default_server;", "desc": "设置默认服务器" },
+          "ipv6": { "config": "listen [::]:80;", "desc": "监听 IPv6 地址" },
+          "root_alias": { "config": "root /var/www/html;\n# 或使用 alias\nalias /var/www/files/;", "desc": "设置根目录或别名" }
+        },
+        "location": {
+          "exact_match": { "config": "location = /path {\n    # 精确匹配\n}", "desc": "精确匹配路径" },
+          "prefix_match": { "config": "location /api/ {\n    # 前缀匹配\n}", "desc": "前缀匹配路径" },
+          "regex_match": { "config": "location ~ \\.php$ {\n    # 正则匹配（区分大小写）\n}", "desc": "正则表达式匹配" },
+          "regex_case_insensitive": { "config": "location ~* \\.(jpg|jpeg|png|gif)$ {\n    # 正则匹配（不区分大小写）\n}", "desc": "不区分大小写的正则匹配" },
+          "priority_match": { "config": "location ^~ /images/ {\n    # 优先前缀匹配\n}", "desc": "优先前缀匹配（优先于正则）" },
+          "try_files": { "config": "location / {\n    try_files $uri $uri/ /index.html;\n}", "desc": "尝试文件顺序（SPA 应用常用）" },
+          "internal": { "config": "location /internal/ {\n    internal;\n}", "desc": "仅允许内部请求访问" }
+        },
+        "proxy": {
+          "basic_proxy": { "config": "location /api/ {\n    proxy_pass http://backend:3000/;\n}", "desc": "基础反向代理配置" },
+          "proxy_headers": { "config": "proxy_set_header Host $host;\nproxy_set_header X-Real-IP $remote_addr;\nproxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\nproxy_set_header X-Forwarded-Proto $scheme;", "desc": "设置代理请求头" },
+          "websocket": { "config": "location /ws/ {\n    proxy_pass http://backend:3000/;\n    proxy_http_version 1.1;\n    proxy_set_header Upgrade $http_upgrade;\n    proxy_set_header Connection \"upgrade\";\n}", "desc": "WebSocket 代理配置" },
+          "upstream": { "config": "upstream backend {\n    server 127.0.0.1:3000;\n    server 127.0.0.1:3001;\n    keepalive 32;\n}", "desc": "定义上游服务器组" },
+          "load_balance": { "config": "upstream backend {\n    least_conn;  # 或 ip_hash;\n    server 127.0.0.1:3000;\n    server 127.0.0.1:3001;\n}", "desc": "负载均衡配置" },
+          "proxy_timeout": { "config": "proxy_connect_timeout 60s;\nproxy_send_timeout 60s;\nproxy_read_timeout 60s;", "desc": "代理超时设置" },
+          "proxy_buffer": { "config": "proxy_buffering on;\nproxy_buffer_size 4k;\nproxy_buffers 8 4k;", "desc": "代理缓冲区配置" }
+        },
+        "ssl": {
+          "basic_ssl": { "config": "server {\n    listen 443 ssl http2;\n    ssl_certificate /path/to/cert.pem;\n    ssl_certificate_key /path/to/key.pem;\n}", "desc": "基础 SSL 配置" },
+          "ssl_protocols": { "config": "ssl_protocols TLSv1.2 TLSv1.3;", "desc": "设置 SSL 协议版本" },
+          "ssl_ciphers": { "config": "ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256;\nssl_prefer_server_ciphers on;", "desc": "设置加密套件" },
+          "ssl_session": { "config": "ssl_session_cache shared:SSL:10m;\nssl_session_timeout 1d;", "desc": "SSL 会话缓存" },
+          "http_to_https": { "config": "server {\n    listen 80;\n    server_name example.com;\n    return 301 https://$server_name$request_uri;\n}", "desc": "HTTP 重定向到 HTTPS" },
+          "hsts": { "config": "add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;", "desc": "启用 HSTS" },
+          "ocsp_stapling": { "config": "ssl_stapling on;\nssl_stapling_verify on;\nresolver 8.8.8.8 8.8.4.4 valid=300s;", "desc": "启用 OCSP Stapling" }
+        },
+        "cache": {
+          "static_cache": { "config": "location ~* \\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2)$ {\n    expires 30d;\n    add_header Cache-Control \"public, immutable\";\n}", "desc": "静态资源缓存" },
+          "no_cache": { "config": "location /api/ {\n    add_header Cache-Control \"no-store, no-cache, must-revalidate\";\n}", "desc": "禁用缓存" },
+          "proxy_cache": { "config": "proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=1g;\n\nlocation / {\n    proxy_cache my_cache;\n    proxy_cache_valid 200 1d;\n}", "desc": "代理缓存配置" },
+          "etag": { "config": "etag on;", "desc": "启用 ETag" },
+          "if_modified": { "config": "if_modified_since before;", "desc": "启用条件请求" }
+        },
+        "gzip": {
+          "basic_gzip": { "config": "gzip on;\ngzip_vary on;\ngzip_min_length 1024;\ngzip_comp_level 6;", "desc": "基础 Gzip 压缩配置" },
+          "gzip_types": { "config": "gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml;", "desc": "设置压缩的 MIME 类型" },
+          "gzip_proxied": { "config": "gzip_proxied any;", "desc": "对代理请求启用压缩" },
+          "gzip_static": { "config": "gzip_static on;", "desc": "启用预压缩文件" }
+        },
+        "security": {
+          "cors": { "config": "add_header Access-Control-Allow-Origin *;\nadd_header Access-Control-Allow-Methods \"GET, POST, OPTIONS\";\nadd_header Access-Control-Allow-Headers \"DNT,User-Agent,X-Requested-With,Content-Type\";", "desc": "CORS 跨域配置" },
+          "xss_protection": { "config": "add_header X-XSS-Protection \"1; mode=block\";\nadd_header X-Content-Type-Options nosniff;\nadd_header X-Frame-Options SAMEORIGIN;", "desc": "XSS 和点击劫持防护" },
+          "csp": { "config": "add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline'\";", "desc": "内容安全策略" },
+          "rate_limit": { "config": "limit_req_zone $binary_remote_addr zone=one:10m rate=10r/s;\n\nlocation /api/ {\n    limit_req zone=one burst=20 nodelay;\n}", "desc": "请求速率限制" },
+          "deny_access": { "config": "location ~ /\\. {\n    deny all;\n}", "desc": "禁止访问隐藏文件" },
+          "ip_whitelist": { "config": "location /admin/ {\n    allow 192.168.1.0/24;\n    deny all;\n}", "desc": "IP 白名单" }
+        },
+        "logging": {
+          "access_log": { "config": "access_log /var/log/nginx/access.log;", "desc": "访问日志配置" },
+          "error_log": { "config": "error_log /var/log/nginx/error.log warn;", "desc": "错误日志配置" },
+          "custom_format": { "config": "log_format main '$remote_addr - $remote_user [$time_local] \"$request\" '\n                '$status $body_bytes_sent \"$http_referer\" '\n                '\"$http_user_agent\" \"$http_x_forwarded_for\"';", "desc": "自定义日志格式" },
+          "json_log": { "config": "log_format json escape=json '{\"time\":\"$time_iso8601\",\"ip\":\"$remote_addr\",\"method\":\"$request_method\",\"uri\":\"$uri\",\"status\":$status}';", "desc": "JSON 格式日志" },
+          "disable_log": { "config": "access_log off;", "desc": "禁用访问日志" },
+          "conditional_log": { "config": "map $status $loggable {\n    ~^[23] 0;\n    default 1;\n}\naccess_log /var/log/nginx/access.log combined if=$loggable;", "desc": "条件日志（只记录错误）" }
+        },
+        "performance": {
+          "open_file_cache": { "config": "open_file_cache max=1000 inactive=20s;\nopen_file_cache_valid 30s;\nopen_file_cache_min_uses 2;", "desc": "文件描述符缓存" },
+          "multi_accept": { "config": "events {\n    multi_accept on;\n    use epoll;\n}", "desc": "启用多连接接受和 epoll" },
+          "fastcgi_cache": { "config": "fastcgi_cache_path /var/cache/nginx/fastcgi levels=1:2 keys_zone=fastcgi:10m;\n\nlocation ~ \\.php$ {\n    fastcgi_cache fastcgi;\n    fastcgi_cache_valid 200 1h;\n}", "desc": "FastCGI 缓存" },
+          "connection_limit": { "config": "limit_conn_zone $binary_remote_addr zone=addr:10m;\nlimit_conn addr 100;", "desc": "连接数限制" },
+          "timeout_tuning": { "config": "client_body_timeout 12;\nclient_header_timeout 12;\nsend_timeout 10;", "desc": "超时优化" }
+        }
+      },
+      "introduction": "Nginx 配置速查是专为 Web 开发者和运维人员设计的 Nginx 配置快速参考工具。涵盖了从基础配置到高级优化的所有常用配置片段，按功能分类组织，支持快速搜索和一键复制。无论你是 Nginx 新手还是经验丰富的运维工程师，都能在这里快速找到需要的配置代码。",
+      "features": [
+        "10 大分类，覆盖 Nginx 所有常用配置场景",
+        "60+ 常用配置片段，从基础到高级全面收录",
+        "支持关键词搜索，快速定位所需配置",
+        "一键复制配置代码，提升工作效率",
+        "清晰的中文说明，易于理解和学习",
+        "分类浏览和筛选，快速找到相关配置",
+        "响应式设计，支持移动端查看",
+        "本地运行，无需网络即可使用"
+      ],
+      "faq": [
+        {
+          "question": "为什么需要 Nginx 配置速查？",
+          "answer": "Nginx 配置语法复杂，指令众多，即使是经验丰富的运维人员也难以记住所有配置。速查表可以帮助你快速查找和复制配置代码，节省查阅文档的时间，提升配置效率。"
+        },
+        {
+          "question": "速查表包含哪些配置分类？",
+          "answer": "速查表包含 10 大分类：基础配置、Server 块、Location 匹配、反向代理、SSL/HTTPS、缓存配置、Gzip 压缩、安全配置、日志配置、性能优化。涵盖了日常运维中几乎所有的 Nginx 配置场景。"
+        },
+        {
+          "question": "如何快速找到需要的配置？",
+          "answer": "你可以使用顶部的搜索框输入关键词进行搜索，也可以点击分类标签筛选特定类型的配置。搜索支持配置代码和描述的模糊匹配。"
+        },
+        {
+          "question": "复制的配置可以直接使用吗？",
+          "answer": "大多数配置可以直接使用，但需要根据实际情况修改路径、域名、端口等参数。建议在测试环境验证后再应用到生产环境。"
+        },
+        {
+          "question": "速查表会持续更新吗？",
+          "answer": "是的，我们会持续更新速查表，添加新的实用配置和最佳实践，确保内容与最新的 Nginx 版本保持同步。"
+        }
+      ],
+      "meta": {
+        "title": "Nginx 配置速查 - 常用配置快速参考",
+        "description": "Nginx 常用配置速查表，涵盖反向代理、SSL、缓存、安全、性能优化等所有场景，支持搜索和一键复制。",
+        "keywords": "Nginx配置, Nginx速查表, 反向代理, Nginx教程"
+      }
+    },
+    "firewall-cheatsheet": {
+      "name": "Linux 防火墙速查",
+      "description": "Linux 防火墙常用命令速查表，包含 iptables、firewalld、ufw 等",
+      "search_placeholder": "搜索防火墙命令...",
+      "copy_success": "命令已复制",
+      "no_results": "未找到匹配的命令",
+      "all_categories": "全部",
+      "results_count": "找到 {count} 个命令",
+      "categories": {
+        "iptables_basic": "iptables 基础",
+        "iptables_whitelist": "iptables 白名单",
+        "iptables_rules": "iptables 规则",
+        "firewalld_basic": "firewalld 基础",
+        "firewalld_rules": "firewalld 规则",
+        "ufw_basic": "UFW 基础",
+        "ufw_rules": "UFW 规则",
+        "nftables": "nftables"
+      },
+      "commands": {
+        "iptables_basic": {
+          "list": { "cmd": "iptables -L -n -v", "desc": "列出所有规则（详细模式）" },
+          "list_line": { "cmd": "iptables -L -n --line-numbers", "desc": "列出规则并显示行号" },
+          "list_nat": { "cmd": "iptables -t nat -L -n -v", "desc": "列出 NAT 表规则" },
+          "save": { "cmd": "iptables-save > /etc/iptables.rules", "desc": "保存当前规则到文件" },
+          "restore": { "cmd": "iptables-restore < /etc/iptables.rules", "desc": "从文件恢复规则" },
+          "flush": { "cmd": "iptables -F", "desc": "清空所有规则" },
+          "flush_nat": { "cmd": "iptables -t nat -F", "desc": "清空 NAT 表规则" },
+          "delete_chain": { "cmd": "iptables -X", "desc": "删除所有自定义链" },
+          "zero": { "cmd": "iptables -Z", "desc": "清零所有计数器" },
+          "policy_drop": { "cmd": "iptables -P INPUT DROP", "desc": "设置 INPUT 链默认策略为 DROP" },
+          "policy_accept": { "cmd": "iptables -P INPUT ACCEPT", "desc": "设置 INPUT 链默认策略为 ACCEPT" }
+        },
+        "iptables_whitelist": {
+          "allow_ip": { "cmd": "iptables -A INPUT -s 192.168.1.100 -j ACCEPT", "desc": "允许指定 IP 访问" },
+          "allow_subnet": { "cmd": "iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT", "desc": "允许指定网段访问" },
+          "allow_ip_port": { "cmd": "iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT", "desc": "允许指定 IP 访问指定端口" },
+          "deny_ip": { "cmd": "iptables -A INPUT -s 10.0.0.100 -j DROP", "desc": "拒绝指定 IP 访问" },
+          "deny_subnet": { "cmd": "iptables -A INPUT -s 10.0.0.0/8 -j DROP", "desc": "拒绝指定网段访问" },
+          "allow_established": { "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT", "desc": "允许已建立的连接" },
+          "allow_loopback": { "cmd": "iptables -A INPUT -i lo -j ACCEPT", "desc": "允许本地回环接口" },
+          "whitelist_only": { "cmd": "iptables -P INPUT DROP\niptables -A INPUT -s 192.168.1.0/24 -j ACCEPT\niptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT", "desc": "仅允许白名单 IP（完整配置）" }
+        },
+        "iptables_rules": {
+          "allow_ssh": { "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT", "desc": "允许 SSH 连接（端口 22）" },
+          "allow_http": { "cmd": "iptables -A INPUT -p tcp --dport 80 -j ACCEPT", "desc": "允许 HTTP 连接（端口 80）" },
+          "allow_https": { "cmd": "iptables -A INPUT -p tcp --dport 443 -j ACCEPT", "desc": "允许 HTTPS 连接（端口 443）" },
+          "allow_mysql": { "cmd": "iptables -A INPUT -p tcp --dport 3306 -j ACCEPT", "desc": "允许 MySQL 连接（端口 3306）" },
+          "allow_redis": { "cmd": "iptables -A INPUT -p tcp --dport 6379 -j ACCEPT", "desc": "允许 Redis 连接（端口 6379）" },
+          "allow_range": { "cmd": "iptables -A INPUT -p tcp --dport 8000:9000 -j ACCEPT", "desc": "允许端口范围 8000-9000" },
+          "allow_ping": { "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT", "desc": "允许 Ping 请求" },
+          "deny_ping": { "cmd": "iptables -A INPUT -p icmp --icmp-type echo-request -j DROP", "desc": "禁止 Ping 请求" },
+          "delete_rule": { "cmd": "iptables -D INPUT 3", "desc": "删除 INPUT 链第 3 条规则" },
+          "insert_rule": { "cmd": "iptables -I INPUT 1 -s 192.168.1.100 -j ACCEPT", "desc": "在第 1 行插入规则" },
+          "log_dropped": { "cmd": "iptables -A INPUT -j LOG --log-prefix \"IPTables-Dropped: \"", "desc": "记录被丢弃的数据包" },
+          "rate_limit": { "cmd": "iptables -A INPUT -p tcp --dport 22 -m limit --limit 3/min --limit-burst 3 -j ACCEPT", "desc": "限制 SSH 连接速率" },
+          "port_forward": { "cmd": "iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080", "desc": "端口转发 80 到 8080" },
+          "masquerade": { "cmd": "iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE", "desc": "启用 NAT 伪装（共享上网）" }
+        },
+        "firewalld_basic": {
+          "status": { "cmd": "firewall-cmd --state", "desc": "查看防火墙状态" },
+          "start": { "cmd": "systemctl start firewalld", "desc": "启动防火墙" },
+          "stop": { "cmd": "systemctl stop firewalld", "desc": "停止防火墙" },
+          "enable": { "cmd": "systemctl enable firewalld", "desc": "设置开机自启" },
+          "disable": { "cmd": "systemctl disable firewalld", "desc": "禁用开机自启" },
+          "reload": { "cmd": "firewall-cmd --reload", "desc": "重新加载配置" },
+          "list_all": { "cmd": "firewall-cmd --list-all", "desc": "列出当前区域所有配置" },
+          "list_zones": { "cmd": "firewall-cmd --get-zones", "desc": "列出所有可用区域" },
+          "get_zone": { "cmd": "firewall-cmd --get-default-zone", "desc": "获取默认区域" },
+          "set_zone": { "cmd": "firewall-cmd --set-default-zone=public", "desc": "设置默认区域" },
+          "list_services": { "cmd": "firewall-cmd --get-services", "desc": "列出所有可用服务" }
+        },
+        "firewalld_rules": {
+          "add_service": { "cmd": "firewall-cmd --permanent --add-service=http", "desc": "永久添加 HTTP 服务" },
+          "remove_service": { "cmd": "firewall-cmd --permanent --remove-service=http", "desc": "永久移除 HTTP 服务" },
+          "add_port": { "cmd": "firewall-cmd --permanent --add-port=8080/tcp", "desc": "永久开放端口 8080" },
+          "remove_port": { "cmd": "firewall-cmd --permanent --remove-port=8080/tcp", "desc": "永久关闭端口 8080" },
+          "add_port_range": { "cmd": "firewall-cmd --permanent --add-port=8000-9000/tcp", "desc": "永久开放端口范围" },
+          "add_source": { "cmd": "firewall-cmd --permanent --add-source=192.168.1.0/24", "desc": "添加信任的源 IP 网段" },
+          "remove_source": { "cmd": "firewall-cmd --permanent --remove-source=192.168.1.0/24", "desc": "移除信任的源 IP 网段" },
+          "rich_rule_allow": { "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.100 accept'", "desc": "富规则：允许指定 IP" },
+          "rich_rule_deny": { "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=10.0.0.100 drop'", "desc": "富规则：拒绝指定 IP" },
+          "rich_rule_port": { "cmd": "firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.1.0/24 port port=22 protocol=tcp accept'", "desc": "富规则：允许网段访问指定端口" },
+          "port_forward": { "cmd": "firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=8080", "desc": "端口转发 80 到 8080" },
+          "masquerade": { "cmd": "firewall-cmd --permanent --add-masquerade", "desc": "启用 NAT 伪装" }
+        },
+        "ufw_basic": {
+          "status": { "cmd": "ufw status verbose", "desc": "查看防火墙状态（详细）" },
+          "enable": { "cmd": "ufw enable", "desc": "启用防火墙" },
+          "disable": { "cmd": "ufw disable", "desc": "禁用防火墙" },
+          "reset": { "cmd": "ufw reset", "desc": "重置所有规则" },
+          "default_deny": { "cmd": "ufw default deny incoming", "desc": "默认拒绝所有入站" },
+          "default_allow": { "cmd": "ufw default allow outgoing", "desc": "默认允许所有出站" },
+          "reload": { "cmd": "ufw reload", "desc": "重新加载规则" },
+          "numbered": { "cmd": "ufw status numbered", "desc": "显示带编号的规则列表" }
+        },
+        "ufw_rules": {
+          "allow_ssh": { "cmd": "ufw allow ssh", "desc": "允许 SSH 服务" },
+          "allow_http": { "cmd": "ufw allow http", "desc": "允许 HTTP 服务" },
+          "allow_https": { "cmd": "ufw allow https", "desc": "允许 HTTPS 服务" },
+          "allow_port": { "cmd": "ufw allow 8080/tcp", "desc": "允许 TCP 端口 8080" },
+          "allow_range": { "cmd": "ufw allow 8000:9000/tcp", "desc": "允许端口范围 8000-9000" },
+          "allow_from_ip": { "cmd": "ufw allow from 192.168.1.100", "desc": "允许指定 IP 所有访问" },
+          "allow_from_subnet": { "cmd": "ufw allow from 192.168.1.0/24", "desc": "允许指定网段所有访问" },
+          "allow_from_ip_port": { "cmd": "ufw allow from 192.168.1.100 to any port 22", "desc": "允许指定 IP 访问端口 22" },
+          "deny_from_ip": { "cmd": "ufw deny from 10.0.0.100", "desc": "拒绝指定 IP 所有访问" },
+          "deny_port": { "cmd": "ufw deny 3306/tcp", "desc": "拒绝 TCP 端口 3306" },
+          "delete_rule": { "cmd": "ufw delete allow 8080/tcp", "desc": "删除允许 8080 的规则" },
+          "delete_numbered": { "cmd": "ufw delete 3", "desc": "删除第 3 条规则" },
+          "insert_rule": { "cmd": "ufw insert 1 allow from 192.168.1.100", "desc": "在第 1 行插入规则" },
+          "limit_ssh": { "cmd": "ufw limit ssh", "desc": "限制 SSH 连接速率（防暴力破解）" }
+        },
+        "nftables": {
+          "list": { "cmd": "nft list ruleset", "desc": "列出所有规则" },
+          "flush": { "cmd": "nft flush ruleset", "desc": "清空所有规则" },
+          "add_table": { "cmd": "nft add table inet filter", "desc": "添加表" },
+          "add_chain": { "cmd": "nft add chain inet filter input { type filter hook input priority 0 \\; }", "desc": "添加链" },
+          "allow_port": { "cmd": "nft add rule inet filter input tcp dport 22 accept", "desc": "允许端口 22" },
+          "allow_ip": { "cmd": "nft add rule inet filter input ip saddr 192.168.1.100 accept", "desc": "允许指定 IP" },
+          "deny_ip": { "cmd": "nft add rule inet filter input ip saddr 10.0.0.100 drop", "desc": "拒绝指定 IP" },
+          "save": { "cmd": "nft list ruleset > /etc/nftables.conf", "desc": "保存规则到文件" },
+          "restore": { "cmd": "nft -f /etc/nftables.conf", "desc": "从文件恢复规则" }
+        }
+      },
+      "introduction": "Linux 防火墙速查是专为系统管理员和运维人员设计的防火墙命令快速参考工具。涵盖了 iptables、firewalld、ufw、nftables 等主流防火墙工具的常用命令，特别包含 IP 白名单、端口开放、访问控制等实用配置。支持快速搜索和一键复制，帮助你高效管理服务器安全。",
+      "features": [
+        "8 大分类，覆盖主流 Linux 防火墙工具",
+        "80+ 常用命令，从基础到高级全面收录",
+        "IP 白名单配置，快速实现访问控制",
+        "支持 iptables、firewalld、ufw、nftables",
+        "一键复制命令，提升运维效率",
+        "清晰的中文说明，易于理解和学习",
+        "分类浏览和筛选，快速找到相关命令",
+        "本地运行，无需网络即可使用"
+      ],
+      "faq": [
+        {
+          "question": "应该选择哪个防火墙工具？",
+          "answer": "CentOS/RHEL 7+ 推荐使用 firewalld，Ubuntu/Debian 推荐使用 ufw，需要精细控制或老系统使用 iptables，新系统可考虑 nftables。firewalld 和 ufw 是 iptables 的前端，更易于使用。"
+        },
+        {
+          "question": "如何设置 IP 白名单？",
+          "answer": "首先设置默认策略为拒绝所有入站流量，然后添加允许的 IP 或网段。iptables 使用 -A INPUT -s IP -j ACCEPT，firewalld 使用 --add-source 或富规则，ufw 使用 allow from IP。"
+        },
+        {
+          "question": "规则修改后需要重启吗？",
+          "answer": "iptables 规则立即生效但重启后丢失，需要 iptables-save 保存。firewalld 使用 --permanent 参数后需要 --reload。ufw 规则自动保存。建议修改后验证规则是否生效。"
+        },
+        {
+          "question": "如何防止把自己锁在服务器外面？",
+          "answer": "1) 先允许当前 SSH 连接的 IP；2) 使用 at 命令设置定时恢复规则；3) 通过控制台或 IPMI 访问；4) 测试前保存当前规则以便恢复。"
+        },
+        {
+          "question": "速查表会持续更新吗？",
+          "answer": "是的，我们会持续更新速查表，添加新的实用命令和最佳实践，确保内容与最新的 Linux 发行版保持同步。"
+        }
+      ],
+      "meta": {
+        "title": "Linux 防火墙速查 - iptables/firewalld/ufw 命令参考",
+        "description": "Linux 防火墙常用命令速查表，涵盖 iptables、firewalld、ufw、nftables，包含 IP 白名单、端口开放等配置，支持搜索和一键复制。",
+        "keywords": "Linux防火墙, iptables, firewalld, ufw, IP白名单"
+      }
+    },
     "base64-file-converter": {
       "name": "Base64图片转换器",
       "description": "图片与Base64编码相互转换工具",
