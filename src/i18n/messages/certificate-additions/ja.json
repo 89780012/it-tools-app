@@ -2,6 +2,7 @@
   "tools": {
     "nginx-certificate-generator": {
       "name": "Nginx 証明書ジェネレーター",
+      "online": {"mode":"発行してダウンロード", "guide":"Certbot ガイド", "intro":"DNS の管理権限を確認した後、無料の Let's Encrypt 証明書を発行します。秘密鍵はサーバーで生成し、Nginx 用 ZIP に同梱します。", "loading":"発行サービスを確認中…", "disabled":"オンライン発行は無効です。Certbot ガイドを利用するか管理者にお問い合わせください。", "staging":"テストモード：テスト証明書はブラウザーで信頼されません。", "create":"証明書の注文を作成", "domainsHint":"管理しているドメインを最大 20 件入力します。ワイルドカードに対応します。必要に応じてルートドメインを別途追加してください。", "access":"管理者が発行したアクセストークン", "working":"処理中…", "dns":"DNS TXT レコードを追加", "dnsHint":"以下の TXT 値をすべて追加します。同名のレコードがある場合は、発行が完了するまですべての値を残してください。", "deadline":"注文の有効期限：", "value":"値", "verify":"DNS を検証して ZIP をダウンロード", "install":"ZIP には fullchain.pem、privkey.pem、Nginx の設定断片が含まれます。秘密鍵は安全に保管してください。自動更新はありません。", "downloaded":"ダウンロードを開始しました。この注文用の TXT レコードは削除できます。", "errors":{"disabled":"オンライン発行は無効です。","access":"アクセストークンが無効です。","origin":"このサイトではオンライン発行が設定されていません。","invalid":"有効な公開ドメインを入力してください。","busy":"サービスが混み合っています。しばらくして再試行してください。","dns":"一部の TXT 値がまだ確認できません。DNS の反映を待って再試行してください。","expired":"注文の期限が切れました。新しい注文を作成してください。","rejected":"認証局が注文を拒否しました。DNS を確認し、新しい注文を作成してください。","upstream":"発行を完了できませんでした。しばらくして再試行してください。"}},
       "description": "Nginx 用の無料の Let's Encrypt 証明書を取得する準備、またはローカルでの自己署名証明書と秘密鍵の生成ができます。",
       "meta": {"title": "無料の Nginx SSL 証明書ジェネレーター", "description": "Certbot コマンド、Nginx の HTTPS 設定、更新手順を生成できます。また、ローカルで生成した自己署名 PEM 証明書をダウンロードできます。", "keywords": "Nginx,SSL,TLS,無料証明書,Let's Encrypt,Certbot,自己署名,HTTPS"},
       "publicMode": "無料の公開信頼証明書",

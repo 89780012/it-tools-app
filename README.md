@@ -1,6 +1,6 @@
 # IT Tools Collection
 
-A multilingual online toolbox for developers. The application now uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.22+** API server. Existing tool pages and the full translation catalog are retained.
+A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
 The catalog contains **64 tools in 12 categories**, with 12 languages throughout. The latest additions cover regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
@@ -8,7 +8,7 @@ The catalog contains **64 tools in 12 categories**, with 12 languages throughout
 
 - Node.js 20+
 - npm 10+
-- Go 1.22+
+- Go 1.25+
 
 ## Development
 
@@ -66,7 +66,22 @@ The build creates `dist/` with 792 prerendered pages (64 tools, home and changel
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 
-The Nginx certificate tool at `/tools/nginx-certificate-generator` prepares Debian/Ubuntu Certbot commands for free Let's Encrypt certificates using the Nginx plugin, Webroot, or automated Cloudflare DNS (wildcards supported), plus Nginx TLS configuration and systemd renewal instructions. Public issuance requires domain control and running the commands on your server; the site does not issue public certificates itself. A separate local mode generates RSA-2048 or ECDSA P-256 self-signed certificates, PKCS#8 private keys and a configuration ZIP entirely in the browser. These development certificates are not publicly trusted, and private keys are never uploaded or persisted by the application.
+### Nginx 公网证书在线签发
+
+打开 `/zh/tools/nginx-certificate-generator` → **在线签发并下载**。输入你控制的域名和管理员签发口令，按页面提示添加所有 DNS TXT 记录，等待生效后点击 **验证 DNS 并下载 ZIP**。支持通配符；如需覆盖根域名，请单独添加。ZIP 包含 `fullchain.pem`、`privkey.pem` 和指向安装目录的 `nginx.conf` 片段。按片段中的路径安装，将私钥权限设为 `600`，把指令合并到现有 HTTPS `server` 块，运行 `nginx -t` 后再重载。下载的证书不会自动续期；需要无人值守续期时可使用页面的 Certbot 部署指南。浏览器内生成的自签名模式也保留，仅用于开发测试。
+
+在线签发默认关闭。部署者先阅读 [Let's Encrypt 订户协议](https://letsencrypt.org/repository/)，在受保护的目录内生成账户密钥和随机签发口令（不要将输出提交到 Git 或共享到聊天）：
+
+```sh
+umask 077
+openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -out acme-account.pem
+openssl base64 -A -in acme-account.pem
+openssl rand -hex 32
+```
+
+在 `.env` 中配置 `CERTIFICATE_ISSUANCE_ENABLED=true`、`CERTIFICATE_ORIGIN`（工具站点的 HTTPS 来源，无尾部斜线，同时加入 `ALLOWED_ORIGINS`）、`CERTIFICATE_ACCESS_TOKEN`（随机口令）、`CERTIFICATE_ACME_EMAIL`、`CERTIFICATE_ACME_KEY_BASE64`（账户密钥的单行 Base64）和 `CERTIFICATE_ACME_ACCEPT_TOS=true`。将 `.env` 权限设为 `600`，重新运行 `bash deploy.sh`。先以 `CERTIFICATE_ACME_ENV=staging` 验证部署流程（测试证书不受浏览器信任），验证后切换为 `production` 并重新部署、创建新订单。
+
+请只通过可信的 HTTPS 工具站点签发，反向代理须保留 `Origin` 和 `Authorization` 请求头，不得记录这些凭证或缓存 `/api/certificates/` 的响应。该功能按单 Go 实例部署，订单和域名私钥仅在该实例内存中保留最多 30 分钟；刷新页面、过期或服务重启后需重新创建订单。ACME 账户密钥与下载的域名私钥不是同一个密钥。
 
 ## Languages and SEO
 

@@ -7,12 +7,15 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Workbench, Field, Panel, ErrorMessage, Output, downloadText } from '@/components/tools/workbench'
 import { CertificateToolError, preparePublicCertificate, generateLocalCertificate, certificateBundle, type CertificateAlgorithm, type CertificateChallenge, type PublicCertificateSetup, type LocalCertificate } from '@/lib/nginx-certificate'
+import OnlineNginxCertificate from '@/components/tools/online-nginx-certificate'
+
+type CertificateMode = 'online' | 'public' | 'local'
 
 const selectClass = 'h-10 w-full rounded-md border bg-background px-3 text-sm'
 export default function NginxCertificateGeneratorPage() {
   const t = useTranslations('tools.nginx-certificate-generator')
   const w = useTranslations('workbench')
-  const [mode, setMode] = useState<'public' | 'local'>('public')
+  const [mode, setMode] = useState<CertificateMode>('online')
   const [domains, setDomains] = useState('example.com\nwww.example.com')
   const [email, setEmail] = useState('')
   const [algorithm, setAlgorithm] = useState<CertificateAlgorithm>('ecdsa')
@@ -59,12 +62,14 @@ export default function NginxCertificateGeneratorPage() {
       setTimeout(() => URL.revokeObjectURL(url), 1000)
     } catch (cause) { if (ticket === revision.current) setError(message(cause)) }
   }
-  const changeMode = (next: 'public' | 'local') => { reset(); setMode(next); setAgreed(false) }
-  return <Workbench toolId="nginx-certificate-generator">
+  const changeMode = (next: CertificateMode) => { reset(); setMode(next); setAgreed(false) }
+  return <Workbench toolId="nginx-certificate-generator" local={mode !== 'online'}>
     <div className="flex flex-wrap gap-2" role="group" aria-label={t('name')}>
-      <Button data-testid="cert-public-mode" aria-pressed={mode === 'public'} variant={mode === 'public' ? 'default' : 'outline'} onClick={() => changeMode('public')}><ShieldCheck className="me-2 size-4" />{t('publicMode')}</Button>
+      <Button data-testid="cert-online-mode" aria-pressed={mode === 'online'} variant={mode === 'online' ? 'default' : 'outline'} onClick={() => changeMode('online')}>{t('online.mode')}</Button>
+      <Button data-testid="cert-public-mode" aria-pressed={mode === 'public'} variant={mode === 'public' ? 'default' : 'outline'} onClick={() => changeMode('public')}><ShieldCheck className="me-2 size-4" />{t('online.guide')}</Button>
       <Button data-testid="cert-local-mode" aria-pressed={mode === 'local'} variant={mode === 'local' ? 'default' : 'outline'} onClick={() => changeMode('local')}><LockKeyhole className="me-2 size-4" />{t('localMode')}</Button>
     </div>
+    {mode === 'online' ? <OnlineNginxCertificate /> : <>
     <p data-testid="cert-notice" className="rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm leading-relaxed">{t(mode === 'public' ? 'publicNotice' : 'localNotice')}</p>
     <Panel title={w('input')}>
       <Field label={t('domains')} htmlFor="cert-domains" hint={t(mode === 'public' ? 'domainsHint' : 'localDomainsHint')}><Textarea id="cert-domains" data-testid="cert-domains" maxLength={6000} dir="ltr" spellCheck={false} className="min-h-24 font-mono" value={domains} onChange={event => { reset(); setDomains(event.target.value) }} /></Field>
@@ -93,5 +98,6 @@ export default function NginxCertificateGeneratorPage() {
       <Panel title={t('stepRenew')}><p className="text-sm text-muted-foreground">{t('renewHint')}</p><div data-testid="cert-renew-output"><Output label={t('stepRenew')} value={setup.renewal} filename="setup-renewal.sh" /></div></Panel>
     </div>}
     {local && <div data-testid="cert-local-result"><Panel title={t('localResult')}><dl className="space-y-3 text-sm"><div><dt className="text-muted-foreground">{t('domains')}</dt><dd className="break-words font-mono" dir="ltr">{local.domains.join(', ')}</dd></div><div><dt className="text-muted-foreground">{t('expires')}</dt><dd data-testid="cert-expires" dir="ltr">{local.expires}</dd></div><div><dt className="text-muted-foreground">{t('fingerprint')}</dt><dd data-testid="cert-fingerprint" className="break-all font-mono" dir="ltr">{local.fingerprint}</dd></div></dl><p className="text-sm text-muted-foreground">{t('bundleHint')}</p><div className="flex flex-wrap gap-2"><Button data-testid="cert-download-bundle" onClick={() => void downloadBundle()}>{t('downloadBundle')}</Button><Button data-testid="cert-download-cert" variant="outline" onClick={() => downloadText(local.certificate, 'fullchain.pem', 'application/x-pem-file')}>{t('downloadCert')}</Button><Button data-testid="cert-download-key" variant="outline" onClick={() => downloadText(local.privateKey, 'privkey.pem', 'application/x-pem-file')}>{t('downloadKey')}</Button></div><div data-testid="cert-local-nginx"><Output label={t('stepNginx')} value={local.nginx} filename="nginx.conf" /></div></Panel></div>}
+    </>}
   </Workbench>
 }

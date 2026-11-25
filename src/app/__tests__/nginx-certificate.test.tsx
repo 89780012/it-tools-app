@@ -5,7 +5,11 @@ import { LocaleProvider } from '@/i18n/compat'
 import * as certificates from '@/lib/nginx-certificate'
 import Page from '../[locale]/tools/nginx-certificate-generator/page'
 
-const mount = () => render(<BrowserRouter><LocaleProvider locale="en"><Page /></LocaleProvider></BrowserRouter>)
+const mount = () => {
+  const view = render(<BrowserRouter><LocaleProvider locale="en"><Page /></LocaleProvider></BrowserRouter>)
+  fireEvent.click(screen.getByTestId('cert-public-mode'))
+  return view
+}
 const fill = (id: string,value: string) => fireEvent.change(screen.getByTestId(id),{target:{value}})
 const run = () => fireEvent.click(screen.getByTestId('cert-generate'))
 const result: certificates.LocalCertificate = { certificate:'PUBLIC CERTIFICATE',privateKey:'PRIVATE-KEY-MUST-NOT-APPEAR',fingerprint:'AA:BB',expires:'2026-12-25T00:00:00.000Z',nginx:'server { listen 443 ssl; }',domains:['localhost'] }
@@ -50,9 +54,11 @@ describe('Nginx certificate workflows',()=> {
   })
   it('generates local downloads without displaying or persisting a private key',async()=> {
     vi.spyOn(certificates,'generateLocalCertificate').mockResolvedValue(result)
+    mount()
     const fetchSpy=vi.spyOn(globalThis,'fetch')
+    fetchSpy.mockClear()
     const store=vi.spyOn(Storage.prototype,'setItem')
-    mount();fireEvent.click(screen.getByTestId('cert-local-mode'));fill('cert-domains','localhost');run()
+    fireEvent.click(screen.getByTestId('cert-local-mode'));fill('cert-domains','localhost');run()
     await waitFor(()=>expect(screen.getByTestId('cert-local-result')).toBeInTheDocument())
     expect(screen.getByTestId('cert-fingerprint')).toHaveTextContent('AA:BB')
     expect(screen.getByTestId('cert-download-key')).toBeEnabled()

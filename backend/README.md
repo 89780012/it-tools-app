@@ -1,6 +1,6 @@
 # IT Tools Go API
 
-Standalone Go 1.22+ API and static SPA server using only the standard library. It lives in `backend/`.
+Standalone Go 1.25+ API and static SPA server. The certificate service uses `golang.org/x/crypto/acme`.
 
 ## Run
 
@@ -40,6 +40,14 @@ Accepts `{ "sourceLanguage": "en", "targetLanguage": "fr", "entries": [{ "key": 
 Accepts `{ "samples": ["Hello world"], "fileName": "optional.json" }` and returns `{ "language", "confidence", "languageName" }` based on the configured model.
 
 All POST JSON request bodies are limited to 1 MiB. AI responses are limited to 1 MiB. CORS preflight requests are answered only for configured origins.
+
+### Online certificate issuance
+
+- `GET /api/certificates/status`: reports whether issuance is enabled and whether the CA is in staging mode.
+- `POST /api/certificates/start`: accepts `{ "domains": ["example.com"] }` and a bearer issuance access token. Returns the order token, DNS TXT records, expiry, and staging flag.
+- `POST /api/certificates/download`: accepts the order token as a bearer credential. Returns a no-store ZIP after DNS verification and issuance. HTTP 409 means retry the same order once DNS has propagated; HTTP 404 or 422 requires a new order.
+
+Both POST endpoints require the configured exact `Origin`. The feature is opt-in; see the root README and `.env.example` for deployment configuration.
 
 ## Test
 

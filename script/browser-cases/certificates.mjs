@@ -16,9 +16,69 @@ export async function run(page, check) {
   const output = id => page.getByTestId(id).getByTestId('tool-output').inputValue()
   const prepare = async () => {
     await page.goto(route)
+    await click('cert-public-mode')
     await fill('cert-email', 'admin@example.com')
     await page.getByTestId('cert-terms').check()
   }
+  await check('certificates/online: DNS propagation, same-order retry and ZIP download', async () => {
+    const zip = new JSZip()
+    zip.file('fullchain.pem', 'mock certificate chain')
+    zip.file('privkey.pem', 'mock key')
+    zip.file('nginx.conf', 'mock Nginx config')
+    const bundle = await zip.generateAsync({ type: 'nodebuffer' })
+    const endpoint = '**/api/certificates/**'
+    const access = 'test-only-issuance-access-token-12345'
+    const token = 'example-order-token'
+    let starts = 0
+    let downloads = 0
+    await page.route(endpoint, async request => {
+      const url = new URL(request.request().url())
+      switch (url.pathname.split('/').at(-1)) {
+        case 'status':
+          return request.fulfill({ json: { enabled: true, staging: false } })
+        case 'start':
+          starts++
+          assert.equal(request.request().headers().authorization, `Bearer ${access}`)
+          assert.deepEqual(request.request().postDataJSON(), { domains: ['example.com', '*.example.com'] })
+          return request.fulfill({ status: 201, json: {
+            token, staging: false, expires: new Date(Date.now() + 60_000).toISOString(),
+            records: [{ name: '_acme-challenge.example.com', value: 'mock-dns-value' }],
+          } })
+        case 'download':
+          assert.equal(request.request().headers().authorization, `Bearer ${token}`)
+          return ++downloads === 1
+            ? request.fulfill({ status: 409, json: { error: 'dns' } })
+            : request.fulfill({ contentType: 'application/zip', body: bundle })
+        default:
+          return request.abort()
+      }
+    })
+    try {
+      await page.goto(route)
+      await fill('cert-online-domains', 'Example.COM\n*.example.com')
+      await fill('cert-online-access', access)
+      await click('cert-online-start')
+      const records = page.getByTestId('cert-online-records')
+      await records.waitFor()
+      assert.match(await records.innerText(), /_acme-challenge\.example\.com/)
+      await records.getByRole('button').last().click()
+      assert.equal(await page.evaluate(() => navigator.clipboard.readText()), 'mock-dns-value')
+      await click('cert-online-download')
+      const error = page.getByRole('alert')
+      await error.waitFor()
+      assert.match(await error.innerText(), /Wait for DNS propagation/)
+      const [download] = await Promise.all([page.waitForEvent('download'), click('cert-online-download')])
+      assert.equal(download.suggestedFilename(), 'nginx-certificate.zip')
+      assert.deepEqual(await bytes(download), bundle)
+      await page.getByTestId('cert-online-downloaded').waitFor()
+      assert.equal(starts, 1)
+      assert.equal(downloads, 2)
+      const stored = await page.evaluate(() => JSON.stringify([Object.entries(localStorage), Object.entries(sessionStorage)]))
+      assert.ok(!stored.includes(token) && !stored.includes(access))
+    } finally {
+      await page.unroute(endpoint)
+    }
+  })
   await check('certificates/public: Nginx issuance, copy, configuration download and renewal', async () => {
     await prepare()
     await fill('cert-domains', 'EXAMPLE.COM www.example.com')
@@ -68,6 +128,7 @@ export async function run(page, check) {
   })
   await check('certificates/validation: missing agreement and unsafe input never produce commands', async () => {
     await page.goto(route)
+    await click('cert-public-mode')
     await fill('cert-email', 'admin@example.com')
     await click('cert-generate')
     await page.getByRole('alert').waitFor()
@@ -126,6 +187,7 @@ export async function run(page, check) {
   await check('certificates/locales: all 12 languages run issuance controls and support mobile RTL', async () => {
     for (const locale of ['en', 'zh', 'es', 'de', 'fr', 'it', 'pt', 'ru', 'ja', 'ko', 'ar', 'hi']) {
       await page.goto(`${locale === 'en' ? '' : `/${locale}`}${route}`)
+      await click('cert-public-mode')
       await page.getByTestId('cert-domains').waitFor()
       await fill('cert-email', 'admin@example.com')
       await page.getByTestId('cert-terms').check()
@@ -137,6 +199,7 @@ export async function run(page, check) {
     }
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto(`/ar${route}`)
+    await click('cert-public-mode')
     await page.getByTestId('cert-domains').waitFor()
     assert.equal(await page.locator('html').getAttribute('dir'), 'rtl')
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 2), true)

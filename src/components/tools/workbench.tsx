@@ -9,9 +9,11 @@ import { Textarea } from '@/components/ui/textarea'
 export function Workbench({
   toolId,
   children,
+  local = true,
 }: {
   toolId: string
   children: ReactNode
+  local?: boolean
 }) {
   const t = useTranslations()
   return (
@@ -26,7 +28,7 @@ export function Workbench({
         <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
           {t(`tools.${toolId}.description`)}
         </p>
-        <p className="text-xs text-muted-foreground">{t('workbench.local')}</p>
+        {local && <p className="text-xs text-muted-foreground">{t('workbench.local')}</p>}
       </header>
       {children}
     </section>

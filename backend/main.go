@@ -34,6 +34,7 @@ type config struct {
 	translateURL   string
 	translateKey   string
 	translateModel string
+	certificates   *certificateService
 }
 
 func configFromEnv() config {
@@ -52,6 +53,7 @@ func configFromEnv() config {
 		translateURL:   strings.TrimSpace(os.Getenv("I18N_TRANSLATE_API_URL")),
 		translateKey:   strings.TrimSpace(os.Getenv("I18N_TRANSLATE_API_KEY")),
 		translateModel: strings.TrimSpace(os.Getenv("I18N_TRANSLATE_API_MODEL")),
+		certificates:   certificateServiceFromEnv(),
 	}
 }
 
@@ -151,6 +153,7 @@ func newHandler(cfg config) http.Handler {
 	mux.HandleFunc("POST /api/proxy", proxyHandler)
 	mux.HandleFunc("POST /api/i18n-translate", translateHandler(cfg))
 	mux.HandleFunc("POST /api/detect-language", detectLanguageHandler(cfg))
+	registerCertificateRoutes(mux, cfg.certificates)
 	return corsMiddleware(cfg.allowedOrigins, mux)
 }
 
