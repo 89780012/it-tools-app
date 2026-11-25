@@ -45,3 +45,69 @@ export async function auditRoutes(locales = ['zh']) {
     window.removeEventListener('unhandledrejection', onError)
   }
 }
+
+// Start on JSON-to-TOML. Results survive the language menu's full reload.
+export async function auditLocaleInteraction(nextLocale) {
+  const locales = ['zh', 'en', 'es', 'de', 'fr', 'it', 'pt', 'ru', 'ja', 'ko', 'ar', 'hi']
+  const locale = document.documentElement.lang
+  const prefix = locale === 'en' ? '' : `/${locale}`
+  if (location.pathname !== `${prefix}/tools/json-to-toml`) throw new Error('Open JSON-to-TOML first')
+  const sample = { title: '多语言测试 café', port: 8080, enabled: false, database: { host: 'localhost', max_connections: 100 } }
+  const errors = []
+  const onError = event => errors.push(event.message || String(event.reason))
+  window.addEventListener('error', onError)
+  window.addEventListener('unhandledrejection', onError)
+  const input = value => {
+    const textarea = document.querySelector('main main textarea')
+    Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(textarea, value)
+    textarea.dispatchEvent(new Event('input', { bubbles: true }))
+  }
+  const convert = async () => {
+    await pause(50)
+    document.querySelector('main main button').click()
+    await pause(100)
+    return document.querySelectorAll('main main textarea')[1]?.value
+  }
+  const go = async tool => {
+    const link = [...document.querySelectorAll('a')].find(element => element.getAttribute('href') === `${prefix}/tools/${tool}`)
+    if (!link) throw new Error(`Missing tool link: ${tool}`)
+    link.click()
+    await pause(400)
+  }
+  try {
+    const messages = (await import(`/src/i18n/messages/${locale}.json`)).default
+    const title = document.title
+    const heading = document.querySelector('main main h1')?.textContent
+    const localizedTitle = title === messages.tools['json-to-toml'].meta.title
+    input(JSON.stringify(sample))
+    const toml = await convert()
+    await go('toml-to-json')
+    input(toml)
+    const json = await convert()
+    const roundTrip = JSON.stringify(JSON.parse(json)) === JSON.stringify(sample)
+    await go('json-to-toml')
+    const pending = JSON.parse(sessionStorage.getItem('locale-switch-pending') || 'null')
+    const menuSwitch = pending?.locale === locale && location.pathname === pending.path
+    const sidebar = document.querySelector('[data-slot="sidebar-container"]')?.getBoundingClientRect()
+    const main = document.querySelector('main main').getBoundingClientRect()
+    const overlap = sidebar ? Math.max(0, Math.min(sidebar.right, main.right) - Math.max(sidebar.left, main.left)) : 0
+    const result = { locale, title, heading, localizedTitle, roundTrip, menuSwitch, direction: document.documentElement.dir, sidebarOverlap: overlap, errors }
+    result.passed = localizedTitle && roundTrip && overlap <= 1 && errors.length === 0 && (!pending || menuSwitch)
+    const results = JSON.parse(sessionStorage.getItem('locale-interaction-results') || '[]')
+    results.push(result)
+    sessionStorage.setItem('locale-interaction-results', JSON.stringify(results))
+    if (nextLocale) {
+      const button = [...document.querySelectorAll('button')].find(element => element.textContent.includes('Toggle language'))
+      button.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, button: 0, pointerType: 'mouse', ctrlKey: false }))
+      await pause(100)
+      const item = document.querySelectorAll('[role=menuitem]')[locales.indexOf(nextLocale)]
+      if (!item) throw new Error(`Missing language option: ${nextLocale}`)
+      sessionStorage.setItem('locale-switch-pending', JSON.stringify({ locale: nextLocale, path: `${nextLocale === 'en' ? '' : `/${nextLocale}`}/tools/json-to-toml` }))
+      setTimeout(() => item.click(), 100)
+    }
+    return result
+  } finally {
+    window.removeEventListener('error', onError)
+    window.removeEventListener('unhandledrejection', onError)
+  }
+}

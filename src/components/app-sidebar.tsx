@@ -44,7 +44,7 @@ import {
   Server,
   Shield,
 } from "lucide-react"
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Link, usePathname } from '@/i18n/navigation'
 import { toolsConfig } from "@/lib/tools-config"
 import {
@@ -99,6 +99,7 @@ export const toolIconMap = {
 
 export function AppSidebar() {
   const t = useTranslations()
+  const locale = useLocale()
   const pathname = usePathname()
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
     new Set(toolsConfig.map(category => category.id))
@@ -125,7 +126,7 @@ export function AppSidebar() {
   const isAllExpanded = expandedCategories.size === toolsConfig.length
 
   return (
-    <Sidebar variant="inset">
+    <Sidebar variant="inset" side={locale === 'ar' ? 'right' : 'left'}>
       <SidebarHeader>
         <div className="flex items-center gap-2">
           {/* 左侧：首页链接 */}
