@@ -1,0 +1,1 @@
+{"tools":{"yaml-formatter":{"precisionError":"数值超出安全整数范围。请用引号将其设为字符串，以保留所有数字。"},"json-schema-validator":{"timeout":"校验超过 2 秒，已停止。请简化规则或输入后重试。","workerError":"校验无法完成，请在支持 Web Worker 的浏览器中重试。"}}}

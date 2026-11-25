@@ -14,19 +14,6 @@ interface RelatedToolsProps {
   maxItems?: number
 }
 
-// 实际存在的工具页面列表
-const availableTools = [
-  'json-formatter', 'json-to-csv', 'json-to-yaml', 'yaml-to-json', 'json-to-xml',
-  'json-diff', 'json-generator', 'json-visualizer', 'i18n-json-translator',
-  'base64-encoder-decoder', 'url-encoder-decoder',
-  'md5-hash', 'sha256-hash', 'sha1-hash', 'hex-encoder-decoder',
-  'binary-encoder-decoder', 'password-generator', 'aes-encrypt-decrypt',
-  'rsa-encrypt-decrypt', 'hmac-generator',
-  'ip-lookup',
-  'time-converter',
-  'qr-code-generator', 'svg-placeholder-generator', 'base64-file-converter',
-  'cron-expression-parser', 'uuid-generator'
-]
 
 export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsProps) {
   const t = useTranslations()
@@ -43,10 +30,7 @@ export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsP
   // 获取所有实际可用的工具
   const allAvailableTools = toolsConfig
     .flatMap(category => category.tools)
-    .filter(tool =>
-      availableTools.includes(tool.id) && // 确保工具页面存在
-      tool.id !== toolId // 排除当前工具
-    )
+    .filter(tool => tool.id !== toolId)
 
   // 优先显示同分类的工具
   const sameCategory = allAvailableTools.filter(tool => tool.category === currentTool.category)
@@ -98,7 +82,7 @@ export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsP
                 </p>
                 <div className="flex items-center justify-between">
                   <Badge variant="outline" className="text-xs">
-                    {t(`categories.${tool.category}`)}
+                    {t(toolsConfig.find(category => category.id === tool.category)!.nameKey)}
                   </Badge>
                   <Button
                     variant="ghost"

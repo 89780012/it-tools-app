@@ -1,0 +1,5 @@
+{
+  "workbench": {"input":"입력","output":"출력","run":"실행","clear":"비우기","example":"예제 불러오기","copy":"복사","copied":"복사됨","download":"다운로드","copyError":"복사하지 못했습니다. 출력을 선택하여 직접 복사하세요.","local":"브라우저에서 로컬로 처리합니다. 입력 내용은 전송되지 않습니다.","error":"입력을 처리할 수 없습니다. 형식과 옵션을 확인하세요.","format":"서식 정리","minify":"압축","validate":"검증","options":"옵션","result":"결과"},
+  "homeExtras": {"all":"모든 도구","favorites":"즐겨찾기","recent":"최근 사용","addFavorite":"{name} 즐겨찾기 추가","removeFavorite":"{name} 즐겨찾기 제거","clearRecent":"최근 기록 지우기","emptyFavorites":"하트 버튼으로 자주 쓰는 도구를 저장하세요.","emptyRecent":"열어 본 도구가 여기에 표시됩니다.","storageUnavailable":"브라우저 저장소를 사용할 수 없습니다. 즐겨찾기와 기록은 현재 페이지에서만 유지됩니다.","search":"이름, 설명 또는 도구 ID로 검색","expandAll":"모든 분류 펼치기","collapseAll":"모든 분류 접기"},
+  "categories": {"api":"API 디버깅","api_desc":"HTTP 요청 만들기, 변환 및 테스트","frontend":"프런트엔드와 문서","frontend_desc":"스타일, 색상, 접근성 및 Markdown","json_converters":"데이터 형식","json_converters_desc":"JSON, YAML, XML, TOML 및 CSV 변환, 서식 정리와 검증","generators":"코드와 생성기","generators_desc":"유형, 식별자 및 비밀번호 생성"}
+}

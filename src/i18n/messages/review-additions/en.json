@@ -1,0 +1,1 @@
+{"tools":{"yaml-formatter":{"precisionError":"A numeric value exceeds the safe integer range. Quote it as a string to preserve every digit."},"json-schema-validator":{"timeout":"Validation exceeded 2 seconds and was stopped. Simplify the schema or input and try again.","workerError":"Validation could not complete. Try again in a browser with Web Worker support."}}}

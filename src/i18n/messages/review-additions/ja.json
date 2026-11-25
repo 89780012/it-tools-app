@@ -1,0 +1,1 @@
+{"tools":{"yaml-formatter":{"precisionError":"数値が安全な整数の範囲を超えています。すべての桁を保持するには引用符で囲んで文字列にしてください。"},"json-schema-validator":{"timeout":"検証が2秒を超えたため停止しました。スキーマまたは入力を簡略化して再試行してください。","workerError":"検証を完了できませんでした。Web Worker 対応のブラウザーで再試行してください。"}}}

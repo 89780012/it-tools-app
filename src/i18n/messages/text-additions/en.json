@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "SQL Formatter", "description": "Format or compact SQL locally while preserving strings and comments.",
+      "meta": { "title": "SQL Formatter and Minifier", "description": "Format SQL, PostgreSQL, MySQL and SQLite with configurable indentation and keyword casing.", "keywords": "SQL formatter, SQL minifier, PostgreSQL, MySQL, SQLite" },
+      "dialect": "SQL dialect", "indent": "Indentation spaces", "casing": "Keyword case", "upper": "UPPERCASE", "lower": "lowercase", "preserve": "Preserve case", "invalid": "Unable to format this SQL.", "hint": "Comments and literal content are preserved. Formatting does not check database semantics."
+    },
+    "text-batch-processor": {
+      "name": "Text Batch Processor", "description": "Clean, deduplicate, sort and combine lines with composable transformations.",
+      "meta": { "title": "Text Batch Processor and SQL IN Builder", "description": "Normalize line endings, trim, remove duplicates, sort Unicode text and build quoted SQL IN lists locally.", "keywords": "text processing, deduplicate lines, sort lines, SQL IN" },
+      "trim": "Trim each line", "dropBlank": "Remove blank lines", "dedupe": "Remove duplicate lines", "sqlIn": "Build SQL IN list", "sort": "Sort order", "none": "Keep input order", "asc": "Ascending", "desc": "Descending", "prefix": "Prefix per line", "suffix": "Suffix per line", "delimiter": "Join with", "newline": "Newline", "comma": "Comma and space", "space": "Space", "tab": "Tab", "empty": "No separator", "counts": "Input: {input} lines · Output: {output} lines · {characters} characters", "hint": "Order: normalize line endings, trim, remove blanks, deduplicate, sort, add prefix/suffix, then join. SQL mode doubles apostrophes.", "sqlUnsafe": "SQL lists cannot contain backslashes or null characters. Remove them or use normal text output."
+    },
+    "string-escape": {
+      "name": "String Escape and Unescape", "description": "Encode and decode JSON strings, Unicode escapes, HTML entities and nested JSON strings.",
+      "meta": { "title": "String Escape and Unescape Tool", "description": "Escape JSON, Unicode and HTML text or decode nested JSON strings locally with a depth limit.", "keywords": "string escape, unescape, Unicode, HTML entities, nested JSON" },
+      "mode": "Encoding mode", "json": "JSON quoted string", "unicode": "Unicode escapes", "html": "HTML entities", "nested": "Nested JSON decoding", "depth": "Maximum decoding depth (1–20)", "encode": "Encode", "decode": "Decode", "invalidJson": "Invalid JSON. Enter a valid quoted JSON string.", "invalidUnicode": "Invalid Unicode escape. Use four hexadecimal digits after \\u.", "stringRequired": "The JSON value must be a string, enclosed in double quotes.", "depthError": "Decoding depth exceeded or invalid. Choose a whole number from 1 to 20.", "jsonHint": "Encoding adds JSON quotes. Decoding requires a quoted string and preserves all whitespace.", "unicodeHint": "Encoding escapes every UTF-16 unit. Emoji use surrogate pairs; decoding also preserves unescaped text.", "htmlHint": "Decode named and numeric HTML entities. Results are displayed as plain text.", "nestedHint": "Repeatedly decode JSON strings until text or a JSON value is reached, up to the depth limit."
+    },
+    "jsonpath-query": {
+      "name": "JSONPath Query", "description": "Explore nested JSON with paths, wildcards and safe comparison filters.",
+      "meta": { "title": "JSONPath Query and Filter Tool", "description": "Query JSON locally using JSONPath, safe filters and optional matching paths. Export results as JSON.", "keywords": "JSONPath query, JSON filter, JSON paths, JSON search" },
+      "expression": "JSONPath expression", "paths": "Include matching paths", "filterExample": "Filter example", "matches": "Matches: {count}", "hint": "Use $.store.books[*].title or [?(@.price < 10)]. Filters support comparisons, &&, || and !; function calls are disabled.", "invalidJson": "Invalid JSON input. Check the document syntax.", "invalidPath": "Invalid or unsupported JSONPath expression.", "unsafe": "Unsafe expression rejected. Use property lookups, comparisons and boolean operators only.", "limit": "Query limit exceeded: at most 1,000,000 input characters, 50,000 values, 64 nesting levels and 2,000 path characters."
+    }
+  }
+}

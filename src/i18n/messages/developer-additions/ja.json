@@ -1,0 +1,32 @@
+{
+ "tools": {
+  "regex-tester": {
+   "outputTooLarge":"置換結果が 1,000,000 文字を超えます。テキストまたは置換文字列を短くしてください。",
+   "name":"正規表現テスター","description":"分離されたワーカーで JavaScript の正規表現をローカル実行し、キャプチャと置換結果を確認できます。",
+   "meta":{"title":"正規表現テスター：一致と置換","description":"ブラウザーでパターンとフラグをテストし、一致箇所、キャプチャグループ、置換結果を確認します。","keywords":"正規表現,regex,キャプチャグループ,置換,JavaScript"},
+   "pattern":"パターン","patternHint":"区切り文字 / を付けずに入力してください。位置は UTF-16 コード単位です。実行時間は最大 1.5 秒です。","flags":"フラグ","text":"テストするテキスト","replacement":"置換文字列","running":"テスト中…","emailExample":"メールの例","numberExample":"数値の例","unicodeExample":"Unicode の例",
+   "invalidPattern":"正規表現が無効です。括弧、エスケープ、ブラウザーで対応している構文を確認してください。","invalidFlags":"JavaScript のフラグ d、g、i、m、s、u、v、y を重複なく指定してください。u と v は併用できません。","tooLarge":"テキストは最大 200,000 文字、パターンと置換文字列はそれぞれ最大 10,000 文字です。","timeout":"実行時間が 1.5 秒を超えたため停止しました。パターンを簡単にするか、テキストを短くしてください。","workerError":"分離ワーカーを実行できませんでした。ブラウザーの対応状況を確認して再試行してください。",
+   "matches":"一致数：{count}","truncated":"最初の 1,000 件のみ表示します。置換プレビューにはすべての一致が含まれます。","index":"位置","match":"一致","captures":"キャプチャグループ","emptyMatch":"空の一致","replacementPreview":"置換プレビュー"
+  },
+  "jwt-decoder": {
+   "name":"JWT デコーダー","description":"JWT のヘッダーとペイロードをデコードし、時刻クレームを確認できます。ローカルの秘密鍵による HS256 検証にも対応します。",
+   "meta":{"title":"JWT デコーダー：クレームと HS256 署名","description":"JWT の Base64URL をローカルでデコードし、有効期限と HS256 署名をトークンの送信なしで確認します。","keywords":"JWT,デコード,JSON ウェブトークン,HS256,有効期限,署名"},
+   "token":"JWT トークン","decode":"デコード","header":"ヘッダー","payload":"ペイロード","claims":"時刻クレーム","unverified":"署名は未検証です。","verified":"HS256 署名が入力した秘密鍵と一致しました。","invalidSignature":"署名が入力した秘密鍵と一致しません。",
+   "trustHint":"デコードだけでは真正性を確認できません。署名の一致だけでは発行者、対象者、アプリケーションのすべての要件を検証できません。","invalidToken":"正規の Base64URL で、正確に 3 セグメントの JWT を入力してください。ヘッダーとペイロードは UTF-8 の JSON オブジェクトが必要です。空の署名は alg:none のみ使用できます。",
+   "noClaims":"exp、iat、nbf クレームはありません。","exp":"有効期限（exp）","iat":"発行日時（iat）","nbf":"有効開始日時（nbf）","expired":"期限切れ","active":"時刻条件を満たしています","future":"未来の日時","issued":"発行済み","invalidDate":"数値のタイムスタンプが無効です",
+   "verifyTitle":"任意の HS256 検証","secret":"ローカルの秘密鍵","secretHint":"このページのメモリ内でのみ使用します。トークンや秘密鍵は保存も送信もされません。","verify":"HS256 を検証","verifying":"検証中…","unsupportedAlgorithm":"重要な拡張や b64 ヘッダー拡張を含まない HS256 のみ検証できます。","secretRequired":"このトークンの署名に使用した秘密鍵を入力してください。","cryptoUnavailable":"ここでは Web Crypto を利用できません。HTTPS または localhost で開いてください。","verificationError":"署名を確認できませんでした。トークンを確認して再試行してください。"
+  },
+  "text-diff": {
+   "name":"テキスト差分","description":"2 つのテキストやローカルファイルを行・単語単位で比較し、統一差分をダウンロードできます。",
+   "meta":{"title":"テキスト差分：テキストとファイルの比較","description":"左右または統一表示でテキストを比較し、単語の変更を強調、空白を無視してパッチをローカルに保存できます。","keywords":"テキスト差分,ファイル比較,統一差分,単語変更,パッチ"},
+   "left":"元のテキスト","right":"更新後のテキスト","importLeft":"元のファイルを読み込む","importRight":"更新後のファイルを読み込む","sideBySide":"左右に表示","unified":"統一表示","wordChanges":"単語の変更を強調","ignoreWhitespace":"水平方向の空白を無視",
+   "whitespaceHint":"このモードでは表示とダウンロードの両方で各行の前後の空白を削除し、空白とタブをまとめます。改行は区別します。CRLF は LF に統一します。","identical":"現在の設定ではテキストは同一です。","different":"テキストに違いがあります。","downloadDiff":"統一差分をダウンロード","tooLarge":"合計 100,000 文字以内にし、行数を減らしてください。安全な処理上限を超えています。","fileError":"ローカルファイルを読み込めませんでした。テキストファイルを選んで再試行してください。"
+  },
+  "json-to-types": {
+   "name":"JSON から型を生成","description":"入れ子のオブジェクトや異種配列を含む JSON から TypeScript インターフェースや Go 構造体を生成します。",
+   "meta":{"title":"JSON から TypeScript インターフェースと Go 構造体を生成","description":"配列内のオブジェクトを統合し、省略可能なプロパティ、null、一意の名前に対応した型を生成します。","keywords":"JSON,TypeScript,インターフェース,Go 構造体,型生成"},
+   "language":"出力言語","typescript":"TypeScript","go":"Go","rootName":"ルート型の名前","rootHint":"名前は有効で一意の識別子へ自動変換されます。","json":"JSON 入力","generated":"生成された型","inferenceHint":"型はこのサンプルを表します。配列内のオブジェクトを統合し、欠けたキーは省略可能にします。空配列の要素は unknown です。",
+   "goHint":"Go は混合型、null、空配列の要素に any、省略可能または null 許容値にポインター、数値に float64 を使います。JSON タグで対応するキーを保持し、表現できないキーはエラーにします。","invalidJson":"有限の数値を含む有効な JSON を入力してください。","tooDeep":"JSON の入れ子が深すぎます。最大 80 階層です。","tooLarge":"JSON は最大 200,000 文字です。","goKey":"Go の JSON 構造体タグで正確に表せないプロパティ名です。TypeScript を使うか、空、ハイフンのみ、コンマ、引用符、バックスラッシュ、制御文字、非対応記号を含むキーを変更してください。"
+  }
+ }
+}

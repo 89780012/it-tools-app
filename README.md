@@ -2,6 +2,8 @@
 
 A multilingual online toolbox for developers. The application now uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.22+** API server. Existing tool pages and the full translation catalog are retained.
 
+The catalog contains **64 tools in 12 categories**, with 12 languages throughout. The latest additions cover regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+
 ## Requirements
 
 - Node.js 20+
@@ -48,7 +50,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 
 也可直接运行 `docker compose up -d --build --wait --wait-timeout 120`。代码更新后重新执行 `bash deploy.sh` 即可；构建失败时脚本返回非零退出码，启动失败时显示容器状态与最近日志。若当前用户没有 Docker 权限，可使用 `sudo bash deploy.sh`。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 552 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 792 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -60,15 +62,19 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 552 prerendered pages (44 tools, home and changelog in 12 languages), including complete initial HTML and metadata. Upstream robots.txt and all 13 sitemap XML files are retained. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 792 prerendered pages (64 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
+
+The Nginx certificate tool at `/tools/nginx-certificate-generator` prepares Debian/Ubuntu Certbot commands for free Let's Encrypt certificates using the Nginx plugin, Webroot, or automated Cloudflare DNS (wildcards supported), plus Nginx TLS configuration and systemd renewal instructions. Public issuance requires domain control and running the commands on your server; the site does not issue public certificates itself. A separate local mode generates RSA-2048 or ECDSA P-256 self-signed certificates, PKCS#8 private keys and a configuration ZIP entirely in the browser. These development certificates are not publicly trusted, and private keys are never uploaded or persisted by the application.
 
 ## Languages and SEO
 
 The existing 12 locale resources remain in `src/i18n/messages/` (`zh`, `en`, `es`, `de`, `fr`, `it`, `pt`, `ru`, `ja`, `ko`, `ar`, `hi`). English remains the default without a URL prefix; the other locales use `/{locale}/...`. Arabic pages set RTL direction.
 
-SEO metadata follows upstream Next.js layout/page inheritance, including title templates, canonical URLs, hreflang exceptions, Open Graph, Twitter, robots directives and site verification. Tool and changelog translations are unchanged. The build prerenders existing React components so crawlers receive content and internal links before JavaScript runs; the client uses the same metadata rules during navigation. See [SEO parity audit](docs/seo-parity-audit.md) for the reference revision, retained upstream issues and the full comparison command.
+New translations live in `src/i18n/messages/*-additions/{locale}.json`. `src/i18n/additions.ts` deep-merges them with the original locale files for both browser rendering and SEO. Keep all 12 files in each group synchronized; tests check every new key, interpolation parameter and tool metadata entry.
+
+SEO metadata retains the original title templates, canonical/hreflang exceptions, Open Graph, Twitter, robots directives and site verification for existing tools. New tools have localized metadata and the same client/prerender rules. The build renders React components so crawlers receive content and internal links before JavaScript runs. See [SEO parity audit](docs/seo-parity-audit.md) for the migration baseline and retained upstream exceptions.
 
 ## Go API configuration
 
@@ -87,7 +93,11 @@ The API exposes `GET /api/health`, `POST /api/proxy`, `POST /api/i18n-translate`
 npm run build
 npm run test:run
 npm run test:api
+npx playwright install chromium  # once per development machine
+npm run test:browser
 ```
+
+Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exercise tool controls and outputs, file uploads/downloads, all 64 routes in all 12 languages, language switching, favorites/history, RTL, mobile layout and themes. Certificate checks independently verify downloaded signatures, SANs, fingerprints and private-key matches; public CA command generation is tested without contacting Let's Encrypt or issuing a certificate. External IP/translation response cases use deterministic fixtures; Go health and proxy rejection checks use the real local API. HTML/JSON reports, screenshots and failure traces go into the session scratch directory when `PI_SCRATCH_DIR` is set, otherwise `test-results/`. Use `npx playwright show-report <report-directory>` to inspect the report. `BROWSER_BASE_URL` can select an already running frontend.
 
 `components.json` is configured for client-side shadcn/ui components; shared components are in `src/components/ui/`.
 

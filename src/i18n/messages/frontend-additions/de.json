@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Markdown-Vorschau",
+      "description": "Schreibe Markdown mit sicherer Live-Vorschau und bearbeitbaren Tabellen.",
+      "markdown": "Markdown-Quelltext",
+      "preview": "Live-Vorschau",
+      "safeHint": "Skripte, unsichere Links und eingebettete Medien werden entfernt.",
+      "copyMarkdown": "Markdown kopieren",
+      "downloadMarkdown": "Markdown herunterladen",
+      "copyHtml": "HTML kopieren",
+      "downloadHtml": "HTML herunterladen",
+      "table": "Tabelleneditor",
+      "tableHint": "Die erste Zeile ist die Kopfzeile. Bis zu 20 Zeilen und 12 Spalten.",
+      "rows": "Zeilen",
+      "columns": "Spalten",
+      "cell": "Zeile {row}, Spalte {column}",
+      "insertTable": "Tabelle einfügen",
+      "meta": {
+        "title": "Markdown-Vorschau",
+        "description": "Schreibe Markdown mit sicherer Live-Vorschau und bearbeitbaren Tabellen.",
+        "keywords": "Markdown-Vorschau, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "CSS-Formatierer",
+      "description": "Formatiere CSS lokal mit einstellbarer Einrückung.",
+      "source": "CSS-Quelltext",
+      "indent": "Einrückung",
+      "spaces2": "2 Leerzeichen",
+      "spaces4": "4 Leerzeichen",
+      "tabs": "Tabulatoren",
+      "syntaxError": "Ungültiges CSS. Prüfe Klammern, Zeichenfolgen und Deklarationen.",
+      "meta": {
+        "title": "CSS-Formatierer",
+        "description": "Formatiere CSS lokal mit einstellbarer Einrückung.",
+        "keywords": "CSS-Formatierer, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "Farbkontrastprüfung",
+      "description": "Prüfe Vordergrund und Hintergrund nach WCAG AA und AAA.",
+      "colors": "Farben",
+      "foreground": "Vordergrund HEX",
+      "background": "Hintergrund HEX",
+      "picker": "{color} wählen",
+      "swap": "Farben tauschen",
+      "invalidColor": "Gib eine gültige HEX-Farbe mit 3 oder 6 Stellen ein.",
+      "result": "Kontrastergebnisse",
+      "sampleLarge": "Großer Beispieltext",
+      "sample": "Normaler Beispieltext",
+      "largeHint": "Großer Text: mindestens 24 CSS-Pixel oder 18,67 CSS-Pixel in Fettschrift.",
+      "aaNormal": "AA normaler Text",
+      "aaaNormal": "AAA normaler Text",
+      "aaLarge": "AA großer Text",
+      "aaaLarge": "AAA großer Text",
+      "pass": "Erfüllt",
+      "fail": "Nicht erfüllt",
+      "meta": {
+        "title": "Farbkontrastprüfung",
+        "description": "Prüfe Vordergrund und Hintergrund nach WCAG AA und AAA.",
+        "keywords": "Farbkontrastprüfung, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "Bildkomprimierung",
+      "description": "Skaliere und kodiere PNG-, JPEG- und WebP-Bilder lokal.",
+      "file": "Bild wählen",
+      "limits": "PNG, JPEG oder WebP. Höchstens 25 MiB, 32 Millionen Pixel und 16384 px pro Seite.",
+      "format": "Ausgabeformat",
+      "quality": "Qualität: {value}%",
+      "qualityHint": "Die Qualität betrifft JPEG und WebP; PNG ist verlustfrei.",
+      "width": "Breite (px)",
+      "height": "Höhe (px)",
+      "aspect": "Seitenverhältnis beibehalten",
+      "background": "JPEG-Hintergrund",
+      "processing": "Verarbeitung…",
+      "compress": "Bild komprimieren",
+      "sizeError": "Wähle ein nicht leeres Bild mit höchstens 25 MiB.",
+      "dimensionsError": "Verwende ganze Maße von 1 bis 16384 px, bis zu 32 Millionen Pixel.",
+      "fileError": "Die Datei ist kein lesbares PNG-, JPEG- oder WebP-Bild.",
+      "encodeError": "Der Browser konnte das Bild nicht kodieren. Versuche kleinere Maße oder ein anderes Format.",
+      "original": "Originalbild",
+      "compressed": "Kodiertes Bild",
+      "bytes": "{value} Byte",
+      "savings": "Größenreduzierung: {value}%",
+      "savingsHint": "Eine negative Reduzierung bedeutet eine größere Ausgabe. Das tatsächliche Ausgabeformat wird angezeigt.",
+      "meta": {
+        "title": "Bildkomprimierung",
+        "description": "Skaliere und kodiere PNG-, JPEG- und WebP-Bilder lokal.",
+        "keywords": "Bildkomprimierung, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

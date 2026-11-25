@@ -13,6 +13,7 @@ import { NavigationEvents } from '@/components/navigation-events'
 import Home from '@/app/[locale]/page'
 import Changelog from '@/app/[locale]/changelog/page'
 import { toolsConfig } from '@/lib/tools-config'
+import { recordRecentTool } from '@/lib/tool-preferences'
 
 const toolPageModules = import.meta.glob('./app/[locale]/tools/*/page.tsx')
 const toolPages = Object.fromEntries(Object.entries(toolPageModules).map(([modulePath, loader]) => {
@@ -43,6 +44,9 @@ export function LocalizedApp({ initialMessages, toolComponent }: { initialMessag
   const route = useMemo(() => routeContext(location.pathname), [location.pathname])
   const ToolPage = toolComponent ?? (route.toolId ? toolPages[route.toolId] : undefined)
   const validTool = !!route.toolId && toolIds.has(route.toolId) && !!ToolPage
+  useEffect(() => {
+    if (validTool && route.toolId) recordRecentTool(route.toolId)
+  }, [validTool, route.toolId])
   const content = route.page === 'home'
     ? <Home />
     : route.page === 'changelog'

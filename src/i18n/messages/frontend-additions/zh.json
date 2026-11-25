@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Markdown 预览",
+      "description": "编写 Markdown，实时查看安全预览，并通过表格编辑器生成表格。",
+      "markdown": "Markdown 源码",
+      "preview": "实时预览",
+      "safeHint": "脚本、不安全链接和嵌入媒体会被移除。",
+      "copyMarkdown": "复制 Markdown",
+      "downloadMarkdown": "下载 Markdown",
+      "copyHtml": "复制 HTML",
+      "downloadHtml": "下载 HTML",
+      "table": "表格编辑器",
+      "tableHint": "首行为表头，最多支持 20 行和 12 列。",
+      "rows": "行数",
+      "columns": "列数",
+      "cell": "第 {row} 行，第 {column} 列",
+      "insertTable": "插入表格",
+      "meta": {
+        "title": "Markdown 预览",
+        "description": "编写 Markdown，实时查看安全预览，并通过表格编辑器生成表格。",
+        "keywords": "Markdown 预览, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "CSS 格式化",
+      "description": "在本地格式化 CSS，并自定义缩进。",
+      "source": "CSS 源码",
+      "indent": "缩进",
+      "spaces2": "2 个空格",
+      "spaces4": "4 个空格",
+      "tabs": "制表符",
+      "syntaxError": "CSS 无效，请检查括号、字符串和声明。",
+      "meta": {
+        "title": "CSS 格式化",
+        "description": "在本地格式化 CSS，并自定义缩进。",
+        "keywords": "CSS 格式化, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "颜色对比度检查",
+      "description": "按照 WCAG AA 和 AAA 标准检查前景与背景颜色。",
+      "colors": "颜色",
+      "foreground": "前景 HEX",
+      "background": "背景 HEX",
+      "picker": "选择{color}",
+      "swap": "交换颜色",
+      "invalidColor": "请输入有效的 3 位或 6 位 HEX 颜色。",
+      "result": "对比度结果",
+      "sampleLarge": "大号预览文字",
+      "sample": "普通预览文字",
+      "largeHint": "大号文字指至少 24 CSS 像素，或至少 18.67 CSS 像素的粗体。",
+      "aaNormal": "AA 普通文字",
+      "aaaNormal": "AAA 普通文字",
+      "aaLarge": "AA 大号文字",
+      "aaaLarge": "AAA 大号文字",
+      "pass": "通过",
+      "fail": "未通过",
+      "meta": {
+        "title": "颜色对比度检查",
+        "description": "按照 WCAG AA 和 AAA 标准检查前景与背景颜色。",
+        "keywords": "颜色对比度检查, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "图片压缩",
+      "description": "在本地调整 PNG、JPEG 和 WebP 图片尺寸并编码。",
+      "file": "选择图片",
+      "limits": "支持 PNG、JPEG 或 WebP；最大 25 MiB、3200 万像素，单边不超过 16384 像素。",
+      "format": "输出格式",
+      "quality": "质量：{value}%",
+      "qualityHint": "质量仅影响 JPEG 和 WebP；PNG 为无损格式。",
+      "width": "宽度（像素）",
+      "height": "高度（像素）",
+      "aspect": "保持宽高比",
+      "background": "JPEG 背景色",
+      "processing": "处理中…",
+      "compress": "压缩图片",
+      "sizeError": "请选择非空且不超过 25 MiB 的图片。",
+      "dimensionsError": "尺寸须为 1 至 16384 的整数，总像素不超过 3200 万。",
+      "fileError": "文件不是可读取的 PNG、JPEG 或 WebP 图片。",
+      "encodeError": "浏览器无法编码此图片，请缩小尺寸或更换格式。",
+      "original": "原始图片",
+      "compressed": "编码后的图片",
+      "bytes": "{value} 字节",
+      "savings": "体积减少：{value}%",
+      "savingsHint": "减少值为负表示输出更大。此处显示实际输出格式。",
+      "meta": {
+        "title": "图片压缩",
+        "description": "在本地调整 PNG、JPEG 和 WebP 图片尺寸并编码。",
+        "keywords": "图片压缩, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

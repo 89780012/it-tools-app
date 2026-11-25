@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "SQL 포맷터", "description": "문자열과 주석을 보존하면서 SQL을 로컬에서 정리하거나 압축합니다.",
+      "meta": { "title": "SQL 정리 및 압축 도구", "description": "들여쓰기와 키워드 대소문자를 설정하여 SQL, PostgreSQL, MySQL, SQLite를 정리합니다.", "keywords": "SQL 정리, SQL 압축, PostgreSQL, MySQL, SQLite" },
+      "dialect": "SQL 방언", "indent": "들여쓰기 공백 수", "casing": "키워드 대소문자", "upper": "대문자", "lower": "소문자", "preserve": "원본 유지", "invalid": "이 SQL을 정리할 수 없습니다.", "hint": "주석과 리터럴 내용을 보존합니다. 데이터베이스 의미는 검증하지 않습니다."
+    },
+    "text-batch-processor": {
+      "name": "텍스트 일괄 처리", "description": "여러 변환을 조합하여 줄을 정리하고 중복 제거, 정렬, 결합을 수행합니다.",
+      "meta": { "title": "텍스트 일괄 처리 및 SQL IN 생성기", "description": "줄바꿈 통일, 공백 및 중복 제거, Unicode 정렬, 따옴표로 감싼 SQL IN 목록 생성을 로컬에서 수행합니다.", "keywords": "텍스트 처리, 중복 줄 제거, 줄 정렬, SQL IN" },
+      "trim": "각 줄 앞뒤 공백 제거", "dropBlank": "빈 줄 제거", "dedupe": "중복 줄 제거", "sqlIn": "SQL IN 목록 생성", "sort": "정렬 순서", "none": "입력 순서 유지", "asc": "오름차순", "desc": "내림차순", "prefix": "줄마다 접두사", "suffix": "줄마다 접미사", "delimiter": "결합 구분자", "newline": "줄바꿈", "comma": "쉼표와 공백", "space": "공백", "tab": "탭", "empty": "구분자 없음", "counts": "입력: {input}줄 · 출력: {output}줄 · {characters}자", "hint": "처리 순서: 줄바꿈 통일, 공백 제거, 빈 줄 제거, 중복 제거, 정렬, 접두사/접미사 추가, 결합. SQL 모드는 작은따옴표를 두 번 씁니다.", "sqlUnsafe": "SQL 목록에는 역슬래시나 널 문자를 넣을 수 없습니다. 제거하거나 일반 텍스트 출력을 사용하세요."
+    },
+    "string-escape": {
+      "name": "문자열 이스케이프 및 해제", "description": "JSON 문자열, Unicode 이스케이프, HTML 엔터티, 중첩 JSON 문자열을 인코딩하고 디코딩합니다.",
+      "meta": { "title": "문자열 이스케이프 및 해제 도구", "description": "JSON, Unicode, HTML 텍스트를 이스케이프하거나 깊이 제한 내에서 중첩 JSON 문자열을 로컬 디코딩합니다.", "keywords": "문자열 이스케이프, 이스케이프 해제, Unicode, HTML 엔터티, 중첩 JSON" },
+      "mode": "인코딩 모드", "json": "따옴표로 감싼 JSON 문자열", "unicode": "Unicode 이스케이프", "html": "HTML 엔터티", "nested": "중첩 JSON 디코딩", "depth": "최대 디코딩 깊이 (1–20)", "encode": "인코딩", "decode": "디코딩", "invalidJson": "잘못된 JSON입니다. 유효한 따옴표 포함 JSON 문자열을 입력하세요.", "invalidUnicode": "잘못된 Unicode 이스케이프입니다. \\u 뒤에 16진수 네 자리를 사용하세요.", "stringRequired": "JSON 값은 큰따옴표로 감싼 문자열이어야 합니다.", "depthError": "디코딩 깊이를 초과했거나 잘못된 값입니다. 1에서 20 사이의 정수를 선택하세요.", "jsonHint": "인코딩은 JSON 따옴표를 추가합니다. 디코딩에는 따옴표로 감싼 문자열이 필요하며 모든 공백을 보존합니다.", "unicodeHint": "모든 UTF-16 코드 단위를 이스케이프합니다. 이모지는 서로게이트 쌍을 사용하며, 디코딩은 일반 텍스트도 보존합니다.", "htmlHint": "이름 및 숫자 HTML 엔터티를 디코딩합니다. 결과는 일반 텍스트로 표시됩니다.", "nestedHint": "지정한 깊이 안에서 텍스트 또는 JSON 값이 나올 때까지 JSON 문자열을 반복 디코딩합니다."
+    },
+    "jsonpath-query": {
+      "name": "JSONPath 쿼리", "description": "경로, 와일드카드, 안전한 비교 필터로 중첩 JSON을 탐색합니다.",
+      "meta": { "title": "JSONPath 쿼리 및 필터 도구", "description": "JSONPath와 안전한 필터로 로컬 JSON을 조회하고 일치 경로를 포함하거나 결과를 JSON으로 내보냅니다.", "keywords": "JSONPath 쿼리, JSON 필터, JSON 경로, JSON 검색" },
+      "expression": "JSONPath 표현식", "paths": "일치하는 경로 포함", "filterExample": "필터 예제", "matches": "일치: {count}개", "hint": "$.store.books[*].title 또는 [?(@.price < 10)]을 사용하세요. 비교, &&, ||, !를 지원하며 함수 호출은 차단됩니다.", "invalidJson": "입력 JSON이 잘못되었습니다. 문서 구문을 확인하세요.", "invalidPath": "잘못되었거나 지원하지 않는 JSONPath 표현식입니다.", "unsafe": "안전하지 않은 표현식을 차단했습니다. 속성 조회, 비교, 논리 연산만 사용하세요.", "limit": "한도 초과: 입력 1,000,000자, 값 50,000개, 중첩 64단계, 경로 2,000자까지 허용합니다."
+    }
+  }
+}

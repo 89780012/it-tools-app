@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Aperçu Markdown",
+      "description": "Rédigez du Markdown avec un aperçu sécurisé en direct et un éditeur de tableaux.",
+      "markdown": "Source Markdown",
+      "preview": "Aperçu en direct",
+      "safeHint": "Les scripts, liens dangereux et médias intégrés sont supprimés.",
+      "copyMarkdown": "Copier le Markdown",
+      "downloadMarkdown": "Télécharger le Markdown",
+      "copyHtml": "Copier le HTML",
+      "downloadHtml": "Télécharger le HTML",
+      "table": "Éditeur de tableaux",
+      "tableHint": "La première ligne est l’en-tête. Jusqu’à 20 lignes et 12 colonnes.",
+      "rows": "Lignes",
+      "columns": "Colonnes",
+      "cell": "Ligne {row}, colonne {column}",
+      "insertTable": "Insérer le tableau",
+      "meta": {
+        "title": "Aperçu Markdown",
+        "description": "Rédigez du Markdown avec un aperçu sécurisé en direct et un éditeur de tableaux.",
+        "keywords": "Aperçu Markdown, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "Formateur CSS",
+      "description": "Formatez du CSS localement avec une indentation personnalisable.",
+      "source": "Source CSS",
+      "indent": "Indentation",
+      "spaces2": "2 espaces",
+      "spaces4": "4 espaces",
+      "tabs": "Tabulations",
+      "syntaxError": "CSS non valide. Vérifiez les accolades, chaînes et déclarations.",
+      "meta": {
+        "title": "Formateur CSS",
+        "description": "Formatez du CSS localement avec une indentation personnalisable.",
+        "keywords": "Formateur CSS, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "Vérificateur de contraste",
+      "description": "Vérifiez les couleurs du texte et du fond selon WCAG AA et AAA.",
+      "colors": "Couleurs",
+      "foreground": "Texte HEX",
+      "background": "Fond HEX",
+      "picker": "Choisir {color}",
+      "swap": "Inverser les couleurs",
+      "invalidColor": "Saisissez une couleur HEX valide à 3 ou 6 chiffres.",
+      "result": "Résultats du contraste",
+      "sampleLarge": "Exemple de grand texte",
+      "sample": "Exemple de texte normal",
+      "largeHint": "Grand texte : au moins 24 px CSS, ou 18,67 px CSS en gras.",
+      "aaNormal": "AA texte normal",
+      "aaaNormal": "AAA texte normal",
+      "aaLarge": "AA grand texte",
+      "aaaLarge": "AAA grand texte",
+      "pass": "Conforme",
+      "fail": "Non conforme",
+      "meta": {
+        "title": "Vérificateur de contraste",
+        "description": "Vérifiez les couleurs du texte et du fond selon WCAG AA et AAA.",
+        "keywords": "Vérificateur de contraste, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "Compresseur d’images",
+      "description": "Redimensionnez et encodez des images PNG, JPEG et WebP localement.",
+      "file": "Choisir une image",
+      "limits": "PNG, JPEG ou WebP. Maximum 25 Mio, 32 millions de pixels et 16384 px par côté.",
+      "format": "Format de sortie",
+      "quality": "Qualité : {value}%",
+      "qualityHint": "La qualité concerne JPEG et WebP ; PNG est sans perte.",
+      "width": "Largeur (px)",
+      "height": "Hauteur (px)",
+      "aspect": "Conserver les proportions",
+      "background": "Fond JPEG",
+      "processing": "Traitement…",
+      "compress": "Compresser l’image",
+      "sizeError": "Choisissez une image non vide de 25 Mio maximum.",
+      "dimensionsError": "Utilisez des dimensions entières de 1 à 16384 px, jusqu’à 32 millions de pixels.",
+      "fileError": "Le fichier n’est pas une image PNG, JPEG ou WebP lisible.",
+      "encodeError": "Le navigateur n’a pas pu encoder l’image. Essayez des dimensions réduites ou un autre format.",
+      "original": "Image originale",
+      "compressed": "Image encodée",
+      "bytes": "{value} octets",
+      "savings": "Réduction de taille : {value}%",
+      "savingsHint": "Une réduction négative indique une sortie plus grande. Le format réel de sortie est affiché.",
+      "meta": {
+        "title": "Compresseur d’images",
+        "description": "Redimensionnez et encodez des images PNG, JPEG et WebP localement.",
+        "keywords": "Compresseur d’images, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

@@ -307,6 +307,7 @@ export default function CronExpressionParserTool() {
 
   return (
     <div className="container mx-auto p-6 space-y-8">
+      <h1 className="text-2xl font-semibold">{t('name')}</h1>
       {/* Cron 表达式格式说明 */}
       <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900 dark:bg-blue-950/20">
         <CardHeader>

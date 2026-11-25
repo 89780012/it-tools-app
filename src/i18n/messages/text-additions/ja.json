@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "SQL 整形", "description": "文字列とコメントを保持しながら、SQL をローカルで整形・圧縮します。",
+      "meta": { "title": "SQL 整形・圧縮ツール", "description": "SQL、PostgreSQL、MySQL、SQLite を整形し、字下げとキーワードの大文字・小文字を設定できます。", "keywords": "SQL 整形, SQL 圧縮, PostgreSQL, MySQL, SQLite" },
+      "dialect": "SQL 方言", "indent": "字下げの空白数", "casing": "キーワードの文字種", "upper": "大文字", "lower": "小文字", "preserve": "元のまま", "invalid": "この SQL を整形できませんでした。", "hint": "コメントとリテラルの内容を保持します。データベース上の意味は検証しません。"
+    },
+    "text-batch-processor": {
+      "name": "テキスト一括処理", "description": "複数の操作を組み合わせ、行の整形、重複削除、並べ替え、結合を行います。",
+      "meta": { "title": "テキスト一括処理・SQL IN 生成", "description": "改行の統一、空白と重複の削除、Unicode テキストの並べ替え、引用符付き SQL IN リストの生成をローカルで行います。", "keywords": "テキスト処理, 重複行削除, 行の並べ替え, SQL IN" },
+      "trim": "各行の前後の空白を削除", "dropBlank": "空行を削除", "dedupe": "重複行を削除", "sqlIn": "SQL IN リストを生成", "sort": "並べ替え順", "none": "入力順を保持", "asc": "昇順", "desc": "降順", "prefix": "各行の接頭辞", "suffix": "各行の接尾辞", "delimiter": "結合の区切り文字", "newline": "改行", "comma": "カンマと空白", "space": "空白", "tab": "タブ", "empty": "区切りなし", "counts": "入力：{input} 行 · 出力：{output} 行 · {characters} 文字", "hint": "処理順：改行統一、前後の空白削除、空行削除、重複削除、並べ替え、接頭辞・接尾辞追加、結合。SQL モードは単一引用符を二重にします。", "sqlUnsafe": "SQL リストにはバックスラッシュとヌル文字を含められません。削除するか、通常のテキスト出力を使用してください。"
+    },
+    "string-escape": {
+      "name": "文字列エスケープ・解除", "description": "JSON 文字列、Unicode エスケープ、HTML 実体参照、多重 JSON 文字列を変換します。",
+      "meta": { "title": "文字列エスケープ・解除ツール", "description": "JSON、Unicode、HTML テキストのエスケープや、深度制限付きの多重 JSON デコードをローカルで行います。", "keywords": "文字列エスケープ, エスケープ解除, Unicode, HTML 実体参照, 多重 JSON" },
+      "mode": "変換モード", "json": "引用符付き JSON 文字列", "unicode": "Unicode エスケープ", "html": "HTML 実体参照", "nested": "多重 JSON デコード", "depth": "最大デコード深度（1～20）", "encode": "エンコード", "decode": "デコード", "invalidJson": "無効な JSON です。有効な引用符付き JSON 文字列を入力してください。", "invalidUnicode": "無効な Unicode エスケープです。\\u の後に16進数4桁を指定してください。", "stringRequired": "JSON 値は二重引用符で囲んだ文字列である必要があります。", "depthError": "深度が上限を超えたか無効です。1～20の整数を指定してください。", "jsonHint": "エンコードは JSON の引用符を追加します。デコードには引用符付き文字列が必要で、空白はすべて保持されます。", "unicodeHint": "UTF-16 の各コード単位をエスケープします。絵文字はサロゲートペアを使用し、デコードは未変換テキストも保持します。", "htmlHint": "名前付き・数値の HTML 実体参照をデコードし、結果をプレーンテキストで表示します。", "nestedHint": "指定した深度まで、テキストまたは JSON 値になるまで JSON 文字列を繰り返しデコードします。"
+    },
+    "jsonpath-query": {
+      "name": "JSONPath クエリ", "description": "パス、ワイルドカード、安全な比較フィルターで入れ子の JSON を調べます。",
+      "meta": { "title": "JSONPath クエリ・フィルターツール", "description": "安全なフィルターと任意の一致パスで JSON をローカル検索し、結果を JSON として書き出します。", "keywords": "JSONPath クエリ, JSON フィルター, JSON パス, JSON 検索" },
+      "expression": "JSONPath 式", "paths": "一致したパスを含める", "filterExample": "フィルターの例", "matches": "一致件数：{count}", "hint": "例：$.store.books[*].title または [?(@.price < 10)]。比較、&&、||、! が使えます。関数呼び出しは無効です。", "invalidJson": "入力 JSON が無効です。文書の構文を確認してください。", "invalidPath": "無効または未対応の JSONPath 式です。", "unsafe": "安全でない式を拒否しました。プロパティ参照、比較、論理演算のみ使用できます。", "limit": "上限を超えました。入力100万文字、値5万個、深度64、パス2,000文字までです。"
+    }
+  }
+}

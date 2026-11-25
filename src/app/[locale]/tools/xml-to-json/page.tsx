@@ -46,7 +46,7 @@ export default function XmlToJsonPage() {
       }
 
       const parser = new XMLParser(options)
-      const result = parser.parse(input)
+      const result = parser.parse(input, true)
       const jsonOutput = JSON.stringify(result, null, 2)
       setOutput(jsonOutput)
       setError("")

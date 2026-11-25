@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Markdown preview",
+      "description": "Write Markdown with a live sanitized preview and an editable table builder.",
+      "markdown": "Markdown source",
+      "preview": "Live preview",
+      "safeHint": "Scripts, unsafe links and embedded media are removed.",
+      "copyMarkdown": "Copy Markdown",
+      "downloadMarkdown": "Download Markdown",
+      "copyHtml": "Copy HTML",
+      "downloadHtml": "Download HTML",
+      "table": "Table builder",
+      "tableHint": "The first row is the header. Up to 20 rows and 12 columns.",
+      "rows": "Rows",
+      "columns": "Columns",
+      "cell": "Row {row}, column {column}",
+      "insertTable": "Insert table",
+      "meta": {
+        "title": "Markdown preview",
+        "description": "Write Markdown with a live sanitized preview and an editable table builder.",
+        "keywords": "Markdown preview, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "CSS formatter",
+      "description": "Format CSS locally with configurable indentation.",
+      "source": "CSS source",
+      "indent": "Indentation",
+      "spaces2": "2 spaces",
+      "spaces4": "4 spaces",
+      "tabs": "Tabs",
+      "syntaxError": "Invalid CSS. Check braces, strings and declarations.",
+      "meta": {
+        "title": "CSS formatter",
+        "description": "Format CSS locally with configurable indentation.",
+        "keywords": "CSS formatter, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "Color contrast checker",
+      "description": "Check foreground and background colors against WCAG AA and AAA.",
+      "colors": "Colors",
+      "foreground": "Foreground HEX",
+      "background": "Background HEX",
+      "picker": "Choose {color}",
+      "swap": "Swap colors",
+      "invalidColor": "Enter a valid 3 or 6 digit HEX color.",
+      "result": "Contrast results",
+      "sampleLarge": "Large preview text",
+      "sample": "Normal preview text",
+      "largeHint": "Large text means at least 24 CSS px, or 18.67 CSS px in bold.",
+      "aaNormal": "AA normal text",
+      "aaaNormal": "AAA normal text",
+      "aaLarge": "AA large text",
+      "aaaLarge": "AAA large text",
+      "pass": "Pass",
+      "fail": "Fail",
+      "meta": {
+        "title": "Color contrast checker",
+        "description": "Check foreground and background colors against WCAG AA and AAA.",
+        "keywords": "Color contrast checker, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "Image compressor",
+      "description": "Resize and encode PNG, JPEG and WebP images locally.",
+      "file": "Choose image",
+      "limits": "PNG, JPEG or WebP. Maximum 25 MiB, 32 million pixels and 16384 px per side.",
+      "format": "Output format",
+      "quality": "Quality: {value}%",
+      "qualityHint": "Quality affects JPEG and WebP; PNG is lossless.",
+      "width": "Width (px)",
+      "height": "Height (px)",
+      "aspect": "Keep aspect ratio",
+      "background": "JPEG background",
+      "processing": "Processing…",
+      "compress": "Compress image",
+      "sizeError": "Choose a nonempty image no larger than 25 MiB.",
+      "dimensionsError": "Use whole dimensions from 1 to 16384 px, up to 32 million pixels.",
+      "fileError": "The file is not a readable PNG, JPEG or WebP image.",
+      "encodeError": "The browser could not encode this image. Try smaller dimensions or another format.",
+      "original": "Original image",
+      "compressed": "Encoded image",
+      "bytes": "{value} bytes",
+      "savings": "Size reduction: {value}%",
+      "savingsHint": "A negative reduction means the output is larger. The actual output format is shown.",
+      "meta": {
+        "title": "Image compressor",
+        "description": "Resize and encode PNG, JPEG and WebP images locally.",
+        "keywords": "Image compressor, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

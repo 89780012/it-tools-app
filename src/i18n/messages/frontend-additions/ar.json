@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "معاينة ماركداون",
+      "description": "اكتب ماركداون مع معاينة مباشرة آمنة ومحرر للجداول.",
+      "markdown": "مصدر ماركداون",
+      "preview": "المعاينة المباشرة",
+      "safeHint": "تُحذف البرامج النصية والروابط غير الآمنة والوسائط المضمنة.",
+      "copyMarkdown": "نسخ ماركداون",
+      "downloadMarkdown": "تنزيل ماركداون",
+      "copyHtml": "نسخ HTML",
+      "downloadHtml": "تنزيل HTML",
+      "table": "محرر الجداول",
+      "tableHint": "الصف الأول هو العنوان. الحد الأقصى 20 صفًا و12 عمودًا.",
+      "rows": "الصفوف",
+      "columns": "الأعمدة",
+      "cell": "الصف {row}، العمود {column}",
+      "insertTable": "إدراج الجدول",
+      "meta": {
+        "title": "معاينة ماركداون",
+        "description": "اكتب ماركداون مع معاينة مباشرة آمنة ومحرر للجداول.",
+        "keywords": "معاينة ماركداون, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "تنسيق CSS",
+      "description": "نسّق CSS محليًا مع مسافة بادئة قابلة للتخصيص.",
+      "source": "مصدر CSS",
+      "indent": "المسافة البادئة",
+      "spaces2": "مسافتان",
+      "spaces4": "4 مسافات",
+      "tabs": "علامات جدولة",
+      "syntaxError": "CSS غير صالح. تحقق من الأقواس والسلاسل والتصريحات.",
+      "meta": {
+        "title": "تنسيق CSS",
+        "description": "نسّق CSS محليًا مع مسافة بادئة قابلة للتخصيص.",
+        "keywords": "تنسيق CSS, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "فاحص تباين الألوان",
+      "description": "افحص لون النص والخلفية وفق معايير WCAG AA وAAA.",
+      "colors": "الألوان",
+      "foreground": "لون النص HEX",
+      "background": "لون الخلفية HEX",
+      "picker": "اختر {color}",
+      "swap": "تبديل الألوان",
+      "invalidColor": "أدخل لون HEX صالحًا من 3 أو 6 خانات.",
+      "result": "نتائج التباين",
+      "sampleLarge": "نص كبير للمعاينة",
+      "sample": "نص عادي للمعاينة",
+      "largeHint": "النص الكبير لا يقل عن 24 بكسل CSS، أو 18.67 بكسل CSS بخط عريض.",
+      "aaNormal": "AA للنص العادي",
+      "aaaNormal": "AAA للنص العادي",
+      "aaLarge": "AA للنص الكبير",
+      "aaaLarge": "AAA للنص الكبير",
+      "pass": "مطابق",
+      "fail": "غير مطابق",
+      "meta": {
+        "title": "فاحص تباين الألوان",
+        "description": "افحص لون النص والخلفية وفق معايير WCAG AA وAAA.",
+        "keywords": "فاحص تباين الألوان, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "ضاغط الصور",
+      "description": "غيّر حجم صور PNG وJPEG وWebP ورمّزها محليًا.",
+      "file": "اختيار صورة",
+      "limits": "PNG أو JPEG أو WebP. بحد أقصى 25 MiB و32 مليون بكسل و16384 بكسل لكل ضلع.",
+      "format": "صيغة الإخراج",
+      "quality": "الجودة: {value}%",
+      "qualityHint": "تؤثر الجودة على JPEG وWebP؛ أما PNG فبدون فقدان.",
+      "width": "العرض (بكسل)",
+      "height": "الارتفاع (بكسل)",
+      "aspect": "الحفاظ على نسبة الأبعاد",
+      "background": "خلفية JPEG",
+      "processing": "جارٍ المعالجة…",
+      "compress": "ضغط الصورة",
+      "sizeError": "اختر صورة غير فارغة لا تتجاوز 25 MiB.",
+      "dimensionsError": "استخدم أبعادًا صحيحة من 1 إلى 16384 بكسل، وبحد أقصى 32 مليون بكسل.",
+      "fileError": "الملف ليس صورة PNG أو JPEG أو WebP قابلة للقراءة.",
+      "encodeError": "تعذر على المتصفح ترميز الصورة. جرّب أبعادًا أصغر أو صيغة أخرى.",
+      "original": "الصورة الأصلية",
+      "compressed": "الصورة المرمّزة",
+      "bytes": "{value} بايت",
+      "savings": "انخفاض الحجم: {value}%",
+      "savingsHint": "القيمة السالبة تعني أن الناتج أكبر. تُعرض صيغة الإخراج الفعلية.",
+      "meta": {
+        "title": "ضاغط الصور",
+        "description": "غيّر حجم صور PNG وJPEG وWebP ورمّزها محليًا.",
+        "keywords": "ضاغط الصور, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

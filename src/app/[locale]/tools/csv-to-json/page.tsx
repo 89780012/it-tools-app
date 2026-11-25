@@ -22,6 +22,7 @@ Bob,25,true`)
 
     for (const key in flat) {
       const parts = key.split('.')
+      if (parts.some(part => !part || ['__proto__', 'prototype', 'constructor'].includes(part))) throw new Error('Invalid CSV header')
       let current: Record<string, unknown> = result
 
       for (let i = 0; i < parts.length - 1; i++) {
@@ -89,6 +90,7 @@ Bob,25,true`)
         currentCell += char
       }
     }
+    if (inQuotes) throw new Error('Unclosed CSV quoted field')
 
     // 添加最后一行
     if (currentCell || currentRow.length > 0) {
@@ -119,6 +121,7 @@ Bob,25,true`)
 
       const headers = rows[0]
       const dataRows = rows.slice(1)
+      if (new Set(headers).size !== headers.length || dataRows.some(row => row.length > headers.length)) throw new Error('Invalid CSV columns')
 
       if (dataRows.length === 0) {
         setOutput(JSON.stringify([], null, 2))
@@ -127,7 +130,7 @@ Bob,25,true`)
       }
 
       const jsonArray = dataRows.map(row => {
-        const flatObj: Record<string, unknown> = {}
+        const flatObj: Record<string, unknown> = Object.create(null)
         headers.forEach((header, index) => {
           const value = row[index] || ''
           // 尝试转换数字

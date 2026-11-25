@@ -151,7 +151,8 @@ export function AppSidebar() {
           <button
             onClick={isAllExpanded ? collapseAll : expandAll}
             className="flex items-center justify-center size-8 rounded-md hover:bg-accent text-muted-foreground hover:text-foreground transition-colors"
-            title={isAllExpanded ? "全部收起" : "全部展开"}
+            title={t(isAllExpanded ? 'homeExtras.collapseAll' : 'homeExtras.expandAll')}
+            aria-label={t(isAllExpanded ? 'homeExtras.collapseAll' : 'homeExtras.expandAll')}
           >
             {isAllExpanded ? (
               <ChevronsDownUp className="size-4" />
@@ -173,9 +174,10 @@ export function AppSidebar() {
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     onClick={() => toggleCategory(category.id)}
+                    aria-expanded={isExpanded}
                     className="h-9 font-medium hover:bg-accent"
                   >
-                    <span className="flex-1 text-left">{t(`categories.${category.id}`)}</span>
+                    <span className="flex-1 text-start">{t(category.nameKey)}</span>
                     <ChevronRight 
                       className={`size-4 shrink-0 transition-transform duration-200 ${
                         isExpanded ? 'rotate-90' : ''

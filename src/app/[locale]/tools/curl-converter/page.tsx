@@ -1,491 +1,509 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { Copy, RotateCcw, Download, Play } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
-import { getTextareaClasses } from "@/lib/utils"
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
-import { ToolSEOSection } from "@/components/seo/tool-seo-section"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Label } from "@/components/ui/label"
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Field,
+  Panel,
+  ErrorMessage,
+  downloadText,
+} from '@/components/tools/workbench'
+import { ToolSEOSection } from '@/components/seo/tool-seo-section'
+import {
+  ENHANCED_TEMPLATE_KEY,
+  generateEnhancedCode,
+  parseEnhancedCurl,
+  sanitizeEnhancedTemplate,
+  validateEnhancedRequest,
+  type EnhancedRequest,
+} from '@/lib/curl-enhanced'
 
-interface ParsedCurl {
-  url: string
-  method: string
+type Pair = [string, string]
+interface ProxyResult {
+  status: number
+  statusText: string
   headers: Record<string, string>
-  data?: string
-  queryParams?: Record<string, string>
+  body: string
+  elapsed: number
 }
-
-function parseCurlCommand(curlCommand: string): ParsedCurl | null {
-  const cleanCommand = curlCommand.trim()
-  
-  if (!cleanCommand.toLowerCase().includes('curl')) {
-    return null
-  }
-
-  const result: ParsedCurl = {
-    url: '',
-    method: 'GET',
-    headers: {}
-  }
-
-  // 移除 'curl' 前缀
-  let command = cleanCommand.replace(/^curl\s+/i, '')
-  
-  // 解析 URL
-  const urlMatch = command.match(/(?:['"])(https?:\/\/[^'"]+)(?:['"])|(?:\s|^)(https?:\/\/\S+)/)
-  if (urlMatch) {
-    result.url = urlMatch[1] || urlMatch[2]
-    command = command.replace(urlMatch[0], '')
-  }
-
-  // 解析 -X 或 --request (HTTP方法)
-  const methodMatch = command.match(/(?:-X|--request)\s+['"]?(\w+)['"]?/)
-  if (methodMatch) {
-    result.method = methodMatch[1].toUpperCase()
-    command = command.replace(methodMatch[0], '')
-  }
-
-  // 解析 -H 或 --header (请求头)
-  const headerRegex = /(?:-H|--header)\s+['"]([^'"]+)['"]/g
-  let headerMatch
-  while ((headerMatch = headerRegex.exec(command)) !== null) {
-    const headerStr = headerMatch[1]
-    const colonIndex = headerStr.indexOf(':')
-    if (colonIndex > 0) {
-      const key = headerStr.substring(0, colonIndex).trim()
-      const value = headerStr.substring(colonIndex + 1).trim()
-      result.headers[key] = value
-    }
-  }
-
-  // 解析 -d 或 --data (请求体)
-  const dataMatch = command.match(/(?:-d|--data|--data-raw)\s+['"]([^'"]+)['"]/)
-  if (dataMatch) {
-    result.data = dataMatch[1]
-    if (!result.method || result.method === 'GET') {
-      result.method = 'POST'
-    }
-  }
-
-  if (!result.url) {
-    return null
-  }
-
-  return result
-}
-
-function generateJavaScriptFetch(parsed: ParsedCurl): string {
-  const options: string[] = []
-  options.push(`  method: '${parsed.method}'`)
-  
-  if (Object.keys(parsed.headers).length > 0) {
-    const headersStr = Object.entries(parsed.headers)
-      .map(([key, value]) => `    '${key}': '${value}'`)
-      .join(',\n')
-    options.push(`  headers: {\n${headersStr}\n  }`)
-  }
-  
-  if (parsed.data) {
-    options.push(`  body: '${parsed.data}'`)
-  }
-  
-  return `fetch('${parsed.url}', {\n${options.join(',\n')}\n})
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));`
-}
-
-function generatePythonRequests(parsed: ParsedCurl): string {
-  let code = `import requests\n\n`
-  code += `url = '${parsed.url}'\n`
-  
-  if (Object.keys(parsed.headers).length > 0) {
-    code += `headers = {\n`
-    Object.entries(parsed.headers).forEach(([key, value]) => {
-      code += `    '${key}': '${value}',\n`
-    })
-    code += `}\n`
-  }
-  
-  if (parsed.data) {
-    code += `data = '${parsed.data}'\n`
-  }
-  
-  code += `\nresponse = requests.${parsed.method.toLowerCase()}(url`
-  if (Object.keys(parsed.headers).length > 0) {
-    code += `, headers=headers`
-  }
-  if (parsed.data) {
-    code += `, data=data`
-  }
-  code += `)\nprint(response.json())`
-  
-  return code
-}
-
-function generateNodeJsAxios(parsed: ParsedCurl): string {
-  let code = `const axios = require('axios');\n\n`
-  code += `axios({\n`
-  code += `  method: '${parsed.method.toLowerCase()}',\n`
-  code += `  url: '${parsed.url}',\n`
-  
-  if (Object.keys(parsed.headers).length > 0) {
-    code += `  headers: {\n`
-    Object.entries(parsed.headers).forEach(([key, value]) => {
-      code += `    '${key}': '${value}',\n`
-    })
-    code += `  },\n`
-  }
-  
-  if (parsed.data) {
-    code += `  data: '${parsed.data}'\n`
-  }
-  
-  code += `})
-  .then(response => console.log(response.data))
-  .catch(error => console.error('Error:', error));`
-  
-  return code
-}
-
-function generatePHPCurl(parsed: ParsedCurl): string {
-  let code = `<?php\n\n`
-  code += `$curl = curl_init();\n\n`
-  code += `curl_setopt_array($curl, [\n`
-  code += `  CURLOPT_URL => '${parsed.url}',\n`
-  code += `  CURLOPT_RETURNTRANSFER => true,\n`
-  code += `  CURLOPT_CUSTOMREQUEST => '${parsed.method}',\n`
-  
-  if (parsed.data) {
-    code += `  CURLOPT_POSTFIELDS => '${parsed.data}',\n`
-  }
-  
-  if (Object.keys(parsed.headers).length > 0) {
-    code += `  CURLOPT_HTTPHEADER => [\n`
-    Object.entries(parsed.headers).forEach(([key, value]) => {
-      code += `    '${key}: ${value}',\n`
-    })
-    code += `  ],\n`
-  }
-  
-  code += `]);\n\n`
-  code += `$response = curl_exec($curl);\n`
-  code += `curl_close($curl);\n\n`
-  code += `echo $response;`
-  
-  return code
-}
-
-function generateGoHttp(parsed: ParsedCurl): string {
-  let code = `package main\n\nimport (\n\t"fmt"\n\t"io"\n\t"net/http"\n`
-  if (parsed.data) {
-    code += `\t"strings"\n`
-  }
-  code += `)\n\nfunc main() {\n`
-  
-  if (parsed.data) {
-    code += `\tpayload := strings.NewReader(\`${parsed.data}\`)\n\n`
-    code += `\treq, _ := http.NewRequest("${parsed.method}", "${parsed.url}", payload)\n`
-  } else {
-    code += `\treq, _ := http.NewRequest("${parsed.method}", "${parsed.url}", nil)\n`
-  }
-  
-  if (Object.keys(parsed.headers).length > 0) {
-    code += `\n`
-    Object.entries(parsed.headers).forEach(([key, value]) => {
-      code += `\treq.Header.Add("${key}", "${value}")\n`
-    })
-  }
-  
-  code += `\n\tres, _ := http.DefaultClient.Do(req)\n`
-  code += `\tdefer res.Body.Close()\n`
-  code += `\tbody, _ := io.ReadAll(res.Body)\n\n`
-  code += `\tfmt.Println(string(body))\n}`
-  
-  return code
-}
-
+const empty: EnhancedRequest = { url: '', method: 'GET', headers: {} }
 export default function CurlConverterPage() {
-  const t = useTranslations()
-
-  const [input, setInput] = useState("")
-  const [output, setOutput] = useState("")
-  const [error, setError] = useState("")
-  const [language, setLanguage] = useState("javascript")
-  const [testResult, setTestResult] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-
-  const convertCurl = () => {
-    if (!input.trim()) {
-      setOutput("")
-      setError("")
-      return
+  const t = useTranslations('tools.curl-converter')
+  const common = useTranslations('common')
+  const [input, setInput] = useState('')
+  const [request, setRequest] = useState<EnhancedRequest>(empty)
+  const [query, setQuery] = useState<Pair[]>([])
+  const [headers, setHeaders] = useState<Pair[]>([])
+  const [language, setLanguage] = useState('javascript')
+  const [bodyMode, setBodyMode] = useState('text')
+  const [parseError, setParseError] = useState('')
+  const [result, setResult] = useState<ProxyResult | null>(null)
+  const [requestError, setRequestError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [templates, setTemplates] = useState<EnhancedRequest[]>([])
+  const [notice, setNotice] = useState('')
+  const requestRevision = useRef(0)
+  const activeRequest = useRef<AbortController | null>(null)
+  useEffect(() => {
+    requestRevision.current++
+    activeRequest.current?.abort()
+    setResult(null)
+    setRequestError('')
+    setLoading(false)
+    return () => {
+      requestRevision.current++
+      activeRequest.current?.abort()
     }
-
+  }, [request, query, headers, bodyMode, input])
+  useEffect(() => {
     try {
-      const parsed = parseCurlCommand(input)
-      
-      if (!parsed) {
-        setError(t("tools.curl-converter.invalid_command"))
-        setOutput("")
-        return
+      const stored: unknown = JSON.parse(
+        localStorage.getItem(ENHANCED_TEMPLATE_KEY) ?? '[]',
+      )
+      if (Array.isArray(stored))
+        setTemplates(
+          stored.slice(0, 10).map((item) => sanitizeEnhancedTemplate(item)),
+        )
+    } catch {
+      /* Storage is optional and may be unavailable. */
+    }
+  }, [])
+  const loadRequest = (value: EnhancedRequest) => {
+    const url = new URL(value.url)
+    setQuery(Array.from(url.searchParams.entries()))
+    url.search = ''
+    setRequest({ ...value, url: url.toString() })
+    setHeaders(Object.entries(value.headers))
+    setParseError('')
+    setResult(null)
+    setRequestError('')
+  }
+  const compiled = useMemo(() => {
+    if (parseError) return { error: parseError, output: '', value: null }
+    if (!request.url) return { error: '', output: '', value: null }
+    try {
+      const url = new URL(request.url)
+      for (const [key, value] of query) {
+        if (!key && value) throw new Error('query')
+        if (key) url.searchParams.append(key, value)
       }
-      
-      let code = ""
-      switch (language) {
-        case "javascript":
-          code = generateJavaScriptFetch(parsed)
-          break
-        case "python":
-          code = generatePythonRequests(parsed)
-          break
-        case "nodejs":
-          code = generateNodeJsAxios(parsed)
-          break
-        case "php":
-          code = generatePHPCurl(parsed)
-          break
-        case "go":
-          code = generateGoHttp(parsed)
-          break
-        default:
-          code = generateJavaScriptFetch(parsed)
-      }
-      
-      setOutput(code)
-      setError("")
-    } catch (err) {
-      console.error(err)
-      setError(t("tools.curl-converter.conversion_failed"))
-      setOutput("")
+      const activeHeaders = headers.filter(([key, value]) => key || value)
+      if (activeHeaders.some(([key]) => !key)) throw new Error('headers')
+      if (bodyMode === 'json' && request.data?.trim()) JSON.parse(request.data)
+      const value = validateEnhancedRequest({
+        ...request,
+        url: url.toString(),
+        headers: Object.fromEntries(activeHeaders),
+      })
+      return { value, error: '', output: generateEnhancedCode(value, language) }
+    } catch {
+      return { value: null, output: '', error: t('extraInvalidEditor') }
+    }
+  }, [request, query, headers, bodyMode, language, parseError, t])
+  const parse = () => {
+    setResult(null)
+    setRequestError('')
+    try {
+      loadRequest(parseEnhancedCurl(input))
+    } catch {
+      setParseError(t('invalid_command'))
+      setRequest(empty)
     }
   }
-
-  const testRequest = async () => {
-    if (!input.trim()) {
-      return
-    }
-
-    setIsLoading(true)
-    setTestResult("")
-
+  const edit = (next: EnhancedRequest) => {
+    setRequest(next)
+    setParseError('')
+    setResult(null)
+  }
+  const send = async () => {
+    if (!compiled.value || loading) return
+    setLoading(true)
+    setResult(null)
+    setRequestError('')
+    const revision = ++requestRevision.current
+    const controller = new AbortController()
+    activeRequest.current?.abort()
+    activeRequest.current = controller
+    const start = performance.now()
     try {
-      const parsed = parseCurlCommand(input)
-      
-      if (!parsed) {
-        setTestResult(t("tools.curl-converter.test_failed"))
-        setIsLoading(false)
-        return
-      }
-
-      // 使用代理API发送请求，避免CORS问题
-      const proxyResponse = await fetch('/api/proxy', {
+      const response = await fetch('/api/proxy', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        signal: controller.signal,
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          url: parsed.url,
-          method: parsed.method,
-          headers: parsed.headers,
-          data: parsed.data,
+          ...compiled.value,
+          data: ['GET', 'HEAD'].includes(compiled.value.method)
+            ? undefined
+            : compiled.value.data,
         }),
       })
-
-      const proxyData = await proxyResponse.json()
-
-      if (!proxyResponse.ok) {
-        setTestResult(`${t("tools.curl-converter.test_failed")}: ${proxyData.message || proxyData.error}`)
-        setIsLoading(false)
-        return
-      }
-
-      const { status, statusText, body } = proxyData
-      
-      let formattedResponse = body
+      const data = await response.json()
+      if (revision !== requestRevision.current) return
+      if (!response.ok)
+        throw new Error(data.message || data.error || String(response.status))
+      if (
+        typeof data.status !== 'number' ||
+        typeof data.body !== 'string' ||
+        !data.headers ||
+        typeof data.headers !== 'object'
+      )
+        throw new Error(t('test_failed'))
+      let body = data.body
       try {
-        const jsonData = JSON.parse(body)
-        formattedResponse = JSON.stringify(jsonData, null, 2)
+        body = JSON.stringify(JSON.parse(body), null, 2)
       } catch {
-        // 不是JSON格式，保持原样
+        /* Keep text responses verbatim. */
       }
-
-      setTestResult(`状态: ${status} ${statusText}\n\n${formattedResponse}`)
-    } catch (err) {
-      setTestResult(`${t("tools.curl-converter.test_failed")}: ${err instanceof Error ? err.message : String(err)}`)
+      setResult({
+        ...data,
+        body,
+        elapsed: Math.round(performance.now() - start),
+      })
+    } catch (error) {
+      if (revision === requestRevision.current && !controller.signal.aborted)
+        setRequestError(
+          `${t('test_failed')}: ${error instanceof Error ? error.message : String(error)}`,
+        )
     } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const copyToClipboard = async () => {
-    if (output) {
-      await navigator.clipboard.writeText(output)
-    }
-  }
-
-  const clearAll = () => {
-    setInput("")
-    setOutput("")
-    setError("")
-    setTestResult("")
-  }
-
-  const downloadCode = () => {
-    if (output) {
-      const extensions: Record<string, string> = {
-        javascript: 'js',
-        python: 'py',
-        nodejs: 'js',
-        php: 'php',
-        go: 'go'
+      if (revision === requestRevision.current) {
+        activeRequest.current = null
+        setLoading(false)
       }
-      const ext = extensions[language] || 'txt'
-      const blob = new Blob([output], { type: "text/plain" })
-      const url = URL.createObjectURL(blob)
-      const a = document.createElement("a")
-      a.href = url
-      a.download = `request.${ext}`
-      document.body.appendChild(a)
-      a.click()
-      document.body.removeChild(a)
-      URL.revokeObjectURL(url)
     }
   }
-
-  return (
-    <div className="container mx-auto p-6 space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold">{t("tools.curl-converter.name")}</h1>
-        <p className="text-muted-foreground mt-2">
-          {t("tools.curl-converter.description")}
-        </p>
+  const save = () => {
+    if (!compiled.value) return
+    try {
+      const next = [
+        ...templates,
+        sanitizeEnhancedTemplate(compiled.value),
+      ].slice(-10)
+      localStorage.setItem(ENHANCED_TEMPLATE_KEY, JSON.stringify(next))
+      setTemplates(next)
+      setNotice(t('extraSaved'))
+    } catch {
+      setNotice(t('extraStorageError'))
+    }
+  }
+  const rows = (
+    kind: 'query' | 'headers',
+    pairs: Pair[],
+    update: (value: Pair[]) => void,
+  ) => (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <span className="font-medium">
+          {t(kind === 'query' ? 'extraQuery' : 'extraHeaders')}
+        </span>
+        <Button
+          data-testid={`curl-add-${kind}`}
+          variant="outline"
+          disabled={pairs.length >= 100}
+          onClick={() => update([...pairs, ['', '']])}
+        >
+          {t('extraAdd')}
+        </Button>
       </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("tools.curl-converter.input_title")}</CardTitle>
-            <CardDescription>
-              {t("tools.curl-converter.input_desc")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value)
-                if (error) {
-                  setError("")
-                }
-              }}
-              placeholder={t("tools.curl-converter.input_placeholder")}
-              className={getTextareaClasses('input', !error)}
-            />
-
-            {error && (
-              <div className="text-destructive text-sm">{error}</div>
-            )}
-
-            <div className="space-y-2">
-              <Label>{t("tools.curl-converter.language_label")}</Label>
-              <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="javascript">JavaScript (Fetch)</SelectItem>
-                  <SelectItem value="nodejs">Node.js (Axios)</SelectItem>
-                  <SelectItem value="python">Python (Requests)</SelectItem>
-                  <SelectItem value="php">PHP (cURL)</SelectItem>
-                  <SelectItem value="go">Go (net/http)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="flex gap-2">
-              <Button onClick={convertCurl} className="flex-1">
-                {t("tools.curl-converter.convert_button")}
-              </Button>
-              <Button 
-                onClick={testRequest} 
-                variant="outline" 
-                className="flex-1"
-                disabled={isLoading}
-              >
-                <Play className="h-4 w-4 mr-2" />
-                {t("tools.curl-converter.test_button")}
-              </Button>
-              <Button onClick={clearAll} variant="outline" size="icon">
-                <RotateCcw className="h-4 w-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("tools.curl-converter.output_title")}</CardTitle>
-            <CardDescription>
-              {t("tools.curl-converter.output_desc")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Textarea
-              value={output}
-              readOnly
-              placeholder={t("tools.curl-converter.output_placeholder")}
-              className={getTextareaClasses('output')}
-            />
-
-            <div className="flex gap-2">
-              <Button
-                onClick={copyToClipboard}
-                variant="outline"
-                disabled={!output}
-                className="flex-1"
-              >
-                <Copy className="h-4 w-4 mr-2" />
-                {t("common.copy")}
-              </Button>
-              <Button
-                onClick={downloadCode}
-                variant="outline"
-                disabled={!output}
-                size="icon"
-              >
-                <Download className="h-4 w-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="overflow-auto">
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="text-start">{t('extraKey')}</th>
+              <th className="text-start">{t('extraValue')}</th>
+              <th>
+                <span className="sr-only">{t('extraRemove')}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {pairs.map(([key, value], index) => (
+              <tr key={index}>
+                <td>
+                  <Input
+                    maxLength={1000}
+                    aria-label={t('extraKey')}
+                    data-testid={`curl-${kind}-key-${index}`}
+                    value={key}
+                    onChange={(e) => {
+                      update(
+                        pairs.map((p, i) =>
+                          i === index ? [e.target.value, p[1]] : p,
+                        ),
+                      )
+                      setResult(null)
+                    }}
+                  />
+                </td>
+                <td>
+                  <Input
+                    maxLength={10000}
+                    aria-label={t('extraValue')}
+                    data-testid={`curl-${kind}-value-${index}`}
+                    value={value}
+                    onChange={(e) => {
+                      update(
+                        pairs.map((p, i) =>
+                          i === index ? [p[0], e.target.value] : p,
+                        ),
+                      )
+                      setResult(null)
+                    }}
+                  />
+                </td>
+                <td>
+                  <Button
+                    variant="ghost"
+                    aria-label={t('extraRemove')}
+                    onClick={() => update(pairs.filter((_, i) => i !== index))}
+                  >
+                    ×
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-
-      {testResult && (
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("tools.curl-converter.test_result_title")}</CardTitle>
-            <CardDescription>
-              {t("tools.curl-converter.test_result_desc")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Textarea
-              value={testResult}
-              readOnly
-              className={getTextareaClasses('output')}
-            />
-          </CardContent>
-        </Card>
-      )}
-
-      {/* SEO内容区域 */}
-      <ToolSEOSection toolId="curl-converter" />
     </div>
   )
+  return (
+    <section className="container mx-auto space-y-6 p-6">
+      <header>
+        <h1 className="text-3xl font-bold">{t('name')}</h1>
+        <p className="text-muted-foreground">{t('description')}</p>
+        <p className="mt-2 text-sm text-muted-foreground">{t('extraRemote')}</p>
+      </header>
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Panel title={t('input_title')}>
+          <Field label={t('input_title')}>
+            <Textarea
+              data-testid="curl-input"
+              aria-label={t('input_title')}
+              maxLength={100000}
+              className="min-h-36 font-mono"
+              value={input}
+              placeholder={t('input_placeholder')}
+              onChange={(e) => {
+                setInput(e.target.value)
+                setRequest(empty)
+                setParseError('')
+                setResult(null)
+              }}
+            />
+          </Field>
+          <div className="flex flex-wrap gap-2">
+            <Button data-testid="curl-convert" onClick={parse}>
+              {t('convert_button')}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setInput('')
+                setRequest(empty)
+                setQuery([])
+                setHeaders([])
+                setParseError('')
+                setResult(null)
+                setRequestError('')
+                setNotice('')
+              }}
+            >
+              {common('clear')}
+            </Button>
+          </div>
+          <Field label={t('extraUrl')}>
+            <Input
+              data-testid="curl-url"
+              aria-label={t('extraUrl')}
+              maxLength={10000}
+              value={request.url}
+              onChange={(e) => edit({ ...request, url: e.target.value })}
+            />
+          </Field>
+          <Field label={t('extraMethod')}>
+            <select
+              data-testid="curl-method"
+              aria-label={t('extraMethod')}
+              className="w-full rounded border bg-background p-2"
+              value={request.method}
+              onChange={(e) => edit({ ...request, method: e.target.value })}
+            >
+              {['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'].map(
+                (method) => (
+                  <option key={method}>{method}</option>
+                ),
+              )}
+            </select>
+          </Field>
+          {rows('query', query, setQuery)}
+          {rows('headers', headers, setHeaders)}
+          <Field label={t('extraBody')}>
+            <select
+              data-testid="curl-body-mode"
+              aria-label={t('extraBody')}
+              className="rounded border bg-background p-2"
+              value={bodyMode}
+              onChange={(e) => setBodyMode(e.target.value)}
+            >
+              <option value="text">{t('extraText')}</option>
+              <option value="json">JSON</option>
+            </select>
+            <Textarea
+              data-testid="curl-body"
+              aria-label={t('extraBody')}
+              maxLength={100000}
+              className="font-mono"
+              value={request.data ?? ''}
+              onChange={(e) => edit({ ...request, data: e.target.value })}
+            />
+            <p className="text-xs text-muted-foreground">
+              {t('extraBodyHint')}
+            </p>
+          </Field>
+          <ErrorMessage>{compiled.error}</ErrorMessage>
+          <Button
+            data-testid="curl-send"
+            disabled={!compiled.value || loading}
+            onClick={send}
+          >
+            {loading ? t('extraSending') : t('test_button')}
+          </Button>
+        </Panel>
+        <div className="space-y-6">
+          <Panel title={t('output_title')}>
+            <Field label={t('language_label')}>
+              <select
+                data-testid="curl-language"
+                aria-label={t('language_label')}
+                className="w-full rounded border bg-background p-2"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value)}
+              >
+                {[
+                  ['javascript', 'JavaScript (Fetch)'],
+                  ['python', 'Python (Requests)'],
+                  ['nodejs', 'Node.js (Axios)'],
+                  ['php', 'PHP (cURL)'],
+                  ['go', 'Go (net/http)'],
+                ].map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <Textarea
+              data-testid="curl-output"
+              aria-label={t('output_title')}
+              className="min-h-80 font-mono"
+              readOnly
+              value={compiled.output}
+            />
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                disabled={!compiled.output}
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(compiled.output)
+                    setNotice(common('copied'))
+                  } catch {
+                    setNotice(common('copy_failed'))
+                  }
+                }}
+              >
+                {common('copy')}
+              </Button>
+              <Button
+                variant="outline"
+                disabled={!compiled.output}
+                onClick={() =>
+                  downloadText(
+                    compiled.output,
+                    `request.${({ python: 'py', php: 'php', go: 'go' } as Record<string, string>)[language] ?? 'js'}`,
+                  )
+                }
+              >
+                {common('download')}
+              </Button>
+            </div>
+          </Panel>
+          <Panel title={t('extraTemplates')}>
+            <p className="text-sm text-muted-foreground">
+              {t('extraSanitized')}
+            </p>
+            <Button
+              data-testid="curl-save"
+              disabled={!compiled.value}
+              onClick={save}
+            >
+              {t('extraSave')}
+            </Button>
+            {templates.map((template, index) => (
+              <div key={index} className="flex gap-2">
+                <Button
+                  data-testid={`curl-template-${index}`}
+                  variant="outline"
+                  onClick={() => {
+                    loadRequest(template)
+                    setInput('')
+                    setBodyMode('text')
+                  }}
+                >
+                  {template.method} {template.url}
+                </Button>
+                <Button
+                  aria-label={t('extraRemove')}
+                  variant="ghost"
+                  onClick={() => {
+                    try {
+                      const next = templates.filter((_, i) => i !== index)
+                      localStorage.setItem(
+                        ENHANCED_TEMPLATE_KEY,
+                        JSON.stringify(next),
+                      )
+                      setTemplates(next)
+                    } catch {
+                      setNotice(t('extraStorageError'))
+                    }
+                  }}
+                >
+                  ×
+                </Button>
+              </div>
+            ))}
+            <p role="status">{notice}</p>
+          </Panel>
+        </div>
+      </div>
+      <ErrorMessage>{requestError}</ErrorMessage>
+      {result && (
+        <Panel title={t('test_result_title')}>
+          <p data-testid="curl-status">
+            {t('extraStatus')}: {result.status} {result.statusText}
+          </p>
+          <p data-testid="curl-timing">
+            {t('extraTiming')}: {result.elapsed} ms
+          </p>
+          <pre
+            data-testid="curl-response-headers"
+            className="overflow-auto text-sm"
+          >
+            {JSON.stringify(result.headers, null, 2)}
+          </pre>
+          <Textarea
+            data-testid="curl-response"
+            aria-label={t('test_result_title')}
+            readOnly
+            className="min-h-48 font-mono"
+            value={result.body}
+          />
+        </Panel>
+      )}
+      <ToolSEOSection toolId="curl-converter" />
+    </section>
+  )
 }
-

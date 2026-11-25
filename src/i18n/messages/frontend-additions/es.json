@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Vista previa de Markdown",
+      "description": "Escribe Markdown con una vista previa segura en directo y un editor de tablas.",
+      "markdown": "Código Markdown",
+      "preview": "Vista previa en directo",
+      "safeHint": "Se eliminan scripts, enlaces inseguros y contenido multimedia incrustado.",
+      "copyMarkdown": "Copiar Markdown",
+      "downloadMarkdown": "Descargar Markdown",
+      "copyHtml": "Copiar HTML",
+      "downloadHtml": "Descargar HTML",
+      "table": "Editor de tablas",
+      "tableHint": "La primera fila es el encabezado. Hasta 20 filas y 12 columnas.",
+      "rows": "Filas",
+      "columns": "Columnas",
+      "cell": "Fila {row}, columna {column}",
+      "insertTable": "Insertar tabla",
+      "meta": {
+        "title": "Vista previa de Markdown",
+        "description": "Escribe Markdown con una vista previa segura en directo y un editor de tablas.",
+        "keywords": "Vista previa de Markdown, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "Formateador de CSS",
+      "description": "Da formato a CSS localmente con sangría configurable.",
+      "source": "Código CSS",
+      "indent": "Sangría",
+      "spaces2": "2 espacios",
+      "spaces4": "4 espacios",
+      "tabs": "Tabulaciones",
+      "syntaxError": "CSS no válido. Revisa las llaves, cadenas y declaraciones.",
+      "meta": {
+        "title": "Formateador de CSS",
+        "description": "Da formato a CSS localmente con sangría configurable.",
+        "keywords": "Formateador de CSS, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "Comprobador de contraste",
+      "description": "Comprueba los colores de texto y fondo según WCAG AA y AAA.",
+      "colors": "Colores",
+      "foreground": "Texto HEX",
+      "background": "Fondo HEX",
+      "picker": "Elegir {color}",
+      "swap": "Intercambiar colores",
+      "invalidColor": "Introduce un color HEX válido de 3 o 6 dígitos.",
+      "result": "Resultados de contraste",
+      "sampleLarge": "Texto grande de ejemplo",
+      "sample": "Texto normal de ejemplo",
+      "largeHint": "Texto grande: al menos 24 px CSS, o 18,67 px CSS en negrita.",
+      "aaNormal": "AA texto normal",
+      "aaaNormal": "AAA texto normal",
+      "aaLarge": "AA texto grande",
+      "aaaLarge": "AAA texto grande",
+      "pass": "Cumple",
+      "fail": "No cumple",
+      "meta": {
+        "title": "Comprobador de contraste",
+        "description": "Comprueba los colores de texto y fondo según WCAG AA y AAA.",
+        "keywords": "Comprobador de contraste, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "Compresor de imágenes",
+      "description": "Redimensiona y codifica imágenes PNG, JPEG y WebP localmente.",
+      "file": "Elegir imagen",
+      "limits": "PNG, JPEG o WebP. Máximo 25 MiB, 32 millones de píxeles y 16384 px por lado.",
+      "format": "Formato de salida",
+      "quality": "Calidad: {value}%",
+      "qualityHint": "La calidad afecta a JPEG y WebP; PNG no tiene pérdidas.",
+      "width": "Ancho (px)",
+      "height": "Alto (px)",
+      "aspect": "Mantener proporciones",
+      "background": "Fondo de JPEG",
+      "processing": "Procesando…",
+      "compress": "Comprimir imagen",
+      "sizeError": "Elige una imagen no vacía de hasta 25 MiB.",
+      "dimensionsError": "Usa dimensiones enteras entre 1 y 16384 px, hasta 32 millones de píxeles.",
+      "fileError": "El archivo no es una imagen PNG, JPEG o WebP legible.",
+      "encodeError": "El navegador no pudo codificar la imagen. Prueba dimensiones menores u otro formato.",
+      "original": "Imagen original",
+      "compressed": "Imagen codificada",
+      "bytes": "{value} bytes",
+      "savings": "Reducción de tamaño: {value}%",
+      "savingsHint": "Una reducción negativa indica que la salida es mayor. Se muestra el formato real de salida.",
+      "meta": {
+        "title": "Compresor de imágenes",
+        "description": "Redimensiona y codifica imágenes PNG, JPEG y WebP localmente.",
+        "keywords": "Compresor de imágenes, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

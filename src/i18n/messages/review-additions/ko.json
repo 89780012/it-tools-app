@@ -1,0 +1,1 @@
+{"tools":{"yaml-formatter":{"precisionError":"숫자가 안전한 정수 범위를 벗어납니다. 모든 자릿수를 보존하려면 따옴표로 묶어 문자열로 지정하세요."},"json-schema-validator":{"timeout":"검증이 2초를 초과하여 중지되었습니다. 스키마나 입력을 간소화한 후 다시 시도하세요.","workerError":"검증을 완료할 수 없습니다. Web Worker를 지원하는 브라우저에서 다시 시도하세요."}}}

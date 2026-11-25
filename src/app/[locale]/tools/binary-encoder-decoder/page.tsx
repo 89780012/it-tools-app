@@ -26,9 +26,7 @@ export default function BinaryEncoderDecoderPage() {
     }
 
     try {
-      const binaryString = Array.from(input)
-        .map(char => char.charCodeAt(0).toString(2).padStart(8, '0'))
-        .join(' ')
+      const binaryString = Array.from(new TextEncoder().encode(input), byte => byte.toString(2).padStart(8, '0')).join(' ')
       setOutput(binaryString)
       setError("")
       setIsValid(true)
@@ -58,13 +56,8 @@ export default function BinaryEncoderDecoderPage() {
         throw new Error("Binary string length must be multiple of 8")
       }
 
-      let decodedString = ''
-      for (let i = 0; i < binaryString.length; i += 8) {
-        const byte = binaryString.substr(i, 8)
-        decodedString += String.fromCharCode(parseInt(byte, 2))
-      }
-      
-      setOutput(decodedString)
+      const bytes = Uint8Array.from(binaryString.match(/.{8}/g) ?? [], byte => parseInt(byte, 2))
+      setOutput(new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes))
       setError("")
       setIsValid(true)
     } catch {

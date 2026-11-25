@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Markdown 미리보기",
+      "description": "Markdown을 작성하고 안전한 실시간 미리보기와 표 편집기를 사용하세요.",
+      "markdown": "Markdown 원본",
+      "preview": "실시간 미리보기",
+      "safeHint": "스크립트, 안전하지 않은 링크와 내장 미디어는 제거됩니다.",
+      "copyMarkdown": "Markdown 복사",
+      "downloadMarkdown": "Markdown 다운로드",
+      "copyHtml": "HTML 복사",
+      "downloadHtml": "HTML 다운로드",
+      "table": "표 편집기",
+      "tableHint": "첫 행은 머리글입니다. 최대 20행, 12열을 지원합니다.",
+      "rows": "행 수",
+      "columns": "열 수",
+      "cell": "{row}행 {column}열",
+      "insertTable": "표 삽입",
+      "meta": {
+        "title": "Markdown 미리보기",
+        "description": "Markdown을 작성하고 안전한 실시간 미리보기와 표 편집기를 사용하세요.",
+        "keywords": "Markdown 미리보기, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "CSS 서식 도구",
+      "description": "들여쓰기를 설정하여 CSS를 로컬에서 정리하세요.",
+      "source": "CSS 원본",
+      "indent": "들여쓰기",
+      "spaces2": "공백 2개",
+      "spaces4": "공백 4개",
+      "tabs": "탭",
+      "syntaxError": "유효하지 않은 CSS입니다. 괄호, 문자열과 선언을 확인하세요.",
+      "meta": {
+        "title": "CSS 서식 도구",
+        "description": "들여쓰기를 설정하여 CSS를 로컬에서 정리하세요.",
+        "keywords": "CSS 서식 도구, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "색상 대비 검사",
+      "description": "텍스트와 배경색을 WCAG AA 및 AAA 기준으로 검사하세요.",
+      "colors": "색상",
+      "foreground": "텍스트 HEX",
+      "background": "배경 HEX",
+      "picker": "{color} 선택",
+      "swap": "색상 바꾸기",
+      "invalidColor": "유효한 3자리 또는 6자리 HEX 색상을 입력하세요.",
+      "result": "대비 결과",
+      "sampleLarge": "큰 글자 예시",
+      "sample": "일반 글자 예시",
+      "largeHint": "큰 글자는 24 CSS px 이상 또는 굵은 글씨로 18.67 CSS px 이상입니다.",
+      "aaNormal": "AA 일반 텍스트",
+      "aaaNormal": "AAA 일반 텍스트",
+      "aaLarge": "AA 큰 텍스트",
+      "aaaLarge": "AAA 큰 텍스트",
+      "pass": "통과",
+      "fail": "실패",
+      "meta": {
+        "title": "색상 대비 검사",
+        "description": "텍스트와 배경색을 WCAG AA 및 AAA 기준으로 검사하세요.",
+        "keywords": "색상 대비 검사, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "이미지 압축",
+      "description": "PNG, JPEG, WebP 이미지를 로컬에서 크기 조정하고 인코딩하세요.",
+      "file": "이미지 선택",
+      "limits": "PNG, JPEG, WebP 지원. 최대 25 MiB, 3200만 화소, 한 변 16384 px.",
+      "format": "출력 형식",
+      "quality": "품질: {value}%",
+      "qualityHint": "품질은 JPEG와 WebP에 적용됩니다. PNG는 무손실입니다.",
+      "width": "너비 (px)",
+      "height": "높이 (px)",
+      "aspect": "가로세로 비율 유지",
+      "background": "JPEG 배경색",
+      "processing": "처리 중…",
+      "compress": "이미지 압축",
+      "sizeError": "비어 있지 않은 25 MiB 이하 이미지를 선택하세요.",
+      "dimensionsError": "1~16384 px의 정수 크기와 총 3200만 화소 이하를 사용하세요.",
+      "fileError": "읽을 수 있는 PNG, JPEG 또는 WebP 이미지가 아닙니다.",
+      "encodeError": "브라우저에서 이미지를 인코딩하지 못했습니다. 크기를 줄이거나 다른 형식을 사용하세요.",
+      "original": "원본 이미지",
+      "compressed": "인코딩된 이미지",
+      "bytes": "{value} 바이트",
+      "savings": "크기 감소: {value}%",
+      "savingsHint": "감소율이 음수이면 출력이 더 큽니다. 실제 출력 형식이 표시됩니다.",
+      "meta": {
+        "title": "이미지 압축",
+        "description": "PNG, JPEG, WebP 이미지를 로컬에서 크기 조정하고 인코딩하세요.",
+        "keywords": "이미지 압축, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

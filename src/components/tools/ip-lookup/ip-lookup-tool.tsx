@@ -110,6 +110,7 @@ export default function IPLookupTool() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-8">
+      <header className="space-y-2"><h1 className="text-3xl font-semibold">{t('name')}</h1><p className="text-sm text-muted-foreground">{t('description')}</p></header>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* 左侧：输入区域 */}
         <div className="space-y-6">

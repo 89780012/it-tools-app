@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "SQL 格式化", "description": "在本地格式化或压缩 SQL，保留字符串与注释。",
+      "meta": { "title": "SQL 格式化与压缩工具", "description": "格式化 SQL、PostgreSQL、MySQL 和 SQLite，自定义缩进和关键字大小写。", "keywords": "SQL 格式化, SQL 压缩, PostgreSQL, MySQL, SQLite" },
+      "dialect": "SQL 方言", "indent": "缩进空格数", "casing": "关键字大小写", "upper": "大写", "lower": "小写", "preserve": "保持原样", "invalid": "无法格式化此 SQL。", "hint": "保留注释和字面量内容。格式化不验证数据库语义。"
+    },
+    "text-batch-processor": {
+      "name": "文本批量处理", "description": "组合多种操作，清理、去重、排序和合并文本行。",
+      "meta": { "title": "文本批量处理与 SQL IN 生成器", "description": "在本地统一换行、去除首尾空格、去重、排序 Unicode 文本并生成安全引用的 SQL IN 列表。", "keywords": "文本批量处理, 行去重, 文本排序, SQL IN" },
+      "trim": "去除每行首尾空格", "dropBlank": "移除空行", "dedupe": "移除重复行", "sqlIn": "生成 SQL IN 列表", "sort": "排序方式", "none": "保持输入顺序", "asc": "升序", "desc": "降序", "prefix": "每行前缀", "suffix": "每行后缀", "delimiter": "连接分隔符", "newline": "换行", "comma": "逗号和空格", "space": "空格", "tab": "制表符", "empty": "无分隔符", "counts": "输入：{input} 行 · 输出：{output} 行 · {characters} 个字符", "hint": "处理顺序：统一换行、去首尾空格、移除空行、去重、排序、添加前后缀、合并。SQL 模式将单引号转为两个单引号。", "sqlUnsafe": "SQL 列表不允许反斜杠或空字符，请移除它们或使用普通文本输出。"
+    },
+    "string-escape": {
+      "name": "字符串转义与反转义", "description": "编码和解码 JSON 字符串、Unicode 转义、HTML 实体及多层 JSON 字符串。",
+      "meta": { "title": "字符串转义与反转义工具", "description": "在本地转义 JSON、Unicode 和 HTML 文本，或在深度限制内解码嵌套 JSON 字符串。", "keywords": "字符串转义, 反转义, Unicode, HTML 实体, 嵌套 JSON" },
+      "mode": "编码模式", "json": "JSON 引号字符串", "unicode": "Unicode 转义", "html": "HTML 实体", "nested": "多层 JSON 解码", "depth": "最大解码深度（1–20）", "encode": "编码", "decode": "解码", "invalidJson": "JSON 无效，请输入有效的带引号 JSON 字符串。", "invalidUnicode": "Unicode 转义无效，\\u 后需有四位十六进制数字。", "stringRequired": "JSON 值必须是双引号包围的字符串。", "depthError": "解码深度超限或无效，请选择 1 到 20 的整数。", "jsonHint": "编码会添加 JSON 引号；解码需要带引号的字符串，并保留全部空白。", "unicodeHint": "编码会转义每个 UTF-16 代码单元，表情符号使用代理对；解码保留未转义文本。", "htmlHint": "解码命名和数字 HTML 实体，结果始终以纯文本显示。", "nestedHint": "重复解码 JSON 字符串，直到得到文本或 JSON 值，最多执行指定深度。"
+    },
+    "jsonpath-query": {
+      "name": "JSONPath 查询", "description": "使用路径、通配符和安全的比较筛选器探索嵌套 JSON。",
+      "meta": { "title": "JSONPath 查询与筛选工具", "description": "在本地使用 JSONPath 和安全筛选器查询 JSON，可包含匹配路径并导出 JSON 结果。", "keywords": "JSONPath 查询, JSON 筛选, JSON 路径, JSON 搜索" },
+      "expression": "JSONPath 表达式", "paths": "包含匹配路径", "filterExample": "筛选示例", "matches": "匹配数：{count}", "hint": "可用 $.store.books[*].title 或 [?(@.price < 10)]。筛选支持比较、&&、|| 和 !，禁用函数调用。", "invalidJson": "输入 JSON 无效，请检查文档语法。", "invalidPath": "JSONPath 表达式无效或不受支持。", "unsafe": "已拒绝不安全表达式，仅允许属性访问、比较和布尔运算。", "limit": "超出查询限制：输入最多 1,000,000 字符、50,000 个值、64 层嵌套、路径最多 2,000 字符。"
+    }
+  }
+}

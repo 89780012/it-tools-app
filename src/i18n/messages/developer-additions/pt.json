@@ -1,0 +1,32 @@
+{
+ "tools": {
+  "regex-tester": {
+   "outputTooLarge":"A substituição ultrapassaria 1.000.000 de caracteres. Reduza o texto ou a substituição.",
+   "name":"Testador de expressões regulares","description":"Teste expressões JavaScript, examine capturas e visualize substituições localmente em um processo isolado.",
+   "meta":{"title":"Testador regex: correspondências e substituições","description":"Teste padrões e sinalizadores no navegador, destaque correspondências e veja grupos de captura e substituições.","keywords":"regex,expressão regular,grupos de captura,substituição,JavaScript"},
+   "pattern":"Padrão","patternHint":"Insira o padrão sem delimitadores /. Os índices usam unidades UTF-16. Cada execução tem limite de 1,5 segundo.","flags":"Sinalizadores","text":"Texto de teste","replacement":"Substituição","running":"Testando…","emailExample":"Exemplo de e-mail","numberExample":"Exemplo numérico","unicodeExample":"Exemplo Unicode",
+   "invalidPattern":"A expressão é inválida. Verifique parênteses, escapes e a sintaxe aceita pelo navegador.","invalidFlags":"Use sinalizadores JavaScript sem repetir: d, g, i, m, s, u, v ou y. Não combine u e v.","tooLarge":"Use no máximo 200.000 caracteres de texto e 10.000 para o padrão e para a substituição.","timeout":"A expressão ultrapassou 1,5 segundo e foi interrompida. Simplifique o padrão ou reduza o texto.","workerError":"Não foi possível iniciar o processo isolado. Verifique o suporte do navegador e tente novamente.",
+   "matches":"Correspondências: {count}","truncated":"Somente as primeiras 1.000 correspondências são exibidas. A prévia da substituição inclui todas.","index":"Índice","match":"Correspondência","captures":"Grupos de captura","emptyMatch":"Correspondência vazia","replacementPreview":"Prévia da substituição"
+  },
+  "jwt-decoder": {
+   "name":"Decodificador JWT","description":"Decodifique cabeçalhos e conteúdos JWT, examine declarações de tempo e verifique HS256 opcionalmente com um segredo local.",
+   "meta":{"title":"Decodificador JWT: declarações e assinaturas HS256","description":"Decodifique JWT Base64URL localmente, leia datas de expiração e verifique assinaturas HS256 sem enviar tokens.","keywords":"JWT,decodificador,token web JSON,HS256,expiração,assinatura"},
+   "token":"Token JWT","decode":"Decodificar","header":"Cabeçalho","payload":"Conteúdo","claims":"Declarações de tempo","unverified":"Assinatura não verificada.","verified":"A assinatura HS256 corresponde ao segredo fornecido.","invalidSignature":"A assinatura não corresponde ao segredo fornecido.",
+   "trustHint":"Decodificar não comprova autenticidade. Uma assinatura correspondente por si só não valida emissor, público ou todos os requisitos da aplicação.","invalidToken":"Insira um JWT com exatamente três segmentos, Base64URL canônico e objetos JSON UTF-8 no cabeçalho e conteúdo. Somente alg:none permite assinatura vazia.",
+   "noClaims":"Não há declarações exp, iat ou nbf.","exp":"Expiração (exp)","iat":"Emitido em (iat)","nbf":"Válido a partir de (nbf)","expired":"Expirado","active":"Condição de tempo satisfeita","future":"No futuro","issued":"Emitido","invalidDate":"Marca de tempo numérica inválida",
+   "verifyTitle":"Verificação HS256 opcional","secret":"Segredo local","secretHint":"Usado apenas na memória desta página. Tokens e segredos nunca são salvos ou enviados.","verify":"Verificar HS256","verifying":"Verificando…","unsupportedAlgorithm":"A verificação aceita apenas HS256 sem extensões críticas ou b64 no cabeçalho.","secretRequired":"Insira o segredo usado para assinar este token.","cryptoUnavailable":"Web Crypto não está disponível aqui. Abra a ferramenta por HTTPS ou localhost.","verificationError":"Não foi possível verificar a assinatura. Confira o token e tente novamente."
+  },
+  "text-diff": {
+   "name":"Comparador de textos","description":"Compare dois textos ou arquivos locais com alterações por linha e palavra e baixe um diff unificado.",
+   "meta":{"title":"Comparador de textos e arquivos","description":"Compare lado a lado ou em visão unificada, destaque palavras, ignore espaços e baixe um patch localmente.","keywords":"diferenças de texto,comparar arquivos,diff unificado,alterações de palavras,patch"},
+   "left":"Texto original","right":"Texto atualizado","importLeft":"Importar arquivo original","importRight":"Importar arquivo atualizado","sideBySide":"Lado a lado","unified":"Visão unificada","wordChanges":"Destacar alterações por palavra","ignoreWhitespace":"Ignorar espaços horizontais",
+   "whitespaceHint":"Este modo remove espaços nas bordas das linhas e agrupa espaços e tabulações na visualização e no download. Quebras de linha continuam relevantes. CRLF é normalizado para LF.","identical":"Os textos são idênticos com as opções atuais.","different":"Os textos são diferentes.","downloadDiff":"Baixar diff unificado","tooLarge":"Use até 100.000 caracteres no total e menos linhas. A comparação excede o limite de processamento seguro.","fileError":"Não foi possível ler o arquivo local. Escolha um arquivo de texto e tente novamente."
+  },
+  "json-to-types": {
+   "name":"JSON para tipos","description":"Gere interfaces TypeScript ou estruturas Go a partir de JSON, com objetos aninhados e arrays heterogêneos.",
+   "meta":{"title":"JSON para interfaces TypeScript e estruturas Go","description":"Gere tipos JSON mesclando objetos de arrays, propriedades opcionais, valores nulos e nomes únicos.","keywords":"JSON,TypeScript,interfaces,estruturas Go,gerador de tipos"},
+   "language":"Linguagem de saída","typescript":"TypeScript","go":"Go","rootName":"Nome do tipo raiz","rootHint":"Os nomes são convertidos automaticamente em identificadores válidos e únicos.","json":"Entrada JSON","generated":"Tipos gerados","inferenceHint":"Os tipos descrevem esta amostra. Objetos em arrays são mesclados; chaves ausentes tornam-se opcionais. Arrays vazios usam elementos unknown.",
+   "goHint":"Go usa any para tipos mistos, null e elementos de arrays vazios, ponteiros para valores opcionais ou anuláveis e float64 para números. Tags JSON preservam as chaves aceitas; as demais geram erro.","invalidJson":"Insira JSON válido com números finitos.","tooDeep":"O JSON está muito aninhado. Use no máximo 80 níveis.","tooLarge":"Use no máximo 200.000 caracteres JSON.","goKey":"Um nome de propriedade não pode ser representado fielmente em uma tag JSON Go. Use TypeScript ou renomeie chaves vazias, de um único hífen ou com vírgulas, aspas, barras invertidas, controles ou símbolos não aceitos."
+  }
+ }
+}

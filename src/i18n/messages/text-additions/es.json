@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "Formateador SQL", "description": "Formatea o compacta SQL localmente conservando cadenas y comentarios.",
+      "meta": { "title": "Formateador y compactador SQL", "description": "Formatea SQL, PostgreSQL, MySQL y SQLite con sangría y mayúsculas de palabras clave configurables.", "keywords": "formateador SQL, compactar SQL, PostgreSQL, MySQL, SQLite" },
+      "dialect": "Dialecto SQL", "indent": "Espacios de sangría", "casing": "Letras de palabras clave", "upper": "MAYÚSCULAS", "lower": "minúsculas", "preserve": "Conservar letras", "invalid": "No se pudo formatear este SQL.", "hint": "Se conservan los comentarios y los literales. El formato no verifica la semántica de la base de datos."
+    },
+    "text-batch-processor": {
+      "name": "Procesador de texto por lotes", "description": "Limpia, elimina duplicados, ordena y combina líneas mediante operaciones combinables.",
+      "meta": { "title": "Procesador de texto y generador SQL IN", "description": "Normaliza saltos de línea, recorta, elimina duplicados, ordena texto Unicode y genera listas SQL IN entrecomilladas localmente.", "keywords": "procesar texto, eliminar líneas duplicadas, ordenar líneas, SQL IN" },
+      "trim": "Recortar cada línea", "dropBlank": "Eliminar líneas vacías", "dedupe": "Eliminar líneas duplicadas", "sqlIn": "Crear lista SQL IN", "sort": "Orden", "none": "Conservar orden original", "asc": "Ascendente", "desc": "Descendente", "prefix": "Prefijo por línea", "suffix": "Sufijo por línea", "delimiter": "Unir con", "newline": "Salto de línea", "comma": "Coma y espacio", "space": "Espacio", "tab": "Tabulación", "empty": "Sin separador", "counts": "Entrada: {input} líneas · Salida: {output} líneas · {characters} caracteres", "hint": "Orden: normalizar saltos, recortar, eliminar vacías, quitar duplicados, ordenar, añadir prefijos y sufijos y unir. El modo SQL duplica los apóstrofos.", "sqlUnsafe": "Las listas SQL no admiten barras invertidas ni caracteres nulos. Elimínalos o usa la salida de texto normal."
+    },
+    "string-escape": {
+      "name": "Escape y desescape de cadenas", "description": "Codifica y decodifica cadenas JSON, escapes Unicode, entidades HTML y cadenas JSON anidadas.",
+      "meta": { "title": "Herramienta de escape y desescape de cadenas", "description": "Escapa texto JSON, Unicode y HTML o decodifica cadenas JSON anidadas localmente con límite de profundidad.", "keywords": "escapar cadenas, desescape, Unicode, entidades HTML, JSON anidado" },
+      "mode": "Modo de codificación", "json": "Cadena JSON entre comillas", "unicode": "Escapes Unicode", "html": "Entidades HTML", "nested": "Decodificación JSON anidada", "depth": "Profundidad máxima (1–20)", "encode": "Codificar", "decode": "Decodificar", "invalidJson": "JSON no válido. Introduce una cadena JSON válida entre comillas.", "invalidUnicode": "Escape Unicode no válido. Usa cuatro dígitos hexadecimales después de \\u.", "stringRequired": "El valor JSON debe ser una cadena entre comillas dobles.", "depthError": "Profundidad excedida o no válida. Elige un entero entre 1 y 20.", "jsonHint": "La codificación añade comillas JSON. La decodificación requiere una cadena entre comillas y conserva todos los espacios.", "unicodeHint": "Se escapa cada unidad UTF-16. Los emojis usan pares sustitutos; al decodificar se conserva el texto sin escapes.", "htmlHint": "Decodifica entidades HTML numéricas y con nombre. Los resultados se muestran como texto plano.", "nestedHint": "Decodifica repetidamente cadenas JSON hasta obtener texto o un valor JSON, sin superar la profundidad indicada."
+    },
+    "jsonpath-query": {
+      "name": "Consulta JSONPath", "description": "Explora JSON anidado con rutas, comodines y filtros de comparación seguros.",
+      "meta": { "title": "Consultas y filtros JSONPath", "description": "Consulta JSON localmente mediante JSONPath, filtros seguros y rutas de coincidencia opcionales. Exporta los resultados como JSON.", "keywords": "consulta JSONPath, filtro JSON, rutas JSON, buscar JSON" },
+      "expression": "Expresión JSONPath", "paths": "Incluir rutas coincidentes", "filterExample": "Ejemplo de filtro", "matches": "Coincidencias: {count}", "hint": "Usa $.store.books[*].title o [?(@.price < 10)]. Los filtros admiten comparaciones, &&, || y !; las llamadas a funciones están desactivadas.", "invalidJson": "JSON de entrada no válido. Revisa la sintaxis del documento.", "invalidPath": "Expresión JSONPath no válida o no compatible.", "unsafe": "Expresión insegura rechazada. Usa solo propiedades, comparaciones y operadores booleanos.", "limit": "Límite superado: máximo 1.000.000 de caracteres de entrada, 50.000 valores, 64 niveles y 2.000 caracteres de ruta."
+    }
+  }
+}

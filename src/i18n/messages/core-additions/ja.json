@@ -1,0 +1,5 @@
+{
+  "workbench": {"input":"入力","output":"出力","run":"実行","clear":"クリア","example":"サンプルを読み込む","copy":"コピー","copied":"コピーしました","download":"ダウンロード","copyError":"コピーできませんでした。出力を選択して手動でコピーしてください。","local":"ブラウザー内で処理します。入力内容は送信されません。","error":"入力を処理できません。形式と設定を確認してください。","format":"整形","minify":"圧縮","validate":"検証","options":"設定","result":"結果"},
+  "homeExtras": {"all":"すべてのツール","favorites":"お気に入り","recent":"最近使ったツール","addFavorite":"{name}をお気に入りに追加","removeFavorite":"{name}をお気に入りから削除","clearRecent":"使用履歴を消去","emptyFavorites":"ハートボタンでよく使うツールを保存できます。","emptyRecent":"開いたツールがここに表示されます。","storageUnavailable":"ブラウザーのストレージを使用できません。お気に入りと履歴はこのページでのみ保持されます。","search":"名前、説明、ツール ID で検索","expandAll":"すべての分類を展開","collapseAll":"すべての分類を折りたたむ"},
+  "categories": {"api":"API デバッグ","api_desc":"HTTP リクエストの作成・変換・テスト","frontend":"フロントエンドと文書","frontend_desc":"スタイル、色、アクセシビリティ、Markdown","json_converters":"データ形式","json_converters_desc":"JSON、YAML、XML、TOML、CSV の変換・整形・検証","generators":"コードと生成ツール","generators_desc":"型、識別子、パスワードの生成"}
+}

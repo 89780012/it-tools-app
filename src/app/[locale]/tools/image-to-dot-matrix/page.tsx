@@ -285,7 +285,7 @@ export default function ImageToDotMatrixPage() {
     if (!canvasRef.current || !hasGenerated) {
       toast({
         title: t("common.error"),
-        description: "请先生成点阵图",
+        description: t("workbench.error"),
         variant: "destructive"
       })
       return
@@ -306,10 +306,10 @@ export default function ImageToDotMatrixPage() {
   }
   
   const downloadSVG = () => {
-    if (!image || !canvasRef.current || !hasGenerated) {
+    if (!canvasRef.current || !hasGenerated) {
       toast({
         title: t("common.error"),
-        description: "请先生成点阵图",
+        description: t("workbench.error"),
         variant: "destructive"
       })
       return

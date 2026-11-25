@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "sql-formatter": {
+      "name": "Formateur SQL", "description": "Formatez ou compactez SQL localement en conservant les chaînes et les commentaires.",
+      "meta": { "title": "Formateur et compacteur SQL", "description": "Formatez SQL, PostgreSQL, MySQL et SQLite avec une indentation et une casse des mots-clés configurables.", "keywords": "formater SQL, compacter SQL, PostgreSQL, MySQL, SQLite" },
+      "dialect": "Dialecte SQL", "indent": "Espaces d'indentation", "casing": "Casse des mots-clés", "upper": "MAJUSCULES", "lower": "minuscules", "preserve": "Conserver la casse", "invalid": "Impossible de formater ce SQL.", "hint": "Les commentaires et les littéraux sont conservés. Le formatage ne vérifie pas la sémantique de la base de données."
+    },
+    "text-batch-processor": {
+      "name": "Traitement de texte par lots", "description": "Nettoyez, dédupliquez, triez et combinez des lignes avec des opérations composables.",
+      "meta": { "title": "Traitement de texte et générateur SQL IN", "description": "Normalisez les sauts de ligne, supprimez espaces et doublons, triez du texte Unicode et générez des listes SQL IN localement.", "keywords": "traitement de texte, supprimer doublons, trier lignes, SQL IN" },
+      "trim": "Rogner chaque ligne", "dropBlank": "Supprimer les lignes vides", "dedupe": "Supprimer les doublons", "sqlIn": "Créer une liste SQL IN", "sort": "Ordre de tri", "none": "Conserver l'ordre initial", "asc": "Croissant", "desc": "Décroissant", "prefix": "Préfixe par ligne", "suffix": "Suffixe par ligne", "delimiter": "Joindre avec", "newline": "Saut de ligne", "comma": "Virgule et espace", "space": "Espace", "tab": "Tabulation", "empty": "Sans séparateur", "counts": "Entrée : {input} lignes · Sortie : {output} lignes · {characters} caractères", "hint": "Ordre : normaliser les sauts, rogner, supprimer les lignes vides, dédupliquer, trier, ajouter préfixe/suffixe, joindre. Le mode SQL double les apostrophes.", "sqlUnsafe": "Les listes SQL ne peuvent contenir de barres obliques inverses ni de caractères nuls. Supprimez-les ou utilisez la sortie texte normale."
+    },
+    "string-escape": {
+      "name": "Échappement de chaînes", "description": "Encodez et décodez les chaînes JSON, séquences Unicode, entités HTML et chaînes JSON imbriquées.",
+      "meta": { "title": "Échapper et déséchapper des chaînes", "description": "Échappez du texte JSON, Unicode et HTML ou décodez des chaînes JSON imbriquées localement avec une profondeur limitée.", "keywords": "échappement de chaînes, déséchappement, Unicode, entités HTML, JSON imbriqué" },
+      "mode": "Mode d'encodage", "json": "Chaîne JSON entre guillemets", "unicode": "Séquences Unicode", "html": "Entités HTML", "nested": "Décodage JSON imbriqué", "depth": "Profondeur maximale (1–20)", "encode": "Encoder", "decode": "Décoder", "invalidJson": "JSON invalide. Saisissez une chaîne JSON valide entre guillemets.", "invalidUnicode": "Séquence Unicode invalide. Utilisez quatre chiffres hexadécimaux après \\u.", "stringRequired": "La valeur JSON doit être une chaîne entre guillemets doubles.", "depthError": "Profondeur dépassée ou invalide. Choisissez un entier de 1 à 20.", "jsonHint": "L'encodage ajoute les guillemets JSON. Le décodage exige une chaîne entre guillemets et conserve tous les espaces.", "unicodeHint": "Chaque unité UTF-16 est échappée. Les émojis utilisent des paires de substitution ; le décodage conserve le texte non échappé.", "htmlHint": "Décodez les entités HTML nommées et numériques. Les résultats sont affichés en texte brut.", "nestedHint": "Décodez les chaînes JSON jusqu'à obtenir du texte ou une valeur JSON, dans la limite de profondeur choisie."
+    },
+    "jsonpath-query": {
+      "name": "Requête JSONPath", "description": "Explorez du JSON imbriqué avec des chemins, des jokers et des filtres de comparaison sûrs.",
+      "meta": { "title": "Requêtes et filtres JSONPath", "description": "Interrogez du JSON localement avec JSONPath, des filtres sûrs et les chemins correspondants facultatifs. Exportez les résultats en JSON.", "keywords": "requête JSONPath, filtre JSON, chemins JSON, recherche JSON" },
+      "expression": "Expression JSONPath", "paths": "Inclure les chemins correspondants", "filterExample": "Exemple de filtre", "matches": "Correspondances : {count}", "hint": "Utilisez $.store.books[*].title ou [?(@.price < 10)]. Les filtres acceptent les comparaisons, &&, || et ! ; les appels de fonctions sont désactivés.", "invalidJson": "Entrée JSON invalide. Vérifiez la syntaxe du document.", "invalidPath": "Expression JSONPath invalide ou non prise en charge.", "unsafe": "Expression dangereuse refusée. Utilisez uniquement propriétés, comparaisons et opérateurs booléens.", "limit": "Limite dépassée : au plus 1 000 000 de caractères en entrée, 50 000 valeurs, 64 niveaux et 2 000 caractères de chemin."
+    }
+  }
+}

@@ -7,12 +7,12 @@ const template = await fs.readFile(path.join(dist, 'index.html'), 'utf8')
 const htmlEscape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
 const server = await createServer({ server: { middlewareMode: true }, appType: 'custom', ssr: { noExternal: ['react-router-dom', 'react-router'], resolve: { conditions: ['module', 'module-sync', 'import'] } } })
 try {
-  const { render, locales, toolsConfig, getSeoHead } = await server.ssrLoadModule('/src/entry-server.tsx')
+  const { render, locales, toolsConfig, getSeoHead, getMessages } = await server.ssrLoadModule('/src/entry-server.tsx')
   const toolIds = toolsConfig.flatMap(category => category.tools.map(tool => tool.id))
   const routes = ['/', '/changelog', ...toolIds.map(id => `/tools/${id}`)]
   let count = 0
   for (const locale of locales) {
-    const messages = JSON.parse(await fs.readFile(`src/i18n/messages/${locale}.json`, 'utf8'))
+    const messages = getMessages(locale)
     const translate = key => {
       const value = key.split('.').reduce((current, name) => current?.[name], messages)
       if (typeof value !== 'string') throw new Error(`Missing SEO translation: ${locale}:${key}`)
@@ -38,10 +38,16 @@ try {
       count++
     }
     console.log(`Prerendered ${locale}: ${routes.length} pages`)
+    const entries = routes.map(route => {
+      const url = `https://www.toolkitpub.com${locale === 'en' ? '' : `/${locale}`}${route === '/' ? '' : route}`
+      return `  <url><loc>${htmlEscape(url)}</loc></url>`
+    }).join('\n')
+    await fs.writeFile(path.join(dist, `sitemap-${locale}.xml`), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries}\n</urlset>\n`)
   }
-  // Preserve all upstream sitemap files verbatim; Vite already copies public/.
+  const sitemapIndex = locales.map(locale => `  <sitemap><loc>https://www.toolkitpub.com/sitemap-${locale}.xml</loc></sitemap>`).join('\n')
+  await fs.writeFile(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapIndex}\n</sitemapindex>\n`)
   await fs.copyFile('src/app/favicon.ico', path.join(dist, 'favicon.ico'))
-  console.log(`Generated ${count} SEO pages with complete HTML; upstream robots and sitemaps preserved.`)
+  console.log(`Generated ${count} SEO pages with complete HTML and catalog-derived sitemaps.`)
 } finally {
   await server.close()
 }

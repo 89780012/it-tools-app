@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Badge } from '@/components/ui/badge'
 import { ToolSEOSection } from '@/components/seo/tool-seo-section'
-import { formatDateTimePattern, parseDateTimePattern } from '@/lib/time-utils'
+import { formatInZone, parseExtendedDate, timestampToMs, TIME_ZONES, type TimeUnit } from '@/lib/time-extended'
 
 interface MillisecondsResult {
   success: boolean
@@ -32,6 +32,13 @@ export default function TimeConverterTool() {
   const [millisecondsInput, setMillisecondsInput] = useState('1700000000000')
   const [stringInput, setStringInput] = useState('2025-01-01 12:30:00')
   const [copyTarget, setCopyTarget] = useState<string | null>(null)
+  const [unit, setUnit] = useState<TimeUnit>('milliseconds')
+  const [zone, setZone] = useState('local')
+  const [endInput, setEndInput] = useState('2025-01-02 12:30:00')
+  const difference = useMemo(() => {
+    try { return String(parseExtendedDate(endInput, zone) - parseExtendedDate(stringInput, zone)) }
+    catch { return null }
+  }, [endInput, stringInput, zone])
 
   const millisecondsResult = useMemo<MillisecondsResult>(() => {
     const trimmed = millisecondsInput.trim()
@@ -41,27 +48,14 @@ export default function TimeConverterTool() {
     }
 
     if (!/^[-]?\d+$/.test(trimmed)) {
-      return { success: false, message: t('invalid_milliseconds') }
+      return { success: false, message: `${common('error')}: ${t('milliseconds_hint')}` }
     }
 
-    const value = Number(trimmed)
-
-    if (!Number.isFinite(value)) {
-      return { success: false, message: t('invalid_milliseconds') }
-    }
-
-    const date = new Date(value)
-
-    if (Number.isNaN(date.getTime())) {
-      return { success: false, message: t('invalid_milliseconds') }
-    }
-
-    return {
-      success: true,
-      formatted: formatDateTimePattern(date),
-      value
-    }
-  }, [millisecondsInput, t])
+    try {
+      const value = timestampToMs(trimmed, unit)
+      return { success: true, formatted: formatInZone(value, zone), value }
+    } catch { return { success: false, message: `${common('error')}: ${t('milliseconds_hint')}` } }
+  }, [millisecondsInput, unit, zone, t, common])
 
   const stringResult = useMemo<StringResult>(() => {
     const trimmed = stringInput.trim()
@@ -70,22 +64,16 @@ export default function TimeConverterTool() {
       return { success: false }
     }
 
-    const date = parseDateTimePattern(trimmed)
-
-    if (!date) {
-      return { success: false, message: t('invalid_string') }
-    }
-
-    return {
-      success: true,
-      milliseconds: date.getTime(),
-      normalized: formatDateTimePattern(date)
-    }
-  }, [stringInput, t])
+    try {
+      const milliseconds = parseExtendedDate(trimmed, zone)
+      return { success: true, milliseconds, normalized: formatInZone(milliseconds, zone) }
+    } catch { return { success: false, message: t('invalid_string') } }
+  }, [stringInput, zone, t])
 
   const now = new Date()
   const nowMilliseconds = now.getTime()
-  const nowFormatted = formatDateTimePattern(now)
+  let nowFormatted = ''
+  try { nowFormatted = formatInZone(nowMilliseconds, zone) } catch { /* Invalid zones are shown by the conversion panels. */ }
 
   const handleCopy = async (value: string, target: string) => {
     if (!value) return
@@ -101,21 +89,29 @@ export default function TimeConverterTool() {
 
   return (
     <div className="container mx-auto p-6 space-y-8">
+      <header className="space-y-2"><h1 className="text-3xl font-semibold">{t('name')}</h1><p className="text-sm text-muted-foreground">{t('description')}</p></header>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="space-y-2">{t('extraUnit')}<select data-testid="time-unit" className="block w-full rounded border bg-background p-2" value={unit} onChange={e => setUnit(e.target.value as TimeUnit)}><option value="milliseconds">{t('extraMilliseconds')}</option><option value="seconds">{t('extraSeconds')}</option></select></label>
+        <label className="space-y-2">{t('extraZone')}<Input data-testid="time-zone" list="time-zones" value={zone} onChange={e => setZone(e.target.value)} /><datalist id="time-zones">{TIME_ZONES.map(z => <option key={z} value={z}>{z === 'local' ? t('extraLocal') : z}</option>)}</datalist></label>
+      </div>
+      {!nowFormatted && <p role="alert" className="text-destructive">{common('error')}: {t('extraZone')}</p>}
+      <p className="text-sm text-muted-foreground">{t('extraDst')}</p>
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>{t('from_milliseconds_title')}</CardTitle>
-            <CardDescription>{t('from_milliseconds_description')}</CardDescription>
+            <CardTitle>{t('extraTimestampTitle')}</CardTitle>
+            <CardDescription>{t('extraExplicit')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="milliseconds-input">{t('milliseconds_input_label')}</Label>
+              <Label htmlFor="milliseconds-input">{t('extraUnit')}: {unit === 'seconds' ? t('extraSeconds') : t('extraMilliseconds')}</Label>
               <Input
                 id="milliseconds-input"
+                data-testid="time-timestamp"
                 inputMode="numeric"
                 value={millisecondsInput}
                 onChange={(event) => setMillisecondsInput(event.target.value)}
-                placeholder={t('milliseconds_placeholder')}
+                placeholder={unit === 'seconds' ? '1700000000' : '1700000000000'}
               />
               <p className="text-xs text-muted-foreground">
                 {t('milliseconds_hint')}
@@ -126,7 +122,7 @@ export default function TimeConverterTool() {
                 type="button"
                 variant="outline"
                 className="flex-1"
-                onClick={() => setMillisecondsInput(String(Date.now()))}
+                onClick={() => setMillisecondsInput(String(unit === 'seconds' ? Math.floor(Date.now() / 1000) : Date.now()))}
               >
                 {t('use_current_milliseconds')}
               </Button>
@@ -163,6 +159,7 @@ export default function TimeConverterTool() {
                 </div>
                 <div className="font-mono text-lg">
                   {millisecondsResult.formatted}
+                  <div data-testid="time-iso" className="text-sm">{t('extraIso')}: {new Date(millisecondsResult.value!).toISOString()}</div>
                 </div>
                 {copyTarget === 'formatted-copy' && (
                   <Badge variant="secondary" className="text-xs">
@@ -176,20 +173,21 @@ export default function TimeConverterTool() {
 
         <Card>
           <CardHeader>
-            <CardTitle>{t('from_string_title')}</CardTitle>
-            <CardDescription>{t('from_string_description')}</CardDescription>
+            <CardTitle>{t('formatted_time_label')} → {unit === 'seconds' ? t('extraSeconds') : t('extraMilliseconds')}</CardTitle>
+            <CardDescription>{t('extraInputHint')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="string-input">{t('string_input_label')}</Label>
               <Input
                 id="string-input"
+                data-testid="time-date"
                 value={stringInput}
                 onChange={(event) => setStringInput(event.target.value)}
                 placeholder="2025-01-01 12:30:00"
               />
               <p className="text-xs text-muted-foreground">
-                {t('string_hint')}
+                {t('extraInputHint')}
               </p>
             </div>
             <div className="flex gap-2">
@@ -220,20 +218,20 @@ export default function TimeConverterTool() {
               <div className="rounded-lg border p-4 space-y-3 bg-muted/40">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-muted-foreground">
-                    {t('milliseconds_output_label')}
+                    {t('extraUnit')}: {unit === 'seconds' ? t('extraSeconds') : t('extraMilliseconds')}
                   </span>
                   <Button
                     type="button"
                     size="sm"
                     variant="outline"
-                    onClick={() => handleCopy(String(stringResult.milliseconds), 'milliseconds-copy')}
+                    onClick={() => handleCopy(String(stringResult.milliseconds! / (unit === 'seconds' ? 1000 : 1)), 'milliseconds-copy')}
                   >
                     <Copy className="h-4 w-4 mr-2" />
                     {common('copy')}
                   </Button>
                 </div>
-                <div className="font-mono text-lg">
-                  {stringResult.milliseconds}
+                <div data-testid="time-result" className="font-mono text-lg">
+                  {stringResult.milliseconds / (unit === 'seconds' ? 1000 : 1)}
                 </div>
                 {stringResult.normalized && (
                   <div className="text-xs text-muted-foreground">
@@ -250,6 +248,7 @@ export default function TimeConverterTool() {
           </CardContent>
         </Card>
       </div>
+      <Card><CardHeader><CardTitle>{t('extraDifference')}</CardTitle></CardHeader><CardContent className="space-y-3"><label>{t('extraEnd')}<Input data-testid="time-end" value={endInput} onChange={e => setEndInput(e.target.value)} /></label>{difference !== null ? <output data-testid="time-difference">{difference} {t('extraMilliseconds')} / {Number(difference) / 1000} {t('extraSeconds')} / {Number(difference) / 86400000} {t('extraDays')}</output> : <p role="alert">{t('invalid_string')}</p>}</CardContent></Card>
 
       <Card className="bg-muted/40">
         <CardHeader>
@@ -289,8 +288,8 @@ export default function TimeConverterTool() {
               type="button"
               onClick={() => {
                 const updatedNow = new Date()
-                setMillisecondsInput(String(updatedNow.getTime()))
-                setStringInput(formatDateTimePattern(updatedNow))
+                setMillisecondsInput(String(unit === 'seconds' ? Math.floor(updatedNow.getTime() / 1000) : updatedNow.getTime()))
+                setStringInput(nowFormatted)
               }}
             >
               <RefreshCcw className="h-4 w-4 mr-2" />

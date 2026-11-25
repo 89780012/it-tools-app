@@ -1,0 +1,95 @@
+{
+  "tools": {
+    "markdown-preview": {
+      "name": "Markdown プレビュー",
+      "description": "Markdown を入力し、安全なリアルタイムプレビューと表エディターを利用できます。",
+      "markdown": "Markdown ソース",
+      "preview": "リアルタイムプレビュー",
+      "safeHint": "スクリプト、安全でないリンク、埋め込みメディアは削除されます。",
+      "copyMarkdown": "Markdown をコピー",
+      "downloadMarkdown": "Markdown をダウンロード",
+      "copyHtml": "HTML をコピー",
+      "downloadHtml": "HTML をダウンロード",
+      "table": "表エディター",
+      "tableHint": "先頭行は見出しです。最大 20 行、12 列まで作成できます。",
+      "rows": "行数",
+      "columns": "列数",
+      "cell": "{row} 行、{column} 列",
+      "insertTable": "表を挿入",
+      "meta": {
+        "title": "Markdown プレビュー",
+        "description": "Markdown を入力し、安全なリアルタイムプレビューと表エディターを利用できます。",
+        "keywords": "Markdown プレビュー, Markdown, HTML"
+      }
+    },
+    "css-formatter": {
+      "name": "CSS 整形",
+      "description": "インデントを設定して CSS をローカルで整形します。",
+      "source": "CSS ソース",
+      "indent": "インデント",
+      "spaces2": "スペース 2 個",
+      "spaces4": "スペース 4 個",
+      "tabs": "タブ",
+      "syntaxError": "CSS が無効です。括弧、文字列、宣言を確認してください。",
+      "meta": {
+        "title": "CSS 整形",
+        "description": "インデントを設定して CSS をローカルで整形します。",
+        "keywords": "CSS 整形, CSS"
+      }
+    },
+    "color-contrast-checker": {
+      "name": "色のコントラスト検査",
+      "description": "文字色と背景色を WCAG AA・AAA 基準で確認します。",
+      "colors": "色",
+      "foreground": "文字色 HEX",
+      "background": "背景色 HEX",
+      "picker": "{color}を選択",
+      "swap": "色を入れ替え",
+      "invalidColor": "3 桁または 6 桁の有効な HEX 色を入力してください。",
+      "result": "コントラストの結果",
+      "sampleLarge": "大きな文字の表示例",
+      "sample": "通常の文字の表示例",
+      "largeHint": "大きな文字は 24 CSS px 以上、または太字で 18.67 CSS px 以上です。",
+      "aaNormal": "AA 通常の文字",
+      "aaaNormal": "AAA 通常の文字",
+      "aaLarge": "AA 大きな文字",
+      "aaaLarge": "AAA 大きな文字",
+      "pass": "適合",
+      "fail": "不適合",
+      "meta": {
+        "title": "色のコントラスト検査",
+        "description": "文字色と背景色を WCAG AA・AAA 基準で確認します。",
+        "keywords": "色のコントラスト検査, WCAG, AA, AAA"
+      }
+    },
+    "image-compressor": {
+      "name": "画像圧縮",
+      "description": "PNG・JPEG・WebP 画像のサイズ変更とエンコードをローカルで行います。",
+      "file": "画像を選択",
+      "limits": "PNG・JPEG・WebP 対応。最大 25 MiB、3200 万画素、各辺 16384 px。",
+      "format": "出力形式",
+      "quality": "品質：{value}%",
+      "qualityHint": "品質は JPEG と WebP に適用されます。PNG は可逆圧縮です。",
+      "width": "幅（px）",
+      "height": "高さ（px）",
+      "aspect": "縦横比を維持",
+      "background": "JPEG の背景色",
+      "processing": "処理中…",
+      "compress": "画像を圧縮",
+      "sizeError": "空でない 25 MiB 以下の画像を選択してください。",
+      "dimensionsError": "各辺 1～16384 px の整数、合計 3200 万画素以下にしてください。",
+      "fileError": "読み取り可能な PNG・JPEG・WebP 画像ではありません。",
+      "encodeError": "ブラウザーで画像をエンコードできませんでした。サイズを小さくするか形式を変更してください。",
+      "original": "元の画像",
+      "compressed": "エンコード後の画像",
+      "bytes": "{value} バイト",
+      "savings": "サイズ削減：{value}%",
+      "savingsHint": "削減率が負の場合は出力のほうが大きくなっています。実際の出力形式が表示されます。",
+      "meta": {
+        "title": "画像圧縮",
+        "description": "PNG・JPEG・WebP 画像のサイズ変更とエンコードをローカルで行います。",
+        "keywords": "画像圧縮, PNG, JPEG, WebP"
+      }
+    }
+  }
+}

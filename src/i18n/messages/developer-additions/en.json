@@ -1,0 +1,50 @@
+{
+  "tools": {
+    "regex-tester": {
+      "outputTooLarge": "The replacement would exceed 1,000,000 characters. Shorten the text or replacement.",
+      "name": "Regular expression tester",
+      "description": "Test JavaScript regular expressions, inspect captures and preview replacements locally in an isolated worker.",
+      "meta": { "title": "Regular expression tester — matches and replacements", "description": "Test regex patterns and flags with highlighted matches, capture groups and replacement previews in your browser.", "keywords": "regex, regular expression, capture groups, replacement, JavaScript" },
+      "pattern": "Pattern", "patternHint": "Enter the pattern without / delimiters. Indexes use UTF-16 code units. Each run has a 1.5-second limit.",
+      "flags": "Flags", "text": "Test text", "replacement": "Replacement", "running": "Testing…",
+      "emailExample": "Email example", "numberExample": "Number example", "unicodeExample": "Unicode example",
+      "invalidPattern": "The regular expression is invalid. Check brackets, escapes and syntax supported by this browser.",
+      "invalidFlags": "Use unique JavaScript flags: d, g, i, m, s, u, v or y. Do not combine u and v.",
+      "tooLarge": "Use at most 200,000 text characters and 10,000 characters each for the pattern and replacement.",
+      "timeout": "The expression exceeded 1.5 seconds and was stopped. Simplify the pattern or shorten the text.",
+      "workerError": "The isolated regex worker could not run. Check browser support and try again.",
+      "matches": "Matches: {count}", "truncated": "Only the first 1,000 matches are displayed. The replacement preview includes all matches.",
+      "index": "Index", "match": "Match", "captures": "Capture groups", "emptyMatch": "Empty match", "replacementPreview": "Replacement preview"
+    },
+    "jwt-decoder": {
+      "name": "JWT decoder", "description": "Decode JWT headers and payloads, inspect time claims and optionally verify HS256 with a local secret.",
+      "meta": { "title": "JWT decoder — inspect claims and HS256 signatures", "description": "Decode Base64URL JWT data locally, read expiration dates and optionally verify HS256 signatures without uploading tokens.", "keywords": "JWT, decoder, JSON web token, HS256, expiration, signature" },
+      "token": "JWT token", "decode": "Decode", "header": "Header", "payload": "Payload", "claims": "Time claims",
+      "unverified": "Signature not verified.", "verified": "HS256 signature matches the supplied secret.", "invalidSignature": "The signature does not match the supplied secret.",
+      "trustHint": "Decoding does not establish authenticity. A matching signature alone does not validate issuer, audience or all application requirements.",
+      "invalidToken": "Enter a JWT with exactly three segments, canonical Base64URL data and UTF-8 JSON objects for its header and payload. Only alg:none may have an empty signature.",
+      "noClaims": "No exp, iat or nbf claims are present.", "exp": "Expiration (exp)", "iat": "Issued at (iat)", "nbf": "Not before (nbf)",
+      "expired": "Expired", "active": "Time condition satisfied", "future": "In the future", "issued": "Issued", "invalidDate": "Invalid numeric timestamp",
+      "verifyTitle": "Optional HS256 verification", "secret": "Local secret", "secretHint": "Used only in memory in this page. Tokens and secrets are never saved or sent.",
+      "verify": "Verify HS256", "verifying": "Verifying…", "unsupportedAlgorithm": "Verification supports only HS256 tokens without critical or b64 header extensions.",
+      "secretRequired": "Enter the secret used to sign this token.", "cryptoUnavailable": "This browser cannot use Web Crypto here. Open the tool over HTTPS or localhost.", "verificationError": "The signature could not be checked. Review the token and try again."
+    },
+    "text-diff": {
+      "name": "Text diff", "description": "Compare two texts or local files with line and word highlights, and download a unified diff.",
+      "meta": { "title": "Text diff — compare text and files", "description": "Compare text side by side or in unified view, highlight word changes, ignore whitespace and download a patch locally.", "keywords": "text diff, compare files, unified diff, word changes, patch" },
+      "left": "Original text", "right": "Updated text", "importLeft": "Import original file", "importRight": "Import updated file",
+      "sideBySide": "Side by side", "unified": "Unified view", "wordChanges": "Highlight word changes", "ignoreWhitespace": "Ignore horizontal whitespace",
+      "whitespaceHint": "Whitespace mode trims each line and collapses spaces and tabs in both the view and download. Line breaks remain significant. CRLF is normalized to LF.",
+      "identical": "The texts are identical with the current options.", "different": "The texts differ.", "downloadDiff": "Download unified diff",
+      "tooLarge": "Use up to 100,000 characters in total and fewer lines. This comparison exceeds the safe processing limit.", "fileError": "The local file could not be read. Choose a text file and try again."
+    },
+    "json-to-types": {
+      "name": "JSON to types", "description": "Generate TypeScript interfaces or Go structs from JSON, including nested objects and heterogeneous arrays.",
+      "meta": { "title": "JSON to TypeScript interfaces and Go structs", "description": "Generate types from JSON with merged array objects, optional properties, nullable values and collision-safe names.", "keywords": "JSON, TypeScript, interfaces, Go structs, type generator" },
+      "language": "Output language", "typescript": "TypeScript", "go": "Go", "rootName": "Root type name", "rootHint": "Names are converted to valid identifiers and made unique automatically.", "json": "JSON input", "generated": "Generated types",
+      "inferenceHint": "Types describe this sample. Objects in arrays are merged; absent keys become optional. Empty arrays use unknown elements.",
+      "goHint": "Go uses any for mixed types, null and empty arrays, pointers for nullable or optional values, and float64 for numbers. JSON tags preserve supported keys; keys Go cannot represent produce an error.",
+      "invalidJson": "Enter valid JSON with finite numbers.", "tooDeep": "The JSON is too deeply nested. Use at most 80 nesting levels.", "tooLarge": "Use at most 200,000 JSON characters.", "goKey": "A property name cannot be represented faithfully by a Go JSON struct tag. Use TypeScript, or rename empty, dash-only, comma, quote, backslash, control or unsupported symbol keys."
+    }
+  }
+}
