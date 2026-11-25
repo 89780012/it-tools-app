@@ -98,7 +98,7 @@ export default function JsonToCsvPage() {
       csvLines.push(headers.map(header => escapeCSV(header)).join(','))
 
       flattenedRows.forEach(row => {
-        const values = headers.map(header => escapeCSV(row[header] || ''))
+        const values = headers.map(header => escapeCSV(row[header] ?? ''))
         csvLines.push(values.join(','))
       })
 

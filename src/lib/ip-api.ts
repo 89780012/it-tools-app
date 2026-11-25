@@ -321,7 +321,7 @@ export function formatIPInfoText(info: IPInfo): string {
   if (info.regionName) lines.push(`地区: ${info.regionName}`);
   if (info.city) lines.push(`城市: ${info.city}`);
   if (info.zip) lines.push(`邮政编码: ${info.zip}`);
-  if (info.lat && info.lon) lines.push(`坐标: ${info.lat}, ${info.lon}`);
+  if (info.lat != null && info.lon != null) lines.push(`坐标: ${info.lat}, ${info.lon}`)
   if (info.timezone) lines.push(`时区: ${info.timezone}`);
   if (info.isp) lines.push(`ISP: ${info.isp}`);
   if (info.org) lines.push(`组织: ${info.org}`);

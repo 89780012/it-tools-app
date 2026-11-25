@@ -136,13 +136,6 @@ export default function IPLookupTool() {
       <ToolSEOSection toolId="ip-lookup" />
 
       {/* 移动端单列布局优化 */}
-      <style jsx>{`
-        @media (max-width: 1023px) {
-          .grid-cols-1.lg\\:grid-cols-2 {
-            grid-template-columns: 1fr;
-          }
-        }
-      `}</style>
     </div>
   );
 }

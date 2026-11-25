@@ -1,32 +1,16 @@
-'use server';
+import { defaultLocale, type Locale } from './config'
 
-import { cookies, headers } from 'next/headers';
+const COOKIE_NAME = 'IT_TOOLS_LOCALE'
 
-import { defaultLocale, Locale } from '@/i18n/config';
-
-// In this example the locale is read from a cookie. You could alternatively
-// also read it from a database, backend service, or any other source.
-const COOKIE_NAME = 'NEXT_LOCALE';
-
-export async function getLocale() {
-  // 1. Prefer locale from request header (set by next-intl based on URL like /zh)
-  const headerStore = await headers();
-  const headerLocale = headerStore.get('x-next-intl-locale') as Locale | null;
-  if (headerLocale) {
-    console.log('current get locale from header:', headerLocale, 'default locale:', defaultLocale);
-    return headerLocale;
-  }
-
-  // 2. Fallback to cookie
-  const cookieStore = await cookies();
-  const cookieLocale = cookieStore.get(COOKIE_NAME)?.value as Locale | undefined;
-  console.log('current get locale from cookie:', cookieLocale, 'default locale:', defaultLocale);
-
-  // 3. Finally fallback to defaultLocale
-  return cookieLocale || defaultLocale;
+export async function getLocale(): Promise<Locale> {
+  if (typeof window === 'undefined') return defaultLocale
+  const fromStorage = localStorage.getItem(COOKIE_NAME)
+  return (fromStorage || document.documentElement.lang || defaultLocale) as Locale
 }
 
 export async function setLocale(locale: Locale) {
-   console.log("current set locale :" , locale);
-  (await cookies()).set(COOKIE_NAME, locale);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(COOKIE_NAME, locale)
+    document.cookie = `${COOKIE_NAME}=${locale}; Path=/; Max-Age=31536000; SameSite=Lax`
+  }
 }

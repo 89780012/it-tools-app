@@ -105,8 +105,28 @@ export function detectDifferences(
   sourceFlat: FlatEntry[],
   targetFlat: FlatEntry[]
 ): Pick<DiffResult, 'stats' | 'details'> {
-  const sourceMap = new Map(sourceFlat.map(e => [e.path, e]))
-  const targetMap = new Map(targetFlat.map(e => [e.path, e]))
+  const sourceMap = new Map(sourceFlat.map(entry => [entry.path, entry]))
+  const targetMap = new Map(targetFlat.map(entry => [entry.path, entry]))
+  const sourceCommonIndex = new Map(
+    sourceFlat.filter(entry => targetMap.has(entry.path)).map((entry, index) => [entry.path, index] as const)
+  )
+  const targetCommonIndex = new Map(
+    targetFlat.filter(entry => sourceMap.has(entry.path)).map((entry, index) => [entry.path, index] as const)
+  )
+  const targetIndexByPath = new Map(targetFlat.map((entry, index) => [entry.path, index] as const))
+  const commonTargetPositions = [...sourceCommonIndex.keys()].map(path => targetCommonIndex.get(path)!)
+  const maxTargetIndexBefore: number[] = []
+  const minTargetIndexAfter: number[] = Array(commonTargetPositions.length)
+  let maxTargetIndex = -1
+  for (const position of commonTargetPositions) {
+    maxTargetIndexBefore.push(maxTargetIndex)
+    maxTargetIndex = Math.max(maxTargetIndex, position)
+  }
+  let minTargetIndex = Number.POSITIVE_INFINITY
+  for (let index = commonTargetPositions.length - 1; index >= 0; index -= 1) {
+    minTargetIndexAfter[index] = minTargetIndex
+    minTargetIndex = Math.min(minTargetIndex, commonTargetPositions[index])
+  }
 
   const details: DiffDetail[] = []
   const missingKeys: string[] = []
@@ -126,9 +146,14 @@ export function detectDifferences(
         sourceValue: sourceEntry.value
       })
     } else {
-      // 检查顺序
-      const targetIndex = targetFlat.findIndex(t => t.path === sourceEntry.path)
-      if (targetIndex !== sourceIndex) {
+      const commonIndex = sourceCommonIndex.get(sourceEntry.path)!
+      const commonTargetPosition = targetCommonIndex.get(sourceEntry.path)!
+      const targetIndex = targetIndexByPath.get(sourceEntry.path)!
+      const hasOrderDiff =
+        commonTargetPosition < maxTargetIndexBefore[commonIndex] ||
+        commonTargetPosition > minTargetIndexAfter[commonIndex]
+
+      if (hasOrderDiff) {
         orderDiffCount++
         details.push({
           type: 'order-diff',

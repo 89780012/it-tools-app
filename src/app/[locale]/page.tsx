@@ -9,23 +9,12 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Search, Heart } from "lucide-react"
 import { Link } from "@/i18n/navigation"
-import * as LucideIcons from "lucide-react"
+import { toolIconMap } from "@/components/app-sidebar"
 
-// Dynamic icon component
 function DynamicIcon({ name, className }: { name?: string; className?: string }) {
   if (!name) return null
-
-  // Convert kebab-case to PascalCase
-  const iconName = name
-    .split('-')
-    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-    .join('') as keyof typeof LucideIcons
-
-  const IconComponent = LucideIcons[iconName] as React.ComponentType<{ className?: string }>
-
-  if (!IconComponent) return null
-
-  return <IconComponent className={className} />
+  const IconComponent = toolIconMap[name as keyof typeof toolIconMap]
+  return IconComponent ? <IconComponent className={className} /> : null
 }
 
 export default function Home() {

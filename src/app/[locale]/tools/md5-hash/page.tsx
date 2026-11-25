@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from 'next-intl'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
+import CryptoJS from 'crypto-js'
 
 export default function MD5HashPage() {
   const t = useTranslations();
@@ -23,7 +24,7 @@ export default function MD5HashPage() {
 
     try {
       // MD5 implementation using crypto-js algorithm
-      const md5Hash = await calculateMD5(input)
+      const md5Hash = CryptoJS.MD5(input).toString()
       setOutput(md5Hash)
     } catch (error) {
       console.error('MD5 generation failed:', error)
@@ -31,22 +32,6 @@ export default function MD5HashPage() {
     }
   }
 
-  // MD5 implementation
-  const calculateMD5 = async (text: string): Promise<string> => {
-    // Simple MD5 implementation using browser crypto (fallback)
-    // Note: For production, consider using crypto-js library
-    const encoder = new TextEncoder()
-    const data = encoder.encode(text)
-    
-    // Since Web Crypto API doesn't support MD5, we'll use a simple hash as placeholder
-    // In production, you should use crypto-js for proper MD5
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data)
-    const hashArray = Array.from(new Uint8Array(hashBuffer))
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
-    
-    // This is a placeholder - replace with actual MD5 when crypto-js is available
-    return hashHex.substring(0, 32) // MD5 is 32 characters
-  }
 
   const copyToClipboard = async () => {
     if (output) {

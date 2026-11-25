@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IT Tools Collection
 
-## Getting Started
+A multilingual online toolbox for developers. The application now uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.22+** API server. Existing tool pages and the full translation catalog are retained.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20+
+- npm 10+
+- Go 1.22+
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev:full
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Vite frontend: http://localhost:5173
+- Go API: http://localhost:8080/api/health
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Run only one side with `npm run dev` or `npm run dev:api`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production build and run
 
-## Learn More
+```bash
+npm run build
+cd backend
+go run .
+```
 
-To learn more about Next.js, take a look at the following resources:
+The build creates the `dist/` static application, one localized HTML entry per language/tool route, and an updated sitemap. The Go service automatically serves `dist/` (or `../dist` when launched from `backend/`) when available, serves `/api/*` from the API handlers, and falls back to the SPA entry for client-side routes. Set `WEB_DIST_DIR` to use another static directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For a static host, deploy `dist/`, configure its SPA/static-directory fallback, and route `/api/*` to the Go service. Set `SEO_SITE_URL` during build if the canonical production origin differs from `https://www.toolkitpub.com`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Languages and SEO
 
-## Deploy on Vercel
+The existing 12 locale resources remain in `src/i18n/messages/` (`zh`, `en`, `es`, `de`, `fr`, `it`, `pt`, `ru`, `ja`, `ko`, `ar`, `hi`). English remains the default without a URL prefix; the other locales use `/{locale}/...`. Arabic pages set RTL direction.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Tool titles, descriptions, and **Keywords** continue to come from each locale's `tools.<tool-id>.meta` message. The build-time generator writes localized page titles, descriptions, keyword meta tags, canonical URLs, hreflang links, and sitemap entries to static HTML so crawlers receive locale-specific metadata before JavaScript runs. The client also updates metadata during in-app navigation.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Go API configuration
+
+- `PORT` (default `8080`)
+- `ALLOWED_ORIGINS` (comma-separated exact origins; default `http://localhost:5173`)
+- `I18N_TRANSLATE_API_URL`
+- `I18N_TRANSLATE_API_KEY`
+- `I18N_TRANSLATE_API_MODEL`
+- `WEB_DIST_DIR` (optional static directory)
+
+The API exposes `GET /api/health`, `POST /api/proxy`, `POST /api/i18n-translate`, and `POST /api/detect-language`. Translation/detection return HTTP 503 until their API settings are provided. The proxy only allows public HTTP(S) targets and applies request, response, and timeout limits. See [backend/README.md](backend/README.md) for endpoint details.
+
+## Verification
+
+```bash
+npm run build
+npm run test:run
+npm run test:api
+```
+
+`components.json` is configured for client-side shadcn/ui components; shared components are in `src/components/ui/`.

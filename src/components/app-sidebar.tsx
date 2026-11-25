@@ -56,7 +56,7 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar"
 
-const toolIconMap = {
+export const toolIconMap = {
   code: Code,
   table: Table,
   "file-text": FileText,
