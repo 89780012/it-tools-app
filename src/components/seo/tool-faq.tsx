@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, memo } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ChevronDown, ChevronRight } from "lucide-react"

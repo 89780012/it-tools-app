@@ -61,7 +61,10 @@ let checked = 0
 const failures = []
 for (const locale of locales) {
   const messages = JSON.parse(fs.readFileSync(path.join(upstream, 'src/i18n/messages', `${locale}.json`), 'utf8'))
-  assert.deepEqual(JSON.parse(fs.readFileSync(`src/i18n/messages/${locale}.json`, 'utf8')), messages, `${locale} messages differ`)
+  const currentMessages = JSON.parse(fs.readFileSync(`src/i18n/messages/${locale}.json`, 'utf8'))
+  // The homepage technology description intentionally reflects the migrated stack.
+  assert.equal(currentMessages.home.high_performance_desc, messages.home.high_performance_desc.replace('Next.js', 'React'), `${locale} technology description differs`)
+  assert.deepEqual({ ...currentMessages, home: { ...currentMessages.home, high_performance_desc: messages.home.high_performance_desc } }, messages, `${locale} messages differ`)
   const root = await extract('src/app/[locale]/layout.tsx', locale, messages)
   for (const route of ['/', '/changelog', ...toolIds.map(id => `/tools/${id}`)]) {
     const pathname = `${locale === 'en' ? '' : `/${locale}`}${route === '/' ? '' : route}` || '/'

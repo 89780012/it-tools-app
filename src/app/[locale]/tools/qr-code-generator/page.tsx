@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { QRCodeSVG, QRCodeCanvas } from 'qrcode.react'
 

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { MULTICOLOR_TEMPLATES, TEMPLATE_CATEGORIES } from "@/lib/icon-templates"
 import { ICON_LIBRARY, ICON_CATEGORIES, type IconItem } from "@/lib/icon-library"

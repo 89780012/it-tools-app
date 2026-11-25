@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { cn, getTextareaClasses } from "@/lib/utils"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function RsaEncryptDecryptPage() {

@@ -78,7 +78,7 @@ export async function auditLocaleInteraction(nextLocale) {
     const messages = (await import(`/src/i18n/messages/${locale}.json`)).default
     const title = document.title
     const heading = document.querySelector('main main h1')?.textContent
-    const localizedTitle = title === messages.tools['json-to-toml'].meta.title
+    const localizedTitle = title === `${messages.tools['json-to-toml'].meta.title} - IT Tools Collection`
     input(JSON.stringify(sample))
     const toml = await convert()
     await go('toml-to-json')

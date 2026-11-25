@@ -81,7 +81,7 @@
     "multilingual": "Support multilingue",
     "multilingual_desc": "Prend en charge les interfaces chinois et anglais, répondant aux préférences linguistiques des différents utilisateurs.",
     "high_performance": "Haute performance",
-    "high_performance_desc": "Basé sur Next.js et TypeScript, offrant une expérience utilisateur rapide et réactive.",
+    "high_performance_desc": "Basé sur React et TypeScript, offrant une expérience utilisateur rapide et réactive.",
     "privacy_protection": "Protection de la vie privée",
     "privacy_protection_desc": "Tous les outils s'exécutent côté client, assurant votre confidentialité et sécurité des données.",
     "categories_subtitle": "Parcourez toutes les catégories et fonctionnalités des outils disponibles.",

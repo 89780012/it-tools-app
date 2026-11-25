@@ -90,3 +90,16 @@ npm run test:api
 ```
 
 `components.json` is configured for client-side shadcn/ui components; shared components are in `src/components/ui/`.
+
+## 线上仍出现 Application error 时
+
+当前应用部署后应加载 `/assets/` 下的 Vite 资源，并可访问 Go 服务的 `/api/health`。若页面仍加载 `/_next/static/`、包含 `self.__next_f` 或返回 `X-Powered-By: Next.js`，说明域名仍指向旧部署，或代理/CDN 正在提供旧 HTML。
+
+1. 在服务器检出当前版本，运行 `bash deploy.sh`，确认新容器健康。
+2. 从服务器直接访问应用端口，确认首页引用 `/assets/`，并检查 `/api/health`。
+3. 将域名反向代理上游切到 Compose 的 `APP_PORT`，清除 Cloudflare/CDN 中旧首页和语言页面的 HTML 缓存。
+4. 从公开域名重新检查首页、工具深层链接和语言切换。Go 服务对 HTML 设置 `Cache-Control: no-cache, max-age=0, must-revalidate` 和 `CDN-Cache-Control: no-store`；对 Vite `/assets/` 中的哈希资源设置一年 `immutable` 缓存。Cloudflare 缓存规则和反向代理必须尊重这些响应头，移除覆盖 HTML 的固定一天缓存策略。已有旧缓存需单独清除。
+
+仅更新本地代码或通过浏览器强制刷新，无法替换服务器上的旧应用，也无法保证绕过 CDN 缓存。
+
+可临时在 URL 添加唯一查询参数，对比 `CF-Cache-Status: HIT` 的旧 HTML 与 `MISS` 的新 HTML；这是排查方法，正式修复仍需清缓存并更新缓存规则。

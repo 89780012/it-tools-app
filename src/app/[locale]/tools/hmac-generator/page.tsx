@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { getTextareaClasses } from "@/lib/utils"
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/compat';
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 export default function HmacGeneratorPage() {

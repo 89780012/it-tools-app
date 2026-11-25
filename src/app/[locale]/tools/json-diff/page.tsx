@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/compat"
 import { ToolContainer } from "@/components/tool-container"
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { Button } from "@/components/ui/button"

@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 
 import { Button } from "@/components/ui/button"
 import {

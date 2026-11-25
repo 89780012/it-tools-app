@@ -1,7 +1,7 @@
 "use client"
 
 import { Languages } from "lucide-react"
-import { useLocale } from 'next-intl';
+import { useLocale } from '@/i18n/compat';
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,7 +12,7 @@ import {
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { setLocale } from '@/i18n/index';
 import { Locale } from '@/i18n/config';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/compat';
 
 export function LanguageToggle() {
   const router = useRouter()
@@ -23,10 +23,10 @@ export function LanguageToggle() {
   const switchLocale = async (newLocale: Locale) => {
     if (newLocale === locale) return;
 
-    // 更新服务器端的语言设置
+    // 保存浏览器语言偏好
     await setLocale(newLocale);
 
-    // 使用 next-intl 的路由器进行导航，它会自动处理语言前缀
+    // 本地化 React Router 导航自动处理语言前缀
     router.push(pathname, { locale: newLocale });
     router.refresh();
   }

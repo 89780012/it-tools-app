@@ -1,6 +1,6 @@
 import { getLocalizedChangelogData } from "@/lib/changelog-data";
 import { Timeline } from "@/components/changelog/timeline";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations, useLocale } from "@/i18n/compat";
 import { Clock, GitBranch } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 

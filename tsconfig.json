@@ -15,13 +15,9 @@
     "types": ["vite/client", "vitest/globals"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "next-intl": ["./src/compat/next-intl.ts"],
-      "next-intl/server": ["./src/compat/next-intl-server.ts"],
-      "next/image": ["./src/compat/next-image.tsx"],
-      "next/link": ["./src/compat/next-link.tsx"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "vitest.config.ts", "vitest.setup.ts"],
-  "exclude": ["node_modules", "dist", "src/app/api", "src/app/**/layout.tsx", "src/app/layout.tsx", "src/i18n/request.ts", "src/middleware.ts"]
+  "exclude": ["node_modules", "dist"]
 }

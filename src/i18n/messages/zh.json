@@ -81,7 +81,7 @@
     "multilingual": "🌐 多语言支持",
     "multilingual_desc": "支持中文和英文界面，满足不同用户的语言偏好",
     "high_performance": "⚡ 高性能",
-    "high_performance_desc": "基于 Next.js 和 TypeScript，提供快速响应的用户体验",
+    "high_performance_desc": "基于 React 和 TypeScript，提供快速响应的用户体验",
     "privacy_protection": "🔒 隐私保护",
     "privacy_protection_desc": "所有工具都在客户端运行，确保您的数据隐私和安全",
     "categories_subtitle": "浏览所有可用的工具类别和功能",

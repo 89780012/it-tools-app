@@ -134,6 +134,14 @@ func spaHandler(api http.Handler, webDir string) http.Handler {
 			http.NotFound(w, r)
 			return
 		}
+		// HTML must not outlive its asset manifest across deployments.
+		w.Header().Set("Cache-Control", "no-cache, max-age=0, must-revalidate")
+		if strings.EqualFold(filepath.Ext(target), ".html") {
+			w.Header().Set("CDN-Cache-Control", "no-store")
+		} else if strings.HasPrefix(relative, "assets/") {
+			// Vite fingerprints every generated asset in this directory.
+			w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+		}
 		http.ServeContent(w, r, info.Name(), info.ModTime(), file)
 	})
 }

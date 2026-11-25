@@ -1,13 +1,12 @@
 "use client"
 
 import { useState, useRef } from "react"
-import Image from "next/image"
 import { Copy, Download, Upload, RefreshCw, FileCode, Image as ImageIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { cn, getTextareaClasses } from "@/lib/utils"
 
@@ -226,7 +225,7 @@ export default function Base64ImageConverterPage() {
     return (
       <div className="space-y-3">
         <div className="border rounded-lg p-2">
-          <Image
+          <img
             src={URL.createObjectURL(selectedImage)}
             alt="预览"
             width={300}
@@ -424,7 +423,7 @@ export default function Base64ImageConverterPage() {
                   {convertedImageUrl ? (
                     <div className="text-center space-y-4 w-full">
                       <div className="max-h-[60vh] max-w-full overflow-auto rounded bg-white p-2">
-                        <Image
+                        <img
                           src={convertedImageUrl}
                           alt="转换结果"
                           width={800}

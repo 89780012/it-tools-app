@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 
 interface ColorValues {

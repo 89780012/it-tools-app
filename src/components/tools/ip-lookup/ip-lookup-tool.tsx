@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from '@/i18n/compat';
 import { IPInfo, IPAPIError, getIPInfo } from '@/lib/ip-api';
 import IPInputSection from './ip-input-section';
 import IPResultSection from './ip-result-section';

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { getTextareaClasses } from "@/lib/utils"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import * as TOML from '@iarna/toml'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 

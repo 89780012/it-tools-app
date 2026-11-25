@@ -3,7 +3,7 @@
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/compat"
 
 interface BackToHomeProps {
   className?: string

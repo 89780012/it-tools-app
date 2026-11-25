@@ -1,6 +1,6 @@
 "use client"
 
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 

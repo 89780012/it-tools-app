@@ -1,6 +1,6 @@
 "use client"
 
-import { useTranslations } from "next-intl"
+import { useTranslations } from "@/i18n/compat"
 import { useState, useMemo, useEffect, useCallback } from "react"
 import {
   Card,

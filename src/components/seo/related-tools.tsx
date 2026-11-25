@@ -1,11 +1,11 @@
 "use client"
 
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { toolsConfig } from "@/lib/tools-config"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { ExternalLink } from "lucide-react"
 
 interface RelatedToolsProps {
@@ -30,7 +30,6 @@ const availableTools = [
 
 export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsProps) {
   const t = useTranslations()
-  const locale = useLocale()
 
   // 找到当前工具所属的分类
   const currentTool = toolsConfig
@@ -70,9 +69,6 @@ export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsP
     return null
   }
 
-  const getToolPath = (path: string) => {
-    return locale === 'en' ? path : `/${locale}${path}`
-  }
 
   return (
     <Card className={className}>
@@ -87,7 +83,7 @@ export function RelatedTools({ toolId, className, maxItems = 50 }: RelatedToolsP
           {relatedTools.map((tool) => (
             <Link
               key={tool.id}
-              href={getToolPath(tool.path)}
+              href={tool.path}
               className="group"
             >
               <div className="p-4 border rounded-lg hover:border-primary transition-colors h-full flex flex-col">

@@ -2,7 +2,6 @@
 
 import { useState, useRef, useCallback } from "react"
 import { Upload, Download, Image as ImageIcon, Settings, Eye, RotateCcw } from "lucide-react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -10,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/i18n/compat'
 import { ToolSEOSection } from "@/components/seo/tool-seo-section"
 import { useToast } from "@/hooks/use-toast"
 
@@ -726,13 +725,12 @@ export default function ImageToDotMatrixPage() {
               </CardHeader>
               <CardContent>
                 <div className="border rounded-lg overflow-hidden bg-muted/20 relative">
-                  <Image 
-                    src={URL.createObjectURL(imageFile)} 
-                    alt="Original Preview" 
+                  <img
+                    src={URL.createObjectURL(imageFile)}
+                    alt="Original Preview"
                     width={image?.width || 500}
                     height={image?.height || 500}
                     className="w-full h-auto object-contain"
-                    unoptimized
                   />
                 </div>
               </CardContent>
