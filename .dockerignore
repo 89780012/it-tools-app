@@ -1,0 +1,17 @@
+.git
+node_modules
+dist
+build
+out
+.next
+coverage
+.env
+.env.*
+*.pem
+*.key
+*.log
+*.tsbuildinfo
+backend/it-tools-backend
+backend/*.exe
+.pi
+.vscode

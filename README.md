@@ -20,6 +20,38 @@ npm run dev:full
 
 Run only one side with `npm run dev` or `npm run dev:api`.
 
+## Linux Docker 一键部署
+
+服务器安装并启动 Docker Engine 和 Docker Compose v2 后，在项目根目录执行。无需在宿主机安装 Node.js 或 Go，首次构建需要能够下载基础镜像和 npm 依赖。
+
+```bash
+cp .env.example .env
+vi .env
+bash deploy.sh
+```
+
+在 `.env` 中把实际访问地址加入 `ALLOWED_ORIGINS`，否则从服务器 IP 或其他域名发出的 API 请求可能被拒绝。例如服务器通过 `http://203.0.113.10:8080` 访问时：
+
+```dotenv
+APP_PORT=8080
+ALLOWED_ORIGINS=http://203.0.113.10:8080,https://www.toolkitpub.com
+```
+
+启动成功后访问 `http://服务器IP:8080`；健康检查地址为 `/api/health`。如果服务器防火墙启用，需要放行对应宿主机端口。使用 HTTPS 反向代理时，将公开域名加入 `ALLOWED_ORIGINS`；若代理就在宿主机上，可设置 `APP_BIND_ADDRESS=127.0.0.1`。修改端口后应同步调整允许来源中的端口，来源不带末尾 `/`。
+
+```bash
+bash deploy.sh          # 构建/更新镜像，后台启动，等待健康检查通过
+bash deploy.sh status   # 查看容器状态
+bash deploy.sh logs     # 持续查看日志
+bash deploy.sh down     # 停止并移除本项目容器和网络
+```
+
+也可直接运行 `docker compose up -d --build --wait --wait-timeout 120`。代码更新后重新执行 `bash deploy.sh` 即可；构建失败时脚本返回非零退出码，启动失败时显示容器状态与最近日志。若当前用户没有 Docker 权限，可使用 `sudo bash deploy.sh`。
+
+`Dockerfile` 分别构建前端和 Go，前端构建包含 552 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+
+翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
+
 ## Production build and run
 
 ```bash
