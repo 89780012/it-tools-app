@@ -7,19 +7,27 @@ type LocaleValue = { locale: Locale; messages: Messages }
 const dictionaryLoaders = import.meta.glob('./messages/*.json', { import: 'default' }) as Record<string, () => Promise<Messages>>
 const LocaleContext = createContext<LocaleValue>({ locale: defaultLocale, messages: enMessages })
 
-export function LocaleProvider({ locale, children }: { locale: Locale; children: React.ReactNode }) {
-  const [messages, setMessages] = useState<Messages>(locale === defaultLocale ? enMessages : enMessages)
+const dictionaryCache = new Map<Locale, Messages>([[defaultLocale, enMessages]])
+export async function loadLocaleMessages(locale: Locale): Promise<Messages> {
+  const cached = dictionaryCache.get(locale)
+  if (cached) return cached
+  const loader = dictionaryLoaders[`./messages/${locale}.json`]
+  const messages = loader ? await loader() : enMessages
+  dictionaryCache.set(locale, messages)
+  return messages
+}
+
+export function LocaleProvider({ locale, children, initialMessages }: { locale: Locale; children: React.ReactNode; initialMessages?: Messages }) {
+  const [loaded, setLoaded] = useState(() => ({ locale, messages: initialMessages ?? dictionaryCache.get(locale) }))
   useEffect(() => {
-    if (locale === defaultLocale) {
-      setMessages(enMessages)
-      return
-    }
-    const loader = dictionaryLoaders[`./messages/${locale}.json`]
-    if (loader) void loader().then(setMessages).catch(() => setMessages(enMessages))
-    else setMessages(enMessages)
-  }, [locale])
-  const value = useMemo(() => ({ locale, messages }), [locale, messages])
-  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
+    if (initialMessages || dictionaryCache.has(locale)) return
+    let active = true
+    void loadLocaleMessages(locale).then(messages => { if (active) setLoaded({ locale, messages }) }).catch(() => { if (active) setLoaded({ locale, messages: enMessages }) })
+    return () => { active = false }
+  }, [locale, initialMessages])
+  const messages = initialMessages ?? dictionaryCache.get(locale) ?? (loaded.locale === locale ? loaded.messages : undefined)
+  const value = useMemo(() => ({ locale, messages: messages ?? enMessages }), [locale, messages])
+  return messages ? <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider> : null
 }
 
 export function useLocale(): Locale {

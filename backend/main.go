@@ -99,19 +99,42 @@ func spaHandler(api http.Handler, webDir string) http.Handler {
 			api.ServeHTTP(w, r)
 			return
 		}
-		relative := strings.TrimPrefix(path.Clean("/"+r.URL.Path), "/")
-		target := filepath.Join(root, filepath.FromSlash(relative))
-		if info, statErr := os.Stat(target); statErr == nil {
-			if info.IsDir() {
-				target = filepath.Join(target, "index.html")
-				if index, indexErr := os.Stat(target); indexErr != nil || index.IsDir() {
-					target = filepath.Join(root, "index.html")
-				}
+		if r.URL.Path != "/" && strings.HasSuffix(r.URL.Path, "/") {
+			destination := strings.TrimRight(r.URL.Path, "/")
+			if r.URL.RawQuery != "" {
+				destination += "?" + r.URL.RawQuery
 			}
-			http.ServeFile(w, r, target)
+			http.Redirect(w, r, destination, http.StatusPermanentRedirect)
 			return
 		}
-		http.ServeFile(w, r, filepath.Join(root, "index.html"))
+		if r.URL.Path == "/en" || strings.HasPrefix(r.URL.Path, "/en/") {
+			destination := strings.TrimPrefix(r.URL.Path, "/en")
+			if destination == "" {
+				destination = "/"
+			}
+			if r.URL.RawQuery != "" {
+				destination += "?" + r.URL.RawQuery
+			}
+			http.Redirect(w, r, destination, http.StatusTemporaryRedirect)
+			return
+		}
+		relative := strings.TrimPrefix(path.Clean("/"+r.URL.Path), "/")
+		target := filepath.Join(root, filepath.FromSlash(relative))
+		if info, statErr := os.Stat(target); statErr == nil && info.IsDir() {
+			target = filepath.Join(target, "index.html")
+		}
+		file, openErr := os.Open(target)
+		if openErr != nil {
+			http.NotFound(w, r)
+			return
+		}
+		defer file.Close()
+		info, statErr := file.Stat()
+		if statErr != nil || info.IsDir() {
+			http.NotFound(w, r)
+			return
+		}
+		http.ServeContent(w, r, info.Name(), info.ModTime(), file)
 	})
 }
 func newHandler(cfg config) http.Handler {

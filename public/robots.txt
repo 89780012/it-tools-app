@@ -1,4 +1,12 @@
-# IT Tools static app/API configuration
+# IT工具集合 - SEO 优化的 robots.txt
 User-agent: *
 Allow: /
+
+# 主站点URL
+Host: https://www.toolkitpub.com
+
+# 多语言站点地图
 Sitemap: https://www.toolkitpub.com/sitemap.xml
+Sitemap: https://www.toolkitpub.com/sitemap-en.xml
+Sitemap: https://www.toolkitpub.com/sitemap-zh.xml
+Sitemap: https://www.toolkitpub.com/sitemap-hi.xml

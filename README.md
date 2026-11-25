@@ -28,15 +28,15 @@ cd backend
 go run .
 ```
 
-The build creates the `dist/` static application, one localized HTML entry per language/tool route, and an updated sitemap. The Go service automatically serves `dist/` (or `../dist` when launched from `backend/`) when available, serves `/api/*` from the API handlers, and falls back to the SPA entry for client-side routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 552 prerendered pages (44 tools, home and changelog in 12 languages), including complete initial HTML and metadata. Upstream robots.txt and all 13 sitemap XML files are retained. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
-For a static host, deploy `dist/`, configure its SPA/static-directory fallback, and route `/api/*` to the Go service. Set `SEO_SITE_URL` during build if the canonical production origin differs from `https://www.toolkitpub.com`.
+For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 
 ## Languages and SEO
 
 The existing 12 locale resources remain in `src/i18n/messages/` (`zh`, `en`, `es`, `de`, `fr`, `it`, `pt`, `ru`, `ja`, `ko`, `ar`, `hi`). English remains the default without a URL prefix; the other locales use `/{locale}/...`. Arabic pages set RTL direction.
 
-Tool titles, descriptions, and **Keywords** continue to come from each locale's `tools.<tool-id>.meta` message. The build-time generator writes localized page titles, descriptions, keyword meta tags, canonical URLs, hreflang links, and sitemap entries to static HTML so crawlers receive locale-specific metadata before JavaScript runs. The client also updates metadata during in-app navigation.
+SEO metadata follows upstream Next.js layout/page inheritance, including title templates, canonical URLs, hreflang exceptions, Open Graph, Twitter, robots directives and site verification. Tool and changelog translations are unchanged. The build prerenders existing React components so crawlers receive content and internal links before JavaScript runs; the client uses the same metadata rules during navigation. See [SEO parity audit](docs/seo-parity-audit.md) for the reference revision, retained upstream issues and the full comparison command.
 
 ## Go API configuration
 

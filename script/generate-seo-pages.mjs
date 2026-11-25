@@ -1,79 +1,47 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { createServer } from 'vite'
 
 const dist = path.resolve('dist')
-const sourceHtml = await fs.readFile(path.join(dist, 'index.html'), 'utf8')
-const localeFiles = (await fs.readdir('src/i18n/messages')).filter((file) => file.endsWith('.json'))
-const locales = localeFiles.map((file) => path.basename(file, '.json'))
-const defaultLocale = 'en'
-const siteUrl = (process.env.SEO_SITE_URL || 'https://www.toolkitpub.com').replace(/\/$/, '')
-const xmlEscape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;')
-const htmlEscape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
-const urlFor = (locale, route) => `${siteUrl}${locale === defaultLocale ? '' : `/${locale}`}${route || '/'}`
-
-function buildHead(html, locale, route, metadata, fallback) {
-  const title = metadata?.title || fallback.title
-  const description = metadata?.description || fallback.description
-  const keywords = metadata?.keywords || fallback.keywords
-  const canonical = urlFor(locale, route)
-  const alternates = locales.map((alternateLocale) => `<link rel="alternate" hreflang="${alternateLocale}" href="${urlFor(alternateLocale, route)}" />`).join('\n    ')
-    + `\n    <link rel="alternate" hreflang="x-default" href="${urlFor(defaultLocale, route)}" />`
-  const tags = `<meta name="description" content="${htmlEscape(description)}" />\n    <meta name="keywords" content="${htmlEscape(keywords)}" />\n    <meta property="og:title" content="${htmlEscape(title)}" />\n    <meta property="og:description" content="${htmlEscape(description)}" />\n    <meta property="og:url" content="${htmlEscape(canonical)}" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <link rel="canonical" href="${htmlEscape(canonical)}" />\n    ${alternates}`
-  return html
-    .replace(/<html lang="[^"]*">/, `<html lang="${locale}"${locale === 'ar' ? ' dir="rtl"' : ''}>`)
-    .replace(/\s*<meta name="description"[^>]*>/, '')
-    .replace(/\s*<meta name="keywords"[^>]*>/, '')
-    .replace(/\s*<link rel="canonical"[^>]*>/g, '')
-    .replace(/\s*<link rel="alternate"[^>]*>/g, '')
-    .replace(/\s*<meta property="og:[^"]+"[^>]*>/g, '')
-    .replace(/\s*<meta name="twitter:card"[^>]*>/g, '')
-    .replace(/<title>[^<]*<\/title>/, `<title>${htmlEscape(title)}</title>`)
-    .replace('</head>', `    ${tags}\n  </head>`)
-}
-
-async function writeRoute(locale, route, metadata, fallback) {
-  const filePath = route === '/' && locale === defaultLocale
-    ? path.join(dist, 'index.html')
-    : path.join(dist, locale === defaultLocale ? '' : locale, route.replace(/^\//, ''), 'index.html')
-  await fs.mkdir(path.dirname(filePath), { recursive: true })
-  await fs.writeFile(filePath, buildHead(sourceHtml, locale, route, metadata, fallback), 'utf8')
-}
-
-const sitemapEntries = new Map()
-for (const file of localeFiles) {
-  const locale = path.basename(file, '.json')
-  const messages = JSON.parse(await fs.readFile(path.join('src/i18n/messages', file), 'utf8'))
-  const siteMeta = messages.meta?.site || {}
-  const siteFallback = {
-    title: siteMeta.title || 'IT Tools Collection - Developer Toolbox',
-    description: siteMeta.description || 'Online developer tools for everyday development tasks.',
-    keywords: siteMeta.keywords || 'developer tools, online tools, JSON tools, format converters',
+const template = await fs.readFile(path.join(dist, 'index.html'), 'utf8')
+const htmlEscape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+const server = await createServer({ server: { middlewareMode: true }, appType: 'custom', ssr: { noExternal: ['react-router-dom', 'react-router'], resolve: { conditions: ['module', 'module-sync', 'import'] } } })
+try {
+  const { render, locales, toolsConfig, getSeoHead } = await server.ssrLoadModule('/src/entry-server.tsx')
+  const toolIds = toolsConfig.flatMap(category => category.tools.map(tool => tool.id))
+  const routes = ['/', '/changelog', ...toolIds.map(id => `/tools/${id}`)]
+  let count = 0
+  for (const locale of locales) {
+    const messages = JSON.parse(await fs.readFile(`src/i18n/messages/${locale}.json`, 'utf8'))
+    const translate = key => {
+      const value = key.split('.').reduce((current, name) => current?.[name], messages)
+      if (typeof value !== 'string') throw new Error(`Missing SEO translation: ${locale}:${key}`)
+      return value
+    }
+    for (const route of routes) {
+      const toolId = route.startsWith('/tools/') ? route.slice(7) : undefined
+      const page = toolId ? 'tools' : route === '/changelog' ? 'changelog' : 'home'
+      const url = `${locale === 'en' ? '' : `/${locale}`}${route === '/' ? '' : route}` || '/'
+      const head = getSeoHead(locale, page, toolId, translate)
+      const headHtml = head.tags.map(({ tag, attrs }) => `<${tag} data-seo="true" ${Object.entries(attrs).map(([name, value]) => `${name}="${htmlEscape(value)}"`).join(' ')} />`).join('\n    ')
+      const body = render(url, locale, toolId)
+      if (body.includes('The server did not finish this Suspense boundary') || body.includes('Switched to client rendering')) throw new Error(`Incomplete prerender: ${url}`)
+      const html = template
+        .replace(/<html lang="[^"]*">/, `<html lang="${locale}"${locale === 'ar' ? ' dir="rtl"' : ''}>`)
+        .replace(/\s*<meta name="(?:description|keywords)"[^>]*>/g, '')
+        .replace(/<title>[^<]*<\/title>/, `<title>${htmlEscape(head.title)}</title>`)
+        .replace('</head>', `    ${headHtml}\n    <link rel="icon" href="/favicon.ico" />\n  </head>`)
+        .replace('<div id="root"></div>', () => `<div id="root">${body}</div>`)
+      const file = url === '/' ? path.join(dist, 'index.html') : path.join(dist, url, 'index.html')
+      await fs.mkdir(path.dirname(file), { recursive: true })
+      await fs.writeFile(file, html, 'utf8')
+      count++
+    }
+    console.log(`Prerendered ${locale}: ${routes.length} pages`)
   }
-  await writeRoute(locale, '/', siteMeta, siteFallback)
-  sitemapEntries.set(urlFor(locale, '/'), locale)
-  const changelog = messages.changelog || {}
-  await writeRoute(locale, '/changelog', {
-    title: changelog.title ? `${changelog.title} - ${siteFallback.title}` : siteFallback.title,
-    description: changelog.description || siteFallback.description,
-    keywords: siteFallback.keywords,
-  }, siteFallback)
-  sitemapEntries.set(urlFor(locale, '/changelog'), locale)
-
-  for (const [toolId, tool] of Object.entries(messages.tools || {})) {
-    if (!tool.meta) continue
-    const route = `/tools/${toolId}`
-    await writeRoute(locale, route, tool.meta, siteFallback)
-    sitemapEntries.set(urlFor(locale, route), locale)
-  }
+  // Preserve all upstream sitemap files verbatim; Vite already copies public/.
+  await fs.copyFile('src/app/favicon.ico', path.join(dist, 'favicon.ico'))
+  console.log(`Generated ${count} SEO pages with complete HTML; upstream robots and sitemaps preserved.`)
+} finally {
+  await server.close()
 }
-
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${Array.from(sitemapEntries.keys()).map((url) => {
-  const pathname = new URL(url).pathname.replace(/\/$/, '')
-  const localized = locales.map((locale) => {
-    const baseRoute = pathname.replace(/^\/(zh|en|es|de|fr|it|pt|ru|ja|ko|ar|hi)(?=\/|$)/, '') || '/'
-    return `    <xhtml:link rel="alternate" hreflang="${locale}" href="${xmlEscape(urlFor(locale, baseRoute))}" />`
-  }).join('\n')
-  return `  <url>\n    <loc>${xmlEscape(url)}</loc>\n${localized}\n    <changefreq>monthly</changefreq>\n    <priority>${pathname === '/' ? '1.0' : pathname.endsWith('/changelog') ? '0.4' : '0.8'}</priority>\n  </url>`
-}).join('\n')}\n</urlset>\n`
-await fs.writeFile(path.join(dist, 'sitemap.xml'), sitemap, 'utf8')
-console.log(`Generated localized SEO pages for ${locales.length} locales (${sitemapEntries.size} URLs).`)

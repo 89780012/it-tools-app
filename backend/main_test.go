@@ -94,7 +94,7 @@ func TestCORSAllowsOnlyConfiguredOrigins(t *testing.T) {
 	}
 }
 
-func TestSPAHandlerServesStaticAndFallbackRoutes(t *testing.T) {
+func TestSPAHandlerServesSEOAndCanonicalRoutes(t *testing.T) {
 	root := t.TempDir()
 	if err := os.MkdirAll(filepath.Join(root, "zh", "tools", "json-formatter"), 0o755); err != nil {
 		t.Fatal(err)
@@ -108,16 +108,25 @@ func TestSPAHandlerServesStaticAndFallbackRoutes(t *testing.T) {
 	handler := spaHandler(newHandler(config{allowedOrigins: map[string]struct{}{}}), root)
 
 	for _, test := range []struct {
-		path string
-		want string
+		path     string
+		want     string
+		status   int
+		location string
 	}{
-		{path: "/zh/tools/json-formatter", want: "localized static SEO entry"},
-		{path: "/client-side-route", want: "SPA entry"},
+		{path: "/", want: "SPA entry", status: http.StatusOK},
+		{path: "/zh/tools/json-formatter", want: "localized static SEO entry", status: http.StatusOK},
+		{path: "/zh/tools/json-formatter?test=1", want: "localized static SEO entry", status: http.StatusOK},
+		{path: "/client-side-route", status: http.StatusNotFound},
+		{path: "/zh/tools/missing", status: http.StatusNotFound},
+		{path: "/missing.png", status: http.StatusNotFound},
+		{path: "/zh/tools/json-formatter/?test=1", status: http.StatusPermanentRedirect, location: "/zh/tools/json-formatter?test=1"},
+		{path: "/en", status: http.StatusTemporaryRedirect, location: "/"},
+		{path: "/en/tools/json-formatter?test=1", status: http.StatusTemporaryRedirect, location: "/tools/json-formatter?test=1"},
 	} {
 		recorder := httptest.NewRecorder()
 		handler.ServeHTTP(recorder, httptest.NewRequest(http.MethodGet, test.path, nil))
-		if recorder.Code != http.StatusOK || !strings.Contains(recorder.Body.String(), test.want) {
-			t.Errorf("GET %s: status=%d body=%q", test.path, recorder.Code, recorder.Body.String())
+		if recorder.Code != test.status || !strings.Contains(recorder.Body.String(), test.want) || recorder.Header().Get("Location") != test.location {
+			t.Errorf("GET %s: status=%d location=%q body=%q", test.path, recorder.Code, recorder.Header().Get("Location"), recorder.Body.String())
 		}
 	}
 
