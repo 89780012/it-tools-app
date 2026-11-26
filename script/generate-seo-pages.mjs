@@ -30,7 +30,7 @@ try {
         .replace(/<html lang="[^"]*">/, `<html lang="${locale}"${locale === 'ar' ? ' dir="rtl"' : ''}>`)
         .replace(/\s*<meta name="(?:description|keywords)"[^>]*>/g, '')
         .replace(/<title>[^<]*<\/title>/, `<title>${htmlEscape(head.title)}</title>`)
-        .replace('</head>', `    ${headHtml}\n    <link rel="icon" href="/favicon.ico" />\n  </head>`)
+        .replace('</head>', `    ${headHtml}\n  </head>`)
         .replace('<div id="root"></div>', () => `<div id="root">${body}</div>`)
       const file = url === '/' ? path.join(dist, 'index.html') : path.join(dist, url, 'index.html')
       await fs.mkdir(path.dirname(file), { recursive: true })
@@ -46,7 +46,6 @@ try {
   }
   const sitemapIndex = locales.map(locale => `  <sitemap><loc>https://www.toolkitpub.com/sitemap-${locale}.xml</loc></sitemap>`).join('\n')
   await fs.writeFile(path.join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapIndex}\n</sitemapindex>\n`)
-  await fs.copyFile('src/app/favicon.ico', path.join(dist, 'favicon.ico'))
   console.log(`Generated ${count} SEO pages with complete HTML and catalog-derived sitemaps.`)
 } finally {
   await server.close()
