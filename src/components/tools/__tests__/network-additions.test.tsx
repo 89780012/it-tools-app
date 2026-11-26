@@ -1,3 +1,4 @@
+import { MemoryRouter } from 'react-router-dom'
 import {
   cleanup,
   fireEvent,
@@ -68,12 +69,12 @@ const workbench = {
 }
 function mount(node: React.ReactNode) {
   return render(
-    <LocaleProvider
+    <MemoryRouter><LocaleProvider
       locale="en"
       initialMessages={{ tools: en.tools, workbench }}
     >
       {node}
-    </LocaleProvider>,
+    </LocaleProvider></MemoryRouter>,
   )
 }
 function fill(id: string, value: string) {
@@ -258,12 +259,12 @@ describe('network tool interactions', () => {
     ]) {
       expect(
         renderToString(
-          <LocaleProvider
+          <MemoryRouter><LocaleProvider
             locale="en"
             initialMessages={{ tools: en.tools, workbench }}
           >
             {node}
-          </LocaleProvider>,
+          </LocaleProvider></MemoryRouter>,
         ),
       ).toContain('data-tool=')
     }
@@ -294,12 +295,12 @@ describe('network translations', () => {
           )
       }
       render(
-        <LocaleProvider
+        <MemoryRouter><LocaleProvider
           locale={locale}
           initialMessages={{ tools: dictionary.tools, workbench }}
         >
           <SubnetCalculator />
-        </LocaleProvider>,
+        </LocaleProvider></MemoryRouter>,
       )
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
         dictionary.tools['subnet-calculator'].name,

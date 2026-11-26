@@ -15,6 +15,7 @@ import { generateTypes, type TypeLanguage } from '@/lib/developer-json-to-types'
 export default function JsonToTypesPage() {
   const t = useTranslations('tools.json-to-types')
   const w = useTranslations('workbench')
+  const x = useTranslations('expansion')
   const [input, setInput] = useState('')
   const [root, setRoot] = useState('Root')
   const [language, setLanguage] = useState<TypeLanguage>('typescript')
@@ -51,6 +52,10 @@ export default function JsonToTypesPage() {
             >
               <option value="typescript">{t('typescript')}</option>
               <option value="go">{t('go')}</option>
+              <option value="java">Java (Jackson)</option>
+              <option value="python">Python 3.11 (TypedDict)</option>
+              <option value="csharp">C# (System.Text.Json)</option>
+              <option value="schema">JSON Schema</option>
             </select>
           </Field>
           <Field
@@ -97,13 +102,15 @@ export default function JsonToTypesPage() {
         </div>
         <ErrorMessage>{result.error && t(result.error)}</ErrorMessage>
         <p className="text-sm text-muted-foreground">
-          {t(language === 'go' ? 'goHint' : 'inferenceHint')}
+          {language === 'java' || language === 'csharp'
+            ? x('modelHint')
+            : t(language === 'go' ? 'goHint' : 'inferenceHint')}
         </p>
       </Panel>
       <Panel title={w('output')}>
         <Output
           value={result.value}
-          filename={language === 'go' ? 'types.go' : 'types.ts'}
+          filename={`types.${{ typescript: 'ts', go: 'go', java: 'java', python: 'py', csharp: 'cs', schema: 'json' }[language]}`}
           label={t('generated')}
         />
       </Panel>

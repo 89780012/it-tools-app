@@ -8,7 +8,8 @@ type Schema =
   | { kind: 'array'; item: Schema }
   | { kind: 'object'; properties: Map<string, Property> }
   | { kind: 'union'; variants: Schema[] }
-export type TypeLanguage = 'typescript' | 'go'
+export type TypeLanguage =
+  'typescript' | 'go' | 'java' | 'python' | 'csharp' | 'schema'
 
 function infer(values: unknown[], depth = 0): Schema {
   if (depth > 80) throw new Error('tooDeep')
@@ -98,6 +99,8 @@ export function generateTypes(
     throw new Error('invalidJson')
   }
   const schema = infer([value])
+  if (language !== 'typescript' && language !== 'go')
+    return generateAdditionalTypes(schema, language, rootName)
   const used = new Set<string>([
     'Array',
     'Object',
@@ -182,6 +185,172 @@ export function generateTypes(
   }
   return (
     (language === 'go' ? 'package main\n\n' : '') +
+    declarations.join('\n\n') +
+    '\n'
+  )
+}
+
+function generateAdditionalTypes(
+  schema: Schema,
+  language: 'java' | 'python' | 'csharp' | 'schema',
+  rootName: string,
+): string {
+  if (language === 'schema') {
+    const renderSchema = (node: Schema): unknown => {
+      if (node.kind === 'union')
+        return { anyOf: node.variants.map(renderSchema) }
+      if (node.kind === 'unknown') return {}
+      if (node.kind === 'array')
+        return { type: 'array', items: renderSchema(node.item) }
+      if (node.kind === 'object')
+        return {
+          type: 'object',
+          properties: Object.fromEntries(
+            [...node.properties].map(([key, value]) => [
+              key,
+              renderSchema(value.schema),
+            ]),
+          ),
+          required: [...node.properties]
+            .filter(([, value]) => !value.optional)
+            .map(([key]) => key),
+        }
+      return { type: node.kind }
+    }
+    return JSON.stringify(
+      {
+        $schema: 'http://json-schema.org/draft-07/schema#',
+        title: rootName,
+        ...(renderSchema(schema) as object),
+      },
+      null,
+      2,
+    )
+  }
+  const reserved = [
+    'String',
+    'Double',
+    'Boolean',
+    'Object',
+    'List',
+    'Dictionary',
+    'Any',
+    'TypedDict',
+    'NotRequired',
+    'JsonPropertyName',
+    'JsonProperty',
+    'Optional',
+    'None',
+    'int',
+    'float',
+    'str',
+    'bool',
+    'True',
+    'False',
+    'System',
+  ]
+  const used = new Set(reserved)
+  const root = uniqueName(identifier(rootName), used)
+  const declarations: string[] = []
+  const names = new Map<Schema, string>()
+  const render = (node: Schema, hint: string, forced?: string): string => {
+    if (node.kind === 'unknown' || node.kind === 'null')
+      return language === 'java'
+        ? 'Object'
+        : language === 'csharp'
+          ? 'object?'
+          : node.kind === 'null'
+            ? 'None'
+            : 'Any'
+    if (node.kind === 'union') {
+      if (language === 'python')
+        return [
+          ...new Set(node.variants.map((value) => render(value, hint))),
+        ].join(' | ')
+      const nonNull = node.variants.filter((value) => value.kind !== 'null')
+      if (nonNull.length !== 1)
+        return language === 'java' ? 'Object' : 'object?'
+      const type = render(nonNull[0], hint)
+      return language === 'csharp' && !type.endsWith('?') ? `${type}?` : type
+    }
+    if (node.kind === 'array') {
+      const item = render(node.item, `${hint}Item`)
+      return language === 'python' ? `list[${item}]` : `List<${item}>`
+    }
+    if (node.kind !== 'object')
+      return {
+        java: { string: 'String', number: 'Double', boolean: 'Boolean' },
+        python: { string: 'str', number: 'float', boolean: 'bool' },
+        csharp: { string: 'string', number: 'double', boolean: 'bool' },
+      }[language][node.kind]
+    const existing = names.get(node)
+    if (existing) return existing
+    const name = forced ?? uniqueName(identifier(hint), used)
+    names.set(node, name)
+    const fieldNames = new Set<string>([name, ...reserved])
+    const fields = [...node.properties].map(([key, property]) => {
+      let type = render(property.schema, `${name}${identifier(key)}`)
+      const quotedKey = JSON.stringify(key).replace(
+        /[\u2028\u2029]/g,
+        (value) => `\\u${value.charCodeAt(0).toString(16)}`,
+      )
+      if (language === 'python')
+        return `    ${quotedKey}: ${property.optional ? `NotRequired[${type}]` : type}`
+      const field = uniqueName(identifier(key), fieldNames)
+      if (language === 'java')
+        return `    @JsonProperty(${quotedKey})\n    public ${type} ${field};`
+      if (property.optional && !type.endsWith('?')) type += '?'
+      return `    [JsonPropertyName(${quotedKey})]\n    public ${type} ${field} { get; set; } = default!;`
+    })
+    if (language === 'python')
+      declarations.push(
+        `${name} = TypedDict(${JSON.stringify(name)}, {\n${fields.join(',\n')}\n})`,
+      )
+    else
+      declarations.push(
+        `public ${language === 'java' ? 'static ' : ''}class ${name}\n{\n${fields.join('\n\n')}\n}`,
+      )
+    return name
+  }
+  const rootType = render(
+    schema,
+    root,
+    schema.kind === 'object' ? root : undefined,
+  )
+  if (language === 'python') {
+    if (schema.kind !== 'object') declarations.push(`${root} = ${rootType}`)
+    return (
+      'from typing import Any, TypedDict, NotRequired\n\n' +
+      declarations.join('\n\n') +
+      '\n'
+    )
+  }
+  if (language === 'java') {
+    if (schema.kind !== 'object')
+      declarations.push(
+        `public static class ${root}\n{\n    public ${rootType} value;\n}`,
+      )
+    const rootDeclaration = declarations
+      .pop()!
+      .replace('public static class', 'public class')
+    const nested = declarations
+      .join('\n\n')
+      .split('\n')
+      .map((line) => `    ${line}`)
+      .join('\n')
+    return (
+      'import java.util.List;\nimport com.fasterxml.jackson.annotation.JsonProperty;\n\n' +
+      rootDeclaration.slice(0, -1) +
+      (nested ? '\n' + nested + '\n' : '') +
+      '}\n'
+    )
+  }
+  if (schema.kind !== 'object')
+    declarations.push(
+      `public class ${root}\n{\n    public ${rootType} Value { get; set; } = default!;\n}`,
+    )
+  return (
+    '#nullable enable\nusing System.Collections.Generic;\nusing System.Text.Json.Serialization;\n\n' +
     declarations.join('\n\n') +
     '\n'
   )

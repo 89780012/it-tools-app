@@ -1,3 +1,4 @@
+import { matchesTool } from '@/lib/tool-discovery'
 import { useMemo, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
 import { allTools, toolsConfig } from '@/lib/tools-config'
@@ -34,10 +35,7 @@ export default function Home() {
       (tool) =>
         (!selectedCategory || tool.category === selectedCategory) &&
         (view !== 'favorites' || favorites.includes(tool.id)) &&
-        (!query ||
-          [tool.id, t(tool.nameKey), t(tool.descriptionKey)].some((value) =>
-            value.toLocaleLowerCase().includes(query),
-          )),
+        matchesTool(tool, query, t),
     )
   }, [searchQuery, selectedCategory, t, favorites, recent, view])
   const views = [

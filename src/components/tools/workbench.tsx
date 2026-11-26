@@ -1,3 +1,4 @@
+import { RelatedTools } from '@/components/seo/related-tools'
 import { useState, type ReactNode } from 'react'
 import { Copy, Download } from 'lucide-react'
 import { useTranslations } from '@/i18n/compat'
@@ -28,9 +29,14 @@ export function Workbench({
         <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
           {t(`tools.${toolId}.description`)}
         </p>
-        {local && <p className="text-xs text-muted-foreground">{t('workbench.local')}</p>}
+        {local && (
+          <p className="text-xs text-muted-foreground">
+            {t('workbench.local')}
+          </p>
+        )}
       </header>
       {children}
+      <RelatedTools toolId={toolId} />
     </section>
   )
 }

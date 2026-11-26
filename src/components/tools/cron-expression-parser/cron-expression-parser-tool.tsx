@@ -1,14 +1,29 @@
 'use client'
 
+import { CronBuilder } from '@/components/tools/text-extras'
+import { nextCronRuns } from '@/lib/cron-builder'
 import { useMemo, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { ToolSEOSection } from '@/components/seo/tool-seo-section'
 
 type CronFieldKey = 'minute' | 'hour' | 'dayOfMonth' | 'month' | 'dayOfWeek'
@@ -68,9 +83,28 @@ const DAY_NAME_MAP: Record<string, number> = {
 const FIELD_CONFIGS: FieldConfig[] = [
   { key: 'minute', min: 0, max: 59, labelKey: 'fields.minute' },
   { key: 'hour', min: 0, max: 23, labelKey: 'fields.hour' },
-  { key: 'dayOfMonth', min: 1, max: 31, labelKey: 'fields.day_of_month', allowQuestionMark: true },
-  { key: 'month', min: 1, max: 12, labelKey: 'fields.month', allowNames: MONTH_NAME_MAP },
-  { key: 'dayOfWeek', min: 0, max: 6, labelKey: 'fields.day_of_week', allowNames: DAY_NAME_MAP, allowQuestionMark: true },
+  {
+    key: 'dayOfMonth',
+    min: 1,
+    max: 31,
+    labelKey: 'fields.day_of_month',
+    allowQuestionMark: true,
+  },
+  {
+    key: 'month',
+    min: 1,
+    max: 12,
+    labelKey: 'fields.month',
+    allowNames: MONTH_NAME_MAP,
+  },
+  {
+    key: 'dayOfWeek',
+    min: 0,
+    max: 6,
+    labelKey: 'fields.day_of_week',
+    allowNames: DAY_NAME_MAP,
+    allowQuestionMark: true,
+  },
 ]
 
 function normalizeValue(token: string, config: FieldConfig): number | null {
@@ -99,7 +133,10 @@ function normalizeValue(token: string, config: FieldConfig): number | null {
 
 function expandSegment(segment: string, config: FieldConfig): number[] | null {
   if (segment === '*') {
-    return Array.from({ length: config.max - config.min + 1 }, (_, index) => config.min + index)
+    return Array.from(
+      { length: config.max - config.min + 1 },
+      (_, index) => config.min + index,
+    )
   }
 
   const [rangePart, stepPart] = segment.split('/')
@@ -150,7 +187,10 @@ function parseField(segment: string, config: FieldConfig): ParsedField | null {
 
   if (normalized === '*') {
     return {
-      values: Array.from({ length: config.max - config.min + 1 }, (_, index) => config.min + index),
+      values: Array.from(
+        { length: config.max - config.min + 1 },
+        (_, index) => config.min + index,
+      ),
       isWildcard: true,
       raw,
     }
@@ -174,7 +214,10 @@ function parseField(segment: string, config: FieldConfig): ParsedField | null {
   }
 }
 
-function parseCronExpression(expression: string, t: ReturnType<typeof useTranslations>): CronParseResult {
+function parseCronExpression(
+  expression: string,
+  t: ReturnType<typeof useTranslations>,
+): CronParseResult {
   const trimmed = expression.trim()
   if (!trimmed) {
     return {
@@ -212,79 +255,17 @@ function parseCronExpression(expression: string, t: ReturnType<typeof useTransla
   }
 }
 
-function matchesValue(field: ParsedField, value: number): boolean {
-  if (field.isWildcard) {
-    return true
-  }
-  return field.values.includes(value)
-}
-
-function doesDateMatch(date: Date, parsed: CronParseSuccess): boolean {
-  const { fields } = parsed
-
-  const minuteMatch = matchesValue(fields.minute, date.getMinutes())
-  if (!minuteMatch) return false
-
-  const hourMatch = matchesValue(fields.hour, date.getHours())
-  if (!hourMatch) return false
-
-  const monthMatch = matchesValue(fields.month, date.getMonth() + 1)
-  if (!monthMatch) return false
-
-  const day = date.getDate()
-  const dayOfWeek = date.getDay()
-
-  const domWildcard = fields.dayOfMonth.isWildcard
-  const dowWildcard = fields.dayOfWeek.isWildcard
-
-  const dayOfMonthMatch = matchesValue(fields.dayOfMonth, day)
-  const dayOfWeekMatch = matchesValue(fields.dayOfWeek, dayOfWeek)
-
-  if (domWildcard && dowWildcard) {
-    return true
-  }
-
-  if (domWildcard && dayOfWeekMatch) {
-    return true
-  }
-
-  if (dowWildcard && dayOfMonthMatch) {
-    return true
-  }
-
-  if (!domWildcard && !dowWildcard) {
-    return dayOfMonthMatch || dayOfWeekMatch
-  }
-
-  return dayOfMonthMatch || dayOfWeekMatch
-}
-
-function generateUpcomingRuns(parsed: CronParseSuccess, count: number): Date[] {
-  const results: Date[] = []
-  let attempts = 0
-  let cursor = new Date()
-  cursor.setSeconds(0, 0)
-  cursor = new Date(cursor.getTime() + 60_000)
-
-  const limit = 525_600 // roughly one year of minutes
-
-  while (results.length < count && attempts < limit) {
-    if (doesDateMatch(cursor, parsed)) {
-      results.push(new Date(cursor))
-    }
-    cursor = new Date(cursor.getTime() + 60_000)
-    attempts += 1
-  }
-
-  return results
-}
-
-function formatFieldPreview(field: ParsedField, t: ReturnType<typeof useTranslations>): string {
+function formatFieldPreview(
+  field: ParsedField,
+  t: ReturnType<typeof useTranslations>,
+): string {
   if (field.isWildcard) {
     return t('fields.any')
   }
 
-  return field.values.slice(0, 12).join(', ') + (field.values.length > 12 ? '…' : '')
+  return (
+    field.values.slice(0, 12).join(', ') + (field.values.length > 12 ? '…' : '')
+  )
 }
 
 export default function CronExpressionParserTool() {
@@ -293,21 +274,48 @@ export default function CronExpressionParserTool() {
 
   const [expression, setExpression] = useState('* * * * *')
   const [previewCount, setPreviewCount] = useState(5)
+  const [zone, setZone] = useState('UTC')
+  const x = useTranslations('expansion')
 
-  const parseResult = useMemo(() => parseCronExpression(expression, t), [expression, t])
+  const parseResult = useMemo(
+    () => parseCronExpression(expression, t),
+    [expression, t],
+  )
 
   const upcomingRuns = useMemo(() => {
     if (!parseResult.success) {
       return []
     }
-    return generateUpcomingRuns(parseResult, Math.min(Math.max(previewCount, 1), 20))
-  }, [parseResult, previewCount])
+    try {
+      return nextCronRuns(
+        expression,
+        zone,
+        Math.min(Math.max(previewCount, 1), 20),
+      )
+    } catch {
+      return []
+    }
+  }, [parseResult, previewCount, expression, zone])
 
   const now = new Date()
 
   return (
     <div className="container mx-auto p-6 space-y-8">
       <h1 className="text-2xl font-semibold">{t('name')}</h1>
+      <CronBuilder
+        onApply={(value, timezone) => {
+          setExpression(value)
+          setZone(timezone)
+        }}
+      />
+      <div className="space-y-2">
+        <Label htmlFor="cron-zone">{x('timezone')}</Label>
+        <Input
+          id="cron-zone"
+          value={zone}
+          onChange={(event) => setZone(event.target.value)}
+        />
+      </div>
       {/* Cron 表达式格式说明 */}
       <Card className="border-blue-200 bg-blue-50/50 dark:border-blue-900 dark:bg-blue-950/20">
         <CardHeader>
@@ -362,7 +370,7 @@ export default function CronExpressionParserTool() {
                 <span className="inline-block w-4 text-center">*</span>
               </div>
             </div>
-            
+
             <div className="mt-4 space-y-2 border-t pt-4 text-xs">
               <div className="grid gap-2 sm:grid-cols-2">
                 <div>
@@ -432,19 +440,27 @@ export default function CronExpressionParserTool() {
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="preview-count">{t('preview_count_label')}</Label>
+                <Label htmlFor="preview-count">
+                  {t('preview_count_label')}
+                </Label>
                 <Input
                   id="preview-count"
                   type="number"
                   min={1}
                   max={20}
                   value={previewCount}
-                  onChange={(event) => setPreviewCount(Number(event.target.value) || 1)}
+                  onChange={(event) =>
+                    setPreviewCount(Number(event.target.value) || 1)
+                  }
                 />
               </div>
               <div className="space-y-2">
                 <Label>{t('current_time_label')}</Label>
-                <Input value={now.toLocaleString()} readOnly className="font-mono" />
+                <Input
+                  value={now.toLocaleString()}
+                  readOnly
+                  className="font-mono"
+                />
               </div>
             </div>
           </CardContent>
@@ -477,9 +493,13 @@ export default function CronExpressionParserTool() {
                         <TableCell className="font-medium">
                           {t(config.labelKey)}
                         </TableCell>
-                        <TableCell className="font-mono text-sm">{field.raw}</TableCell>
+                        <TableCell className="font-mono text-sm">
+                          {field.raw}
+                        </TableCell>
                         <TableCell className="text-sm">
-                          <Badge variant={field.isWildcard ? 'outline' : 'secondary'}>
+                          <Badge
+                            variant={field.isWildcard ? 'outline' : 'secondary'}
+                          >
                             {formatFieldPreview(field, t)}
                           </Badge>
                         </TableCell>
@@ -510,9 +530,12 @@ export default function CronExpressionParserTool() {
           ) : (
             <ul className="space-y-2">
               {upcomingRuns.map((run, index) => (
-                <li key={run.toISOString()} className="flex items-center justify-between rounded-lg border p-3">
+                <li
+                  key={run.toISOString()}
+                  className="flex items-center justify-between rounded-lg border p-3"
+                >
                   <span className="font-medium text-sm">
-                    {run.toLocaleString()}
+                    {run.toLocaleString(undefined, { timeZone: zone })}
                   </span>
                   <span className="text-xs text-muted-foreground">
                     {t('occurrence_index', { index: index + 1 })}

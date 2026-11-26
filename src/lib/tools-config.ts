@@ -41,13 +41,18 @@ export const toolsConfig: ToolCategory[] = [
   category('developer', 'developer', 'code', [
     ['regex-tester', 'code'],
     ['sql-formatter', 'database'],
+    ['data-to-sql', 'database'],
+    ['chmod-calculator', 'shield'],
     ['number-base-converter', 'binary'],
     ['git-cheatsheet', 'git-branch'],
     ['nginx-cheatsheet', 'server'],
     ['firewall-cheatsheet', 'shield'],
     ['linux-log-helper', 'terminal-square'],
   ]),
-  category('api', 'api', 'terminal', [['curl-converter', 'terminal']]),
+  category('api', 'api', 'terminal', [
+    ['curl-converter', 'terminal'],
+    ['stream-debugger', 'terminal'],
+  ]),
   category('json-tools', 'json_tools', 'file-json', [
     ['json-formatter', 'code'],
     ['json-visualizer', 'eye'],
@@ -68,6 +73,7 @@ export const toolsConfig: ToolCategory[] = [
     ['toml-to-json', 'file-json'],
     ['toml-to-yaml', 'file-text'],
     ['csv-to-json', 'file-json'],
+    ['csv-table-editor', 'table'],
     ['xml-to-json', 'file-input'],
     ['yaml-formatter', 'file-text'],
     ['xml-formatter', 'file-code'],
@@ -75,6 +81,7 @@ export const toolsConfig: ToolCategory[] = [
   category('text', 'text', 'file-text', [
     ['text-diff', 'git-compare'],
     ['text-batch-processor', 'file-text'],
+    ['text-set-operations', 'git-compare'],
     ['string-escape', 'code-xml'],
     ['base64-encoder-decoder', 'code-xml'],
     ['url-encoder-decoder', 'link'],
@@ -95,6 +102,7 @@ export const toolsConfig: ToolCategory[] = [
   category('image', 'image', 'grid-3x3', [
     ['image-compressor', 'file-input'],
     ['qr-code-generator', 'qr-code'],
+    ['qr-code-reader', 'qr-code'],
     ['svg-placeholder-generator', 'square-dashed'],
     ['icon-designer', 'palette'],
     ['base64-file-converter', 'file-code'],
@@ -104,6 +112,7 @@ export const toolsConfig: ToolCategory[] = [
     ['jwt-decoder', 'key'],
     ['nginx-certificate-generator', 'shield-check'],
     ['certificate-parser', 'shield-check'],
+    ['file-hash', 'fingerprint'],
     ['md5-hash', 'fingerprint'],
     ['sha256-hash', 'shield-check'],
     ['sha1-hash', 'scan-line'],
@@ -115,6 +124,8 @@ export const toolsConfig: ToolCategory[] = [
     ['url-parser', 'link'],
     ['subnet-calculator', 'server'],
     ['ip-lookup', 'map-pin'],
+    ['dns-lookup', 'server'],
+    ['tls-checker', 'shield-check'],
   ]),
   category('time', 'time', 'clock-8', [
     ['time-converter', 'history'],

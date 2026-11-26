@@ -2,7 +2,11 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **64 tools in 12 categories**, with 12 languages throughout. The latest additions cover regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **73 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+
+The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
+
+File hashes run incrementally in the browser. CSV input is limited to 5 MB, 50,000 rows and 200 columns. Batch images accept 30 files totaling 100 MiB. HTTP uploads accept 20 files totaling 8 MiB. DNS uses Google or Cloudflare resolvers through the Go server, TLS checks public domains on port 443, and SSE connections last up to 60 seconds or 2 MiB. WebSocket connects directly from the browser. Generated Java models use Jackson, Python uses Python 3.11 TypedDict, and C# uses System.Text.Json. Array/primitive roots in Java and C# use a value wrapper, shown in the tool guidance.
 
 ## Requirements
 
@@ -50,7 +54,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 
 也可直接运行 `docker compose up -d --build --wait --wait-timeout 120`。代码更新后重新执行 `bash deploy.sh` 即可；构建失败时脚本返回非零退出码，启动失败时显示容器状态与最近日志。若当前用户没有 Docker 权限，可使用 `sudo bash deploy.sh`。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 792 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 900 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -62,7 +66,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 792 prerendered pages (64 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 900 prerendered pages (73 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 
@@ -100,7 +104,7 @@ SEO metadata retains the original title templates, canonical/hreflang exceptions
 - `I18N_TRANSLATE_API_MODEL`
 - `WEB_DIST_DIR` (optional static directory)
 
-The API exposes `GET /api/health`, `POST /api/proxy`, `POST /api/i18n-translate`, and `POST /api/detect-language`. Translation/detection return HTTP 503 until their API settings are provided. The proxy only allows public HTTP(S) targets and applies request, response, and timeout limits. See [backend/README.md](backend/README.md) for endpoint details.
+The API exposes `GET /api/health`, `POST /api/proxy`, `POST /api/dns`, `POST /api/tls`, `POST /api/stream`, `POST /api/i18n-translate`, and `POST /api/detect-language`. Translation/detection return HTTP 503 until their API settings are provided. The proxy only allows public HTTP(S) targets and applies request, response, and timeout limits. See [backend/README.md](backend/README.md) for endpoint details.
 
 ## Verification
 
@@ -112,7 +116,7 @@ npx playwright install chromium  # once per development machine
 npm run test:browser
 ```
 
-Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exercise tool controls and outputs, file uploads/downloads, all 64 routes in all 12 languages, language switching, favorites/history, RTL, mobile layout and themes. Certificate checks independently verify downloaded signatures, SANs, fingerprints and private-key matches; public CA command generation is tested without contacting Let's Encrypt or issuing a certificate. External IP/translation response cases use deterministic fixtures; Go health and proxy rejection checks use the real local API. HTML/JSON reports, screenshots and failure traces go into the session scratch directory when `PI_SCRATCH_DIR` is set, otherwise `test-results/`. Use `npx playwright show-report <report-directory>` to inspect the report. `BROWSER_BASE_URL` can select an already running frontend.
+Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exercise tool controls and outputs, file uploads/downloads, all 73 routes in all 12 languages, language switching, favorites/history, RTL, mobile layout and themes. Certificate checks independently verify downloaded signatures, SANs, fingerprints and private-key matches; public CA command generation is tested without contacting Let's Encrypt or issuing a certificate. External IP/translation response cases use deterministic fixtures; Go health and proxy rejection checks use the real local API. HTML/JSON reports, screenshots and failure traces go into the session scratch directory when `PI_SCRATCH_DIR` is set, otherwise `test-results/`. Use `npx playwright show-report <report-directory>` to inspect the report. `BROWSER_BASE_URL` can select an already running frontend.
 
 `components.json` is configured for client-side shadcn/ui components; shared components are in `src/components/ui/`.
 

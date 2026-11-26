@@ -81,6 +81,7 @@ export async function frontendEncodeImage(
   mime: FrontendImageMime,
   quality: number,
   background: string,
+  transform?: ImageTransform,
 ): Promise<Blob> {
   frontendImageDimensions(width, height)
   const canvas = document.createElement('canvas')
@@ -93,7 +94,25 @@ export async function frontendEncodeImage(
       context.fillStyle = background
       context.fillRect(0, 0, width, height)
     }
-    context.drawImage(image, 0, 0, width, height)
+    if (transform) {
+      validateImageTransform(image.naturalWidth, image.naturalHeight, transform)
+      context.translate(width / 2, height / 2)
+      context.rotate((transform.rotation * Math.PI) / 180)
+      const rotated = transform.rotation % 180 !== 0
+      const drawWidth = rotated ? height : width
+      const drawHeight = rotated ? width : height
+      context.drawImage(
+        image,
+        transform.x,
+        transform.y,
+        transform.cropWidth,
+        transform.cropHeight,
+        -drawWidth / 2,
+        -drawHeight / 2,
+        drawWidth,
+        drawHeight,
+      )
+    } else context.drawImage(image, 0, 0, width, height)
     const blob = await new Promise<Blob>((resolve, reject) =>
       canvas.toBlob(
         (result) =>
@@ -109,5 +128,35 @@ export async function frontendEncodeImage(
   } finally {
     canvas.width = 0
     canvas.height = 0
+  }
+}
+
+export interface ImageTransform {
+  x: number
+  y: number
+  cropWidth: number
+  cropHeight: number
+  rotation: number
+}
+export function validateImageTransform(
+  sourceWidth: number,
+  sourceHeight: number,
+  transform: ImageTransform,
+) {
+  const { x, y, cropWidth, cropHeight, rotation } = transform
+  if (
+    ![x, y, cropWidth, cropHeight].every(Number.isInteger) ||
+    x < 0 ||
+    y < 0 ||
+    cropWidth < 1 ||
+    cropHeight < 1 ||
+    x + cropWidth > sourceWidth ||
+    y + cropHeight > sourceHeight ||
+    ![0, 90, 180, 270].includes(rotation)
+  )
+    throw new Error('dimensionsError')
+  return {
+    width: rotation % 180 ? cropHeight : cropWidth,
+    height: rotation % 180 ? cropWidth : cropHeight,
   }
 }

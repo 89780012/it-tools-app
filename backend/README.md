@@ -39,7 +39,7 @@ Accepts `{ "sourceLanguage": "en", "targetLanguage": "fr", "entries": [{ "key": 
 
 Accepts `{ "samples": ["Hello world"], "fileName": "optional.json" }` and returns `{ "language", "confidence", "languageName" }` based on the configured model.
 
-All POST JSON request bodies are limited to 1 MiB. AI responses are limited to 1 MiB. CORS preflight requests are answered only for configured origins.
+All POST JSON request bodies are limited to 1 MiB. Multipart proxy requests have a 10 MiB envelope limit and accept up to 20 files totaling 8 MiB, plus 100 form fields. AI responses are limited to 1 MiB. CORS preflight requests are answered only for configured origins.
 
 ### Online certificate issuance
 
@@ -55,3 +55,13 @@ Both POST endpoints require the configured exact `Origin`. The feature is opt-in
 go test ./...
 go vet ./...
 ```
+
+### Network diagnostics and request uploads
+
+`POST /api/dns` accepts `{ "name": "example.com", "type": "A", "resolver": "cloudflare" }`. Supported records are A, AAAA, CNAME, MX, TXT, NS and CAA. Resolvers are `cloudflare` and `google`. Responses contain the DNS status, answers with TTLs, authority records, resolver and check time. Queries time out after 10 seconds.
+
+`POST /api/tls` accepts `{ "host": "example.com" }`. It connects to a validated public address on port 443, supplies SNI, and reports negotiated TLS version/cipher, certificate fingerprints and dates, hostname match and trust-chain verification independently. Invalid/expired certificates are collected for diagnosis and explicitly verified before reporting status. The connection times out after 10 seconds.
+
+`POST /api/stream` accepts the proxy request shape with GET or POST, JSON string `data`, and headers. It forwards a public HTTP(S) event stream for up to 60 seconds or 2 MiB, flushing each chunk. Redirects are reported as errors so credentials stay with the requested origin. The browser can cancel the request at any time.
+
+`POST /api/proxy` also accepts multipart form data. The `request` field contains the JSON request metadata, `fields` contains an array of name/value pairs, `fileFields` contains the corresponding destination field names, and repeated `files` parts contain file bytes. The server rebuilds the upstream multipart body, preserving filenames, content types and repeated fields. The existing public-target and redirect validation applies.

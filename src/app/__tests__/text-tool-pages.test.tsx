@@ -1,3 +1,4 @@
+import { MemoryRouter } from 'react-router-dom'
 import React from 'react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
@@ -23,9 +24,9 @@ const output = () =>
   (screen.getByTestId('tool-output') as HTMLTextAreaElement).value
 const show = (Page: React.ComponentType) =>
   render(
-    <LocaleProvider locale="en" initialMessages={messages}>
+    <MemoryRouter><LocaleProvider locale="en" initialMessages={messages}>
       <Page />
-    </LocaleProvider>,
+    </LocaleProvider></MemoryRouter>,
   )
 afterEach(() => {
   cleanup()

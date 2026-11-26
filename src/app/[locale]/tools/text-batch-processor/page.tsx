@@ -1,3 +1,5 @@
+import { TextExtras } from '@/components/tools/text-extras'
+import { Link } from '@/i18n/navigation'
 import { useState } from 'react'
 import { useLocale, useTranslations } from '@/i18n/compat'
 import { Button } from '@/components/ui/button'
@@ -19,6 +21,9 @@ import {
 export default function TextBatchProcessorPage() {
   const t = useTranslations('tools.text-batch-processor')
   const w = useTranslations('workbench')
+  const x = useTranslations('expansion')
+  const toolNames = useTranslations('tools')
+  const [showExtras, setShowExtras] = useState(false)
   const locale = useLocale()
   const [input, setInput] = useState('')
   const [options, setOptions] = useState({ ...textBatchDefaults })
@@ -165,6 +170,20 @@ export default function TextBatchProcessorPage() {
           </p>
         </Panel>
       </div>
+      <Button
+        variant="outline"
+        aria-expanded={showExtras}
+        onClick={() => setShowExtras(!showExtras)}
+      >
+        {x('textExtras')}
+      </Button>
+      {showExtras && <TextExtras />}
+      <Link
+        href="/tools/text-set-operations"
+        className="text-primary underline"
+      >
+        {toolNames('text-set-operations.name')}
+      </Link>
     </Workbench>
   )
 }

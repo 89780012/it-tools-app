@@ -1,3 +1,4 @@
+import { MemoryRouter } from 'react-router-dom'
 import type { ComponentType } from 'react'
 import { renderToString } from 'react-dom/server'
 import {
@@ -37,9 +38,9 @@ const messages = {
 }
 function tool(Page: ComponentType) {
   return render(
-    <LocaleProvider locale="en" initialMessages={messages}>
+    <MemoryRouter><LocaleProvider locale="en" initialMessages={messages}>
       <Page />
-    </LocaleProvider>,
+    </LocaleProvider></MemoryRouter>,
   )
 }
 function change(id: string, value: string) {
@@ -286,9 +287,9 @@ describe('developer tool interactions', () => {
       vi.stubGlobal('Worker', undefined)
       expect(
         renderToString(
-          <LocaleProvider locale="en" initialMessages={messages}>
+          <MemoryRouter><LocaleProvider locale="en" initialMessages={messages}>
             <Page />
-          </LocaleProvider>,
+          </LocaleProvider></MemoryRouter>,
         ),
       ).toContain('<section')
     },

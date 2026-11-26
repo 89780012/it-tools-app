@@ -1,5 +1,12 @@
 'use client'
 
+import {
+  authorizeRequest,
+  formRequest,
+  exportCurl,
+  multipartPayload,
+  type RequestAuth,
+} from '@/lib/http-request-extras'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
 import { Button } from '@/components/ui/button'
@@ -33,6 +40,16 @@ const empty: EnhancedRequest = { url: '', method: 'GET', headers: {} }
 export default function CurlConverterPage() {
   const t = useTranslations('tools.curl-converter')
   const common = useTranslations('common')
+  const x = useTranslations('expansion')
+  const [auth, setAuth] = useState<RequestAuth>({
+    type: 'none',
+    token: '',
+    username: '',
+    password: '',
+  })
+  const [formFields, setFormFields] = useState<Pair[]>([])
+  const [formFiles, setFormFiles] = useState<File[]>([])
+  const [fileField, setFileField] = useState('file')
   const [input, setInput] = useState('')
   const [request, setRequest] = useState<EnhancedRequest>(empty)
   const [query, setQuery] = useState<Pair[]>([])
@@ -57,7 +74,7 @@ export default function CurlConverterPage() {
       requestRevision.current++
       activeRequest.current?.abort()
     }
-  }, [request, query, headers, bodyMode, input])
+  }, [request, query, headers, bodyMode, input, auth, formFields, formFiles, fileField])
   useEffect(() => {
     try {
       const stored: unknown = JSON.parse(
@@ -73,6 +90,10 @@ export default function CurlConverterPage() {
   }, [])
   const loadRequest = (value: EnhancedRequest) => {
     const url = new URL(value.url)
+    setAuth({ type: 'none', token: '', username: '', password: '' })
+    setBodyMode('text')
+    setFormFields([])
+    setFormFiles([])
     setQuery(Array.from(url.searchParams.entries()))
     url.search = ''
     setRequest({ ...value, url: url.toString() })
@@ -93,16 +114,58 @@ export default function CurlConverterPage() {
       const activeHeaders = headers.filter(([key, value]) => key || value)
       if (activeHeaders.some(([key]) => !key)) throw new Error('headers')
       if (bodyMode === 'json' && request.data?.trim()) JSON.parse(request.data)
-      const value = validateEnhancedRequest({
+      let value = validateEnhancedRequest({
         ...request,
         url: url.toString(),
         headers: Object.fromEntries(activeHeaders),
       })
-      return { value, error: '', output: generateEnhancedCode(value, language) }
+      value = authorizeRequest(value, auth)
+      if (bodyMode === 'form') value = formRequest(value, formFields)
+      if (bodyMode === 'json')
+        value = {
+          ...value,
+          headers: {
+            ...Object.fromEntries(
+              Object.entries(value.headers).filter(
+                ([key]) => key.toLowerCase() !== 'content-type',
+              ),
+            ),
+            'Content-Type': 'application/json',
+          },
+        }
+      if (bodyMode === 'multipart' && ['GET', 'HEAD'].includes(value.method))
+        throw new Error('invalid')
+      const form =
+        bodyMode === 'multipart'
+          ? {
+              fields: formFields,
+              files: formFiles.map((file) => ({ field: fileField, file })),
+            }
+          : undefined
+      return {
+        value,
+        error: '',
+        output:
+          language === 'curl' || form
+            ? exportCurl(value, form)
+            : generateEnhancedCode(value, language),
+      }
     } catch {
       return { value: null, output: '', error: t('extraInvalidEditor') }
     }
-  }, [request, query, headers, bodyMode, language, parseError, t])
+  }, [
+    request,
+    query,
+    headers,
+    bodyMode,
+    language,
+    parseError,
+    t,
+    auth,
+    formFields,
+    formFiles,
+    fileField,
+  ])
   const parse = () => {
     setResult(null)
     setRequestError('')
@@ -129,16 +192,26 @@ export default function CurlConverterPage() {
     activeRequest.current = controller
     const start = performance.now()
     try {
+      const payload =
+        bodyMode === 'multipart'
+          ? await multipartPayload(compiled.value, {
+              fields: formFields,
+              files: formFiles.map((file) => ({ field: fileField, file })),
+            })
+          : JSON.stringify({
+              ...compiled.value,
+              data: ['GET', 'HEAD'].includes(compiled.value.method)
+                ? undefined
+                : compiled.value.data,
+            })
       const response = await fetch('/api/proxy', {
         method: 'POST',
         signal: controller.signal,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...compiled.value,
-          data: ['GET', 'HEAD'].includes(compiled.value.method)
+        headers:
+          bodyMode === 'multipart'
             ? undefined
-            : compiled.value.data,
-        }),
+            : { 'Content-Type': 'application/json' },
+        body: payload,
       })
       const data = await response.json()
       if (revision !== requestRevision.current) return
@@ -302,6 +375,10 @@ export default function CurlConverterPage() {
               variant="outline"
               onClick={() => {
                 setInput('')
+                setAuth({ type: 'none', token: '', username: '', password: '' })
+                setFormFields([])
+                setFormFiles([])
+                setBodyMode('text')
                 setRequest(empty)
                 setQuery([])
                 setHeaders([])
@@ -338,6 +415,64 @@ export default function CurlConverterPage() {
               )}
             </select>
           </Field>
+          <Field label={x('authentication')}>
+            <select
+              aria-label={x('authentication')}
+              className="w-full rounded border bg-background p-2"
+              value={auth.type}
+              onChange={(event) => {
+                setAuth({
+                  ...auth,
+                  type: event.target.value as RequestAuth['type'],
+                })
+                setResult(null)
+              }}
+            >
+              <option value="none">{x('none')}</option>
+              <option value="bearer">Bearer token</option>
+              <option value="basic">Basic auth</option>
+            </select>
+          </Field>
+          {auth.type === 'bearer' && (
+            <Field label="Token">
+              <Input
+                aria-label="Token"
+                type="password"
+                autoComplete="off"
+                value={auth.token}
+                onChange={(event) => {
+                  setAuth({ ...auth, token: event.target.value })
+                  setResult(null)
+                }}
+              />
+            </Field>
+          )}
+          {auth.type === 'basic' && (
+            <div className="grid gap-3 md:grid-cols-2">
+              <Field label={x('username')}>
+                <Input
+                  aria-label={x('username')}
+                  value={auth.username}
+                  onChange={(event) => {
+                    setAuth({ ...auth, username: event.target.value })
+                    setResult(null)
+                  }}
+                />
+              </Field>
+              <Field label={x('password')}>
+                <Input
+                  aria-label={x('password')}
+                  type="password"
+                  autoComplete="off"
+                  value={auth.password}
+                  onChange={(event) => {
+                    setAuth({ ...auth, password: event.target.value })
+                    setResult(null)
+                  }}
+                />
+              </Field>
+            </div>
+          )}
           {rows('query', query, setQuery)}
           {rows('headers', headers, setHeaders)}
           <Field label={t('extraBody')}>
@@ -346,19 +481,105 @@ export default function CurlConverterPage() {
               aria-label={t('extraBody')}
               className="rounded border bg-background p-2"
               value={bodyMode}
-              onChange={(e) => setBodyMode(e.target.value)}
+              onChange={(e) => {
+                setBodyMode(e.target.value)
+                setResult(null)
+              }}
             >
               <option value="text">{t('extraText')}</option>
               <option value="json">JSON</option>
+              <option value="form">application/x-www-form-urlencoded</option>
+              <option value="multipart">multipart/form-data</option>
             </select>
-            <Textarea
-              data-testid="curl-body"
-              aria-label={t('extraBody')}
-              maxLength={100000}
-              className="font-mono"
-              value={request.data ?? ''}
-              onChange={(e) => edit({ ...request, data: e.target.value })}
-            />
+            {['text', 'json'].includes(bodyMode) && (
+              <Textarea
+                data-testid="curl-body"
+                aria-label={t('extraBody')}
+                maxLength={100000}
+                className="font-mono"
+                value={request.data ?? ''}
+                onChange={(e) => edit({ ...request, data: e.target.value })}
+              />
+            )}
+            {['form', 'multipart'].includes(bodyMode) && (
+              <div className="space-y-2">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setFormFields([...formFields, ['', '']])
+                    setResult(null)
+                  }}
+                >
+                  {x('addField')}
+                </Button>
+                {formFields.map(([key, value], index) => (
+                  <div className="flex gap-2" key={index}>
+                    <Input
+                      aria-label={x('fieldName')}
+                      value={key}
+                      onChange={(event) => {
+                        setFormFields(
+                          formFields.map((pair, i) =>
+                            i === index ? [event.target.value, pair[1]] : pair,
+                          ),
+                        )
+                        setResult(null)
+                      }}
+                    />
+                    <Input
+                      aria-label={x('fieldValue')}
+                      value={value}
+                      onChange={(event) => {
+                        setFormFields(
+                          formFields.map((pair, i) =>
+                            i === index ? [pair[0], event.target.value] : pair,
+                          ),
+                        )
+                        setResult(null)
+                      }}
+                    />
+                    <Button
+                      variant="ghost"
+                      aria-label={x('remove')}
+                      onClick={() => {
+                        setFormFields(formFields.filter((_, i) => i !== index))
+                        setResult(null)
+                      }}
+                    >
+                      ×
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            )}
+            {bodyMode === 'multipart' && (
+              <>
+                <Field label={x('fileField')}>
+                  <Input
+                    aria-label={x('fileField')}
+                    value={fileField}
+                    onChange={(event) => {
+                      setFileField(event.target.value)
+                      setResult(null)
+                    }}
+                  />
+                </Field>
+                <Field label={x('files')}>
+                  <Input
+                    aria-label={x('files')}
+                    type="file"
+                    multiple
+                    onChange={(event) => {
+                      setFormFiles(Array.from(event.target.files ?? []))
+                      setResult(null)
+                    }}
+                  />
+                </Field>
+                <p className="text-sm text-muted-foreground">
+                  {x('uploadHint')}
+                </p>
+              </>
+            )}
             <p className="text-xs text-muted-foreground">
               {t('extraBodyHint')}
             </p>
@@ -379,10 +600,12 @@ export default function CurlConverterPage() {
                 data-testid="curl-language"
                 aria-label={t('language_label')}
                 className="w-full rounded border bg-background p-2"
-                value={language}
+                value={bodyMode === 'multipart' ? 'curl' : language}
+                disabled={bodyMode === 'multipart'}
                 onChange={(e) => setLanguage(e.target.value)}
               >
                 {[
+                  ['curl', 'cURL'],
                   ['javascript', 'JavaScript (Fetch)'],
                   ['python', 'Python (Requests)'],
                   ['nodejs', 'Node.js (Axios)'],
@@ -423,7 +646,7 @@ export default function CurlConverterPage() {
                 onClick={() =>
                   downloadText(
                     compiled.output,
-                    `request.${({ python: 'py', php: 'php', go: 'go' } as Record<string, string>)[language] ?? 'js'}`,
+                    `request.${bodyMode === 'multipart' ? 'sh' : (({ curl: 'sh', python: 'py', php: 'php', go: 'go' } as Record<string, string>)[language] ?? 'js')}`,
                   )
                 }
               >

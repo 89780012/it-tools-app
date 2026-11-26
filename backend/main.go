@@ -151,6 +151,9 @@ func newHandler(cfg config) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /api/health", healthHandler)
 	mux.HandleFunc("POST /api/proxy", proxyHandler)
+	mux.HandleFunc("POST /api/dns", dnsLookupHandler)
+	mux.HandleFunc("POST /api/tls", tlsCheckHandler)
+	mux.HandleFunc("POST /api/stream", streamHandler)
 	mux.HandleFunc("POST /api/i18n-translate", translateHandler(cfg))
 	mux.HandleFunc("POST /api/detect-language", detectLanguageHandler(cfg))
 	registerCertificateRoutes(mux, cfg.certificates)
@@ -204,8 +207,8 @@ type proxyResponse struct {
 }
 
 func proxyHandler(w http.ResponseWriter, r *http.Request) {
-	var input proxyRequest
-	if err := decodeJSON(w, r, &input); err != nil {
+	input, multipartBody, err := readProxyInput(w, r)
+	if err != nil {
 		writeInputError(w, err)
 		return
 	}
@@ -231,7 +234,7 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var requestBody io.Reader
+	var requestBody io.Reader = multipartBody
 	if len(input.Data) != 0 && string(input.Data) != "null" && method != http.MethodGet && method != http.MethodHead {
 		var data any
 		if err := json.Unmarshal(input.Data, &data); err != nil {
@@ -266,29 +269,7 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 		outbound.Header.Set("Content-Type", "application/json")
 	}
 
-	transport := &http.Transport{
-		Proxy: nil,
-		DialContext: func(ctx context.Context, network, address string) (net.Conn, error) {
-			host, port, err := net.SplitHostPort(address)
-			if err != nil {
-				return nil, err
-			}
-			ips, err := resolvePublicHost(ctx, host)
-			if err != nil {
-				return nil, err
-			}
-			dialer := &net.Dialer{}
-			var lastErr error
-			for _, ip := range ips {
-				conn, err := dialer.DialContext(ctx, network, net.JoinHostPort(ip.String(), port))
-				if err == nil {
-					return conn, nil
-				}
-				lastErr = err
-			}
-			return nil, lastErr
-		},
-	}
+	transport := publicTransport()
 	defer transport.CloseIdleConnections()
 	client := &http.Client{
 		Transport: transport,

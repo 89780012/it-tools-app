@@ -173,7 +173,7 @@ test('locales: every route has localized headings and metadata', async ({
       )
       const content = await toolMain(page).innerText()
       expect(content, `${locale}:${tool.id}`).not.toMatch(
-        /tools\.[a-z-]+\.[a-zA-Z_]+|workbench\.[a-zA-Z_]+/,
+        /tools\.[a-z-]+\.[a-zA-Z_]+|workbench\.[a-zA-Z_]+|expansion\.[a-zA-Z_]+/,
       )
     }
     results.push({ locale, tools: allTools.length })

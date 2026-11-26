@@ -1,3 +1,4 @@
+import { ImageBatch } from '@/components/tools/image-batch'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
 import { Button } from '@/components/ui/button'
@@ -32,6 +33,14 @@ export default function ImageCompressor() {
     [background, setBackground] = useState('#ffffff')
   const [busy, setBusy] = useState(false),
     [error, setError] = useState('')
+  const x = useTranslations('expansion')
+  const [crop, setCrop] = useState({
+    x: 0,
+    y: 0,
+    cropWidth: 1,
+    cropHeight: 1,
+    rotation: 0,
+  })
   const uploadRevision = useRef(0),
     encodeRevision = useRef(0)
   useEffect(
@@ -83,6 +92,13 @@ export default function ImageCompressor() {
         return
       }
       setSource({ ...loaded, file })
+      setCrop({
+        x: 0,
+        y: 0,
+        cropWidth: loaded.image.naturalWidth,
+        cropHeight: loaded.image.naturalHeight,
+        rotation: 0,
+      })
       setWidth(String(loaded.image.naturalWidth))
       setHeight(String(loaded.image.naturalHeight))
     } catch (value) {
@@ -98,8 +114,8 @@ export default function ImageCompressor() {
     if (locked && source && value) {
       try {
         const size = frontendResize(
-          source.image.naturalWidth,
-          source.image.naturalHeight,
+          crop.rotation % 180 ? crop.cropHeight : crop.cropWidth,
+          crop.rotation % 180 ? crop.cropWidth : crop.cropHeight,
           Number(value),
           axis,
         )
@@ -124,6 +140,7 @@ export default function ImageCompressor() {
         mime,
         quality / 100,
         background,
+        crop,
       )
       if (token !== encodeRevision.current) return
       setResult({
@@ -140,9 +157,61 @@ export default function ImageCompressor() {
   }
   return (
     <Workbench toolId="image-compressor">
+      {source && (
+        <Panel title={x('cropRotate')}>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {(['x', 'y', 'cropWidth', 'cropHeight'] as const).map((key) => (
+              <Field key={key} label={x(key)}>
+                <Input
+                  aria-label={x(key)}
+                  type="number"
+                  value={crop[key]}
+                  min={key === 'x' || key === 'y' ? 0 : 1}
+                  onChange={(event) => {
+                    invalidate()
+                    setCrop({ ...crop, [key]: Number(event.target.value) })
+                  }}
+                />
+              </Field>
+            ))}
+            <Field label={x('rotation')}>
+              <select
+                aria-label={x('rotation')}
+                className="w-full rounded border bg-background p-2"
+                value={crop.rotation}
+                onChange={(event) => {
+                  invalidate()
+                  setCrop({ ...crop, rotation: Number(event.target.value) })
+                }}
+              >
+                {[0, 90, 180, 270].map((value) => (
+                  <option value={value} key={value}>
+                    {value}°
+                  </option>
+                ))}
+              </select>
+            </Field>
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => {
+              invalidate()
+              setWidth(
+                String(crop.rotation % 180 ? crop.cropHeight : crop.cropWidth),
+              )
+              setHeight(
+                String(crop.rotation % 180 ? crop.cropWidth : crop.cropHeight),
+              )
+            }}
+          >
+            {x('useCropSize')}
+          </Button>
+        </Panel>
+      )}
       <Panel title={w('input')}>
         <Field label={t('file')} htmlFor="image-file" hint={t('limits')}>
           <Input
+            aria-label={t('file')}
             id="image-file"
             data-testid="image-upload"
             type="file"
@@ -156,6 +225,7 @@ export default function ImageCompressor() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <Field label={t('format')} htmlFor="image-format">
             <select
+              aria-label={t('format')}
               id="image-format"
               data-testid="image-format"
               className="w-full rounded border bg-background p-2"
@@ -192,6 +262,7 @@ export default function ImageCompressor() {
           </Field>
           <Field label={t('width')} htmlFor="image-width">
             <Input
+              aria-label={t('width')}
               id="image-width"
               data-testid="image-width"
               type="number"
@@ -203,6 +274,7 @@ export default function ImageCompressor() {
           </Field>
           <Field label={t('height')} htmlFor="image-height">
             <Input
+              aria-label={t('height')}
               id="image-height"
               data-testid="image-height"
               type="number"
@@ -308,6 +380,7 @@ export default function ImageCompressor() {
           </Panel>
         )}
       </div>
+      <ImageBatch />
     </Workbench>
   )
 }
