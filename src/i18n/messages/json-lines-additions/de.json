@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "JSON / JSON Lines Konverter",
+      "description": "JSON-Arrays in JSON Lines (NDJSON) und zurück umwandeln, ohne Zahlengenauigkeit zu verlieren. Lokale Dateien importieren und Ergebnisse kopieren oder herunterladen.",
+      "meta": {
+        "title": "JSON / JSON Lines Konverter",
+        "description": "JSON-Arrays in JSON Lines (NDJSON) und zurück umwandeln, ohne Zahlengenauigkeit zu verlieren. Lokale Dateien importieren und Ergebnisse kopieren oder herunterladen.",
+        "keywords": "JSON Lines, NDJSON, JSONL, JSON-Array-Konverter, Protokollkonvertierung"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "Konvertierungsrichtung",
+    "toLines": "JSON-Array → JSON Lines",
+    "toJson": "JSON Lines → JSON-Array",
+    "skipBlankLines": "Leerzeilen überspringen",
+    "file": "Datei importieren",
+    "fileHint": "UTF-8-Dateien .json, .jsonl, .ndjson oder .txt; bis 5 MiB. Die Dateiendung bestimmt die Richtung.",
+    "jsonInput": "JSON-Array-Eingabe",
+    "linesInput": "JSON-Lines-Eingabe",
+    "convert": "Konvertieren",
+    "reading": "Datei wird gelesen…",
+    "hint": "Protokolle und Datensätze lokal umwandeln. Bis zu 5 MiB, 50.000 Datensätze und 100 Verschachtelungsebenen. Große Ganzzahlen und Dezimalzahlen bleiben präzise.",
+    "rules": "Die JSON-Eingabe muss ein Array sein. Jeder JSON-Lines-Datensatz darf ein beliebiger JSON-Wert sein, auch null oder ein Array. LF, CRLF und ein abschließender Zeilenumbruch sind erlaubt. Übersprungene Leerzeilen werden gezählt. Ungültige Datensätze und doppelte Schlüssel mit unterschiedlichen Werten stoppen die Konvertierung.",
+    "counts": "{count} Datensätze konvertiert; {skipped} Leerzeilen übersprungen.",
+    "emptyResult": "Ein leeres Array erzeugt eine leere JSON-Lines-Datei, die heruntergeladen werden kann.",
+    "errors": {
+      "empty": "Ein JSON-Array oder mindestens einen JSON-Lines-Datensatz eingeben.",
+      "tooLarge": "Die Eingabe überschreitet 5 MiB in UTF-8.",
+      "tooManyRecords": "Die Eingabe überschreitet 50.000 Datensätze.",
+      "tooDeep": "Die Eingabe überschreitet 100 Verschachtelungsebenen.",
+      "invalidJson": "Ungültiges JSON. Syntax und doppelte Schlüssel mit unterschiedlichen Werten prüfen.",
+      "expectedArray": "Die JSON-Eingabe muss auf oberster Ebene ein Array sein.",
+      "blankLine": "Leerzeile in Zeile {line}. Leerzeilen überspringen aktivieren oder die Zeile entfernen.",
+      "invalidLine": "Ungültiger JSON-Datensatz in Zeile {line}. Syntax und doppelte Schlüssel mit unterschiedlichen Werten prüfen.",
+      "encoding": "Die Datei ist nicht gültig UTF-8-kodiert. Als UTF-8 speichern und erneut versuchen.",
+      "fileRead": "Datei konnte nicht gelesen werden. Erneut auswählen.",
+      "download": "Download fehlgeschlagen. Bitte die Ausgabe kopieren."
+    }
+  }
+}

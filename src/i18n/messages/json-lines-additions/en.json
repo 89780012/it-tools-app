@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "JSON / JSON Lines Converter",
+      "description": "Convert JSON arrays to JSON Lines (NDJSON) and back, preserving large numbers. Import local files, copy or download the result.",
+      "meta": {
+        "title": "JSON / JSON Lines Converter",
+        "description": "Convert JSON arrays to JSON Lines (NDJSON) and back, preserving large numbers. Import local files, copy or download the result.",
+        "keywords": "JSON Lines, NDJSON, JSONL, JSON array converter, log conversion"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "Conversion direction",
+    "toLines": "JSON array → JSON Lines",
+    "toJson": "JSON Lines → JSON array",
+    "skipBlankLines": "Skip blank lines",
+    "file": "Import file",
+    "fileHint": "UTF-8 .json, .jsonl, .ndjson or .txt; up to 5 MiB. The file extension selects the direction.",
+    "jsonInput": "JSON array input",
+    "linesInput": "JSON Lines input",
+    "convert": "Convert",
+    "reading": "Reading file…",
+    "hint": "Convert log exports and datasets locally. Up to 5 MiB, 50,000 records and 100 nesting levels. Large integers and decimal precision are preserved.",
+    "rules": "JSON input must be an array. Each JSON Lines record can be any JSON value, including null or an array. Use LF or CRLF line endings; a final newline is allowed. Blank lines are counted when skipped. Invalid records and conflicting duplicate object keys stop conversion.",
+    "counts": "{count} records converted; {skipped} blank lines skipped.",
+    "emptyResult": "An empty array produces an empty JSON Lines file. You can still download it.",
+    "errors": {
+      "empty": "Enter a JSON array or at least one JSON Lines record.",
+      "tooLarge": "Input exceeds the 5 MiB UTF-8 limit.",
+      "tooManyRecords": "Input exceeds 50,000 records.",
+      "tooDeep": "Input exceeds 100 nesting levels.",
+      "invalidJson": "Invalid JSON. Check syntax and conflicting duplicate keys.",
+      "expectedArray": "JSON input must be a top-level array.",
+      "blankLine": "Blank line at line {line}. Enable skipping blank lines or remove it.",
+      "invalidLine": "Invalid JSON record at line {line}. Check syntax and conflicting duplicate keys.",
+      "encoding": "The file is not valid UTF-8. Save it as UTF-8 and retry.",
+      "fileRead": "Unable to read the file. Select it again.",
+      "download": "Download failed. Copy the output instead."
+    }
+  }
+}

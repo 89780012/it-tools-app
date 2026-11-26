@@ -5,6 +5,7 @@ const aliases: Record<string, string> = {
   'tls-checker': 'ssl certificate expiry expiration 证书到期 证书检查 https',
   'dns-lookup': 'domain resolve txt mx cname 域名解析 dns查询',
   'json-formatter': 'json5 repair json修复 格式化',
+  'json-lines-converter': 'jsonl ndjson json lines newline delimited 日志 逐行json',
   'text-set-operations':
     'intersection union difference list 交集 并集 差集 名单',
   'text-batch-processor':
@@ -65,6 +66,7 @@ const workflows = [
   ],
   [
     'csv-table-editor',
+    'json-lines-converter',
     'csv-to-json',
     'json-to-csv',
     'data-to-sql',

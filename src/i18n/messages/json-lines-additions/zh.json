@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "JSON / JSON Lines 转换器",
+      "description": "JSON 数组与 JSON Lines（NDJSON）双向转换，保留大数精度，支持本地文件导入、复制和下载。",
+      "meta": {
+        "title": "JSON / JSON Lines 转换器",
+        "description": "JSON 数组与 JSON Lines（NDJSON）双向转换，保留大数精度，支持本地文件导入、复制和下载。",
+        "keywords": "JSON Lines, NDJSON, JSONL, JSON数组转换, 日志转换"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "转换方向",
+    "toLines": "JSON 数组 → JSON Lines",
+    "toJson": "JSON Lines → JSON 数组",
+    "skipBlankLines": "跳过空行",
+    "file": "导入文件",
+    "fileHint": "支持 UTF-8 编码的 .json、.jsonl、.ndjson 或 .txt，最大 5 MiB。按文件扩展名选择转换方向。",
+    "jsonInput": "JSON 数组输入",
+    "linesInput": "JSON Lines 输入",
+    "convert": "转换",
+    "reading": "正在读取文件…",
+    "hint": "在本地转换日志导出和数据集。支持最大 5 MiB、50,000 条记录及 100 层嵌套，保留大整数和小数精度。",
+    "rules": "JSON 输入必须是数组。JSON Lines 每行可为任意 JSON 值，包括 null 或数组。支持 LF、CRLF 换行及末尾换行。跳过的空行会计数；无效记录或值冲突的重复对象键会中止转换。",
+    "counts": "已转换 {count} 条记录，跳过 {skipped} 个空行。",
+    "emptyResult": "空数组会生成空的 JSON Lines 文件，仍可下载。",
+    "errors": {
+      "empty": "请输入 JSON 数组或至少一条 JSON Lines 记录。",
+      "tooLarge": "输入超过 UTF-8 编码 5 MiB 限制。",
+      "tooManyRecords": "输入超过 50,000 条记录。",
+      "tooDeep": "输入超过 100 层嵌套。",
+      "invalidJson": "JSON 无效，请检查语法及值冲突的重复键。",
+      "expectedArray": "JSON 输入的顶层必须是数组。",
+      "blankLine": "第 {line} 行为空行，请启用跳过空行或删除该行。",
+      "invalidLine": "第 {line} 行不是有效的 JSON 记录，请检查语法及值冲突的重复键。",
+      "encoding": "文件不是有效的 UTF-8 编码，请另存为 UTF-8 后重试。",
+      "fileRead": "无法读取文件，请重新选择。",
+      "download": "下载失败，请复制输出内容。"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "JSON / JSON Lines 변환기",
+      "description": "숫자 정밀도를 유지하면서 JSON 배열과 JSON Lines(NDJSON)를 양방향으로 변환합니다. 로컬 파일 가져오기, 복사 및 다운로드를 지원합니다.",
+      "meta": {
+        "title": "JSON / JSON Lines 변환기",
+        "description": "숫자 정밀도를 유지하면서 JSON 배열과 JSON Lines(NDJSON)를 양방향으로 변환합니다. 로컬 파일 가져오기, 복사 및 다운로드를 지원합니다.",
+        "keywords": "JSON Lines, NDJSON, JSONL, JSON 배열 변환기, 로그 변환"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "변환 방향",
+    "toLines": "JSON 배열 → JSON Lines",
+    "toJson": "JSON Lines → JSON 배열",
+    "skipBlankLines": "빈 줄 건너뛰기",
+    "file": "파일 가져오기",
+    "fileHint": "UTF-8 .json, .jsonl, .ndjson 또는 .txt 파일, 최대 5 MiB. 확장자에 따라 변환 방향을 선택합니다.",
+    "jsonInput": "JSON 배열 입력",
+    "linesInput": "JSON Lines 입력",
+    "convert": "변환",
+    "reading": "파일 읽는 중…",
+    "hint": "로그와 데이터 세트를 로컬에서 변환합니다. 최대 5 MiB, 50,000개 레코드 및 100단계 중첩을 지원합니다. 큰 정수와 소수의 정밀도를 유지합니다.",
+    "rules": "JSON 입력은 배열이어야 합니다. JSON Lines의 각 레코드는 null이나 배열을 포함한 모든 JSON 값이 될 수 있습니다. LF, CRLF 및 마지막 줄바꿈을 지원합니다. 건너뛴 빈 줄 수를 표시합니다. 잘못된 레코드나 값이 다른 중복 키가 있으면 변환이 중단됩니다.",
+    "counts": "{count}개 레코드 변환, 빈 줄 {skipped}개 건너뜀.",
+    "emptyResult": "빈 배열은 빈 JSON Lines 파일을 생성하며 다운로드할 수 있습니다.",
+    "errors": {
+      "empty": "JSON 배열 또는 하나 이상의 JSON Lines 레코드를 입력하세요.",
+      "tooLarge": "입력이 UTF-8 기준 5 MiB 제한을 초과했습니다.",
+      "tooManyRecords": "입력이 50,000개 레코드를 초과했습니다.",
+      "tooDeep": "입력이 100단계 중첩을 초과했습니다.",
+      "invalidJson": "잘못된 JSON입니다. 구문과 값이 다른 중복 키를 확인하세요.",
+      "expectedArray": "JSON 입력의 최상위 값은 배열이어야 합니다.",
+      "blankLine": "{line}번째 줄이 비어 있습니다. 빈 줄 건너뛰기를 켜거나 해당 줄을 삭제하세요.",
+      "invalidLine": "{line}번째 줄의 JSON 레코드가 잘못되었습니다. 구문과 값이 다른 중복 키를 확인하세요.",
+      "encoding": "유효한 UTF-8 파일이 아닙니다. UTF-8로 저장한 뒤 다시 시도하세요.",
+      "fileRead": "파일을 읽을 수 없습니다. 다시 선택하세요.",
+      "download": "다운로드에 실패했습니다. 출력을 복사하세요."
+    }
+  }
+}

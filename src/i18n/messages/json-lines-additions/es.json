@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "Conversor de JSON / JSON Lines",
+      "description": "Convierte arrays JSON a JSON Lines (NDJSON) y viceversa sin perder precisión numérica. Importa archivos locales, copia o descarga el resultado.",
+      "meta": {
+        "title": "Conversor de JSON / JSON Lines",
+        "description": "Convierte arrays JSON a JSON Lines (NDJSON) y viceversa sin perder precisión numérica. Importa archivos locales, copia o descarga el resultado.",
+        "keywords": "JSON Lines, NDJSON, JSONL, conversor de arrays JSON, conversión de registros"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "Dirección de conversión",
+    "toLines": "Array JSON → JSON Lines",
+    "toJson": "JSON Lines → Array JSON",
+    "skipBlankLines": "Omitir líneas vacías",
+    "file": "Importar archivo",
+    "fileHint": "Archivos UTF-8 .json, .jsonl, .ndjson o .txt; hasta 5 MiB. La extensión selecciona la dirección.",
+    "jsonInput": "Entrada de array JSON",
+    "linesInput": "Entrada JSON Lines",
+    "convert": "Convertir",
+    "reading": "Leyendo archivo…",
+    "hint": "Convierte registros y conjuntos de datos localmente. Hasta 5 MiB, 50.000 registros y 100 niveles de anidamiento. Conserva la precisión de enteros grandes y decimales.",
+    "rules": "La entrada JSON debe ser un array. Cada registro JSON Lines puede ser cualquier valor JSON, incluido null o un array. Admite saltos LF o CRLF y un salto final. Cuenta las líneas vacías omitidas. Los registros inválidos y las claves duplicadas con valores distintos detienen la conversión.",
+    "counts": "{count} registros convertidos; {skipped} líneas vacías omitidas.",
+    "emptyResult": "Un array vacío produce un archivo JSON Lines vacío que puedes descargar.",
+    "errors": {
+      "empty": "Introduce un array JSON o al menos un registro JSON Lines.",
+      "tooLarge": "La entrada supera el límite de 5 MiB en UTF-8.",
+      "tooManyRecords": "La entrada supera los 50.000 registros.",
+      "tooDeep": "La entrada supera los 100 niveles de anidamiento.",
+      "invalidJson": "JSON inválido. Revisa la sintaxis y las claves duplicadas con valores distintos.",
+      "expectedArray": "La entrada JSON debe ser un array en el nivel superior.",
+      "blankLine": "Línea vacía en la línea {line}. Activa la omisión de líneas vacías o elimínala.",
+      "invalidLine": "Registro JSON inválido en la línea {line}. Revisa la sintaxis y las claves duplicadas con valores distintos.",
+      "encoding": "El archivo no es UTF-8 válido. Guárdalo como UTF-8 e inténtalo de nuevo.",
+      "fileRead": "No se pudo leer el archivo. Selecciónalo de nuevo.",
+      "download": "La descarga falló. Copia el resultado."
+    }
+  }
+}

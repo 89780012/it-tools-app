@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "Convertitore JSON / JSON Lines",
+      "description": "Converti array JSON in JSON Lines (NDJSON) e viceversa preservando la precisione numerica. Importa file locali, copia o scarica il risultato.",
+      "meta": {
+        "title": "Convertitore JSON / JSON Lines",
+        "description": "Converti array JSON in JSON Lines (NDJSON) e viceversa preservando la precisione numerica. Importa file locali, copia o scarica il risultato.",
+        "keywords": "JSON Lines, NDJSON, JSONL, convertitore array JSON, conversione log"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "Direzione di conversione",
+    "toLines": "Array JSON → JSON Lines",
+    "toJson": "JSON Lines → Array JSON",
+    "skipBlankLines": "Ignora righe vuote",
+    "file": "Importa file",
+    "fileHint": "File UTF-8 .json, .jsonl, .ndjson o .txt; fino a 5 MiB. L’estensione seleziona la direzione.",
+    "jsonInput": "Array JSON in ingresso",
+    "linesInput": "JSON Lines in ingresso",
+    "convert": "Converti",
+    "reading": "Lettura del file…",
+    "hint": "Converti log e set di dati localmente. Fino a 5 MiB, 50.000 record e 100 livelli di annidamento. La precisione di interi grandi e decimali viene preservata.",
+    "rules": "L’ingresso JSON deve essere un array. Ogni record JSON Lines può essere qualsiasi valore JSON, incluso null o un array. Sono accettati LF, CRLF e un ritorno a capo finale. Le righe vuote ignorate vengono contate. Record non validi e chiavi duplicate con valori diversi interrompono la conversione.",
+    "counts": "{count} record convertiti; {skipped} righe vuote ignorate.",
+    "emptyResult": "Un array vuoto produce un file JSON Lines vuoto, che puoi comunque scaricare.",
+    "errors": {
+      "empty": "Inserisci un array JSON o almeno un record JSON Lines.",
+      "tooLarge": "L’ingresso supera il limite UTF-8 di 5 MiB.",
+      "tooManyRecords": "L’ingresso supera 50.000 record.",
+      "tooDeep": "L’ingresso supera 100 livelli di annidamento.",
+      "invalidJson": "JSON non valido. Controlla sintassi e chiavi duplicate con valori diversi.",
+      "expectedArray": "L’ingresso JSON deve essere un array al livello principale.",
+      "blankLine": "Riga vuota alla riga {line}. Abilita l’opzione per ignorarla o rimuovila.",
+      "invalidLine": "Record JSON non valido alla riga {line}. Controlla sintassi e chiavi duplicate con valori diversi.",
+      "encoding": "Il file non è UTF-8 valido. Salvalo come UTF-8 e riprova.",
+      "fileRead": "Impossibile leggere il file. Selezionalo di nuovo.",
+      "download": "Download non riuscito. Copia il risultato."
+    }
+  }
+}

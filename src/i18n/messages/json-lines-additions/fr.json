@@ -1,0 +1,42 @@
+{
+  "tools": {
+    "json-lines-converter": {
+      "name": "Convertisseur JSON / JSON Lines",
+      "description": "Convertissez des tableaux JSON en JSON Lines (NDJSON) et inversement sans perte de précision numérique. Importez des fichiers locaux, copiez ou téléchargez le résultat.",
+      "meta": {
+        "title": "Convertisseur JSON / JSON Lines",
+        "description": "Convertissez des tableaux JSON en JSON Lines (NDJSON) et inversement sans perte de précision numérique. Importez des fichiers locaux, copiez ou téléchargez le résultat.",
+        "keywords": "JSON Lines, NDJSON, JSONL, convertisseur de tableaux JSON, conversion de journaux"
+      }
+    }
+  },
+  "jsonLines": {
+    "direction": "Sens de conversion",
+    "toLines": "Tableau JSON → JSON Lines",
+    "toJson": "JSON Lines → Tableau JSON",
+    "skipBlankLines": "Ignorer les lignes vides",
+    "file": "Importer un fichier",
+    "fileHint": "Fichiers UTF-8 .json, .jsonl, .ndjson ou .txt ; jusqu’à 5 Mio. L’extension sélectionne le sens.",
+    "jsonInput": "Tableau JSON en entrée",
+    "linesInput": "JSON Lines en entrée",
+    "convert": "Convertir",
+    "reading": "Lecture du fichier…",
+    "hint": "Convertissez localement des journaux et jeux de données. Jusqu’à 5 Mio, 50 000 enregistrements et 100 niveaux d’imbrication. La précision des grands entiers et des décimales est préservée.",
+    "rules": "L’entrée JSON doit être un tableau. Chaque enregistrement JSON Lines peut être toute valeur JSON, y compris null ou un tableau. Les fins de ligne LF, CRLF et le saut final sont acceptés. Les lignes vides ignorées sont comptées. Les enregistrements invalides et les clés dupliquées aux valeurs différentes arrêtent la conversion.",
+    "counts": "{count} enregistrements convertis ; {skipped} lignes vides ignorées.",
+    "emptyResult": "Un tableau vide produit un fichier JSON Lines vide, qui reste téléchargeable.",
+    "errors": {
+      "empty": "Saisissez un tableau JSON ou au moins un enregistrement JSON Lines.",
+      "tooLarge": "L’entrée dépasse la limite de 5 Mio en UTF-8.",
+      "tooManyRecords": "L’entrée dépasse 50 000 enregistrements.",
+      "tooDeep": "L’entrée dépasse 100 niveaux d’imbrication.",
+      "invalidJson": "JSON invalide. Vérifiez la syntaxe et les clés dupliquées aux valeurs différentes.",
+      "expectedArray": "L’entrée JSON doit être un tableau à la racine.",
+      "blankLine": "Ligne vide à la ligne {line}. Activez leur omission ou supprimez cette ligne.",
+      "invalidLine": "Enregistrement JSON invalide à la ligne {line}. Vérifiez la syntaxe et les clés dupliquées aux valeurs différentes.",
+      "encoding": "Le fichier n’est pas en UTF-8 valide. Enregistrez-le en UTF-8 et réessayez.",
+      "fileRead": "Impossible de lire le fichier. Sélectionnez-le à nouveau.",
+      "download": "Échec du téléchargement. Copiez le résultat."
+    }
+  }
+}

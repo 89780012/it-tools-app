@@ -64,6 +64,7 @@ export const toolsConfig: ToolCategory[] = [
     ['json-key-fixer', 'file-diff'],
   ]),
   category('json-converters', 'json_converters', 'file-code', [
+    ['json-lines-converter', 'file-json'],
     ['json-to-csv', 'table'],
     ['json-to-yaml', 'file-text'],
     ['json-to-xml', 'file-code'],
