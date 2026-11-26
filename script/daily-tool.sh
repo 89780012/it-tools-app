@@ -53,18 +53,30 @@ git -C "$PROJECT_DIR" fetch origin
 BASE="$(git -C "$PROJECT_DIR" rev-parse origin/main)"
 [[ "$(git -C "$PROJECT_DIR" branch --show-current)" == main ]] || fail '项目主工作目录必须位于 main。'
 [[ "$(git -C "$PROJECT_DIR" rev-parse HEAD)" == "$BASE" ]] || fail '本地 main 与远端不同，请先同步。'
-if git -C "$PROJECT_DIR" show-ref --verify --quiet "refs/heads/$BRANCH" || git -C "$PROJECT_DIR" show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
-  fail "今日分支已存在：$BRANCH。请先检查上次结果，避免重复生成。"
-fi
 WORK_DIR="$STATE_DIR/worktrees/$RUN_DATE"
-git -C "$PROJECT_DIR" worktree add -b "$BRANCH" "$WORK_DIR" "$BASE"
+BASE_FILE="$STATE_DIR/$RUN_DATE.base"
+SESSION_FILE="$STATE_DIR/$RUN_DATE.session"
+if git -C "$PROJECT_DIR" show-ref --verify --quiet "refs/heads/$BRANCH"; then
+  [[ -f "$BASE_FILE" && -d "$WORK_DIR" ]] || fail "已有分支缺少恢复记录：$BRANCH。请检查原运行后登记基线，勿删除工作目录。"
+  [[ "$(git -C "$WORK_DIR" branch --show-current)" == "$BRANCH" ]] || fail '恢复目录与当天分支不匹配。'
+  [[ "$(git -C "$WORK_DIR" rev-parse HEAD)" == "$(cat "$BASE_FILE")" ]] || fail '当天分支已有提交，请检查推送/部署阶段，停止重复开发。'
+  if [[ "$(cat "$BASE_FILE")" != "$BASE" ]]; then
+    [[ -z "$(git -C "$WORK_DIR" status --porcelain)" ]] || fail '主分支已更新且生成目录有修改，请先合并后再恢复。'
+    git -C "$WORK_DIR" merge --ff-only "$BASE"
+    printf '%s\n' "$BASE" > "$BASE_FILE"
+  fi
+  printf '继续今日已有工作目录：%s\n' "$WORK_DIR"
+elif git -C "$PROJECT_DIR" show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+  fail "远端今日分支已存在：$BRANCH，请先检查已发布结果。"
+else
+  git -C "$PROJECT_DIR" worktree add -b "$BRANCH" "$WORK_DIR" "$BASE"
+  printf '%s\n' "$BASE" > "$BASE_FILE"
+fi
 cd "$WORK_DIR"
 npm ci --no-audit --no-fund
 printf '日期：%s\n工作目录：%s\n\n' "$RUN_DATE" "$WORK_DIR" > "$RUN_DIR/prompt.md"
 cat "$PROJECT_DIR/script/daily-tool-prompt.md" >> "$RUN_DIR/prompt.md"
-CODEX_ARGS=(exec --dangerously-bypass-approvals-and-sandbox --cd "$WORK_DIR" --json --output-last-message "$RUN_DIR/summary.md")
-if [[ -n "${DAILY_TOOL_MODEL:-}" ]]; then CODEX_ARGS+=(--model "$DAILY_TOOL_MODEL"); fi
-timeout --signal=TERM --kill-after=60s "${DAILY_TOOL_AGENT_TIMEOUT:-90m}" "$CODEX_BIN" "${CODEX_ARGS[@]}" - < "$RUN_DIR/prompt.md" > "$RUN_DIR/events.jsonl" 2> "$RUN_DIR/codex.stderr.log"
+python3 "$PROJECT_DIR/script/daily-tool-codex.py" --codex "$CODEX_BIN" --work-dir "$WORK_DIR" --run-dir "$RUN_DIR" --session-file "$SESSION_FILE"
 
 [[ "$(git rev-parse HEAD)" == "$BASE" ]] || fail '代理意外创建了提交，停止自动发布并保留现场。'
 [[ -n "$(git status --porcelain)" ]] || fail '代理没有产生修改。'

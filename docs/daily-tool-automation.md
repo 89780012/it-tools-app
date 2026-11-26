@@ -19,7 +19,7 @@
 - systemd 模板：`script/systemd/it-tools-daily.service` 和 `.timer`。
 - 本机运行参数：`/etc/it-tools-daily.env`，权限 0600。已设置自动部署，并复制本机终端所需的 HTTP/HTTPS 代理环境；没有复制 API 密钥。
 - 模型和 API 凭据继续使用 root 的 `/root/.codex/config.toml`。不要求 `codex login`，也不应把 API 密钥加入 Git。
-- 定时器尚未启用；安装和启动命令如下。
+- 本机定时器已启用；新机器的安装和启动命令如下。
 
 验证记录：本地 CLI 和携带上述代理环境及 `CODEX_CI=1` 的临时 systemd 服务均已收到完整模型回复并正常退出。另用隔离的本地 Git 仓库验证了中文提交、main 推送、部署调用、每日去重、仅分支模式及失败停止；这些流程测试使用替身模型和 Docker，没有实际新增网站工具。
 
@@ -64,6 +64,8 @@ sudoedit /etc/it-tools-daily.env
 DAILY_TOOL_MODE=deploy
 DAILY_TOOL_TIMEZONE=Asia/Shanghai
 DAILY_TOOL_AGENT_TIMEOUT=90m
+DAILY_TOOL_CODEX_ATTEMPTS=4
+DAILY_TOOL_RETRY_DELAY_SECONDS=60
 DAILY_TOOL_GOPROXY=https://goproxy.cn
 ```
 
@@ -76,6 +78,8 @@ OnCalendar=*-*-* 08:00:00 Asia/Shanghai
 ```
 
 单次 Codex 开发最多 90 分钟，整个任务最多 2 小时。`Persistent=false` 表示关机错过的执行不会在开机后补跑。systemd 服务的 PATH 包含本机 Node.js 目录 `/www/server/nodejs/v24.16.0/bin`，更换 Node.js 安装路径时同步更新。
+
+遇到 API 429、并发上限、暂时性 5xx 或断流时，最多尝试 4 次，依次等待 60、120、240 秒，并用 `codex exec resume` 继续同一会话、同一个工具。90 分钟限制包含全部尝试和等待时间。认证失败、余额不足等错误直接停止。服务日志会显示失败分类、重试次数和事件日志路径。
 
 ## 3. 安装并启用定时任务
 
@@ -113,8 +117,8 @@ bash deploy.sh status
 每次运行目录为 `/var/lib/it-tools-daily/runs/日期.随机后缀/`：
 
 - `run.log`：安装依赖、测试、Git 和 Docker 部署日志。
-- `events.jsonl`：Codex 的执行事件。
-- `codex.stderr.log`：Codex 错误日志。
+- `events.attempt-N.jsonl`：每次 Codex 尝试的事件，`events.jsonl` 指向最近一次。
+- `codex.attempt-N.stderr.log`：每次 Codex 错误日志，`codex.stderr.log` 指向最近一次。
 - `summary.md`：Codex 生成的中文实现说明。
 
 执行期间可使用 `tail -f` 查看对应日志。完整任务成功会写入 `/var/lib/it-tools-daily/日期.done`；不能只根据模型报告判断部署是否成功。
@@ -145,7 +149,9 @@ sudo systemctl enable --now it-tools-daily.timer
 
 检查失败就停止后续发布步骤，保留分支、worktree 和日志。不强推、不重置主工作目录、不自动删除失败结果。main 在开发期间被别人更新，或出现未提交修改，也会停止自动发布。
 
-每天的分支为 `daily/tool-日期`。失败后同名分支已存在时，重跑会停止以避免覆盖成果；先检查该分支，再决定保留修复还是归档。不要直接删除工作目录或完成标记来重跑。成功和失败的 worktree 都会保留，需定期按实际需要归档以控制磁盘占用。
+每天的分支为 `daily/tool-日期`。新增工具尚未提交时，再次启动服务会沿用当天 worktree、已记录的基线和会话，继续未完成的工具。如果主分支更新且 worktree 干净，会快进同步；有未提交修改时停止，等待处理合并。若当天分支已有提交，则停止自动开发，避免把推送或部署失败误当成新的工具任务。不要删除工作目录或完成标记来重跑。成功和失败的 worktree 都会保留，需定期按实际需要归档以控制磁盘占用。
+
+2026-11-26 首次完整运行失败的实际原因是 API 服务商返回 `Concurrency limit exceeded for account` / HTTP 429，不是 npm 弃用警告。脚本锁只控制本机这个任务，无法限制同一 API 账号在其他终端或应用中的使用；持续出现此错误时，应减少共享账号的并发使用，或由服务商提高并发配额。重试不能保证突破账号配额。
 
 如果已经推送成功但 Docker 部署失败，提交会保留在远端。解决部署错误后可在项目主目录手动执行 `bash deploy.sh`；不要反复启动完整任务来重做同一个工具。自动任务不会保证每日必定成功，API 额度、响应完整性、网络及代码测试都会影响结果。
 
