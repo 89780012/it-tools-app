@@ -138,3 +138,14 @@ export const toolsConfig: ToolCategory[] = [
 ]
 
 export const allTools = toolsConfig.flatMap((group) => group.tools)
+
+// Temporarily hide the translation entry until its API is configured.
+// Keep the complete catalog above so existing routes and saved preferences survive.
+const hiddenToolIds = new Set(['i18n-json-translator'])
+export const visibleToolsConfig = toolsConfig
+  .map((group) => ({
+    ...group,
+    tools: group.tools.filter((tool) => !hiddenToolIds.has(tool.id)),
+  }))
+  .filter((group) => group.tools.length > 0)
+export const visibleTools = visibleToolsConfig.flatMap((group) => group.tools)

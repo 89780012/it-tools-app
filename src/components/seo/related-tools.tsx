@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { relatedToolsFor } from '@/lib/tool-discovery'
-import { toolsConfig } from "@/lib/tools-config"
+import { visibleToolsConfig as toolsConfig } from "@/lib/tools-config"
 import { Link } from "@/i18n/navigation"
 import { ExternalLink } from "lucide-react"
 

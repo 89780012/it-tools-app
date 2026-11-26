@@ -97,27 +97,10 @@ describe('expanded workflows', () => {
     await waitFor(() => expect((screen.getByTestId('tool-output') as HTMLTextAreaElement).value).toContain('1.2.3.4'))
     expect(fetch).toHaveBeenCalledTimes(1)
     expect(screen.getByLabelText('DNS resolver')).toHaveValue('alidns')
+    expect(screen.getByLabelText('DNS resolver')).toBeDisabled()
+    expect(screen.getByLabelText('DNS resolver').querySelectorAll('option')).toHaveLength(1)
     fireEvent.change(screen.getByTestId('dns-name'), { target: { value: 'other.example' } })
     expect(screen.getByTestId('tool-output')).toHaveValue('')
-  })
-  it('retains successful DNS answers when another resolver fails', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (_url, options) => {
-      const resolver = JSON.parse(options.body).resolver
-      return resolver === 'alidns'
-        ? { ok: true, json: async () => ({ resolver, answers: [{ data: '1.2.3.4', TTL: 300 }] }) }
-        : { ok: false, json: async () => ({ error: 'networkFailed' }) }
-    }))
-    mount(DnsTool)
-    fireEvent.change(screen.getByTestId('dns-name'), { target: { value: 'example.com' } })
-    fireEvent.change(screen.getByLabelText('DNS resolver'), { target: { value: 'all' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Run' }))
-    await waitFor(() => expect((screen.getByTestId('tool-output') as HTMLTextAreaElement).value).toContain('1.2.3.4'))
-    expect(fetch).toHaveBeenCalledTimes(3)
-    const results = JSON.parse((screen.getByTestId('tool-output') as HTMLTextAreaElement).value)
-    expect(results[0].resolver).toBe('alidns')
-    expect(results[1]).toHaveProperty('error')
-    expect(results[2]).toHaveProperty('error')
-    expect(screen.getByRole('alert')).toBeVisible()
   })
   it('shows independent TLS trust and hostname results', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => ({ host: 'example.com', version: 'TLS 1.3', hostnameValid: true, chainValid: false, validNow: true, daysRemaining: 20, certificates: [] }) })))

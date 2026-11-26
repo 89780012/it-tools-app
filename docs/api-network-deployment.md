@@ -4,7 +4,7 @@
 
 - cloudflared 的独立 Compose 启动命令已加入 `--protocol http2`，四条连接均注册为 HTTP/2。配置位于 `/www/server/panel/data/compose/cloudflared/docker-compose.yaml`，原配置备份为同目录的 `docker-compose.yaml.before-http2-20261126`（权限 0600）。该文件包含 Tunnel 凭据，不应提交到 Git。
 - 应用 `.env` 已补齐 `https://toolkitpub.com` 允许来源；项目 Compose 默认值和 `.env.example` 同步包含带与不带 www 的域名。
-- DNS 默认使用实测可达的 AliDNS；对比查询保留成功结果，并逐项列出失败的提供商。
+- DNS 目前仅开放实测可达的 AliDNS，暂时移除 Cloudflare、Google 及对比选项；后端也拒绝已停用的提供商。
 - IP 查询切换为 `https://ipwho.is/`，浏览器的当前 IP 检测及指定 IP 查询均通过公网页面验证。
 - 普通代理与 AI 请求分别使用 30 秒和 90 秒默认总超时；单个目标 IP 的连接尝试最多 3 秒。
 - API 日志增加请求 ID、状态、耗时和脱敏的错误分类，保持 SSE 实时刷新。
@@ -22,7 +22,7 @@ I18N_TRANSLATE_API_KEY=YOUR_KEY
 I18N_TRANSLATE_API_MODEL=YOUR_MODEL
 ```
 
-URL 必须是服务商支持的完整 chat-completions 地址，模型需支持当前请求使用的 JSON 输出格式。未配置时两个接口返回 503；服务器中没有可直接使用的这组配置。
+URL 必须是服务商支持的完整 chat-completions 地址，模型需支持当前请求使用的 JSON 输出格式。未配置时两个接口返回 503；服务器中没有可直接使用的这组配置。i18n JSON 翻译入口已通过 `src/lib/tools-config.ts` 的 `hiddenToolIds` 暂时隐藏，配置服务后可从该集合移除它以恢复菜单。
 
 ### Cloudflare 裸域名重定向
 
@@ -38,4 +38,4 @@ URL 必须是服务商支持的完整 chat-completions 地址，模型需支持�
 
 ### 指定公共 DNS 服务的出站访问
 
-绕过 Tunnel 直接调用本机 API，Cloudflare DNS 仍返回连接重置，Google DNS 仍在 10 秒超时。AliDNS 查询正常，因此默认 DNS 功能可用；如必须使用 Cloudflare/Google 对比，需要让服务器/Docker 出站网络能访问 `cloudflare-dns.com:443` 和 `dns.google:443`。修改 Tunnel 入站协议不会改变这些出站连接。
+绕过 Tunnel 直接调用本机 API，停用前，Cloudflare DNS 返回连接重置，Google DNS 在 10 秒超时。AliDNS 查询正常，因此默认 DNS 功能可用；如必须使用 Cloudflare/Google 对比，需要让服务器/Docker 出站网络能访问 `cloudflare-dns.com:443` 和 `dns.google:443`。修改 Tunnel 入站协议不会改变这些出站连接。

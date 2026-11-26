@@ -1,4 +1,4 @@
-import { allTools, type Tool } from './tools-config'
+import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
   'time-converter': 'timestamp epoch unix 时间戳 时区 日期毫秒',
   'nginx-certificate-generator': 'ssl https letsencrypt 证书签发 免费证书',

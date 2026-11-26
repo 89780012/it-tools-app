@@ -1,7 +1,7 @@
 import { matchesTool } from '@/lib/tool-discovery'
 import { useMemo, useState } from 'react'
 import { useTranslations } from '@/i18n/compat'
-import { allTools, toolsConfig } from '@/lib/tools-config'
+import { visibleTools as allTools, visibleToolsConfig as toolsConfig } from '@/lib/tools-config'
 import { useToolPreferences } from '@/lib/tool-preferences'
 import {
   Card,
@@ -90,7 +90,7 @@ export default function Home() {
             >
               <Icon className="me-2 size-4" />
               {x(id)}
-              {id === 'favorites' && ` (${favorites.length})`}
+              {id === 'favorites' && ` (${allTools.filter((tool) => favorites.includes(tool.id)).length})`}
             </Button>
           ))}
         </div>

@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
-import { allTools } from '@/lib/tools-config'
+import { visibleTools as allTools } from '@/lib/tools-config'
 import { matchesTool } from '@/lib/tool-discovery'
 export function ToolSearch() {
   const t = useTranslations(),

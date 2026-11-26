@@ -33,9 +33,8 @@ func validDNSName(name string) bool {
 }
 
 var dnsResolvers = map[string]string{
-	"alidns":     "https://dns.alidns.com/resolve",
-	"cloudflare": "https://cloudflare-dns.com/dns-query",
-	"google":     "https://dns.google/resolve",
+	// Enable only providers reachable from the deployed server.
+	"alidns": "https://dns.alidns.com/resolve",
 }
 var dnsTypes = map[string]bool{"A": true, "AAAA": true, "CNAME": true, "MX": true, "TXT": true, "NS": true, "CAA": true}
 

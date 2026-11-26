@@ -46,7 +46,7 @@ import {
 } from "lucide-react"
 import { useLocale, useTranslations } from '@/i18n/compat'
 import { Link, usePathname } from '@/i18n/navigation'
-import { toolsConfig } from "@/lib/tools-config"
+import { visibleToolsConfig as toolsConfig } from "@/lib/tools-config"
 import {
   Sidebar,
   SidebarContent,

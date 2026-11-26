@@ -60,7 +60,7 @@ go vet ./...
 
 ### Network diagnostics and request uploads
 
-`POST /api/dns` accepts `{ "name": "example.com", "type": "A", "resolver": "alidns" }`. Supported records are A, AAAA, CNAME, MX, TXT, NS and CAA. Resolvers are `alidns`, `cloudflare` and `google`. Responses contain the DNS status, answers with TTLs, authority records, resolver and check time. Queries time out after 10 seconds. The UI defaults to AliDNS; comparison queries all three and retains successful answers when another resolver fails. A query always uses the selected provider and never silently substitutes another provider's answers.
+`POST /api/dns` accepts `{ "name": "example.com", "type": "A", "resolver": "alidns" }`. Supported records are A, AAAA, CNAME, MX, TXT, NS and CAA. The currently enabled resolver is `alidns`; unavailable providers are rejected with HTTP 400. Responses contain the DNS status, answers with TTLs, authority records, resolver and check time. Queries time out after 10 seconds. The UI exposes only AliDNS while the other providers are unavailable.
 
 `POST /api/tls` accepts `{ "host": "example.com" }`. It connects to a validated public address on port 443, supplies SNI, and reports negotiated TLS version/cipher, certificate fingerprints and dates, hostname match and trust-chain verification independently. Invalid/expired certificates are collected for diagnosis and explicitly verified before reporting status. The connection times out after 10 seconds.
 

@@ -163,7 +163,7 @@ test('expansion: batch image ZIP, crop and rotation dimensions', async ({
   })
 })
 
-test('expansion: DNS comparison and TLS report with deterministic responses', async ({
+test('expansion: AliDNS lookup and TLS report with deterministic responses', async ({
   page,
 }) => {
   await page.route('**/api/dns', async (route) => {
@@ -180,30 +180,13 @@ test('expansion: DNS comparison and TLS report with deterministic responses', as
   })
   await page.goto('/tools/dns-lookup')
   await page.getByTestId('dns-name').fill('example.com')
-  await page
-    .getByRole('combobox', { name: 'DNS resolver', exact: true })
-    .selectOption('all')
+  const resolver = page.getByRole('combobox', { name: 'DNS resolver', exact: true })
+  await expect(resolver).toBeDisabled()
+  await expect(resolver.locator('option')).toHaveCount(1)
+  await expect(resolver).toHaveValue('alidns')
   await page.getByRole('button', { name: 'Run', exact: true }).click()
   await expect(output(page)).toHaveValue(/alidns/)
-  await expect(output(page)).toHaveValue(/cloudflare/)
-  await expect(output(page)).toHaveValue(/google/)
-  await page.route('**/api/dns', async (route) => {
-    const request = route.request().postDataJSON()
-    await route.fulfill(
-      request.resolver === 'alidns'
-        ? {
-            json: {
-              resolver: 'alidns',
-              status: 0,
-              answers: [{ TTL: 300, data: '93.184.216.34' }],
-            },
-          }
-        : { status: 502, json: { error: 'networkFailed' } },
-    )
-  })
-  await page.getByRole('button', { name: 'Run', exact: true }).click()
   await expect(output(page)).toHaveValue(/93\.184\.216\.34/)
-  await expect(output(page)).toHaveValue(/"error"/)
   await page.route('**/api/tls', (route) =>
     route.fulfill({
       json: {

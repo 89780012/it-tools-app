@@ -23,9 +23,11 @@ import (
 func TestNetworkToolValidation(t *testing.T) {
 	handler := newHandler(config{})
 	for _, test := range []struct{ path, body string }{
-		{"/api/dns", `{"name":"example.com/a","type":"A","resolver":"google"}`},
-		{"/api/dns", `{"name":"example.com","type":"AXFR","resolver":"google"}`},
+		{"/api/dns", `{"name":"example.com/a","type":"A","resolver":"alidns"}`},
+		{"/api/dns", `{"name":"example.com","type":"AXFR","resolver":"alidns"}`},
 		{"/api/dns", `{"name":"example.com","type":"A","resolver":"http://localhost"}`},
+		{"/api/dns", `{"name":"example.com","type":"A","resolver":"cloudflare"}`},
+		{"/api/dns", `{"name":"example.com","type":"A","resolver":"google"}`},
 		{"/api/tls", `{"host":"127.0.0.1"}`},
 		{"/api/tls", `{"host":"localhost"}`},
 		{"/api/tls", `{"host":"example.com:443"}`},
@@ -203,7 +205,7 @@ func (call diagnosticTransport) RoundTrip(request *http.Request) (*http.Response
 	return call(request)
 }
 func TestDNSResponsePreservesStatusRecordsAndTTL(t *testing.T) {
-	for _, resolver := range []string{"alidns", "cloudflare", "google"} {
+	for _, resolver := range []string{"alidns"} {
 		t.Run(resolver, func(t *testing.T) {
 			previous := http.DefaultClient
 			defer func() { http.DefaultClient = previous }()
