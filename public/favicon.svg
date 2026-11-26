@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#2b7fff" />
-  <!-- Wrench outline from Lucide (ISC), matching the navigation icon. -->
-  <path transform="translate(4 4)" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+  <rect width="32" height="32" rx="7" fill="#2563eb" />
+  <!-- Solid silhouette with a wide jaw and handle for legibility at 16px. -->
+  <path fill="#fff" d="M20 4a8 8 0 0 0-7.5 10.8l-8.3 8.3a3.3 3.3 0 0 0 4.7 4.7l8.3-8.3A8 8 0 0 0 28 12c0-.9-.2-1.8-.5-2.6L22 14l-4-4 4.6-5.5A8 8 0 0 0 20 4Z" />
 </svg>
