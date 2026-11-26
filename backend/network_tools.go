@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
+	"mime"
 	"net"
 	"net/http"
 	"net/url"
@@ -238,7 +239,12 @@ func streamHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer response.Body.Close()
-	if response.StatusCode < 200 || response.StatusCode >= 300 || !strings.HasPrefix(strings.ToLower(response.Header.Get("Content-Type")), "text/event-stream") {
+	writeEventStream(w, response)
+}
+
+func writeEventStream(w http.ResponseWriter, response *http.Response) {
+	mediaType, _, err := mime.ParseMediaType(response.Header.Get("Content-Type"))
+	if response.StatusCode < 200 || response.StatusCode >= 300 || err != nil || mediaType != "text/event-stream" {
 		writeJSON(w, 502, map[string]string{"error": "invalidStream"})
 		return
 	}

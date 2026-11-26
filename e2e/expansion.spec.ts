@@ -129,7 +129,6 @@ test('expansion: batch image ZIP, crop and rotation dimensions', async ({
     .setInputFiles({ name: 'crop.png', mimeType: 'image/png', buffer: png })
   await page.getByLabel('Crop width', { exact: true }).fill('1')
   await page.getByLabel('Rotation', { exact: true }).first().selectOption('90')
-  await page.getByRole('button', { name: 'Use cropped dimensions' }).click()
   await expect(page.getByTestId('image-width')).toHaveValue('2')
   await expect(page.getByTestId('image-height')).toHaveValue('1')
   await page.getByTestId('image-format').selectOption('image/png')
@@ -227,11 +226,12 @@ test('expansion: WebSocket echo, SSE events and disconnect', async ({
   await page.route('**/api/stream', (route) =>
     route.fulfill({
       contentType: 'text/event-stream',
-      body: 'id: 1\nevent: update\ndata: hello\ndata: world\n\n',
+      body: 'id: 1\nevent: update\ndata: hello\ndata: world\n\ndata: last event\r\r',
     }),
   )
   await page.getByRole('button', { name: 'Connect', exact: true }).click()
   await expect(output(page)).toHaveValue(/hello\\nworld/)
+  await expect(output(page)).toHaveValue(/last event/)
   await expect(page.getByText('Disconnected', { exact: true })).toBeVisible()
 })
 

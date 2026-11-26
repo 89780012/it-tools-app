@@ -345,10 +345,12 @@ function generateAdditionalTypes(
       '}\n'
     )
   }
-  if (schema.kind !== 'object')
+  if (schema.kind !== 'object') {
+    const field = uniqueName('Value', new Set([root]))
     declarations.push(
-      `public class ${root}\n{\n    public ${rootType} Value { get; set; } = default!;\n}`,
+      `public class ${root}\n{\n    public ${rootType} ${field} { get; set; } = default!;\n}`,
     )
+  }
   return (
     '#nullable enable\nusing System.Collections.Generic;\nusing System.Text.Json.Serialization;\n\n' +
     declarations.join('\n\n') +

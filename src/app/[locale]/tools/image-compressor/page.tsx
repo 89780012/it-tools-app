@@ -15,6 +15,7 @@ import {
   frontendLoadImage,
   frontendResize,
   frontendSavings,
+  validateImageTransform,
   type FrontendImageMime,
 } from '@/lib/frontend-image'
 
@@ -126,6 +127,34 @@ export default function ImageCompressor() {
       }
     }
   }
+  const updateCrop = (next: typeof crop) => {
+    invalidate()
+    setCrop(next)
+    if (!locked || !source) return
+    try {
+      const transformed = validateImageTransform(
+        source.image.naturalWidth,
+        source.image.naturalHeight,
+        next,
+      )
+      const previousWidth =
+        crop.rotation % 180 ? crop.cropHeight : crop.cropWidth
+      const scale =
+        previousWidth > 0 && Number(width) > 0
+          ? Number(width) / previousWidth
+          : 1
+      const size = frontendResize(
+        transformed.width,
+        transformed.height,
+        Math.max(1, Math.round(transformed.width * scale)),
+        'width',
+      )
+      setWidth(String(size.width))
+      setHeight(String(size.height))
+    } catch {
+      setError('dimensionsError')
+    }
+  }
   const compress = async () => {
     if (!source) return
     const token = ++encodeRevision.current
@@ -168,8 +197,10 @@ export default function ImageCompressor() {
                   value={crop[key]}
                   min={key === 'x' || key === 'y' ? 0 : 1}
                   onChange={(event) => {
-                    invalidate()
-                    setCrop({ ...crop, [key]: Number(event.target.value) })
+                    updateCrop({
+                      ...crop,
+                      [key]: Number(event.target.value),
+                    })
                   }}
                 />
               </Field>
@@ -180,8 +211,10 @@ export default function ImageCompressor() {
                 className="w-full rounded border bg-background p-2"
                 value={crop.rotation}
                 onChange={(event) => {
-                  invalidate()
-                  setCrop({ ...crop, rotation: Number(event.target.value) })
+                  updateCrop({
+                    ...crop,
+                    rotation: Number(event.target.value),
+                  })
                 }}
               >
                 {[0, 90, 180, 270].map((value) => (
@@ -296,8 +329,8 @@ export default function ImageCompressor() {
               if (e.target.checked && source && width) {
                 try {
                   const size = frontendResize(
-                    source.image.naturalWidth,
-                    source.image.naturalHeight,
+                    crop.rotation % 180 ? crop.cropHeight : crop.cropWidth,
+                    crop.rotation % 180 ? crop.cropWidth : crop.cropHeight,
                     Number(width),
                     'width',
                   )

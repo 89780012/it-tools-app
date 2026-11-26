@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { Blob as NodeBlob } from 'node:buffer'
 import { createHash } from 'node:crypto'
 import { textSetOperation, convertTextCase, textStatistics } from '../text-operations'
@@ -56,6 +56,22 @@ describe('incremental file hashing', () => {
     const controller = new AbortController(); controller.abort()
     await expect(hashFile(new NodeBlob(['abc']) as unknown as Blob, 'SHA-256', undefined, controller.signal)).rejects.toThrow()
   })
+  it('does not publish progress after cancellation during a file read', async () => {
+    let finishRead!: (value: ArrayBuffer) => void
+    let startRead!: () => void
+    const read = new Promise<ArrayBuffer>(resolve => { finishRead = resolve })
+    const started = new Promise<void>(resolve => { startRead = resolve })
+    const file = { size: 3, slice: () => ({ arrayBuffer: () => { startRead(); return read } }) } as unknown as Blob
+    const controller = new AbortController()
+    const progress = vi.fn()
+    const result = hashFile(file, 'SHA-256', progress, controller.signal)
+    const cancelled = expect(result).rejects.toThrow()
+    await started
+    controller.abort()
+    finishRead(new Uint8Array([1, 2, 3]).buffer)
+    await cancelled
+    expect(progress).not.toHaveBeenCalled()
+  })
 })
 describe('Unix permissions', () => {
   it('round trips every permission including special bits', () => {
@@ -67,6 +83,15 @@ describe('Unix permissions', () => {
   })
 })
 describe('table processing and SQL output', () => {
+  it('retains empty and whitespace records while ignoring physical blank lines', () => {
+    const table = parseTable('\uFEFFa,b\r\n\r\n,\r\n" "," "\r\n1,2\r\n')
+    expect(table.rows).toEqual([['', ''], [' ', ' '], ['1', '2']])
+    expect(parseTable(exportTable(table))).toEqual(table)
+    const single = parseTable('value\n""\n \n')
+    expect(single.rows).toEqual([[''], [' ']])
+    expect(parseTable(exportTable(single))).toEqual(single)
+    expect(generateInsert('a,b\n,\n1,2', 'csv', 't', 'sqlite')).toContain("('', ''),\n('1', '2')")
+  })
   it('preserves quoted newlines and leading zeros, aligns merged columns and filters', () => {
     const first = parseTable('id,name\r\n001,"A\nB"\r\n002,Ada\r\n002,Ada')
     expect(first.rows[0]).toEqual(['001', 'A\nB'])
@@ -106,6 +131,22 @@ describe('cron schedules', () => {
   })
 })
 describe('stream event parsing', () => {
+  it('dispatches CR-terminated events immediately and consumes a split CRLF only once', () => {
+    const parser = new SSEParser()
+    expect(parser.push('data: first\r\r')).toEqual([{ id: '', event: 'message', data: 'first' }])
+    expect(parser.push('\ndata: second\r')).toEqual([])
+    expect(parser.push('')).toEqual([])
+    expect(parser.push('\n')).toEqual([])
+    expect(parser.push('\r')).toEqual([{ id: '', event: 'message', data: 'second' }])
+    expect(parser.push('data: incomplete\r')).toEqual([])
+    expect(parser.push('')).toEqual([])
+  })
+  it('counts multiline separators toward the event size limit', () => {
+    const parser = new SSEParser()
+    parser.push(`data:${'a'.repeat(499_995)}\n`)
+    parser.push(`data:${'a'.repeat(499_995)}\n`)
+    expect(() => parser.push('data:\n'.repeat(9))).toThrow('tooLarge')
+  })
   it('handles split CRLF, comments, multiline data and persistent IDs', () => {
     const parser = new SSEParser()
     expect(parser.push('\uFEFF:ping\r\nid: 4\r\nevent: update\r\ndata: first\r')).toEqual([])
@@ -132,6 +173,14 @@ describe('request forms, auth and export', () => {
 })
 describe('generated models and schema', () => {
   const input = '[{"user-name":"Ada","nested":{"active":true}},{"user-name":null,"value":3}]'
+  it('avoids a C# property with the same name as its wrapper class', () => {
+    for (const json of ['[1]', 'true', 'null']) {
+      const output = generateTypes(json, 'csharp', 'Value')
+      expect(output).toContain('public class Value\n')
+      expect(output).not.toMatch(/public [^\n]+ Value \{ get;/)
+      expect(output).toMatch(/public [^\n]+ Value2 \{ get;/)
+    }
+  })
   it('retains aliases and optional fields in each language', () => {
     const python = generateTypes(input, 'python')
     expect(python).toContain('"user-name": str | None')

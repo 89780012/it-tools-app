@@ -62,6 +62,7 @@ export function ImageBatch() {
         if (token !== revision.current) return
         const loaded = await frontendLoadImage(files[index])
         try {
+          if (token !== revision.current) return
           const sourceWidth =
             rotation % 180
               ? loaded.image.naturalHeight
@@ -91,9 +92,11 @@ export function ImageBatch() {
             },
           )
           if (token !== revision.current) return
+          const bytes = await blob.arrayBuffer()
+          if (token !== revision.current) return
           zip.file(
             `${index + 1}-${files[index].name.replace(/\.[^.]*$/, '').replace(/[\\/]/g, '_')}.${frontendImageExtension(blob.type)}`,
-            await blob.arrayBuffer(),
+            bytes,
           )
           setProgress(index + 1)
         } finally {

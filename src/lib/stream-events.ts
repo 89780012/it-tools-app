@@ -10,17 +10,23 @@ export class SSEParser {
   private id = ''
   private dataSize = 0
   private started = false
+  private skipLF = false
   push(chunk: string): StreamEvent[] {
     if (!this.started && chunk) {
       chunk = chunk.replace(/^\uFEFF/, '')
       this.started = true
+    }
+    if (this.skipLF && chunk) {
+      if (chunk.startsWith('\n')) chunk = chunk.slice(1)
+      this.skipLF = false
     }
     this.buffer += chunk
     if (this.buffer.length > 1_000_000) throw new Error('tooLarge')
     const events: StreamEvent[] = []
     let match: RegExpExecArray | null
     while ((match = /\r\n|\r|\n/.exec(this.buffer))) {
-      if (match[0] === '\r' && match.index === this.buffer.length - 1) break
+      // A CR terminates a line immediately; a later LF belongs to that same ending.
+      this.skipLF = match[0] === '\r' && match.index === this.buffer.length - 1
       const line = this.buffer.slice(0, match.index)
       this.buffer = this.buffer.slice(match.index + match[0].length)
       if (line === '') {
@@ -39,7 +45,7 @@ export class SSEParser {
         const value = at < 0 ? '' : line.slice(at + 1).replace(/^ /, '')
         if (field === 'data') {
           this.data.push(value)
-          this.dataSize += value.length
+          this.dataSize += value.length + 1
         }
         if (field === 'event') this.event = value
         if (field === 'id' && !value.includes('\0')) this.id = value

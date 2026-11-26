@@ -25,6 +25,7 @@ func readProxyInput(w http.ResponseWriter, r *http.Request) (proxyRequest, io.Re
 	if err := json.Unmarshal([]byte(r.FormValue("request")), &input); err != nil {
 		return input, nil, err
 	}
+	input.Method = strings.TrimSpace(input.Method)
 	if input.Method == "" || strings.EqualFold(input.Method, "GET") || strings.EqualFold(input.Method, "HEAD") {
 		return input, nil, errors.New("multipart requires a body-capable method")
 	}

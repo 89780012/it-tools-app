@@ -12,13 +12,25 @@ export function parseTable(input: string, delimiter = ''): DataTable {
   if (input.length > 5_000_000) throw new Error('tooLarge')
   if (delimiter && (delimiter.length !== 1 || /["\r\n]/.test(delimiter)))
     throw new Error('invalid')
-  const result = Papa.parse<string[]>(input, {
+  // Papa removes a leading BOM before reporting cursor positions.
+  input = input.replace(/^\uFEFF/, '')
+  const data: string[][] = []
+  let cursor = 0
+  Papa.parse<string[]>(input, {
     delimiter,
-    skipEmptyLines: 'greedy',
+    step(result) {
+      if (result.errors.some((error) => error.code !== 'UndetectableDelimiter'))
+        throw new Error('invalid')
+      const raw = input.slice(cursor, result.meta.cursor)
+      cursor = result.meta.cursor
+      // Ignore physical blank lines, but retain quoted empty and whitespace records.
+      if (/^(?:\r\n|\r|\n)?$/.test(raw)) return
+      if (data.length >= 50_001 || result.data.length > 200)
+        throw new Error('tooLarge')
+      data.push(result.data)
+    },
   })
-  if (result.errors.some((error) => error.code !== 'UndetectableDelimiter'))
-    throw new Error('invalid')
-  const [columns = [], ...rows] = result.data
+  const [columns = [], ...rows] = data
   if (
     !columns.length ||
     new Set(columns).size !== columns.length ||
@@ -89,6 +101,7 @@ export function exportTable(table: DataTable, delimiter = ',') {
   return Papa.unparse([table.columns, ...table.rows], {
     delimiter,
     newline: '\r\n',
+    quotes: (value) => value === '',
   })
 }
 export type SqlDialect = 'postgres' | 'mysql' | 'sqlite' | 'sqlserver'

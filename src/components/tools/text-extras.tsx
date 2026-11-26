@@ -81,14 +81,21 @@ export function CronBuilder({
   const [schedule, setSchedule] = useState<CronSchedule>('daily'),
     [minute, setMinute] = useState(0),
     [hour, setHour] = useState(9),
-    [day, setDay] = useState(1),
+    [weekday, setWeekday] = useState(1),
+    [monthDay, setMonthDay] = useState(1),
     [interval, setIntervalValue] = useState(5),
     [zone, setZone] = useState('UTC')
   let expression = '',
     error = '',
     runs: string[] = []
   try {
-    expression = buildCron(schedule, minute, hour, day, interval)
+    expression = buildCron(
+      schedule,
+      minute,
+      hour,
+      schedule === 'weekly' ? weekday : monthDay,
+      interval,
+    )
     runs = nextCronRuns(expression, zone).map((date) =>
       new Intl.DateTimeFormat(undefined, {
         dateStyle: 'medium',
@@ -169,8 +176,8 @@ export function CronBuilder({
             <select
               aria-label={t('weekday')}
               className={selectClass}
-              value={day}
-              onChange={(event) => setDay(Number(event.target.value))}
+              value={weekday}
+              onChange={(event) => setWeekday(Number(event.target.value))}
             >
               {[
                 'sunday',
@@ -195,8 +202,8 @@ export function CronBuilder({
               type="number"
               min={1}
               max={31}
-              value={day}
-              onChange={(event) => setDay(Number(event.target.value))}
+              value={monthDay}
+              onChange={(event) => setMonthDay(Number(event.target.value))}
             />
           </Field>
         )}
