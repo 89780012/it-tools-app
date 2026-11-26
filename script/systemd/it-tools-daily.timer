@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the daily IT Tools task
+
+[Timer]
+# Default: daily at 03:00 Beijing time; change before enabling if desired.
+OnCalendar=*-*-* 03:00:00 Asia/Shanghai
+Persistent=false
+Unit=it-tools-daily.service
+
+[Install]
+WantedBy=timers.target

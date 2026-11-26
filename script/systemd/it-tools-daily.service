@@ -1,0 +1,18 @@
+[Unit]
+Description=Add one IT Tools feature with Codex
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/www/guhl/code/it-tools-app
+Environment=PATH=/root/.local/bin:/www/server/nodejs/v24.16.0/bin:/usr/local/bin:/usr/bin:/bin
+Environment=DAILY_TOOL_MODE=deploy
+Environment=DAILY_TOOL_TIMEZONE=Asia/Shanghai
+Environment=CODEX_CI=1
+EnvironmentFile=-/etc/it-tools-daily.env
+ExecStart=/bin/bash /www/guhl/code/it-tools-app/script/daily-tool.sh
+TimeoutStartSec=2h
+KillMode=control-group
+UMask=0077
