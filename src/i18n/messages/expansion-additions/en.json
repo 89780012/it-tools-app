@@ -63,7 +63,7 @@
     "domain": "Domain",
     "recordType": "Record type",
     "resolver": "DNS resolver",
-    "compareResolvers": "Compare Cloudflare and Google",
+    "compareResolvers": "Compare all resolvers",
     "dnsHint": "Queries run through the server using the selected public resolvers. Results include TTL in seconds and DNS status codes. Cached answers may differ.",
     "networkFailed": "Request failed. Check the target, settings and network connection.",
     "tlsHint": "Checks the public domain on port 443 from this server. Reports the negotiated TLS version, certificate chain, hostname and validity period.",

@@ -54,6 +54,17 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 
 也可直接运行 `docker compose up -d --build --wait --wait-timeout 120`。代码更新后重新执行 `bash deploy.sh` 即可；构建失败时脚本返回非零退出码，启动失败时显示容器状态与最近日志。若当前用户没有 Docker 权限，可使用 `sudo bash deploy.sh`。
 
+### Cloudflare Tunnel 与 API 连通性
+
+- 同时使用 `www.toolkitpub.com` 和 `toolkitpub.com` 时，`ALLOWED_ORIGINS` 必须包含两个 HTTPS 来源。页面可打开不代表 API 的 Origin 校验已通过。
+- 若 cloudflared 持续出现 `failed to accept QUIC stream: timeout: no recent network activity`，在 **cloudflared 服务**的启动命令中添加 `--protocol http2`（放在 `run` 之前），再通过它自己的 Compose 文件重新创建容器。该选项改用 TCP/7844；修改 IT Tools 的 Compose 不会改变 Tunnel 协议。检查日志中 4 条连接均注册为 `protocol=http2`，并继续观察错误和公网健康检查。
+- Tunnel 不代理应用访问第三方服务的出站流量。DNS 工具默认使用 AliDNS，也可选择 Cloudflare、Google 或对比全部解析器；单个解析器连接失败时会保留其他解析器的结果。特定提供商在服务器网络中不可达时，需要调整出站网络。
+- IP 查询通过浏览器访问支持 HTTPS/CORS 的 `ipwho.is`，当前 IP 仍来自访问者的浏览器；免费服务没有返回的代理/托管/移动网络标记不会被推测为 `false`。
+- 普通请求代理默认超时 30 秒，AI 请求默认 90 秒，分别用 `PROXY_TIMEOUT_SECONDS`、`AI_TIMEOUT_SECONDS` 调整（1–120 秒）。DNS/TLS 检查仍为 10 秒，SSE 仍为 60 秒或 2 MiB。
+- API 返回 `X-Request-ID`，可在应用容器日志中按该 ID 查找状态、耗时与错误分类。日志不记录请求正文、完整目标 URL、密钥或 Authorization。
+- 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503。
+- 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
+
 `Dockerfile` 分别构建前端和 Go，前端构建包含 900 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。

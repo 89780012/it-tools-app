@@ -29,7 +29,7 @@ Returns `{"status":"ok","service":"it-tools-api"}`.
 
 ### `POST /api/proxy`
 
-Accepts JSON with `url` (required), `method`, `headers` (string values), and `data`. A string `data` value is sent as-is; other JSON values are encoded as JSON. The destination must be HTTP(S); localhost, private/reserved local addresses, unresolved names, and DNS results containing non-public addresses are rejected. Redirect destinations receive the same checks, and connections are made to validated IP addresses. The outbound request times out after 15 seconds and the response body is capped at 2 MiB. Success returns `{ "status", "statusText", "headers", "body" }`, where `body` is text.
+Accepts JSON with `url` (required), `method`, `headers` (string values), and `data`. A string `data` value is sent as-is; other JSON values are encoded as JSON. The destination must be HTTP(S); localhost, private/reserved local addresses, unresolved names, and DNS results containing non-public addresses are rejected. Redirect destinations receive the same checks, and connections are made to validated IP addresses. The outbound request defaults to a 30-second total deadline (`PROXY_TIMEOUT_SECONDS`, range 1–120) and the response body is capped at 2 MiB. Each address gets at most 3 seconds to connect so an unreachable address does not consume the entire request deadline. Success returns `{ "status", "statusText", "headers", "body" }`, where `body` is text. Connection/read timeouts return HTTP 504.
 
 ### `POST /api/i18n-translate`
 
@@ -39,7 +39,9 @@ Accepts `{ "sourceLanguage": "en", "targetLanguage": "fr", "entries": [{ "key": 
 
 Accepts `{ "samples": ["Hello world"], "fileName": "optional.json" }` and returns `{ "language", "confidence", "languageName" }` based on the configured model.
 
-All POST JSON request bodies are limited to 1 MiB. Multipart proxy requests have a 10 MiB envelope limit and accept up to 20 files totaling 8 MiB, plus 100 form fields. AI responses are limited to 1 MiB. CORS preflight requests are answered only for configured origins.
+All POST JSON request bodies are limited to 1 MiB. Multipart proxy requests have a 10 MiB envelope limit and accept up to 20 files totaling 8 MiB, plus 100 form fields. AI responses are limited to 1 MiB and have an independent 90-second total deadline (`AI_TIMEOUT_SECONDS`, range 1–120). Invalid deadline settings use the defaults. CORS preflight requests are answered only for configured origins.
+
+API responses include a server-generated `X-Request-ID`. Request logs record that ID, a fixed route name, status and elapsed milliseconds. Upstream failures record the operation, error category and upstream status; URLs, request/response bodies, authorization headers and raw error strings are excluded. Successful health checks are omitted from logs. Streaming responses continue to flush immediately.
 
 ### Online certificate issuance
 
@@ -58,7 +60,7 @@ go vet ./...
 
 ### Network diagnostics and request uploads
 
-`POST /api/dns` accepts `{ "name": "example.com", "type": "A", "resolver": "cloudflare" }`. Supported records are A, AAAA, CNAME, MX, TXT, NS and CAA. Resolvers are `cloudflare` and `google`. Responses contain the DNS status, answers with TTLs, authority records, resolver and check time. Queries time out after 10 seconds.
+`POST /api/dns` accepts `{ "name": "example.com", "type": "A", "resolver": "alidns" }`. Supported records are A, AAAA, CNAME, MX, TXT, NS and CAA. Resolvers are `alidns`, `cloudflare` and `google`. Responses contain the DNS status, answers with TTLs, authority records, resolver and check time. Queries time out after 10 seconds. The UI defaults to AliDNS; comparison queries all three and retains successful answers when another resolver fails. A query always uses the selected provider and never silently substitutes another provider's answers.
 
 `POST /api/tls` accepts `{ "host": "example.com" }`. It connects to a validated public address on port 443, supplies SNI, and reports negotiated TLS version/cipher, certificate fingerprints and dates, hostname match and trust-chain verification independently. Invalid/expired certificates are collected for diagnosis and explicitly verified before reporting status. The connection times out after 10 seconds.
 

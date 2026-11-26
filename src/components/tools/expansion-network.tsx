@@ -11,7 +11,7 @@ export function DnsTool() {
   const t = useTranslations('expansion')
   const [name, setName] = useState(''),
     [type, setType] = useState('A'),
-    [resolver, setResolver] = useState('both'),
+    [resolver, setResolver] = useState('alidns'),
     [result, setResult] = useState(''),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false)
@@ -29,22 +29,31 @@ export function DnsTool() {
     controller.current = current
     setBusy(true)
     try {
-      const results = await Promise.all(
-        (resolver === 'both' ? ['cloudflare', 'google'] : [resolver]).map(
-          async (selected) => {
-            const response = await fetch('/api/dns', {
-              method: 'POST',
-              signal: current.signal,
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ name, type, resolver: selected }),
-            })
-            const data = await response.json()
-            if (!response.ok) throw new Error(data.error)
-            return data
-          },
-        ),
+      const selectedResolvers =
+        resolver === 'all' ? ['alidns', 'cloudflare', 'google'] : [resolver]
+      const responses = await Promise.allSettled(
+        selectedResolvers.map(async (selected) => {
+          const response = await fetch('/api/dns', {
+            method: 'POST',
+            signal: current.signal,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, type, resolver: selected }),
+          })
+          const data = await response.json()
+          if (!response.ok) throw new Error(data.error)
+          return data
+        }),
       )
-      if (!current.signal.aborted) setResult(JSON.stringify(results, null, 2))
+      if (!current.signal.aborted) {
+        const results = responses.map((response, index) =>
+          response.status === 'fulfilled'
+            ? response.value
+            : { resolver: selectedResolvers[index], error: t('networkFailed') },
+        )
+        setResult(JSON.stringify(results, null, 2))
+        if (responses.some((response) => response.status === 'rejected'))
+          setError(t('networkFailed'))
+      }
     } catch {
       if (!current.signal.aborted) setError(t('networkFailed'))
     } finally {
@@ -92,7 +101,8 @@ export function DnsTool() {
                 setResolver(event.target.value)
               }}
             >
-              <option value="both">{t('compareResolvers')}</option>
+              <option value="alidns">AliDNS</option>
+              <option value="all">{t('compareResolvers')}</option>
               <option value="cloudflare">Cloudflare</option>
               <option value="google">Google</option>
             </select>

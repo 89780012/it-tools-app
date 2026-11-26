@@ -203,18 +203,22 @@ func (call diagnosticTransport) RoundTrip(request *http.Request) (*http.Response
 	return call(request)
 }
 func TestDNSResponsePreservesStatusRecordsAndTTL(t *testing.T) {
-	previous := http.DefaultClient
-	defer func() { http.DefaultClient = previous }()
-	http.DefaultClient = &http.Client{Transport: diagnosticTransport(func(request *http.Request) (*http.Response, error) {
-		if request.URL.Host != "dns.google" || request.URL.Query().Get("name") != "_acme-challenge.example.com" || request.URL.Query().Get("type") != "TXT" {
-			t.Fatalf("unexpected upstream %s", request.URL)
-		}
-		return &http.Response{StatusCode: 200, Header: http.Header{}, Body: io.NopCloser(strings.NewReader(`{"Status":0,"Answer":[{"name":"_acme-challenge.example.com","type":16,"TTL":300,"data":"token"}]}`))}, nil
-	})}
-	request := httptest.NewRequest("POST", "/api/dns", strings.NewReader(`{"name":"_acme-challenge.example.com","type":"TXT","resolver":"google"}`))
-	response := httptest.NewRecorder()
-	dnsLookupHandler(response, request)
-	if response.Code != 200 || !strings.Contains(response.Body.String(), `"TTL":300`) || !strings.Contains(response.Body.String(), `"resolver":"google"`) {
-		t.Fatalf("invalid response %d %s", response.Code, response.Body.String())
+	for _, resolver := range []string{"alidns", "cloudflare", "google"} {
+		t.Run(resolver, func(t *testing.T) {
+			previous := http.DefaultClient
+			defer func() { http.DefaultClient = previous }()
+			http.DefaultClient = &http.Client{Transport: diagnosticTransport(func(request *http.Request) (*http.Response, error) {
+				if request.URL.Scheme+"://"+request.URL.Host+request.URL.Path != dnsResolvers[resolver] || request.URL.Query().Get("name") != "_acme-challenge.example.com" || request.URL.Query().Get("type") != "TXT" {
+					t.Fatalf("unexpected upstream %s", request.URL)
+				}
+				return &http.Response{StatusCode: 200, Header: http.Header{}, Body: io.NopCloser(strings.NewReader(`{"Status":0,"Answer":[{"name":"_acme-challenge.example.com","type":16,"TTL":300,"data":"token"}]}`))}, nil
+			})}
+			request := httptest.NewRequest("POST", "/api/dns", strings.NewReader(`{"name":"_acme-challenge.example.com","type":"TXT","resolver":"`+resolver+`"}`))
+			response := httptest.NewRecorder()
+			dnsLookupHandler(response, request)
+			if response.Code != 200 || !strings.Contains(response.Body.String(), `"TTL":300`) || !strings.Contains(response.Body.String(), `"resolver":"`+resolver+`"`) {
+				t.Fatalf("invalid response %d %s", response.Code, response.Body.String())
+			}
+		})
 	}
 }

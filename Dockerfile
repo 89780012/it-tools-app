@@ -10,6 +10,9 @@ RUN npm run build
 
 FROM golang:1.25-alpine AS backend
 WORKDIR /src
+ARG GOPROXY=https://proxy.golang.org,direct
+COPY backend/go.mod backend/go.sum ./
+RUN go mod download
 COPY backend/ ./
 RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/it-tools .
 

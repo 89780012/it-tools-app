@@ -25,7 +25,6 @@ const (
 	maxRequestBytes  = 1 << 20
 	maxProxyBody     = 2 << 20
 	maxAIResponse    = 1 << 20
-	outboundTimeout  = 15 * time.Second
 	defaultAllowList = "http://localhost:5173"
 )
 
@@ -157,7 +156,7 @@ func newHandler(cfg config) http.Handler {
 	mux.HandleFunc("POST /api/i18n-translate", translateHandler(cfg))
 	mux.HandleFunc("POST /api/detect-language", detectLanguageHandler(cfg))
 	registerCertificateRoutes(mux, cfg.certificates)
-	return corsMiddleware(cfg.allowedOrigins, mux)
+	return requestLogging(corsMiddleware(cfg.allowedOrigins, mux))
 }
 
 func corsMiddleware(allowed map[string]struct{}, next http.Handler) http.Handler {
@@ -172,6 +171,7 @@ func corsMiddleware(allowed map[string]struct{}, next http.Handler) http.Handler
 			w.Header().Set("Vary", "Origin")
 			w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 			w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+			w.Header().Set("Access-Control-Expose-Headers", "X-Request-ID")
 		}
 		if r.Method == http.MethodOptions {
 			if origin == "" {
@@ -213,7 +213,8 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	ctx, cancel := context.WithTimeout(r.Context(), outboundTimeout)
+	timeout := requestTimeout("PROXY_TIMEOUT_SECONDS", 30*time.Second)
+	ctx, cancel := context.WithTimeout(r.Context(), timeout)
 	defer cancel()
 	target, err := url.ParseRequestURI(strings.TrimSpace(input.URL))
 	if err != nil || target.Host == "" || target.User != nil || (target.Scheme != "http" && target.Scheme != "https") {
@@ -221,6 +222,7 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if _, err := resolvePublicHost(ctx, target.Hostname()); err != nil {
+		logUpstreamFailure(r.Context(), "proxy_resolve", err, 0)
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": "url host is not publicly reachable"})
 		return
 	}
@@ -273,7 +275,7 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 	defer transport.CloseIdleConnections()
 	client := &http.Client{
 		Transport: transport,
-		Timeout:   outboundTimeout,
+		Timeout:   timeout,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			if len(via) >= 10 {
 				return errors.New("too many redirects")
@@ -287,14 +289,16 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	response, err := client.Do(outbound)
 	if err != nil {
-		writeJSON(w, http.StatusBadGateway, map[string]string{"error": "proxy request failed"})
+		logUpstreamFailure(r.Context(), "proxy_request", err, 0)
+		writeJSON(w, upstreamErrorStatus(err), map[string]string{"error": "proxy request failed"})
 		return
 	}
 	defer response.Body.Close()
 
 	body, err := io.ReadAll(io.LimitReader(response.Body, maxProxyBody+1))
 	if err != nil {
-		writeJSON(w, http.StatusBadGateway, map[string]string{"error": "failed to read upstream response"})
+		logUpstreamFailure(r.Context(), "proxy_read", err, response.StatusCode)
+		writeJSON(w, upstreamErrorStatus(err), map[string]string{"error": "failed to read upstream response"})
 		return
 	}
 	if len(body) > maxProxyBody {
@@ -435,6 +439,7 @@ func translateHandler(cfg config) http.HandlerFunc {
 		}
 		content, status, err := callChatCompletion(r.Context(), cfg, "You are a professional translator. Respond with a JSON object of translated strings keyed by each input entry's key.", prompt.String())
 		if err != nil {
+			logUpstreamFailure(r.Context(), "translation", err, status)
 			writeAIError(w, status, "translation service request failed")
 			return
 		}
@@ -498,6 +503,7 @@ func detectLanguageHandler(cfg config) http.HandlerFunc {
 			`Identify the language of the supplied text samples. Return only JSON with "language" (ISO 639-1 code), "confidence" (number from 0 to 1), and "languageName" (human-readable name).`,
 			string(encoded))
 		if err != nil {
+			logUpstreamFailure(r.Context(), "language_detection", err, status)
 			writeAIError(w, status, "language detection service request failed")
 			return
 		}
@@ -558,7 +564,8 @@ func callChatCompletion(parent context.Context, cfg config, systemPrompt, userPr
 	if err != nil {
 		return "", http.StatusInternalServerError, err
 	}
-	ctx, cancel := context.WithTimeout(parent, outboundTimeout)
+	timeout := requestTimeout("AI_TIMEOUT_SECONDS", 90*time.Second)
+	ctx, cancel := context.WithTimeout(parent, timeout)
 	defer cancel()
 	request, err := http.NewRequestWithContext(ctx, http.MethodPost, cfg.translateURL, bytes.NewReader(encoded))
 	if err != nil {
@@ -566,14 +573,17 @@ func callChatCompletion(parent context.Context, cfg config, systemPrompt, userPr
 	}
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Authorization", "Bearer "+cfg.translateKey)
-	client := &http.Client{Timeout: outboundTimeout}
+	client := &http.Client{Timeout: timeout}
 	response, err := client.Do(request)
 	if err != nil {
-		return "", http.StatusBadGateway, err
+		return "", upstreamErrorStatus(err), err
 	}
 	defer response.Body.Close()
 	body, err := io.ReadAll(io.LimitReader(response.Body, maxAIResponse+1))
-	if err != nil || len(body) > maxAIResponse {
+	if err != nil {
+		return "", upstreamErrorStatus(err), err
+	}
+	if len(body) > maxAIResponse {
 		return "", http.StatusBadGateway, errors.New("invalid service response size")
 	}
 	if response.StatusCode < 200 || response.StatusCode >= 300 {

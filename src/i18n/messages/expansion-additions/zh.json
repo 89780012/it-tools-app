@@ -63,7 +63,7 @@
     "domain": "域名",
     "recordType": "记录类型",
     "resolver": "DNS 解析器",
-    "compareResolvers": "对比 Cloudflare 与 Google",
+    "compareResolvers": "对比全部解析器",
     "dnsHint": "查询由服务器通过所选公共解析器发起，返回 TTL 秒数和 DNS 状态码，不同缓存可能产生不同结果。",
     "networkFailed": "请求失败，请检查目标、设置和网络连接。",
     "tlsHint": "从本站服务器检查公网域名的 443 端口，展示协商的 TLS 版本、证书链、域名匹配和有效期。",

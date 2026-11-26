@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        GOPROXY: "${GOPROXY:-https://proxy.golang.org,direct}"
     restart: unless-stopped
     init: true
     ports:
@@ -13,7 +15,9 @@ services:
     environment:
       PORT: "8080"
       WEB_DIST_DIR: /app/dist
-      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080,https://www.toolkitpub.com}"
+      ALLOWED_ORIGINS: "${ALLOWED_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080,https://www.toolkitpub.com,https://toolkitpub.com}"
+      PROXY_TIMEOUT_SECONDS: "${PROXY_TIMEOUT_SECONDS:-30}"
+      AI_TIMEOUT_SECONDS: "${AI_TIMEOUT_SECONDS:-90}"
       I18N_TRANSLATE_API_URL: "${I18N_TRANSLATE_API_URL:-}"
       I18N_TRANSLATE_API_KEY: "${I18N_TRANSLATE_API_KEY:-}"
       I18N_TRANSLATE_API_MODEL: "${I18N_TRANSLATE_API_MODEL:-}"

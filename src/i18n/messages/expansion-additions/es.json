@@ -80,7 +80,7 @@
     "domain": "Dominio",
     "recordType": "Tipo de registro",
     "resolver": "solucionador de DNS",
-    "compareResolvers": "Compara Cloudflare y Google",
+    "compareResolvers": "Comparar todos los resolutores",
     "dnsHint": "Las consultas se ejecutan a través del servidor utilizando los solucionadores públicos seleccionados. Los resultados incluyen TTL en segundos y códigos de estado DNS. Las respuestas almacenadas en caché pueden diferir.",
     "networkFailed": "La solicitud falló. Verifique el destino, la configuración y la conexión de red.",
     "tlsHint": "Comprueba el dominio público en el puerto 443 de este servidor. Informa la versión TLS negociada, la cadena de certificados, el nombre de host y el período de validez.",

@@ -32,7 +32,11 @@ func validDNSName(name string) bool {
 	return true
 }
 
-var dnsResolvers = map[string]string{"cloudflare": "https://cloudflare-dns.com/dns-query", "google": "https://dns.google/resolve"}
+var dnsResolvers = map[string]string{
+	"alidns":     "https://dns.alidns.com/resolve",
+	"cloudflare": "https://cloudflare-dns.com/dns-query",
+	"google":     "https://dns.google/resolve",
+}
 var dnsTypes = map[string]bool{"A": true, "AAAA": true, "CNAME": true, "MX": true, "TXT": true, "NS": true, "CAA": true}
 
 func dnsLookupHandler(w http.ResponseWriter, r *http.Request) {
@@ -57,12 +61,14 @@ func dnsLookupHandler(w http.ResponseWriter, r *http.Request) {
 	request.Header.Set("Accept", "application/dns-json")
 	response, err := http.DefaultClient.Do(request)
 	if err != nil {
+		logUpstreamFailure(r.Context(), "dns_"+input.Resolver, err, 0)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
 	defer response.Body.Close()
 	body, err := io.ReadAll(io.LimitReader(response.Body, 128*1024+1))
 	if err != nil || response.StatusCode != 200 || len(body) > 128*1024 || !json.Valid(body) {
+		logUpstreamFailure(r.Context(), "dns_"+input.Resolver, err, response.StatusCode)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
@@ -72,6 +78,7 @@ func dnsLookupHandler(w http.ResponseWriter, r *http.Request) {
 		Authority []json.RawMessage `json:"Authority"`
 	}
 	if json.Unmarshal(body, &result) != nil {
+		logUpstreamFailure(r.Context(), "dns_"+input.Resolver, errors.New("invalid response"), response.StatusCode)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
@@ -144,14 +151,9 @@ func tlsCheckHandler(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, 400, map[string]string{"error": "publicHost"})
 		return
 	}
-	var connection net.Conn
-	for _, ip := range ips {
-		connection, err = (&net.Dialer{}).DialContext(ctx, "tcp", net.JoinHostPort(ip.String(), "443"))
-		if err == nil {
-			break
-		}
-	}
+	connection, err := dialPublicIPs(ctx, "tcp", "443", ips)
 	if err != nil {
+		logUpstreamFailure(r.Context(), "tls_connect", err, 0)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
@@ -159,6 +161,7 @@ func tlsCheckHandler(w http.ResponseWriter, r *http.Request) {
 	// Collect invalid/expired chains for diagnosis, then explicitly verify below.
 	secured := tls.Client(connection, &tls.Config{ServerName: host, InsecureSkipVerify: true, MinVersion: tls.VersionTLS10})
 	if err = secured.HandshakeContext(ctx); err != nil {
+		logUpstreamFailure(r.Context(), "tls_handshake", err, 0)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
@@ -181,16 +184,24 @@ func publicTransport() *http.Transport {
 		if err != nil {
 			return nil, err
 		}
-		var lastErr error
-		for _, ip := range ips {
-			connection, err := (&net.Dialer{}).DialContext(ctx, network, net.JoinHostPort(ip.String(), port))
-			if err == nil {
-				return connection, nil
-			}
-			lastErr = err
-		}
-		return nil, lastErr
+		return dialPublicIPs(ctx, network, port, ips)
 	}}
+}
+
+func dialPublicIPs(ctx context.Context, network, port string, ips []net.IP) (net.Conn, error) {
+	var lastErr error = errors.New("no public addresses")
+	for _, ip := range ips {
+		// Leave time to try other validated addresses when one route is unreachable.
+		connection, err := (&net.Dialer{Timeout: 3 * time.Second}).DialContext(ctx, network, net.JoinHostPort(ip.String(), port))
+		if err == nil {
+			return connection, nil
+		}
+		lastErr = err
+		if ctx.Err() != nil {
+			return nil, ctx.Err()
+		}
+	}
+	return nil, lastErr
 }
 func streamHandler(w http.ResponseWriter, r *http.Request) {
 	var input proxyRequest
@@ -235,11 +246,15 @@ func streamHandler(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{Transport: transport, CheckRedirect: func(_ *http.Request, _ []*http.Request) error { return http.ErrUseLastResponse }}
 	response, err := client.Do(request)
 	if err != nil {
+		logUpstreamFailure(r.Context(), "stream", err, 0)
 		writeJSON(w, 502, map[string]string{"error": "networkFailed"})
 		return
 	}
 	defer response.Body.Close()
 	writeEventStream(w, response)
+	if ctx.Err() != nil {
+		logUpstreamFailure(r.Context(), "stream", ctx.Err(), response.StatusCode)
+	}
 }
 
 func writeEventStream(w http.ResponseWriter, response *http.Response) {

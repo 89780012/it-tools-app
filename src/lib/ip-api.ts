@@ -1,6 +1,6 @@
 /**
  * IP API服务
- * 封装ip-api.com接口调用，提供IP地址信息查询功能
+ * 使用支持 HTTPS 和 CORS 的 IP 查询服务，保留浏览器端的当前 IP 检测。
  */
 
 import { validateIP } from './ip-utils';
@@ -47,11 +47,51 @@ export class IPAPIError extends Error {
  * API配置
  */
 const API_CONFIG = {
-  BASE_URL: 'http://ip-api.com/json',
+  BASE_URL: 'https://ipwho.is/',
   TIMEOUT: 10000, // 10秒超时
-  RATE_LIMIT: 45, // 每分钟45次请求限制
-  FIELDS: 'status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,proxy,hosting,mobile,query'
+  RATE_LIMIT: 45, // 浏览器端每分钟最多45次请求
 } as const;
+
+interface IPWhoResponse {
+  ip: string;
+  success: boolean;
+  message?: string;
+  country?: string;
+  country_code?: string;
+  region?: string;
+  region_code?: string;
+  city?: string;
+  postal?: string;
+  latitude?: number;
+  longitude?: number;
+  timezone?: { id?: string };
+  connection?: { asn?: number; isp?: string; org?: string };
+}
+
+function normalizeIPInfo(data: IPWhoResponse): IPInfo {
+  if (data.success === false) {
+    throw new IPAPIError(data.message || 'API查询失败', 'API_ERROR');
+  }
+  if (data.success !== true || typeof data.ip !== 'string' || !validateIP(data.ip)) {
+    throw new IPAPIError('API返回了无效的数据', 'API_ERROR');
+  }
+  return {
+    query: data.ip,
+    status: 'success',
+    country: data.country,
+    countryCode: data.country_code,
+    region: data.region_code,
+    regionName: data.region,
+    city: data.city,
+    zip: data.postal,
+    lat: data.latitude,
+    lon: data.longitude,
+    timezone: data.timezone?.id,
+    isp: data.connection?.isp,
+    org: data.connection?.org,
+    as: data.connection?.asn == null ? undefined : `AS${data.connection.asn}`,
+  };
+}
 
 /**
  * 请求缓存管理
@@ -124,9 +164,7 @@ const rateLimiter = new RateLimiter();
  * 构建API URL
  */
 function buildApiUrl(ip?: string): string {
-  const url = new URL(API_CONFIG.BASE_URL + (ip ? `/${ip}` : ''));
-  url.searchParams.set('fields', API_CONFIG.FIELDS);
-  return url.toString();
+  return API_CONFIG.BASE_URL + (ip ? encodeURIComponent(ip) : '');
 }
 
 /**
@@ -145,30 +183,16 @@ async function makeRequest(url: string): Promise<IPInfo> {
       signal: controller.signal,
     });
 
-    clearTimeout(timeoutId);
-
     if (!response.ok) {
       throw new IPAPIError(
         `HTTP ${response.status}: ${response.statusText}`,
-        'HTTP_ERROR',
+        response.status === 429 ? 'RATE_LIMITED' : 'HTTP_ERROR',
         response.status
       );
     }
 
-    const data: IPInfo = await response.json();
-    
-    // 检查API返回的状态
-    if (data.status === 'fail') {
-      throw new IPAPIError(
-        data.message || 'API查询失败',
-        'API_ERROR'
-      );
-    }
-
-    return data;
+    return normalizeIPInfo(await response.json());
   } catch (error) {
-    clearTimeout(timeoutId);
-
     if (error instanceof IPAPIError) {
       throw error;
     }
@@ -184,6 +208,8 @@ async function makeRequest(url: string): Promise<IPInfo> {
     }
 
     throw new IPAPIError('未知错误', 'UNKNOWN_ERROR');
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
