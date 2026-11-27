@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "Seitenverhältnis-Rechner",
+      "description": "Kürze das Verhältnis von Breite zu Höhe und berechne proportionale Pixelmaße für Bilder, Videos und Layouts.",
+      "meta": {
+        "title": "Seitenverhältnis-Rechner",
+        "description": "Ermittle das gekürzte Seitenverhältnis einer Auflösung und skaliere auf eine Zielbreite, Zielhöhe oder in einen vorgegebenen Rahmen.",
+        "keywords": "Seitenverhältnis berechnen, Bildgröße, Videoauflösung, proportional skalieren, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "Gib ganzzahlige Pixelmaße von 1 bis {limit} ein.",
+    "sourceWidth": "Ursprüngliche Breite (px)",
+    "sourceHeight": "Ursprüngliche Höhe (px)",
+    "targetWidth": "Zielbreite (px)",
+    "targetHeight": "Zielhöhe (px)",
+    "mode": "Berechnungsmodus",
+    "ratio": "Nur Seitenverhältnis",
+    "width": "Nach Breite skalieren",
+    "height": "Nach Höhe skalieren",
+    "fit": "In Breite und Höhe einpassen",
+    "calculate": "Berechnen",
+    "reducedRatio": "Gekürztes Seitenverhältnis",
+    "scaledSize": "Skalierte Abmessungen (px)",
+    "rounded": "Die berechnete Seite wurde auf ganze Pixel gerundet und beträgt mindestens 1 px.",
+    "emptyResult": "Gib Maße ein und starte die Berechnung, um das Ergebnis anzuzeigen.",
+    "invalidDimension": "Der Wert für „{field}“ muss eine ganze Zahl von 1 bis {limit} sein."
+  }
+}

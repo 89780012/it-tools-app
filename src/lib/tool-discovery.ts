@@ -16,6 +16,7 @@ const aliases: Record<string, string> = {
   'qr-code-reader': 'qrcode scan decode 二维码识别 扫码',
   'image-compressor':
     'resize crop rotate convert webp 图片缩放 图片裁剪 图片转换 批量',
+  'aspect-ratio-calculator': 'resolution resize dimensions 16:9 4:3 分辨率 等比缩放 宽高比',
   'csv-table-editor': 'tsv spreadsheet table 表格 去重 合并csv',
   'data-to-sql': 'insert mysql postgres sqlite sqlserver 导入数据',
   'chmod-calculator': 'linux permissions rwx 755 644 权限',
@@ -75,6 +76,7 @@ const workflows = [
   ],
   [
     'image-compressor',
+    'aspect-ratio-calculator',
     'qr-code-reader',
     'qr-code-generator',
     'base64-file-converter',

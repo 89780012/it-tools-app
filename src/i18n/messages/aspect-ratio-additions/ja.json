@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "アスペクト比計算機",
+      "description": "幅と高さの比を最も簡単な整数比にし、画像・動画・レイアウトを拡大縮小する際のピクセル寸法を求めます。",
+      "meta": {
+        "title": "アスペクト比計算機",
+        "description": "解像度からアスペクト比を求め、縦横比を保ったまま指定した幅、高さ、または枠内に収まる寸法を計算します。",
+        "keywords": "アスペクト比計算, 縦横比, 画像サイズ, 動画解像度, 拡大縮小, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "寸法を 1〜{limit} の整数ピクセル値で入力してください。",
+    "sourceWidth": "元の幅（px）",
+    "sourceHeight": "元の高さ（px）",
+    "targetWidth": "目標の幅（px）",
+    "targetHeight": "目標の高さ（px）",
+    "mode": "計算モード",
+    "ratio": "アスペクト比のみ",
+    "width": "幅に合わせる",
+    "height": "高さに合わせる",
+    "fit": "指定の幅と高さに収める",
+    "calculate": "計算",
+    "reducedRatio": "最も簡単なアスペクト比",
+    "scaledSize": "拡大・縮小後の寸法（px）",
+    "rounded": "算出した辺の長さは整数ピクセルに四捨五入され、最小値は 1 px です。",
+    "emptyResult": "寸法を入力して計算すると、結果が表示されます。",
+    "invalidDimension": "「{field}」には 1〜{limit} の整数を入力してください。"
+  }
+}

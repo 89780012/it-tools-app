@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "宽高比计算器",
+      "description": "化简宽高比，并为图片、视频和页面布局计算等比缩放后的像素尺寸。",
+      "meta": {
+        "title": "宽高比计算器",
+        "description": "将分辨率化简成最简宽高比，按目标宽度或高度等比缩放，也可计算适合指定边界框的尺寸。",
+        "keywords": "宽高比计算器, 长宽比, 图片尺寸, 视频分辨率, 等比缩放, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "请输入 1 到 {limit} 之间的整数像素尺寸。",
+    "sourceWidth": "原始宽度（px）",
+    "sourceHeight": "原始高度（px）",
+    "targetWidth": "目标宽度（px）",
+    "targetHeight": "目标高度（px）",
+    "mode": "计算模式",
+    "ratio": "仅计算比例",
+    "width": "按宽度缩放",
+    "height": "按高度缩放",
+    "fit": "适配指定宽高",
+    "calculate": "计算",
+    "reducedRatio": "最简宽高比",
+    "scaledSize": "缩放后尺寸（px）",
+    "rounded": "计算出的边长已四舍五入到整数像素，最小为 1 px。",
+    "emptyResult": "输入尺寸并点击计算，即可查看结果。",
+    "invalidDimension": "「{field}」必须是 1 到 {limit} 之间的整数。"
+  }
+}

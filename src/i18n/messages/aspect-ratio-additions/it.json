@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "Calcolatore del rapporto d’aspetto",
+      "description": "Semplifica il rapporto tra larghezza e altezza e calcola dimensioni proporzionali in pixel per immagini, video e layout.",
+      "meta": {
+        "title": "Calcolatore del rapporto d’aspetto",
+        "description": "Trova il rapporto d’aspetto semplificato di una risoluzione e ridimensiona in base alla larghezza, all’altezza o alle dimensioni di un riquadro.",
+        "keywords": "calcolatore rapporto d’aspetto, dimensioni immagine, risoluzione video, ridimensionamento proporzionale, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "Inserisci dimensioni intere in pixel da 1 a {limit}.",
+    "sourceWidth": "Larghezza originale (px)",
+    "sourceHeight": "Altezza originale (px)",
+    "targetWidth": "Larghezza desiderata (px)",
+    "targetHeight": "Altezza desiderata (px)",
+    "mode": "Modalità di calcolo",
+    "ratio": "Solo rapporto d’aspetto",
+    "width": "Ridimensiona per larghezza",
+    "height": "Ridimensiona per altezza",
+    "fit": "Adatta a larghezza e altezza",
+    "calculate": "Calcola",
+    "reducedRatio": "Rapporto d’aspetto semplificato",
+    "scaledSize": "Dimensioni ridimensionate (px)",
+    "rounded": "Il lato calcolato è stato arrotondato al pixel intero più vicino, con un minimo di 1 px.",
+    "emptyResult": "Inserisci le dimensioni e avvia il calcolo per vedere il risultato.",
+    "invalidDimension": "Il valore di «{field}» deve essere un numero intero compreso tra 1 e {limit}."
+  }
+}

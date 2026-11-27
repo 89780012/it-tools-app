@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "Calculadora de relación de aspecto",
+      "description": "Simplifica la relación entre ancho y alto y calcula dimensiones proporcionales en píxeles para imágenes, vídeos y diseños.",
+      "meta": {
+        "title": "Calculadora de relación de aspecto",
+        "description": "Obtén la relación de aspecto simplificada de una resolución y escala según el ancho, la altura o los límites de un recuadro.",
+        "keywords": "calculadora de relación de aspecto, dimensiones de imagen, resolución de vídeo, escalado proporcional, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "Introduce dimensiones en píxeles enteros de 1 a {limit}.",
+    "sourceWidth": "Ancho original (px)",
+    "sourceHeight": "Altura original (px)",
+    "targetWidth": "Ancho de destino (px)",
+    "targetHeight": "Altura de destino (px)",
+    "mode": "Modo de cálculo",
+    "ratio": "Solo relación de aspecto",
+    "width": "Escalar según el ancho",
+    "height": "Escalar según la altura",
+    "fit": "Ajustar al ancho y la altura",
+    "calculate": "Calcular",
+    "reducedRatio": "Relación de aspecto simplificada",
+    "scaledSize": "Dimensiones escaladas (px)",
+    "rounded": "El lado calculado se redondeó al píxel entero más cercano, con un mínimo de 1 px.",
+    "emptyResult": "Introduce las dimensiones y pulsa Calcular para ver el resultado.",
+    "invalidDimension": "El valor de «{field}» debe ser un número entero de 1 a {limit}."
+  }
+}

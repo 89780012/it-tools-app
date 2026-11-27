@@ -102,6 +102,7 @@ export const toolsConfig: ToolCategory[] = [
   ]),
   category('image', 'image', 'grid-3x3', [
     ['image-compressor', 'file-input'],
+    ['aspect-ratio-calculator', 'square-dashed'],
     ['qr-code-generator', 'qr-code'],
     ['qr-code-reader', 'qr-code'],
     ['svg-placeholder-generator', 'square-dashed'],

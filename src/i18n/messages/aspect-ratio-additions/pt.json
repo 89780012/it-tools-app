@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "Calculadora de proporção de tela",
+      "description": "Simplifique a proporção entre largura e altura e calcule dimensões proporcionais em pixels para imagens, vídeos e layouts.",
+      "meta": {
+        "title": "Calculadora de proporção de tela",
+        "description": "Descubra a proporção simplificada de uma resolução e redimensione pela largura, pela altura ou para caber numa área delimitada.",
+        "keywords": "calculadora de proporção, relação de aspecto, tamanho de imagem, resolução de vídeo, redimensionamento proporcional, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "Digite dimensões em pixels inteiros de 1 a {limit}.",
+    "sourceWidth": "Largura original (px)",
+    "sourceHeight": "Altura original (px)",
+    "targetWidth": "Largura desejada (px)",
+    "targetHeight": "Altura desejada (px)",
+    "mode": "Modo de cálculo",
+    "ratio": "Somente a proporção",
+    "width": "Redimensionar pela largura",
+    "height": "Redimensionar pela altura",
+    "fit": "Ajustar à largura e à altura",
+    "calculate": "Calcular",
+    "reducedRatio": "Proporção simplificada",
+    "scaledSize": "Dimensões após o ajuste (px)",
+    "rounded": "O lado calculado foi arredondado para o pixel inteiro mais próximo, com mínimo de 1 px.",
+    "emptyResult": "Digite as dimensões e calcule para ver o resultado.",
+    "invalidDimension": "O valor de “{field}” deve ser um número inteiro de 1 a {limit}."
+  }
+}

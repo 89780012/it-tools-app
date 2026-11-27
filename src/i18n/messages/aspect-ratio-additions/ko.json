@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "가로세로 비율 계산기",
+      "description": "가로세로 비율을 가장 간단한 정수비로 줄이고 이미지, 동영상, 레이아웃의 비례 픽셀 크기를 계산합니다.",
+      "meta": {
+        "title": "가로세로 비율 계산기",
+        "description": "해상도의 가로세로 비율을 구하고 목표 너비, 높이 또는 지정된 영역에 맞는 크기를 계산합니다.",
+        "keywords": "가로세로 비율 계산기, 종횡비, 이미지 크기, 동영상 해상도, 비례 조정, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "크기를 1에서 {limit} 사이의 정수 픽셀로 입력하세요.",
+    "sourceWidth": "원본 너비(px)",
+    "sourceHeight": "원본 높이(px)",
+    "targetWidth": "목표 너비(px)",
+    "targetHeight": "목표 높이(px)",
+    "mode": "계산 방식",
+    "ratio": "비율만 계산",
+    "width": "너비에 맞추기",
+    "height": "높이에 맞추기",
+    "fit": "너비와 높이 범위에 맞추기",
+    "calculate": "계산",
+    "reducedRatio": "가장 간단한 가로세로 비율",
+    "scaledSize": "조정된 크기(px)",
+    "rounded": "계산된 변의 길이는 가장 가까운 정수 픽셀로 반올림되며, 최소 1 px입니다.",
+    "emptyResult": "크기를 입력하고 계산을 눌러 결과를 확인하세요.",
+    "invalidDimension": "‘{field}’ 값은 1에서 {limit} 사이의 정수여야 합니다."
+  }
+}

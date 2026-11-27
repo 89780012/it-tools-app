@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "aspect-ratio-calculator": {
+      "name": "Aspect Ratio Calculator",
+      "description": "Simplify a width-to-height ratio and calculate proportional pixel dimensions for images, video, and layouts.",
+      "meta": {
+        "title": "Aspect Ratio Calculator",
+        "description": "Find the simplest aspect ratio of a resolution, scale to a target width or height, or fit within a bounding box.",
+        "keywords": "aspect ratio calculator, image dimensions, video resolution, proportional scaling, 16:9"
+      }
+    }
+  },
+  "aspectRatio": {
+    "hint": "Enter whole pixel dimensions from 1 to {limit}.",
+    "sourceWidth": "Original width (px)",
+    "sourceHeight": "Original height (px)",
+    "targetWidth": "Target width (px)",
+    "targetHeight": "Target height (px)",
+    "mode": "Calculation mode",
+    "ratio": "Ratio only",
+    "width": "Scale by width",
+    "height": "Scale by height",
+    "fit": "Fit within width and height",
+    "calculate": "Calculate",
+    "reducedRatio": "Simplest aspect ratio",
+    "scaledSize": "Scaled dimensions (px)",
+    "rounded": "The calculated side was rounded to the nearest whole pixel, with a minimum of 1 px.",
+    "emptyResult": "Enter dimensions and calculate to see the result.",
+    "invalidDimension": "The value for {field} must be a whole number from 1 to {limit}."
+  }
+}
