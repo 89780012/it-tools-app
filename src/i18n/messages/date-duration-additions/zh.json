@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "日期间隔计算器",
+      "description": "计算两个日期之间的日历天数、周数，以及扣除周末和自定义节假日后的工作日。",
+      "meta": {
+        "title": "日期间隔计算器",
+        "description": "计算两个日期之间的日历天数、周数，以及扣除周末和自定义节假日后的工作日。",
+        "keywords": "日期间隔计算器,日期差,工作日,日历天数,节假日"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "支持 0001-01-01 至 9999-12-31 的公历日期。日期不包含时区，计算不受夏令时影响。",
+    "start": "开始日期",
+    "end": "结束日期",
+    "includeEnd": "包含结束日期",
+    "inclusive": "计入开始日期和结束日期。",
+    "exclusive": "计入开始日期，不计结束日期。相同日期得到 0 天。",
+    "holidays": "节假日（可选）",
+    "holidayHint": "每行一个 YYYY-MM-DD 日期，最多 {limit} 行（120,000 个字符）。忽略空行；重复、周末及范围外的节假日不会重复扣除。",
+    "calculate": "计算",
+    "calendarDays": "日历天数",
+    "businessDays": "工作日",
+    "weekdays": "扣除节假日前的周一至周五天数",
+    "weekendDays": "周末天数",
+    "excludedHolidays": "已扣除的平日节假日",
+    "weeks": "{weeks} 个完整周，余 {days} 天",
+    "summary": "结果摘要",
+    "emptyResult": "输入两个日期并计算，即可查看结果。",
+    "businessHint": "工作日为周一至周五扣除所填节假日。不自动加载法定节假日，不包含周末调休上班。",
+    "invalidDate": "{field}必须是 0001 至 9999 年之间有效的 YYYY-MM-DD 日期。",
+    "reversed": "结束日期不能早于开始日期。",
+    "invalidHoliday": "第 {line} 行节假日不是有效的 YYYY-MM-DD 日期（0001 至 9999 年）。",
+    "holidayLimit": "节假日最多 {limit} 行且不超过 120,000 个字符。"
+  }
+}

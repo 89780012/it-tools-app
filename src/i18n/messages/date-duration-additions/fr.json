@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Calculateur d’intervalle entre dates",
+      "description": "Calculez les jours calendaires, semaines et jours ouvrés entre deux dates, hors week-ends et jours fériés indiqués.",
+      "meta": {
+        "title": "Calculateur d’intervalle entre dates",
+        "description": "Calculez les jours calendaires, semaines et jours ouvrés entre deux dates, hors week-ends et jours fériés indiqués.",
+        "keywords": "intervalle entre dates, différence de dates, jours ouvrés, jours fériés"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Dates grégoriennes de 0001-01-01 à 9999-12-31, sans fuseau horaire : le changement d’heure n’affecte pas le résultat.",
+    "start": "Date de début",
+    "end": "Date de fin",
+    "includeEnd": "Inclure la date de fin",
+    "inclusive": "Les dates de début et de fin sont comptées.",
+    "exclusive": "La date de début est comptée, celle de fin est exclue. Deux dates identiques donnent 0 jour.",
+    "holidays": "Jours fériés (facultatif)",
+    "holidayHint": "Une date AAAA-MM-JJ par ligne, jusqu’à {limit} lignes (120 000 caractères). Les lignes vides sont ignorées. Doublons, week-ends et jours hors intervalle ne sont pas déduits deux fois.",
+    "calculate": "Calculer",
+    "calendarDays": "Jours calendaires",
+    "businessDays": "Jours ouvrés",
+    "weekdays": "Jours du lundi au vendredi avant déduction",
+    "weekendDays": "Jours de week-end",
+    "excludedHolidays": "Jours fériés en semaine déduits",
+    "weeks": "{weeks} semaines complètes et {days} jours restants",
+    "summary": "Résumé du résultat",
+    "emptyResult": "Saisissez deux dates et lancez le calcul.",
+    "businessHint": "Les jours ouvrés vont du lundi au vendredi, moins les jours fériés saisis. Aucun calendrier férié automatique ni week-end de travail compensatoire n’est inclus.",
+    "invalidDate": "{field} doit être une date AAAA-MM-JJ valide entre les années 0001 et 9999.",
+    "reversed": "La date de fin ne doit pas précéder la date de début.",
+    "invalidHoliday": "Le jour férié à la ligne {line} n’est pas une date AAAA-MM-JJ valide (années 0001–9999).",
+    "holidayLimit": "Utilisez au maximum {limit} lignes et 120 000 caractères."
+  }
+}

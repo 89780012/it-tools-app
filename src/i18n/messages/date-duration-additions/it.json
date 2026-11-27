@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Calcolatore di intervalli tra date",
+      "description": "Calcola giorni di calendario, settimane e giorni lavorativi tra date, escludendo fine settimana e festività personali.",
+      "meta": {
+        "title": "Calcolatore di intervalli tra date",
+        "description": "Calcola giorni di calendario, settimane e giorni lavorativi tra date, escludendo fine settimana e festività personali.",
+        "keywords": "intervallo tra date, differenza date, giorni lavorativi, festività"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Date gregoriane da 0001-01-01 a 9999-12-31, senza fuso orario: l’ora legale non influisce sul risultato.",
+    "start": "Data iniziale",
+    "end": "Data finale",
+    "includeEnd": "Includi data finale",
+    "inclusive": "Conta sia la data iniziale sia quella finale.",
+    "exclusive": "Conta la data iniziale ed esclude quella finale. Date uguali danno 0 giorni.",
+    "holidays": "Festività (facoltative)",
+    "holidayHint": "Una data AAAA-MM-GG per riga, fino a {limit} righe (120.000 caratteri). Le righe vuote sono ignorate. Duplicati, fine settimana e festività fuori intervallo non vengono sottratti due volte.",
+    "calculate": "Calcola",
+    "calendarDays": "Giorni di calendario",
+    "businessDays": "Giorni lavorativi",
+    "weekdays": "Giorni da lunedì a venerdì prima delle festività",
+    "weekendDays": "Giorni del fine settimana",
+    "excludedHolidays": "Festività infrasettimanali sottratte",
+    "weeks": "{weeks} settimane intere e {days} giorni rimanenti",
+    "summary": "Riepilogo del risultato",
+    "emptyResult": "Inserisci due date e avvia il calcolo.",
+    "businessHint": "I giorni lavorativi sono dal lunedì al venerdì meno le festività inserite. Le festività non vengono caricate automaticamente e i fine settimana di lavoro compensativo sono esclusi.",
+    "invalidDate": "{field} deve essere una data AAAA-MM-GG valida tra gli anni 0001 e 9999.",
+    "reversed": "La data finale non può precedere quella iniziale.",
+    "invalidHoliday": "La festività alla riga {line} non è una data AAAA-MM-GG valida (anni 0001–9999).",
+    "holidayLimit": "Usa al massimo {limit} righe di festività e 120.000 caratteri."
+  }
+}

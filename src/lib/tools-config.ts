@@ -131,6 +131,7 @@ export const toolsConfig: ToolCategory[] = [
   ]),
   category('time', 'time', 'clock-8', [
     ['time-converter', 'history'],
+    ['date-duration-calculator', 'clock-8'],
     ['cron-expression-parser', 'clock-8'],
   ]),
   category('docker', 'docker', 'box', [

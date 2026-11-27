@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Date Duration Calculator",
+      "description": "Calculate calendar days, weeks and business days between dates, excluding weekends and your own holidays.",
+      "meta": {
+        "title": "Date Duration Calculator",
+        "description": "Calculate calendar days, weeks and business days between dates, excluding weekends and your own holidays.",
+        "keywords": "date duration calculator, date difference, business days, working days, holidays"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Use Gregorian dates from 0001-01-01 to 9999-12-31. Dates have no time zone, so daylight saving does not affect the result.",
+    "start": "Start date",
+    "end": "End date",
+    "includeEnd": "Include end date",
+    "inclusive": "Count both the start and end dates.",
+    "exclusive": "Count the start date; exclude the end date. Equal dates give 0 days.",
+    "holidays": "Holidays (optional)",
+    "holidayHint": "One YYYY-MM-DD date per line, up to {limit} lines (120,000 characters). Blank lines are ignored. Duplicate, weekend and out-of-range holidays are not deducted twice.",
+    "calculate": "Calculate",
+    "calendarDays": "Calendar days",
+    "businessDays": "Business days",
+    "weekdays": "Weekdays before holidays",
+    "weekendDays": "Weekend days",
+    "excludedHolidays": "Weekday holidays deducted",
+    "weeks": "Full weeks: {weeks}; remaining days: {days}",
+    "summary": "Result summary",
+    "emptyResult": "Enter two dates and calculate to see the result.",
+    "businessHint": "Business days are Monday–Friday minus the supplied holidays. Public holidays are not loaded automatically; substitute working weekends are not included.",
+    "invalidDate": "{field} must be a valid YYYY-MM-DD date between years 0001 and 9999.",
+    "reversed": "End date must be on or after start date.",
+    "invalidHoliday": "Holiday on line {line} is not a valid YYYY-MM-DD date (years 0001–9999).",
+    "holidayLimit": "Use at most {limit} holiday lines and 120,000 characters."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Calculadora de intervalos entre datas",
+      "description": "Calcule dias corridos, semanas e dias úteis entre datas, excluindo fins de semana e os seus feriados.",
+      "meta": {
+        "title": "Calculadora de intervalos entre datas",
+        "description": "Calcule dias corridos, semanas e dias úteis entre datas, excluindo fins de semana e os seus feriados.",
+        "keywords": "calculadora de datas, diferença de datas, dias úteis, feriados"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Use datas gregorianas de 0001-01-01 a 9999-12-31. Sem fuso horário, o horário de verão não afeta o resultado.",
+    "start": "Data inicial",
+    "end": "Data final",
+    "includeEnd": "Incluir data final",
+    "inclusive": "Conta as datas inicial e final.",
+    "exclusive": "Conta a data inicial e exclui a final. Datas iguais resultam em 0 dias.",
+    "holidays": "Feriados (opcional)",
+    "holidayHint": "Uma data AAAA-MM-DD por linha, até {limit} linhas (120.000 caracteres). Linhas vazias são ignoradas. Duplicados, fins de semana e feriados fora do intervalo não são descontados duas vezes.",
+    "calculate": "Calcular",
+    "calendarDays": "Dias corridos",
+    "businessDays": "Dias úteis",
+    "weekdays": "Dias de segunda a sexta antes dos feriados",
+    "weekendDays": "Dias de fim de semana",
+    "excludedHolidays": "Feriados em dias de semana descontados",
+    "weeks": "{weeks} semanas completas e {days} dias restantes",
+    "summary": "Resumo do resultado",
+    "emptyResult": "Introduza duas datas e calcule para ver o resultado.",
+    "businessHint": "Os dias úteis são de segunda a sexta menos os feriados indicados. Os feriados não são carregados automaticamente e os fins de semana de trabalho compensatório são excluídos.",
+    "invalidDate": "{field} deve ser uma data AAAA-MM-DD válida entre os anos 0001 e 9999.",
+    "reversed": "A data final não pode ser anterior à inicial.",
+    "invalidHoliday": "O feriado na linha {line} não é uma data AAAA-MM-DD válida (anos 0001–9999).",
+    "holidayLimit": "Use no máximo {limit} linhas de feriados e 120.000 caracteres."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "日付間隔計算ツール",
+      "description": "2つの日付間の暦日数、週数、週末と指定した休日を除く営業日数を計算します。",
+      "meta": {
+        "title": "日付間隔計算ツール",
+        "description": "2つの日付間の暦日数、週数、週末と指定した休日を除く営業日数を計算します。",
+        "keywords": "日付間隔計算,日付差,営業日数,休日,暦日数"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "0001-01-01～9999-12-31のグレゴリオ暦の日付に対応。タイムゾーンを使用せず、夏時間の影響を受けません。",
+    "start": "開始日",
+    "end": "終了日",
+    "includeEnd": "終了日を含める",
+    "inclusive": "開始日と終了日の両方を数えます。",
+    "exclusive": "開始日を含み、終了日を除きます。同じ日付の場合は0日です。",
+    "holidays": "休日（任意）",
+    "holidayHint": "1行に1つのYYYY-MM-DD形式の日付。最大{limit}行（120,000文字）。空行は無視し、重複・週末・範囲外の休日は重複して差し引きません。",
+    "calculate": "計算",
+    "calendarDays": "暦日数",
+    "businessDays": "営業日数",
+    "weekdays": "休日を引く前の平日数",
+    "weekendDays": "週末の日数",
+    "excludedHolidays": "差し引いた平日の休日数",
+    "weeks": "{weeks}週と残り{days}日",
+    "summary": "結果の概要",
+    "emptyResult": "2つの日付を入力して計算してください。",
+    "businessHint": "営業日は月～金から指定の休日を引いた日数です。祝日は自動取得せず、週末への振替出勤は含みません。",
+    "invalidDate": "{field}には0001～9999年の有効なYYYY-MM-DD形式の日付を入力してください。",
+    "reversed": "終了日は開始日以降にしてください。",
+    "invalidHoliday": "{line}行目の休日が有効なYYYY-MM-DD形式の日付ではありません（0001～9999年）。",
+    "holidayLimit": "休日は最大{limit}行、120,000文字までです。"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Datumsabstandsrechner",
+      "description": "Berechne Kalendertage, Wochen und Arbeitstage zwischen zwei Daten ohne Wochenenden und eigene Feiertage.",
+      "meta": {
+        "title": "Datumsabstandsrechner",
+        "description": "Berechne Kalendertage, Wochen und Arbeitstage zwischen zwei Daten ohne Wochenenden und eigene Feiertage.",
+        "keywords": "Datumsabstand, Datumsdifferenz, Arbeitstage, Feiertage"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Gregorianische Daten von 0001-01-01 bis 9999-12-31. Ohne Zeitzone; die Sommerzeit beeinflusst das Ergebnis nicht.",
+    "start": "Startdatum",
+    "end": "Enddatum",
+    "includeEnd": "Enddatum einschließen",
+    "inclusive": "Start- und Enddatum werden gezählt.",
+    "exclusive": "Das Startdatum zählt, das Enddatum nicht. Gleiche Daten ergeben 0 Tage.",
+    "holidays": "Feiertage (optional)",
+    "holidayHint": "Ein Datum JJJJ-MM-TT pro Zeile, maximal {limit} Zeilen (120.000 Zeichen). Leerzeilen werden ignoriert. Doppelte Feiertage, Wochenenden und Feiertage außerhalb des Zeitraums werden nicht doppelt abgezogen.",
+    "calculate": "Berechnen",
+    "calendarDays": "Kalendertage",
+    "businessDays": "Arbeitstage",
+    "weekdays": "Montag bis Freitag vor Feiertagsabzug",
+    "weekendDays": "Wochenendtage",
+    "excludedHolidays": "Abgezogene Feiertage an Wochentagen",
+    "weeks": "{weeks} volle Wochen und {days} übrige Tage",
+    "summary": "Ergebnisübersicht",
+    "emptyResult": "Zwei Daten eingeben und das Ergebnis berechnen.",
+    "businessHint": "Arbeitstage sind Montag bis Freitag abzüglich angegebener Feiertage. Feiertage werden nicht automatisch geladen; ersatzweise gearbeitete Wochenenden zählen nicht.",
+    "invalidDate": "{field} muss ein gültiges Datum JJJJ-MM-TT zwischen den Jahren 0001 und 9999 sein.",
+    "reversed": "Das Enddatum darf nicht vor dem Startdatum liegen.",
+    "invalidHoliday": "Der Feiertag in Zeile {line} ist kein gültiges Datum JJJJ-MM-TT (Jahre 0001–9999).",
+    "holidayLimit": "Höchstens {limit} Feiertagszeilen und 120.000 Zeichen verwenden."
+  }
+}

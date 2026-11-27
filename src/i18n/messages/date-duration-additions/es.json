@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "date-duration-calculator": {
+      "name": "Calculadora de intervalos entre fechas",
+      "description": "Calcula días naturales, semanas y días laborables entre fechas, excluyendo fines de semana y tus festivos.",
+      "meta": {
+        "title": "Calculadora de intervalos entre fechas",
+        "description": "Calcula días naturales, semanas y días laborables entre fechas, excluyendo fines de semana y tus festivos.",
+        "keywords": "calculadora de fechas, diferencia de fechas, días laborables, festivos"
+      }
+    }
+  },
+  "dateDuration": {
+    "hint": "Usa fechas gregorianas entre 0001-01-01 y 9999-12-31. No tienen zona horaria; el horario de verano no afecta al resultado.",
+    "start": "Fecha inicial",
+    "end": "Fecha final",
+    "includeEnd": "Incluir fecha final",
+    "inclusive": "Cuenta las fechas inicial y final.",
+    "exclusive": "Cuenta la fecha inicial y excluye la final. Fechas iguales dan 0 días.",
+    "holidays": "Festivos (opcional)",
+    "holidayHint": "Una fecha AAAA-MM-DD por línea, hasta {limit} líneas (120.000 caracteres). Se ignoran las líneas vacías. Los duplicados, fines de semana y festivos fuera del intervalo no se descuentan dos veces.",
+    "calculate": "Calcular",
+    "calendarDays": "Días naturales",
+    "businessDays": "Días laborables",
+    "weekdays": "Días de lunes a viernes antes de festivos",
+    "weekendDays": "Días de fin de semana",
+    "excludedHolidays": "Festivos entre semana descontados",
+    "weeks": "{weeks} semanas completas y {days} días restantes",
+    "summary": "Resumen del resultado",
+    "emptyResult": "Introduce dos fechas y calcula para ver el resultado.",
+    "businessHint": "Los días laborables son de lunes a viernes menos los festivos indicados. No se cargan festivos automáticamente ni se incluyen fines de semana de trabajo compensatorio.",
+    "invalidDate": "{field} debe ser una fecha válida AAAA-MM-DD entre los años 0001 y 9999.",
+    "reversed": "La fecha final no puede ser anterior a la inicial.",
+    "invalidHoliday": "El festivo de la línea {line} no es una fecha válida AAAA-MM-DD (años 0001–9999).",
+    "holidayLimit": "Usa como máximo {limit} líneas de festivos y 120.000 caracteres."
+  }
+}

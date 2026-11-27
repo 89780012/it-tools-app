@@ -2,7 +2,7 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **75 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **76 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
 The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
 
@@ -11,6 +11,8 @@ File hashes run incrementally in the browser. CSV input is limited to 5 MB, 50,0
 JSON / JSON Lines conversion is available at `/tools/json-lines-converter` (Chinese: `/zh/tools/json-lines-converter`). Convert JSON arrays and NDJSON logs locally, import UTF-8 files, copy or download results, and locate invalid records by line number. Large integers and decimals retain their precision. Limits: 5 MiB, 50,000 records and 100 nesting levels; blank-line skipping is optional. See [the implementation and verification record](docs/daily-tool-2026-11-26.md).
 
 The [Aspect Ratio Calculator](docs/daily-tool-2026-11-27.md) at `/tools/aspect-ratio-calculator` simplifies a resolution to a ratio and calculates pixel dimensions from a target width, height, or bounding box. It runs locally in the browser and copies the ratio and dimensions as plain text.
+
+The [Date Duration Calculator](docs/daily-tool-2026-11-28.md) at `/tools/date-duration-calculator` (Chinese: `/zh/tools/date-duration-calculator`) counts calendar days, full weeks and business days. Choose whether to include the end date and enter optional holidays, with duplicate dates removed. It runs locally, supports Gregorian years 0001–9999 and provides a copyable, downloadable summary. Business days use Monday–Friday; public holidays and substitute working weekends are not loaded automatically.
 
 ## Requirements
 
@@ -69,7 +71,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 - 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503，i18n JSON 翻译菜单入口已暂时隐藏。
 - 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 924 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 936 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -81,7 +83,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 924 prerendered pages (75 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 936 prerendered pages (76 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 
@@ -131,7 +133,7 @@ npx playwright install chromium  # once per development machine
 npm run test:browser
 ```
 
-Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exercise tool controls and outputs, file uploads/downloads, all 75 tool routes in all 12 languages, language switching, favorites/history, RTL, mobile layout and themes. Certificate checks independently verify downloaded signatures, SANs, fingerprints and private-key matches; public CA command generation is tested without contacting Let's Encrypt or issuing a certificate. External IP/translation response cases use deterministic fixtures; Go health and proxy rejection checks use the real local API. HTML/JSON reports, screenshots and failure traces go into the session scratch directory when `PI_SCRATCH_DIR` is set, otherwise `test-results/`. Use `npx playwright show-report <report-directory>` to inspect the report. `BROWSER_BASE_URL` can select an already running frontend.
+Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exercise tool controls and outputs, file uploads/downloads, all 76 tool routes in all 12 languages, language switching, favorites/history, RTL, mobile layout and themes. Certificate checks independently verify downloaded signatures, SANs, fingerprints and private-key matches; public CA command generation is tested without contacting Let's Encrypt or issuing a certificate. External IP/translation response cases use deterministic fixtures; Go health and proxy rejection checks use the real local API. HTML/JSON reports, screenshots and failure traces go into the session scratch directory when `PI_SCRATCH_DIR` is set, otherwise `test-results/`. Use `npx playwright show-report <report-directory>` to inspect the report. `BROWSER_BASE_URL` can select an already running frontend.
 
 `components.json` is configured for client-side shadcn/ui components; shared components are in `src/components/ui/`.
 

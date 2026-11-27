@@ -1,6 +1,7 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
   'time-converter': 'timestamp epoch unix 时间戳 时区 日期毫秒',
+  'date-duration-calculator': 'date difference duration business days working days 日期差 日期间隔 工作日 节假日',
   'nginx-certificate-generator': 'ssl https letsencrypt 证书签发 免费证书',
   'tls-checker': 'ssl certificate expiry expiration 证书到期 证书检查 https',
   'dns-lookup': 'domain resolve txt mx cname 域名解析 dns查询',
@@ -89,7 +90,7 @@ const workflows = [
     'docker-cheatsheet',
     'nginx-cheatsheet',
   ],
-  ['cron-expression-parser', 'time-converter'],
+  ['cron-expression-parser', 'time-converter', 'date-duration-calculator'],
 ]
 export function relatedToolsFor(id: string, limit = 6) {
   const current = allTools.find((tool) => tool.id === id)
