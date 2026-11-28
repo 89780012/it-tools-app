@@ -1,0 +1,44 @@
+{
+  "tools": {
+    "iso-week-calculator": {
+      "name": "Conversor de datas semanais ISO",
+      "description": "Converta datas do calendário e datas semanais ISO 8601 localmente. Consulte o número, o ano e o intervalo de segunda a domingo; copie ou baixe o resumo.",
+      "meta": {
+        "title": "Conversor de datas semanais ISO",
+        "description": "Converta datas do calendário e datas semanais ISO 8601 localmente. Consulte o número, o ano e o intervalo de segunda a domingo; copie ou baixe o resumo.",
+        "keywords": "semana ISO, número da semana, ISO 8601, data semanal, ano semanal"
+      }
+    }
+  },
+  "isoWeek": {
+    "mode": "Direção da conversão",
+    "fromDate": "Data do calendário → Data semanal ISO",
+    "fromWeek": "Data semanal ISO → Data do calendário",
+    "date": "Data do calendário",
+    "weekDate": "Data semanal ISO",
+    "weekYear": "Ano semanal ISO",
+    "week": "Número da semana",
+    "weekday": "Dia da semana",
+    "weekStart": "Início da semana (segunda-feira)",
+    "weekEnd": "Fim da semana (domingo)",
+    "weeksInYear": "Semanas no ano ISO",
+    "summary": "Resumo da conversão",
+    "dateHint": "Use YYYY-MM-DD, com ano de 0001 a 9999. Exemplo: 2021-01-01.",
+    "weekHint": "Use YYYY-Www-D: ano de quatro dígitos (0001–9999), semana de dois dígitos (01–53) e dia (1 = segunda, 7 = domingo). Exemplo: 2020-W53-5.",
+    "rules": "As semanas ISO começam na segunda-feira. A semana 1 contém 4 de janeiro, portanto o ano semanal pode diferir do ano civil. Os cálculos usam datas gregorianas sem horários ou fusos.",
+    "rangeHint": "As datas convertidas devem estar entre 0001 e 9999. No limite superior, o domingo pode exibir o ano expandido +010000. Este é o calendário semanal ISO, não um calendário regional ou fiscal.",
+    "emptyResult": "Insira uma data ou carregue um exemplo e converta.",
+    "invalidDate": "Insira uma data real no formato YYYY-MM-DD, com ano de 0001 a 9999.",
+    "invalidWeek": "Insira YYYY-Www-D com ano 0001–9999, semana 01–53 e dia 1–7. Use W maiúsculo.",
+    "missingWeek": "Este ano semanal ISO tem apenas 52 semanas; a semana 53 não existe.",
+    "outOfRange": "Esta data semanal está fora do intervalo de datas do calendário compatível, 0001–9999.",
+    "monday": "Segunda-feira",
+    "tuesday": "Terça-feira",
+    "wednesday": "Quarta-feira",
+    "thursday": "Quinta-feira",
+    "friday": "Sexta-feira",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "convert": "Converter"
+  }
+}

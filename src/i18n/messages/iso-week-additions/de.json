@@ -1,0 +1,44 @@
+{
+  "tools": {
+    "iso-week-calculator": {
+      "name": "ISO-Wochendatum-Konverter",
+      "description": "Kalenderdaten und ISO-8601-Wochendaten lokal umrechnen. Kalenderwoche, Wochenjahr und Montag–Sonntag-Zeitraum anzeigen, kopieren oder herunterladen.",
+      "meta": {
+        "title": "ISO-Wochendatum-Konverter",
+        "description": "Kalenderdaten und ISO-8601-Wochendaten lokal umrechnen. Kalenderwoche, Wochenjahr und Montag–Sonntag-Zeitraum anzeigen, kopieren oder herunterladen.",
+        "keywords": "ISO-Woche, Kalenderwoche, ISO 8601, Wochendatum, Wochenjahr"
+      }
+    }
+  },
+  "isoWeek": {
+    "mode": "Umrechnungsrichtung",
+    "fromDate": "Kalenderdatum → ISO-Wochendatum",
+    "fromWeek": "ISO-Wochendatum → Kalenderdatum",
+    "date": "Kalenderdatum",
+    "weekDate": "ISO-Wochendatum",
+    "weekYear": "ISO-Wochenjahr",
+    "week": "Kalenderwoche",
+    "weekday": "Wochentag",
+    "weekStart": "Wochenbeginn (Montag)",
+    "weekEnd": "Wochenende (Sonntag)",
+    "weeksInYear": "Wochen im ISO-Jahr",
+    "summary": "Zusammenfassung",
+    "dateHint": "Format YYYY-MM-DD, Jahr von 0001 bis 9999. Beispiel: 2021-01-01.",
+    "weekHint": "Format YYYY-Www-D: vierstelliges Jahr (0001–9999), zweistellige Woche (01–53) und Wochentag (1 = Montag, 7 = Sonntag). Beispiel: 2020-W53-5.",
+    "rules": "ISO-Wochen beginnen am Montag. Woche 1 enthält den 4. Januar, daher kann das Wochenjahr vom Kalenderjahr abweichen. Berechnet werden gregorianische Daten ohne Uhrzeiten oder Zeitzonen.",
+    "rangeHint": "Umgerechnete Daten müssen im Bereich 0001–9999 liegen. An der oberen Grenze kann der Sonntag mit dem erweiterten Jahr +010000 erscheinen. Es gilt der ISO-Wochenkalender, kein regionaler oder Geschäftsjahreskalender.",
+    "emptyResult": "Datum eingeben oder Beispiel laden und umrechnen.",
+    "invalidDate": "Ein gültiges Kalenderdatum im Format YYYY-MM-DD mit Jahr 0001–9999 eingeben.",
+    "invalidWeek": "YYYY-Www-D mit Jahr 0001–9999, Woche 01–53 und Wochentag 1–7 eingeben. Großes W verwenden.",
+    "missingWeek": "Dieses ISO-Wochenjahr hat nur 52 Wochen; Woche 53 existiert nicht.",
+    "outOfRange": "Dieses Wochendatum liegt außerhalb des unterstützten Kalenderdatumsbereichs 0001–9999.",
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag",
+    "convert": "Umrechnen"
+  }
+}

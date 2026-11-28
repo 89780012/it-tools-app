@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'iso-week-calculator': 'ISO 8601 week date week number calendar week year Monday 周数 周编号 周日期 跨年 周报 排期',
   'css-clamp-generator': 'fluid typography responsive font size CSS clamp rem vw 响应式字号 流体排版 字体大小',
   'json-pointer': 'RFC 6901 JSON Pointer URI fragment reference resolve extract 精确路径 JSON指针 提取 片段',
   'ipv4-cidr-aggregator': 'IPv4 CIDR aggregate collapse summarize firewall allowlist merge networks 网段聚合 白名单 合并子网 防火墙',
@@ -105,7 +106,7 @@ const workflows = [
     'docker-cheatsheet',
     'nginx-cheatsheet',
   ],
-  ['cron-expression-parser', 'time-converter', 'date-duration-calculator'],
+  ['cron-expression-parser', 'time-converter', 'date-duration-calculator', 'iso-week-calculator'],
 ]
 export function relatedToolsFor(id: string, limit = 6) {
   const current = allTools.find((tool) => tool.id === id)

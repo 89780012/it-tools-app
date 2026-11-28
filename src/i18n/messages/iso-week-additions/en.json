@@ -1,0 +1,44 @@
+{
+  "tools": {
+    "iso-week-calculator": {
+      "name": "ISO Week Date Converter",
+      "description": "Convert calendar dates and ISO 8601 week dates locally. Find week numbers, week years, and Monday–Sunday ranges; copy or download the summary.",
+      "meta": {
+        "title": "ISO Week Date Converter",
+        "description": "Convert calendar dates and ISO 8601 week dates locally. Find week numbers, week years, and Monday–Sunday ranges; copy or download the summary.",
+        "keywords": "ISO week, week number, ISO 8601, week date, calendar week, week year"
+      }
+    }
+  },
+  "isoWeek": {
+    "mode": "Conversion direction",
+    "fromDate": "Calendar date → ISO week date",
+    "fromWeek": "ISO week date → Calendar date",
+    "date": "Calendar date",
+    "weekDate": "ISO week date",
+    "weekYear": "ISO week year",
+    "week": "Week number",
+    "weekday": "Day of week",
+    "weekStart": "Week start (Monday)",
+    "weekEnd": "Week end (Sunday)",
+    "weeksInYear": "Weeks in ISO year",
+    "summary": "Conversion summary",
+    "dateHint": "Use YYYY-MM-DD, with a year from 0001 to 9999. Example: 2021-01-01.",
+    "weekHint": "Use YYYY-Www-D: a four-digit year (0001–9999), a two-digit week (01–53), and a weekday (1 = Monday, 7 = Sunday). Example: 2020-W53-5.",
+    "rules": "ISO weeks start on Monday. Week 1 contains January 4, so the week year can differ from the calendar year. Calculations use Gregorian dates without times or time zones.",
+    "rangeHint": "Converted dates must be within 0001–9999. At the upper boundary, the displayed week end may use the expanded year +010000. This is an ISO week calendar, not a locale-specific or fiscal week calendar.",
+    "emptyResult": "Enter a date or load an example, then convert.",
+    "invalidDate": "Enter a real calendar date in YYYY-MM-DD format, with a year from 0001 to 9999.",
+    "invalidWeek": "Enter YYYY-Www-D with a year from 0001 to 9999, week 01–53 and weekday 1–7. Use uppercase W.",
+    "missingWeek": "This ISO week year has only 52 weeks; week 53 does not exist.",
+    "outOfRange": "This week date falls outside the supported calendar date range 0001–9999.",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "convert": "Convert"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "tools": {
+    "iso-week-calculator": {
+      "name": "ISO 周日期转换器",
+      "description": "在本地双向转换公历日期与 ISO 8601 周日期，查看周编号、周所属年份及周一至周日范围，支持复制和下载。",
+      "meta": {
+        "title": "ISO 周日期转换器",
+        "description": "在本地双向转换公历日期与 ISO 8601 周日期，查看周编号、周所属年份及周一至周日范围，支持复制和下载。",
+        "keywords": "ISO 周, 周编号, ISO 8601, 周日期, 日历周, 周所属年份"
+      }
+    }
+  },
+  "isoWeek": {
+    "mode": "转换方向",
+    "fromDate": "公历日期 → ISO 周日期",
+    "fromWeek": "ISO 周日期 → 公历日期",
+    "date": "公历日期",
+    "weekDate": "ISO 周日期",
+    "weekYear": "ISO 周所属年份",
+    "week": "周编号",
+    "weekday": "星期",
+    "weekStart": "本周开始（周一）",
+    "weekEnd": "本周结束（周日）",
+    "weeksInYear": "该 ISO 年的周数",
+    "summary": "转换摘要",
+    "dateHint": "使用 YYYY-MM-DD 格式，年份为 0001–9999。例如：2021-01-01。",
+    "weekHint": "使用 YYYY-Www-D 格式：四位年份（0001–9999）、两位周编号（01–53）及星期（1 为周一，7 为周日）。例如：2020-W53-5。",
+    "rules": "ISO 周从周一开始。第 1 周包含 1 月 4 日，因此周所属年份可能与公历年份不同。按公历日期计算，不涉及时间或时区。",
+    "rangeHint": "转换所得日期须在 0001–9999 年内。在上限边界处，周日可能以扩展年份 +010000 显示。本工具采用 ISO 周历，不采用地区周历或财务周历。",
+    "emptyResult": "输入日期或加载示例，然后转换。",
+    "invalidDate": "请输入真实存在的公历日期，格式为 YYYY-MM-DD，年份为 0001–9999。",
+    "invalidWeek": "请输入 YYYY-Www-D，年份为 0001–9999，周编号为 01–53，星期为 1–7。W 必须大写。",
+    "missingWeek": "该 ISO 年只有 52 周，不存在第 53 周。",
+    "outOfRange": "该周日期超出支持的公历日期范围（0001–9999 年）。",
+    "monday": "周一",
+    "tuesday": "周二",
+    "wednesday": "周三",
+    "thursday": "周四",
+    "friday": "周五",
+    "saturday": "周六",
+    "sunday": "周日",
+    "convert": "转换"
+  }
+}

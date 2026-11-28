@@ -139,6 +139,7 @@ export const toolsConfig: ToolCategory[] = [
   ]),
   category('time', 'time', 'clock-8', [
     ['time-converter', 'history'],
+    ['iso-week-calculator', 'clock-8'],
     ['date-duration-calculator', 'clock-8'],
     ['cron-expression-parser', 'clock-8'],
   ]),
