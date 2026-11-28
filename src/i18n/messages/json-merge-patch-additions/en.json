@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "JSON Merge Patch",
+      "description": "Apply RFC 7396 patches to JSON configurations: merge objects, remove fields and replace arrays locally.",
+      "meta": {
+        "title": "JSON Merge Patch",
+        "description": "Apply RFC 7396 patches to JSON configurations: merge objects, remove fields and replace arrays locally.",
+        "keywords": "JSON merge patch, RFC 7396, merge JSON, configuration patch"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "Target JSON",
+    "patch": "Merge patch JSON",
+    "output": "Merged JSON",
+    "apply": "Apply patch",
+    "emptyResult": "Enter a target and a merge patch, then apply to see the result.",
+    "hint": "Each input accepts {characters} UTF-16 code units and {depth} nesting levels. Use strict JSON without duplicate object keys. Large numbers retain their precision.",
+    "rules": "RFC 7396: objects merge recursively; arrays and scalar patches replace the entire target value. An object patch applied to a non-object starts from an empty object. Formatting is normalized.",
+    "nullRule": "A null object member deletes that field; it cannot set a field to null. A null patch at the root replaces the entire document with null. This tool applies merge patches, not JSON Patch operation arrays (RFC 6902).",
+    "empty": "Enter a JSON value.",
+    "invalid": "Invalid JSON. Check syntax and remove duplicate object keys.",
+    "tooLarge": "Use at most {characters} UTF-16 code units per input.",
+    "tooDeep": "Use at most {depth} nesting levels.",
+    "outputLimit": "The formatted result exceeds {limit} UTF-16 code units. Reduce the input size."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "JSON Merge Patch",
+      "description": "RFC-7396-Patches lokal auf JSON-Konfigurationen anwenden: Objekte zusammenführen, Felder löschen und Arrays ersetzen.",
+      "meta": {
+        "title": "JSON Merge Patch",
+        "description": "RFC-7396-Patches lokal auf JSON-Konfigurationen anwenden: Objekte zusammenführen, Felder löschen und Arrays ersetzen.",
+        "keywords": "JSON Merge Patch, RFC 7396, JSON zusammenführen, Konfiguration"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "Ziel-JSON",
+    "patch": "JSON-Merge-Patch",
+    "output": "Zusammengeführtes JSON",
+    "apply": "Patch anwenden",
+    "emptyResult": "Ziel und Merge-Patch eingeben und anwenden, um das Ergebnis zu sehen.",
+    "hint": "Jede Eingabe erlaubt {characters} UTF-16-Codeeinheiten und {depth} Verschachtelungsebenen. Striktes JSON ohne doppelte Objektschlüssel verwenden. Große Zahlen behalten ihre Genauigkeit.",
+    "rules": "RFC 7396: Objekte werden rekursiv zusammengeführt; Array- und skalare Patches ersetzen den gesamten Zielwert. Ein Objekt-Patch auf einen anderen Wert beginnt mit einem leeren Objekt. Die Formatierung wird vereinheitlicht.",
+    "nullRule": "Ein null-Objektmitglied löscht das Feld und kann es nicht auf null setzen. Ein null-Patch an der Wurzel ersetzt das gesamte Dokument durch null. Dieses Werkzeug wendet Merge-Patches an, keine JSON-Patch-Operationsarrays (RFC 6902).",
+    "empty": "JSON-Wert eingeben.",
+    "invalid": "Ungültiges JSON. Syntax prüfen und doppelte Objektschlüssel entfernen.",
+    "tooLarge": "Maximal {characters} UTF-16-Codeeinheiten pro Eingabe verwenden.",
+    "tooDeep": "Maximal {depth} Verschachtelungsebenen verwenden.",
+    "outputLimit": "Das formatierte Ergebnis überschreitet {limit} UTF-16-Codeeinheiten. Eingabe verkleinern."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "Patch di unione JSON",
+      "description": "Applica localmente patch RFC 7396 alle configurazioni JSON: unisci oggetti, elimina campi e sostituisci array.",
+      "meta": {
+        "title": "Patch di unione JSON",
+        "description": "Applica localmente patch RFC 7396 alle configurazioni JSON: unisci oggetti, elimina campi e sostituisci array.",
+        "keywords": "patch di unione JSON, RFC 7396, unire JSON, configurazione"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "JSON di destinazione",
+    "patch": "Patch di unione JSON",
+    "output": "JSON unito",
+    "apply": "Applica patch",
+    "emptyResult": "Inserisci la destinazione e la patch di unione, poi applicala per vedere il risultato.",
+    "hint": "Ogni input accetta {characters} unità di codice UTF-16 e {depth} livelli di annidamento. Usa JSON rigoroso senza chiavi duplicate. I numeri grandi mantengono la precisione.",
+    "rules": "RFC 7396: gli oggetti vengono uniti ricorsivamente; le patch di array e scalari sostituiscono l’intero valore di destinazione. Una patch oggetto su un valore diverso parte da un oggetto vuoto. La formattazione viene normalizzata.",
+    "nullRule": "Un membro null elimina il campo; non può impostarlo a null. Una patch null alla radice sostituisce l’intero documento con null. Questo strumento applica patch di unione, non array di operazioni JSON Patch (RFC 6902).",
+    "empty": "Inserisci un valore JSON.",
+    "invalid": "JSON non valido. Controlla la sintassi e rimuovi le chiavi duplicate.",
+    "tooLarge": "Usa al massimo {characters} unità di codice UTF-16 per input.",
+    "tooDeep": "Usa al massimo {depth} livelli di annidamento.",
+    "outputLimit": "Il risultato formattato supera {limit} unità di codice UTF-16. Riduci la dimensione dell’input."
+  }
+}

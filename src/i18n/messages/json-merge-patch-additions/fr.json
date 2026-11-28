@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "Patch de fusion JSON",
+      "description": "Appliquez localement des patches RFC 7396 aux configurations JSON : fusionnez des objets, supprimez des champs et remplacez des tableaux.",
+      "meta": {
+        "title": "Patch de fusion JSON",
+        "description": "Appliquez localement des patches RFC 7396 aux configurations JSON : fusionnez des objets, supprimez des champs et remplacez des tableaux.",
+        "keywords": "patch de fusion JSON, RFC 7396, fusion JSON, configuration"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "JSON cible",
+    "patch": "Patch de fusion JSON",
+    "output": "JSON fusionné",
+    "apply": "Appliquer le patch",
+    "emptyResult": "Saisissez la cible et le patch de fusion, puis appliquez-le pour voir le résultat.",
+    "hint": "Chaque entrée accepte {characters} unités de code UTF-16 et {depth} niveaux imbriqués. Utilisez du JSON strict sans clés en double. Les grands nombres conservent leur précision.",
+    "rules": "RFC 7396 : les objets fusionnent récursivement ; les patches de tableaux et de scalaires remplacent toute la valeur cible. Un patch objet appliqué à une autre valeur part d’un objet vide. Le format est normalisé.",
+    "nullRule": "Un membre null supprime le champ ; il ne peut pas lui affecter null. Un patch null à la racine remplace tout le document par null. Cet outil applique des patches de fusion, pas des tableaux d’opérations JSON Patch (RFC 6902).",
+    "empty": "Saisissez une valeur JSON.",
+    "invalid": "JSON invalide. Vérifiez la syntaxe et supprimez les clés en double.",
+    "tooLarge": "Utilisez au plus {characters} unités de code UTF-16 par entrée.",
+    "tooDeep": "Utilisez au plus {depth} niveaux imbriqués.",
+    "outputLimit": "Le résultat formaté dépasse {limit} unités de code UTF-16. Réduisez la taille de l’entrée."
+  }
+}

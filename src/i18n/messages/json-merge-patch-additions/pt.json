@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "Patch de mesclagem JSON",
+      "description": "Aplique patches RFC 7396 a configurações JSON: mescle objetos, remova campos e substitua arrays localmente.",
+      "meta": {
+        "title": "Patch de mesclagem JSON",
+        "description": "Aplique patches RFC 7396 a configurações JSON: mescle objetos, remova campos e substitua arrays localmente.",
+        "keywords": "patch de mesclagem JSON, RFC 7396, mesclar JSON, configuração"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "JSON de destino",
+    "patch": "Patch de mesclagem JSON",
+    "output": "JSON mesclado",
+    "apply": "Aplicar patch",
+    "emptyResult": "Insira o destino e o patch de mesclagem e aplique para ver o resultado.",
+    "hint": "Cada entrada aceita {characters} unidades de código UTF-16 e {depth} níveis de aninhamento. Use JSON estrito sem chaves duplicadas. Números grandes mantêm a precisão.",
+    "rules": "RFC 7396: objetos são mesclados recursivamente; patches de arrays e escalares substituem todo o valor de destino. Um patch de objeto sobre outro tipo começa com um objeto vazio. A formatação é normalizada.",
+    "nullRule": "Um membro null remove o campo; não pode defini-lo como null. Um patch null na raiz substitui todo o documento por null. Esta ferramenta aplica patches de mesclagem, não arrays de operações JSON Patch (RFC 6902).",
+    "empty": "Insira um valor JSON.",
+    "invalid": "JSON inválido. Verifique a sintaxe e remova as chaves duplicadas.",
+    "tooLarge": "Use no máximo {characters} unidades de código UTF-16 por entrada.",
+    "tooDeep": "Use no máximo {depth} níveis de aninhamento.",
+    "outputLimit": "O resultado formatado excede {limit} unidades de código UTF-16. Reduza o tamanho da entrada."
+  }
+}

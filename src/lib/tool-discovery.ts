@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'json-merge-patch': 'RFC 7396 merge patch configuration 合并补丁 配置合并 JSON合并',
   'semver-sorter': 'semantic version release tags prerelease 语义化版本 版本排序 发布标签',
   'time-converter': 'timestamp epoch unix 时间戳 时区 日期毫秒',
   'date-duration-calculator': 'date difference duration business days working days 日期差 日期间隔 工作日 节假日',
@@ -62,6 +63,7 @@ const workflows = [
   [
     'json-formatter',
     'json-diff',
+    'json-merge-patch',
     'jsonpath-query',
     'json-schema-validator',
     'json-to-types',

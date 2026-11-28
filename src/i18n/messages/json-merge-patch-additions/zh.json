@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "JSON 合并补丁",
+      "description": "按 RFC 7396 在本地合并 JSON 配置对象、删除字段和替换数组。",
+      "meta": {
+        "title": "JSON 合并补丁",
+        "description": "按 RFC 7396 在本地合并 JSON 配置对象、删除字段和替换数组。",
+        "keywords": "JSON 合并补丁, RFC 7396, JSON 合并, 配置合并"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "目标 JSON",
+    "patch": "合并补丁 JSON",
+    "output": "合并后的 JSON",
+    "apply": "应用补丁",
+    "emptyResult": "输入目标和合并补丁，应用后查看结果。",
+    "hint": "每个输入最多 {characters} 个 UTF-16 代码单元、{depth} 层嵌套。请使用严格 JSON，对象键不能重复。大数字保持原始精度。",
+    "rules": "RFC 7396：对象递归合并；数组和标量补丁替换整个目标值。向非对象应用对象补丁时，从空对象开始。输出会统一格式。",
+    "nullRule": "对象成员的 null 表示删除字段，不能用来将字段设为 null。根级 null 补丁会将整个文档替换为 null。本工具应用合并补丁，不支持 JSON Patch 操作数组（RFC 6902）。",
+    "empty": "请输入 JSON 值。",
+    "invalid": "JSON 无效。请检查语法并删除重复的对象键。",
+    "tooLarge": "每个输入最多 {characters} 个 UTF-16 代码单元。",
+    "tooDeep": "最多允许 {depth} 层嵌套。",
+    "outputLimit": "格式化后的结果超过 {limit} 个 UTF-16 代码单元，请减少输入内容。"
+  }
+}

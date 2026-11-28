@@ -1,0 +1,28 @@
+{
+  "tools": {
+    "json-merge-patch": {
+      "name": "Parche de fusión JSON",
+      "description": "Aplica parches RFC 7396 a configuraciones JSON: fusiona objetos, elimina campos y reemplaza matrices localmente.",
+      "meta": {
+        "title": "Parche de fusión JSON",
+        "description": "Aplica parches RFC 7396 a configuraciones JSON: fusiona objetos, elimina campos y reemplaza matrices localmente.",
+        "keywords": "parche de fusión JSON, RFC 7396, fusionar JSON, configuración"
+      }
+    }
+  },
+  "jsonMergePatch": {
+    "target": "JSON de destino",
+    "patch": "Parche de fusión JSON",
+    "output": "JSON fusionado",
+    "apply": "Aplicar parche",
+    "emptyResult": "Introduce el destino y el parche de fusión, y aplícalo para ver el resultado.",
+    "hint": "Cada entrada admite {characters} unidades de código UTF-16 y {depth} niveles de anidamiento. Usa JSON estricto sin claves duplicadas. Los números grandes conservan su precisión.",
+    "rules": "RFC 7396: los objetos se fusionan recursivamente; los parches de matrices y escalares reemplazan todo el valor de destino. Un parche de objeto sobre un valor que no es objeto parte de un objeto vacío. Se normaliza el formato.",
+    "nullRule": "Un miembro null elimina el campo; no permite asignarle null. Un parche null en la raíz reemplaza todo el documento por null. Esta herramienta aplica parches de fusión, no matrices de operaciones JSON Patch (RFC 6902).",
+    "empty": "Introduce un valor JSON.",
+    "invalid": "JSON no válido. Revisa la sintaxis y elimina las claves duplicadas.",
+    "tooLarge": "Usa como máximo {characters} unidades de código UTF-16 por entrada.",
+    "tooDeep": "Usa como máximo {depth} niveles de anidamiento.",
+    "outputLimit": "El resultado formateado supera {limit} unidades de código UTF-16. Reduce el tamaño de la entrada."
+  }
+}
