@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "TOTP 动态验证码生成器",
+      "description": "使用 Base32 密钥在本地生成一次性动态验证码，支持 SHA-1/256/512、自定义周期和指定时间。",
+      "meta": {
+        "title": "TOTP 动态验证码生成器",
+        "description": "使用 Base32 密钥在本地生成一次性动态验证码，支持 SHA-1/256/512、自定义周期和指定时间。",
+        "keywords": "TOTP 动态验证码生成器, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Base32 密钥",
+    "algorithm": "哈希算法",
+    "digits": "验证码位数",
+    "period": "周期（秒）",
+    "timestamp": "Unix 时间戳（秒，可选）",
+    "hint": "输入 Base32 密钥，不接受 otpauth URI。支持小写字母、ASCII 空白和连字符分隔，可省略填充。输入最多 {limit} 个字符。",
+    "timeHint": "留空则使用设备时间，生成后自动刷新。输入整数可查看指定时刻的验证码。",
+    "generate": "生成验证码",
+    "code": "一次性验证码",
+    "live": "设备实时时间 · 自动刷新",
+    "fixed": "指定时间戳 · 不自动刷新",
+    "remaining": "距离下个验证码",
+    "seconds": "{count} 秒",
+    "counter": "时间计数器",
+    "validFrom": "有效起点（含，UTC / Unix）",
+    "validUntil": "有效终点（不含，UTC / Unix）",
+    "emptyResult": "输入 Base32 密钥后生成验证码，或加载 RFC 6238 示例。",
+    "rules": "遵循 RFC 6238，T0 = 0。密钥、算法、位数和周期须与验证端一致；实时验证码依赖设备时钟。密钥仅保留在当前页面内存中，复制与下载均不包含密钥。",
+    "secretRequired": "请输入 Base32 密钥。",
+    "secretTooLong": "密钥输入不能超过 1024 个字符。",
+    "invalidSecret": "Base32 密钥无效。请使用 A–Z 和 2–7，确保长度、可选填充及末尾未使用位均符合规范。",
+    "invalidAlgorithm": "请选择 SHA-1、SHA-256 或 SHA-512。",
+    "invalidDigits": "请选择 6 位或 8 位。",
+    "invalidPeriod": "周期须为 1 至 300 秒的整数。",
+    "invalidTimestamp": "时间戳须为 0 至 253402300799 秒的整数。"
+  }
+}

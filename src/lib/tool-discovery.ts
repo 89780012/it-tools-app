@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'totp-generator': 'TOTP OTP 2FA MFA authenticator RFC 6238 Base32 动态验证码 双因素认证 一次性密码',
   'ipv6-subnet-calculator': 'IPv6 CIDR prefix network range subnet mask RFC 5952 IPv6子网 地址范围 前缀 掩码',
   'json-merge-patch': 'RFC 7396 merge patch configuration 合并补丁 配置合并 JSON合并',
   'semver-sorter': 'semantic version release tags prerelease 语义化版本 版本排序 发布标签',
@@ -46,6 +47,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['totp-generator', 'hmac-generator', 'jwt-decoder', 'time-converter'],
   ['ipv6-subnet-calculator', 'subnet-calculator', 'ip-lookup', 'dns-lookup'],
   [
     'dns-lookup',

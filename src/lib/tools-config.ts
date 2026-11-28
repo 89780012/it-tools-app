@@ -113,6 +113,7 @@ export const toolsConfig: ToolCategory[] = [
     ['image-to-dot-matrix', 'grid-3x3'],
   ]),
   category('crypto', 'crypto', 'shield', [
+    ['totp-generator', 'key'],
     ['jwt-decoder', 'key'],
     ['nginx-certificate-generator', 'shield-check'],
     ['certificate-parser', 'shield-check'],

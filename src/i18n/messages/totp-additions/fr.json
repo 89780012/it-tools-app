@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "Générateur TOTP",
+      "description": "Générez localement des codes temporaires depuis un secret Base32 avec SHA-1/256/512, des périodes et des instants personnalisés.",
+      "meta": {
+        "title": "Générateur TOTP",
+        "description": "Générez localement des codes temporaires depuis un secret Base32 avec SHA-1/256/512, des périodes et des instants personnalisés.",
+        "keywords": "Générateur TOTP, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Secret Base32",
+    "algorithm": "Algorithme de hachage",
+    "digits": "Nombre de chiffres",
+    "period": "Période (secondes)",
+    "timestamp": "Horodatage Unix (secondes, facultatif)",
+    "hint": "Saisissez un secret Base32, pas une URI otpauth. Minuscules, espaces ASCII et tirets acceptés. Le remplissage est facultatif. Maximum {limit} caractères.",
+    "timeHint": "Laissez vide pour utiliser l’horloge de l’appareil et actualiser après génération. Saisissez un entier pour un instant fixe.",
+    "generate": "Générer le code",
+    "code": "Code à usage unique",
+    "live": "Heure de l’appareil · actualisation automatique",
+    "fixed": "Instant fixe · sans actualisation automatique",
+    "remaining": "Secondes avant le prochain code",
+    "seconds": "{count} secondes",
+    "counter": "Compteur temporel",
+    "validFrom": "Valide à partir de (inclus, UTC / Unix)",
+    "validUntil": "Valide jusqu’à (exclu, UTC / Unix)",
+    "emptyResult": "Saisissez un secret Base32 et générez un code, ou chargez l’exemple RFC 6238.",
+    "rules": "RFC 6238 avec T0 = 0. Secret, hachage, chiffres et période doivent correspondre au vérificateur ; les codes actuels dépendent de l’horloge de l’appareil. Le secret reste en mémoire dans cette page et est exclu de la copie et du téléchargement.",
+    "secretRequired": "Saisissez un secret Base32.",
+    "secretTooLong": "Le secret ne doit pas dépasser 1024 caractères.",
+    "invalidSecret": "Secret Base32 invalide. Utilisez A–Z et 2–7, une longueur valide, un remplissage canonique facultatif et des bits inutilisés nuls.",
+    "invalidAlgorithm": "Choisissez SHA-1, SHA-256 ou SHA-512.",
+    "invalidDigits": "Choisissez 6 ou 8 chiffres.",
+    "invalidPeriod": "La période doit être un entier de 1 à 300 secondes.",
+    "invalidTimestamp": "L’horodatage doit être un entier de 0 à 253402300799 secondes."
+  }
+}

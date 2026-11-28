@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "TOTP生成ツール",
+      "description": "Base32シークレットから時間ベースのワンタイムコードをローカル生成。SHA-1/256/512、周期や時刻の指定に対応。",
+      "meta": {
+        "title": "TOTP生成ツール",
+        "description": "Base32シークレットから時間ベースのワンタイムコードをローカル生成。SHA-1/256/512、周期や時刻の指定に対応。",
+        "keywords": "TOTP生成ツール, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Base32シークレット",
+    "algorithm": "ハッシュアルゴリズム",
+    "digits": "コードの桁数",
+    "period": "周期（秒）",
+    "timestamp": "Unixタイムスタンプ（秒、省略可）",
+    "hint": "otpauth URIではなくBase32シークレットを入力してください。小文字、ASCII空白、ハイフン区切りに対応。パディングは省略可能。最大{limit}文字。",
+    "timeHint": "空欄の場合は端末の時計を使用し、生成後に自動更新します。整数を入力すると指定時刻を確認できます。",
+    "generate": "コードを生成",
+    "code": "ワンタイムコード",
+    "live": "端末の現在時刻・自動更新中",
+    "fixed": "指定時刻・自動更新なし",
+    "remaining": "次のコードまで",
+    "seconds": "{count}秒",
+    "counter": "時間カウンター",
+    "validFrom": "有効開始（含む、UTC / Unix）",
+    "validUntil": "有効終了（含まない、UTC / Unix）",
+    "emptyResult": "Base32シークレットを入力して生成するか、RFC 6238の例を読み込んでください。",
+    "rules": "RFC 6238準拠、T0 = 0。シークレット、アルゴリズム、桁数、周期は検証側と一致させてください。現在のコードは端末の時計に依存します。シークレットはページのメモリにのみ保持され、コピーやダウンロードには含まれません。",
+    "secretRequired": "Base32シークレットを入力してください。",
+    "secretTooLong": "シークレットの入力は1024文字以内にしてください。",
+    "invalidSecret": "無効なBase32シークレットです。A–Zと2–7を使用し、長さ、任意の正規パディング、未使用ビットのゼロ値を確認してください。",
+    "invalidAlgorithm": "SHA-1、SHA-256、SHA-512を選択してください。",
+    "invalidDigits": "6桁または8桁を選択してください。",
+    "invalidPeriod": "周期は1〜300秒の整数で指定してください。",
+    "invalidTimestamp": "タイムスタンプは0〜253402300799秒の整数で指定してください。"
+  }
+}

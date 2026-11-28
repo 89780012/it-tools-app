@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "TOTP 생성기",
+      "description": "Base32 비밀 키로 시간 기반 일회용 코드를 로컬 생성합니다. SHA-1/256/512, 사용자 지정 주기와 시각을 지원합니다.",
+      "meta": {
+        "title": "TOTP 생성기",
+        "description": "Base32 비밀 키로 시간 기반 일회용 코드를 로컬 생성합니다. SHA-1/256/512, 사용자 지정 주기와 시각을 지원합니다.",
+        "keywords": "TOTP 생성기, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Base32 비밀 키",
+    "algorithm": "해시 알고리즘",
+    "digits": "코드 자릿수",
+    "period": "주기(초)",
+    "timestamp": "Unix 타임스탬프(초, 선택 사항)",
+    "hint": "otpauth URI가 아닌 Base32 비밀 키를 입력하세요. 소문자, ASCII 공백, 하이픈 구분을 허용합니다. 패딩은 선택 사항이며 최대 {limit}자입니다.",
+    "timeHint": "비워 두면 기기 시계를 사용하여 생성 후 자동 갱신합니다. 정수를 입력하면 지정 시각을 확인할 수 있습니다.",
+    "generate": "코드 생성",
+    "code": "일회용 코드",
+    "live": "기기 현재 시각 · 자동 갱신",
+    "fixed": "지정 시각 · 자동 갱신 꺼짐",
+    "remaining": "다음 코드까지 남은 시간",
+    "seconds": "{count}초",
+    "counter": "시간 카운터",
+    "validFrom": "유효 시작(포함, UTC / Unix)",
+    "validUntil": "유효 종료(제외, UTC / Unix)",
+    "emptyResult": "Base32 비밀 키를 입력하여 코드를 생성하거나 RFC 6238 예제를 불러오세요.",
+    "rules": "RFC 6238, T0 = 0. 비밀 키, 알고리즘, 자릿수, 주기는 검증 측과 같아야 하며 현재 코드는 기기 시계에 의존합니다. 비밀 키는 이 페이지 메모리에만 유지되며 복사나 다운로드에 포함되지 않습니다.",
+    "secretRequired": "Base32 비밀 키를 입력하세요.",
+    "secretTooLong": "비밀 키 입력은 1024자를 넘을 수 없습니다.",
+    "invalidSecret": "잘못된 Base32 비밀 키입니다. A–Z와 2–7, 유효한 길이, 선택적 정규 패딩, 0인 미사용 비트를 확인하세요.",
+    "invalidAlgorithm": "SHA-1, SHA-256 또는 SHA-512를 선택하세요.",
+    "invalidDigits": "6자리 또는 8자리를 선택하세요.",
+    "invalidPeriod": "주기는 1~300초 사이의 정수여야 합니다.",
+    "invalidTimestamp": "타임스탬프는 0~253402300799초 사이의 정수여야 합니다."
+  }
+}

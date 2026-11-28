@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "Generatore TOTP",
+      "description": "Genera localmente codici temporanei da un segreto Base32 con SHA-1/256/512, periodi e istanti personalizzati.",
+      "meta": {
+        "title": "Generatore TOTP",
+        "description": "Genera localmente codici temporanei da un segreto Base32 con SHA-1/256/512, periodi e istanti personalizzati.",
+        "keywords": "Generatore TOTP, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Segreto Base32",
+    "algorithm": "Algoritmo hash",
+    "digits": "Cifre del codice",
+    "period": "Periodo (secondi)",
+    "timestamp": "Timestamp Unix (secondi, facoltativo)",
+    "hint": "Inserisci un segreto Base32, non un URI otpauth. Sono ammessi minuscole, spazi ASCII e trattini. Il padding è facoltativo. Massimo {limit} caratteri.",
+    "timeHint": "Lascia vuoto per usare l’orologio del dispositivo e aggiornare dopo la generazione. Inserisci un intero per esaminare un istante fisso.",
+    "generate": "Genera codice",
+    "code": "Codice monouso",
+    "live": "Ora del dispositivo · aggiornamento automatico",
+    "fixed": "Istante fisso · aggiornamento automatico disattivato",
+    "remaining": "Secondi al prossimo codice",
+    "seconds": "{count} secondi",
+    "counter": "Contatore temporale",
+    "validFrom": "Valido da (incluso, UTC / Unix)",
+    "validUntil": "Valido fino a (escluso, UTC / Unix)",
+    "emptyResult": "Inserisci un segreto Base32 e genera un codice, oppure carica l’esempio RFC 6238.",
+    "rules": "RFC 6238 con T0 = 0. Segreto, hash, cifre e periodo devono corrispondere al verificatore; i codici attuali dipendono dall’orologio del dispositivo. Il segreto rimane nella memoria della pagina ed è escluso dalla copia e dal download.",
+    "secretRequired": "Inserisci un segreto Base32.",
+    "secretTooLong": "Il segreto non deve superare 1024 caratteri.",
+    "invalidSecret": "Segreto Base32 non valido. Usa A–Z e 2–7, lunghezza valida, padding canonico facoltativo e bit inutilizzati a zero.",
+    "invalidAlgorithm": "Scegli SHA-1, SHA-256 o SHA-512.",
+    "invalidDigits": "Scegli 6 o 8 cifre.",
+    "invalidPeriod": "Il periodo deve essere un intero da 1 a 300 secondi.",
+    "invalidTimestamp": "Il timestamp deve essere un intero da 0 a 253402300799 secondi."
+  }
+}

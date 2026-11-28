@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "TOTP-Generator",
+      "description": "Erzeuge zeitbasierte Einmalcodes lokal aus einem Base32-Geheimnis mit SHA-1/256/512, eigenen Zeitintervallen und Testzeitpunkten.",
+      "meta": {
+        "title": "TOTP-Generator",
+        "description": "Erzeuge zeitbasierte Einmalcodes lokal aus einem Base32-Geheimnis mit SHA-1/256/512, eigenen Zeitintervallen und Testzeitpunkten.",
+        "keywords": "TOTP-Generator, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Base32-Geheimnis",
+    "algorithm": "Hash-Algorithmus",
+    "digits": "Code-Stellen",
+    "period": "Intervall (Sekunden)",
+    "timestamp": "Unix-Zeitstempel (Sekunden, optional)",
+    "hint": "Base32-Geheimnis eingeben, keine otpauth-URI. Kleinbuchstaben, ASCII-Leerraum und Bindestriche sind erlaubt. Auffüllzeichen sind optional. Maximal {limit} Zeichen.",
+    "timeHint": "Leer lassen, um die Gerätezeit zu verwenden und nach dem Erzeugen automatisch zu aktualisieren. Eine ganze Zahl wählt einen festen Zeitpunkt.",
+    "generate": "Code erzeugen",
+    "code": "Einmalcode",
+    "live": "Gerätezeit · automatische Aktualisierung",
+    "fixed": "Fester Zeitpunkt · keine automatische Aktualisierung",
+    "remaining": "Sekunden bis zum nächsten Code",
+    "seconds": "{count} Sekunden",
+    "counter": "Zeitzähler",
+    "validFrom": "Gültig ab (einschließlich, UTC / Unix)",
+    "validUntil": "Gültig bis (ausschließlich, UTC / Unix)",
+    "emptyResult": "Base32-Geheimnis eingeben und Code erzeugen oder das RFC-6238-Beispiel laden.",
+    "rules": "RFC 6238 mit T0 = 0. Geheimnis, Hash, Stellenzahl und Intervall müssen mit der Prüfstelle übereinstimmen; aktuelle Codes hängen von der Gerätezeit ab. Das Geheimnis bleibt im Seitenspeicher und wird weder kopiert noch heruntergeladen.",
+    "secretRequired": "Ein Base32-Geheimnis eingeben.",
+    "secretTooLong": "Die Eingabe darf 1024 Zeichen nicht überschreiten.",
+    "invalidSecret": "Ungültiges Base32-Geheimnis. A–Z und 2–7 mit gültiger Länge, optionalen kanonischen Auffüllzeichen und ungenutzten Nullbits verwenden.",
+    "invalidAlgorithm": "SHA-1, SHA-256 oder SHA-512 wählen.",
+    "invalidDigits": "6 oder 8 Stellen wählen.",
+    "invalidPeriod": "Das Intervall muss eine ganze Zahl von 1 bis 300 Sekunden sein.",
+    "invalidTimestamp": "Der Zeitstempel muss eine ganze Zahl von 0 bis 253402300799 Sekunden sein."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "totp-generator": {
+      "name": "TOTP Generator",
+      "description": "Generate time-based one-time passwords locally from a Base32 secret, with SHA-1/256/512, custom periods and test timestamps.",
+      "meta": {
+        "title": "TOTP Generator",
+        "description": "Generate time-based one-time passwords locally from a Base32 secret, with SHA-1/256/512, custom periods and test timestamps.",
+        "keywords": "TOTP Generator, TOTP, OTP, 2FA, RFC 6238, Base32, SHA-1, SHA-256, SHA-512"
+      }
+    }
+  },
+  "totp": {
+    "secret": "Base32 secret",
+    "algorithm": "Hash algorithm",
+    "digits": "Code digits",
+    "period": "Period (seconds)",
+    "timestamp": "Unix timestamp (seconds, optional)",
+    "hint": "Enter a Base32 secret, not an otpauth URI. Lowercase, ASCII whitespace and hyphen separators are accepted. Padding is optional. Maximum {limit} input characters.",
+    "timeHint": "Leave blank to use the device clock and refresh automatically after generating. Enter an integer to inspect a fixed time.",
+    "generate": "Generate code",
+    "code": "One-time code",
+    "live": "Live device time · automatically refreshing",
+    "fixed": "Fixed timestamp · automatic refresh off",
+    "remaining": "Seconds until next code",
+    "seconds": "{count} s",
+    "counter": "Time counter",
+    "validFrom": "Valid from (inclusive, UTC / Unix)",
+    "validUntil": "Valid until (exclusive, UTC / Unix)",
+    "emptyResult": "Enter a Base32 secret and generate a code, or load the RFC 6238 example.",
+    "rules": "RFC 6238 with T0 = 0. The secret, hash, digits and period must match the verifier; live codes depend on the device clock. Secrets stay in this page’s memory and are excluded from copy and download.",
+    "secretRequired": "Enter a Base32 secret.",
+    "secretTooLong": "Secret input must not exceed 1024 characters.",
+    "invalidSecret": "Invalid Base32 secret. Use A–Z and 2–7, with valid length, optional canonical padding and zero unused bits.",
+    "invalidAlgorithm": "Choose SHA-1, SHA-256 or SHA-512.",
+    "invalidDigits": "Choose 6 or 8 digits.",
+    "invalidPeriod": "Period must be an integer from 1 to 300 seconds.",
+    "invalidTimestamp": "Timestamp must be an integer from 0 to 253402300799 seconds."
+  }
+}
