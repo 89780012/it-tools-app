@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "CSS Linear Gradient Generator",
+      "description": "Design a linear CSS gradient with color stops, angle and opacity, preview it locally and copy or download the CSS.",
+      "meta": {
+        "title": "CSS Linear Gradient Generator",
+        "description": "Design a linear CSS gradient with color stops, angle and opacity, preview it locally and copy or download the CSS.",
+        "keywords": "CSS Linear Gradient Generator, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Angle (degrees)",
+    "stop": "Color stop {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Hex color",
+    "position": "Position (%)",
+    "opacity": "Opacity (%)",
+    "picker": "Pick color · {number}",
+    "remove": "Remove",
+    "removeStop": "Remove color stop {number}",
+    "add": "Add color stop",
+    "preview": "Gradient preview",
+    "previewHint": "The checkerboard shows transparency and is not part of the exported CSS.",
+    "output": "Generated CSS",
+    "emptyResult": "Enter valid gradient settings to see the preview and CSS.",
+    "hint": "Updates instantly. Use 2–8 color stops in nondecreasing position order. All numbers must be integers.",
+    "rules": "Angles: −360–360°, with 0° pointing up and 90° pointing right. Colors: #RRGGBB. Positions and opacity: 0–100%. Equal positions create hard transitions. Only linear gradients are generated; no CSS import.",
+    "invalidAngle": "Enter a whole-number angle from −360 to 360.",
+    "invalidColor": "Stop {number}: enter a six-digit hex color such as #2563eb.",
+    "invalidPosition": "Stop {number}: enter a whole-number position from 0 to 100.",
+    "invalidOpacity": "Stop {number}: enter a whole-number opacity from 0 to 100.",
+    "stopOrder": "Stop {number}: position must be at least the previous stop’s position.",
+    "stopCount": "Use 2–8 color stops."
+  }
+}

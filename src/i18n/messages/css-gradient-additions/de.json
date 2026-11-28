@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "CSS-Farbverlaufsgenerator",
+      "description": "Entwerfen Sie lineare CSS-Farbverläufe mit Farbstopps, Winkel und Deckkraft, mit lokaler Vorschau, Kopie und Download.",
+      "meta": {
+        "title": "CSS-Farbverlaufsgenerator",
+        "description": "Entwerfen Sie lineare CSS-Farbverläufe mit Farbstopps, Winkel und Deckkraft, mit lokaler Vorschau, Kopie und Download.",
+        "keywords": "CSS-Farbverlaufsgenerator, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Winkel (Grad)",
+    "stop": "Farbstopp {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Hex-Farbe",
+    "position": "Position (%)",
+    "opacity": "Deckkraft (%)",
+    "picker": "Farbe wählen · {number}",
+    "remove": "Entfernen",
+    "removeStop": "Farbstopp {number} entfernen",
+    "add": "Farbstopp hinzufügen",
+    "preview": "Verlaufsvorschau",
+    "previewHint": "Das Schachbrett zeigt Transparenz und gehört nicht zum exportierten CSS.",
+    "output": "Erzeugtes CSS",
+    "emptyResult": "Geben Sie gültige Einstellungen ein, um Vorschau und CSS zu sehen.",
+    "hint": "Sofortige Aktualisierung. Verwenden Sie 2–8 Farbstopps mit nicht abnehmenden Positionen. Alle Zahlen müssen ganzzahlig sein.",
+    "rules": "Winkel: −360–360°, 0° zeigt nach oben, 90° nach rechts. Farben: #RRGGBB. Positionen und Deckkraft: 0–100%. Gleiche Positionen erzeugen harte Übergänge. Nur lineare Verläufe; kein CSS-Import.",
+    "invalidAngle": "Geben Sie einen ganzzahligen Winkel von −360 bis 360 ein.",
+    "invalidColor": "Stopp {number}: Geben Sie eine sechsstellige Hex-Farbe wie #2563eb ein.",
+    "invalidPosition": "Stopp {number}: Geben Sie eine ganzzahlige Position von 0 bis 100 ein.",
+    "invalidOpacity": "Stopp {number}: Geben Sie eine ganzzahlige Deckkraft von 0 bis 100 ein.",
+    "stopOrder": "Stopp {number}: Die Position darf nicht kleiner als die vorherige sein.",
+    "stopCount": "Verwenden Sie 2–8 Farbstopps."
+  }
+}

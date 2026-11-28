@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "Générateur de dégradés CSS",
+      "description": "Créez des dégradés CSS linéaires avec points de couleur, angle et opacité, aperçu local, copie et téléchargement.",
+      "meta": {
+        "title": "Générateur de dégradés CSS",
+        "description": "Créez des dégradés CSS linéaires avec points de couleur, angle et opacité, aperçu local, copie et téléchargement.",
+        "keywords": "Générateur de dégradés CSS, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Angle (degrés)",
+    "stop": "Point de couleur {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Couleur hexadécimale",
+    "position": "Position (%)",
+    "opacity": "Opacité (%)",
+    "picker": "Choisir la couleur · {number}",
+    "remove": "Supprimer",
+    "removeStop": "Supprimer le point {number}",
+    "add": "Ajouter un point de couleur",
+    "preview": "Aperçu du dégradé",
+    "previewHint": "Le damier indique la transparence et ne fait pas partie du CSS exporté.",
+    "output": "CSS généré",
+    "emptyResult": "Saisissez des paramètres valides pour afficher l’aperçu et le CSS.",
+    "hint": "Mise à jour instantanée. Utilisez 2–8 points dans un ordre de position croissant ou égal. Tous les nombres doivent être entiers.",
+    "rules": "Angles : −360–360°, 0° vers le haut et 90° vers la droite. Couleurs : #RRGGBB. Positions et opacité : 0–100%. Des positions identiques créent des transitions nettes. Dégradés linéaires uniquement ; pas d’import CSS.",
+    "invalidAngle": "Saisissez un angle entier de −360 à 360.",
+    "invalidColor": "Point {number} : saisissez une couleur hexadécimale à six chiffres, comme #2563eb.",
+    "invalidPosition": "Point {number} : saisissez une position entière de 0 à 100.",
+    "invalidOpacity": "Point {number} : saisissez une opacité entière de 0 à 100.",
+    "stopOrder": "Point {number} : la position doit être supérieure ou égale à la précédente.",
+    "stopCount": "Utilisez 2–8 points de couleur."
+  }
+}

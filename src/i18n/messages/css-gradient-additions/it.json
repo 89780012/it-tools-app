@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "Generatore di sfumature CSS",
+      "description": "Crea sfumature CSS lineari con punti colore, angolo e opacità, anteprima locale, copia e download.",
+      "meta": {
+        "title": "Generatore di sfumature CSS",
+        "description": "Crea sfumature CSS lineari con punti colore, angolo e opacità, anteprima locale, copia e download.",
+        "keywords": "Generatore di sfumature CSS, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Angolo (gradi)",
+    "stop": "Punto colore {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Colore esadecimale",
+    "position": "Posizione (%)",
+    "opacity": "Opacità (%)",
+    "picker": "Scegli colore · {number}",
+    "remove": "Rimuovi",
+    "removeStop": "Rimuovi punto colore {number}",
+    "add": "Aggiungi punto colore",
+    "preview": "Anteprima sfumatura",
+    "previewHint": "La scacchiera mostra la trasparenza e non fa parte del CSS esportato.",
+    "output": "CSS generato",
+    "emptyResult": "Inserisci impostazioni valide per vedere anteprima e CSS.",
+    "hint": "Aggiornamento immediato. Usa 2–8 punti colore con posizioni non decrescenti. Tutti i numeri devono essere interi.",
+    "rules": "Angoli: −360–360°, 0° verso l’alto e 90° verso destra. Colori: #RRGGBB. Posizioni e opacità: 0–100%. Posizioni uguali creano transizioni nette. Solo sfumature lineari; nessuna importazione CSS.",
+    "invalidAngle": "Inserisci un angolo intero da −360 a 360.",
+    "invalidColor": "Punto {number}: inserisci un colore esadecimale a sei cifre come #2563eb.",
+    "invalidPosition": "Punto {number}: inserisci una posizione intera da 0 a 100.",
+    "invalidOpacity": "Punto {number}: inserisci un’opacità intera da 0 a 100.",
+    "stopOrder": "Punto {number}: la posizione deve essere almeno pari alla precedente.",
+    "stopCount": "Usa 2–8 punti colore."
+  }
+}

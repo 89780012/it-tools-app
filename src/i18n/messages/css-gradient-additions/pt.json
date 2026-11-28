@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "Gerador de gradientes CSS",
+      "description": "Crie gradientes CSS lineares com paradas de cor, ângulo e opacidade, prévia local, cópia e download.",
+      "meta": {
+        "title": "Gerador de gradientes CSS",
+        "description": "Crie gradientes CSS lineares com paradas de cor, ângulo e opacidade, prévia local, cópia e download.",
+        "keywords": "Gerador de gradientes CSS, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Ângulo (graus)",
+    "stop": "Parada de cor {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Cor hexadecimal",
+    "position": "Posição (%)",
+    "opacity": "Opacidade (%)",
+    "picker": "Escolher cor · {number}",
+    "remove": "Remover",
+    "removeStop": "Remover parada {number}",
+    "add": "Adicionar parada de cor",
+    "preview": "Prévia do gradiente",
+    "previewHint": "O tabuleiro mostra a transparência e não faz parte do CSS exportado.",
+    "output": "CSS gerado",
+    "emptyResult": "Insira configurações válidas para ver a prévia e o CSS.",
+    "hint": "Atualização instantânea. Use 2–8 paradas com posições em ordem não decrescente. Todos os números devem ser inteiros.",
+    "rules": "Ângulos: −360–360°, 0° aponta para cima e 90° para a direita. Cores: #RRGGBB. Posições e opacidade: 0–100%. Posições iguais criam transições bruscas. Apenas gradientes lineares; sem importação de CSS.",
+    "invalidAngle": "Insira um ângulo inteiro de −360 a 360.",
+    "invalidColor": "Parada {number}: insira uma cor hexadecimal de seis dígitos, como #2563eb.",
+    "invalidPosition": "Parada {number}: insira uma posição inteira de 0 a 100.",
+    "invalidOpacity": "Parada {number}: insira uma opacidade inteira de 0 a 100.",
+    "stopOrder": "Parada {number}: a posição deve ser maior ou igual à anterior.",
+    "stopCount": "Use 2–8 paradas de cor."
+  }
+}

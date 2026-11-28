@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "CSS 선형 그라데이션 생성기",
+      "description": "색상 정지점, 각도, 불투명도로 선형 CSS 그라데이션을 만들고 로컬에서 미리 보고 복사하거나 다운로드하세요.",
+      "meta": {
+        "title": "CSS 선형 그라데이션 생성기",
+        "description": "색상 정지점, 각도, 불투명도로 선형 CSS 그라데이션을 만들고 로컬에서 미리 보고 복사하거나 다운로드하세요.",
+        "keywords": "CSS 선형 그라데이션 생성기, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "각도 (도)",
+    "stop": "색상 정지점 {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "16진수 색상",
+    "position": "위치 (%)",
+    "opacity": "불투명도 (%)",
+    "picker": "색상 선택 · {number}",
+    "remove": "삭제",
+    "removeStop": "색상 정지점 {number} 삭제",
+    "add": "색상 정지점 추가",
+    "preview": "그라데이션 미리보기",
+    "previewHint": "체커보드는 투명도를 보여 주며 내보낸 CSS에는 포함되지 않습니다.",
+    "output": "생성된 CSS",
+    "emptyResult": "유효한 설정을 입력하면 미리보기와 CSS가 표시됩니다.",
+    "hint": "변경 즉시 업데이트됩니다. 위치가 감소하지 않는 순서로 2~8개의 색상 정지점을 사용하세요. 모든 숫자는 정수여야 합니다.",
+    "rules": "각도: −360~360°, 0°는 위쪽, 90°는 오른쪽입니다. 색상: #RRGGBB. 위치와 불투명도: 0~100%. 위치가 같으면 색상이 급격히 전환됩니다. 선형 그라데이션만 생성하며 CSS 가져오기는 지원하지 않습니다.",
+    "invalidAngle": "−360~360 사이의 정수 각도를 입력하세요.",
+    "invalidColor": "정지점 {number}: #2563eb 같은 6자리 16진수 색상을 입력하세요.",
+    "invalidPosition": "정지점 {number}: 0~100 사이의 정수 위치를 입력하세요.",
+    "invalidOpacity": "정지점 {number}: 0~100 사이의 정수 불투명도를 입력하세요.",
+    "stopOrder": "정지점 {number}: 위치는 이전 정지점 이상이어야 합니다.",
+    "stopCount": "색상 정지점을 2~8개 사용하세요."
+  }
+}

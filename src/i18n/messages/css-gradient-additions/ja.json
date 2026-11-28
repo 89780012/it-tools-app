@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "CSS 線形グラデーション生成",
+      "description": "色の停止点、角度、不透明度を設定して線形 CSS グラデーションをローカルでプレビューし、コピーやダウンロードができます。",
+      "meta": {
+        "title": "CSS 線形グラデーション生成",
+        "description": "色の停止点、角度、不透明度を設定して線形 CSS グラデーションをローカルでプレビューし、コピーやダウンロードができます。",
+        "keywords": "CSS 線形グラデーション生成, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "角度（度）",
+    "stop": "カラーストップ {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "16進数の色",
+    "position": "位置（%）",
+    "opacity": "不透明度（%）",
+    "picker": "色を選択 · {number}",
+    "remove": "削除",
+    "removeStop": "カラーストップ {number} を削除",
+    "add": "カラーストップを追加",
+    "preview": "グラデーションのプレビュー",
+    "previewHint": "市松模様は透明部分を示し、出力する CSS には含まれません。",
+    "output": "生成された CSS",
+    "emptyResult": "有効な設定を入力するとプレビューと CSS が表示されます。",
+    "hint": "変更は即座に反映されます。2～8 個のカラーストップを位置の昇順（同位置可）に指定してください。数値はすべて整数です。",
+    "rules": "角度：−360～360°。0° は上、90° は右です。色：#RRGGBB。位置と不透明度：0～100%。同じ位置で急な色の切り替えができます。線形グラデーションのみ対応し、CSS の読み込みはできません。",
+    "invalidAngle": "−360～360 の整数で角度を入力してください。",
+    "invalidColor": "ストップ {number}：#2563eb のような6桁の16進数の色を入力してください。",
+    "invalidPosition": "ストップ {number}：0～100 の整数で位置を入力してください。",
+    "invalidOpacity": "ストップ {number}：0～100 の整数で不透明度を入力してください。",
+    "stopOrder": "ストップ {number}：前のストップ以上の位置を指定してください。",
+    "stopCount": "2～8 個のカラーストップを指定してください。"
+  }
+}

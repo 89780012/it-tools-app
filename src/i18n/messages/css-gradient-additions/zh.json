@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "CSS 线性渐变生成器",
+      "description": "设置多色标、角度和透明度，在本地预览线性渐变并复制或下载 CSS。",
+      "meta": {
+        "title": "CSS 线性渐变生成器",
+        "description": "设置多色标、角度和透明度，在本地预览线性渐变并复制或下载 CSS。",
+        "keywords": "CSS 线性渐变生成器, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "角度（度）",
+    "stop": "色标 {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "十六进制颜色",
+    "position": "位置（%）",
+    "opacity": "不透明度（%）",
+    "picker": "选择颜色 · {number}",
+    "remove": "移除",
+    "removeStop": "移除色标 {number}",
+    "add": "添加色标",
+    "preview": "渐变预览",
+    "previewHint": "棋盘格用于展示透明区域，不会包含在导出的 CSS 中。",
+    "output": "生成的 CSS",
+    "emptyResult": "请输入有效的渐变设置以查看预览和 CSS。",
+    "hint": "修改后即时更新。支持 2–8 个色标，位置按非递减顺序排列。所有数值必须为整数。",
+    "rules": "角度为 −360–360°，0° 向上，90° 向右。颜色格式为 #RRGGBB。位置和不透明度为 0–100%。相同位置可产生硬切换。仅生成线性渐变，不支持导入 CSS。",
+    "invalidAngle": "请输入 −360 到 360 之间的整数角度。",
+    "invalidColor": "色标 {number}：请输入六位十六进制颜色，例如 #2563eb。",
+    "invalidPosition": "色标 {number}：请输入 0 到 100 之间的整数位置。",
+    "invalidOpacity": "色标 {number}：请输入 0 到 100 之间的整数不透明度。",
+    "stopOrder": "色标 {number}：位置不能小于前一个色标的位置。",
+    "stopCount": "请使用 2–8 个色标。"
+  }
+}

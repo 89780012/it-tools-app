@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'css-gradient-generator': 'CSS linear gradient background color stops angle opacity 渐变 线性渐变 色标 背景 透明度',
   'json-key-sorter': 'JSON sort keys recursive alphabetical lexicographic ascending descending 排序 键排序 递归 字典序 配置',
   'css-box-shadow-generator': 'CSS box-shadow shadow inset layered blur spread opacity 阴影 盒阴影 内阴影 模糊 扩展',
   'css-cubic-bezier': 'cubic bezier easing curve transition animation timing function ease in out overshoot CSS 贝塞尔 缓动曲线 动画 过渡',
@@ -59,7 +60,7 @@ export function matchesTool(
 const workflows = [
   ['json-key-sorter', 'json-formatter', 'json-diff', 'json-pointer', 'json-patch'],
   ['json-patch', 'json-merge-patch', 'json-pointer', 'json-diff', 'json-formatter'],
-  ['css-box-shadow-generator', 'css-cubic-bezier', 'css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],
+  ['css-gradient-generator', 'css-box-shadow-generator', 'css-cubic-bezier', 'css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],
   ['json-pointer', 'jsonpath-query', 'json-schema-validator', 'json-merge-patch', 'json-formatter'],
   ['ipv4-cidr-aggregator', 'subnet-calculator', 'ipv6-subnet-calculator', 'firewall-cheatsheet'],
   ['unicode-normalizer', 'string-escape', 'text-diff', 'text-batch-processor'],

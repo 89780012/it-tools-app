@@ -2,7 +2,7 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **90 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **91 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
 The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
 
@@ -41,6 +41,8 @@ The [Base32 Encoder / Decoder](docs/hourly-tool-2026-11-29-00.md) at `/tools/bas
 The [CSS Box Shadow Generator](docs/hourly-tool-2026-11-29-01.md) at `/tools/css-box-shadow-generator` (Chinese: `/zh/tools/css-box-shadow-generator`) designs up to eight ordered box shadows locally, with inset, offsets, blur, spread, hex color and opacity controls. Preview the generated CSS, copy or download `box-shadow.css`, load a two-layer example, or clear the form. Numeric values are integers: offsets/spread −500–500 px, blur 0–500 px, opacity 0–100%. Large shadows are clipped only in the preview; the download contains the declaration without card styles.
 
 The [JSON Key Sorter](docs/hourly-tool-2026-11-29-02.md) at `/tools/json-key-sorter` (Chinese: `/zh/tools/json-key-sorter`) recursively orders object keys using case-sensitive UTF-16 comparison, with ascending/descending order and compact or indented JSON output. It preserves array order and exact number spelling, including large integers; numeric keys sort as text. Example, clear, copy and `sorted.json` download are included. Duplicate keys are rejected. Limits: 500,000 UTF-16 input units, 64 nesting levels and 5,000,000 output units. This is not RFC 8785 canonicalization.
+
+The [CSS Linear Gradient Generator](docs/hourly-tool-2026-11-29-03.md) at `/tools/css-gradient-generator` (Chinese: `/zh/tools/css-gradient-generator`) previews linear gradients locally with 2–8 ordered color stops, angle, opacity, native color pickers and editable hex values. Changes update the CSS immediately; copy or download `gradient.css`, load a three-stop example, or clear all fields. Angles are integers from −360 to 360, colors use #RRGGBB, and positions/opacity are integers from 0 to 100. Equal positions create hard transitions. The checkerboard is only a transparency preview; CSS import is not supported.
 
 ## Requirements
 
@@ -99,7 +101,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 - 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503，i18n JSON 翻译菜单入口已暂时隐藏。
 - 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 1104 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 1116 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -111,7 +113,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 1104 prerendered pages (90 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 1116 prerendered pages (91 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 

@@ -1,0 +1,37 @@
+{
+  "tools": {
+    "css-gradient-generator": {
+      "name": "Generador de degradados CSS",
+      "description": "Diseña degradados CSS lineales con paradas de color, ángulo y opacidad, vista previa local, copia y descarga.",
+      "meta": {
+        "title": "Generador de degradados CSS",
+        "description": "Diseña degradados CSS lineales con paradas de color, ángulo y opacidad, vista previa local, copia y descarga.",
+        "keywords": "Generador de degradados CSS, CSS, linear-gradient, #RRGGBB, rgba"
+      }
+    }
+  },
+  "cssGradient": {
+    "angle": "Ángulo (grados)",
+    "stop": "Parada de color {number}",
+    "fieldLabel": "{field} · {number}",
+    "color": "Color hexadecimal",
+    "position": "Posición (%)",
+    "opacity": "Opacidad (%)",
+    "picker": "Elegir color · {number}",
+    "remove": "Eliminar",
+    "removeStop": "Eliminar parada {number}",
+    "add": "Añadir parada de color",
+    "preview": "Vista previa del degradado",
+    "previewHint": "El tablero muestra la transparencia y no forma parte del CSS exportado.",
+    "output": "CSS generado",
+    "emptyResult": "Introduce ajustes válidos para ver la vista previa y el CSS.",
+    "hint": "Actualización instantánea. Usa 2–8 paradas con posiciones en orden no decreciente. Todos los números deben ser enteros.",
+    "rules": "Ángulos: −360–360°, 0° apunta arriba y 90° a la derecha. Colores: #RRGGBB. Posición y opacidad: 0–100%. Las posiciones iguales crean transiciones bruscas. Solo degradados lineales; sin importación de CSS.",
+    "invalidAngle": "Introduce un ángulo entero entre −360 y 360.",
+    "invalidColor": "Parada {number}: introduce un color hexadecimal de seis dígitos como #2563eb.",
+    "invalidPosition": "Parada {number}: introduce una posición entera entre 0 y 100.",
+    "invalidOpacity": "Parada {number}: introduce una opacidad entera entre 0 y 100.",
+    "stopOrder": "Parada {number}: la posición no puede ser menor que la anterior.",
+    "stopCount": "Usa 2–8 paradas de color."
+  }
+}

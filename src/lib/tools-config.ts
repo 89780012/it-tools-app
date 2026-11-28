@@ -102,6 +102,7 @@ export const toolsConfig: ToolCategory[] = [
     ['password-generator', 'key'],
   ]),
   category('frontend', 'frontend', 'palette', [
+    ['css-gradient-generator', 'palette'],
     ['css-box-shadow-generator', 'square-dashed'],
     ['css-cubic-bezier', 'code'],
     ['css-clamp-generator', 'type'],
