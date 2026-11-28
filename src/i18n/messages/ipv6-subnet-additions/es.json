@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "Calculadora de subredes IPv6",
+      "description": "Calcula localmente rangos CIDR IPv6, cantidades exactas de direcciones y direcciones normalizadas.",
+      "meta": {
+        "title": "Calculadora de subredes IPv6",
+        "description": "Calcula localmente rangos CIDR IPv6, cantidades exactas de direcciones y direcciones normalizadas.",
+        "keywords": "Calculadora de subredes IPv6, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "Dirección IPv6 / prefijo",
+    "calculate": "Calcular subred",
+    "output": "Resumen de la subred",
+    "emptyResult": "Introduce una dirección IPv6 con prefijo para calcular su subred.",
+    "hint": "Usa una dirección IPv6 con /0–/128, sin ceros iniciales en el prefijo. Se aceptan direcciones comprimidas y colas IPv4 decimales; no corchetes, puertos ni identificadores de zona. Máximo {limit} caracteres.",
+    "rules": "IPv6 no tiene dirección de difusión. El total incluye todas las direcciones sin restar las reservadas ni estimar hosts utilizables. Las colas IPv4 se muestran en hexadecimal; el desplazamiento empieza en cero.",
+    "normalized": "CIDR normalizado",
+    "expanded": "Dirección expandida",
+    "network": "CIDR de red",
+    "first": "Primera dirección",
+    "last": "Última dirección",
+    "mask": "Máscara de subred",
+    "prefix": "Bits de prefijo",
+    "hostBits": "Bits de host",
+    "count": "Total de direcciones",
+    "offset": "Desplazamiento de la dirección",
+    "required": "Introduce una dirección IPv6 y su prefijo.",
+    "tooLong": "La entrada no puede superar {limit} caracteres.",
+    "invalidCidr": "Usa dirección/prefijo con una sola barra.",
+    "invalidAddress": "Dirección IPv6 inválida. Revisa los grupos y la compresión con doble dos puntos.",
+    "invalidPrefix": "El prefijo debe ser un entero de 0 a 128 sin ceros iniciales."
+  }
+}

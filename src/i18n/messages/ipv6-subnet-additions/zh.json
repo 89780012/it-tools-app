@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "IPv6 子网计算器",
+      "description": "在本地计算 IPv6 CIDR 网络范围、精确地址总数及规范化地址。",
+      "meta": {
+        "title": "IPv6 子网计算器",
+        "description": "在本地计算 IPv6 CIDR 网络范围、精确地址总数及规范化地址。",
+        "keywords": "IPv6 子网计算器, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "IPv6 地址 / 前缀",
+    "calculate": "计算子网",
+    "output": "子网摘要",
+    "emptyResult": "输入 IPv6 地址及前缀，计算其所属子网。",
+    "hint": "使用 IPv6 地址加 /0–/128（前缀不带前导零）。支持压缩地址和点分 IPv4 尾部；不支持方括号、端口和区域 ID。最多 {limit} 个字符。",
+    "rules": "IPv6 没有广播地址。地址总数包含范围内的所有地址，不扣除保留地址，也不代表可用主机数。点分 IPv4 尾部以十六进制显示；地址偏移从零开始。",
+    "normalized": "规范化 CIDR",
+    "expanded": "完整地址",
+    "network": "网络 CIDR",
+    "first": "首地址",
+    "last": "末地址",
+    "mask": "子网掩码",
+    "prefix": "前缀位数",
+    "hostBits": "主机位数",
+    "count": "地址总数",
+    "offset": "地址偏移",
+    "required": "请输入 IPv6 地址及前缀。",
+    "tooLong": "输入不能超过 {limit} 个字符。",
+    "invalidCidr": "请使用“地址/前缀”，且只能有一个斜杠。",
+    "invalidAddress": "IPv6 地址无效，请检查各组及双冒号压缩。",
+    "invalidPrefix": "前缀必须是 0 到 128 的整数，不能带前导零。"
+  }
+}

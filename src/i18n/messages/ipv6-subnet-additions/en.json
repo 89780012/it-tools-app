@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "IPv6 Subnet Calculator",
+      "description": "Calculate IPv6 CIDR network ranges, exact address counts and normalized addresses locally.",
+      "meta": {
+        "title": "IPv6 Subnet Calculator",
+        "description": "Calculate IPv6 CIDR network ranges, exact address counts and normalized addresses locally.",
+        "keywords": "IPv6 Subnet Calculator, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "IPv6 address / prefix",
+    "calculate": "Calculate subnet",
+    "output": "Subnet summary",
+    "emptyResult": "Enter an IPv6 address with a prefix to calculate its subnet.",
+    "hint": "Use an IPv6 address with /0–/128 (no leading zeros in the prefix). Compressed addresses and dotted IPv4 tails are accepted; brackets, ports and zone IDs are not. Maximum {limit} characters.",
+    "rules": "IPv6 has no broadcast address. The count includes every address in the range, without subtracting reserved addresses or predicting usable hosts. Dotted IPv4 tails are displayed in hexadecimal; the offset is zero-based.",
+    "normalized": "Normalized CIDR",
+    "expanded": "Expanded address",
+    "network": "Network CIDR",
+    "first": "First address",
+    "last": "Last address",
+    "mask": "Subnet mask",
+    "prefix": "Prefix bits",
+    "hostBits": "Host bits",
+    "count": "Total addresses",
+    "offset": "Address offset",
+    "required": "Enter an IPv6 address and prefix.",
+    "tooLong": "Input must not exceed {limit} characters.",
+    "invalidCidr": "Use address/prefix with exactly one slash.",
+    "invalidAddress": "Invalid IPv6 address. Check the groups and double-colon compression.",
+    "invalidPrefix": "Prefix must be an integer from 0 to 128 without leading zeros."
+  }
+}

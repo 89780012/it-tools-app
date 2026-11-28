@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "Calculateur de sous-réseau IPv6",
+      "description": "Calculez localement les plages CIDR IPv6, le nombre exact d’adresses et les adresses normalisées.",
+      "meta": {
+        "title": "Calculateur de sous-réseau IPv6",
+        "description": "Calculez localement les plages CIDR IPv6, le nombre exact d’adresses et les adresses normalisées.",
+        "keywords": "Calculateur de sous-réseau IPv6, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "Adresse IPv6 / préfixe",
+    "calculate": "Calculer le sous-réseau",
+    "output": "Résumé du sous-réseau",
+    "emptyResult": "Saisissez une adresse IPv6 avec un préfixe pour calculer son sous-réseau.",
+    "hint": "Utilisez une adresse IPv6 avec /0–/128, sans zéro initial dans le préfixe. Les adresses compressées et les suffixes IPv4 sont acceptés ; pas de crochets, ports ou identifiants de zone. Maximum {limit} caractères.",
+    "rules": "IPv6 n’a pas d’adresse de diffusion. Le total inclut toutes les adresses, sans retirer les adresses réservées ni estimer les hôtes utilisables. Les suffixes IPv4 sont affichés en hexadécimal ; le décalage commence à zéro.",
+    "normalized": "CIDR normalisé",
+    "expanded": "Adresse développée",
+    "network": "CIDR du réseau",
+    "first": "Première adresse",
+    "last": "Dernière adresse",
+    "mask": "Masque de sous-réseau",
+    "prefix": "Bits du préfixe",
+    "hostBits": "Bits hôtes",
+    "count": "Nombre total d’adresses",
+    "offset": "Décalage de l’adresse",
+    "required": "Saisissez une adresse IPv6 et son préfixe.",
+    "tooLong": "La saisie ne doit pas dépasser {limit} caractères.",
+    "invalidCidr": "Utilisez adresse/préfixe avec une seule barre oblique.",
+    "invalidAddress": "Adresse IPv6 invalide. Vérifiez les groupes et la compression par double deux-points.",
+    "invalidPrefix": "Le préfixe doit être un entier de 0 à 128 sans zéro initial."
+  }
+}

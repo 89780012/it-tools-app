@@ -127,6 +127,7 @@ export const toolsConfig: ToolCategory[] = [
   category('network', 'network', 'server', [
     ['url-parser', 'link'],
     ['subnet-calculator', 'server'],
+    ['ipv6-subnet-calculator', 'server'],
     ['ip-lookup', 'map-pin'],
     ['dns-lookup', 'server'],
     ['tls-checker', 'shield-check'],

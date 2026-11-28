@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "Calculadora de sub-redes IPv6",
+      "description": "Calcule localmente intervalos CIDR IPv6, contagens exatas de endereços e endereços normalizados.",
+      "meta": {
+        "title": "Calculadora de sub-redes IPv6",
+        "description": "Calcule localmente intervalos CIDR IPv6, contagens exatas de endereços e endereços normalizados.",
+        "keywords": "Calculadora de sub-redes IPv6, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "Endereço IPv6 / prefixo",
+    "calculate": "Calcular sub-rede",
+    "output": "Resumo da sub-rede",
+    "emptyResult": "Introduza um endereço IPv6 com prefixo para calcular a sub-rede.",
+    "hint": "Use um endereço IPv6 com /0–/128, sem zeros à esquerda no prefixo. São aceites endereços comprimidos e sufixos IPv4; não parênteses retos, portas ou IDs de zona. Máximo de {limit} caracteres.",
+    "rules": "IPv6 não tem endereço de broadcast. O total inclui todos os endereços sem descontar os reservados nem estimar os hosts utilizáveis. Os sufixos IPv4 são apresentados em hexadecimal; o deslocamento começa em zero.",
+    "normalized": "CIDR normalizado",
+    "expanded": "Endereço expandido",
+    "network": "CIDR da rede",
+    "first": "Primeiro endereço",
+    "last": "Último endereço",
+    "mask": "Máscara de sub-rede",
+    "prefix": "Bits do prefixo",
+    "hostBits": "Bits de host",
+    "count": "Total de endereços",
+    "offset": "Deslocamento do endereço",
+    "required": "Introduza um endereço IPv6 e o prefixo.",
+    "tooLong": "A entrada não pode exceder {limit} caracteres.",
+    "invalidCidr": "Use endereço/prefixo com uma única barra.",
+    "invalidAddress": "Endereço IPv6 inválido. Verifique os grupos e a compressão com dois pontos duplos.",
+    "invalidPrefix": "O prefixo deve ser um inteiro entre 0 e 128 sem zeros à esquerda."
+  }
+}

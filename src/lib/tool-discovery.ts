@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'ipv6-subnet-calculator': 'IPv6 CIDR prefix network range subnet mask RFC 5952 IPv6子网 地址范围 前缀 掩码',
   'json-merge-patch': 'RFC 7396 merge patch configuration 合并补丁 配置合并 JSON合并',
   'semver-sorter': 'semantic version release tags prerelease 语义化版本 版本排序 发布标签',
   'time-converter': 'timestamp epoch unix 时间戳 时区 日期毫秒',
@@ -45,6 +46,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['ipv6-subnet-calculator', 'subnet-calculator', 'ip-lookup', 'dns-lookup'],
   [
     'dns-lookup',
     'nginx-certificate-generator',

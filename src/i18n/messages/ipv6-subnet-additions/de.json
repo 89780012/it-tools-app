@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "IPv6-Subnetzrechner",
+      "description": "IPv6-CIDR-Netzbereiche, genaue Adressanzahl und normalisierte Adressen lokal berechnen.",
+      "meta": {
+        "title": "IPv6-Subnetzrechner",
+        "description": "IPv6-CIDR-Netzbereiche, genaue Adressanzahl und normalisierte Adressen lokal berechnen.",
+        "keywords": "IPv6-Subnetzrechner, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "IPv6-Adresse / Präfix",
+    "calculate": "Subnetz berechnen",
+    "output": "Subnetzübersicht",
+    "emptyResult": "Eine IPv6-Adresse mit Präfix eingeben, um das Subnetz zu berechnen.",
+    "hint": "IPv6-Adresse mit /0–/128 verwenden, ohne führende Nullen im Präfix. Komprimierte Adressen und IPv4-Endungen sind erlaubt; Klammern, Ports und Zonen-IDs nicht. Maximal {limit} Zeichen.",
+    "rules": "IPv6 hat keine Broadcast-Adresse. Die Anzahl umfasst alle Adressen, ohne reservierte Adressen abzuziehen oder nutzbare Hosts vorherzusagen. IPv4-Endungen werden hexadezimal angezeigt; der Versatz beginnt bei null.",
+    "normalized": "Normalisiertes CIDR",
+    "expanded": "Vollständige Adresse",
+    "network": "Netzwerk-CIDR",
+    "first": "Erste Adresse",
+    "last": "Letzte Adresse",
+    "mask": "Subnetzmaske",
+    "prefix": "Präfixbits",
+    "hostBits": "Hostbits",
+    "count": "Adressanzahl",
+    "offset": "Adressversatz",
+    "required": "IPv6-Adresse und Präfix eingeben.",
+    "tooLong": "Die Eingabe darf {limit} Zeichen nicht überschreiten.",
+    "invalidCidr": "Adresse/Präfix mit genau einem Schrägstrich verwenden.",
+    "invalidAddress": "Ungültige IPv6-Adresse. Gruppen und Doppelpunkt-Komprimierung prüfen.",
+    "invalidPrefix": "Das Präfix muss eine ganze Zahl von 0 bis 128 ohne führende Nullen sein."
+  }
+}

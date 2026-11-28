@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "ipv6-subnet-calculator": {
+      "name": "Calcolatore di sottoreti IPv6",
+      "description": "Calcola localmente intervalli CIDR IPv6, il numero esatto di indirizzi e gli indirizzi normalizzati.",
+      "meta": {
+        "title": "Calcolatore di sottoreti IPv6",
+        "description": "Calcola localmente intervalli CIDR IPv6, il numero esatto di indirizzi e gli indirizzi normalizzati.",
+        "keywords": "Calcolatore di sottoreti IPv6, IPv6, CIDR, RFC 5952"
+      }
+    }
+  },
+  "ipv6Subnet": {
+    "cidr": "Indirizzo IPv6 / prefisso",
+    "calculate": "Calcola sottorete",
+    "output": "Riepilogo della sottorete",
+    "emptyResult": "Inserisci un indirizzo IPv6 con prefisso per calcolare la sottorete.",
+    "hint": "Usa un indirizzo IPv6 con /0–/128, senza zeri iniziali nel prefisso. Sono accettati indirizzi compressi e suffissi IPv4; non parentesi quadre, porte o ID di zona. Massimo {limit} caratteri.",
+    "rules": "IPv6 non ha un indirizzo broadcast. Il totale include tutti gli indirizzi senza sottrarre quelli riservati né stimare gli host utilizzabili. I suffissi IPv4 sono mostrati in esadecimale; lo scostamento parte da zero.",
+    "normalized": "CIDR normalizzato",
+    "expanded": "Indirizzo esteso",
+    "network": "CIDR di rete",
+    "first": "Primo indirizzo",
+    "last": "Ultimo indirizzo",
+    "mask": "Maschera di sottorete",
+    "prefix": "Bit del prefisso",
+    "hostBits": "Bit host",
+    "count": "Indirizzi totali",
+    "offset": "Scostamento indirizzo",
+    "required": "Inserisci un indirizzo IPv6 e il prefisso.",
+    "tooLong": "L’input non deve superare {limit} caratteri.",
+    "invalidCidr": "Usa indirizzo/prefisso con una sola barra.",
+    "invalidAddress": "Indirizzo IPv6 non valido. Controlla i gruppi e la compressione con doppio due punti.",
+    "invalidPrefix": "Il prefisso deve essere un intero da 0 a 128 senza zeri iniziali."
+  }
+}
