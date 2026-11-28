@@ -44,6 +44,7 @@ export const toolsConfig: ToolCategory[] = [
     ['data-to-sql', 'database'],
     ['chmod-calculator', 'shield'],
     ['number-base-converter', 'binary'],
+    ['semver-sorter', 'git-branch'],
     ['git-cheatsheet', 'git-branch'],
     ['nginx-cheatsheet', 'server'],
     ['firewall-cheatsheet', 'shield'],

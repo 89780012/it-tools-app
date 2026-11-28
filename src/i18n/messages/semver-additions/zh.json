@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "语义化版本排序器",
+      "description": "按 SemVer 2.0 规则排序发布标签，找出最高稳定版本。",
+      "meta": {
+        "title": "语义化版本排序器",
+        "description": "按 SemVer 2.0 规则排序发布标签，找出最高稳定版本。",
+        "keywords": "语义化版本, SemVer, 版本排序, 发布标签, 预发布版本"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "版本列表（每行一个）",
+    "hint": "最多输入 {limit} 个版本、{characters} 个字符。忽略空行和首尾空白。使用 主版本.次版本.修订版本，可带预发布标识和构建元数据。",
+    "order": "排序顺序",
+    "descending": "从高到低",
+    "ascending": "从低到高",
+    "allowV": "允许小写 v 前缀",
+    "sort": "排序版本",
+    "count": "版本数：{count}",
+    "highest": "最高版本",
+    "lowest": "最低版本",
+    "stable": "最高稳定版本",
+    "noStable": "没有稳定版本",
+    "output": "排序结果",
+    "emptyResult": "输入版本并排序以查看结果。",
+    "rules": "SemVer 2.0：预发布版本低于对应的稳定版本；数字标识按数值排序，其他标识按 ASCII 排序。构建元数据不影响优先级。相同优先级的版本及重复项保留输入顺序和原始标签。不支持版本范围表达式。",
+    "empty": "请至少输入一个版本。",
+    "invalid": "第 {line} 行不是有效的 SemVer 版本。请使用 主版本.次版本.修订版本；数字标识不允许前导零。",
+    "inputLimit": "最多允许 {characters} 个字符。",
+    "versionLimit": "最多允许 {limit} 个非空版本行。"
+  }
+}

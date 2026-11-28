@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Ordenador de versões semânticas",
+      "description": "Ordene etiquetas segundo SemVer 2.0 e encontre a versão estável mais alta.",
+      "meta": {
+        "title": "Ordenador de versões semânticas",
+        "description": "Ordene etiquetas segundo SemVer 2.0 e encontre a versão estável mais alta.",
+        "keywords": "ordenar semver, versões semânticas, etiquetas, pré-lançamento"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versões (uma por linha)",
+    "hint": "Insira até {limit} versões e {characters} caracteres. Linhas vazias e espaços nas extremidades são ignorados. Use maior.menor.correção com pré-lançamento e metadados opcionais.",
+    "order": "Ordem",
+    "descending": "Maior primeiro",
+    "ascending": "Menor primeiro",
+    "allowV": "Permitir o prefixo v minúsculo",
+    "sort": "Ordenar versões",
+    "count": "Versões: {count}",
+    "highest": "Versão mais alta",
+    "lowest": "Versão mais baixa",
+    "stable": "Versão estável mais alta",
+    "noStable": "Nenhuma versão estável",
+    "output": "Versões ordenadas",
+    "emptyResult": "Insira versões e ordene para ver o resultado.",
+    "rules": "SemVer 2.0: pré-lançamentos precedem a versão estável correspondente; identificadores numéricos seguem o valor, os demais seguem ASCII. Metadados de compilação não afetam a precedência. Versões equivalentes e duplicadas mantêm a ordem e as etiquetas originais. Intervalos de versões não são suportados.",
+    "empty": "Insira pelo menos uma versão.",
+    "invalid": "A linha {line} não é uma versão SemVer válida. Use maior.menor.correção; identificadores numéricos não podem ter zeros iniciais.",
+    "inputLimit": "Use no máximo {characters} caracteres.",
+    "versionLimit": "Use no máximo {limit} linhas de versões não vazias."
+  }
+}

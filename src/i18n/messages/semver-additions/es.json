@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Ordenador de versiones semánticas",
+      "description": "Ordena etiquetas según SemVer 2.0 y encuentra la versión estable más alta.",
+      "meta": {
+        "title": "Ordenador de versiones semánticas",
+        "description": "Ordena etiquetas según SemVer 2.0 y encuentra la versión estable más alta.",
+        "keywords": "ordenar semver, versiones semánticas, etiquetas, prelanzamiento"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versiones (una por línea)",
+    "hint": "Introduce hasta {limit} versiones y {characters} caracteres. Se ignoran líneas vacías y espacios al inicio y al final. Usa mayor.menor.parche con preversión y metadatos opcionales.",
+    "order": "Orden",
+    "descending": "Mayor primero",
+    "ascending": "Menor primero",
+    "allowV": "Permitir el prefijo v minúsculo",
+    "sort": "Ordenar versiones",
+    "count": "Versiones: {count}",
+    "highest": "Versión más alta",
+    "lowest": "Versión más baja",
+    "stable": "Versión estable más alta",
+    "noStable": "Sin versión estable",
+    "output": "Versiones ordenadas",
+    "emptyResult": "Introduce versiones y ordénalas para ver el resultado.",
+    "rules": "SemVer 2.0: las preversiones preceden a la versión estable correspondiente; los identificadores numéricos se ordenan por valor y los demás por ASCII. Los metadatos no afectan a la precedencia. Las versiones equivalentes y duplicadas conservan el orden de entrada y las etiquetas originales. No se admiten rangos.",
+    "empty": "Introduce al menos una versión.",
+    "invalid": "La línea {line} no es una versión SemVer válida. Usa mayor.menor.parche; los identificadores numéricos no pueden tener ceros iniciales.",
+    "inputLimit": "Usa como máximo {characters} caracteres.",
+    "versionLimit": "Usa como máximo {limit} líneas de versiones no vacías."
+  }
+}

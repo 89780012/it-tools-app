@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Tri des versions sémantiques",
+      "description": "Triez les étiquettes selon SemVer 2.0 et trouvez la version stable la plus élevée.",
+      "meta": {
+        "title": "Tri des versions sémantiques",
+        "description": "Triez les étiquettes selon SemVer 2.0 et trouvez la version stable la plus élevée.",
+        "keywords": "tri semver, versions sémantiques, étiquettes, préversion"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versions (une par ligne)",
+    "hint": "Saisissez au plus {limit} versions et {characters} caractères. Les lignes vides et espaces autour sont ignorés. Format : majeure.mineure.correctif, avec préversion et métadonnées facultatives.",
+    "order": "Ordre de tri",
+    "descending": "Plus élevée en premier",
+    "ascending": "Plus basse en premier",
+    "allowV": "Autoriser le préfixe v minuscule",
+    "sort": "Trier les versions",
+    "count": "Versions : {count}",
+    "highest": "Version la plus élevée",
+    "lowest": "Version la plus basse",
+    "stable": "Version stable la plus élevée",
+    "noStable": "Aucune version stable",
+    "output": "Versions triées",
+    "emptyResult": "Saisissez des versions puis lancez le tri.",
+    "rules": "SemVer 2.0 : les préversions précèdent la version stable correspondante ; les identifiants numériques sont triés par valeur, les autres selon ASCII. Les métadonnées de construction ne modifient pas la priorité. Les versions équivalentes et les doublons conservent leur ordre et leurs étiquettes. Les plages de versions ne sont pas prises en charge.",
+    "empty": "Saisissez au moins une version.",
+    "invalid": "La ligne {line} ne contient pas une version SemVer valide. Utilisez majeure.mineure.correctif ; les identifiants numériques ne doivent pas commencer par zéro.",
+    "inputLimit": "Utilisez au plus {characters} caractères.",
+    "versionLimit": "Utilisez au plus {limit} lignes de versions non vides."
+  }
+}

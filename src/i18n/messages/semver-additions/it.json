@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Ordinamento versioni semantiche",
+      "description": "Ordina i tag secondo SemVer 2.0 e trova la versione stabile più alta.",
+      "meta": {
+        "title": "Ordinamento versioni semantiche",
+        "description": "Ordina i tag secondo SemVer 2.0 e trova la versione stabile più alta.",
+        "keywords": "ordinamento semver, versioni semantiche, tag, prerelease"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versioni (una per riga)",
+    "hint": "Inserisci fino a {limit} versioni e {characters} caratteri. Righe vuote e spazi esterni vengono ignorati. Usa maggiore.minore.patch con prerelease e metadati facoltativi.",
+    "order": "Ordine",
+    "descending": "Prima le più alte",
+    "ascending": "Prima le più basse",
+    "allowV": "Consenti il prefisso v minuscolo",
+    "sort": "Ordina versioni",
+    "count": "Versioni: {count}",
+    "highest": "Versione più alta",
+    "lowest": "Versione più bassa",
+    "stable": "Versione stabile più alta",
+    "noStable": "Nessuna versione stabile",
+    "output": "Versioni ordinate",
+    "emptyResult": "Inserisci le versioni e ordinale per vedere il risultato.",
+    "rules": "SemVer 2.0: le prerelease precedono la versione stabile corrispondente; gli identificatori numerici seguono il valore, gli altri ASCII. I metadati di build non influiscono sulla precedenza. Versioni equivalenti e duplicati mantengono ordine e tag originali. Gli intervalli di versioni non sono supportati.",
+    "empty": "Inserisci almeno una versione.",
+    "invalid": "La riga {line} non è una versione SemVer valida. Usa maggiore.minore.patch; gli identificatori numerici non possono avere zeri iniziali.",
+    "inputLimit": "Usa al massimo {characters} caratteri.",
+    "versionLimit": "Usa al massimo {limit} righe di versioni non vuote."
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Semantic Version Sorter",
+      "description": "Sort release tags using SemVer 2.0 precedence and find the highest stable version.",
+      "meta": {
+        "title": "Semantic Version Sorter",
+        "description": "Sort release tags using SemVer 2.0 precedence and find the highest stable version.",
+        "keywords": "semver sorter, semantic versions, release tags, prerelease, version order"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versions (one per line)",
+    "hint": "Enter up to {limit} versions and {characters} characters. Blank lines and surrounding whitespace are ignored. Use major.minor.patch with optional prerelease and build metadata.",
+    "order": "Sort order",
+    "descending": "Highest first",
+    "ascending": "Lowest first",
+    "allowV": "Allow a lowercase v prefix",
+    "sort": "Sort versions",
+    "count": "Versions: {count}",
+    "highest": "Highest version",
+    "lowest": "Lowest version",
+    "stable": "Highest stable version",
+    "noStable": "No stable version",
+    "output": "Sorted versions",
+    "emptyResult": "Enter versions and sort to see the result.",
+    "rules": "SemVer 2.0: prereleases precede the matching stable release; numeric identifiers sort numerically, others by ASCII. Build metadata does not affect precedence. Equal versions and duplicates retain input order and original tags. Version ranges are not supported.",
+    "empty": "Enter at least one version.",
+    "invalid": "Line {line} is not a valid SemVer version. Use major.minor.patch; numeric identifiers must not have leading zeros.",
+    "inputLimit": "Use at most {characters} characters.",
+    "versionLimit": "Use at most {limit} non-empty version lines."
+  }
+}

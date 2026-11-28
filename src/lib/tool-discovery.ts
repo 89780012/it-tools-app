@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'semver-sorter': 'semantic version release tags prerelease 语义化版本 版本排序 发布标签',
   'time-converter': 'timestamp epoch unix 时间戳 时区 日期毫秒',
   'date-duration-calculator': 'date difference duration business days working days 日期差 日期间隔 工作日 节假日',
   'nginx-certificate-generator': 'ssl https letsencrypt 证书签发 免费证书',

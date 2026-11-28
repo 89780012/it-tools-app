@@ -1,0 +1,34 @@
+{
+  "tools": {
+    "semver-sorter": {
+      "name": "Semantische Versionen sortieren",
+      "description": "Release-Tags nach SemVer 2.0 sortieren und die höchste stabile Version finden.",
+      "meta": {
+        "title": "Semantische Versionen sortieren",
+        "description": "Release-Tags nach SemVer 2.0 sortieren und die höchste stabile Version finden.",
+        "keywords": "SemVer sortieren, semantische Versionen, Release-Tags, Vorabversion"
+      }
+    }
+  },
+  "semverSorter": {
+    "versions": "Versionen (eine pro Zeile)",
+    "hint": "Bis zu {limit} Versionen und {characters} Zeichen. Leerzeilen und umgebende Leerzeichen werden ignoriert. Format: Major.Minor.Patch, optional mit Vorabkennung und Build-Metadaten.",
+    "order": "Sortierreihenfolge",
+    "descending": "Höchste zuerst",
+    "ascending": "Niedrigste zuerst",
+    "allowV": "Kleingeschriebenes Präfix v erlauben",
+    "sort": "Versionen sortieren",
+    "count": "Versionen: {count}",
+    "highest": "Höchste Version",
+    "lowest": "Niedrigste Version",
+    "stable": "Höchste stabile Version",
+    "noStable": "Keine stabile Version",
+    "output": "Sortierte Versionen",
+    "emptyResult": "Versionen eingeben und sortieren, um das Ergebnis zu sehen.",
+    "rules": "SemVer 2.0: Vorabversionen stehen vor der zugehörigen stabilen Version; numerische Kennungen werden nach Zahlenwert, andere nach ASCII sortiert. Build-Metadaten beeinflussen die Rangfolge nicht. Gleichrangige Versionen und Duplikate behalten Eingabereihenfolge und Original-Tags. Versionsbereiche werden nicht unterstützt.",
+    "empty": "Mindestens eine Version eingeben.",
+    "invalid": "Zeile {line} ist keine gültige SemVer-Version. Major.Minor.Patch verwenden; numerische Kennungen dürfen keine führenden Nullen haben.",
+    "inputLimit": "Höchstens {characters} Zeichen verwenden.",
+    "versionLimit": "Höchstens {limit} nicht leere Versionszeilen verwenden."
+  }
+}
