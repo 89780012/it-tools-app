@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "Agrégateur CIDR IPv4",
+      "description": "Fusionnez les réseaux IPv4 adjacents ou superposés en une liste CIDR exacte minimale pour les pare-feu et listes autorisées.",
+      "meta": {
+        "title": "Agrégateur CIDR IPv4",
+        "description": "Fusionnez les réseaux IPv4 adjacents ou superposés en une liste CIDR exacte minimale pour les pare-feu et listes autorisées.",
+        "keywords": "IPv4, agrégation CIDR, fusion de sous-réseaux, pare-feu, liste autorisée"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "Adresses IPv4 ou CIDR",
+    "hint": "Une adresse ou un CIDR par ligne ; les lignes vides sont ignorées. Maximum {limit} entrées et {inputLimit} unités UTF-16.",
+    "normalization": "Les bits hôtes sont effacés : 192.0.2.10/24 désigne tout le réseau 192.0.2.0/24. Une adresse seule vaut /32. Zéros initiaux, commentaires, plages et IPv6 refusés.",
+    "aggregate": "Agréger les réseaux",
+    "inputCount": "Entrées",
+    "outputCount": "CIDR en sortie",
+    "addressCount": "Adresses uniques",
+    "normalizedEntries": "Entrées avec bits hôtes effacés",
+    "output": "CIDR agrégés",
+    "emptyResult": "Saisissez des réseaux et agrégez-les pour afficher le résultat.",
+    "rules": "La sortie couvre exactement les réseaux normalisés sans ajouter les adresses entre des plages distinctes. Le total inclut les adresses réseau, de diffusion et réservées ; il ne représente pas les hôtes utilisables.",
+    "empty": "Saisissez au moins une adresse IPv4 ou un CIDR.",
+    "inputLimit": "Utilisez au maximum {inputLimit} unités UTF-16.",
+    "entryLimit": "Maximum {limit} entrées non vides ; limite dépassée à la ligne {line}.",
+    "invalidAddress": "Ligne {line} : saisissez quatre octets décimaux de 0 à 255 sans zéros initiaux.",
+    "invalidPrefix": "Ligne {line} : utilisez un seul / suivi d’un préfixe entier de 0 à 32 sans zéros initiaux."
+  }
+}

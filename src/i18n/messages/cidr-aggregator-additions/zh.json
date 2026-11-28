@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "IPv4 CIDR 聚合器",
+      "description": "将重叠和相邻的 IPv4 网段合并为最少且精确的 CIDR 列表，用于整理防火墙规则和白名单。",
+      "meta": {
+        "title": "IPv4 CIDR 聚合器",
+        "description": "将重叠和相邻的 IPv4 网段合并为最少且精确的 CIDR 列表，用于整理防火墙规则和白名单。",
+        "keywords": "IPv4,CIDR聚合,合并子网,防火墙,白名单,网段汇总"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "IPv4 地址或 CIDR",
+    "hint": "每行一个地址或 CIDR，忽略空行。最多 {limit} 条，输入最多 {inputLimit} 个 UTF-16 代码单元。",
+    "normalization": "自动清除主机位：192.0.2.10/24 代表整个 192.0.2.0/24 网段。单个地址视为 /32。不接受前导零、注释、地址范围或 IPv6。",
+    "aggregate": "聚合网段",
+    "inputCount": "输入条目",
+    "outputCount": "输出 CIDR 数",
+    "addressCount": "唯一地址数",
+    "normalizedEntries": "已清除主机位的条目",
+    "output": "聚合后的 CIDR",
+    "emptyResult": "输入网段并点击聚合以查看结果。",
+    "rules": "输出精确覆盖规范化后的输入网段，不会加入独立范围之间的额外地址。计数包含网络地址、广播地址及保留地址，不代表可用主机数。",
+    "empty": "请至少输入一个 IPv4 地址或 CIDR。",
+    "inputLimit": "输入最多 {inputLimit} 个 UTF-16 代码单元。",
+    "entryLimit": "最多 {limit} 个非空条目，第 {line} 行超出限制。",
+    "invalidAddress": "第 {line} 行：请输入四段 0–255 的十进制数字，不允许前导零。",
+    "invalidPrefix": "第 {line} 行：仅使用一个 /，后接 0–32 的整数前缀，不允许前导零。"
+  }
+}

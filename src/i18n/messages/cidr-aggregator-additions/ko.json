@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "IPv4 CIDR 집계기",
+      "description": "겹치거나 인접한 IPv4 네트워크를 최소한의 정확한 CIDR 목록으로 병합하여 방화벽 규칙과 허용 목록을 정리합니다.",
+      "meta": {
+        "title": "IPv4 CIDR 집계기",
+        "description": "겹치거나 인접한 IPv4 네트워크를 최소한의 정확한 CIDR 목록으로 병합하여 방화벽 규칙과 허용 목록을 정리합니다.",
+        "keywords": "IPv4,CIDR 집계,서브넷 병합,방화벽,허용 목록"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "IPv4 주소 또는 CIDR",
+    "hint": "한 줄에 주소 또는 CIDR 하나를 입력합니다. 빈 줄은 무시합니다. 최대 {limit}개 항목, {inputLimit} UTF-16 코드 단위입니다.",
+    "normalization": "호스트 비트를 0으로 만듭니다. 192.0.2.10/24는 전체 192.0.2.0/24 네트워크를 뜻합니다. 단일 주소는 /32로 처리합니다. 선행 0, 주석, 범위, IPv6는 허용하지 않습니다.",
+    "aggregate": "네트워크 집계",
+    "inputCount": "입력 항목",
+    "outputCount": "출력 CIDR 수",
+    "addressCount": "고유 주소 수",
+    "normalizedEntries": "호스트 비트를 지운 항목",
+    "output": "집계된 CIDR",
+    "emptyResult": "네트워크를 입력하고 집계하면 결과가 표시됩니다.",
+    "rules": "출력은 정규화된 입력 네트워크를 정확히 포함하며 분리된 범위 사이의 주소를 추가하지 않습니다. 개수에는 네트워크, 브로드캐스트, 예약 주소가 포함되며 사용 가능한 호스트 수가 아닙니다.",
+    "empty": "IPv4 주소 또는 CIDR을 하나 이상 입력하세요.",
+    "inputLimit": "입력은 {inputLimit} UTF-16 코드 단위 이하여야 합니다.",
+    "entryLimit": "비어 있지 않은 항목은 최대 {limit}개입니다. {line}번째 줄에서 초과했습니다.",
+    "invalidAddress": "{line}번째 줄: 선행 0 없이 0~255의 십진수 옥텟 4개를 입력하세요.",
+    "invalidPrefix": "{line}번째 줄: / 하나 뒤에 선행 0 없이 0~32의 정수 접두사를 입력하세요."
+  }
+}

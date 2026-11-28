@@ -7,7 +7,7 @@
 - `index.html` → `src/main.tsx`：加载语言资源，以 React `createRoot` 启动浏览器应用。
 - `src/App.tsx`：React Router、共享布局、语言上下文、页面选择和客户端 SEO 更新。
 - `src/entry-server.tsx`：通过 React `renderToString` 与 MemoryRouter 预渲染页面。
-- `script/generate-seo-pages.mjs`：构建后生成 12 种语言的首页、更新日志和 81 个工具页面，共 996 页，并从工具目录生成站点地图。
+- `script/generate-seo-pages.mjs`：构建后生成 12 种语言的首页、更新日志和 82 个工具页面，共 1008 页，并从工具目录生成站点地图。
 - `backend/main.go`：提供 API 和 `dist/` 静态文件，处理规范 URL 重定向及 404。
 
 `src/app/[locale]/.../page.tsx` 沿用迁移前的文件命名。Vite 的 `import.meta.glob` 负责收集工具模块；目录名本身没有框架路由功能。不要添加 Next layout、middleware 或服务端 API 文件。

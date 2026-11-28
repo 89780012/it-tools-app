@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "IPv4 CIDR Aggregator",
+      "description": "Merge overlapping and adjacent IPv4 networks into the smallest exact CIDR list for firewall rules and allowlists.",
+      "meta": {
+        "title": "IPv4 CIDR Aggregator",
+        "description": "Merge overlapping and adjacent IPv4 networks into the smallest exact CIDR list for firewall rules and allowlists.",
+        "keywords": "IPv4, CIDR aggregation, subnet merge, firewall, allowlist, network summarization"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "IPv4 addresses or CIDRs",
+    "hint": "One address or CIDR per line; blank lines are ignored. Up to {limit} entries and {inputLimit} UTF-16 code units.",
+    "normalization": "Host bits are cleared: 192.0.2.10/24 means the entire 192.0.2.0/24 network. Bare addresses mean /32. Leading zeros, comments, ranges and IPv6 are not accepted.",
+    "aggregate": "Aggregate networks",
+    "inputCount": "Input entries",
+    "outputCount": "Output CIDRs",
+    "addressCount": "Unique addresses",
+    "normalizedEntries": "Entries with host bits cleared",
+    "output": "Aggregated CIDRs",
+    "emptyResult": "Enter networks and aggregate them to see the result.",
+    "rules": "The output covers exactly the normalized input networks, without adding addresses between separate ranges. Counts include network, broadcast and reserved addresses; they are not usable-host estimates.",
+    "empty": "Enter at least one IPv4 address or CIDR.",
+    "inputLimit": "Use at most {inputLimit} UTF-16 code units.",
+    "entryLimit": "Use at most {limit} non-empty entries (exceeded at line {line}).",
+    "invalidAddress": "Line {line}: enter four decimal octets from 0 to 255 without leading zeros.",
+    "invalidPrefix": "Line {line}: use a single / followed by an integer prefix from 0 to 32 without leading zeros."
+  }
+}

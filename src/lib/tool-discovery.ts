@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'ipv4-cidr-aggregator': 'IPv4 CIDR aggregate collapse summarize firewall allowlist merge networks 网段聚合 白名单 合并子网 防火墙',
   'unicode-normalizer': 'Unicode NFC NFD NFKC NFKD normalization combining accents fullwidth 规范化 标准化 重音 全角 半角 码点',
   'totp-generator': 'TOTP OTP 2FA MFA authenticator RFC 6238 Base32 动态验证码 双因素认证 一次性密码',
   'ipv6-subnet-calculator': 'IPv6 CIDR prefix network range subnet mask RFC 5952 IPv6子网 地址范围 前缀 掩码',
@@ -48,6 +49,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['ipv4-cidr-aggregator', 'subnet-calculator', 'ipv6-subnet-calculator', 'firewall-cheatsheet'],
   ['unicode-normalizer', 'string-escape', 'text-diff', 'text-batch-processor'],
   ['totp-generator', 'hmac-generator', 'jwt-decoder', 'time-converter'],
   ['ipv6-subnet-calculator', 'subnet-calculator', 'ip-lookup', 'dns-lookup'],

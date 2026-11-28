@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "IPv4-CIDR-Aggregator",
+      "description": "Überlappende und benachbarte IPv4-Netze zu einer minimalen exakten CIDR-Liste für Firewall-Regeln und Freigabelisten zusammenfassen.",
+      "meta": {
+        "title": "IPv4-CIDR-Aggregator",
+        "description": "Überlappende und benachbarte IPv4-Netze zu einer minimalen exakten CIDR-Liste für Firewall-Regeln und Freigabelisten zusammenfassen.",
+        "keywords": "IPv4, CIDR-Aggregation, Subnetze zusammenführen, Firewall, Freigabeliste"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "IPv4-Adressen oder CIDRs",
+    "hint": "Eine Adresse oder ein CIDR pro Zeile; Leerzeilen werden ignoriert. Höchstens {limit} Einträge und {inputLimit} UTF-16-Codeeinheiten.",
+    "normalization": "Hostbits werden gelöscht: 192.0.2.10/24 steht für das gesamte Netz 192.0.2.0/24. Einzeladressen gelten als /32. Führende Nullen, Kommentare, Bereiche und IPv6 werden nicht akzeptiert.",
+    "aggregate": "Netze zusammenfassen",
+    "inputCount": "Eingabeeinträge",
+    "outputCount": "Ausgabe-CIDRs",
+    "addressCount": "Eindeutige Adressen",
+    "normalizedEntries": "Einträge mit gelöschten Hostbits",
+    "output": "Zusammengefasste CIDRs",
+    "emptyResult": "Netze eingeben und zusammenfassen, um das Ergebnis anzuzeigen.",
+    "rules": "Die Ausgabe deckt die normalisierten Eingaben exakt ab, ohne Adressen zwischen getrennten Bereichen hinzuzufügen. Gezählt werden auch Netz-, Broadcast- und reservierte Adressen; die Anzahl schätzt keine nutzbaren Hosts.",
+    "empty": "Mindestens eine IPv4-Adresse oder ein CIDR eingeben.",
+    "inputLimit": "Höchstens {inputLimit} UTF-16-Codeeinheiten verwenden.",
+    "entryLimit": "Höchstens {limit} nicht leere Einträge; Grenze in Zeile {line} überschritten.",
+    "invalidAddress": "Zeile {line}: vier dezimale Oktette von 0 bis 255 ohne führende Nullen eingeben.",
+    "invalidPrefix": "Zeile {line}: genau einen / mit ganzzahligem Präfix von 0 bis 32 ohne führende Nullen verwenden."
+  }
+}

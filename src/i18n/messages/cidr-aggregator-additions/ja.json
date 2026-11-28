@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "IPv4 CIDR 集約ツール",
+      "description": "重複・隣接する IPv4 ネットワークを最小の正確な CIDR リストに集約し、ファイアウォールや許可リストを整理します。",
+      "meta": {
+        "title": "IPv4 CIDR 集約ツール",
+        "description": "重複・隣接する IPv4 ネットワークを最小の正確な CIDR リストに集約し、ファイアウォールや許可リストを整理します。",
+        "keywords": "IPv4,CIDR集約,サブネット結合,ファイアウォール,許可リスト"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "IPv4 アドレスまたは CIDR",
+    "hint": "1 行に 1 つのアドレスまたは CIDR。空行は無視します。最大 {limit} 件、{inputLimit} UTF-16 コード単位。",
+    "normalization": "ホスト部はゼロにします。192.0.2.10/24 はネットワーク全体 192.0.2.0/24 を意味します。単独アドレスは /32。先頭のゼロ、コメント、範囲、IPv6 は使用できません。",
+    "aggregate": "ネットワークを集約",
+    "inputCount": "入力件数",
+    "outputCount": "出力 CIDR 数",
+    "addressCount": "一意のアドレス数",
+    "normalizedEntries": "ホスト部をゼロにした件数",
+    "output": "集約後の CIDR",
+    "emptyResult": "ネットワークを入力し、集約すると結果を表示します。",
+    "rules": "出力は正規化した入力ネットワークを正確に網羅し、離れた範囲の間のアドレスを追加しません。ネットワーク、ブロードキャスト、予約アドレスも数えます。使用可能なホスト数ではありません。",
+    "empty": "IPv4 アドレスまたは CIDR を 1 件以上入力してください。",
+    "inputLimit": "入力は {inputLimit} UTF-16 コード単位以内にしてください。",
+    "entryLimit": "空でない入力は最大 {limit} 件です。{line} 行目で超過しました。",
+    "invalidAddress": "{line} 行目：0～255 の 10 進オクテットを 4 つ入力してください。先頭のゼロは不可です。",
+    "invalidPrefix": "{line} 行目：/ は 1 つだけ使い、先頭のゼロなしで 0～32 の整数プレフィックスを指定してください。"
+  }
+}

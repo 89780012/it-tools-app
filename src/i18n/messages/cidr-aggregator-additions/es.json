@@ -1,0 +1,31 @@
+{
+  "tools": {
+    "ipv4-cidr-aggregator": {
+      "name": "Agregador CIDR IPv4",
+      "description": "Combina redes IPv4 superpuestas y adyacentes en la lista CIDR exacta más corta para cortafuegos y listas de permitidos.",
+      "meta": {
+        "title": "Agregador CIDR IPv4",
+        "description": "Combina redes IPv4 superpuestas y adyacentes en la lista CIDR exacta más corta para cortafuegos y listas de permitidos.",
+        "keywords": "IPv4, agregación CIDR, combinar subredes, cortafuegos, lista de permitidos"
+      }
+    }
+  },
+  "cidrAggregator": {
+    "input": "Direcciones IPv4 o CIDR",
+    "hint": "Una dirección o CIDR por línea; se ignoran líneas vacías. Hasta {limit} entradas y {inputLimit} unidades UTF-16.",
+    "normalization": "Se eliminan los bits de host: 192.0.2.10/24 representa toda la red 192.0.2.0/24. Una dirección sin prefijo equivale a /32. No se aceptan ceros iniciales, comentarios, rangos ni IPv6.",
+    "aggregate": "Agregar redes",
+    "inputCount": "Entradas",
+    "outputCount": "CIDR resultantes",
+    "addressCount": "Direcciones únicas",
+    "normalizedEntries": "Entradas con bits de host eliminados",
+    "output": "CIDR agregados",
+    "emptyResult": "Introduce redes y agrégalas para ver el resultado.",
+    "rules": "La salida cubre exactamente las redes de entrada normalizadas sin añadir direcciones entre rangos separados. El recuento incluye direcciones de red, difusión y reservadas; no estima hosts utilizables.",
+    "empty": "Introduce al menos una dirección IPv4 o CIDR.",
+    "inputLimit": "Usa como máximo {inputLimit} unidades UTF-16.",
+    "entryLimit": "Máximo {limit} entradas no vacías; límite superado en la línea {line}.",
+    "invalidAddress": "Línea {line}: usa cuatro octetos decimales de 0 a 255 sin ceros iniciales.",
+    "invalidPrefix": "Línea {line}: usa una sola / seguida de un prefijo entero de 0 a 32 sin ceros iniciales."
+  }
+}
