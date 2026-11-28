@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "CSS 圆角生成器",
+      "description": "独立设置四角半径与椭圆圆角，实时预览形状并复制 CSS，全部在本地处理。",
+      "meta": {
+        "title": "CSS 圆角生成器",
+        "description": "独立设置四角半径与椭圆圆角，实时预览形状并复制 CSS，全部在本地处理。",
+        "keywords": "CSS 圆角生成器, 圆角, 椭圆圆角, 有机形状, border-radius, 像素, 百分比"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "单位",
+    "pixels": "像素（px）",
+    "percent": "百分比（%）",
+    "elliptical": "单独设置垂直半径",
+    "horizontal": "水平",
+    "vertical": "垂直",
+    "topLeft": "左上角",
+    "topRight": "右上角",
+    "bottomRight": "右下角",
+    "bottomLeft": "左下角",
+    "fieldLabel": "{corner} · {axis}（{unit}）",
+    "hint": "半径范围为 0–1000 px 或 0–100%，最多两位小数。四角始终按物理位置顺时针排列，不随从右到左的布局改变。",
+    "preview": "实时预览",
+    "previewHint": "预览最大为 320 × 180 CSS 像素，小屏幕上宽度会缩小。仅导出 border-radius 声明。",
+    "output": "生成的 CSS",
+    "emptyResult": "输入有效半径后显示预览和 CSS。",
+    "rules": "水平百分比相对于宽度，垂直百分比相对于高度。圆角重叠时，浏览器会按比例缩小半径。切换单位保留数值，不进行单位换算。不支持导入 CSS。",
+    "ellipse": "椭圆预设",
+    "invalidRadius": "{corner} · {axis}：请输入 0 到 {limit} 之间的数值，最多两位小数。",
+    "invalidUnit": "请选择 px 或 %。",
+    "cornerCount": "每个方向必须提供四个半径。"
+  }
+}

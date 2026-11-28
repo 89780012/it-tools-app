@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "Generatore di angoli arrotondati CSS",
+      "description": "Progetta localmente angoli arrotondati e forme ellittiche con raggi indipendenti, anteprima e CSS da copiare.",
+      "meta": {
+        "title": "Generatore di angoli arrotondati CSS",
+        "description": "Progetta localmente angoli arrotondati e forme ellittiche con raggi indipendenti, anteprima e CSS da copiare.",
+        "keywords": "generatore border-radius CSS, angoli arrotondati, raggi ellittici, forme organiche, pixel, percentuale"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Unità",
+    "pixels": "Pixel (px)",
+    "percent": "Percentuale (%)",
+    "elliptical": "Imposta separatamente i raggi verticali",
+    "horizontal": "Orizzontale",
+    "vertical": "Verticale",
+    "topLeft": "In alto a sinistra",
+    "topRight": "In alto a destra",
+    "bottomRight": "In basso a destra",
+    "bottomLeft": "In basso a sinistra",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Inserisci raggi da 0–1000 px o 0–100%, con un massimo di due decimali. Gli angoli seguono l’ordine fisico orario, anche nei layout da destra a sinistra.",
+    "preview": "Anteprima in tempo reale",
+    "previewHint": "Anteprima: fino a 320 × 180 pixel CSS; la larghezza si riduce sugli schermi piccoli. Viene esportata solo la dichiarazione border-radius.",
+    "output": "CSS generato",
+    "emptyResult": "Inserisci raggi validi per vedere l’anteprima e il CSS.",
+    "rules": "Le percentuali orizzontali si riferiscono alla larghezza, quelle verticali all’altezza. Il browser riduce proporzionalmente i raggi sovrapposti. Cambiare unità mantiene i numeri senza convertirli. L’importazione CSS non è supportata.",
+    "ellipse": "Predefinito ellisse",
+    "invalidRadius": "{corner} · {axis}: inserisci un numero da 0 a {limit}, con un massimo di due decimali.",
+    "invalidUnit": "Seleziona px o %.",
+    "cornerCount": "Fornisci esattamente quattro raggi per asse."
+  }
+}

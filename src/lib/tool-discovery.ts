@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'css-border-radius-generator': 'CSS border radius rounded corners elliptical ellipse blob px percent 圆角 边框 椭圆 有机形状',
   'css-gradient-generator': 'CSS linear gradient background color stops angle opacity 渐变 线性渐变 色标 背景 透明度',
   'json-key-sorter': 'JSON sort keys recursive alphabetical lexicographic ascending descending 排序 键排序 递归 字典序 配置',
   'css-box-shadow-generator': 'CSS box-shadow shadow inset layered blur spread opacity 阴影 盒阴影 内阴影 模糊 扩展',
@@ -58,6 +59,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['css-border-radius-generator', 'css-box-shadow-generator', 'css-gradient-generator', 'css-formatter', 'aspect-ratio-calculator'],
   ['json-key-sorter', 'json-formatter', 'json-diff', 'json-pointer', 'json-patch'],
   ['json-patch', 'json-merge-patch', 'json-pointer', 'json-diff', 'json-formatter'],
   ['css-gradient-generator', 'css-box-shadow-generator', 'css-cubic-bezier', 'css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],

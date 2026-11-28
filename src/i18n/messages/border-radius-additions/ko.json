@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "CSS 모서리 둥글기 생성기",
+      "description": "모서리별 반지름으로 둥근 모서리와 타원 형태를 로컬에서 만드세요. 실시간 미리보기와 CSS 복사를 지원합니다.",
+      "meta": {
+        "title": "CSS 모서리 둥글기 생성기",
+        "description": "모서리별 반지름으로 둥근 모서리와 타원 형태를 로컬에서 만드세요. 실시간 미리보기와 CSS 복사를 지원합니다.",
+        "keywords": "CSS 모서리 둥글기 생성기, border-radius, 둥근 모서리, 타원 반지름, 유기적 형태, 픽셀, 백분율"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "단위",
+    "pixels": "픽셀 (px)",
+    "percent": "백분율 (%)",
+    "elliptical": "세로 반지름 개별 설정",
+    "horizontal": "가로",
+    "vertical": "세로",
+    "topLeft": "왼쪽 위",
+    "topRight": "오른쪽 위",
+    "bottomRight": "오른쪽 아래",
+    "bottomLeft": "왼쪽 아래",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "0–1000 px 또는 0–100% 범위에서 소수점 두 자리까지 입력하세요. 모서리는 오른쪽에서 왼쪽 레이아웃에서도 실제 위치를 기준으로 시계 방향으로 배열됩니다.",
+    "preview": "실시간 미리보기",
+    "previewHint": "미리보기는 최대 320 × 180 CSS 픽셀이며 작은 화면에서는 너비가 줄어듭니다. border-radius 선언만 내보냅니다.",
+    "output": "생성된 CSS",
+    "emptyResult": "유효한 반지름을 입력하면 미리보기와 CSS가 표시됩니다.",
+    "rules": "가로 백분율은 너비, 세로 백분율은 높이를 기준으로 합니다. 반지름이 겹치면 브라우저가 비율에 맞게 줄입니다. 단위를 변경해도 숫자는 변환되지 않습니다. CSS 가져오기는 지원하지 않습니다.",
+    "ellipse": "타원 프리셋",
+    "invalidRadius": "{corner} · {axis}: 0부터 {limit} 사이의 숫자를 소수점 두 자리까지 입력하세요.",
+    "invalidUnit": "px 또는 %를 선택하세요.",
+    "cornerCount": "각 축에 정확히 네 개의 반지름을 입력하세요."
+  }
+}

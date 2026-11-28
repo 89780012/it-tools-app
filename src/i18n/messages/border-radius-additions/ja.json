@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "CSS 角丸ジェネレーター",
+      "description": "各コーナーの半径を個別に設定し、角丸や楕円形をローカルで作成。ライブプレビューと CSS のコピーに対応します。",
+      "meta": {
+        "title": "CSS 角丸ジェネレーター",
+        "description": "各コーナーの半径を個別に設定し、角丸や楕円形をローカルで作成。ライブプレビューと CSS のコピーに対応します。",
+        "keywords": "CSS 角丸ジェネレーター, border-radius, 楕円, コーナー半径, 有機的な形, ピクセル, パーセント"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "単位",
+    "pixels": "ピクセル（px）",
+    "percent": "パーセント（%）",
+    "elliptical": "垂直半径を個別に設定",
+    "horizontal": "水平",
+    "vertical": "垂直",
+    "topLeft": "左上",
+    "topRight": "右上",
+    "bottomRight": "右下",
+    "bottomLeft": "左下",
+    "fieldLabel": "{corner} · {axis}（{unit}）",
+    "hint": "半径は 0–1000 px または 0–100%、小数点以下 2 桁まで。コーナーは物理的な位置に沿って時計回りに並び、右から左のレイアウトでも変わりません。",
+    "preview": "ライブプレビュー",
+    "previewHint": "プレビューは最大 320 × 180 CSS ピクセルで、小さい画面では幅が縮小されます。border-radius 宣言のみを出力します。",
+    "output": "生成された CSS",
+    "emptyResult": "有効な半径を入力するとプレビューと CSS が表示されます。",
+    "rules": "水平のパーセント値は幅、垂直のパーセント値は高さを基準にします。半径が重なる場合、ブラウザーが比率を保って縮小します。単位を変更しても数値は換算されません。CSS の読み込みには対応していません。",
+    "ellipse": "楕円プリセット",
+    "invalidRadius": "{corner} · {axis}：0 から {limit} までの数値を小数点以下 2 桁以内で入力してください。",
+    "invalidUnit": "px または % を選択してください。",
+    "cornerCount": "各軸に半径を 4 つ指定してください。"
+  }
+}

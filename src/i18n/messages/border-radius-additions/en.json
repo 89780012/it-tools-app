@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "CSS Border Radius Generator",
+      "description": "Design rounded corners and elliptical shapes locally with independent corner radii, live preview and copyable CSS.",
+      "meta": {
+        "title": "CSS Border Radius Generator",
+        "description": "Design rounded corners and elliptical shapes locally with independent corner radii, live preview and copyable CSS.",
+        "keywords": "CSS border radius generator, rounded corners, elliptical radii, blob, border-radius, px, percent"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Unit",
+    "pixels": "Pixels (px)",
+    "percent": "Percent (%)",
+    "elliptical": "Set vertical radii separately",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "topLeft": "Top left",
+    "topRight": "Top right",
+    "bottomRight": "Bottom right",
+    "bottomLeft": "Bottom left",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Enter radii from 0–1000 px or 0–100%, with up to two decimal places. Corners follow physical clockwise order, even in right-to-left layouts.",
+    "preview": "Live preview",
+    "previewHint": "Preview: up to 320 × 180 CSS pixels; width shrinks on small screens. Only the border-radius declaration is exported.",
+    "output": "Generated CSS",
+    "emptyResult": "Enter valid radii to see the preview and CSS.",
+    "rules": "Horizontal percentages refer to width; vertical percentages refer to height. The browser scales overlapping radii proportionally. Changing units keeps the numbers without converting them. CSS import is not supported.",
+    "ellipse": "Ellipse preset",
+    "invalidRadius": "{corner} · {axis}: enter a number from 0 to {limit}, with up to two decimal places.",
+    "invalidUnit": "Select px or %.",
+    "cornerCount": "Provide exactly four radii per axis."
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "Generador de bordes redondeados CSS",
+      "description": "Diseña esquinas redondeadas y formas elípticas localmente con radios independientes, vista previa y CSS para copiar.",
+      "meta": {
+        "title": "Generador de bordes redondeados CSS",
+        "description": "Diseña esquinas redondeadas y formas elípticas localmente con radios independientes, vista previa y CSS para copiar.",
+        "keywords": "generador border-radius CSS, esquinas redondeadas, radios elípticos, formas orgánicas, píxeles, porcentaje"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Unidad",
+    "pixels": "Píxeles (px)",
+    "percent": "Porcentaje (%)",
+    "elliptical": "Configurar radios verticales por separado",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "topLeft": "Superior izquierda",
+    "topRight": "Superior derecha",
+    "bottomRight": "Inferior derecha",
+    "bottomLeft": "Inferior izquierda",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Introduce radios de 0–1000 px o 0–100%, con hasta dos decimales. Las esquinas siguen el orden físico horario, incluso en diseños de derecha a izquierda.",
+    "preview": "Vista previa en vivo",
+    "previewHint": "Vista previa: hasta 320 × 180 píxeles CSS; el ancho se reduce en pantallas pequeñas. Solo se exporta la declaración border-radius.",
+    "output": "CSS generado",
+    "emptyResult": "Introduce radios válidos para ver la vista previa y el CSS.",
+    "rules": "Los porcentajes horizontales se refieren al ancho y los verticales a la altura. El navegador reduce proporcionalmente los radios superpuestos. Cambiar de unidad conserva los números sin convertirlos. No se admite importar CSS.",
+    "ellipse": "Preajuste elipse",
+    "invalidRadius": "{corner} · {axis}: introduce un número entre 0 y {limit}, con hasta dos decimales.",
+    "invalidUnit": "Selecciona px o %.",
+    "cornerCount": "Introduce exactamente cuatro radios por eje."
+  }
+}

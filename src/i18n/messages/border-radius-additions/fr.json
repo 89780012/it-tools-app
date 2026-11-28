@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "Générateur de coins arrondis CSS",
+      "description": "Créez localement des coins arrondis et des formes elliptiques avec des rayons indépendants, un aperçu et du CSS à copier.",
+      "meta": {
+        "title": "Générateur de coins arrondis CSS",
+        "description": "Créez localement des coins arrondis et des formes elliptiques avec des rayons indépendants, un aperçu et du CSS à copier.",
+        "keywords": "générateur border-radius CSS, coins arrondis, rayons elliptiques, formes organiques, pixels, pourcentage"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Unité",
+    "pixels": "Pixels (px)",
+    "percent": "Pourcentage (%)",
+    "elliptical": "Définir les rayons verticaux séparément",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "topLeft": "En haut à gauche",
+    "topRight": "En haut à droite",
+    "bottomRight": "En bas à droite",
+    "bottomLeft": "En bas à gauche",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Saisissez des rayons de 0–1000 px ou 0–100%, avec deux décimales au maximum. Les coins suivent l’ordre physique horaire, même dans une interface de droite à gauche.",
+    "preview": "Aperçu en direct",
+    "previewHint": "Aperçu : jusqu’à 320 × 180 pixels CSS ; la largeur diminue sur les petits écrans. Seule la déclaration border-radius est exportée.",
+    "output": "CSS généré",
+    "emptyResult": "Saisissez des rayons valides pour afficher l’aperçu et le CSS.",
+    "rules": "Les pourcentages horizontaux se rapportent à la largeur et les verticaux à la hauteur. Le navigateur réduit proportionnellement les rayons qui se chevauchent. Changer d’unité conserve les nombres sans conversion. L’importation CSS n’est pas prise en charge.",
+    "ellipse": "Préréglage ellipse",
+    "invalidRadius": "{corner} · {axis} : saisissez un nombre de 0 à {limit}, avec deux décimales au maximum.",
+    "invalidUnit": "Sélectionnez px ou %.",
+    "cornerCount": "Indiquez exactement quatre rayons par axe."
+  }
+}

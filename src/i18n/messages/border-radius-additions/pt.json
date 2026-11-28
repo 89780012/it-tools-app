@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "Gerador de cantos arredondados CSS",
+      "description": "Crie cantos arredondados e formas elípticas localmente com raios independentes, prévia e CSS para copiar.",
+      "meta": {
+        "title": "Gerador de cantos arredondados CSS",
+        "description": "Crie cantos arredondados e formas elípticas localmente com raios independentes, prévia e CSS para copiar.",
+        "keywords": "gerador border-radius CSS, cantos arredondados, raios elípticos, formas orgânicas, pixels, porcentagem"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Unidade",
+    "pixels": "Pixels (px)",
+    "percent": "Porcentagem (%)",
+    "elliptical": "Definir raios verticais separadamente",
+    "horizontal": "Horizontal",
+    "vertical": "Vertical",
+    "topLeft": "Superior esquerdo",
+    "topRight": "Superior direito",
+    "bottomRight": "Inferior direito",
+    "bottomLeft": "Inferior esquerdo",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Insira raios de 0–1000 px ou 0–100%, com até duas casas decimais. Os cantos seguem a ordem física no sentido horário, mesmo em layouts da direita para a esquerda.",
+    "preview": "Prévia em tempo real",
+    "previewHint": "Prévia: até 320 × 180 pixels CSS; a largura diminui em telas pequenas. Apenas a declaração border-radius é exportada.",
+    "output": "CSS gerado",
+    "emptyResult": "Insira raios válidos para ver a prévia e o CSS.",
+    "rules": "Porcentagens horizontais se referem à largura e verticais à altura. O navegador reduz proporcionalmente os raios sobrepostos. Alterar a unidade mantém os números sem conversão. A importação de CSS não é suportada.",
+    "ellipse": "Predefinição elipse",
+    "invalidRadius": "{corner} · {axis}: insira um número de 0 a {limit}, com até duas casas decimais.",
+    "invalidUnit": "Selecione px ou %.",
+    "cornerCount": "Forneça exatamente quatro raios por eixo."
+  }
+}

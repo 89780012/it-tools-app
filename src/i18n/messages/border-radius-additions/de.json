@@ -1,0 +1,36 @@
+{
+  "tools": {
+    "css-border-radius-generator": {
+      "name": "CSS-Generator für abgerundete Ecken",
+      "description": "Gestalte runde Ecken und elliptische Formen lokal mit getrennten Eckradien, Live-Vorschau und kopierbarem CSS.",
+      "meta": {
+        "title": "CSS-Generator für abgerundete Ecken",
+        "description": "Gestalte runde Ecken und elliptische Formen lokal mit getrennten Eckradien, Live-Vorschau und kopierbarem CSS.",
+        "keywords": "CSS border-radius Generator, abgerundete Ecken, elliptische Radien, organische Form, Pixel, Prozent"
+      }
+    }
+  },
+  "borderRadius": {
+    "unit": "Einheit",
+    "pixels": "Pixel (px)",
+    "percent": "Prozent (%)",
+    "elliptical": "Vertikale Radien separat einstellen",
+    "horizontal": "Horizontal",
+    "vertical": "Vertikal",
+    "topLeft": "Oben links",
+    "topRight": "Oben rechts",
+    "bottomRight": "Unten rechts",
+    "bottomLeft": "Unten links",
+    "fieldLabel": "{corner} · {axis} ({unit})",
+    "hint": "Radien von 0–1000 px oder 0–100% mit bis zu zwei Nachkommastellen eingeben. Die Ecken folgen der physischen Reihenfolge im Uhrzeigersinn, auch bei Rechts-nach-links-Layouts.",
+    "preview": "Live-Vorschau",
+    "previewHint": "Vorschau: maximal 320 × 180 CSS-Pixel; auf kleinen Bildschirmen wird die Breite reduziert. Nur die border-radius-Deklaration wird exportiert.",
+    "output": "Erzeugtes CSS",
+    "emptyResult": "Gültige Radien eingeben, um Vorschau und CSS anzuzeigen.",
+    "rules": "Horizontale Prozentwerte beziehen sich auf die Breite, vertikale auf die Höhe. Der Browser verkleinert überlappende Radien proportional. Beim Einheitenwechsel bleiben die Zahlen ohne Umrechnung erhalten. CSS-Import wird nicht unterstützt.",
+    "ellipse": "Ellipse-Vorgabe",
+    "invalidRadius": "{corner} · {axis}: eine Zahl von 0 bis {limit} mit bis zu zwei Nachkommastellen eingeben.",
+    "invalidUnit": "px oder % auswählen.",
+    "cornerCount": "Genau vier Radien pro Achse angeben."
+  }
+}
