@@ -77,7 +77,7 @@ else:
         self.assertEqual(len(calls), 2)
         self.assertFalse((root / "summary.md").exists())
 
-    def test_service_restart_reuses_worktree_then_publishes_once(self):
+    def test_hourly_runs_resume_deduplicate_and_publish_next_hour(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             repo, remote, binary = root / "repo", root / "remote.git", root / "bin"
@@ -107,6 +107,9 @@ else:
                 mock = binary / name
                 mock.write_text('#!/bin/sh\nprintf "%s\\n" "$0 $*" >> "$FIXTURE_EVENTS"\n')
                 mock.chmod(0o755)
+            mock_date = binary / "date"
+            mock_date.write_text('#!/bin/sh\n[ "$1" = "+%F-%H" ] || exit 1\nprintf "%s\\n" "$FIXTURE_SLOT"\n')
+            mock_date.chmod(0o755)
             mock = binary / "codex"
             mock.write_text('''#!/usr/bin/env python3
 import json,os,sys
@@ -115,20 +118,28 @@ count=Path(os.environ['FIXTURE_COUNT'])
 value=int(count.read_text())+1 if count.exists() else 1
 count.write_text(str(value))
 print(json.dumps({'type':'thread.started','thread_id':'01a21732-ecb1-78a1-a622-3e32dc0a6299'}))
-page=Path('src/app/[locale]/tools/fixture-tool/page.tsx')
+tool='fixture-tool' if value<=2 else 'fixture-tool-next-hour'
+page=Path('src/app/[locale]/tools')/tool/'page.tsx'
 if value==1:
     page.parent.mkdir(parents=True)
     page.write_text('partial')
     print(json.dumps({'type':'turn.failed','error':{'message':'Concurrency limit exceeded for account'}}))
     sys.exit(1)
-assert sys.argv[1:3]==['exec','resume']
-assert page.read_text()=='partial'
+if value==2:
+    assert sys.argv[1:3]==['exec','resume']
+    assert page.read_text()=='partial'
+else:
+    assert sys.argv[1]=='exec' and sys.argv[2]!='resume'
+    page.parent.mkdir(parents=True)
 page.write_text('complete')
 Path(sys.argv[sys.argv.index('--output-last-message')+1]).write_text('complete')
 print(json.dumps({'type':'turn.completed'}))
 ''')
             mock.chmod(0o755)
-            env = dict(os.environ, PATH=str(binary) + ":" + os.environ["PATH"], DAILY_TOOL_CODEX_BIN=str(mock), DAILY_TOOL_STATE_DIR=str(root / "state"), DAILY_TOOL_MODE="deploy", DAILY_TOOL_CODEX_ATTEMPTS="1", DAILY_TOOL_AGENT_TIMEOUT="20s", FIXTURE_EVENTS=str(root / "events"), FIXTURE_COUNT=str(root / "count"))
+            state = root / "state"
+            state.mkdir()
+            (state / "2026-11-28.done").write_text("legacy daily completion")
+            env = dict(os.environ, PATH=str(binary) + ":" + os.environ["PATH"], DAILY_TOOL_CODEX_BIN=str(mock), DAILY_TOOL_STATE_DIR=str(state), DAILY_TOOL_MODE="deploy", DAILY_TOOL_CODEX_ATTEMPTS="1", DAILY_TOOL_AGENT_TIMEOUT="20s", FIXTURE_EVENTS=str(root / "events"), FIXTURE_COUNT=str(root / "count"), FIXTURE_SLOT="2026-11-28-12")
             command = ["bash", str(repo / "script/daily-tool.sh")]
             first = subprocess.run(command, env=env, capture_output=True, text=True, timeout=30)
             self.assertNotEqual(first.returncode, 0)
@@ -136,14 +147,28 @@ print(json.dumps({'type':'turn.completed'}))
             self.assertNotIn("deploy\n", (root / "events").read_text())
             second = subprocess.run(command, env=env, capture_output=True, text=True, timeout=30)
             self.assertEqual(second.returncode, 0, second.stdout + second.stderr)
-            self.assertIn("继续今日已有工作目录", second.stdout)
+            self.assertIn("继续本小时已有工作目录", second.stdout)
             self.assertEqual(git(remote, "rev-parse", "main"), git(repo, "rev-parse", "HEAD"))
             self.assertNotEqual(git(repo, "rev-parse", "HEAD"), initial)
             self.assertTrue(git(repo, "log", "-1", "--format=%s").startswith("新增工具：fixture-tool"))
             self.assertEqual((root / "events").read_text().count("deploy\n"), 1)
             third = subprocess.run(command, env=env, capture_output=True, text=True, timeout=10)
             self.assertEqual(third.returncode, 0)
+            self.assertIn("本小时任务已完成", third.stdout)
             self.assertEqual((root / "count").read_text(), "2")
+            self.assertTrue((state / "2026-11-28-12.done").exists())
+            env["FIXTURE_SLOT"] = "2026-11-28-13"
+            fourth = subprocess.run(command, env=env, capture_output=True, text=True, timeout=30)
+            self.assertEqual(fourth.returncode, 0, fourth.stdout + fourth.stderr)
+            self.assertEqual((root / "count").read_text(), "3")
+            self.assertEqual((root / "events").read_text().count("deploy\n"), 2)
+            self.assertEqual(git(remote, "rev-parse", "main"), git(repo, "rev-parse", "HEAD"))
+            self.assertTrue((state / "2026-11-28-13.done").exists())
+            self.assertTrue((state / "worktrees/2026-11-28-12").is_dir())
+            self.assertTrue((state / "worktrees/2026-11-28-13").is_dir())
+            fifth = subprocess.run(command, env=env, capture_output=True, text=True, timeout=10)
+            self.assertEqual(fifth.returncode, 0)
+            self.assertEqual((root / "count").read_text(), "3")
 
 
 if __name__ == "__main__":

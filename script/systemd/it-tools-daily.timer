@@ -1,9 +1,9 @@
 [Unit]
-Description=Run the daily IT Tools task
+Description=Add one IT Tools feature every hour
 
 [Timer]
-# Default: daily at 03:00 Beijing time; change before enabling if desired.
-OnCalendar=*-*-* 03:00:00 Asia/Shanghai
+# Run at the start of every hour in Beijing time.
+OnCalendar=*-*-* *:00:00 Asia/Shanghai
 Persistent=false
 Unit=it-tools-daily.service
 

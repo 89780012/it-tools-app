@@ -150,6 +150,6 @@ Browser tests start/reuse Vite on `localhost:5173` and Go on port 8080. They exe
 
 可临时在 URL 添加唯一查询参数，对比 `CF-Cache-Status: HIT` 的旧 HTML 与 `MISS` 的新 HTML；这是排查方法，正式修复仍需清缓存并更新缓存规则。
 
-## 每日自动新增工具
+## 每小时自动新增工具
 
-通过 Codex CLI 与 systemd 定时运行，新增一个工具并在测试通过后使用中文提交、推送 main、重新部署 Docker。沿用本机自定义 API 配置，无需额外登录。安装、时间设置、日志和停用方法见 [每日工具自动化部署指南](docs/daily-tool-automation.md)。
+通过 Codex CLI 与 systemd 每小时整点运行，每次新增一个工具并在测试通过后使用中文提交、推送 main、重新部署 Docker。同一小时成功后不重复生成，任务之间不并发。沿用本机自定义 API 配置，无需额外登录。安装、时间设置、日志和停用方法见 [工具自动化部署指南](docs/daily-tool-automation.md)。
