@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Codificatore / decodificatore Base32",
+      "description": "Codifica e decodifica localmente testo UTF-8 e byte esadecimali con Base32 o Base32hex secondo RFC 4648.",
+      "meta": {
+        "title": "Codificatore / decodificatore Base32",
+        "description": "Codifica e decodifica localmente testo UTF-8 e byte esadecimali con Base32 o Base32hex secondo RFC 4648.",
+        "keywords": "Codificatore / decodificatore Base32, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "Operazione",
+    "encode": "Codifica",
+    "decode": "Decodifica",
+    "variant": "Alfabeto",
+    "representation": "Rappresentazione dei byte",
+    "text": "Testo UTF-8",
+    "hex": "Byte esadecimali",
+    "representationHint": "Formato di ingresso durante la codifica e di uscita durante la decodifica. Hex accetta coppie di cifre e spazi ASCII, senza prefissi 0x.",
+    "padding": "Includi riempimento =",
+    "data": "Dati di ingresso",
+    "hint": "Fino a {limit} unità UTF-16. Gli spazi del testo sono conservati; Base32 e hex ignorano gli spazi ASCII.",
+    "convert": "Converti",
+    "byteCount": "Numero di byte: {count}",
+    "output": "Risultato",
+    "emptyResult": "Inserisci i dati e convertili per vedere il risultato.",
+    "rules": "Solo RFC 4648; Crockford Base32 non è supportato. La decodifica accetta minuscole e riempimento facoltativo, verifica riempimento e bit inutilizzati e rifiuta UTF-8 non valido in modalità testo. La codifica è reversibile e non cifra i dati.",
+    "empty": "Inserisci i dati da convertire.",
+    "inputLimit": "Usa al massimo {limit} unità UTF-16.",
+    "invalidHex": "Inserisci coppie esadecimali complete (00–ff), senza prefissi e separate solo da spazi ASCII.",
+    "invalidUnicode": "Il testo contiene un surrogato UTF-16 isolato. Sostituisci il carattere non valido.",
+    "invalidCharacters": "L’ingresso contiene caratteri esterni all’alfabeto Base32 selezionato.",
+    "invalidPadding": "Riempimento = non valido. Deve essere alla fine e avere la lunghezza esatta prevista da RFC 4648.",
+    "invalidLength": "Lunghezza Base32 non valida. Il numero di simboli di dati modulo 8 deve essere 0, 2, 4, 5 o 7.",
+    "nonZeroBits": "I bit finali inutilizzati devono essere zero. Questa codifica Base32 non è canonica.",
+    "invalidUtf8": "I byte decodificati non sono UTF-8 valido. Seleziona byte esadecimali per esaminare i dati binari."
+  }
+}

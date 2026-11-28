@@ -2,7 +2,7 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **87 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **88 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
 The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
 
@@ -35,6 +35,8 @@ The [ISO Week Date Converter](docs/hourly-tool-2026-11-28-21.md) at `/tools/iso-
 The [JSON Patch Applier](docs/hourly-tool-2026-11-28-22.md) at `/tools/json-patch` (Chinese: `/zh/tools/json-patch`) applies RFC 6902 operation arrays locally: add, remove, replace, move, copy and test. It preserves numeric precision, reports the failed operation, and offers example, clear, copy and `patched.json` download controls. Limits: 500,000 UTF-16 units per input, 64 nesting levels, 200 operations, 4,096 units per path and a 2,000,000-unit result formatting budget, plus a total processing limit. Paths use JSON Pointer strings; URI fragments are not accepted. A root removal must be followed by a root add to produce a JSON result.
 
 The [CSS Cubic Bézier Editor](docs/hourly-tool-2026-11-28-23.md) at `/tools/css-cubic-bezier` (Chinese: `/zh/tools/css-cubic-bezier`) designs easing curves locally with four control-point inputs, six presets, a curve graph and an elapsed-time slider. Copy or download transition and animation timing declarations as `cubic-bezier.css`. The simulator solves the time coordinate and preserves anticipation and overshoot. X coordinates are 0–1; this editor accepts Y from −5 to 5 and plain decimals with up to four fractional digits. Animation properties and duration are configured separately.
+
+The [Base32 Encoder / Decoder](docs/hourly-tool-2026-11-29-00.md) at `/tools/base32-encoder-decoder` (Chinese: `/zh/tools/base32-encoder-decoder`) converts UTF-8 text or hexadecimal bytes using RFC 4648 Base32 and Base32hex locally. It supports optional encoding padding, case-insensitive decoding, example, clear, copy and text download. Padding, unused trailing bits and UTF-8 are validated; hexadecimal output can inspect arbitrary binary data. Limit: 100,000 UTF-16 input units. Crockford Base32 is not supported.
 
 ## Requirements
 
@@ -93,7 +95,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 - 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503，i18n JSON 翻译菜单入口已暂时隐藏。
 - 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 1068 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 1080 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -105,7 +107,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 1068 prerendered pages (87 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 1080 prerendered pages (88 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 

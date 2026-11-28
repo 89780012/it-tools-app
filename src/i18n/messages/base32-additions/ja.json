@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Base32 エンコーダー / デコーダー",
+      "description": "RFC 4648 の Base32 または Base32hex で UTF-8 テキストや16進数バイトをローカルで変換します。",
+      "meta": {
+        "title": "Base32 エンコーダー / デコーダー",
+        "description": "RFC 4648 の Base32 または Base32hex で UTF-8 テキストや16進数バイトをローカルで変換します。",
+        "keywords": "Base32 エンコーダー / デコーダー, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "操作",
+    "encode": "エンコード",
+    "decode": "デコード",
+    "variant": "アルファベット",
+    "representation": "バイトの表現",
+    "text": "UTF-8 テキスト",
+    "hex": "16進数バイト",
+    "representationHint": "エンコード時の入力形式、デコード時の出力形式です。16進数は2桁の組と ASCII 空白を受け付けます。0x 接頭辞は使えません。",
+    "padding": "= パディングを含める",
+    "data": "入力データ",
+    "hint": "最大 {limit} UTF-16 コード単位。テキストの空白は保持され、Base32 と16進数の ASCII 空白は無視されます。",
+    "convert": "変換",
+    "byteCount": "バイト数：{count}",
+    "output": "変換結果",
+    "emptyResult": "データを入力して変換すると結果が表示されます。",
+    "rules": "RFC 4648 のみ対応し、Crockford Base32 には対応しません。小文字とパディングなしのデコードに対応し、パディングと未使用ビットを検証します。テキストモードでは無効な UTF-8 を拒否します。エンコードは可逆で、暗号化ではありません。",
+    "empty": "変換するデータを入力してください。",
+    "inputLimit": "入力は {limit} UTF-16 コード単位以下にしてください。",
+    "invalidHex": "完全な16進数のバイト対（00–ff）を入力してください。接頭辞は使えず、区切りには ASCII 空白のみ使えます。",
+    "invalidUnicode": "テキストに対になっていない UTF-16 サロゲートがあります。無効な文字を置き換えてください。",
+    "invalidCharacters": "選択した Base32 アルファベット以外の文字が含まれています。",
+    "invalidPadding": "= パディングが無効です。末尾に置き、RFC 4648 で定められた数にしてください。",
+    "invalidLength": "Base32 の長さが無効です。データ文字数を8で割った余りは 0、2、4、5、7 のいずれかである必要があります。",
+    "nonZeroBits": "末尾の未使用ビットはゼロである必要があります。正規の Base32 表現ではありません。",
+    "invalidUtf8": "デコードしたバイトは有効な UTF-8 ではありません。バイナリデータを見るには16進数バイトを選んでください。"
+  }
+}

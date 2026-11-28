@@ -7,6 +7,7 @@ const aliases: Record<string, string> = {
   'json-pointer': 'RFC 6901 JSON Pointer URI fragment reference resolve extract 精确路径 JSON指针 提取 片段',
   'ipv4-cidr-aggregator': 'IPv4 CIDR aggregate collapse summarize firewall allowlist merge networks 网段聚合 白名单 合并子网 防火墙',
   'unicode-normalizer': 'Unicode NFC NFD NFKC NFKD normalization combining accents fullwidth 规范化 标准化 重音 全角 半角 码点',
+  'base32-encoder-decoder': 'RFC 4648 Base32 Base32hex UTF-8 hex bytes encoding decoding padding TOTP 编码 解码 填充 字节',
   'totp-generator': 'TOTP OTP 2FA MFA authenticator RFC 6238 Base32 动态验证码 双因素认证 一次性密码',
   'ipv6-subnet-calculator': 'IPv6 CIDR prefix network range subnet mask RFC 5952 IPv6子网 地址范围 前缀 掩码',
   'json-merge-patch': 'RFC 7396 merge patch configuration 合并补丁 配置合并 JSON合并',
@@ -59,6 +60,7 @@ const workflows = [
   ['json-pointer', 'jsonpath-query', 'json-schema-validator', 'json-merge-patch', 'json-formatter'],
   ['ipv4-cidr-aggregator', 'subnet-calculator', 'ipv6-subnet-calculator', 'firewall-cheatsheet'],
   ['unicode-normalizer', 'string-escape', 'text-diff', 'text-batch-processor'],
+  ['base32-encoder-decoder', 'base64-encoder-decoder', 'hex-encoder-decoder', 'totp-generator'],
   ['totp-generator', 'hmac-generator', 'jwt-decoder', 'time-converter'],
   ['ipv6-subnet-calculator', 'subnet-calculator', 'ip-lookup', 'dns-lookup'],
   [

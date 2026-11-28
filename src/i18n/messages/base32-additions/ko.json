@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Base32 인코더 / 디코더",
+      "description": "RFC 4648 Base32 또는 Base32hex로 UTF-8 텍스트와 16진수 바이트를 로컬에서 인코딩하거나 디코딩합니다.",
+      "meta": {
+        "title": "Base32 인코더 / 디코더",
+        "description": "RFC 4648 Base32 또는 Base32hex로 UTF-8 텍스트와 16진수 바이트를 로컬에서 인코딩하거나 디코딩합니다.",
+        "keywords": "Base32 인코더 / 디코더, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "작업",
+    "encode": "인코딩",
+    "decode": "디코딩",
+    "variant": "알파벳",
+    "representation": "바이트 표현",
+    "text": "UTF-8 텍스트",
+    "hex": "16진수 바이트",
+    "representationHint": "인코딩할 때의 입력 형식과 디코딩할 때의 출력 형식입니다. 16진수는 숫자 쌍과 ASCII 공백을 허용하며 0x 접두사는 허용하지 않습니다.",
+    "padding": "= 패딩 포함",
+    "data": "입력 데이터",
+    "hint": "최대 {limit} UTF-16 코드 단위. 텍스트 공백은 유지되며 Base32와 16진수의 ASCII 공백은 무시됩니다.",
+    "convert": "변환",
+    "byteCount": "바이트 수: {count}",
+    "output": "변환 결과",
+    "emptyResult": "데이터를 입력하고 변환하면 결과가 표시됩니다.",
+    "rules": "RFC 4648만 지원하며 Crockford Base32는 지원하지 않습니다. 소문자와 선택적 패딩을 허용하고 패딩과 미사용 비트를 검증하며 텍스트 모드에서는 잘못된 UTF-8을 거부합니다. 인코딩은 되돌릴 수 있으며 암호화 기능이 아닙니다.",
+    "empty": "변환할 데이터를 입력하세요.",
+    "inputLimit": "최대 {limit} UTF-16 코드 단위까지 입력하세요.",
+    "invalidHex": "완전한 16진수 바이트 쌍(00–ff)을 입력하세요. 접두사 없이 ASCII 공백으로만 구분할 수 있습니다.",
+    "invalidUnicode": "텍스트에 짝이 없는 UTF-16 서로게이트가 있습니다. 잘못된 문자를 바꾸세요.",
+    "invalidCharacters": "선택한 Base32 알파벳에 없는 문자가 포함되어 있습니다.",
+    "invalidPadding": "= 패딩이 잘못되었습니다. 끝에 위치해야 하며 RFC 4648의 정확한 길이를 따라야 합니다.",
+    "invalidLength": "Base32 길이가 잘못되었습니다. 데이터 기호 수를 8로 나눈 나머지는 0, 2, 4, 5 또는 7이어야 합니다.",
+    "nonZeroBits": "사용하지 않는 끝 비트는 0이어야 합니다. 정규 Base32 인코딩이 아닙니다.",
+    "invalidUtf8": "디코딩된 바이트가 올바른 UTF-8이 아닙니다. 바이너리 데이터를 확인하려면 16진수 바이트를 선택하세요."
+  }
+}

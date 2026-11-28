@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Base32-Kodierer / Dekodierer",
+      "description": "UTF-8-Text und Hexadezimalbytes lokal mit RFC 4648 Base32 oder Base32hex kodieren und dekodieren.",
+      "meta": {
+        "title": "Base32-Kodierer / Dekodierer",
+        "description": "UTF-8-Text und Hexadezimalbytes lokal mit RFC 4648 Base32 oder Base32hex kodieren und dekodieren.",
+        "keywords": "Base32-Kodierer / Dekodierer, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "Vorgang",
+    "encode": "Kodieren",
+    "decode": "Dekodieren",
+    "variant": "Alphabet",
+    "representation": "Byte-Darstellung",
+    "text": "UTF-8-Text",
+    "hex": "Hexadezimalbytes",
+    "representationHint": "Beim Kodieren das Eingabeformat, beim Dekodieren das Ausgabeformat. Hex akzeptiert Ziffernpaare und ASCII-Leerraum, ohne 0x-Präfix.",
+    "padding": "Mit = auffüllen",
+    "data": "Eingabedaten",
+    "hint": "Bis zu {limit} UTF-16-Codeeinheiten. Textleerraum bleibt erhalten; Base32 und Hex ignorieren ASCII-Leerraum.",
+    "convert": "Umwandeln",
+    "byteCount": "Byte-Anzahl: {count}",
+    "output": "Ergebnis",
+    "emptyResult": "Daten eingeben und umwandeln, um das Ergebnis zu sehen.",
+    "rules": "Nur RFC 4648; kein Crockford Base32. Dekodierung akzeptiert Kleinbuchstaben und optionale Auffüllung, prüft Auffüllung und ungenutzte Bits und weist ungültiges UTF-8 im Textmodus zurück. Kodierung ist umkehrbar und bietet keine Verschlüsselung.",
+    "empty": "Daten zum Umwandeln eingeben.",
+    "inputLimit": "Höchstens {limit} UTF-16-Codeeinheiten eingeben.",
+    "invalidHex": "Vollständige Hex-Bytepaare (00–ff) eingeben, ohne Präfix und nur mit ASCII-Leerraum als Trennung.",
+    "invalidUnicode": "Der Text enthält einen ungepaarten UTF-16-Surrogaten. Ungültiges Zeichen ersetzen.",
+    "invalidCharacters": "Die Eingabe enthält Zeichen außerhalb des gewählten Base32-Alphabets.",
+    "invalidPadding": "Ungültige =-Auffüllung. Sie muss am Ende stehen und genau der RFC-4648-Länge entsprechen.",
+    "invalidLength": "Ungültige Base32-Länge. Die Anzahl der Datensymbole modulo 8 muss 0, 2, 4, 5 oder 7 sein.",
+    "nonZeroBits": "Ungenutzte Endbits müssen null sein. Dies ist keine kanonische Base32-Kodierung.",
+    "invalidUtf8": "Die dekodierten Bytes sind kein gültiges UTF-8. Hexadezimalbytes für Binärdaten wählen."
+  }
+}

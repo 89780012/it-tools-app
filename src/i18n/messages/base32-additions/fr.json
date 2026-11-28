@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Encodeur / décodeur Base32",
+      "description": "Encodez et décodez localement du texte UTF-8 et des octets hexadécimaux avec Base32 ou Base32hex selon RFC 4648.",
+      "meta": {
+        "title": "Encodeur / décodeur Base32",
+        "description": "Encodez et décodez localement du texte UTF-8 et des octets hexadécimaux avec Base32 ou Base32hex selon RFC 4648.",
+        "keywords": "Encodeur / décodeur Base32, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "Opération",
+    "encode": "Encoder",
+    "decode": "Décoder",
+    "variant": "Alphabet",
+    "representation": "Représentation des octets",
+    "text": "Texte UTF-8",
+    "hex": "Octets hexadécimaux",
+    "representationHint": "Format d’entrée pour l’encodage et de sortie pour le décodage. Hex accepte les paires de chiffres et les espaces ASCII, sans préfixe 0x.",
+    "padding": "Inclure le remplissage =",
+    "data": "Données d’entrée",
+    "hint": "Jusqu’à {limit} unités UTF-16. Les espaces du texte sont préservés ; Base32 et hex ignorent les espaces ASCII.",
+    "convert": "Convertir",
+    "byteCount": "Nombre d’octets : {count}",
+    "output": "Résultat",
+    "emptyResult": "Saisissez des données et convertissez-les pour voir le résultat.",
+    "rules": "RFC 4648 uniquement ; pas de Crockford Base32. Le décodage accepte les minuscules et le remplissage facultatif, vérifie le remplissage et les bits inutilisés et rejette l’UTF-8 invalide en mode texte. L’encodage est réversible et ne chiffre pas les données.",
+    "empty": "Saisissez les données à convertir.",
+    "inputLimit": "Utilisez au plus {limit} unités UTF-16.",
+    "invalidHex": "Saisissez des paires hexadécimales complètes (00–ff), sans préfixe et séparées uniquement par des espaces ASCII.",
+    "invalidUnicode": "Le texte contient un substitut UTF-16 isolé. Remplacez le caractère invalide.",
+    "invalidCharacters": "L’entrée contient des caractères hors de l’alphabet Base32 sélectionné.",
+    "invalidPadding": "Remplissage = invalide. Il doit être à la fin et avoir la longueur exacte définie par RFC 4648.",
+    "invalidLength": "Longueur Base32 invalide. Le nombre de symboles de données modulo 8 doit être 0, 2, 4, 5 ou 7.",
+    "nonZeroBits": "Les bits finaux inutilisés doivent être nuls. Cet encodage Base32 n’est pas canonique.",
+    "invalidUtf8": "Les octets décodés ne sont pas de l’UTF-8 valide. Choisissez les octets hexadécimaux pour examiner les données binaires."
+  }
+}

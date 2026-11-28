@@ -90,6 +90,7 @@ export const toolsConfig: ToolCategory[] = [
     ['text-set-operations', 'git-compare'],
     ['string-escape', 'code-xml'],
     ['base64-encoder-decoder', 'code-xml'],
+    ['base32-encoder-decoder', 'code-xml'],
     ['url-encoder-decoder', 'link'],
     ['hex-encoder-decoder', 'hexagon'],
     ['binary-encoder-decoder', 'binary'],

@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Base32 Encoder / Decoder",
+      "description": "Encode or decode UTF-8 text and hexadecimal bytes using RFC 4648 Base32 or Base32hex locally.",
+      "meta": {
+        "title": "Base32 Encoder / Decoder",
+        "description": "Encode or decode UTF-8 text and hexadecimal bytes using RFC 4648 Base32 or Base32hex locally.",
+        "keywords": "Base32 Encoder / Decoder, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "Operation",
+    "encode": "Encode",
+    "decode": "Decode",
+    "variant": "Alphabet",
+    "representation": "Byte representation",
+    "text": "UTF-8 text",
+    "hex": "Hexadecimal bytes",
+    "representationHint": "Used as the input when encoding and the output when decoding. Hex accepts pairs of digits and ASCII whitespace, without 0x prefixes.",
+    "padding": "Include = padding",
+    "data": "Input data",
+    "hint": "Up to {limit} UTF-16 code units. Text whitespace is preserved; Base32 and hex ignore ASCII whitespace.",
+    "convert": "Convert",
+    "byteCount": "Byte count: {count}",
+    "output": "Conversion result",
+    "emptyResult": "Enter data and convert it to see the result.",
+    "rules": "RFC 4648 only; Crockford Base32 is not supported. Decode accepts lowercase and optional padding, validates padding and unused bits, and rejects invalid UTF-8 in text mode. Encoding is reversible and provides no encryption.",
+    "empty": "Enter data to convert.",
+    "inputLimit": "Use at most {limit} UTF-16 code units.",
+    "invalidHex": "Enter complete hexadecimal byte pairs (00–ff), without prefixes or separators other than ASCII whitespace.",
+    "invalidUnicode": "The text contains an unpaired UTF-16 surrogate. Replace the invalid character.",
+    "invalidCharacters": "The input contains characters outside the selected Base32 alphabet.",
+    "invalidPadding": "Invalid = padding. Padding must be at the end and have the exact RFC 4648 length.",
+    "invalidLength": "Invalid Base32 length. The number of data symbols modulo 8 must be 0, 2, 4, 5 or 7.",
+    "nonZeroBits": "Unused trailing bits must be zero. This is not a canonical Base32 encoding.",
+    "invalidUtf8": "Decoded bytes are not valid UTF-8. Select hexadecimal bytes to inspect binary data."
+  }
+}

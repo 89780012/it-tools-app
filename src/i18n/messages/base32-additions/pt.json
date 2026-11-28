@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Codificador / decodificador Base32",
+      "description": "Codifique e decodifique texto UTF-8 e bytes hexadecimais localmente com Base32 ou Base32hex da RFC 4648.",
+      "meta": {
+        "title": "Codificador / decodificador Base32",
+        "description": "Codifique e decodifique texto UTF-8 e bytes hexadecimais localmente com Base32 ou Base32hex da RFC 4648.",
+        "keywords": "Codificador / decodificador Base32, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "Operação",
+    "encode": "Codificar",
+    "decode": "Decodificar",
+    "variant": "Alfabeto",
+    "representation": "Representação dos bytes",
+    "text": "Texto UTF-8",
+    "hex": "Bytes hexadecimais",
+    "representationHint": "Formato de entrada ao codificar e de saída ao decodificar. Hex aceita pares de dígitos e espaços ASCII, sem prefixos 0x.",
+    "padding": "Incluir preenchimento =",
+    "data": "Dados de entrada",
+    "hint": "Até {limit} unidades UTF-16. Os espaços do texto são preservados; Base32 e hex ignoram espaços ASCII.",
+    "convert": "Converter",
+    "byteCount": "Número de bytes: {count}",
+    "output": "Resultado",
+    "emptyResult": "Insira dados e converta-os para ver o resultado.",
+    "rules": "Apenas RFC 4648; não suporta Crockford Base32. A decodificação aceita minúsculas e preenchimento opcional, valida preenchimento e bits não utilizados e rejeita UTF-8 inválido no modo texto. A codificação é reversível e não criptografa os dados.",
+    "empty": "Insira dados para converter.",
+    "inputLimit": "Use no máximo {limit} unidades UTF-16.",
+    "invalidHex": "Insira pares hexadecimais completos (00–ff), sem prefixos e separados apenas por espaços ASCII.",
+    "invalidUnicode": "O texto contém um substituto UTF-16 isolado. Substitua o caractere inválido.",
+    "invalidCharacters": "A entrada contém caracteres fora do alfabeto Base32 selecionado.",
+    "invalidPadding": "Preenchimento = inválido. Deve estar no final e ter o comprimento exato da RFC 4648.",
+    "invalidLength": "Comprimento Base32 inválido. O número de símbolos de dados módulo 8 deve ser 0, 2, 4, 5 ou 7.",
+    "nonZeroBits": "Os bits finais não utilizados devem ser zero. Esta codificação Base32 não é canônica.",
+    "invalidUtf8": "Os bytes decodificados não são UTF-8 válido. Selecione bytes hexadecimais para examinar dados binários."
+  }
+}

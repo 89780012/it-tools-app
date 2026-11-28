@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "base32-encoder-decoder": {
+      "name": "Base32 编码解码器",
+      "description": "在本地使用 RFC 4648 Base32 或 Base32hex 编码解码 UTF-8 文本和十六进制字节。",
+      "meta": {
+        "title": "Base32 编码解码器",
+        "description": "在本地使用 RFC 4648 Base32 或 Base32hex 编码解码 UTF-8 文本和十六进制字节。",
+        "keywords": "Base32 编码解码器, Base32, Base32hex, RFC 4648, UTF-8, hex, TOTP"
+      }
+    }
+  },
+  "base32": {
+    "operation": "操作",
+    "encode": "编码",
+    "decode": "解码",
+    "variant": "字母表",
+    "representation": "字节表示方式",
+    "text": "UTF-8 文本",
+    "hex": "十六进制字节",
+    "representationHint": "编码时作为输入格式，解码时作为输出格式。十六进制接受成对数字和 ASCII 空白，不接受 0x 前缀。",
+    "padding": "包含 = 填充",
+    "data": "输入数据",
+    "hint": "最多 {limit} 个 UTF-16 代码单元。文本保留空白；Base32 和十六进制忽略 ASCII 空白。",
+    "convert": "转换",
+    "byteCount": "字节数：{count}",
+    "output": "转换结果",
+    "emptyResult": "输入数据并转换以查看结果。",
+    "rules": "仅支持 RFC 4648，不支持 Crockford Base32。解码接受小写和可选填充，校验填充和未使用位；文本模式拒绝无效 UTF-8。编码可逆，不提供加密。",
+    "empty": "请输入要转换的数据。",
+    "inputLimit": "最多输入 {limit} 个 UTF-16 代码单元。",
+    "invalidHex": "请输入完整的十六进制字节对（00–ff），不带前缀，分隔符仅限 ASCII 空白。",
+    "invalidUnicode": "文本包含未配对的 UTF-16 代理项，请替换无效字符。",
+    "invalidCharacters": "输入包含所选 Base32 字母表之外的字符。",
+    "invalidPadding": "= 填充无效。填充必须位于末尾，数量须符合 RFC 4648。",
+    "invalidLength": "Base32 长度无效。数据符号数除以 8 的余数必须为 0、2、4、5 或 7。",
+    "nonZeroBits": "末尾未使用的位必须为零，这不是规范的 Base32 编码。",
+    "invalidUtf8": "解码后的字节不是有效的 UTF-8。请选择十六进制字节查看二进制数据。"
+  }
+}
