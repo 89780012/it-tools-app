@@ -2,7 +2,7 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **80 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **81 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
 The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
 
@@ -21,6 +21,8 @@ The [JSON Merge Patch tool](docs/hourly-tool-2026-11-28-14.md) at `/tools/json-m
 The IPv6 Subnet Calculator at `/tools/ipv6-subnet-calculator` (Chinese: `/zh/tools/ipv6-subnet-calculator`) calculates network ranges and exact address counts for /0–/128 prefixes locally using BigInt. It accepts compressed IPv6 addresses and dotted IPv4 tails, normalizes the output to hexadecimal, and offers a copyable, downloadable summary. Address counts include reserved addresses and do not estimate usable hosts. See [the implementation and verification record](docs/hourly-tool-2026-11-28-15.md).
 
 The [TOTP Generator](docs/hourly-tool-2026-11-28-16.md) at `/tools/totp-generator` (Chinese: `/zh/tools/totp-generator`) generates RFC 6238 one-time codes locally from Base32 secrets. It supports SHA-1/256/512, 6 or 8 digits, periods of 1–300 seconds, live device time and fixed Unix timestamps. Copy or download only the generated code; secrets stay in page memory. The example uses the published RFC test secret.
+
+The [Unicode Normalizer](docs/hourly-tool-2026-11-28-17.md) at `/tools/unicode-normalizer` (Chinese: `/zh/tools/unicode-normalizer`) converts text to NFC, NFD, NFKC or NFKD locally. Compare code points, UTF-16 units and UTF-8 byte counts, inspect the first 64 code points, and copy or download the complete normalized text. Whitespace is preserved; compatibility forms can remove meaningful distinctions. Limits: 100,000 UTF-16 units in the input and 1,000,000 in the output.
 
 ## Requirements
 
@@ -79,7 +81,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 - 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503，i18n JSON 翻译菜单入口已暂时隐藏。
 - 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 984 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 996 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -91,7 +93,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 984 prerendered pages (80 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 996 prerendered pages (81 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 

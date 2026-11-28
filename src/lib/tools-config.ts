@@ -82,6 +82,7 @@ export const toolsConfig: ToolCategory[] = [
     ['xml-formatter', 'file-code'],
   ]),
   category('text', 'text', 'file-text', [
+    ['unicode-normalizer', 'type'],
     ['text-diff', 'git-compare'],
     ['text-batch-processor', 'file-text'],
     ['text-set-operations', 'git-compare'],

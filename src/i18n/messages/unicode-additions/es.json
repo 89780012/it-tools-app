@@ -1,0 +1,43 @@
+{
+  "tools": {
+    "unicode-normalizer": {
+      "name": "Normalizador Unicode",
+      "description": "Normaliza texto con NFC, NFD, NFKC o NFKD y compara puntos de código Unicode y cantidades de bytes.",
+      "meta": {
+        "title": "Normalizador Unicode",
+        "description": "Normaliza texto con NFC, NFD, NFKC o NFKD y compara puntos de código Unicode y cantidades de bytes.",
+        "keywords": "normalización Unicode, NFC, NFD, NFKC, NFKD, acentos combinados, ancho completo, puntos de código"
+      }
+    }
+  },
+  "unicodeNormalizer": {
+    "text": "Texto para normalizar",
+    "hint": "Hasta {limit} unidades UTF-16 de entrada y {outputLimit} de salida. Se conservan los espacios en blanco.",
+    "form": "Forma de normalización",
+    "NFC": "NFC: descomposición canónica seguida de composición. Ejemplo: e + acento agudo combinado → é.",
+    "NFD": "NFD: descomposición canónica. Ejemplo: é → e + acento agudo combinado.",
+    "NFKC": "NFKC: descomposición de compatibilidad seguida de composición. Ejemplo: Ａ ﬃ ① → A ffi 1.",
+    "NFKD": "NFKD: descomposición de compatibilidad. También separa los acentos compuestos.",
+    "compatibility": "NFKC y NFKD pueden eliminar diferencias significativas como el ancho, las ligaduras y los superíndices. Elige una forma adecuada para tus datos.",
+    "normalize": "Normalizar texto",
+    "changed": "El texto ha cambiado.",
+    "unchanged": "El texto ya está en la forma seleccionada.",
+    "output": "Texto normalizado",
+    "statistics": "Estadísticas del texto",
+    "metric": "Medida",
+    "before": "Antes",
+    "after": "Después",
+    "codePoints": "Puntos de código Unicode",
+    "codeUnits": "Unidades UTF-16",
+    "utf8Bytes": "Bytes UTF-8",
+    "countHint": "Los puntos de código no equivalen a caracteres visibles: las marcas combinadas y secuencias de emojis pueden contener varios.",
+    "previewHint": "Vista de puntos de código: primeros {limit} de cada lado. La copia y la descarga incluyen todo el texto normalizado.",
+    "emptyResult": "Introduce texto y normalízalo para ver el resultado.",
+    "rules": "Se ejecuta localmente con la versión Unicode del navegador. La normalización no cambia mayúsculas, elimina caracteres invisibles ni detecta caracteres parecidos. No sanea contenido peligroso.",
+    "empty": "Introduce el texto que quieras normalizar.",
+    "inputLimit": "Usa como máximo {limit} unidades UTF-16 en la entrada.",
+    "outputLimit": "La salida normalizada supera {outputLimit} unidades UTF-16. Reduce la entrada.",
+    "invalidUnicode": "Sustituto UTF-16 sin pareja en la posición {position} (desde 1). Reemplaza el carácter no válido.",
+    "invalidForm": "Elige NFC, NFD, NFKC o NFKD."
+  }
+}

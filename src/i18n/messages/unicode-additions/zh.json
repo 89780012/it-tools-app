@@ -1,0 +1,43 @@
+{
+  "tools": {
+    "unicode-normalizer": {
+      "name": "Unicode 规范化工具",
+      "description": "使用 NFC、NFD、NFKC 或 NFKD 规范化文本，对比 Unicode 码点与字节数。",
+      "meta": {
+        "title": "Unicode 规范化工具",
+        "description": "使用 NFC、NFD、NFKC 或 NFKD 规范化文本，对比 Unicode 码点与字节数。",
+        "keywords": "Unicode规范化,NFC,NFD,NFKC,NFKD,组合重音,全角半角,码点"
+      }
+    }
+  },
+  "unicodeNormalizer": {
+    "text": "待规范化文本",
+    "hint": "输入最多 {limit} 个 UTF-16 代码单元，输出最多 {outputLimit} 个。保留空白字符。",
+    "form": "规范化形式",
+    "NFC": "NFC：先进行规范分解，再组合。例如：e + 组合尖音符 → é。",
+    "NFD": "NFD：进行规范分解。例如：é → e + 组合尖音符。",
+    "NFKC": "NFKC：先进行兼容分解，再组合。例如：Ａ ﬃ ① → A ffi 1。",
+    "NFKD": "NFKD：进行兼容分解，也会拆分已组合的重音字符。",
+    "compatibility": "NFKC 和 NFKD 可能消除全角、连字、上标等有意义的区别，请根据数据用途选择。",
+    "normalize": "规范化文本",
+    "changed": "文本已发生变化。",
+    "unchanged": "文本已符合所选规范化形式。",
+    "output": "规范化结果",
+    "statistics": "文本统计",
+    "metric": "统计项",
+    "before": "处理前",
+    "after": "处理后",
+    "codePoints": "Unicode 码点数",
+    "codeUnits": "UTF-16 代码单元数",
+    "utf8Bytes": "UTF-8 字节数",
+    "countHint": "码点数不等于可见字符数：组合标记和表情序列可能包含多个码点。",
+    "previewHint": "码点预览：分别显示前 {limit} 个码点。复制和下载包含完整的规范化文本。",
+    "emptyResult": "输入文本并进行规范化，即可查看结果。",
+    "rules": "在本地运行，使用浏览器支持的 Unicode 版本。规范化不会改变大小写、删除不可见字符或检测形似字符，也不用于清理危险内容。",
+    "empty": "请输入待规范化文本。",
+    "inputLimit": "输入最多允许 {limit} 个 UTF-16 代码单元。",
+    "outputLimit": "规范化结果超过 {outputLimit} 个 UTF-16 代码单元，请缩短输入。",
+    "invalidUnicode": "第 {position} 个 UTF-16 代码单元存在未配对的代理项（从 1 开始计数），请替换无效字符。",
+    "invalidForm": "请选择 NFC、NFD、NFKC 或 NFKD。"
+  }
+}

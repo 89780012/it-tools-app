@@ -1,0 +1,43 @@
+{
+  "tools": {
+    "unicode-normalizer": {
+      "name": "Unicode 正規化ツール",
+      "description": "NFC・NFD・NFKC・NFKD でテキストを正規化し、Unicode コードポイント数とバイト数を比較します。",
+      "meta": {
+        "title": "Unicode 正規化ツール",
+        "description": "NFC・NFD・NFKC・NFKD でテキストを正規化し、Unicode コードポイント数とバイト数を比較します。",
+        "keywords": "Unicode正規化,NFC,NFD,NFKC,NFKD,結合文字,全角半角,コードポイント"
+      }
+    }
+  },
+  "unicodeNormalizer": {
+    "text": "正規化するテキスト",
+    "hint": "入力は UTF-16 コード単位で最大 {limit}、出力は最大 {outputLimit} です。空白は保持されます。",
+    "form": "正規化形式",
+    "NFC": "NFC：正準分解後に合成します。例：e + 結合アキュートアクセント → é。",
+    "NFD": "NFD：正準分解を行います。例：é → e + 結合アキュートアクセント。",
+    "NFKC": "NFKC：互換分解後に合成します。例：Ａ ﬃ ① → A ffi 1。",
+    "NFKD": "NFKD：互換分解を行います。合成済みのアクセント文字も分解します。",
+    "compatibility": "NFKC と NFKD は字幅、合字、上付き文字などの意味のある違いを失わせる場合があります。用途に合わせて選択してください。",
+    "normalize": "テキストを正規化",
+    "changed": "テキストが変更されました。",
+    "unchanged": "テキストは既に選択した形式です。",
+    "output": "正規化結果",
+    "statistics": "テキスト統計",
+    "metric": "項目",
+    "before": "処理前",
+    "after": "処理後",
+    "codePoints": "Unicode コードポイント数",
+    "codeUnits": "UTF-16 コード単位数",
+    "utf8Bytes": "UTF-8 バイト数",
+    "countHint": "コードポイント数は見た目の文字数とは異なります。結合文字や絵文字列は複数のコードポイントで構成される場合があります。",
+    "previewHint": "各テキストの先頭 {limit} コードポイントを表示します。コピーとダウンロードには正規化結果の全文が含まれます。",
+    "emptyResult": "テキストを入力して正規化すると、結果が表示されます。",
+    "rules": "ブラウザーの Unicode バージョンを使用してローカルで実行します。大文字と小文字の変換、不可視文字の削除、類似文字の検出や危険な内容の除去は行いません。",
+    "empty": "正規化するテキストを入力してください。",
+    "inputLimit": "入力は UTF-16 コード単位で {limit} 以下にしてください。",
+    "outputLimit": "正規化結果が UTF-16 コード単位で {outputLimit} を超えています。入力を短くしてください。",
+    "invalidUnicode": "UTF-16 コード単位の位置 {position}（1 起算）に対になっていないサロゲートがあります。無効な文字を置き換えてください。",
+    "invalidForm": "NFC、NFD、NFKC、NFKD のいずれかを選択してください。"
+  }
+}

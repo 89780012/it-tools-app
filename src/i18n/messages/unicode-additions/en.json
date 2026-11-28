@@ -1,0 +1,43 @@
+{
+  "tools": {
+    "unicode-normalizer": {
+      "name": "Unicode Normalizer",
+      "description": "Normalize text with NFC, NFD, NFKC or NFKD and compare Unicode code points and byte counts.",
+      "meta": {
+        "title": "Unicode Normalizer",
+        "description": "Normalize text with NFC, NFD, NFKC or NFKD and compare Unicode code points and byte counts.",
+        "keywords": "Unicode normalization, NFC, NFD, NFKC, NFKD, combining accents, fullwidth, code points"
+      }
+    }
+  },
+  "unicodeNormalizer": {
+    "text": "Text to normalize",
+    "hint": "Up to {limit} UTF-16 code units in the input and {outputLimit} in the output. Whitespace is preserved.",
+    "form": "Normalization form",
+    "NFC": "NFC: canonical decomposition followed by composition. Example: e + combining acute accent → é.",
+    "NFD": "NFD: canonical decomposition. Example: é → e + combining acute accent.",
+    "NFKC": "NFKC: compatibility decomposition followed by composition. Example: Ａ ﬃ ① → A ffi 1.",
+    "NFKD": "NFKD: compatibility decomposition. Also separates composed accents.",
+    "compatibility": "NFKC and NFKD can remove meaningful distinctions such as width, ligatures and superscripts. Choose a form that suits your data.",
+    "normalize": "Normalize text",
+    "changed": "The text changed.",
+    "unchanged": "The text is already in the selected form.",
+    "output": "Normalized text",
+    "statistics": "Text statistics",
+    "metric": "Measure",
+    "before": "Before",
+    "after": "After",
+    "codePoints": "Unicode code points",
+    "codeUnits": "UTF-16 code units",
+    "utf8Bytes": "UTF-8 bytes",
+    "countHint": "Code points are not visible character counts: combining marks and emoji sequences can contain several code points.",
+    "previewHint": "Code point preview: first {limit} code points on each side. Copy and download include the complete normalized text.",
+    "emptyResult": "Enter text and normalize it to see the result.",
+    "rules": "Runs locally using the browser’s Unicode version. Normalization does not change case, remove invisible characters or detect lookalikes. It is not a text sanitizer.",
+    "empty": "Enter text to normalize.",
+    "inputLimit": "Use at most {limit} UTF-16 code units in the input.",
+    "outputLimit": "The normalized output exceeds {outputLimit} UTF-16 code units. Use a smaller input.",
+    "invalidUnicode": "Unpaired UTF-16 surrogate at code unit position {position} (starting at 1). Replace the invalid character.",
+    "invalidForm": "Choose NFC, NFD, NFKC or NFKD."
+  }
+}
