@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "CSS-Schatten-Generator",
+      "description": "Gestalte mehrschichtige CSS-Schatten mit inneren Schatten, Farbe und Deckkraft, lokaler Vorschau, Kopieren und Download.",
+      "meta": {
+        "title": "CSS-Schatten-Generator",
+        "description": "Gestalte mehrschichtige CSS-Schatten mit inneren Schatten, Farbe und Deckkraft, lokaler Vorschau, Kopieren und Download.",
+        "keywords": "CSS-Schatten-Generator, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Ebene",
+    "layerNumber": "Ebene {number}",
+    "add": "Ebene hinzufügen",
+    "remove": "Ebene entfernen",
+    "x": "Horizontaler Versatz (px)",
+    "y": "Vertikaler Versatz (px)",
+    "blur": "Unschärferadius (px)",
+    "spread": "Ausbreitungsradius (px)",
+    "color": "Farbe (#RRGGBB)",
+    "opacity": "Deckkraft (%)",
+    "inset": "Innerer Schatten",
+    "generate": "CSS generieren",
+    "preview": "Schattenvorschau",
+    "sample": "Vorschaukarte",
+    "output": "CSS-Deklaration",
+    "emptyResult": "Konfiguriere die Ebenen und generiere CSS für die Schattenvorschau.",
+    "hint": "Verwende 1–8 Ebenen. Alle Zahlen müssen ganzzahlig sein; Farben bestehen aus sechs Hexadezimalziffern (#RRGGBB).",
+    "previewHint": "Die Vorschau nutzt das generierte CSS. Große Schatten werden am Vorschaubereich abgeschnitten; der Kartenstil wird nicht heruntergeladen.",
+    "rules": "Der erste Schatten liegt oben. Negative Ausbreitung verkleinert den Schatten. Erzeugt box-shadow für Boxen; nach Änderungen erneut generieren.",
+    "layerLimit": "Verwende 1 bis 8 Schattenebenen.",
+    "integer": "Ebene {number}: Gib eine ganze Zahl ohne Einheit, Dezimalstellen oder Exponenten ein.",
+    "offsetRange": "Ebene {number}: Versatz und Ausbreitung müssen zwischen −500 und 500 px liegen.",
+    "blurRange": "Ebene {number}: Der Unschärferadius muss zwischen 0 und 500 px liegen.",
+    "opacityRange": "Ebene {number}: Die Deckkraft muss zwischen 0 und 100% liegen.",
+    "invalidColor": "Ebene {number}: Gib eine Farbe als #RRGGBB ein, zum Beispiel #2563eb."
+  }
+}

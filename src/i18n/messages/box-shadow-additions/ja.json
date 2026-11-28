@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "CSS ボックスシャドウ生成",
+      "description": "内側の影、色、不透明度を設定して多層 CSS シャドウを作成。ローカルプレビュー、コピー、ダウンロードに対応。",
+      "meta": {
+        "title": "CSS ボックスシャドウ生成",
+        "description": "内側の影、色、不透明度を設定して多層 CSS シャドウを作成。ローカルプレビュー、コピー、ダウンロードに対応。",
+        "keywords": "CSS ボックスシャドウ生成, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "レイヤー",
+    "layerNumber": "レイヤー {number}",
+    "add": "レイヤーを追加",
+    "remove": "レイヤーを削除",
+    "x": "水平オフセット（px）",
+    "y": "垂直オフセット（px）",
+    "blur": "ぼかし半径（px）",
+    "spread": "広がり半径（px）",
+    "color": "色（#RRGGBB）",
+    "opacity": "不透明度（%）",
+    "inset": "内側の影",
+    "generate": "CSS を生成",
+    "preview": "影のプレビュー",
+    "sample": "プレビューカード",
+    "output": "CSS 宣言",
+    "emptyResult": "レイヤーを設定して CSS を生成すると、影をプレビューできます。",
+    "hint": "1〜8 レイヤーに対応。数値は整数、色は6桁の16進数（#RRGGBB）で指定してください。",
+    "previewHint": "生成した CSS でプレビューします。大きな影はプレビュー領域で切り取られます。カードのスタイルはダウンロードに含まれません。",
+    "rules": "最初の影が最前面に描画されます。広がりを負にすると影が縮小します。ボックス用の box-shadow を生成します。編集後は再生成してください。",
+    "layerLimit": "影は1〜8レイヤーにしてください。",
+    "integer": "レイヤー {number}：単位、小数、指数を含まない整数を入力してください。",
+    "offsetRange": "レイヤー {number}：オフセットと広がりは −500〜500 px にしてください。",
+    "blurRange": "レイヤー {number}：ぼかし半径は 0〜500 px にしてください。",
+    "opacityRange": "レイヤー {number}：不透明度は 0〜100% にしてください。",
+    "invalidColor": "レイヤー {number}：#2563eb のような #RRGGBB 形式の色を入力してください。"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "CSS 阴影生成器",
+      "description": "设计多层 CSS 盒阴影，支持内阴影、颜色和不透明度，本地预览、复制与下载。",
+      "meta": {
+        "title": "CSS 阴影生成器",
+        "description": "设计多层 CSS 盒阴影，支持内阴影、颜色和不透明度，本地预览、复制与下载。",
+        "keywords": "CSS 阴影生成器, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "阴影层",
+    "layerNumber": "第 {number} 层",
+    "add": "添加阴影层",
+    "remove": "删除阴影层",
+    "x": "水平偏移（px）",
+    "y": "垂直偏移（px）",
+    "blur": "模糊半径（px）",
+    "spread": "扩展半径（px）",
+    "color": "颜色（#RRGGBB）",
+    "opacity": "不透明度（%）",
+    "inset": "内阴影",
+    "generate": "生成 CSS",
+    "preview": "阴影预览",
+    "sample": "预览卡片",
+    "output": "CSS 声明",
+    "emptyResult": "配置各阴影层并生成 CSS，即可预览阴影。",
+    "hint": "支持 1–8 层。所有数值须为整数；颜色使用六位十六进制格式（#RRGGBB）。",
+    "previewHint": "预览使用已生成的 CSS；超大阴影会被预览区域裁切。下载不包含卡片样式。",
+    "rules": "第一层阴影绘制在最上方；负扩展值会收缩阴影。本工具为盒元素生成 box-shadow；编辑后请重新生成。",
+    "layerLimit": "请使用 1 至 8 层阴影。",
+    "integer": "第 {number} 层：请输入整数，不带单位、小数或指数。",
+    "offsetRange": "第 {number} 层：偏移和扩展须在 −500 至 500 px 之间。",
+    "blurRange": "第 {number} 层：模糊半径须在 0 至 500 px 之间。",
+    "opacityRange": "第 {number} 层：不透明度须在 0 至 100% 之间。",
+    "invalidColor": "第 {number} 层：请使用 #RRGGBB 颜色格式，例如 #2563eb。"
+  }
+}

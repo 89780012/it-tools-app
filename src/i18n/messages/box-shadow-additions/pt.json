@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "Gerador de sombras CSS",
+      "description": "Crie sombras CSS em camadas com sombra interna, cor e opacidade, prévia local, cópia e download.",
+      "meta": {
+        "title": "Gerador de sombras CSS",
+        "description": "Crie sombras CSS em camadas com sombra interna, cor e opacidade, prévia local, cópia e download.",
+        "keywords": "Gerador de sombras CSS, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Camada",
+    "layerNumber": "Camada {number}",
+    "add": "Adicionar camada",
+    "remove": "Remover camada",
+    "x": "Deslocamento horizontal (px)",
+    "y": "Deslocamento vertical (px)",
+    "blur": "Raio de desfoque (px)",
+    "spread": "Raio de expansão (px)",
+    "color": "Cor (#RRGGBB)",
+    "opacity": "Opacidade (%)",
+    "inset": "Sombra interna",
+    "generate": "Gerar CSS",
+    "preview": "Prévia da sombra",
+    "sample": "Cartão de prévia",
+    "output": "Declaração CSS",
+    "emptyResult": "Configure as camadas e gere CSS para visualizar a sombra.",
+    "hint": "Use de 1 a 8 camadas. Os valores devem ser inteiros; as cores usam seis dígitos hexadecimais (#RRGGBB).",
+    "previewHint": "A prévia usa o CSS gerado. Sombras grandes são cortadas na área de prévia; o estilo do cartão não é baixado.",
+    "rules": "A primeira sombra fica por cima. A expansão negativa reduz a sombra. Gera box-shadow para caixas; gere novamente após editar.",
+    "layerLimit": "Use entre 1 e 8 camadas de sombra.",
+    "integer": "Camada {number}: insira um inteiro sem unidades, decimais ou expoentes.",
+    "offsetRange": "Camada {number}: deslocamentos e expansão devem estar entre −500 e 500 px.",
+    "blurRange": "Camada {number}: o raio de desfoque deve estar entre 0 e 500 px.",
+    "opacityRange": "Camada {number}: a opacidade deve estar entre 0 e 100%.",
+    "invalidColor": "Camada {number}: insira uma cor #RRGGBB, por exemplo #2563eb."
+  }
+}

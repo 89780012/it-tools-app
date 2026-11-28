@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "CSS 박스 그림자 생성기",
+      "description": "내부 그림자, 색상과 불투명도를 설정하여 다중 CSS 그림자를 만들고 로컬 미리보기, 복사 및 다운로드를 사용하세요.",
+      "meta": {
+        "title": "CSS 박스 그림자 생성기",
+        "description": "내부 그림자, 색상과 불투명도를 설정하여 다중 CSS 그림자를 만들고 로컬 미리보기, 복사 및 다운로드를 사용하세요.",
+        "keywords": "CSS 박스 그림자 생성기, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "레이어",
+    "layerNumber": "레이어 {number}",
+    "add": "레이어 추가",
+    "remove": "레이어 삭제",
+    "x": "가로 오프셋 (px)",
+    "y": "세로 오프셋 (px)",
+    "blur": "흐림 반경 (px)",
+    "spread": "확산 반경 (px)",
+    "color": "색상 (#RRGGBB)",
+    "opacity": "불투명도 (%)",
+    "inset": "내부 그림자",
+    "generate": "CSS 생성",
+    "preview": "그림자 미리보기",
+    "sample": "미리보기 카드",
+    "output": "CSS 선언",
+    "emptyResult": "레이어를 설정하고 CSS를 생성하면 그림자를 미리 볼 수 있습니다.",
+    "hint": "1~8개 레이어를 사용하세요. 숫자는 정수, 색상은 6자리 16진수(#RRGGBB)여야 합니다.",
+    "previewHint": "생성된 CSS로 미리 봅니다. 큰 그림자는 미리보기 영역에서 잘리며 카드 스타일은 다운로드에 포함되지 않습니다.",
+    "rules": "첫 번째 그림자가 맨 위에 그려집니다. 음수 확산 값은 그림자를 줄입니다. 박스용 box-shadow를 생성하며 편집 후 다시 생성하세요.",
+    "layerLimit": "1~8개의 그림자 레이어를 사용하세요.",
+    "integer": "레이어 {number}: 단위, 소수 또는 지수 없이 정수를 입력하세요.",
+    "offsetRange": "레이어 {number}: 오프셋과 확산은 −500~500 px여야 합니다.",
+    "blurRange": "레이어 {number}: 흐림 반경은 0~500 px여야 합니다.",
+    "opacityRange": "레이어 {number}: 불투명도는 0~100%여야 합니다.",
+    "invalidColor": "레이어 {number}: #2563eb와 같은 #RRGGBB 색상을 입력하세요."
+  }
+}

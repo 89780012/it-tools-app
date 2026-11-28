@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "Générateur d’ombres CSS",
+      "description": "Créez des ombres CSS multicouches avec ombre intérieure, couleur et opacité, aperçu local, copie et téléchargement.",
+      "meta": {
+        "title": "Générateur d’ombres CSS",
+        "description": "Créez des ombres CSS multicouches avec ombre intérieure, couleur et opacité, aperçu local, copie et téléchargement.",
+        "keywords": "Générateur d’ombres CSS, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Calque",
+    "layerNumber": "Calque {number}",
+    "add": "Ajouter un calque",
+    "remove": "Supprimer le calque",
+    "x": "Décalage horizontal (px)",
+    "y": "Décalage vertical (px)",
+    "blur": "Rayon du flou (px)",
+    "spread": "Rayon d’étalement (px)",
+    "color": "Couleur (#RRGGBB)",
+    "opacity": "Opacité (%)",
+    "inset": "Ombre intérieure",
+    "generate": "Générer le CSS",
+    "preview": "Aperçu de l’ombre",
+    "sample": "Carte de prévisualisation",
+    "output": "Déclaration CSS",
+    "emptyResult": "Configurez les calques et générez le CSS pour prévisualiser l’ombre.",
+    "hint": "Utilisez 1 à 8 calques. Les valeurs doivent être entières ; les couleurs utilisent six chiffres hexadécimaux (#RRGGBB).",
+    "previewHint": "L’aperçu utilise le CSS généré. Les grandes ombres sont limitées à la zone d’aperçu ; le style de la carte n’est pas téléchargé.",
+    "rules": "La première ombre est au-dessus. Un étalement négatif réduit l’ombre. Génère box-shadow pour les boîtes ; régénérez après modification.",
+    "layerLimit": "Utilisez entre 1 et 8 calques d’ombre.",
+    "integer": "Calque {number} : saisissez un entier sans unité, décimale ni exposant.",
+    "offsetRange": "Calque {number} : les décalages et l’étalement doivent être compris entre −500 et 500 px.",
+    "blurRange": "Calque {number} : le rayon du flou doit être compris entre 0 et 500 px.",
+    "opacityRange": "Calque {number} : l’opacité doit être comprise entre 0 et 100%.",
+    "invalidColor": "Calque {number} : saisissez une couleur #RRGGBB, par exemple #2563eb."
+  }
+}

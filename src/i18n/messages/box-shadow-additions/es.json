@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "Generador de sombras CSS",
+      "description": "Diseña sombras CSS en capas con controles de sombra interior, color y opacidad, vista previa local, copia y descarga.",
+      "meta": {
+        "title": "Generador de sombras CSS",
+        "description": "Diseña sombras CSS en capas con controles de sombra interior, color y opacidad, vista previa local, copia y descarga.",
+        "keywords": "Generador de sombras CSS, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Capa",
+    "layerNumber": "Capa {number}",
+    "add": "Añadir capa",
+    "remove": "Eliminar capa",
+    "x": "Desplazamiento horizontal (px)",
+    "y": "Desplazamiento vertical (px)",
+    "blur": "Radio de desenfoque (px)",
+    "spread": "Radio de expansión (px)",
+    "color": "Color (#RRGGBB)",
+    "opacity": "Opacidad (%)",
+    "inset": "Sombra interior",
+    "generate": "Generar CSS",
+    "preview": "Vista previa de la sombra",
+    "sample": "Tarjeta de vista previa",
+    "output": "Declaración CSS",
+    "emptyResult": "Configura las capas y genera CSS para previsualizar la sombra.",
+    "hint": "Usa de 1 a 8 capas. Todos los valores numéricos deben ser enteros; los colores usan seis dígitos hexadecimales (#RRGGBB).",
+    "previewHint": "La vista previa usa el CSS generado. Las sombras grandes se recortan al área de vista previa; el estilo de la tarjeta no se descarga.",
+    "rules": "La primera sombra se pinta encima. Una expansión negativa reduce la sombra. Se genera box-shadow para cajas; vuelve a generar tras editar.",
+    "layerLimit": "Usa entre 1 y 8 capas de sombra.",
+    "integer": "Capa {number}: introduce un entero sin unidades, decimales ni exponentes.",
+    "offsetRange": "Capa {number}: los desplazamientos y la expansión deben estar entre −500 y 500 px.",
+    "blurRange": "Capa {number}: el desenfoque debe estar entre 0 y 500 px.",
+    "opacityRange": "Capa {number}: la opacidad debe estar entre 0 y 100%.",
+    "invalidColor": "Capa {number}: introduce un color #RRGGBB, por ejemplo #2563eb."
+  }
+}

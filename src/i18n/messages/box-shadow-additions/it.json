@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "Generatore di ombre CSS",
+      "description": "Crea ombre CSS su più livelli con ombre interne, colore e opacità, anteprima locale, copia e download.",
+      "meta": {
+        "title": "Generatore di ombre CSS",
+        "description": "Crea ombre CSS su più livelli con ombre interne, colore e opacità, anteprima locale, copia e download.",
+        "keywords": "Generatore di ombre CSS, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Livello",
+    "layerNumber": "Livello {number}",
+    "add": "Aggiungi livello",
+    "remove": "Rimuovi livello",
+    "x": "Spostamento orizzontale (px)",
+    "y": "Spostamento verticale (px)",
+    "blur": "Raggio di sfocatura (px)",
+    "spread": "Raggio di espansione (px)",
+    "color": "Colore (#RRGGBB)",
+    "opacity": "Opacità (%)",
+    "inset": "Ombra interna",
+    "generate": "Genera CSS",
+    "preview": "Anteprima dell’ombra",
+    "sample": "Scheda di anteprima",
+    "output": "Dichiarazione CSS",
+    "emptyResult": "Configura i livelli e genera CSS per visualizzare l’ombra.",
+    "hint": "Usa da 1 a 8 livelli. I valori devono essere interi; i colori usano sei cifre esadecimali (#RRGGBB).",
+    "previewHint": "L’anteprima usa il CSS generato. Le ombre grandi vengono ritagliate nell’area di anteprima; lo stile della scheda non viene scaricato.",
+    "rules": "La prima ombra è in cima. Un’espansione negativa riduce l’ombra. Genera box-shadow per i riquadri; rigenera dopo le modifiche.",
+    "layerLimit": "Usa da 1 a 8 livelli di ombra.",
+    "integer": "Livello {number}: inserisci un intero senza unità, decimali o esponenti.",
+    "offsetRange": "Livello {number}: spostamenti ed espansione devono essere tra −500 e 500 px.",
+    "blurRange": "Livello {number}: il raggio di sfocatura deve essere tra 0 e 500 px.",
+    "opacityRange": "Livello {number}: l’opacità deve essere tra 0 e 100%.",
+    "invalidColor": "Livello {number}: inserisci un colore #RRGGBB, ad esempio #2563eb."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "css-box-shadow-generator": {
+      "name": "CSS Box Shadow Generator",
+      "description": "Design layered CSS box shadows with inset, color and opacity controls, a local preview, copy and download.",
+      "meta": {
+        "title": "CSS Box Shadow Generator",
+        "description": "Design layered CSS box shadows with inset, color and opacity controls, a local preview, copy and download.",
+        "keywords": "CSS Box Shadow Generator, CSS, box-shadow, inset, rgba"
+      }
+    }
+  },
+  "boxShadow": {
+    "layer": "Layer",
+    "layerNumber": "Layer {number}",
+    "add": "Add layer",
+    "remove": "Remove layer",
+    "x": "Horizontal offset (px)",
+    "y": "Vertical offset (px)",
+    "blur": "Blur radius (px)",
+    "spread": "Spread radius (px)",
+    "color": "Color (#RRGGBB)",
+    "opacity": "Opacity (%)",
+    "inset": "Inset shadow",
+    "generate": "Generate CSS",
+    "preview": "Shadow preview",
+    "sample": "Preview card",
+    "output": "CSS declaration",
+    "emptyResult": "Configure the layers and generate CSS to preview the shadow.",
+    "hint": "Use 1–8 layers. All numeric values must be whole numbers; colors use six hexadecimal digits (#RRGGBB).",
+    "previewHint": "Preview uses the generated CSS. Large shadows are clipped to this preview area; card styling is not included in the download.",
+    "rules": "The first shadow is painted on top. Negative spread shrinks a shadow. This tool generates box-shadow for boxes; regenerate after editing.",
+    "layerLimit": "Use between 1 and 8 shadow layers.",
+    "integer": "Layer {number}: enter a whole number without units, decimals or exponent notation.",
+    "offsetRange": "Layer {number}: offsets and spread must be between −500 and 500 px.",
+    "blurRange": "Layer {number}: blur radius must be between 0 and 500 px.",
+    "opacityRange": "Layer {number}: opacity must be between 0 and 100%.",
+    "invalidColor": "Layer {number}: enter a color as #RRGGBB, for example #2563eb."
+  }
+}
