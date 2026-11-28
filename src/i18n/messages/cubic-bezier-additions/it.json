@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "Editor di curve Bézier CSS",
+      "description": "Crea curve di easing CSS, confronta le impostazioni, simula il tempo e copia o scarica il CSS per transizioni e animazioni.",
+      "meta": {
+        "title": "Editor di curve Bézier CSS",
+        "description": "Crea curve di easing CSS, confronta le impostazioni, simula il tempo e copia o scarica il CSS per transizioni e animazioni.",
+        "keywords": "Bézier cubica, easing CSS, transizione, animazione, funzione temporale"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Punto di controllo 1: X",
+    "y1": "Punto di controllo 1: Y",
+    "x2": "Punto di controllo 2: X",
+    "y2": "Punto di controllo 2: Y",
+    "presets": "Preimpostazioni",
+    "linear": "Lineare",
+    "ease": "Morbido",
+    "easeIn": "Ingresso morbido",
+    "easeOut": "Uscita morbida",
+    "easeInOut": "Ingresso e uscita morbidi",
+    "overshoot": "Superamento",
+    "generate": "Genera CSS",
+    "output": "Dichiarazioni CSS",
+    "time": "Tempo trascorso",
+    "graphLabel": "Curva di easing Bézier cubica",
+    "graphHint": "Orizzontale: tempo trascorso. Verticale: avanzamento. P1 e P2 sono punti di controllo; la diagonale tratteggiata è lineare. Muovi il cursore per seguire la curva.",
+    "hint": "X deve essere tra 0 e 1. Questo editor accetta Y da −5 a 5. Usa numeri decimali con un massimo di 4 cifre decimali.",
+    "rules": "La curva parte da (0, 0) e termina a (1, 1). Y fuori da 0–1 consente anticipazione o superamento. Il progresso si calcola risolvendo la coordinata temporale, senza trattare il parametro come tempo. Incolla una dichiarazione in una regola CSS e imposta separatamente proprietà e durata.",
+    "emptyResult": "Inserisci i punti o scegli una preimpostazione, poi genera CSS.",
+    "invalidX": "Inserisci X tra 0 e 1 con un massimo di 4 decimali.",
+    "invalidY": "Inserisci Y tra −5 e 5 con un massimo di 4 decimali.",
+    "sampleTime": "Tempo",
+    "sampleProgress": "avanzamento"
+  }
+}

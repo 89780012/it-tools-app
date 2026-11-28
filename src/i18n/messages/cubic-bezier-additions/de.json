@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "CSS-Bézierkurven-Editor",
+      "description": "CSS-Übergangskurven mit Kontrollpunkten gestalten, Vorgaben vergleichen, den Zeitverlauf simulieren und CSS kopieren oder herunterladen.",
+      "meta": {
+        "title": "CSS-Bézierkurven-Editor",
+        "description": "CSS-Übergangskurven mit Kontrollpunkten gestalten, Vorgaben vergleichen, den Zeitverlauf simulieren und CSS kopieren oder herunterladen.",
+        "keywords": "kubische Bézierkurve, CSS Easing, Übergang, Animation, Zeitfunktion"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Kontrollpunkt 1: X",
+    "y1": "Kontrollpunkt 1: Y",
+    "x2": "Kontrollpunkt 2: X",
+    "y2": "Kontrollpunkt 2: Y",
+    "presets": "Vorgaben",
+    "linear": "Linear",
+    "ease": "Sanft",
+    "easeIn": "Sanfter Start",
+    "easeOut": "Sanftes Ende",
+    "easeInOut": "Sanfter Start und Ende",
+    "overshoot": "Überschwingen",
+    "generate": "CSS erzeugen",
+    "output": "CSS-Deklarationen",
+    "time": "Verstrichene Zeit",
+    "graphLabel": "Kubische Bézierkurve für CSS",
+    "graphHint": "Horizontal: verstrichene Zeit. Vertikal: Fortschritt. P1 und P2 sind Kontrollpunkte; die gestrichelte Diagonale ist linear. Den Regler bewegen, um der Kurve zu folgen.",
+    "hint": "X muss zwischen 0 und 1 liegen. Dieser Editor akzeptiert Y von −5 bis 5. Dezimalzahlen mit bis zu 4 Nachkommastellen verwenden.",
+    "rules": "Die Kurve beginnt bei (0, 0) und endet bei (1, 1). Y außerhalb von 0–1 ermöglicht Ausholen oder Überschwingen. Der Fortschritt wird durch Auflösen der Zeitkoordinate berechnet; der Kurvenparameter ist nicht die Zeit. Eine Deklaration in eine CSS-Regel einfügen und Eigenschaft und Dauer separat festlegen.",
+    "emptyResult": "Kontrollpunkte eingeben oder eine Vorgabe wählen, dann CSS erzeugen.",
+    "invalidX": "X von 0 bis 1 mit bis zu 4 Nachkommastellen eingeben.",
+    "invalidY": "Y von −5 bis 5 mit bis zu 4 Nachkommastellen eingeben.",
+    "sampleTime": "Zeit",
+    "sampleProgress": "Fortschritt"
+  }
+}

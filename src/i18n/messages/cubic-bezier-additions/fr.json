@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "Éditeur de courbes de Bézier CSS",
+      "description": "Créez des courbes de progression CSS, comparez les préréglages, simulez le temps et copiez ou téléchargez le CSS des transitions et animations.",
+      "meta": {
+        "title": "Éditeur de courbes de Bézier CSS",
+        "description": "Créez des courbes de progression CSS, comparez les préréglages, simulez le temps et copiez ou téléchargez le CSS des transitions et animations.",
+        "keywords": "Bézier cubique, progression CSS, transition, animation, fonction temporelle"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Point de contrôle 1 : X",
+    "y1": "Point de contrôle 1 : Y",
+    "x2": "Point de contrôle 2 : X",
+    "y2": "Point de contrôle 2 : Y",
+    "presets": "Préréglages",
+    "linear": "Linéaire",
+    "ease": "Doux",
+    "easeIn": "Début doux",
+    "easeOut": "Fin douce",
+    "easeInOut": "Début et fin doux",
+    "overshoot": "Dépassement",
+    "generate": "Générer le CSS",
+    "output": "Déclarations CSS",
+    "time": "Temps écoulé",
+    "graphLabel": "Courbe de progression de Bézier cubique",
+    "graphHint": "Horizontal : temps écoulé. Vertical : progression. P1 et P2 sont les points de contrôle ; la diagonale en pointillés est linéaire. Déplacez le curseur pour suivre la courbe.",
+    "hint": "X doit être compris entre 0 et 1. Cet éditeur accepte Y de −5 à 5. Utilisez des nombres décimaux avec 4 décimales au maximum.",
+    "rules": "La courbe part de (0, 0) et arrive à (1, 1). Y hors de 0–1 permet une anticipation ou un dépassement. La progression est calculée en résolvant la coordonnée temporelle, sans assimiler le paramètre au temps. Collez une déclaration dans une règle CSS et définissez séparément la propriété et la durée.",
+    "emptyResult": "Saisissez les points ou choisissez un préréglage, puis générez le CSS.",
+    "invalidX": "Saisissez X entre 0 et 1 avec 4 décimales au maximum.",
+    "invalidY": "Saisissez Y entre −5 et 5 avec 4 décimales au maximum.",
+    "sampleTime": "Temps",
+    "sampleProgress": "progression"
+  }
+}

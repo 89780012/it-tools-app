@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "Editor de curvas Bézier CSS",
+      "description": "Diseña curvas de aceleración CSS, compara preajustes, simula el tiempo y copia o descarga CSS de transiciones y animaciones.",
+      "meta": {
+        "title": "Editor de curvas Bézier CSS",
+        "description": "Diseña curvas de aceleración CSS, compara preajustes, simula el tiempo y copia o descarga CSS de transiciones y animaciones.",
+        "keywords": "Bézier cúbica, aceleración CSS, transición, animación, función temporal"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Punto de control 1: X",
+    "y1": "Punto de control 1: Y",
+    "x2": "Punto de control 2: X",
+    "y2": "Punto de control 2: Y",
+    "presets": "Preajustes",
+    "linear": "Lineal",
+    "ease": "Suave",
+    "easeIn": "Entrada suave",
+    "easeOut": "Salida suave",
+    "easeInOut": "Entrada y salida suaves",
+    "overshoot": "Sobrepaso",
+    "generate": "Generar CSS",
+    "output": "Declaraciones CSS",
+    "time": "Tiempo transcurrido",
+    "graphLabel": "Curva de aceleración Bézier cúbica",
+    "graphHint": "Horizontal: tiempo transcurrido. Vertical: progreso. P1 y P2 son puntos de control; la diagonal discontinua es lineal. Mueve el deslizador para recorrer la curva.",
+    "hint": "X debe estar entre 0 y 1. Este editor acepta Y entre −5 y 5. Usa números decimales con un máximo de 4 decimales.",
+    "rules": "La curva empieza en (0, 0) y termina en (1, 1). Los valores Y fuera de 0–1 permiten anticipación o sobrepaso. El progreso se calcula resolviendo la coordenada temporal, sin confundir el parámetro con el tiempo. Pega una declaración dentro de una regla CSS y define por separado la propiedad y la duración.",
+    "emptyResult": "Introduce puntos de control o elige un preajuste y genera CSS.",
+    "invalidX": "Introduce X entre 0 y 1, con un máximo de 4 decimales.",
+    "invalidY": "Introduce Y entre −5 y 5, con un máximo de 4 decimales.",
+    "sampleTime": "Tiempo",
+    "sampleProgress": "progreso"
+  }
+}

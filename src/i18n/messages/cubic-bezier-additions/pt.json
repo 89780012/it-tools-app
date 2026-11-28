@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "Editor de curvas Bézier CSS",
+      "description": "Crie curvas de aceleração CSS, compare predefinições, simule o tempo e copie ou baixe CSS de transições e animações.",
+      "meta": {
+        "title": "Editor de curvas Bézier CSS",
+        "description": "Crie curvas de aceleração CSS, compare predefinições, simule o tempo e copie ou baixe CSS de transições e animações.",
+        "keywords": "Bézier cúbica, aceleração CSS, transição, animação, função temporal"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Ponto de controle 1: X",
+    "y1": "Ponto de controle 1: Y",
+    "x2": "Ponto de controle 2: X",
+    "y2": "Ponto de controle 2: Y",
+    "presets": "Predefinições",
+    "linear": "Linear",
+    "ease": "Suave",
+    "easeIn": "Entrada suave",
+    "easeOut": "Saída suave",
+    "easeInOut": "Entrada e saída suaves",
+    "overshoot": "Ultrapassagem",
+    "generate": "Gerar CSS",
+    "output": "Declarações CSS",
+    "time": "Tempo decorrido",
+    "graphLabel": "Curva de aceleração Bézier cúbica",
+    "graphHint": "Horizontal: tempo decorrido. Vertical: progresso. P1 e P2 são pontos de controle; a diagonal tracejada é linear. Mova o controle para seguir a curva.",
+    "hint": "X deve estar entre 0 e 1. Este editor aceita Y de −5 a 5. Use números decimais com até 4 casas decimais.",
+    "rules": "A curva começa em (0, 0) e termina em (1, 1). Y fora de 0–1 permite antecipação ou ultrapassagem. O progresso é calculado resolvendo a coordenada temporal, sem tratar o parâmetro como tempo. Cole uma declaração em uma regra CSS e defina separadamente a propriedade e a duração.",
+    "emptyResult": "Insira os pontos ou escolha uma predefinição e gere o CSS.",
+    "invalidX": "Insira X de 0 a 1 com até 4 casas decimais.",
+    "invalidY": "Insira Y de −5 a 5 com até 4 casas decimais.",
+    "sampleTime": "Tempo",
+    "sampleProgress": "progresso"
+  }
+}

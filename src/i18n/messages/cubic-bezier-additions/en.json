@@ -1,0 +1,38 @@
+{
+  "tools": {
+    "css-cubic-bezier": {
+      "name": "CSS Cubic Bézier Editor",
+      "description": "Design CSS easing curves with control points, compare presets, simulate elapsed time, and copy or download transition and animation CSS.",
+      "meta": {
+        "title": "CSS Cubic Bézier Editor",
+        "description": "Design CSS easing curves with control points, compare presets, simulate elapsed time, and copy or download transition and animation CSS.",
+        "keywords": "cubic bezier, CSS easing, transition, animation, timing function, overshoot"
+      }
+    }
+  },
+  "cubicBezier": {
+    "x1": "Control point 1: X",
+    "y1": "Control point 1: Y",
+    "x2": "Control point 2: X",
+    "y2": "Control point 2: Y",
+    "presets": "Presets",
+    "linear": "Linear",
+    "ease": "Ease",
+    "easeIn": "Ease in",
+    "easeOut": "Ease out",
+    "easeInOut": "Ease in out",
+    "overshoot": "Overshoot",
+    "generate": "Generate CSS",
+    "output": "CSS declarations",
+    "time": "Elapsed time",
+    "graphLabel": "Cubic Bézier easing curve",
+    "graphHint": "Horizontal: elapsed time. Vertical: output progress. P1 and P2 are control points; the dashed diagonal is linear easing. Move the slider to follow the curve.",
+    "hint": "X coordinates must be between 0 and 1. This editor accepts Y coordinates from −5 to 5. Use plain decimals with up to 4 decimal places.",
+    "rules": "The curve starts at (0, 0) and ends at (1, 1). Y values outside 0–1 allow anticipation or overshoot. Progress is evaluated by solving the time coordinate, not by treating the curve parameter as time. Paste either declaration inside a CSS rule; choose which property to animate and its duration separately.",
+    "emptyResult": "Enter control points or choose a preset, then generate CSS.",
+    "invalidX": "Enter an X coordinate from 0 to 1 with up to 4 decimal places.",
+    "invalidY": "Enter a Y coordinate from −5 to 5 with up to 4 decimal places.",
+    "sampleTime": "Time",
+    "sampleProgress": "progress"
+  }
+}
