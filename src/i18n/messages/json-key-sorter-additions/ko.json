@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "JSON 키 정렬기",
+      "description": "배열 순서와 정확한 숫자를 유지하면서 JSON 객체 키를 재귀적으로 정렬합니다.",
+      "meta": {
+        "title": "JSON 키 정렬기",
+        "description": "배열 순서와 정확한 숫자를 유지하면서 JSON 객체 키를 재귀적으로 정렬합니다.",
+        "keywords": "JSON 키 정렬기, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "정렬 순서",
+    "asc": "오름차순",
+    "desc": "내림차순",
+    "indent": "출력 형식",
+    "two": "공백 2칸",
+    "four": "공백 4칸",
+    "compact": "압축",
+    "data": "입력 JSON",
+    "hint": "최대 {limit} UTF-16 단위, 중첩 최대 {depth}단계.",
+    "sort": "키 정렬",
+    "summary": "객체: {objects} · 키: {keys}",
+    "output": "정렬된 JSON",
+    "emptyResult": "JSON을 입력하고 키를 정렬하면 결과가 표시됩니다.",
+    "rules": "배열 내부를 포함한 모든 객체를 대소문자를 구분하는 UTF-16 단위로 정렬합니다. 숫자 키는 텍스트로 정렬합니다(10이 2보다 먼저). 배열 순서와 숫자 표기를 유지합니다. 중복 키는 거부됩니다. RFC 8785 정규화가 아닙니다.",
+    "empty": "정렬할 JSON을 입력하세요.",
+    "invalidJson": "잘못된 JSON입니다. 따옴표, 쉼표와 괄호를 확인하세요.",
+    "duplicateKey": "동등한 이스케이프를 포함하여 중복 객체 키는 허용되지 않습니다.",
+    "inputLimit": "입력은 최대 {limit} UTF-16 단위까지 가능합니다.",
+    "depthLimit": "중첩은 최대 {depth}단계까지 가능합니다.",
+    "outputLimit": "결과가 {output} UTF-16 단위를 초과합니다. 압축 출력을 사용해 보세요."
+  }
+}

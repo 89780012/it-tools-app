@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "JSON 键排序器",
+      "description": "递归排序 JSON 对象的键，保留数组顺序和数字精度。",
+      "meta": {
+        "title": "JSON 键排序器",
+        "description": "递归排序 JSON 对象的键，保留数组顺序和数字精度。",
+        "keywords": "JSON 键排序器, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "排序方向",
+    "asc": "升序",
+    "desc": "降序",
+    "indent": "输出格式",
+    "two": "2 个空格",
+    "four": "4 个空格",
+    "compact": "紧凑",
+    "data": "输入 JSON",
+    "hint": "最多 {limit} 个 UTF-16 单元，嵌套最多 {depth} 层。",
+    "sort": "排序键",
+    "summary": "对象：{objects} · 键：{keys}",
+    "output": "排序后的 JSON",
+    "emptyResult": "输入 JSON 并排序以查看结果。",
+    "rules": "对所有对象（含数组中的对象）按区分大小写的 UTF-16 单元排序。数字键按文本排序（10 在 2 之前）。保留数组顺序和数字原始写法。拒绝重复键。本工具不执行 RFC 8785 规范化。",
+    "empty": "请输入要排序的 JSON。",
+    "invalidJson": "JSON 无效，请检查引号、逗号和括号。",
+    "duplicateKey": "不允许重复的对象键，包括转义后相同的键。",
+    "inputLimit": "输入最多 {limit} 个 UTF-16 单元。",
+    "depthLimit": "嵌套最多 {depth} 层。",
+    "outputLimit": "格式化结果超过 {output} 个 UTF-16 单元，请尝试紧凑输出。"
+  }
+}

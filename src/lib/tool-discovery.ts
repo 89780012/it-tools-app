@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'json-key-sorter': 'JSON sort keys recursive alphabetical lexicographic ascending descending 排序 键排序 递归 字典序 配置',
   'css-box-shadow-generator': 'CSS box-shadow shadow inset layered blur spread opacity 阴影 盒阴影 内阴影 模糊 扩展',
   'css-cubic-bezier': 'cubic bezier easing curve transition animation timing function ease in out overshoot CSS 贝塞尔 缓动曲线 动画 过渡',
   'json-patch': 'RFC 6902 JSON Patch add remove replace move copy test operation array 补丁 操作数组 配置修改',
@@ -56,6 +57,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['json-key-sorter', 'json-formatter', 'json-diff', 'json-pointer', 'json-patch'],
   ['json-patch', 'json-merge-patch', 'json-pointer', 'json-diff', 'json-formatter'],
   ['css-box-shadow-generator', 'css-cubic-bezier', 'css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],
   ['json-pointer', 'jsonpath-query', 'json-schema-validator', 'json-merge-patch', 'json-formatter'],

@@ -55,6 +55,7 @@ export const toolsConfig: ToolCategory[] = [
     ['stream-debugger', 'terminal'],
   ]),
   category('json-tools', 'json_tools', 'file-json', [
+    ['json-key-sorter', 'file-json'],
     ['json-formatter', 'code'],
     ['json-visualizer', 'eye'],
     ['json-generator', 'database'],

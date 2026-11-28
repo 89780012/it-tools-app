@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "JSON キーソーター",
+      "description": "配列の順序と数値の精度を保ちながら、JSON オブジェクトのキーを再帰的に並べ替えます。",
+      "meta": {
+        "title": "JSON キーソーター",
+        "description": "配列の順序と数値の精度を保ちながら、JSON オブジェクトのキーを再帰的に並べ替えます。",
+        "keywords": "JSON キーソーター, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "並べ替え順",
+    "asc": "昇順",
+    "desc": "降順",
+    "indent": "出力形式",
+    "two": "2 スペース",
+    "four": "4 スペース",
+    "compact": "コンパクト",
+    "data": "入力 JSON",
+    "hint": "最大 {limit} UTF-16 単位、入れ子は最大 {depth} 階層。",
+    "sort": "キーを並べ替え",
+    "summary": "オブジェクト：{objects} · キー：{keys}",
+    "output": "並べ替えた JSON",
+    "emptyResult": "JSON を入力してキーを並べ替えると結果が表示されます。",
+    "rules": "配列内を含むすべてのオブジェクトを、大文字と小文字を区別した UTF-16 単位で並べ替えます。数値キーは文字列として並べ替えます（10 は 2 より前）。配列の順序と数値の表記を保持します。重複キーは拒否します。RFC 8785 の正規化ではありません。",
+    "empty": "並べ替える JSON を入力してください。",
+    "invalidJson": "無効な JSON です。引用符、カンマ、括弧を確認してください。",
+    "duplicateKey": "同等のエスケープを含め、重複するオブジェクトキーは使用できません。",
+    "inputLimit": "入力は {limit} UTF-16 単位以内にしてください。",
+    "depthLimit": "入れ子は {depth} 階層以内にしてください。",
+    "outputLimit": "結果が {output} UTF-16 単位を超えています。コンパクト出力をお試しください。"
+  }
+}

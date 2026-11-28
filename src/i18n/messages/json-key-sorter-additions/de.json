@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "JSON-Schlüsselsortierer",
+      "description": "JSON-Objektschlüssel rekursiv sortieren und dabei Array-Reihenfolge und exakte Zahlen beibehalten.",
+      "meta": {
+        "title": "JSON-Schlüsselsortierer",
+        "description": "JSON-Objektschlüssel rekursiv sortieren und dabei Array-Reihenfolge und exakte Zahlen beibehalten.",
+        "keywords": "JSON-Schlüsselsortierer, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "Sortierrichtung",
+    "asc": "Aufsteigend",
+    "desc": "Absteigend",
+    "indent": "Ausgabeformat",
+    "two": "2 Leerzeichen",
+    "four": "4 Leerzeichen",
+    "compact": "Kompakt",
+    "data": "JSON-Eingabe",
+    "hint": "Bis zu {limit} UTF-16-Einheiten und {depth} Verschachtelungsebenen.",
+    "sort": "Schlüssel sortieren",
+    "summary": "Objekte: {objects} · Schlüssel: {keys}",
+    "output": "Sortiertes JSON",
+    "emptyResult": "JSON eingeben und die Schlüssel sortieren, um das Ergebnis zu sehen.",
+    "rules": "Alle Objekte, auch in Arrays, werden nach UTF-16-Einheiten unter Beachtung der Groß-/Kleinschreibung sortiert. Numerische Schlüssel werden als Text sortiert (10 vor 2). Array-Reihenfolge und Zahlenschreibweise bleiben erhalten. Doppelte Schlüssel werden abgelehnt. Keine RFC-8785-Kanonisierung.",
+    "empty": "JSON zum Sortieren eingeben.",
+    "invalidJson": "Ungültiges JSON. Anführungszeichen, Kommas und Klammern prüfen.",
+    "duplicateKey": "Doppelte Objektschlüssel, auch mit gleichwertigen Escape-Sequenzen, sind nicht erlaubt.",
+    "inputLimit": "Höchstens {limit} UTF-16-Einheiten eingeben.",
+    "depthLimit": "Höchstens {depth} Verschachtelungsebenen verwenden.",
+    "outputLimit": "Die formatierte Ausgabe überschreitet {output} UTF-16-Einheiten. Kompakte Ausgabe versuchen."
+  }
+}

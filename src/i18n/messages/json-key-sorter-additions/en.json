@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "JSON Key Sorter",
+      "description": "Recursively sort JSON object keys while preserving array order and exact numbers.",
+      "meta": {
+        "title": "JSON Key Sorter",
+        "description": "Recursively sort JSON object keys while preserving array order and exact numbers.",
+        "keywords": "JSON Key Sorter, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "Sort order",
+    "asc": "Ascending",
+    "desc": "Descending",
+    "indent": "Output format",
+    "two": "2 spaces",
+    "four": "4 spaces",
+    "compact": "Compact",
+    "data": "Input JSON",
+    "hint": "Up to {limit} UTF-16 units and {depth} nesting levels.",
+    "sort": "Sort keys",
+    "summary": "Objects: {objects} · Keys: {keys}",
+    "output": "Sorted JSON",
+    "emptyResult": "Enter JSON and sort its keys to see the result.",
+    "rules": "All objects, including those in arrays, are sorted by case-sensitive UTF-16 code units. Numeric keys sort as text (10 before 2). Array order and number spelling are preserved. Duplicate keys are rejected. This is not RFC 8785 canonicalization.",
+    "empty": "Enter JSON to sort.",
+    "invalidJson": "Invalid JSON. Check quotes, commas and brackets.",
+    "duplicateKey": "Duplicate object keys are not allowed, including keys with equivalent escapes.",
+    "inputLimit": "Use at most {limit} UTF-16 input units.",
+    "depthLimit": "Use at most {depth} nesting levels.",
+    "outputLimit": "The formatted result exceeds {output} UTF-16 units. Try compact output."
+  }
+}

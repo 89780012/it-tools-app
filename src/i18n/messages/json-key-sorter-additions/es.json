@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "Ordenador de claves JSON",
+      "description": "Ordena recursivamente las claves de objetos JSON conservando el orden de los arrays y los números exactos.",
+      "meta": {
+        "title": "Ordenador de claves JSON",
+        "description": "Ordena recursivamente las claves de objetos JSON conservando el orden de los arrays y los números exactos.",
+        "keywords": "Ordenador de claves JSON, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "Orden",
+    "asc": "Ascendente",
+    "desc": "Descendente",
+    "indent": "Formato de salida",
+    "two": "2 espacios",
+    "four": "4 espacios",
+    "compact": "Compacto",
+    "data": "JSON de entrada",
+    "hint": "Hasta {limit} unidades UTF-16 y {depth} niveles de anidación.",
+    "sort": "Ordenar claves",
+    "summary": "Objetos: {objects} · Claves: {keys}",
+    "output": "JSON ordenado",
+    "emptyResult": "Introduce JSON y ordena sus claves para ver el resultado.",
+    "rules": "Todos los objetos, incluidos los de arrays, se ordenan por unidades UTF-16 distinguiendo mayúsculas. Las claves numéricas se ordenan como texto (10 antes de 2). Se conservan el orden de los arrays y la escritura de los números. Se rechazan claves duplicadas. No es canonicalización RFC 8785.",
+    "empty": "Introduce JSON para ordenar.",
+    "invalidJson": "JSON no válido. Revisa comillas, comas y corchetes.",
+    "duplicateKey": "No se permiten claves duplicadas, incluidas las que tienen escapes equivalentes.",
+    "inputLimit": "Usa como máximo {limit} unidades UTF-16 de entrada.",
+    "depthLimit": "Usa como máximo {depth} niveles de anidación.",
+    "outputLimit": "El resultado supera {output} unidades UTF-16. Prueba la salida compacta."
+  }
+}

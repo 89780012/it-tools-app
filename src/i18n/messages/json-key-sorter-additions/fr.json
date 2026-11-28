@@ -1,0 +1,35 @@
+{
+  "tools": {
+    "json-key-sorter": {
+      "name": "Trieur de clés JSON",
+      "description": "Trie récursivement les clés des objets JSON en conservant l’ordre des tableaux et les nombres exacts.",
+      "meta": {
+        "title": "Trieur de clés JSON",
+        "description": "Trie récursivement les clés des objets JSON en conservant l’ordre des tableaux et les nombres exacts.",
+        "keywords": "Trieur de clés JSON, JSON, UTF-16, recursive, sort keys"
+      }
+    }
+  },
+  "jsonKeySorter": {
+    "order": "Ordre de tri",
+    "asc": "Croissant",
+    "desc": "Décroissant",
+    "indent": "Format de sortie",
+    "two": "2 espaces",
+    "four": "4 espaces",
+    "compact": "Compact",
+    "data": "JSON en entrée",
+    "hint": "Jusqu’à {limit} unités UTF-16 et {depth} niveaux d’imbrication.",
+    "sort": "Trier les clés",
+    "summary": "Objets : {objects} · Clés : {keys}",
+    "output": "JSON trié",
+    "emptyResult": "Saisissez du JSON et triez ses clés pour voir le résultat.",
+    "rules": "Tous les objets, y compris dans les tableaux, sont triés par unités UTF-16 en respectant la casse. Les clés numériques sont triées comme du texte (10 avant 2). L’ordre des tableaux et l’écriture des nombres sont conservés. Les clés en double sont refusées. Ce n’est pas une canonicalisation RFC 8785.",
+    "empty": "Saisissez du JSON à trier.",
+    "invalidJson": "JSON invalide. Vérifiez les guillemets, virgules et crochets.",
+    "duplicateKey": "Les clés en double sont interdites, même avec des échappements équivalents.",
+    "inputLimit": "Utilisez au maximum {limit} unités UTF-16 en entrée.",
+    "depthLimit": "Utilisez au maximum {depth} niveaux d’imbrication.",
+    "outputLimit": "Le résultat dépasse {output} unités UTF-16. Essayez le format compact."
+  }
+}
