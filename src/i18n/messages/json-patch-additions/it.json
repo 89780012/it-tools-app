@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "json-patch": {
+      "name": "Applicatore JSON Patch",
+      "description": "Applica localmente JSON Patch RFC 6902: aggiungi, elimina, sostituisci, sposta, copia e verifica valori JSON senza perdere precisione numerica.",
+      "meta": {
+        "title": "Applicatore JSON Patch",
+        "description": "Applica localmente JSON Patch RFC 6902: aggiungi, elimina, sostituisci, sposta, copia e verifica valori JSON senza perdere precisione numerica.",
+        "keywords": "JSON Patch, RFC 6902, applica patch, operazioni JSON, JSON Pointer"
+      }
+    }
+  },
+  "jsonPatch": {
+    "target": "JSON di destinazione",
+    "patch": "Operazioni patch (array JSON)",
+    "output": "JSON risultante",
+    "apply": "Applica patch",
+    "operation": "Operazione {number}",
+    "emptyResult": "Inserisci il JSON e l’array patch oppure carica l’esempio.",
+    "hint": "Per ogni input: 500.000 unità UTF-16; 64 livelli; fino a 200 operazioni. Percorsi: 4.096 unità. Budget risultato: 2.000.000 di unità e limite complessivo di elaborazione.",
+    "rules": "Le operazioni seguono l’ordine indicato. I percorsi usano /, ~1 per la barra e ~0 per la tilde; il percorso vuoto indica la radice. add inserisce negli array, /- accoda. Un errore interrompe la patch senza risultato parziale.",
+    "rootRule": "add / replace / test richiedono value, anche null. move / copy richiedono from. Il genitore deve esistere; remove / replace richiedono un valore esistente. Dopo aver rimosso la radice, aggiungila con add. I frammenti URI non sono accettati.",
+    "empty": "Inserisci JSON in questo campo.",
+    "invalidJson": "Sintassi JSON non valida.",
+    "duplicateKey": "Le chiavi duplicate non sono ammesse.",
+    "inputLimit": "L’input supera 500.000 unità UTF-16.",
+    "depthLimit": "L’annidamento JSON supera 64 livelli.",
+    "invalidPatch": "La patch deve essere un array JSON di oggetti operazione.",
+    "operationLimit": "La patch supera 200 operazioni.",
+    "invalidOperation": "Usa add, remove, replace, move, copy o test con i membri necessari.",
+    "invalidPointer": "Usa un percorso vuoto o JSON Pointer separato da /, escape ~0/~1 validi e massimo 4.096 unità.",
+    "missingPath": "Il valore indicato o il suo genitore non esiste.",
+    "invalidIndex": "Indice non valido: usa 0 o un intero positivo senza zeri iniziali; - solo come destinazione di add.",
+    "moveChild": "Non puoi spostare un valore in un suo discendente.",
+    "testFailed": "Il valore del test non corrisponde; patch interrotta.",
+    "noDocument": "La rimozione della radice non lascia un documento JSON. Aggiungi una radice con un percorso vuoto.",
+    "outputLimit": "Il risultato supera il budget di formattazione di 2.000.000 di unità.",
+    "workLimit": "Limite complessivo di elaborazione raggiunto. Riduci operazioni o valori."
+  }
+}

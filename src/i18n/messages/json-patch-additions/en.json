@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "json-patch": {
+      "name": "JSON Patch Applier",
+      "description": "Apply RFC 6902 JSON Patch operations locally. Add, remove, replace, move, copy and test JSON values without losing number precision.",
+      "meta": {
+        "title": "JSON Patch Applier",
+        "description": "Apply RFC 6902 JSON Patch operations locally. Add, remove, replace, move, copy and test JSON values without losing number precision.",
+        "keywords": "JSON Patch, RFC 6902, apply patch, JSON operations, JSON Pointer"
+      }
+    }
+  },
+  "jsonPatch": {
+    "target": "Target JSON",
+    "patch": "Patch operations (JSON array)",
+    "output": "Patched JSON",
+    "apply": "Apply patch",
+    "operation": "Operation {number}",
+    "emptyResult": "Enter target JSON and a patch array, or load the example.",
+    "hint": "Each input: 500,000 UTF-16 units; nesting: 64 levels; up to 200 operations. Paths: up to 4,096 units. Result budget: 2,000,000 units, plus a total processing limit.",
+    "rules": "Operations run in order. Paths use / with ~1 for slash and ~0 for tilde; empty paths select the root. Array add inserts, and /- appends. A failed operation stops the patch; no partial result is shown.",
+    "rootRule": "add / replace / test require value, including null. move / copy require from. Parents must exist; remove / replace require an existing value. Root removal must be followed by root add to produce JSON. URI fragments are not accepted.",
+    "empty": "Enter JSON in this field.",
+    "invalidJson": "Invalid JSON syntax.",
+    "duplicateKey": "Duplicate object keys are not allowed.",
+    "inputLimit": "Input exceeds 500,000 UTF-16 units.",
+    "depthLimit": "JSON nesting exceeds 64 levels.",
+    "invalidPatch": "The patch must be a JSON array of operation objects.",
+    "operationLimit": "The patch exceeds 200 operations.",
+    "invalidOperation": "Use add, remove, replace, move, copy or test with the required members.",
+    "invalidPointer": "Use an empty path or /-separated JSON Pointer, valid ~0/~1 escapes, and at most 4,096 units.",
+    "missingPath": "The referenced value or its parent does not exist.",
+    "invalidIndex": "Invalid array index: use 0 or a positive integer without leading zeros; - is only for add destinations.",
+    "moveChild": "A value cannot be moved into one of its own descendants.",
+    "testFailed": "The test value does not match; the patch was stopped.",
+    "noDocument": "Root removal left no JSON document. Add a new root with an empty path.",
+    "outputLimit": "The result exceeds the 2,000,000-unit formatting budget.",
+    "workLimit": "Total processing limit reached. Use fewer operations or smaller values."
+  }
+}

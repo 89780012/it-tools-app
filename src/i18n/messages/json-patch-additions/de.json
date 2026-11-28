@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "json-patch": {
+      "name": "JSON-Patch anwenden",
+      "description": "RFC-6902-JSON-Patches lokal anwenden: JSON-Werte hinzufügen, entfernen, ersetzen, verschieben, kopieren und prüfen, ohne Zahlenpräzision zu verlieren.",
+      "meta": {
+        "title": "JSON-Patch anwenden",
+        "description": "RFC-6902-JSON-Patches lokal anwenden: JSON-Werte hinzufügen, entfernen, ersetzen, verschieben, kopieren und prüfen, ohne Zahlenpräzision zu verlieren.",
+        "keywords": "JSON Patch, RFC 6902, JSON-Patch anwenden, Operationen, JSON Pointer"
+      }
+    }
+  },
+  "jsonPatch": {
+    "target": "Ziel-JSON",
+    "patch": "Patch-Operationen (JSON-Array)",
+    "output": "Ergebnis-JSON",
+    "apply": "Patch anwenden",
+    "operation": "Operation {number}",
+    "emptyResult": "Ziel-JSON und Patch-Array eingeben oder Beispiel laden.",
+    "hint": "Je Eingabe: 500.000 UTF-16-Einheiten; 64 Ebenen; bis zu 200 Operationen. Pfade: 4.096 Einheiten. Ergebnisbudget: 2.000.000 Einheiten sowie eine Gesamtverarbeitungsgrenze.",
+    "rules": "Operationen laufen der Reihe nach. Pfade verwenden /, ~1 für Schrägstrich und ~0 für Tilde; ein leerer Pfad wählt die Wurzel. add fügt in Arrays ein, /- hängt an. Bei Fehlern stoppt der Patch ohne Teilergebnis.",
+    "rootRule": "add / replace / test benötigen value, auch null. move / copy benötigen from. Eltern müssen existieren; remove / replace benötigen vorhandene Werte. Nach dem Entfernen der Wurzel muss add eine neue Wurzel setzen. Keine URI-Fragmente.",
+    "empty": "JSON in dieses Feld eingeben.",
+    "invalidJson": "Ungültige JSON-Syntax.",
+    "duplicateKey": "Doppelte Objektschlüssel sind nicht erlaubt.",
+    "inputLimit": "Eingabe überschreitet 500.000 UTF-16-Einheiten.",
+    "depthLimit": "JSON-Verschachtelung überschreitet 64 Ebenen.",
+    "invalidPatch": "Der Patch muss ein JSON-Array mit Operationsobjekten sein.",
+    "operationLimit": "Der Patch überschreitet 200 Operationen.",
+    "invalidOperation": "add, remove, replace, move, copy oder test mit den erforderlichen Feldern verwenden.",
+    "invalidPointer": "Leeren Pfad oder durch / getrennten JSON Pointer mit gültigem ~0/~1 und höchstens 4.096 Einheiten verwenden.",
+    "missingPath": "Der referenzierte Wert oder sein Elternknoten existiert nicht.",
+    "invalidIndex": "Ungültiger Arrayindex: 0 oder positive Ganzzahl ohne führende Nullen; - nur als add-Ziel.",
+    "moveChild": "Ein Wert kann nicht in seinen eigenen Nachfahren verschoben werden.",
+    "testFailed": "Der Testwert stimmt nicht überein; der Patch wurde gestoppt.",
+    "noDocument": "Nach dem Entfernen der Wurzel fehlt das JSON-Dokument. Mit leerem Pfad eine neue Wurzel hinzufügen.",
+    "outputLimit": "Das Ergebnis überschreitet das Formatierungsbudget von 2.000.000 Einheiten.",
+    "workLimit": "Gesamtverarbeitungsgrenze erreicht. Weniger Operationen oder kleinere Werte verwenden."
+  }
+}

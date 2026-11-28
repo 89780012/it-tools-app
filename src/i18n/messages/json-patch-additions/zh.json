@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "json-patch": {
+      "name": "JSON Patch 应用器",
+      "description": "在本地应用 RFC 6902 JSON Patch，支持添加、删除、替换、移动、复制和测试 JSON 值，保留大数与小数精度。",
+      "meta": {
+        "title": "JSON Patch 应用器",
+        "description": "在本地应用 RFC 6902 JSON Patch，支持添加、删除、替换、移动、复制和测试 JSON 值，保留大数与小数精度。",
+        "keywords": "JSON Patch, RFC 6902, JSON补丁, 操作数组, JSON指针"
+      }
+    }
+  },
+  "jsonPatch": {
+    "target": "目标 JSON",
+    "patch": "补丁操作（JSON 数组）",
+    "output": "补丁结果 JSON",
+    "apply": "应用补丁",
+    "operation": "第 {number} 项操作",
+    "emptyResult": "输入目标 JSON 和补丁数组，或加载示例。",
+    "hint": "每份输入最多 500,000 个 UTF-16 单元，嵌套最多 64 层，最多 200 项操作。路径最多 4,096 个单元。结果格式预算为 2,000,000 个单元，另有总处理量限制。",
+    "rules": "操作依次执行。路径以 / 分隔，用 ~1 表示斜杠、~0 表示波浪号；空路径选择根。数组 add 为插入，/- 为追加。任一操作失败即停止，不显示部分结果。",
+    "rootRule": "add / replace / test 必须有 value（可为 null），move / copy 必须有 from。父节点必须存在；remove / replace 要求目标值存在。删除根后必须再次添加根才能生成 JSON。不接受 URI 片段。",
+    "empty": "请在此字段输入 JSON。",
+    "invalidJson": "JSON 语法无效。",
+    "duplicateKey": "不允许重复的对象键。",
+    "inputLimit": "输入超过 500,000 个 UTF-16 单元。",
+    "depthLimit": "JSON 嵌套超过 64 层。",
+    "invalidPatch": "补丁必须是由操作对象组成的 JSON 数组。",
+    "operationLimit": "补丁超过 200 项操作。",
+    "invalidOperation": "请使用 add、remove、replace、move、copy 或 test，并提供必需成员。",
+    "invalidPointer": "请使用空路径或以 / 分隔的 JSON Pointer，正确使用 ~0/~1 转义，且不超过 4,096 个单元。",
+    "missingPath": "引用的值或其父节点不存在。",
+    "invalidIndex": "数组索引无效：请使用 0 或不带前导零的正整数；- 仅用于添加的目标位置。",
+    "moveChild": "不能将值移动到自身的后代节点。",
+    "testFailed": "测试值不匹配，补丁已停止。",
+    "noDocument": "删除根后已无 JSON 文档，请用空路径添加新根。",
+    "outputLimit": "结果超过 2,000,000 个单元的格式预算。",
+    "workLimit": "已达到总处理量限制，请减少操作或缩小数据。"
+  }
+}

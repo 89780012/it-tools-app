@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'json-patch': 'RFC 6902 JSON Patch add remove replace move copy test operation array 补丁 操作数组 配置修改',
   'iso-week-calculator': 'ISO 8601 week date week number calendar week year Monday 周数 周编号 周日期 跨年 周报 排期',
   'css-clamp-generator': 'fluid typography responsive font size CSS clamp rem vw 响应式字号 流体排版 字体大小',
   'json-pointer': 'RFC 6901 JSON Pointer URI fragment reference resolve extract 精确路径 JSON指针 提取 片段',
@@ -52,6 +53,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['json-patch', 'json-merge-patch', 'json-pointer', 'json-diff', 'json-formatter'],
   ['css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],
   ['json-pointer', 'jsonpath-query', 'json-schema-validator', 'json-merge-patch', 'json-formatter'],
   ['ipv4-cidr-aggregator', 'subnet-calculator', 'ipv6-subnet-calculator', 'firewall-cheatsheet'],

@@ -64,6 +64,7 @@ export const toolsConfig: ToolCategory[] = [
     ['i18n-json-translator', 'languages'],
     ['json-diff', 'git-compare'],
     ['json-merge-patch', 'file-json'],
+    ['json-patch', 'file-json'],
     ['json-key-fixer', 'file-diff'],
   ]),
   category('json-converters', 'json_converters', 'file-code', [

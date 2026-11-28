@@ -1,0 +1,40 @@
+{
+  "tools": {
+    "json-patch": {
+      "name": "JSON Patch 適用ツール",
+      "description": "RFC 6902 JSON Patch をローカルで適用。JSON 値の追加・削除・置換・移動・コピー・テストを数値の精度を保って実行します。",
+      "meta": {
+        "title": "JSON Patch 適用ツール",
+        "description": "RFC 6902 JSON Patch をローカルで適用。JSON 値の追加・削除・置換・移動・コピー・テストを数値の精度を保って実行します。",
+        "keywords": "JSON Patch, RFC 6902, JSONパッチ, 操作配列, JSON Pointer"
+      }
+    }
+  },
+  "jsonPatch": {
+    "target": "対象 JSON",
+    "patch": "パッチ操作（JSON 配列）",
+    "output": "適用後の JSON",
+    "apply": "パッチを適用",
+    "operation": "操作 {number}",
+    "emptyResult": "対象 JSON とパッチ配列を入力するか、サンプルを読み込んでください。",
+    "hint": "各入力は 500,000 UTF-16 単位、深さ 64 階層、200 操作まで。パスは 4,096 単位まで。結果の整形予算は 2,000,000 単位で、総処理量にも制限があります。",
+    "rules": "操作は順番に実行します。パスは / 区切りで、スラッシュは ~1、チルダは ~0 と記述します。空パスはルートを選択。配列の add は挿入、/- は末尾追加です。失敗時は中断し、部分的な結果は表示しません。",
+    "rootRule": "add / replace / test には value（null も可）、move / copy には from が必要です。親は存在する必要があり、remove / replace は既存値が必要です。ルート削除後は add でルートを追加してください。URI フラグメントは使用できません。",
+    "empty": "この欄に JSON を入力してください。",
+    "invalidJson": "JSON 構文が無効です。",
+    "duplicateKey": "オブジェクトの重複キーは使用できません。",
+    "inputLimit": "入力が 500,000 UTF-16 単位を超えています。",
+    "depthLimit": "JSON の深さが 64 階層を超えています。",
+    "invalidPatch": "パッチは操作オブジェクトの JSON 配列である必要があります。",
+    "operationLimit": "パッチが 200 操作を超えています。",
+    "invalidOperation": "add、remove、replace、move、copy、test と必須メンバーを使用してください。",
+    "invalidPointer": "空パス、または / 区切りの JSON Pointer を使用し、~0/~1 を正しく記述してください。上限は 4,096 単位です。",
+    "missingPath": "参照した値または親が存在しません。",
+    "invalidIndex": "配列の添字が無効です。0 または先頭ゼロのない正整数を使用してください。- は add の追加先のみで使用できます。",
+    "moveChild": "値をその子孫へ移動することはできません。",
+    "testFailed": "テスト値が一致しないため、パッチを中断しました。",
+    "noDocument": "ルート削除後に JSON 文書が残りません。空パスで新しいルートを追加してください。",
+    "outputLimit": "結果が 2,000,000 単位の整形予算を超えています。",
+    "workLimit": "総処理量の上限です。操作数またはデータを減らしてください。"
+  }
+}
