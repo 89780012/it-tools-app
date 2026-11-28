@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "CSS clamp 生成器",
+      "description": "根据两个视口宽度生成流体字号，预览变化，并在本地复制或下载 CSS。",
+      "meta": {
+        "title": "CSS clamp 生成器",
+        "description": "根据两个视口宽度生成流体字号，预览变化，并在本地复制或下载 CSS。",
+        "keywords": "响应式字号, 流体排版, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "起始视口宽度（px）",
+    "endWidth": "结束视口宽度（px）",
+    "startSize": "起始字号（px）",
+    "endSize": "结束字号（px）",
+    "rootSize": "根元素字号（px）",
+    "unit": "输出单位",
+    "hint": "视口宽度：1–100000 的整数。字号：0–10000 px；根元素字号：1–1000 px。字号最多支持 3 位小数，可递增、递减或保持不变。",
+    "generate": "生成 CSS",
+    "output": "CSS 声明",
+    "viewport": "模拟视口宽度",
+    "sample": "流体排版预览",
+    "previewHint": "滑块模拟输入的视口宽度和根元素字号。过大文字会在预览框内裁切。",
+    "emptyResult": "输入两个视口宽度及其对应字号，然后生成 CSS。",
+    "rules": "将声明粘贴到 CSS 规则中。字号保持在两个边界值之间。rem 输出在指定根元素字号下与输入字号一致；实际根元素字号改变时，rem 边界及截距随之变化，vw 则随视口变化。系数保留至多 10 位小数。",
+    "invalidWidth": "请输入 1–100000 px 的整数视口宽度。",
+    "invalidSize": "请输入 0–10000 px 的字号，最多 3 位小数。",
+    "invalidRoot": "请输入 1–1000 px 的根元素字号，最多 3 位小数。",
+    "viewportOrder": "结束视口宽度必须大于起始视口宽度。"
+  }
+}

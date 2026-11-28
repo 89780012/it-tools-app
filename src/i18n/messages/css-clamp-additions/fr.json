@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "Générateur CSS clamp",
+      "description": "Générez des tailles de police fluides entre deux largeurs, prévisualisez et copiez ou téléchargez le CSS localement.",
+      "meta": {
+        "title": "Générateur CSS clamp",
+        "description": "Générez des tailles de police fluides entre deux largeurs, prévisualisez et copiez ou téléchargez le CSS localement.",
+        "keywords": "typographie fluide, police responsive, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Largeur initiale (px)",
+    "endWidth": "Largeur finale (px)",
+    "startSize": "Police au début (px)",
+    "endSize": "Police à la fin (px)",
+    "rootSize": "Police racine (px)",
+    "unit": "Unité de sortie",
+    "hint": "Largeurs : entiers de 1 à 100000. Polices : 0–10000 px ; racine : 1–1000 px. Les tailles acceptent 3 décimales avec un point et peuvent augmenter, diminuer ou rester constantes.",
+    "generate": "Générer le CSS",
+    "output": "Déclaration CSS",
+    "viewport": "Largeur simulée",
+    "sample": "Typographie fluide",
+    "previewHint": "Le curseur simule la largeur et la police racine saisies. Les grands textes sont rognés dans l’aperçu.",
+    "emptyResult": "Saisissez deux largeurs et leurs tailles de police, puis générez le CSS.",
+    "rules": "Collez la déclaration dans une règle CSS. Les valeurs restent entre les deux limites. La sortie rem correspond aux tailles pour la racine indiquée ; changer la racine réelle modifie les limites rem et l’ordonnée à l’origine, tandis que vw suit la fenêtre. Les coefficients sont arrondis à 10 décimales.",
+    "invalidWidth": "Saisissez une largeur entière de 1 à 100000 px.",
+    "invalidSize": "Saisissez une taille de 0 à 10000 px avec au plus 3 décimales et un point.",
+    "invalidRoot": "Saisissez une police racine de 1 à 1000 px avec au plus 3 décimales et un point.",
+    "viewportOrder": "La largeur finale doit dépasser la largeur initiale."
+  }
+}

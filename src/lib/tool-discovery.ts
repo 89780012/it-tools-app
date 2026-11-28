@@ -1,5 +1,6 @@
 import { visibleTools as allTools, type Tool } from './tools-config'
 const aliases: Record<string, string> = {
+  'css-clamp-generator': 'fluid typography responsive font size CSS clamp rem vw 响应式字号 流体排版 字体大小',
   'json-pointer': 'RFC 6901 JSON Pointer URI fragment reference resolve extract 精确路径 JSON指针 提取 片段',
   'ipv4-cidr-aggregator': 'IPv4 CIDR aggregate collapse summarize firewall allowlist merge networks 网段聚合 白名单 合并子网 防火墙',
   'unicode-normalizer': 'Unicode NFC NFD NFKC NFKD normalization combining accents fullwidth 规范化 标准化 重音 全角 半角 码点',
@@ -50,6 +51,7 @@ export function matchesTool(
     .every((word) => text.includes(word))
 }
 const workflows = [
+  ['css-clamp-generator', 'css-formatter', 'color-contrast-checker', 'aspect-ratio-calculator'],
   ['json-pointer', 'jsonpath-query', 'json-schema-validator', 'json-merge-patch', 'json-formatter'],
   ['ipv4-cidr-aggregator', 'subnet-calculator', 'ipv6-subnet-calculator', 'firewall-cheatsheet'],
   ['unicode-normalizer', 'string-escape', 'text-diff', 'text-batch-processor'],

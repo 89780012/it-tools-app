@@ -99,6 +99,7 @@ export const toolsConfig: ToolCategory[] = [
     ['password-generator', 'key'],
   ]),
   category('frontend', 'frontend', 'palette', [
+    ['css-clamp-generator', 'type'],
     ['markdown-preview', 'file-text'],
     ['css-formatter', 'file-code'],
     ['color-converter', 'palette'],

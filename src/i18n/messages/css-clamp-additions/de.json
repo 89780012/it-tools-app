@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "CSS-clamp-Generator",
+      "description": "Erzeuge fließende Schriftgrößen zwischen zwei Viewportbreiten, prüfe die Vorschau und kopiere oder lade CSS lokal herunter.",
+      "meta": {
+        "title": "CSS-clamp-Generator",
+        "description": "Erzeuge fließende Schriftgrößen zwischen zwei Viewportbreiten, prüfe die Vorschau und kopiere oder lade CSS lokal herunter.",
+        "keywords": "fließende Typografie, responsive Schriftgröße, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Viewport am Anfang (px)",
+    "endWidth": "Viewport am Ende (px)",
+    "startSize": "Schriftgröße am Anfang (px)",
+    "endSize": "Schriftgröße am Ende (px)",
+    "rootSize": "Wurzelschriftgröße (px)",
+    "unit": "Ausgabeeinheit",
+    "hint": "Viewportbreiten: ganze Zahlen von 1 bis 100000. Schriftgrößen: 0–10000 px; Wurzelschrift: 1–1000 px. Größen erlauben bis zu 3 Nachkommastellen mit Dezimalpunkt und können steigen, fallen oder gleich bleiben.",
+    "generate": "CSS erzeugen",
+    "output": "CSS-Deklaration",
+    "viewport": "Simulierte Viewportbreite",
+    "sample": "Fließende Typografie",
+    "previewHint": "Der Regler simuliert die eingegebene Breite und Wurzelschriftgröße. Großer Text wird innerhalb der Vorschau abgeschnitten.",
+    "emptyResult": "Gib zwei Viewportbreiten und Schriftgrößen ein und erzeuge CSS.",
+    "rules": "Füge die Deklaration in eine CSS-Regel ein. Die Werte bleiben zwischen den beiden Schriftgrößen. Die rem-Ausgabe entspricht den Größen bei der angegebenen Wurzelschrift; eine andere tatsächliche Wurzelschrift verändert rem-Grenzen und Achsenabschnitt, während vw dem Viewport folgt. Koeffizienten werden auf 10 Nachkommastellen gerundet.",
+    "invalidWidth": "Gib eine ganzzahlige Viewportbreite von 1 bis 100000 px ein.",
+    "invalidSize": "Gib eine Schriftgröße von 0 bis 10000 px mit höchstens 3 Nachkommastellen und Dezimalpunkt ein.",
+    "invalidRoot": "Gib eine Wurzelschriftgröße von 1 bis 1000 px mit höchstens 3 Nachkommastellen und Dezimalpunkt ein.",
+    "viewportOrder": "Die Endbreite muss größer als die Anfangsbreite sein."
+  }
+}

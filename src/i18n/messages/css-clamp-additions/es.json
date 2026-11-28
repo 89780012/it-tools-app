@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "Generador de CSS clamp",
+      "description": "Genera tamaños de fuente fluidos entre dos anchos de ventana, previsualiza la escala y copia o descarga el CSS localmente.",
+      "meta": {
+        "title": "Generador de CSS clamp",
+        "description": "Genera tamaños de fuente fluidos entre dos anchos de ventana, previsualiza la escala y copia o descarga el CSS localmente.",
+        "keywords": "tipografía fluida, fuente adaptable, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Ancho inicial (px)",
+    "endWidth": "Ancho final (px)",
+    "startSize": "Fuente al inicio (px)",
+    "endSize": "Fuente al final (px)",
+    "rootSize": "Fuente raíz (px)",
+    "unit": "Unidad de salida",
+    "hint": "Anchos: enteros de 1 a 100000. Fuentes: 0–10000 px; raíz: 1–1000 px. Los tamaños admiten hasta 3 decimales y pueden aumentar, disminuir o ser constantes.",
+    "generate": "Generar CSS",
+    "output": "Declaración CSS",
+    "viewport": "Ancho de ventana simulado",
+    "sample": "Tipografía fluida",
+    "previewHint": "El control simula el ancho y la fuente raíz indicados. El texto grande se recorta dentro de la vista previa.",
+    "emptyResult": "Introduce dos anchos y sus tamaños de fuente y genera el CSS.",
+    "rules": "Pega la declaración dentro de una regla CSS. Los valores permanecen entre los dos límites. La salida rem coincide con los tamaños para la raíz indicada; al cambiar la raíz real cambian los límites rem y la intersección, mientras vw sigue la ventana. Los coeficientes se redondean a 10 decimales.",
+    "invalidWidth": "Introduce un ancho entero de 1 a 100000 px.",
+    "invalidSize": "Introduce una fuente de 0 a 10000 px con hasta 3 decimales.",
+    "invalidRoot": "Introduce una fuente raíz de 1 a 1000 px con hasta 3 decimales.",
+    "viewportOrder": "El ancho final debe ser mayor que el inicial."
+  }
+}

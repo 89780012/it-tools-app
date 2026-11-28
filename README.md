@@ -2,7 +2,7 @@
 
 A multilingual online toolbox for developers. The application uses **React 19 + Vite + TypeScript + Tailwind CSS 4 + shadcn/ui** on the frontend and a standalone **Go 1.25+** API server.
 
-The catalog contains **83 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
+The catalog contains **84 tools in 12 categories**, with 12 languages throughout. The catalog covers regex testing, JWT inspection, text diff/batch processing, JSON-to-TypeScript/Go, SQL formatting, JSONPath/Schema, URL editing, YAML/XML formatting, IPv4 subnets, integer/byte conversions, PEM certificates, free Nginx certificate setup, Markdown tables, CSS formatting, WCAG contrast and local image compression. Time conversion, HTTP debugging and seeded mock data have expanded controls. Favorites and recent tool history persist locally without retaining tool input.
 
 The latest expansion adds local file checksums, list set operations, chmod permissions, QR image reading, CSV/TSV editing, SQL INSERT generation, DNS comparison, live TLS inspection and WebSocket/SSE debugging. Existing pages include JSON repair/JSON5 conversion, visual Cron schedules with IANA time zones, HTTP authentication/form uploads/cURL export, image cropping/rotation/batch ZIP export, Java/Python/C# models and JSON Schema generation, text naming conversion and statistics. Global search supports Ctrl/Cmd+K and task aliases, with related tools selected by workflow.
 
@@ -27,6 +27,8 @@ The [Unicode Normalizer](docs/hourly-tool-2026-11-28-17.md) at `/tools/unicode-n
 The [IPv4 CIDR Aggregator](docs/hourly-tool-2026-11-28-18.md) at `/tools/ipv4-cidr-aggregator` (Chinese: `/zh/tools/ipv4-cidr-aggregator`) reduces firewall allowlists to the smallest exact CIDR list locally. It normalizes host bits, removes duplicate and covered networks, merges adjacent ranges without filling gaps, and reports unique address counts. Paste one IPv4 address or CIDR per line, load an example, copy or download the result, or clear the input. Bare addresses mean /32; leading zeros, comments, ranges and IPv6 are rejected. Limits: 10,000 non-empty entries and 500,000 UTF-16 code units. Counts include network, broadcast and reserved addresses.
 
 The [JSON Pointer Resolver](docs/hourly-tool-2026-11-28-19.md) at `/tools/json-pointer` (Chinese: `/zh/tools/json-pointer`) extracts one exact value using RFC 6901 pointers or URI fragments. It supports escaped keys, arrays, scalar roots, Unicode and precision-preserving numbers locally, with example, clear, copy and JSON download controls. Empty pointers select the document root; `/` selects an empty key. Missing keys, invalid escapes, duplicate object keys and invalid array indices produce explicit errors. Limits: 500,000 UTF-16 units of JSON, 4,096 of pointer text, 64 nesting levels and 5,000,000 units of formatted output.
+
+The [CSS clamp Generator](docs/hourly-tool-2026-11-28-20.md) at `/tools/css-clamp-generator` (Chinese: `/zh/tools/css-clamp-generator`) creates fluid font-size declarations between two viewport widths, with px/rem output, a simulated viewport slider, copy and CSS download. It supports increasing, decreasing and constant sizes locally. Widths are whole pixels from 1 to 100000; sizes are 0–10000 px and root font sizes are 1–1000 px, with up to three decimal places. rem results match the input sizes at the specified root font size; changing the actual root size affects the rem terms.
 
 ## Requirements
 
@@ -85,7 +87,7 @@ bash deploy.sh down     # 停止并移除本项目容器和网络
 - 翻译和语言检测需要配置全部三个 `I18N_TRANSLATE_API_*` 变量；其中 URL 必须是兼容 OpenAI 的完整 chat-completions 地址。未配置时接口明确返回 503，i18n JSON 翻译菜单入口已暂时隐藏。
 - 构建时若无法连接 `proxy.golang.org`，可在 `.env` 中设置 `GOPROXY=https://goproxy.cn`。该值仅传入 Go 构建阶段，模块校验仍然开启；依赖下载层按 `go.mod`/`go.sum` 缓存。
 
-`Dockerfile` 分别构建前端和 Go，前端构建包含 1020 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
+`Dockerfile` 分别构建前端和 Go，前端构建包含 1032 个 SEO 页面预渲染。最终镜像仅包含 Go 程序、静态页面和运行所需文件，以普通用户运行；Compose 配置健康检查、自动重启和日志轮转。SEO 正式域名继续保持 `https://www.toolkitpub.com`。
 
 翻译及语言检测需要在 `.env` 中填写 `I18N_TRANSLATE_API_URL`、`I18N_TRANSLATE_API_KEY`、`I18N_TRANSLATE_API_MODEL`；未配置时其余工具照常使用，这两个 API 返回 503。`.env` 不进入 Git 或镜像，只在容器运行时注入。
 
@@ -97,7 +99,7 @@ cd backend
 go run .
 ```
 
-The build creates `dist/` with 1020 prerendered pages (83 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
+The build creates `dist/` with 1032 prerendered pages (84 tools, home and changelog in 12 languages), including complete initial HTML and metadata. robots.txt is retained; the 12 locale sitemaps and sitemap index are generated from the current catalog. The Go service serves `dist/` (or `../dist` when launched from `backend/`), routes `/api/*` to the API handlers, redirects explicit `/en` prefixes and trailing slashes, and returns HTTP 404 for missing routes. Set `WEB_DIST_DIR` to use another static directory.
 
 For a static host, deploy `dist/`, serve each route's `index.html` without adding a trailing slash, return 404 for missing routes, and route `/api/*` to the Go service. SEO URLs use the upstream production origin `https://www.toolkitpub.com`.
 

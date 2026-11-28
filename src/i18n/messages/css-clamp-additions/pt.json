@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "Gerador de CSS clamp",
+      "description": "Gere tamanhos de fonte fluidos entre duas larguras, visualize a escala e copie ou baixe o CSS localmente.",
+      "meta": {
+        "title": "Gerador de CSS clamp",
+        "description": "Gere tamanhos de fonte fluidos entre duas larguras, visualize a escala e copie ou baixe o CSS localmente.",
+        "keywords": "tipografia fluida, fonte responsiva, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Largura inicial (px)",
+    "endWidth": "Largura final (px)",
+    "startSize": "Fonte inicial (px)",
+    "endSize": "Fonte final (px)",
+    "rootSize": "Fonte raiz (px)",
+    "unit": "Unidade de saída",
+    "hint": "Larguras: inteiros de 1 a 100000. Fontes: 0–10000 px; raiz: 1–1000 px. Os tamanhos aceitam até 3 decimais com ponto e podem aumentar, diminuir ou ficar constantes.",
+    "generate": "Gerar CSS",
+    "output": "Declaração CSS",
+    "viewport": "Largura simulada",
+    "sample": "Tipografia fluida",
+    "previewHint": "O controle simula a largura e a fonte raiz informadas. Textos grandes são recortados dentro da prévia.",
+    "emptyResult": "Insira duas larguras e seus tamanhos de fonte e gere o CSS.",
+    "rules": "Cole a declaração em uma regra CSS. Os valores ficam entre os dois limites. A saída rem corresponde aos tamanhos na raiz indicada; alterar a raiz real muda os limites rem e o intercepto, enquanto vw segue a janela. Os coeficientes são arredondados para 10 decimais.",
+    "invalidWidth": "Insira uma largura inteira de 1 a 100000 px.",
+    "invalidSize": "Insira uma fonte de 0 a 10000 px com até 3 decimais e ponto.",
+    "invalidRoot": "Insira uma fonte raiz de 1 a 1000 px com até 3 decimais e ponto.",
+    "viewportOrder": "A largura final deve ser maior que a inicial."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "CSS clamp Generator",
+      "description": "Generate fluid font sizes between two viewport widths, preview the scale, and copy or download CSS locally.",
+      "meta": {
+        "title": "CSS clamp Generator",
+        "description": "Generate fluid font sizes between two viewport widths, preview the scale, and copy or download CSS locally.",
+        "keywords": "fluid typography, responsive font size, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Start viewport (px)",
+    "endWidth": "End viewport (px)",
+    "startSize": "Font size at start (px)",
+    "endSize": "Font size at end (px)",
+    "rootSize": "Root font size (px)",
+    "unit": "Output unit",
+    "hint": "Viewport widths: integers from 1 to 100000. Font sizes: 0–10000 px; root size: 1–1000 px. Sizes accept up to 3 decimal places. Font sizes may increase, decrease or stay constant.",
+    "generate": "Generate CSS",
+    "output": "CSS declaration",
+    "viewport": "Simulated viewport width",
+    "sample": "Fluid typography",
+    "previewHint": "The slider simulates the entered viewport and root font size. Large text is clipped within the preview.",
+    "emptyResult": "Enter two viewport widths and font sizes, then generate CSS.",
+    "rules": "Paste the declaration inside a CSS rule. Values stay within the two font-size bounds. rem output matches the entered sizes at the specified root size; changing the actual root size changes the rem bounds and intercept, while vw follows the viewport. Coefficients are rounded to 10 decimal places.",
+    "invalidWidth": "Enter a whole viewport width from 1 to 100000 px.",
+    "invalidSize": "Enter a font size from 0 to 10000 px with up to 3 decimal places.",
+    "invalidRoot": "Enter a root font size from 1 to 1000 px with up to 3 decimal places.",
+    "viewportOrder": "The end viewport width must be greater than the start width."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "tools": {
+    "css-clamp-generator": {
+      "name": "Generatore CSS clamp",
+      "description": "Genera dimensioni fluide del testo tra due larghezze, visualizza la scala e copia o scarica il CSS localmente.",
+      "meta": {
+        "title": "Generatore CSS clamp",
+        "description": "Genera dimensioni fluide del testo tra due larghezze, visualizza la scala e copia o scarica il CSS localmente.",
+        "keywords": "tipografia fluida, font responsive, CSS clamp, rem, vw"
+      }
+    }
+  },
+  "cssClamp": {
+    "startWidth": "Larghezza iniziale (px)",
+    "endWidth": "Larghezza finale (px)",
+    "startSize": "Testo iniziale (px)",
+    "endSize": "Testo finale (px)",
+    "rootSize": "Font radice (px)",
+    "unit": "Unità di output",
+    "hint": "Larghezze: interi da 1 a 100000. Testo: 0–10000 px; radice: 1–1000 px. Le dimensioni ammettono 3 decimali con punto e possono crescere, diminuire o restare costanti.",
+    "generate": "Genera CSS",
+    "output": "Dichiarazione CSS",
+    "viewport": "Larghezza simulata",
+    "sample": "Tipografia fluida",
+    "previewHint": "Il cursore simula la larghezza e il font radice inseriti. Il testo grande viene ritagliato nell’anteprima.",
+    "emptyResult": "Inserisci due larghezze e le relative dimensioni del testo, poi genera il CSS.",
+    "rules": "Incolla la dichiarazione in una regola CSS. I valori restano tra i due limiti. L’output rem corrisponde alle dimensioni con la radice indicata; cambiando la radice effettiva cambiano limiti rem e intercetta, mentre vw segue la finestra. I coefficienti sono arrotondati a 10 decimali.",
+    "invalidWidth": "Inserisci una larghezza intera da 1 a 100000 px.",
+    "invalidSize": "Inserisci una dimensione da 0 a 10000 px con al massimo 3 decimali e punto.",
+    "invalidRoot": "Inserisci un font radice da 1 a 1000 px con al massimo 3 decimali e punto.",
+    "viewportOrder": "La larghezza finale deve superare quella iniziale."
+  }
+}
