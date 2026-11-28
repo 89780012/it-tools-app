@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "Résolveur JSON Pointer",
+      "description": "Extrayez une valeur JSON précise avec des pointeurs RFC 6901 ou des fragments URI, sans perte de précision numérique, en local.",
+      "meta": {
+        "title": "Résolveur JSON Pointer",
+        "description": "Extrayez une valeur JSON précise avec des pointeurs RFC 6901 ou des fragments URI, sans perte de précision numérique, en local.",
+        "keywords": "JSON Pointer, RFC 6901, fragment URI, référence JSON, extraire JSON"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "Document JSON",
+    "pointer": "JSON Pointer ou fragment URI",
+    "hint": "Vide ou # sélectionne la racine. / sélectionne une clé vide ; ~1 représente / et ~0 représente ~. Les fragments comme #/a%20b sont acceptés.",
+    "limits": "Limites : {input} unités UTF-16 de JSON, {pointer} pour le pointeur et {depth} niveaux imbriqués.",
+    "resolve": "Résoudre le pointeur",
+    "type": "Type de valeur",
+    "resolvedPointer": "Pointeur résolu",
+    "root": "Racine du document",
+    "output": "Valeur JSON sélectionnée",
+    "emptyResult": "Saisissez le JSON et un pointeur, puis résolvez-le pour voir la valeur.",
+    "rules": "Les indices commencent à 0 ; les zéros initiaux et - sont invalides pour les tableaux. Les clés sont exactes et sensibles à la casse ; les espaces sont conservés. Les chaînes gardent leurs guillemets JSON. Les clés en double sont rejetées et les nombres conservent leur précision.",
+    "emptyJson": "Saisissez un document JSON.",
+    "invalidJson": "JSON invalide. Vérifiez guillemets, virgules et crochets.",
+    "duplicateKey": "Les clés en double sont ambiguës. Utilisez des clés uniques dans chaque objet.",
+    "inputLimit": "Le JSON ne doit pas dépasser {input} unités UTF-16.",
+    "depthLimit": "Le JSON ne doit pas dépasser {depth} niveaux.",
+    "pointerLimit": "Le pointeur ne doit pas dépasser {pointer} unités UTF-16.",
+    "invalidFragment": "Fragment URI invalide : vérifiez les échappements en pourcentage et UTF-8.",
+    "invalidPointer": "Le pointeur doit être vide ou commencer par /. Un fragment URI doit commencer par #.",
+    "invalidEscape": "Étape {step} : ~ doit être suivi de 0 ou 1.",
+    "missingKey": "Étape {step} : cet objet ne possède pas la clé demandée.",
+    "invalidIndex": "Étape {step} : utilisez 0 ou un entier positif sans zéro initial ; - ne désigne aucun élément existant.",
+    "indexRange": "Étape {step} : indice hors des limites du tableau.",
+    "scalarTraversal": "Étape {step} : impossible de descendre dans un scalaire ou null.",
+    "outputLimit": "La sortie dépasse {output} unités UTF-16. Sélectionnez une valeur plus petite.",
+    "types": {
+      "object": "Objet",
+      "array": "Tableau",
+      "string": "Chaîne",
+      "number": "Nombre",
+      "boolean": "Booléen",
+      "null": "Null"
+    }
+  }
+}

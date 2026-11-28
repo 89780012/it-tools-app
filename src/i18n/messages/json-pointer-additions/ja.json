@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "JSON Pointer リゾルバー",
+      "description": "RFC 6901 ポインターや URI フラグメントで JSON 値を正確に抽出。大きな数値の精度をローカルで維持します。",
+      "meta": {
+        "title": "JSON Pointer リゾルバー",
+        "description": "RFC 6901 ポインターや URI フラグメントで JSON 値を正確に抽出。大きな数値の精度をローカルで維持します。",
+        "keywords": "JSON Pointer, RFC 6901, URI フラグメント, JSON 参照, JSON 抽出"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "JSON ドキュメント",
+    "pointer": "JSON Pointer または URI フラグメント",
+    "hint": "空欄または # でルートを選択。/ は空のキー、~1 は /、~0 は ~ を表します。#/a%20b のような URI フラグメントも使えます。",
+    "limits": "上限：JSON は UTF-16 単位で {input}、ポインターは {pointer}、入れ子は {depth} 階層。",
+    "resolve": "ポインターを解決",
+    "type": "値の型",
+    "resolvedPointer": "解決したポインター",
+    "root": "ドキュメントのルート",
+    "output": "選択した JSON 値",
+    "emptyResult": "JSON とポインターを入力し、解決して値を表示します。",
+    "rules": "配列の添字は 0 から始まります。先頭のゼロと - は無効です。キーは大文字・小文字を区別して完全一致し、空白を保持します。文字列は JSON の引用符を保持します。重複キーは拒否し、数値の精度を維持します。",
+    "emptyJson": "JSON ドキュメントを入力してください。",
+    "invalidJson": "無効な JSON です。引用符、カンマ、括弧を確認してください。",
+    "duplicateKey": "重複キーは曖昧です。各オブジェクト内で一意のキーを使ってください。",
+    "inputLimit": "JSON は UTF-16 単位で {input} 以下にしてください。",
+    "depthLimit": "JSON の入れ子は {depth} 階層以下にしてください。",
+    "pointerLimit": "ポインターは UTF-16 単位で {pointer} 以下にしてください。",
+    "invalidFragment": "無効な URI フラグメントです。パーセントエスケープと UTF-8 を確認してください。",
+    "invalidPointer": "ポインターは空欄または / で開始してください。URI フラグメントは # で開始してください。",
+    "invalidEscape": "ステップ {step}：~ の後には 0 または 1 が必要です。",
+    "missingKey": "ステップ {step}：一致するキーがありません。",
+    "invalidIndex": "ステップ {step}：0 または先頭にゼロのない正の整数を使ってください。- は既存の要素を指しません。",
+    "indexRange": "ステップ {step}：配列の添字が範囲外です。",
+    "scalarTraversal": "ステップ {step}：スカラーまたは null の内部には進めません。",
+    "outputLimit": "整形結果が UTF-16 単位で {output} を超えます。小さな値を選択してください。",
+    "types": {
+      "object": "オブジェクト",
+      "array": "配列",
+      "string": "文字列",
+      "number": "数値",
+      "boolean": "真偽値",
+      "null": "Null"
+    }
+  }
+}

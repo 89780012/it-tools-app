@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "JSON Pointer 查询器",
+      "description": "使用 RFC 6901 指针或 URI 片段精确提取 JSON 值，在本地保留大数精度。",
+      "meta": {
+        "title": "JSON Pointer 查询器",
+        "description": "使用 RFC 6901 指针或 URI 片段精确提取 JSON 值，在本地保留大数精度。",
+        "keywords": "JSON Pointer, RFC 6901, JSON指针, URI片段, JSON引用, 精确提取"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "JSON 文档",
+    "pointer": "JSON Pointer 或 URI 片段",
+    "hint": "留空或 # 选择根值。/ 选择空键，~1 表示 /，~0 表示 ~。也支持 #/a%20b 等 URI 片段。",
+    "limits": "限制：JSON 最多 {input} 个 UTF-16 单元，指针最多 {pointer} 个单元，嵌套最多 {depth} 层。",
+    "resolve": "查询指针",
+    "type": "值类型",
+    "resolvedPointer": "解析后的指针",
+    "root": "文档根值",
+    "output": "选中的 JSON 值",
+    "emptyResult": "输入 JSON 和指针，点击查询查看结果。",
+    "rules": "数组索引从 0 开始，不接受前导零或 -。对象键区分大小写且精确匹配，保留空白。字符串保留 JSON 引号。拒绝重复对象键；数字保留原始精度。",
+    "emptyJson": "请输入 JSON 文档。",
+    "invalidJson": "JSON 无效，请检查引号、逗号和括号。",
+    "duplicateKey": "重复对象键存在歧义，请确保整个文档的对象键各自唯一。",
+    "inputLimit": "JSON 不能超过 {input} 个 UTF-16 单元。",
+    "depthLimit": "JSON 嵌套不能超过 {depth} 层。",
+    "pointerLimit": "指针不能超过 {pointer} 个 UTF-16 单元。",
+    "invalidFragment": "URI 片段无效，请检查百分号转义和 UTF-8 编码。",
+    "invalidPointer": "指针必须为空或以 / 开头，URI 片段必须以 # 开头。",
+    "invalidEscape": "第 {step} 步：~ 后面必须是 0 或 1。",
+    "missingKey": "第 {step} 步：对象中没有匹配的键。",
+    "invalidIndex": "第 {step} 步：数组索引必须是 0 或无前导零的正整数；- 不代表现有元素。",
+    "indexRange": "第 {step} 步：数组索引越界。",
+    "scalarTraversal": "第 {step} 步：无法继续访问标量或 null 值。",
+    "outputLimit": "格式化结果超过 {output} 个 UTF-16 单元，请选择更小的值。",
+    "types": {
+      "object": "对象",
+      "array": "数组",
+      "string": "字符串",
+      "number": "数字",
+      "boolean": "布尔值",
+      "null": "空值"
+    }
+  }
+}

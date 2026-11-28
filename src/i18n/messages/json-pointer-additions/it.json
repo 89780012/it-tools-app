@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "Risolutore JSON Pointer",
+      "description": "Estrai un valore JSON esatto con puntatori RFC 6901 o frammenti URI, mantenendo localmente la precisione numerica.",
+      "meta": {
+        "title": "Risolutore JSON Pointer",
+        "description": "Estrai un valore JSON esatto con puntatori RFC 6901 o frammenti URI, mantenendo localmente la precisione numerica.",
+        "keywords": "JSON Pointer, RFC 6901, frammento URI, riferimento JSON, estrarre JSON"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "Documento JSON",
+    "pointer": "JSON Pointer o frammento URI",
+    "hint": "Vuoto o # seleziona la radice. / seleziona una chiave vuota; ~1 indica / e ~0 indica ~. Sono accettati frammenti come #/a%20b.",
+    "limits": "Limiti: {input} unità UTF-16 di JSON, {pointer} per il puntatore e {depth} livelli di annidamento.",
+    "resolve": "Risolvi puntatore",
+    "type": "Tipo di valore",
+    "resolvedPointer": "Puntatore risolto",
+    "root": "Radice del documento",
+    "output": "Valore JSON selezionato",
+    "emptyResult": "Inserisci JSON e un puntatore, poi risolvilo per vedere il valore.",
+    "rules": "Gli indici partono da 0; zeri iniziali e - non sono validi negli array. Le chiavi sono esatte e distinguono maiuscole e minuscole; gli spazi vengono conservati. Le stringhe mantengono le virgolette JSON. Le chiavi duplicate sono rifiutate e i numeri mantengono la precisione.",
+    "emptyJson": "Inserisci un documento JSON.",
+    "invalidJson": "JSON non valido. Controlla virgolette, virgole e parentesi.",
+    "duplicateKey": "Le chiavi duplicate sono ambigue. Usa chiavi uniche in ogni oggetto.",
+    "inputLimit": "Il JSON non deve superare {input} unità UTF-16.",
+    "depthLimit": "Il JSON non deve superare {depth} livelli.",
+    "pointerLimit": "Il puntatore non deve superare {pointer} unità UTF-16.",
+    "invalidFragment": "Frammento URI non valido: controlla codifica percentuale e UTF-8.",
+    "invalidPointer": "Il puntatore deve essere vuoto o iniziare con /. Un frammento URI deve iniziare con #.",
+    "invalidEscape": "Passo {step}: ~ deve essere seguito da 0 o 1.",
+    "missingKey": "Passo {step}: nessuna chiave corrispondente in questo oggetto.",
+    "invalidIndex": "Passo {step}: usa 0 o un intero positivo senza zeri iniziali; - non è un elemento esistente.",
+    "indexRange": "Passo {step}: indice fuori dai limiti dell’array.",
+    "scalarTraversal": "Passo {step}: impossibile scendere in un valore scalare o null.",
+    "outputLimit": "Il risultato supera {output} unità UTF-16. Seleziona un valore più piccolo.",
+    "types": {
+      "object": "Oggetto",
+      "array": "Array",
+      "string": "Stringa",
+      "number": "Numero",
+      "boolean": "Booleano",
+      "null": "Null"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "JSON Pointer 해석기",
+      "description": "RFC 6901 포인터 또는 URI 프래그먼트로 정확한 JSON 값을 추출하고 로컬에서 큰 수의 정밀도를 유지합니다.",
+      "meta": {
+        "title": "JSON Pointer 해석기",
+        "description": "RFC 6901 포인터 또는 URI 프래그먼트로 정확한 JSON 값을 추출하고 로컬에서 큰 수의 정밀도를 유지합니다.",
+        "keywords": "JSON Pointer, RFC 6901, URI 프래그먼트, JSON 참조, JSON 추출"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "JSON 문서",
+    "pointer": "JSON Pointer 또는 URI 프래그먼트",
+    "hint": "빈 값 또는 #은 루트를 선택합니다. /는 빈 키, ~1은 /, ~0은 ~를 뜻합니다. #/a%20b 같은 URI 프래그먼트도 지원합니다.",
+    "limits": "제한: JSON {input} UTF-16 단위, 포인터 {pointer} 단위, 중첩 {depth}단계.",
+    "resolve": "포인터 해석",
+    "type": "값 유형",
+    "resolvedPointer": "해석된 포인터",
+    "root": "문서 루트",
+    "output": "선택한 JSON 값",
+    "emptyResult": "JSON과 포인터를 입력하고 해석하여 값을 확인하세요.",
+    "rules": "배열 인덱스는 0부터 시작하며 선행 0과 -는 허용하지 않습니다. 객체 키는 대소문자를 구분해 정확히 일치해야 하며 공백을 유지합니다. 문자열은 JSON 따옴표를 유지합니다. 중복 키는 거부하며 숫자 정밀도를 유지합니다.",
+    "emptyJson": "JSON 문서를 입력하세요.",
+    "invalidJson": "잘못된 JSON입니다. 따옴표, 쉼표, 괄호를 확인하세요.",
+    "duplicateKey": "중복 키는 모호합니다. 각 객체 안에서 고유한 키를 사용하세요.",
+    "inputLimit": "JSON은 {input} UTF-16 단위를 초과할 수 없습니다.",
+    "depthLimit": "JSON 중첩은 {depth}단계를 초과할 수 없습니다.",
+    "pointerLimit": "포인터는 {pointer} UTF-16 단위를 초과할 수 없습니다.",
+    "invalidFragment": "잘못된 URI 프래그먼트입니다. 퍼센트 이스케이프와 UTF-8을 확인하세요.",
+    "invalidPointer": "포인터는 비어 있거나 /로 시작해야 합니다. URI 프래그먼트는 #으로 시작해야 합니다.",
+    "invalidEscape": "{step}단계: ~ 다음에는 0 또는 1이 와야 합니다.",
+    "missingKey": "{step}단계: 일치하는 객체 키가 없습니다.",
+    "invalidIndex": "{step}단계: 0 또는 선행 0이 없는 양의 정수를 사용하세요. -는 기존 요소를 나타내지 않습니다.",
+    "indexRange": "{step}단계: 배열 인덱스가 범위를 벗어났습니다.",
+    "scalarTraversal": "{step}단계: 스칼라 또는 null 내부로 이동할 수 없습니다.",
+    "outputLimit": "출력이 {output} UTF-16 단위를 초과합니다. 더 작은 값을 선택하세요.",
+    "types": {
+      "object": "객체",
+      "array": "배열",
+      "string": "문자열",
+      "number": "숫자",
+      "boolean": "불리언",
+      "null": "Null"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "JSON Pointer Resolver",
+      "description": "Extract one exact JSON value with RFC 6901 pointers or URI fragments, preserving large numbers locally.",
+      "meta": {
+        "title": "JSON Pointer Resolver",
+        "description": "Extract one exact JSON value with RFC 6901 pointers or URI fragments, preserving large numbers locally.",
+        "keywords": "JSON Pointer, RFC 6901, URI fragment, JSON reference, extract JSON"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "JSON document",
+    "pointer": "JSON Pointer or URI fragment",
+    "hint": "Empty or # selects the root. Use / for an empty key, ~1 for / and ~0 for ~. URI fragments such as #/a%20b are also accepted.",
+    "limits": "Limits: {input} UTF-16 units of JSON, {pointer} of pointer text, and {depth} nesting levels.",
+    "resolve": "Resolve pointer",
+    "type": "Value type",
+    "resolvedPointer": "Resolved pointer",
+    "root": "Document root",
+    "output": "Selected JSON value",
+    "emptyResult": "Enter JSON and a pointer, then resolve to see the value.",
+    "rules": "Array indices start at 0; leading zeros and - are invalid for arrays. Object keys are exact and case-sensitive; whitespace is preserved. Strings remain JSON-quoted. Duplicate object keys are rejected; numbers retain their original precision.",
+    "emptyJson": "Enter a JSON document.",
+    "invalidJson": "Invalid JSON. Check quotes, commas and brackets.",
+    "duplicateKey": "Duplicate object keys are ambiguous. Use unique keys throughout the document.",
+    "inputLimit": "JSON must not exceed {input} UTF-16 units.",
+    "depthLimit": "JSON must not exceed {depth} nesting levels.",
+    "pointerLimit": "Pointer text must not exceed {pointer} UTF-16 units.",
+    "invalidFragment": "Invalid URI fragment: check percent escapes and UTF-8 encoding.",
+    "invalidPointer": "A pointer must be empty or begin with /. A URI fragment must begin with #.",
+    "invalidEscape": "Step {step}: ~ must be followed by 0 or 1.",
+    "missingKey": "Step {step}: this object has no matching key.",
+    "invalidIndex": "Step {step}: use an array index of 0 or a positive integer without leading zeros; - is not an existing element.",
+    "indexRange": "Step {step}: array index is out of bounds.",
+    "scalarTraversal": "Step {step}: cannot descend into a scalar or null value.",
+    "outputLimit": "Formatted output exceeds {output} UTF-16 units. Select a smaller value.",
+    "types": {
+      "object": "Object",
+      "array": "Array",
+      "string": "String",
+      "number": "Number",
+      "boolean": "Boolean",
+      "null": "Null"
+    }
+  }
+}

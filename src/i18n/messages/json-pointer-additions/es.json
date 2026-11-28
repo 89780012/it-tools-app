@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "Resolutor JSON Pointer",
+      "description": "Extrae un valor JSON exacto con punteros RFC 6901 o fragmentos URI, conservando la precisión numérica localmente.",
+      "meta": {
+        "title": "Resolutor JSON Pointer",
+        "description": "Extrae un valor JSON exacto con punteros RFC 6901 o fragmentos URI, conservando la precisión numérica localmente.",
+        "keywords": "JSON Pointer, RFC 6901, fragmento URI, referencia JSON, extraer JSON"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "Documento JSON",
+    "pointer": "JSON Pointer o fragmento URI",
+    "hint": "Vacío o # selecciona la raíz. / selecciona una clave vacía; ~1 representa / y ~0 representa ~. Se aceptan fragmentos como #/a%20b.",
+    "limits": "Límites: {input} unidades UTF-16 de JSON, {pointer} de puntero y {depth} niveles de anidación.",
+    "resolve": "Resolver puntero",
+    "type": "Tipo de valor",
+    "resolvedPointer": "Puntero resuelto",
+    "root": "Raíz del documento",
+    "output": "Valor JSON seleccionado",
+    "emptyResult": "Introduce JSON y un puntero y resuélvelo para ver el valor.",
+    "rules": "Los índices empiezan en 0; no se admiten ceros iniciales ni - en arrays. Las claves son exactas y distinguen mayúsculas; se conservan los espacios. Las cadenas mantienen comillas JSON. Se rechazan claves duplicadas y se conserva la precisión numérica.",
+    "emptyJson": "Introduce un documento JSON.",
+    "invalidJson": "JSON no válido. Revisa comillas, comas y corchetes.",
+    "duplicateKey": "Las claves duplicadas son ambiguas. Usa claves únicas en cada objeto.",
+    "inputLimit": "El JSON no debe superar {input} unidades UTF-16.",
+    "depthLimit": "El JSON no debe superar {depth} niveles.",
+    "pointerLimit": "El puntero no debe superar {pointer} unidades UTF-16.",
+    "invalidFragment": "Fragmento URI no válido: revisa escapes porcentuales y UTF-8.",
+    "invalidPointer": "El puntero debe estar vacío o empezar por /. El fragmento URI debe empezar por #.",
+    "invalidEscape": "Paso {step}: ~ debe ir seguido de 0 o 1.",
+    "missingKey": "Paso {step}: el objeto no tiene esa clave.",
+    "invalidIndex": "Paso {step}: usa 0 o un entero positivo sin ceros iniciales; - no es un elemento existente.",
+    "indexRange": "Paso {step}: índice fuera de los límites del array.",
+    "scalarTraversal": "Paso {step}: no se puede descender en un escalar o null.",
+    "outputLimit": "El resultado supera {output} unidades UTF-16. Selecciona un valor menor.",
+    "types": {
+      "object": "Objeto",
+      "array": "Array",
+      "string": "Cadena",
+      "number": "Número",
+      "boolean": "Booleano",
+      "null": "Nulo"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "Resolvedor JSON Pointer",
+      "description": "Extraia um valor JSON exato com ponteiros RFC 6901 ou fragmentos URI, preservando a precisão numérica localmente.",
+      "meta": {
+        "title": "Resolvedor JSON Pointer",
+        "description": "Extraia um valor JSON exato com ponteiros RFC 6901 ou fragmentos URI, preservando a precisão numérica localmente.",
+        "keywords": "JSON Pointer, RFC 6901, fragmento URI, referência JSON, extrair JSON"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "Documento JSON",
+    "pointer": "JSON Pointer ou fragmento URI",
+    "hint": "Vazio ou # seleciona a raiz. / seleciona uma chave vazia; ~1 representa / e ~0 representa ~. Fragmentos como #/a%20b são aceitos.",
+    "limits": "Limites: {input} unidades UTF-16 de JSON, {pointer} de ponteiro e {depth} níveis de aninhamento.",
+    "resolve": "Resolver ponteiro",
+    "type": "Tipo do valor",
+    "resolvedPointer": "Ponteiro resolvido",
+    "root": "Raiz do documento",
+    "output": "Valor JSON selecionado",
+    "emptyResult": "Insira JSON e um ponteiro e resolva para ver o valor.",
+    "rules": "Os índices começam em 0; zeros iniciais e - são inválidos em arrays. As chaves são exatas e diferenciam maiúsculas; os espaços são preservados. Strings mantêm aspas JSON. Chaves duplicadas são rejeitadas e os números mantêm a precisão.",
+    "emptyJson": "Insira um documento JSON.",
+    "invalidJson": "JSON inválido. Confira aspas, vírgulas e colchetes.",
+    "duplicateKey": "Chaves duplicadas são ambíguas. Use chaves únicas em cada objeto.",
+    "inputLimit": "O JSON não deve exceder {input} unidades UTF-16.",
+    "depthLimit": "O JSON não deve exceder {depth} níveis.",
+    "pointerLimit": "O ponteiro não deve exceder {pointer} unidades UTF-16.",
+    "invalidFragment": "Fragmento URI inválido: confira escapes percentuais e UTF-8.",
+    "invalidPointer": "O ponteiro deve estar vazio ou começar com /. Um fragmento URI deve começar com #.",
+    "invalidEscape": "Etapa {step}: ~ deve ser seguido por 0 ou 1.",
+    "missingKey": "Etapa {step}: este objeto não tem a chave solicitada.",
+    "invalidIndex": "Etapa {step}: use 0 ou um inteiro positivo sem zeros iniciais; - não é um elemento existente.",
+    "indexRange": "Etapa {step}: índice fora dos limites do array.",
+    "scalarTraversal": "Etapa {step}: não é possível descer em um escalar ou null.",
+    "outputLimit": "A saída excede {output} unidades UTF-16. Selecione um valor menor.",
+    "types": {
+      "object": "Objeto",
+      "array": "Array",
+      "string": "String",
+      "number": "Número",
+      "boolean": "Booleano",
+      "null": "Nulo"
+    }
+  }
+}

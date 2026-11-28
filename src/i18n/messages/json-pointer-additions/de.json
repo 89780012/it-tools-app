@@ -1,0 +1,48 @@
+{
+  "tools": {
+    "json-pointer": {
+      "name": "JSON-Pointer-Abfrage",
+      "description": "Einen exakten JSON-Wert mit RFC-6901-Pointern oder URI-Fragmenten lokal und ohne Verlust der Zahlengenauigkeit auswählen.",
+      "meta": {
+        "title": "JSON-Pointer-Abfrage",
+        "description": "Einen exakten JSON-Wert mit RFC-6901-Pointern oder URI-Fragmenten lokal und ohne Verlust der Zahlengenauigkeit auswählen.",
+        "keywords": "JSON Pointer, RFC 6901, URI-Fragment, JSON-Referenz, JSON extrahieren"
+      }
+    }
+  },
+  "jsonPointer": {
+    "source": "JSON-Dokument",
+    "pointer": "JSON Pointer oder URI-Fragment",
+    "hint": "Leer oder # wählt die Wurzel. / wählt einen leeren Schlüssel, ~1 steht für / und ~0 für ~. URI-Fragmente wie #/a%20b sind erlaubt.",
+    "limits": "Grenzen: {input} UTF-16-Einheiten JSON, {pointer} Einheiten Pointer und {depth} Verschachtelungsebenen.",
+    "resolve": "Pointer auflösen",
+    "type": "Werttyp",
+    "resolvedPointer": "Aufgelöster Pointer",
+    "root": "Dokumentwurzel",
+    "output": "Ausgewählter JSON-Wert",
+    "emptyResult": "JSON und Pointer eingeben und auflösen, um den Wert zu sehen.",
+    "rules": "Array-Indizes beginnen bei 0; führende Nullen und - sind ungültig. Objektschlüssel werden exakt und unter Beachtung der Großschreibung verglichen; Leerraum bleibt erhalten. Zeichenketten behalten JSON-Anführungszeichen. Doppelte Schlüssel werden abgelehnt; Zahlen behalten ihre Genauigkeit.",
+    "emptyJson": "Ein JSON-Dokument eingeben.",
+    "invalidJson": "Ungültiges JSON. Anführungszeichen, Kommas und Klammern prüfen.",
+    "duplicateKey": "Doppelte Objektschlüssel sind mehrdeutig. In jedem Objekt eindeutige Schlüssel verwenden.",
+    "inputLimit": "JSON darf {input} UTF-16-Einheiten nicht überschreiten.",
+    "depthLimit": "JSON darf {depth} Ebenen nicht überschreiten.",
+    "pointerLimit": "Der Pointer darf {pointer} UTF-16-Einheiten nicht überschreiten.",
+    "invalidFragment": "Ungültiges URI-Fragment: Prozentkodierung und UTF-8 prüfen.",
+    "invalidPointer": "Ein Pointer muss leer sein oder mit / beginnen. Ein URI-Fragment muss mit # beginnen.",
+    "invalidEscape": "Schritt {step}: Auf ~ muss 0 oder 1 folgen.",
+    "missingKey": "Schritt {step}: Kein passender Objektschlüssel vorhanden.",
+    "invalidIndex": "Schritt {step}: 0 oder eine positive Ganzzahl ohne führende Nullen verwenden; - bezeichnet kein vorhandenes Element.",
+    "indexRange": "Schritt {step}: Array-Index außerhalb des Bereichs.",
+    "scalarTraversal": "Schritt {step}: Ein Skalar oder null hat keine Unterelemente.",
+    "outputLimit": "Die Ausgabe überschreitet {output} UTF-16-Einheiten. Einen kleineren Wert wählen.",
+    "types": {
+      "object": "Objekt",
+      "array": "Array",
+      "string": "Zeichenkette",
+      "number": "Zahl",
+      "boolean": "Boolescher Wert",
+      "null": "Null"
+    }
+  }
+}

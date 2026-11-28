@@ -59,6 +59,7 @@ export const toolsConfig: ToolCategory[] = [
     ['json-visualizer', 'eye'],
     ['json-generator', 'database'],
     ['jsonpath-query', 'file-json'],
+    ['json-pointer', 'file-json'],
     ['json-schema-validator', 'shield-check'],
     ['i18n-json-translator', 'languages'],
     ['json-diff', 'git-compare'],
